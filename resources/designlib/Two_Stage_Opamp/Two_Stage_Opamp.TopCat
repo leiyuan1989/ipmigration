@@ -1,7 +1,0 @@
-TDMCHECKPOINT="1.0"
-Two_Stage_Opamp/Aux.Cat type="category"
-Two_Stage_Opamp/Cells.Cat type="category"
-Two_Stage_Opamp/Documentation.Cat type="category"
-Two_Stage_Opamp/Obsolete.Cat type="category"
-Two_Stage_Opamp/Testbenches.Cat type="category"
-Two_Stage_Opamp/Verification.Cat type="category"
