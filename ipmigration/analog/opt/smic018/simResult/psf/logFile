@@ -1,0 +1,36 @@
+HEADER
+"PSFversion" "1.00"
+"Log Generator" "drlLog rev. 1.0"
+"Log Time Stamp" "Fri Jan  3 20:14:07 2025"
+"psfversion" "1.4.0"
+"simulator" "spectre"
+"version" "23.1.0.063"
+"date" "8:14:07 PM, Fri Jan 3, 2025"
+"design" ""
+"signalNameType" "spectre"
+"simMode" "APS"
+"measdgt" 0
+"ingold" 2
+"sst2usecolon" 0
+TYPE
+"analysisInst" STRUCT(
+"analysisType" STRING *
+"dataFile" STRING *
+"format" STRING *
+"parent" STRING *
+"sweepVariable" ARRAY ( * ) STRING *
+"description" STRING *
+)
+VALUE
+"outdc2-dc" "analysisInst" (
+"dc"
+"outdc2.dc"
+"PSF"
+""
+("v_in")
+"DC Analysis `outdc2': v_in = (0 -> 3.3)"
+) PROP(
+"data_type" "scalar"
+)
+
+END

@@ -1,0 +1,37 @@
+
+// *LEVEL SHIFTER Characterization Testbench
+// Transient simulation
+simulator lang=spectre
+global 0
+
+// include model card
+include "/home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic011/models/spectre/ms011_ms013s_io33_v1p24_spe.lib" section=tt
+
+
+parameters w1 = 0.88  l1 = 0.35  w2 = 0.63  l2 = 0.35  w3 = 0.59  l3 = 0.35  w4 = 4.55  l4 = 0.35  w5 = 2.48  l5 = 0.35  w6 = 1.08  l6 = 0.35   
+
+// the power supply 3.3 V and current bias
+vddh    (ddh  0)   vsource  dc=vddh     type=dc
+vddl    (ddl  0)   vsource  dc=vddl     type=dc
+
+// the input signal for dc and tran simulation
+vin    (in 0)     vsource  type=pulse	val0=0 val1=vddl delay=0 rise=0.05n fall=0.05n width=5n  period=10n
+
+// the circuit 
+include    "/home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic011/ckt_netlist/level_shifter.scs"
+Xlevel_shifter  (ddh ddl 0 in out)  level_shifter 
+cl 	   (out 0) 					capacitor  c=cload
+
+// Sprctre Analyses and Output Options
+// Output Options
+simulatorOptions options 
++    reltol=1e-3 vabstol=1e-6 iabstol=1e-12 temp=27 
++    tnom=27 scalem=1.0 scale=1.0e-6 gmin=1e-12 rforce=1 maxnotes=5 maxwarns=5 
++    digits=5 cols=80 pivrel=1e-3 sensfile="../psf/sens.output" 
++    checklimitdest=psf 
+
+// Analyses
+outtran1 tran start=0.0 stop=0.1e-6 maxstep=0.01e-6 annotate=status 
+saveOptions options save=allpub subcktprobelvl=2
+
+// end of file

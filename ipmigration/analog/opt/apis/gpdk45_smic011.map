@@ -1,0 +1,4 @@
+gpdk045 pmos1v symbol w l fingers # smic11mmrf_1233 p12 symbol w l fingers
+gpdk045 nmos1v symbol w l fingers # smic11mmrf_1233 n12 symbol w l fingers
+gpdk045 mimcap symbol  c          # analogLib cap symbol c
+gpdk045 resnsppoly symbol r       # analogLib res  symbol r

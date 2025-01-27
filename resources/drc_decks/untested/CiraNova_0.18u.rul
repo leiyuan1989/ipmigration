@@ -1,0 +1,1066 @@
+////////////////////////////////////////////////////////////////////////
+//
+// CiraNova Fictional 0.18u Calibre DRC rules
+//   For demonstration purposes only.
+//   Copyright (c) 2005-2011 by Ciranova, Inc. All rights reserved.
+//
+// Note:  Using OpenAccess semantics for
+//        descriptions as much as possible.
+//
+////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////
+// Environment Setup
+////////////////////////////////////////////////////////////////////////
+
+// Layout Grid is 0.005u
+PRECISION    1000
+RESOLUTION   5
+
+LAYOUT SYSTEM  GDSII
+LAYOUT PATH    "cni18.gds2"
+LAYOUT PRIMARY "DiffPair_11"
+
+FLAG OFFGRID   YES
+FLAG ACUTE     YES
+FLAG SKEW      YES
+FLAG NONSIMPLE YES
+
+////////////////////////////////////////////////////////////////////////
+// DRC Setup
+////////////////////////////////////////////////////////////////////////
+DRC RESULTS DATABASE "errors"
+DRC SUMMARY REPORT   "drc.report"
+DRC CHECK TEXT ALL
+DRC MAXIMUM RESULTS ALL
+
+////////////////////////////////////////////////////////////////////////
+// Drawn Layer Definitions
+////////////////////////////////////////////////////////////////////////
+LAYER  NWELL      42
+LAYER  OD         43 45 46  // active areas
+LAYER  THGATE     44        // define thick gate oxides
+LAYER  PPLUS      47        // P+ S/D implant
+LAYER  NPLUS      48        // N+ S/D implant
+LAYER  POLY       49
+LAYER  SAB        39        // salicide block
+LAYER  CO         50        // contact
+LAYER  M1         51
+LAYER  VIA1       52
+LAYER  M2         53
+LAYER  VIA2       54
+LAYER  M3         55
+LAYER  VIA3       56
+LAYER  M4         57
+LAYER  VIA4       58
+LAYER  M5         59
+LAYER  VIA5       60
+LAYER  M6         61
+LAYER  VIA6       62
+LAYER  M7         63
+
+LAYER  DIO       100        // diode marking layer
+LAYER  NWDUMMY   101        // nwell resistor marking layer
+
+LAYER  PWTEXT    141
+LAYER  NWTEXT    142
+LAYER  PDTEXT    145
+LAYER  NDTEXT    146
+LAYER  PLTEXT    149
+LAYER  M1TEXT    151
+LAYER  M2TEXT    153
+LAYER  M3TEXT    155
+LAYER  M4TEXT    157
+LAYER  M5TEXT    159
+LAYER  M6TEXT    161
+LAYER  M7TEXT    163
+
+LAYOUT TOP LAYER M1 VIA1 M2 VIA2 M3 VIA3 M4 VIA4 M5 VIA5 M6 VIA6 M7
+
+////////////////////////////////////////////////////////////////////////
+// Derived Layer Definitions
+////////////////////////////////////////////////////////////////////////
+CHIP         = EXTENT
+BULK         = SIZE CHIP BY 1.0
+PWELL        = BULK NOT NWELL
+
+NWELLRES     = NWELL     INTERACT NWDUMMY
+NWELLNORES   = NWELL NOT INTERACT NWDUMMY
+NWRESOD      = NWELLRES  INTERACT SAB
+ODNWRESOD    = OD        INTERACT NWRESOD
+NPNWRESOD    = NPLUS     INTERACT NWRESOD
+
+NDIFF        = NPLUS AND OD                   // N+ OD region
+PDIFF        = PPLUS AND OD                   // P+ OD region
+
+NTAP         = NDIFF AND NWELLNORES           // NWEL tap diffusion
+NACT         = NDIFF NOT NWELL                // NMOS device active diffusion
+PTAP         = PDIFF NOT NWELL                // Substrate (pwell) tap diffusion
+PACT         = PDIFF AND NWELL                // PMOS device active diffusion
+
+GATE         = POLY AND OD                    // Gate regions
+GATEN        = GATE NOT THGATE                // Gate regions, std  voltage
+GATEH        = GATE AND THGATE                // Gate regions, high voltage
+FPOLY        = POLY NOT OD                    // Interconnect POLY
+
+DCONT        = CO OUTSIDE POLY                // Diffusion contacts
+PCONT        = CO NOT OUTSIDE POLY            // Poly contacts
+
+NGATE        = GATE AND NPLUS
+PGATE        = GATE AND PPLUS
+
+PSD          = PACT NOT POLY
+NSD          = NACT NOT POLY
+
+DMYDF        = NOT  OD  POLY
+
+GATE_W       = POLY INSIDE EDGE OD            // Gate width
+GATE_L       = OD   INSIDE EDGE POLY          // Gate length
+
+GATEN_W      = GATE_W NOT INSIDE EDGE THGATE  // Gate width,  std  voltage
+GATEN_L      = GATE_L NOT INSIDE EDGE THGATE  // Gate length, std  voltage
+
+GATEH_W      = GATE_W INSIDE EDGE THGATE      // Gate width,  high voltage
+GATEH_L      = GATE_L INSIDE EDGE THGATE      // Gate length, high voltage
+
+EXNGATE      = SIZE ((SIZE NGATE BY 0.03) AND POLY) BY 0.32
+EXPGATE      = SIZE ((SIZE PGATE BY 0.03) AND POLY) BY 0.32
+
+IMP          = PPLUS OR NPLUS
+ACT_OD       = OD INTERACT POLY
+PNSD         = ACT_OD NOT GATE
+ASD1         = PNSD ENCLOSE DCONT
+
+////////////////////////////////////////////////////////////////////////
+// Connectivity
+////////////////////////////////////////////////////////////////////////
+CONNECT  M1    PTAP  BY DCONT  // Intentionally don't use multi-
+CONNECT  M1    NTAP  BY DCONT  // connect form.  There can be an
+CONNECT  M1    PSD   BY DCONT  // unexpected behavior in some cases.
+CONNECT  M1    NSD   BY DCONT
+CONNECT  M1    POLY  BY PCONT
+
+CONNECT  M1    M2    BY VIA1
+CONNECT  M2    M3    BY VIA2
+CONNECT  M3    M4    BY VIA3
+CONNECT  M4    M5    BY VIA4
+CONNECT  M5    M6    BY VIA5 
+CONNECT  M6    M7    BY VIA6 
+
+ATTACH  PWTEXT  PWELL
+ATTACH  NWTEXT  NWELL
+ATTACH  PDTEXT  PTAP
+ATTACH  NDTEXT  NTAP
+ATTACH  PDTEXT  PSD
+ATTACH  NDTEXT  NSD
+ATTACH  PLTEXT  POLY
+
+ATTACH  M1TEXT  M1
+ATTACH  M2TEXT  M2
+ATTACH  M3TEXT  M3
+ATTACH  M4TEXT  M4
+ATTACH  M5TEXT  M5
+ATTACH  M6TEXT  M6
+ATTACH  M7TEXT  M7
+
+PORT LAYER TEXT PWTEXT NWTEXT PDTEXT NDTEXT PLTEXT M1TEXT M2TEXT M3TEXT M4TEXT M5TEXT M6TEXT M7TEXT
+TEXT LAYER      PWTEXT NWTEXT PDTEXT NDTEXT PLTEXT M1TEXT M2TEXT M3TEXT M4TEXT M5TEXT M6TEXT M7TEXT
+
+// Well connectivity - SCONNECT enables
+// checking with LVS SOFTCHK
+SCONNECT PTAP PWELL
+SCONNECT NTAP NWELL
+
+// For butted taps, where tap diffusion
+// touches transistor source/drain, using
+// SCONNECT through fake DMYDF layer
+// enables checking with LVS SOFTCHK
+SCONNECT PSD  DMYDF
+SCONNECT NSD  DMYDF
+SCONNECT PTAP DMYDF
+SCONNECT NTAP DMYDF
+
+////////////////////////////////////////////////////////////////////////
+// OFFGRID CHECKS
+////////////////////////////////////////////////////////////////////////
+
+OFFGRID.NWELL { @ NWELL vertex not located on 0.005 grid
+  OFFGRID NWELL 5
+}
+
+OFFGRID.OD { @ OD vertex not located on 0.005 grid
+  OFFGRID OD 5
+}
+
+OFFGRID.THGATE { @ THGATE vertex not located on 0.005 grid
+  OFFGRID THGATE 5
+}
+
+OFFGRID.PPLUS { @ PPLUS vertex not located on 0.005 grid
+  OFFGRID PPLUS 5
+}
+
+OFFGRID.NPLUS { @ NPLUS vertex not located on 0.005 grid
+  OFFGRID NPLUS 5
+}
+
+OFFGRID.POLY { @ POLY vertex not located on 0.005 grid
+  OFFGRID POLY 5
+}
+
+OFFGRID.SAB { @ SAB vertex not located on 0.005 grid
+  OFFGRID SAB 5
+}
+
+OFFGRID.CO { @ CO vertex not located on 0.005 grid
+  OFFGRID CO 5
+}
+
+OFFGRID.M1 { @ M1 vertex not located on 0.005 grid
+  OFFGRID M1 5
+}
+
+OFFGRID.VIA1 { @ VIA1 vertex not located on 0.005 grid
+  OFFGRID VIA1 5
+}
+
+OFFGRID.M2 { @ M2 vertex not located on 0.005 grid
+  OFFGRID M2 5
+}
+
+OFFGRID.VIA2 { @ VIA2 vertex not located on 0.005 grid
+  OFFGRID VIA2 5
+}
+
+OFFGRID.M3 { @ M3 vertex not located on 0.005 grid
+  OFFGRID M3 5
+}
+
+OFFGRID.VIA3 { @ VIA3 vertex not located on 0.005 grid
+  OFFGRID VIA3 5
+}
+
+OFFGRID.M4 { @ M4 vertex not located on 0.005 grid
+  OFFGRID M4 5
+}
+
+OFFGRID.VIA4 { @ VIA4 vertex not located on 0.005 grid
+  OFFGRID VIA4 5
+}
+
+OFFGRID.M5 { @ M5 vertex not located on 0.005 grid
+  OFFGRID M5 5
+}
+
+OFFGRID.VIA5 { @ VIA5 vertex not located on 0.005 grid
+  OFFGRID VIA5 5
+}
+
+OFFGRID.M6 { @ M6 vertex not located on 0.005 grid
+  OFFGRID M6 5
+}
+
+OFFGRID.VIA6 { @ VIA6 vertex not located on 0.005 grid
+  OFFGRID VIA6 5
+}
+
+OFFGRID.M7 { @ M7 vertex not located on 0.005 grid
+  OFFGRID M7 5
+}
+
+OFFGRID.DIO { @ DIO vertex not located on 0.005 grid
+  OFFGRID DIO 5
+}
+
+OFFGRID.NWDUMMY { @ NWDUMMY vertex not located on 0.005 grid
+  OFFGRID NWDUMMY 5
+}
+
+
+////////////////////////////////////////////////////////////////////////
+// NWELL CHECKS
+////////////////////////////////////////////////////////////////////////
+NWELL.WIDTH { @ NWELL width < 2.5
+  INT NWELL < 2.50 ABUT < 90 SINGULAR REGION
+}
+
+NWELL.SPACE.1 { @ NWELL space [same potential] < 0.7
+  EXT NWELL < 0.70 REGION ABUT < 90
+}
+
+NWELL.SPACE.2 { @ NWELL space [different potentials] < 1.6
+  EXT NWELL < 1.60 REGION ABUT < 90 NOT CONNECTED
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// NWELL RESISTOR CHECKS
+////////////////////////////////////////////////////////////////////////
+
+NWELLRES.SPACE.1 { @ NWELL space to SAB < 0.36 
+  EXT NWRESOD SAB < 0.36 ABUT < 90 SINGULAR
+}
+
+NWELLRES.OVERLAP.1 { @ SAB overlap of NPLUS < 0.46 
+  INT NPNWRESOD SAB < 0.46 ABUT < 90 SINGULAR REGION
+  X = SAB INTERACT NWRESOD
+  Y = HOLES X INNER
+  Y NOT NPNWRESOD
+}
+
+NWELLRES.ENCLOSE.1 { @ OD enclosure of NWELL < 0.96 
+  ENC NWRESOD ODNWRESOD < 0.96 ABUT < 90 OVERLAP SINGULAR
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// OD CHECKS
+////////////////////////////////////////////////////////////////////////
+OD.WARN { @ OD without implant
+  X = OD NOT ODNWRESOD
+  X NOT IMP
+}
+
+OD.WIDTH { @ OD width for MOS and interconnect < 0.24
+  INT OD < 0.24 SINGULAR ABUT < 90 REGION 
+}
+
+OD.SPACE { @ OD space < 0.26
+  EXT OD < 0.26 ABUT < 90 SINGULAR REGION 
+}
+
+OD.NW.1 { @ NWELL overlap NDIFF tie down < 0.12
+  ENC NDIFF NWELLNORES < 0.12 SINGULAR ABUT < 90 OVERLAP REGION
+}
+
+OD.CLEAR.1 { @ NWELL to NDIFF space < 0.43
+  X = NDIFF NOT INSIDE NWELL
+  Y = X NOT ODNWRESOD
+  EXT Y NWELL < 0.43 SINGULAR ABUT < 90 OVERLAP REGION
+}
+
+OD.NW.2 { @ NWELL overlap PDIFF < 0.43
+  ENC PDIFF NWELL < 0.43 SINGULAR ABUT < 90 OVERLAP REGION
+}
+
+OD.CLEAR.2 { @ NWELL space PDIFF outside NW < 0.12
+  X = PDIFF NOT NWELL
+  EXT X NWELL < 0.12 SINGULAR ABUT < 90 REGION
+}
+
+OD.AREA { @ OD area < 0.20
+  OD AREA < 0.20
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// THGATE checks
+////////////////////////////////////////////////////////////////////////
+THGATE.WIDTH { @ THGATE width < 1.00
+  INT THGATE < 1.00 SINGULAR ABUT < 90 REGION
+}
+
+THGATE.SPACE { @ THGATE space < 0.78
+  EXT THGATE < 0.78 SINGULAR ABUT < 90 REGION
+}
+
+THGATE.CLEAR.OD { @ THGATE space to OD < 0.44
+  EXT THGATE OD < 0.44 ABUT < 90 REGION SINGULAR
+}
+
+THGATE.CLEAR.GATE { @ THGATE space std voltage GATE < 0.60
+  EXT THGATE GATEN_W < 0.60 ABUT < 90 REGION
+}
+
+THGATE.ENCLOSE.GATE { @ THGATE enclosure high voltage GATE < 0.60
+  ENC THGATE GATEH_W < 0.60 ABUT < 90 REGION
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// POLY checks
+////////////////////////////////////////////////////////////////////////
+POLY.WIDTH { @ POLY width for interconnect < 0.18
+  INT POLY < 0.18 SINGULAR ABUT < 90 REGION
+}
+
+POLY.SPACE { @ POLY space: on OD w/o contact and interconnect < 0.24
+  EXT POLY < 0.24 SINGULAR ABUT < 90 REGION
+}
+
+POLY.AREA { @ POLY area < 0.13
+  POLY AREA < 0.13
+}
+
+POLY.CLEAR.OD { @ POLY on field space to active < 0.32
+  EXT POLY OD < 0.32 ABUT >= 0 < 89.5 REGION SINGULAR
+}
+
+POLY.SDWIDTH { @ OD overhang gate < 0.36
+  ENC POLY OD < 0.36 SINGULAR ABUT >= 0 <89.5 REGION
+}
+
+POLY.ENDCAP { @ Transistor endcap < 0.24
+  ENC OD POLY < 0.24 SINGULAR ABUT >= 0 <89.5 REGION
+}
+
+POLY.BADGATE.1 { @ 90 degree gate not allowed/L and U shape gate are not allowed
+  // 0.18 value is arbitrary, note the angle
+  EXT GATE_W < 0.18 ABUT == 90 INTERSECTING ONLY
+  INT GATE_W < 0.18 ABUT == 90 INTERSECTING ONLY
+}
+
+POLY.BADGATE.2 { @ Non-rectangular gates are not allowed
+  GATE_POLY_EDGE = COINCIDENT EDGE GATE OD
+  GATE_DIFF_EDGE = NOT COINCIDENT EDGE GATE OD
+
+  // find non-horizontal gate edges in poly
+  BAD_ANGLE_1 = ANGLE GATE_POLY_EDGE > 0 < 90
+
+  // find non-vertical gate edges in diff
+  BAD_ANGLE_2 = ANGLE GATE_DIFF_EDGE > 0 < 90
+
+  // flag the bad gates, not the edges
+  BAD_GATE_1 = GATE WITH EDGE BAD_ANGLE_1
+  BAD_GATE_2 = GATE WITH EDGE BAD_ANGLE_2
+
+  // Remove duplicate errors.
+  OR BAD_GATE_1 BAD_GATE_2
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// PPLUS CHECKS
+////////////////////////////////////////////////////////////////////////
+PPLUS.WIDTH { @ PPLUS width < 0.460
+  INT PPLUS < 0.460 SINGULAR ABUT < 90 REGION 
+}
+
+PPLUS.SPACE { @ PPLUS space < 0.460
+  EXT PPLUS < 0.460 ABUT < 90 REGION
+}
+
+PPLUS.CLEAR.NACT { @ PPLUS space to n active in pwell < 0.26
+  // N active in pwell can be butting or
+  // non-butting. The non-butting n active is not
+  // allowed to touch PPLUS.
+  EXT PPLUS NACT < 0.26 ABUT > 0 < 90 REGION
+  X = EXT PPLUS [NACT] < 0.001 ABUT == 0
+  Y = EXPAND EDGE X OUTSIDE BY 0.001
+  Y NOT INTERACT PDIFF
+}
+
+PPLUS.CLEAR.NTAP { @ PPLUS space to non-butting NTAP < 0.1
+  EXT PPLUS NTAP < 0.1 ABUT > 0 < 90 REGION
+}
+
+PPLUS.ENCLOSE.PGATE { @ PPLUS extension over (P gate) + (field poly within 0.35 um) < 0.32 um
+  // This rule must extend out of gate in the direction of PO by 0.35 um
+  EXPGATE NOT PPLUS
+}
+
+PPLUS.OVER.PACT { @ PPLUS extends into p active < 0.23
+  INT OD PPLUS < 0.23 SINGULAR REGION ABUT > 0 < 90
+}
+
+PPLUS.ENCLOSE.PACT { @ PPLUS enclosure OD < 0.36
+  ENC PACT PPLUS < 0.36 SINGULAR ABUT > 0 < 90 REGION
+  Y = ENC [PACT] PPLUS < 0.001 ABUT == 0
+  Z = EXPAND EDGE Y OUTSIDE BY 0.001
+  Z NOT INTERACT NDIFF
+}
+
+PPLUS.ENCLOSE.PTAP { @ Enclosure of PTAP by PPLUS < 0.02
+  ENC PTAP PPLUS < 0.02 ABUT > 0 < 90 SINGULAR REGION
+  X = ENC [PTAP] PPLUS < 0.001 ABUT == 0
+  Y = EXPAND EDGE X OUTSIDE BY 0.001
+  Y NOT INTERACT NDIFF
+}
+
+PPLUS.AREA { @ PPLUS area < 0.3844
+  PPLUS AREA < 0.36
+}
+
+PPLUS.NPLUS.COINCIDENT.DIFF { @ Implant can not coincident OD edge except butted diffusion
+  IMP COIN INSIDE EDGE OD
+}  
+
+PPLUS.OVERLAP.NPLUS { @ PPLUS and NPLUS not allowed to overlap
+  PPLUS and NPLUS
+}
+// PP.R.2 @ PP not generated by reverse NP
+ 
+
+
+////////////////////////////////////////////////////////////////////////
+// NPLUS CHECKS
+////////////////////////////////////////////////////////////////////////
+NPLUS.WIDTH { @ NPLUS width < 0.460
+  INT NPLUS < 0.460 SINGULAR ABUT < 90 REGION
+}
+
+NPLUS.SPACE { @ NPLUS space < 0.460
+  EXT NPLUS < 0.460 ABUT < 90 REGION
+}
+
+NPLUS.CLEAR.PACT { @ NPLUS space to p active in NWELL < 0.260
+  // P active in NWELL can be butting or
+  // non-butting. The non-butting p active is not
+  // allowed to touch NP.
+  EXT NPLUS PACT < 0.26 ABUT > 0 < 90 REGION
+  X = EXT NPLUS [PACT] < 0.001 ABUT == 0
+  Y = EXPAND EDGE X OUTSIDE BY 0.001
+  Y NOT INTERACT NDIFF
+}
+
+NPLUS.CLEAR.PTAP { @ NPLUS space to non-butting ptap < 0.1
+  EXT NPLUS PTAP < 0.1 ABUT > 0 < 90 REGION
+}
+
+NPLUS.ENCLOSE.NGATE { @ NPLUS extension over (N gate) + (field poly within 0.35 um) < 0.32 um
+  // This rule must extend out of gate in the direction of PO by 0.35 um
+  EXNGATE NOT NPLUS
+}
+
+NPLUS.OVER.NACT { @ NPLUS extends into n active < 0.230
+  INT OD NPLUS < 0.230 SINGULAR REGION ABUT > 0 < 90
+}
+
+NPLUS.ENCLOSE.NACT { @ NPLUS enclosure OD < 0.36
+  X = NACT NOT ODNWRESOD
+  ENC X NPLUS < 0.36 SINGULAR ABUT > 0 < 90 REGION
+  Y = ENC [X] NPLUS < 0.001 ABUT == 0
+  Z = EXPAND EDGE Y OUTSIDE BY 0.001
+  Z NOT INTERACT PDIFF
+}
+
+NPLUS.ENCLOSE.NTAP { @ Enclosure of NTAP by NPLUS < 0.02
+  ENC NTAP NPLUS < 0.02 ABUT > 0 < 90 SINGULAR REGION
+  X = ENC [NTAP] NPLUS < 0.001 ABUT == 0
+  Y = EXPAND EDGE X OUTSIDE BY 0.001
+  Y NOT INTERACT PDIFF
+}
+
+NPLUS.AREA { @ NPLUS area < 0.3844
+  NPLUS AREA < 0.36
+}
+
+////////////////////////////////////////////////////////////////////////
+// SAB checks
+////////////////////////////////////////////////////////////////////////
+SAB.WIDTH { @ SAB width < 0.64
+  INT SAB < 0.64 SINGULAR ABUT < 90 REGION
+}
+
+SAB.SPACE { @ SAB space < 0.64
+  EXT SAB < 0.64 SINGULAR ABUT < 90 REGION
+}
+
+SAB.CLEAR.OD { @ SAB space to OD < 0.24
+  EXT SAB OD < 0.24 ABUT < 90 REGION SINGULAR
+}
+
+SAB.EXT.OD.1 { @ SAB extension beyond OD < 0.40
+  ENC OD SAB < 0.40 ABUT < 90 REGION SINGULAR
+}
+
+SAB.EXT.OD.2 { @ OD extension beyond SAB < 0.40
+  ENC SAB OD < 0.40 ABUT < 90 REGION SINGULAR
+}
+
+SAB.CLEAR.CONT { @ SAB space to CONTACT < 0.40
+  EXT SAB CO < 0.40 ABUT < 90 INSIDE ALSO REGION SINGULAR
+}
+
+SAB.CLEAR.GATE { @ SAB space to GATE < 0.55
+  EXT SAB GATE < 0.55 ABUT < 90 REGION SINGULAR
+}
+
+SAB.CLEAR.FPOLY { @ SAB space to field POLY < 0.40
+  EXT SAB FPOLY < 0.40 ABUT < 90 REGION SINGULAR
+}
+
+SAB.AREA { @ SAB area < 0.84
+  AREA SAB < 0.84
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// CONTACT checks
+////////////////////////////////////////////////////////////////////////
+CONTACT.WIDTH { @ CONTACT width must be 0.24 x 0.24
+  NOT RECTANGLE CO == 0.24 BY == 0.24
+}
+
+CONTACT.SPACE { @ CONTACT space < 0.24
+  EXT CO < 0.24 SINGULAR REGION
+}
+
+// These lines intentionally left blank.
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+CONTACT.CLEAR.POLY { @ Diffusion CONTACT space to GATE < 0.16
+  EXT DCONT GATE < 0.16 SINGULAR INSIDE ALSO ABUT < 90 REGION
+}
+
+// These lines intentionally left blank.
+//
+//
+
+CONTACT.CLEAR.OD { @ Poly CONTACT space to OD < 0.16
+  EXT PCONT OD < 0.16 ABUT < 90 REGION
+}
+
+CONTACT.ENCLOSE.1 { @ Diffusion enclosure CONTACT < 0.16
+  ENC DCONT OD < 0.16 SINGULAR ABUT < 90 OUTSIDE ALSO REGION
+}
+
+CONTACT.ENCLOSE.2 { @ POLY enclosure CONTACT < 0.12
+  ENC PCONT FPOLY < 0.12 SINGULAR OVERLAP ABUT < 90 REGION
+}
+
+CONTACT.ENCLOSE.3 { @ PPLUS enclosure CONTACT < 0.16
+  ENC DCONT PPLUS < 0.16 ABUT >= 0 <= 90 REGION INSIDE ALSO
+}
+
+CONTACT.ENCLOSE.4 { @ NPLUS enclosure CONTACT < 0.16
+  ENC DCONT NPLUS < 0.16 ABUT >= 0 <= 90 REGION INSIDE ALSO
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// METAL1 checks
+////////////////////////////////////////////////////////////////////////
+METAL1.WIDTH { @ METAL1 width < 0.24
+  INT M1 < 0.24 SINGULAR REGION ABUT < 90
+}
+
+METAL1.SPACE { @ METAL1 space < 0.24
+  EXT M1 < 0.24 ABUT < 90 REGION
+}
+
+// These lines intentionally left blank.
+//
+//
+//
+
+METAL1.ENCLOSE.1 { @ Enclosure of METAL1 beyond CONTACT is 0.03 um
+  ENC CO M1 < 0.03  ABUT < 90 SINGULAR OVERLAP OUTSIDE ALSO
+}
+
+METAL1.ENCLOSE.2 { @ Enclosure of METAL1 end-of-line beyond CONTACT is 0.10 um
+  X = ENC [CO] M1 < 0.10 OPPOSITE    // narrow side
+  INT X < 0.24 ABUT == 90            // adjacent narrow sides
+}
+
+METAL1.AREA { @ METAL1 area < 0.20
+  AREA M1 < 0.20
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// VIA1 checks
+////////////////////////////////////////////////////////////////////////
+VIA1.WIDTH { @ VIA1 must be 0.24 x 0.24 um
+  NOT RECTANGLE VIA1 == 0.24 BY == 0.24 ORTHOGONAL ONLY
+}
+
+VIA1.SPACE { @ VIA1 space < 0.24
+  EXT VIA1 < 0.24 SINGULAR REGION 
+}
+
+// These lines intentionally left blank.
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+VIA1.ENCLOSE.1 { @ Enclosure of METAL1 beyond VIA1 is 0.03 um
+  ENC VIA1 M1 < 0.03 ABUT < 90 SINGULAR OVERLAP OUTSIDE ALSO
+}
+ 
+VIA1.ENCLOSE.2 { @ Enclosure of METAL1 end-of-line beyond VIA1 is 0.10 um
+  X = ENC [VIA1] M1 < 0.10 OPPOSITE // narrow side
+  INT X < 0.24  ABUT == 90          // adjacent narrow sides
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// METAL2 checks
+////////////////////////////////////////////////////////////////////////
+METAL2.WIDTH { @ METAL2 width < 0.30
+  INT M2 < 0.30 SINGULAR REGION ABUT < 90
+}
+
+METAL2.SPACE { @ METAL2 space < 0.30
+  EXT M2 < 0.30 ABUT < 90 REGION
+}
+
+// These lines intentionally left blank.
+//
+//
+//
+
+METAL2.ENCLOSE.1 { @ Enclosure of METAL2 beyond VIA1 is 0.03 um
+  ENC VIA1 M2 < 0.03 ABUT < 90 SINGULAR OVERLAP OUTSIDE ALSO
+}
+ 
+METAL2.ENCLOSE.2 { @ Enclosure of METAL2 end-of-line beyond VIA1 is 0.10 um
+  X = ENC [VIA1] M2 < 0.10 OPPOSITE // narrow side
+  INT X < 0.24 ABUT == 90           // adjacent narrow sides
+}
+
+METAL2.AREA { @ METAL2 area < 0.20
+  AREA M2 < 0.20
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// VIA2 checks
+////////////////////////////////////////////////////////////////////////
+VIA2.WIDTH { @ VIA2 must be 0.24 x 0.24 um
+  NOT RECTANGLE VIA2 == 0.24 BY == 0.24 ORTHOGONAL ONLY
+}
+
+VIA2.SPACE { @ VIA2 space < 0.24
+  EXT VIA2 < 0.24 SINGULAR REGION 
+}
+
+// These lines intentionally left blank.
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+VIA2.ENCLOSE.1 { @ Enclosure of METAL2 beyond VIA2 is 0.03 um
+  ENC VIA2 M2 < 0.03 ABUT < 90 SINGULAR OVERLAP OUTSIDE ALSO
+}
+ 
+VIA2.ENCLOSE.2 { @ Enclosure of METAL2 end-of-line beyond VIA2 is 0.10 um
+  X = ENC [VIA2] M2 < 0.10 OPPOSITE // narrow side
+  INT X < 0.24  ABUT == 90          // adjacent narrow sides
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// METAL3 checks
+////////////////////////////////////////////////////////////////////////
+METAL3.WIDTH { @ METAL3 width < 0.30
+  INT M3 < 0.30 SINGULAR REGION ABUT < 90
+}
+
+METAL3.SPACE { @ METAL3 space < 0.30
+  EXT M3 < 0.30 ABUT < 90 REGION
+}
+
+// These lines intentionally left blank.
+//
+//
+//
+
+METAL3.ENCLOSE.1 { @ Enclosure of METAL3 beyond VIA2 is 0.03 um
+  ENC VIA2 M3 < 0.03 ABUT < 90 SINGULAR OVERLAP OUTSIDE ALSO
+}
+ 
+METAL3.ENCLOSE.2 { @ Enclosure of METAL3 end-of-line beyond VIA2 is 0.10 um
+  X = ENC [VIA2] M3 < 0.10 OPPOSITE // narrow side
+  INT X < 0.24 ABUT == 90           // adjacent narrow sides
+}
+
+METAL3.AREA { @ METAL3 area < 0.20
+  AREA M3 < 0.20
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// VIA3 checks
+////////////////////////////////////////////////////////////////////////
+VIA3.WIDTH { @ VIA3 must be 0.24 x 0.24 um
+  NOT RECTANGLE VIA3 == 0.24 BY == 0.24 ORTHOGONAL ONLY
+}
+
+VIA3.SPACE { @ VIA3 space < 0.24
+  EXT VIA3 < 0.24 SINGULAR REGION 
+}
+
+// These lines intentionally left blank.
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+VIA3.ENCLOSE.1 { @ Enclosure of METAL3 beyond VIA3 is 0.03 um
+  ENC VIA3 M3 < 0.03 ABUT < 90 SINGULAR OVERLAP OUTSIDE ALSO
+}
+ 
+VIA3.ENCLOSE.2 { @ Enclosure of METAL3 end-of-line beyond VIA3 is 0.10 um
+  X = ENC [VIA3] M3 < 0.10 OPPOSITE // narrow side
+  INT X < 0.24  ABUT == 90          // adjacent narrow sides
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// METAL4 checks
+////////////////////////////////////////////////////////////////////////
+METAL4.WIDTH { @ METAL4 width < 0.30
+  INT M4 < 0.30 SINGULAR REGION ABUT < 90
+}
+
+METAL4.SPACE { @ METAL4 space < 0.30
+  EXT M4 < 0.30 ABUT < 90 REGION
+}
+
+// These lines intentionally left blank.
+//
+//
+//
+
+METAL4.ENCLOSE.1 { @ Enclosure of METAL4 beyond VIA3 is 0.03 um
+  ENC VIA3 M4 < 0.03 ABUT < 90 SINGULAR OVERLAP OUTSIDE ALSO
+}
+ 
+METAL4.ENCLOSE.2 { @ Enclosure of METAL4 end-of-line beyond VIA3 is 0.10 um
+  X = ENC [VIA3] M4 < 0.10 OPPOSITE // narrow side
+  INT X < 0.24 ABUT == 90           // adjacent narrow sides
+}
+
+METAL4.AREA { @ METAL4 area < 0.20
+  AREA M4 < 0.20
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// VIA4 checks
+////////////////////////////////////////////////////////////////////////
+VIA4.WIDTH { @ VIA4 must be 0.24 x 0.24 um
+  NOT RECTANGLE VIA4 == 0.24 BY == 0.24 ORTHOGONAL ONLY
+}
+
+VIA4.SPACE { @ VIA4 space < 0.24
+  EXT VIA4 < 0.24 SINGULAR REGION 
+}
+
+// These lines intentionally left blank.
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+VIA4.ENCLOSE.1 { @ Enclosure of METAL4 beyond VIA4 is 0.03 um
+  ENC VIA4 M4 < 0.03 ABUT < 90 SINGULAR OVERLAP OUTSIDE ALSO
+}
+ 
+VIA4.ENCLOSE.2 { @ Enclosure of METAL4 end-of-line beyond VIA4 is 0.10 um
+  X = ENC [VIA4] M4 < 0.10 OPPOSITE // narrow side
+  INT X < 0.24  ABUT == 90          // adjacent narrow sides
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// METAL5 checks
+////////////////////////////////////////////////////////////////////////
+METAL5.WIDTH { @ METAL5 width < 0.30
+  INT M5 < 0.30 SINGULAR REGION ABUT < 90
+}
+
+METAL5.SPACE { @ METAL5 space < 0.30
+  EXT M5 < 0.30 ABUT < 90 REGION
+}
+
+// These lines intentionally left blank.
+//
+//
+//
+
+METAL5.ENCLOSE.1 { @ Enclosure of METAL5 beyond VIA4 is 0.03 um
+  ENC VIA4 M5 < 0.03 ABUT < 90 SINGULAR OVERLAP OUTSIDE ALSO
+}
+ 
+METAL5.ENCLOSE.2 { @ Enclosure of METAL5 end-of-line beyond VIA4 is 0.10 um
+  X = ENC [VIA4] M5 < 0.10 OPPOSITE // narrow side
+  INT X < 0.24 ABUT == 90           // adjacent narrow sides
+}
+
+METAL5.AREA { @ METAL5 area < 0.20
+  AREA M5 < 0.20
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// VIA5 checks
+////////////////////////////////////////////////////////////////////////
+VIA5.WIDTH { @ VIA5 must be 0.24 x 0.24 um
+  NOT RECTANGLE VIA5 == 0.24 BY == 0.24 ORTHOGONAL ONLY
+}
+ 
+VIA5.SPACE { @ VIA5 space < 0.24
+  EXT VIA5 < 0.24 SINGULAR REGION
+}
+
+// These lines intentionally left blank.
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+ 
+VIA5.ENCLOSE.1 { @ Enclosure of METAL5 beyond VIA5 is 0.03 um
+  ENC VIA5 M5 < 0.03 ABUT < 90 SINGULAR OVERLAP OUTSIDE ALSO
+}
+
+VIA5.ENCLOSE.2 { @ Enclosure of METAL5 end-of-line beyond VIA5 is 0.10 um
+  X = ENC [VIA5] M5 < 0.10 OPPOSITE  // narrow side
+  INT X < 0.24 ABUT == 90            // adjacent narrow sides
+}
+ 
+
+
+////////////////////////////////////////////////////////////////////////
+// METAL6 checks
+////////////////////////////////////////////////////////////////////////
+METAL6.WIDTH { @ METAL6 width < 0.30
+  INT M6 < 0.30 SINGULAR REGION ABUT < 90
+}
+ 
+METAL6.SPACE { @ METAL6 space < 0.30
+  EXT M6 < 0.30 ABUT < 90 REGION
+}
+
+// These lines intentionally left blank.
+//
+//
+//
+
+METAL6.ENCLOSE.1 { @ Enclosure of METAL6 beyond VIA5 is 0.03 um
+  ENC VIA5 M6 < 0.03 ABUT < 90 SINGULAR OVERLAP OUTSIDE ALSO
+}
+
+METAL6.ENCLOSE.2 { @ Enclosure of METAL6 end-of-line beyond VIA5 is 0.10 um
+  X = ENC [VIA5] M6 < 0.10 OPPOSITE // narrow side
+  INT X < 0.24 ABUT == 90           // adjacent narrow sides
+}
+ 
+METAL6.AREA { @ METAL6 area < 0.20
+  AREA M6 < 0.20
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// VIA6 checks
+////////////////////////////////////////////////////////////////////////
+VIA6.WIDTH { @ VIA6 must be 0.36 x 0.36 um
+  NOT RECTANGLE VIA6 == 0.36 BY == 0.36 ORTHOGONAL ONLY
+}
+ 
+VIA6.SPACE { @ VIA6 space < 0.36
+  EXT VIA6 < 0.36 SINGULAR REGION
+}
+
+VIA6.ENCLOSE.1 { @ Enclosure of METAL6 beyond VIA6 is 0.03 um
+  ENC VIA6 M6 < 0.03 ABUT < 90 SINGULAR OVERLAP OUTSIDE ALSO
+}
+
+VIA6.ENCLOSE.2 { @ Enclosure of METAL6 end-of-line beyond VIA6 is 0.10 um
+  X = ENC [VIA6] M6 < 0.10 OPPOSITE  // narrow side
+  INT X < 0.36 ABUT == 90            // adjacent narrow sides
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// METAL7 checks
+////////////////////////////////////////////////////////////////////////
+METAL7.WIDTH { @ METAL7 width < 0.44
+  INT M7 < 0.44 SINGULAR REGION ABUT < 90
+}
+ 
+METAL7.SPACE { @ METAL7 space < 0.60
+  EXT M7 < 0.60 ABUT < 90 REGION
+}
+
+METAL7.ENCLOSE { @ Enclosure of METAL7 beyond VIA6 is 0.10 um
+  ENC VIA6 M7 < 0.10 ABUT < 90 SINGULAR OVERLAP OUTSIDE ALSO
+}
+
+METAL7.AREA { @ METAL7 area < 0.600
+  AREA M7 < 0.600
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+// END
+////////////////////////////////////////////////////////////////////////

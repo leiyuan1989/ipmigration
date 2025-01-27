@@ -1,0 +1,82 @@
+Starting Single Run, Sweeps and Corners...
+
+Current time: Wed Sep 19 07:24:54 2018 
+Best design point: 1
+Design specs: 
+	AC	corner	Fast - 
+	Current		1.169m	Yes
+	UGF		737.1M	Yes
+	Gain		48.57	Yes
+	Voffset		2.413m	Yes
+	VAR("nomGain")		0
+	TRAN	corner	Fast - 
+	Swing		1.038	Yes
+	SettlingTime		7.19n	Yes
+	RelativeSwingPercent		79.81	Yes
+	PhaseMargin		16.81	No
+	AC	corner	Slow - 
+	Current		1.073m	Yes
+	UGF		357.2M	No
+	Gain		43.37	Near
+	Voffset		4.483m	Yes
+	VAR("nomGain")		0
+	TRAN	corner	Slow - 
+	Swing		954.3m	Near
+	SettlingTime		8.797n	Near
+	RelativeSwingPercent		73.41	Near
+	PhaseMargin		26.47	Yes
+	AC	corner	Typical - 
+	Current		1.126m	Yes
+	UGF		544.6M	Yes
+	Gain		46.67	Yes
+	Voffset		3.097m	Yes
+	VAR("nomGain")		0
+	TRAN	corner	Typical - 
+	Swing		1.007	Yes
+	SettlingTime		7.778n	Yes
+	RelativeSwingPercent		77.44	Yes
+	PhaseMargin		20.69	Yes
+	AC	corner	SlowFast - 
+	Current		1.105m	Yes
+	UGF		430.4M	No
+	Gain		44.64	Yes
+	Voffset		3.849m	Yes
+	VAR("nomGain")		0
+	TRAN	corner	SlowFast - 
+	Swing		983.6m	Yes
+	SettlingTime		8.187n	Near
+	RelativeSwingPercent		75.66	Yes
+	PhaseMargin		24.27	Yes
+	AC	corner	FastSlow - 
+	Current		1.139m	Yes
+	UGF		504.6M	Near
+	Gain		45.82	Yes
+	Voffset		3.606m	Yes
+	VAR("nomGain")		0
+	TRAN	corner	FastSlow - 
+	Swing		995.2m	Yes
+	SettlingTime		8.148n	Near
+	RelativeSwingPercent		76.56	Yes
+	PhaseMargin		21.94	Yes
+	AC	corner	Nominal - 
+	Current		1.126m	Yes
+	UGF		546.4M	Yes
+	Gain		46.74	Yes
+	Voffset		3.065m	Yes
+	VAR("nomGain")		0
+	TRAN	corner	Nominal - 
+	Swing		1.008	Yes
+	SettlingTime		7.763n	Yes
+	RelativeSwingPercent		77.51	Yes
+	PhaseMargin		20.71	Yes
+Design parameters: 
+	rload		1K
+	cload		100f
+	vdd		1.3
+	nomGain		0
+
+Interactive.1
+Number of points completed: 2
+Number of simulation errors: 0
+Interactive.1 completed. 
+Current time: Wed Sep 19 07:26:23 2018 

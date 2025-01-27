@@ -1,0 +1,49 @@
+
+// Comparator Characterization Testbench
+// Transient offset
+simulator lang=spectre
+global 0
+
+// include model card
+include "dummy_model_card_path" section=dummy_corner_name
+
+// define w/l
+parameters w1 = {w1}  l1 = {l1}    w3 = {w3} l3 = {l3}  w4 = {w4}  l4 = {l4}	   w5 = {w5}  l5 = {l5} w6 = {w6}  l6 = {l6}  w7 = {w7}  l7 = {l7} w8 = {w8}  l8 = {l8}
+
+// define vref
+parameters vref=0.6
+
+// Include the circuit
+include    "/home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic011/ckt_netlist/dynamicComparator.scs"
+
+// the power supply 1.2 V and current bias
+vdd    (dd  0)   vsource  dc=vdd     type=dc
+
+
+// the input signal for dc and tran simulation
+vin    (inn 0)      vsource  dc=vref    type=dc
+vip    (inp 0)     vsource  type=pwl	   wave=[0 0.595 0.5u 0.595 1.5u 0.605]
+vclk  (clk 0)      vsource type=pulse	val0=0 val1=vdd delay=0.5u rise=1n fall=1n width=25n period=50n
+
+clp   (outp 0) 	capacitor  c=cload
+cln   (outn 0) 	capacitor  c=cload
+
+// the circuit
+Xcomp (dd 0 inp inn clk outp outn)  dynamic_comp
+
+
+// Sprctre Analyses and Output Options
+// Output Options
+simulatorOptions options 
++    reltol=1e-3 vabstol=1e-6 iabstol=1e-12 temp=27 
++    tnom=27 scalem=1.0 scale=1.0e-6 gmin=1e-12 rforce=1 maxnotes=5 maxwarns=5 
++    digits=5 cols=80 pivrel=1e-3 sensfile="../psf/sens.output" 
++    checklimitdest=psf 
+
+// Analyses
+old_data_output_filename tran start=0.0 stop=1.5e-6 annotate=status 
+saveOptions options save=allpub subcktprobelvl=2
+
+// minstep=1e-13 maxstep=1e-10
+
+// end of file

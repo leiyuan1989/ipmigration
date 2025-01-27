@@ -1,0 +1,950 @@
+* No part of this file can be released without the consent of SMIC.
+* 
+************************************************************************************  
+*          NWell resistor under STI subcircuit netlist                             *  
+************************************************************************************ 
+.subckt rnwsti_ckt n2 n1 sub l=lr w=wr 
+.param  
++rsh       = '1080+DRSH_RNWSTI'  rtc1     = 0.00273     rtc2 = 1.43E-05   dw = '2.52E-07+ddw_rnwsti'       
++jc1a      = -2.64E-04           jc1b     = 4.43E-07 
++jc2a      = -1.27E-08           jc2b     = 2.38E-13 
++rvc1      = 'jc1a+jc1b/(l*0.9)'       rvc2     = '(jc2a+jc2b/(l*0.9))/(l*0.9)' 
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++weff      = 'w*0.9-2*dw'  
+D1    sub  n2 nwdio area='(w-(2/0.9)*dw)*l/5' pj='(w-(2/0.9)*dw)+2*l/5'
+R1    n2   na 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D2    sub  na nwdio area='(w-(2/0.9)*dw)*l/5' pj='2*l/5'
+R2    na   nb 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D3    sub  nb nwdio area='(w-(2/0.9)*dw)*l/5' pj='2*l/5'
+R3    nb   nc 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D4    sub  nc nwdio area='(w-(2/0.9)*dw)*l/5' pj='2*l/5'
+R4    nc   n1 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D5    sub  n1 nwdio area='(w-(2/0.9)*dw)*l/5' pj='(w-(2/0.9)*dw)+2*l/5' 
+.ends rnwsti_ckt  
+************************************************************************************  
+*           NWell resistor under AA subcircuit netlist                             *  
+************************************************************************************ 
+.subckt rnwaa_ckt n2 n1 sub l=lr w=wr 
+.param  
++rsh       = '446+DRSH_RNWAA'  rtc1     = 0.00334   rtc2 = 1.44E-05  dw = '1.26E-07+ddw_rnwaa'       
++jc1a      = -5.18E-03              jc1b     = 4.59E-07 
++jc2a      = -2.49E-11              jc2b     = 2.47E-13  
++rvc1      = 'jc1a+jc1b/(l*0.9)'          rvc2     = '(jc2a+jc2b/(l*0.9))/(l*0.9)' 
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++weff      = 'w*0.9-2*dw'  
+D1    sub  n2 nwdio area='(w-(2/0.9)*dw)*l/5' pj='(w-(2/0.9)*dw)+2*l/5'
+R1    n2   na 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D2    sub  na nwdio area='(w-(2/0.9)*dw)*l/5' pj='2*l/5'
+R2    na   nb 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D3    sub  nb nwdio area='(w-(2/0.9)*dw)*l/5' pj='2*l/5'
+R3    nb   nc 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D4    sub  nc nwdio area='(w-(2/0.9)*dw)*l/5' pj='2*l/5'
+R4    nc   n1 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D5    sub  n1 nwdio area='(w-(2/0.9)*dw)*l/5' pj='(w-(2/0.9)*dw)+2*l/5'  
+.ends rnwaa_ckt  
+************************************************************************************  
+*        Silicide N+ diffusion resistor subcircuit netlist                         *  
+************************************************************************************ 
+.subckt rndif_ckt n2 n1 sub l=lr w=wr 
+.param  
++rsh       = '7.15+DRSH_RNDIF'   rtc1     = 0.00323   rtc2 = 2.784e-07   dw = '-2.67E-08+ddw_rndif'       
++jc1a      = 5.68E-05              jc1b     = -4.79E-10 
++jc2a      = 4.52E-08              jc2b     = 4.28e-12 
++rvc1      = 'jc1a+jc1b/(l*0.9)'         rvc2     = '(jc2a+jc2b/(l*0.9))/(l*0.9)' 
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++weff      = 'w*0.9-2*dw'  
+D1    sub  n2 ndio12 area='(w-(2/0.9)*dw)*l/5' pj='(w-(2/0.9)*dw)+2*l/5'
+R1    n2   na 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D2    sub  na ndio12 area='(w-(2/0.9)*dw)*l/5' pj='2*l/5'
+R2    na   nb 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D3    sub  nb ndio12 area='(w-(2/0.9)*dw)*l/5' pj='2*l/5'
+R3    nb   nc 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D4    sub  nc ndio12 area='(w-(2/0.9)*dw)*l/5' pj='2*l/5'
+R4    nc   n1 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D5    sub  n1 ndio12 area='(w-(2/0.9)*dw)*l/5' pj='(w-(2/0.9)*dw)+2*l/5'  
+.ends rndif_ckt  
+************************************************************************************  
+*      Non-silicide N+ diffusion resistor subcircuit netlist                       *  
+************************************************************************************ 
+.subckt rndifsab_ckt n2 n1 sub l=lr w=wr mismod_res=0
+.param  
+*****mismatch parameters*****
++rshmis = arsh*geo_fac*sigma_mis_r*mismod_res
++geo_fac = '1/sqrt(weff*leff)'
++arsh = 3.06E-07
+
++rsh       = '69.20+DRSH_RNDIFSAB+rshmis'    rtc1     = 1.35E-03     rtc2  = 8.02E-07    
++dw        = '1.00E-08+DDW_RNDIFSAB'  dl       = -2.64e-7
++jc1a      = 2.41E-05                jc1b     = 4.26E-09 
++jc2a      = 1.73E-08                jc2b     = 1.62E-14
++rvc1      = 'jc1a+jc1b/(l*0.9)'           rvc2     = '(jc2a+jc2b/(l*0.9))/(l*0.9)' 
++weff      = 'w*0.9-2*dw'                leff     = 'l*0.9-2*dl'
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
+
+D1    sub  n2 ndio12 area='(w-(2/0.9)*dw)*(l-(2/0.9)*dl)/5' pj='(w-(2/0.9)*dw)+2*(l-(2/0.9)*dl)/5'  
+R1    n2   nb 'rsh*leff/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+D2    sub  nb ndio12 area='(w-(2/0.9)*dw)*(l-(2/0.9)*dl)/5' pj='2*(l-(2/0.9)*dl)/5'
+R2    nb   nc 'rsh*leff/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+D3    sub  nc ndio12 area='(w-(2/0.9)*dw)*(l-(2/0.9)*dl)/5' pj='2*(l-(2/0.9)*dl)/5'
+R3    nc   nd 'rsh*leff/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+D4    sub  nd ndio12 area='(w-(2/0.9)*dw)*(l-(2/0.9)*dl)/5' pj='2*(l-(2/0.9)*dl)/5'
+R4    nd   n1 'rsh*leff/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+D5    sub  n1 ndio12 area='(w-(2/0.9)*dw)*(l-(2/0.9)*dl)/5' pj='(w-(2/0.9)*dw)+2*(l-(2/0.9)*dl)/5' 
+.ends rndifsab_ckt
+   
+************************************************************************************  
+*        Silicide P+ diffusion resistor subcircuit netlist                         *  
+************************************************************************************ 
+.subckt rpdif_ckt n2 n1 sub l=lr w=wr 
+.param  
++rsh       = '8.00+DRSH_RPDIF'   rtc1     = 0.00309    rtc2 = 3.6E-07   dw = '-6.62E-09+ddw_rpdif'       
++jc1a      = 5.56E-05              jc1b     = -2.86E-09 
++jc2a      = 5.08E-08              jc2b     = 1.69E-12 
++rvc1      = 'jc1a+jc1b/(l*0.9)'         rvc2     = '(jc2a+jc2b/(l*0.9))/(l*0.9)' 
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))'  
++weff      = 'w*0.9-2*dw'   
+D1    n2   sub pdio12 area='(w-(2/0.9)*dw)*l/5' pj='(w-(2/0.9)*dw)+2*l/5'
+R1    n2   na 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D2    na   sub pdio12 area='(w-(2/0.9)*dw)*l/5' pj='2*l/5'
+R2    na   nb 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D3    nb   sub pdio12 area='(w-(2/0.9)*dw)*l/5' pj='2*l/5'
+R3    nb   nc 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D4    nc   sub pdio12 area='(w-(2/0.9)*dw)*l/5' pj='2*l/5'
+R4    nc   n1 'rsh*(l*0.9)/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D5    n1   sub pdio12 area='(w-(2/0.9)*dw)*l/5' pj='(w-(2/0.9)*dw)+2*l/5'     
+.ends rpdif_ckt  
+************************************************************************************  
+*      Non-silicide P+ diffusion resistor subcircuit netlist                       *  
+************************************************************************************ 
+.subckt rpdifsab_ckt n2 n1 sub l=lr w=wr mismod_res=0  
+.param  
+*****mismatch parameters*****
++rshmis = arsh*geo_fac*sigma_mis_r*mismod_res
++geo_fac = '1/sqrt(weff*leff)'
++arsh = 7.50E-07
+
++rsh       = '139.50+DRSH_RPDIFSAB+rshmis'    rtc1     = 1.34E-03     rtc2  = 1.00E-06    
++dw        = '1.00E-08+DDW_RPDIFSAB'  dl       = -2.74e-7
++jc1a      = -1.72E-05               jc1b     = -9.62E-10 
++jc2a      = 1.37E-08                jc2b     = -9.34E-14
++rvc1      = 'jc1a+jc1b/(l*0.9)'           rvc2     = '(jc2a+jc2b/(l*0.9))/(l*0.9)' 
++weff      = 'w*0.9-2*dw'                leff     = 'l*0.9-2*dl'
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
+
+D1    n2   sub pdio12 area='(w-(2/0.9)*dw)*(l-(2/0.9)*dl)/5' pj='(w-(2/0.9)*dw)+2*(l-(2/0.9)*dl)/5'
+R1    n2   na 'rsh*leff/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D2    na   sub pdio12 area='(w-(2/0.9)*dw)*(l-(2/0.9)*dl)/5' pj='2*(l-(2/0.9)*dl)/5'
+R2    na   nb 'rsh*leff/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D3    nb   sub pdio12 area='(w-(2/0.9)*dw)*(l-(2/0.9)*dl)/5' pj='2*(l-(2/0.9)*dl)/5'
+R3    nb   nc 'rsh*leff/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D4    nc   sub pdio12 area='(w-(2/0.9)*dw)*(l-(2/0.9)*dl)/5' pj='2*(l-(2/0.9)*dl)/5'
+R4    nc   n1 'rsh*leff/4/weff*tcoef(temper)*max(min(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)' 
+D5    n1   sub pdio12 area='(w-(2/0.9)*dw)*(l-(2/0.9)*dl)/5' pj='(w-(2/0.9)*dw)+2*(l-(2/0.9)*dl)/5'
+
+.ends rpdifsab_ckt  
+************************************************************************************  
+*          Silicide N+ poly resistor subcircuit netlist                            *  
+************************************************************************************ 
+.subckt rnpo_ckt n2 n1 l=lr w=wr 
+.param  
++rsh       = '7.5+DRSH_RNPO'  rtc1     = 0.0031   rtc2 = 1.48E-07    dw   = '-3.05E-08-2.7E-9+ddw_rnpo'    
++jc1a      = -5.37E-05           jc1b     = 3.22E-07 
++jc2a      = 8.12E-08            jc2b     = 4.06E-11 
++rvc1      = 'jc1a+jc1b/(l*0.9)'       rvc2     = '(jc2a+jc2b/(l*0.9))/(l*0.9)'          
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++weff      = 'w*0.9-2*dw'    
+R1 n2 n1 'rsh*(l*0.9)/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'  
+.ends rnpo_ckt
+
+
+************************************************************************************  
+*          Silicide N+ poly resistor subcircuit netlist (three terminal)           *  
+************************************************************************************ 
+.subckt rnpo_3t_ckt n2 n1 sub l=lr w=wr 
+.param  
++rsh       = '7.5+DRSH_RNPO_3T'  rtc1     = 0.0031   rtc2 = 1.48E-07    dw   = '-3.05E-08-2.7E-9+ddw_rnpo_3t'    
++jc1a      = -5.37E-05           jc1b     = 3.22E-07 
++jc2a      = 8.12E-08            jc2b     = 4.06E-11 
++rvc1      = 'jc1a+jc1b/(l*0.9)'       rvc2     = '(jc2a+jc2b/(l*0.9))/(l*0.9)'          
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++dl        = '-3.05E-08+ddw_rnpo_3t'   weff = 'w*0.9-2*dw'    leff = 'l*0.9-2*dl' 
++cox       = '9.31E-05+dcox_rnpo_3t'   capsw    = '8.75E-11+dcapsw_rnpo_3t'
+C1 n2 sub 'cox*weff*leff/2+capsw*weff+capsw*leff' 
+R1 n2 n1 'rsh*(l*0.9)/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+C2 n1 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'   
+.ends rnpo_3t_ckt 
+   
+************************************************************************************  
+*        Non-silicide N+ poly resistor subcircuit netlist                          *  
+************************************************************************************  
+.subckt rnposab_ckt n2 n1 l=lr w=wr mismod_res=0 
+.param  
+*****mismatch parameters*****
++rshmis = arsh*geo_fac*sigma_mis_r*mismod_res
++geo_fac = '1/sqrt(weff*leff)'
++arsh = 1.0E-05
+
++rsh       = '275.50+DRSH_RNPOSAB+rshmis'   rtc1     = -9.93E-04     rtc2  = 1.07E-06    
++dw        = '1.68E-08-2.7E-9+DDW_RNPOSAB'  dl       = -1.33e-7
++jc1a      = 3.04E-05                jc1b     = -3.29E-09 
++jc2a      = -1.18E-08               jc2b     = -2.99E-13
++rvc1      = 'jc1a+jc1b/(l*0.9)'           rvc2     = '(jc2a+jc2b/(l*0.9))/(l*0.9)' 
++weff      = 'w*0.9-2*dw'                leff     = 'l*0.9-2*dl'
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
+
+R1    n2 n1 'rsh*leff/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+
+.ends rnposab_ckt
+
+************************************************************************************  
+*        Non-silicide N+ poly resistor subcircuit netlist (three terminal)         *  
+************************************************************************************  
+.subckt rnposab_3t_ckt n2 n1 sub l=lr w=wr mismod_res=0
+.param  
+*****mismatch parameters*****
++rshmis = arsh*geo_fac*sigma_mis_r*mismod_res
++geo_fac = '1/sqrt(weff*leff)'
++arsh = 1.0E-05
+
++rsh       = '275.50+DRSH_RNPOSAB_3T+rshmis'   rtc1     = -9.93E-04     rtc2  = 1.07E-06    
++dw        = '1.68E-08-2.7E-9+DDW_RNPOSAB_3T'  dl       = -1.33e-7
++jc1a      = 3.04E-05                jc1b     = -3.29E-09 
++jc2a      = -1.18E-08               jc2b     = -2.99E-13
++rvc1      = 'jc1a+jc1b/(l*0.9)'           rvc2     = '(jc2a+jc2b/(l*0.9))/(l*0.9)' 
++weff      = 'w*0.9-2*dw'                leff     = 'l*0.9-2*dl'
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++cox       = '9.31E-05+dcox_rnposab_3t'   capsw    = '8.75E-11+dcapsw_rnposab_3t'
+C1    n2 sub 'cox*weff*leff/2+capsw*weff+capsw*leff' 
+R1    n2 n1 'rsh*leff/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+C2    n1 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'
+.ends rnposab_3t_ckt   
+   
+************************************************************************************  
+*          Silicide P+ poly resistor subcircuit netlist                            *  
+************************************************************************************ 
+.subckt rppo_ckt n2 n1 l=lr w=wr 
+.param  
++rsh       = '7.85+DRSH_RPPO'   rtc1     = 0.00299     rtc2 = 3.24E-07   dw   = '-1.66E-08-2.7E-9+ddw_rppo'    
++jc1a      = -1.53E-04            jc1b     = 1.56E-08 
++jc2a      = 5.08E-07             jc2b     = 1.15E-13 
++rvc1      = 'jc1a+jc1b/(l*0.9)'        rvc2     = '(jc2a+jc2b/(l*0.9))/(l*0.9)'          
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))'
++weff      = 'w*0.9-2*dw'   
+R1 n2 n1 'rsh*(l*0.9)/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'  
+.ends rppo_ckt
+
+************************************************************************************  
+*          Silicide P+ poly resistor subcircuit netlist (three terminal)           *  
+************************************************************************************ 
+.subckt rppo_3t_ckt n2 n1 sub l=lr w=wr 
+.param  
++rsh       = '7.85+DRSH_RPPO_3T'   rtc1     = 0.00299     rtc2 = 3.24E-07   dw   = '-1.66E-08-2.7E-9+ddw_rppo_3t'    
++jc1a      = -1.53E-04            jc1b     = 1.56E-08 
++jc2a      = 5.08E-07             jc2b     = 1.15E-13 
++rvc1      = 'jc1a+jc1b/(l*0.9)'        rvc2     = '(jc2a+jc2b/(l*0.9))/(l*0.9)'          
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))'
++dl        = '-1.66E-08+ddw_rppo_3t'  weff = 'w*0.9-2*dw'    leff = 'l*0.9-2*dl' 
++cox       = '9.31E-05+dcox_rppo_3t'   capsw    = '8.75E-11+dcapsw_rppo_3t'
+C1 n2 sub 'cox*weff*leff/2+capsw*weff+capsw*leff' 
+R1 n2 n1 'rsh*(l*0.9)/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+C2 n1 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'  
+.ends rppo_3t_ckt  
+
+************************************************************************************  
+*        Non-silicide P+ poly resistor subcircuit netlist                          *  
+************************************************************************************ 
+.subckt rpposab_ckt n2 n1 l=lr w=wr mismod_res=0  
+.param  
+*****mismatch parameters*****
++rshmis = arsh*geo_fac*sigma_mis_r*mismod_res
++geo_fac = '1/sqrt(weff*leff)'
++arsh = 3.4E-06
+
++rsh       = '321.5+DRSH_RPPOSAB+rshmis'    rtc1     = -5.75E-05     rtc2  = 6.10E-07    
++dw        = '1.28E-08-2.7E-9+DDW_RPPOSAB'  dl       = -2.68e-7
++jc1a      = 2.16E-05                jc1b     = -1.77E-9 
++jc2a      = -7.61E-10               jc2b     = -1.79E-14
++rvc1      = 'jc1a+jc1b/(l*0.9)'           rvc2     = '(jc2a+jc2b/(l*0.9))/(l*0.9)' 
++weff      = 'w*0.9-2*dw'                leff     = 'l*0.9-2*dl'
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
+
+R1    n2 n1 'rsh*leff/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+
+.ends rpposab_ckt
+
+************************************************************************************  
+*        Non-silicide P+ poly resistor subcircuit netlist (three terminal)         *  
+************************************************************************************ 
+.subckt rpposab_3t_ckt n2 n1 sub l=lr w=wr mismod_res=0  
+.param  
+*****mismatch parameters*****
++rshmis = arsh*geo_fac*sigma_mis_r*mismod_res
++geo_fac = '1/sqrt(weff*leff)'
++arsh = 3.4E-06
+
++rsh       = '321.5+DRSH_RPPOSAB_3T+rshmis'    rtc1     = -5.75E-05     rtc2  = 6.10E-07    
++dw        = '1.28E-08-2.7E-9+DDW_RPPOSAB_3T'  dl       = -2.68e-7
++jc1a      = 2.16E-05                jc1b     = -1.77E-9 
++jc2a      = -7.61E-10               jc2b     = -1.79E-14
++rvc1      = 'jc1a+jc1b/(l*0.9)'           rvc2     = '(jc2a+jc2b/(l*0.9))/(l*0.9)' 
++weff      = 'w*0.9-2*dw'                leff     = 'l*0.9-2*dl'
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++cox       = '9.31E-05+dcox_rpposab_3t'   capsw    = '8.75E-11+dcapsw_rpposab_3t'
+C1    n2 sub 'cox*weff*leff/2+capsw*weff+capsw*leff' 
+R1    n2 n1 'rsh*leff/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+C2    n1 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'  
+.ends rpposab_3t_ckt 
+
+****************************************************************** 
+*                Non-Silicide HR Poly Resistance                 * 
+******************************************************************
+.subckt rhrpo_ckt n2 n1 l=lr w=wr mismod_res=0  
+.param
+*****mismatch parameters*****
++rshmis = arsh*geo_fac*sigma_mis_r*mismod_res
++geo_fac = '1/sqrt(weff*l*0.9)'
++arsh = 1.55E-05
+
++rsh = '963+DRSH_RHRPO+rshmis'             rtc1 = -6.77E-04          rtc2 = 2.08E-06       dw = '2.27E-08-2.7E-9+ddw_rhrpo'
++rint0 = 2.08E-4                    rint1 = 0
++rinttc1 = -6.46E-04                rinttc2 = -1.12E-06
++jc1a = 8.89E-05                    jc1b = -4.49E-09
++jc2a = -2.53E-09                   jc2b = -6.64E-14
++rintjc1a = 0.365                   rintjc1b = 1.45E+3
++rintjc2a = -13.1689                rintjc2b = -1.52E+7
++tcoef(temper) = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))'
++rvc1 = 'jc1a + jc1b / (l*0.9)'           rvc2 = '(jc2a + jc2b / (l*0.9)) / (l*0.9)'
++weff = 'w*0.9-2*dw'
++rintvc1 = 'rintjc1a + rintjc1b * weff'  rintvc2 = 'rintjc2a + rintjc2b * weff'
++rinttcoef(temper) = '1.0+(temper-25.0)*(rinttc1+rinttc2*(temper-25.0))'
+Rinta n2 na '(rint0/weff+rint1/(weff*weff))*rinttcoef(temper)*max(min(1.0+rintvc1*abs(v(n2,na))+rintvc2*v(n2,na)*v(n2,na),1.5),0.5)'
+R1 na nb 'rsh*(l*0.9)/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(na,nb))+rvc2*v(na,nb)*v(na,nb),1.5),0.5)'
+Rintb nb n1 '(rint0/weff+rint1/(weff*weff))*rinttcoef(temper)*max(min(1.0+rintvc1*abs(v(nb,n1))+rintvc2*v(nb,n1)*v(nb,n1),1.5),0.5)'
+.ends rhrpo_ckt
+****************************************************************** 
+*        Non-Silicide HR Poly Resistance (three terminal)        * 
+******************************************************************
+.subckt rhrpo_3t_ckt n2 n1 sub l=lr w=wr mismod_res=0  
+.param
+*****mismatch parameters*****
++rshmis = arsh*geo_fac*sigma_mis_r*mismod_res
++geo_fac = '1/sqrt(weff*l*0.9)'
++arsh = 1.55E-05
+
++rsh = '963+DRSH_RHRPO_3T+rshmis'          rtc1 = -6.77E-04          rtc2 = 2.08E-06       dw = '2.27E-08-2.7E-9+ddw_rhrpo_3t'
++rint0 = 2.08E-4                    rint1 = 0
++rinttc1 = -6.46E-04                rinttc2 = -1.12E-06
++jc1a = 8.89E-05                    jc1b = -4.49E-09
++jc2a = -2.53E-09                   jc2b = -6.64E-14
++rintjc1a = 0.365                   rintjc1b = 1.45E+3
++rintjc2a = -13.1689                rintjc2b = -1.52E+7
++tcoef(temper) = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))'
++rvc1 = 'jc1a + jc1b / (l*0.9)'           rvc2 = '(jc2a + jc2b / (l*0.9)) /(l*0.9)'
++dl = '2.27E-08+ddw_rhrpo_3t'       weff = 'w*0.9-2*dw'          leff = 'l*0.9-2*dl'
++rintvc1 = 'rintjc1a + rintjc1b * weff'  rintvc2 = 'rintjc2a + rintjc2b * weff'
++rinttcoef(temper) = '1.0+(temper-25.0)*(rinttc1+rinttc2*(temper-25.0))'
++cox       = '9.31E-05+dcox_rhrpo_3t'   capsw    = '8.75E-11+dcapsw_rhrpo_3t'
+C1    n2 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'
+Rinta n2 na '(rint0/weff+rint1/(weff*weff))*rinttcoef(temper)*max(min(1.0+rintvc1*abs(v(n2,na))+rintvc2*v(n2,na)*v(n2,na),1.5),0.5)'
+R1 na nb 'rsh*(l*0.9)/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(na,nb))+rvc2*v(na,nb)*v(na,nb),1.5),0.5)'
+Rintb nb n1 '(rint0/weff+rint1/(weff*weff))*rinttcoef(temper)*max(min(1.0+rintvc1*abs(v(nb,n1))+rintvc2*v(nb,n1)*v(nb,n1),1.5),0.5)'
+C2    n1 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'
+.ends rhrpo_3t_ckt
+
+*****************************************  
+*          Metal 1 resistance           *  
+*****************************************
+.subckt rm1_ckt n2 n1 sub l=lr w=wr   
+.param  
++rsh       = '0.11+drsh_rm1'       rtc1 = 3.62E-03   rtc2 = -6.98E-07   dw = '-1.02E-08+ddw_rm1'
++jc1a      = -8.08E-05               jc1b = 2.04E-07
++jc2a      = 4.38E-06                jc2b = -5.78E-10
++rvc1      = 'jc1a+jc1b/(l*0.9)'         rvc2   = '(jc2a+jc2b/(l*0.9))/(l*0.9)'          
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++dl        = '-1.02E-08+ddw_rm1'   weff = 'w*0.9-2*dw'    leff = 'l*0.9-2*dl' 
++cox       = '4.08E-05+dcox_rm1'  capsw    = '1.17E-10+dcapsw_rm1'
+C1 n2 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'    
+R1 n2 n1 'rsh*(l*0.9)/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+C2 n1 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'  
+.ends rm1_ckt
+
+*****************************************  
+*          Metal 2 resistance           *  
+*****************************************
+.subckt rm2_ckt n2 n1 sub l=lr w=wr   
+.param  
++rsh       = '0.065+drsh_rm2'       rtc1 = 3.70E-03     rtc2 = 7.77E-07   dw = '-1.06E-08+ddw_rm2'
++jc1a      = -1.02E-04               jc1b = 2.78E-07
++jc2a      = 4.46E-06                jc2b = 2.70E-08
++rvc1      = 'jc1a+jc1b/(l*0.9)'           rvc2   = '(jc2a+jc2b/(l*0.9))/(l*0.9)'          
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++dl        = '-1.06E-08+ddw_rm2'     weff = 'w*0.9-2*dw'     leff = 'l*0.9-2*dl' 
++cox       = '2.33E-05+dcox_rm2'    capsw    = '1.16E-10+dcapsw_rm2'
+C1 n2 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'    
+R1 n2 n1 'rsh*(l*0.9)/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+C2 n1 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'  
+.ends rm2_ckt
+
+*****************************************  
+*          Metal 3 resistance           *  
+*****************************************
+.subckt rm3_ckt n2 n1 sub l=lr w=wr   
+.param  
++rsh       = '0.065+drsh_rm3'       rtc1 = 3.70E-03     rtc2 = 7.77E-07   dw = '-1.06E-08+ddw_rm3'
++jc1a      = -1.02E-04               jc1b = 2.78E-07
++jc2a      = 4.46E-06                jc2b = 2.70E-08
++rvc1      = 'jc1a+jc1b/(l*0.9)'           rvc2   = '(jc2a+jc2b/(l*0.9))/(l*0.9)'          
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++dl        = '-1.06E-08+ddw_rm3'     weff = 'w*0.9-2*dw'     leff = 'l*0.9-2*dl' 
++cox       = '1.55E-05+dcox_rm3'     capsw    = '1.16E-10+dcapsw_rm3'
+C1 n2 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'    
+R1 n2 n1 'rsh*(l*0.9)/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+C2 n1 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'  
+.ends rm3_ckt
+
+*****************************************  
+*          Metal 4 resistance           *  
+*****************************************
+.subckt rm4_ckt n2 n1 sub l=lr w=wr   
+.param  
++rsh       = '0.065+drsh_rm4'       rtc1 = 3.70E-03     rtc2 = 7.77E-07   dw = '-1.06E-08+ddw_rm4'
++jc1a      = -1.02E-04               jc1b = 2.78E-07
++jc2a      = 4.46E-06                jc2b = 2.70E-08
++rvc1      = 'jc1a+jc1b/(l*0.9)'           rvc2   = '(jc2a+jc2b/(l*0.9))/(l*0.9)'          
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++dl        = '-1.06E-08+ddw_rm4'     weff = 'w*0.9-2*dw'     leff = 'l*0.9-2*dl' 
++cox       = '1.16E-05+dcox_rm4'     capsw    = '1.16E-10+dcapsw_rm4'
+C1 n2 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'    
+R1 n2 n1 'rsh*(l*0.9)/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+C2 n1 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'  
+.ends rm4_ckt
+
+*****************************************  
+*          Metal 5 resistance           *  
+*****************************************
+.subckt rm5_ckt n2 n1 sub l=lr w=wr   
+.param  
++rsh       = '0.065+drsh_rm5'       rtc1 = 3.70E-03     rtc2 = 7.77E-07   dw = '-1.06E-08+ddw_rm5'
++jc1a      = -1.02E-04               jc1b = 2.78E-07
++jc2a      = 4.46E-06                jc2b = 2.70E-08
++rvc1      = 'jc1a+jc1b/(l*0.9)'           rvc2   = '(jc2a+jc2b/(l*0.9))/(l*0.9)'          
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++dl        = '-1.06E-08+ddw_rm5'     weff = 'w*0.9-2*dw'     leff = 'l*0.9-2*dl' 
++cox       = '9.28E-06+dcox_rm5'     capsw    = '1.16E-10+dcapsw_rm5'
+C1 n2 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'    
+R1 n2 n1 'rsh*(l*0.9)/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+C2 n1 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'  
+.ends rm5_ckt
+
+*****************************************  
+*          Metal 6 resistance           *  
+*****************************************
+.subckt rm6_ckt n2 n1 sub l=lr w=wr   
+.param  
++rsh       = '0.065+drsh_rm6'       rtc1 = 3.70E-03     rtc2 = 7.77E-07   dw = '-1.06E-08+ddw_rm6'
++jc1a      = -1.02E-04               jc1b = 2.78E-07
++jc2a      = 4.46E-06                jc2b = 2.70E-08
++rvc1      = 'jc1a+jc1b/(l*0.9)'           rvc2   = '(jc2a+jc2b/(l*0.9))/(l*0.9)'          
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++dl        = '-1.06E-08+ddw_rm6'     weff = 'w*0.9-2*dw'     leff = 'l*0.9-2*dl' 
++cox       = '7.72E-06+dcox_rm6'      capsw    = '1.15E-10+dcapsw_rm6'
+C1 n2 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'    
+R1 n2 n1 'rsh*(l*0.9)/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+C2 n1 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'  
+.ends rm6_ckt
+
+*****************************************  
+*          Metal 7 resistance           *  
+*****************************************
+.subckt rm7_ckt n2 n1 sub l=lr w=wr   
+.param  
++rsh       = '0.065+drsh_rm7'       rtc1 = 3.70E-03     rtc2 = 7.77E-07   dw = '-1.06E-08+ddw_rm7'
++jc1a      = -1.02E-04               jc1b = 2.78E-07
++jc2a      = 4.46E-06                jc2b = 2.70E-08
++rvc1      = 'jc1a+jc1b/(l*0.9)'           rvc2   = '(jc2a+jc2b/(l*0.9))/(l*0.9)'          
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++dl        = '-1.06E-08+ddw_rm7'     weff = 'w*0.9-2*dw'     leff = 'l*0.9-2*dl' 
++cox       = '6.61E-06+dcox_rm7'      capsw    = '1.17E-10+dcapsw_rm7'
+C1 n2 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'    
+R1 n2 n1 'rsh*(l*0.9)/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+C2 n1 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'  
+.ends rm7_ckt
+
+*****************************************  
+*        Top Metal resistance         *  
+*****************************************
+.subckt rm8_ckt n2 n1 sub l=lr w=wr   
+.param  
++rsh       = '0.0202+drsh_rm8'       rtc1 = 3.80E-03     rtc2 = -8.22E-07   dw = '1.78E-08+ddw_rm8'
++jc1a      = -8.96E-04               jc1b = 6.82E-06
++jc2a      = 5.08E-06                jc2b = 3.19E-07
++rvc1      = 'jc1a+jc1b/(l*0.9)'           rvc2   = '(jc2a+jc2b/(l*0.9))/(l*0.9)'          
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++dl        = '1.78E-08+ddw_rm8'     weff = 'w*0.9-2*dw'     leff = 'l*0.9-2*dl' 
++cox       = '5.48E-06+dcox_rm8'   capsw    = '1.23E-10+dcapsw_rm8'
+C1 n2 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'    
+R1 n2 n1 'rsh*(l*0.9)/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+C2 n1 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'  
+.ends rm8_ckt
+
+****************************************************************** 
+*                      ALPA resistance                           *  
+****************************************************************** 
+.subckt ralpa_ckt n2 n1 sub l=lr w=wr   
+.param  
++rsh       = '0.0231+DRSH_RALPA'       rtc1 = 3.8865E-03   rtc2 = 5.5735E-08   dw = '-5.79E-08+DDW_RALPA'
++jc1a      = 1.9362E-05              jc1b = -9.0694E-08
++jc2a      = 1.6459E-05              jc2b = 2.5230E-07
++rvc1      = 'jc1a+jc1b/(l*0.9)'           rvc2   = '(jc2a+jc2b/(l*0.9))/(l*0.9)'   
++tcoef(temper)     = '1.0+(temper-25.0)*(rtc1+rtc2*(temper-25.0))' 
++dl        = '-5.79E-08+DDW_RALPA'     weff = 'w*0.9-2*dw'     leff = 'l*0.9-2*dl' 
++cox       = '4.433E-06+dcox_ralpa'    capsw    = '4.553E-11+dcapsw_ralpa'
+C1 n2 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'    
+R1 n2 n1 'rsh*(l*0.9)/weff*tcoef(temper)*max(min(1.0+rvc1*abs(v(n2,n1))+rvc2*v(n2,n1)*v(n2,n1),1.5),0.5)'
+C2 n1 sub 'cox*weff*leff/2+capsw*weff+capsw*leff'  
+.ends ralpa_ckt
+
+********************************************************************************
+* MOS Varactor model
+********************************************************************************
+*        *----------------------------------------------------------* 
+*        |    MOSFET varactor subckt |          1.2V/3.3V           |
+*        |==========================================================| 
+*        |   NMOS in NWELL           |      pvar12_ckt/pvar33_ckt   |
+*        *----------------------------------------------------------*
+
+ **************************
+ * 0.11um 1.2V MOS Varactor
+ **************************
+ * 1=port1, 2=port2
+ * Area=wr*0.9*lr*0.9*nf
+ .subckt pvar12_ckt 1 2 lr=l wr=w nf=finger
+ * 1.2v mos varactor scalable model parameters
+ .param
+ +Ar         = 'lr*0.9*wr*0.9*nf'    
+ +Djnw_AREA = '(2*0.23+(wr*0.9*1e6))*((lr*0.9*1e6)*nf+0.38*(nf-1)+2*0.38+2*0.23)*1e-12'
+ +Djnw_PJ   = '2*((2*0.23+(wr*0.9*1e6))+((lr*0.9*1e6)*nf+0.38*(nf-1)+2*0.38+2*0.23))*1e-6' 
+ +A2_Cgg     = '0.95*(2.106*(lr*0.9*1e6)+0.538)*(wr*0.9*1e6)*nf*0.85'
+ +A1_Cgg     = '(0.0015*pwr(lr*1e6*0.9,-3.7594)+12.4727)*pwr(wr*lr*nf*1e12*0.81,-0.0079*lr*1e6*0.9+1.0043)' 
+ +x0_Cgg     = '(0.03366*(lr*0.9*1e6)+0.02576)*pwr((wr*0.9*1e6)*nf, (-0.01257*(lr*0.9*1e6)+0.0196))*1.5' 
+ +dx_Cgg     = '(-0.146*pwr((wr*0.9*1e6)*nf, (-0.009)))' 
+ * gate current
+ +TOX      = '2.52E-09+DTOX_MOSVAR12' 		LLN      = 0.3896000           LWN      = 0.7395000           
+ +WLN      = 0.3557000           WWN      = 1.1000000           LINT     = 0.00                
+ +LL       = 3.5020000E-13       LW       = -3.1820000E-12      LWL      = 4.9390000E-15       
+ +WINT     = 1.2989999E-08       WL       = -2.5270001E-12      WW       = -5.7700000E-16      
+ +WWL      = -2.3550000E-18      XL       = 0.00  	       XW       = 0.00     
+ +GCARC    = 50                  GCEVGC   = 1.6                 GCETC    = 1000 
+ +GCETE    = 0.4                 GCIE     = 1.5                 
+ +Weff     = '(wr*0.9+XW-2*(WINT+(WL/pwr(lr*0.9,WLN))+(WW/pwr(wr*0.9,WWN))+(WWL/(pwr(lr*0.9,WLN)*pwr(wr*0.9,WWN)))))*nf'
+ +Leff     = 'lr*0.9+XL-2*(LINT+(LL/pwr(lr*0.9,LLN))+(LW/pwr(wr*0.9,LWN))+(LWL/(pwr(lr*0.9,LLN)*pwr(wr*0.9,LWN))))'
+ GG 3 2   Current='(V(3,2)*pwr(ABS(V(3,2)),GCIE)*(GCARC*Weff*Leff*exp(GCEVGC*V(3,2)-GCETC*pwr(TOX,GCETE))))*2'
+ * equivalent circuit
+ Rs    1  3  R = 'max((1.9977*wr*wr*0.81*1e12-26.825*wr*1e6*0.9+119.99)*pwr(lr*1e6*0.9,(0.0000035114*pwr(wr*1e6*0.9,4.8791)+0.090338)*(-1))*pwr(nf,1*(-1)/(32.708*pwr(wr*1e6*0.9,-3.1185)+9.77)*log(lr*1e6*0.9)+1/(0.0735*pwr(wr*1e6*0.9,-0.4222)+0.93)*(-1))*(1+0.1*1/(9e-4*pwr(2.7183,0.9341*wr)+2.4989)/(V(3,2)*V(3,2)+0.45*0.45))*(1+2.6736e-3*(temper-25)+8.09e-6*(temper-25)*(temper-25)), 1E-6)' 
+ Djnw  0   2
+ + nwdio
+ + AREA  = Djnw_AREA
+ + PJ    = Djnw_PJ         
+ Cgg   3  2  C='max((A2_Cgg+(A1_Cgg-A2_Cgg)/(1+EXP((V(3,2)+x0_Cgg)/(dx_Cgg*(0.00143*(temper-25)+1)))))*(1+DCgg_MOSVAR12)*1e-15, 1e-18)' 
+ .model nwdio d
++LEVEL    = 3                   JS       = 6.96E-07   JSW      = 2.18E-12
++N        = 1.0202              RS       = 1.00e-10   IK       = 1.00e+21    
++IKR      = 1.96E+04            BV       = 14.00                  IBV      = 19.6
++TRS      = 2.10E-03            EG       = 1.16                   TREF     = 25.0                
++XTI      = 3.0                 TLEV     = 1                      TLEVC    = 1
++CJ       = 1.29E-04
++CJSW     = 5.49E-10
++MJ       = 0.375               PB       = 0.553               
++MJSW     = 0.271               PHP      = 0.649                
++TPB      = 0.0021353            TPHP     = 0.0021754           FCS      = 0 
++CTA      = 2.87E-03            CTP      = 1.24E-03               FC       = 0
+ .ends pvar12_ckt
+ *
+ **************************
+ * 0.11um 3.3V MOS Varactor
+ **************************
+ * 1=port1, 2=port2
+ * Area=wr*0.9*lr*0.9*nf
+ .subckt pvar33_ckt 1 2 lr=l wr=w nf=finger
+ * 3.3v mos varactor scalable model parameters
+ .param
+ +Ar         = 'lr*0.9*wr*0.9*nf'
+ +Djnw_AREA = '(2*0.23+(wr*0.9*1e6))*((lr*0.9*1e6)*nf+0.38*(nf-1)+2*0.38+2*0.23)*1e-12'
+ +Djnw_PJ   = '2*((2*0.23+(wr*0.9*1e6))+((lr*0.9*1e6)*nf+0.38*(nf-1)+2*0.38+2*0.23))*1e-6'
+ +R0_Rs      = '(56.304*pwr(wr*0.9*1e6,-1.4415)+25)*pwr(lr*0.9*1e6,-0.0115*wr*0.9*1e6*wr*0.9*1e6+0.1093*wr*0.9*1e6-0.7593)*pwr(nf,(0.0189*wr*0.9*1e6*wr*0.9*1e6-0.2465*wr*0.9*1e6+0.7754)*lr*0.9*1e6+(2.465*pwr(wr*0.9*1e6,-3.6029)+1.014)*(-1))'
+ +A2_Cgg     = '((1.406*(lr*0.9*1e6)+0.2888)*(wr*0.9*1e6)*nf+(-0.1*(lr*0.9*1e6)+0.3))*(0.0018*pwr(lr*0.9*1e6,-3.6378)+0.9674)'
+ +A1_Cgg     = '(4.771*lr*0.9*1e6+0.3082)*pwr(wr*0.9*1e6*nf,1/(0.000040548*pwr(lr*0.9*1e6,-4.0301)+0.999688))*0.9862*pwr(wr*0.9*1e6,-0.0109)'
+ +x0_Cgg     = '-(-0.0188*(lr*0.9*1e6)+0.2758)*pwr((wr*0.9*1e6)*nf, (-0.005315*(lr*0.9*1e6)+0.003181))'
+ +dx_Cgg     = '-(-0.0178*(lr*0.9*1e6)+0.3438)*pwr((wr*0.9*1e6)*nf, (0.004636*(lr*0.9*1e6)-0.01081))'
+
+ * equivalent circuit
+ Rs    1  3  R = '1.2*R0_Rs*(1+0.1*0.2/((V(3,2)*V(3,2))+0.45*0.45))*(1+2.041e-3*(temper-25)+5.663e-6*(temper-25)*(temper-25))' 
+ Djnw  0   2
+ + nwdio
+ + AREA  = Djnw_AREA
+ + PJ    = Djnw_PJ        
+ Cgg   3  2  C = 'max(((A2_Cgg*0.98+(A1_Cgg-0.98*A2_Cgg)/(1+exp((V(3,2)-x0_Cgg*0.84)/(dx_Cgg*(0.00143*(temper-25)+1))*1.15)))*(1+0.01*(1+TANH(5*(V(3,2)-0.5))))*(1+0.1*(1+TANH(1.2*(V(3,2)+1.5)))*(1-TANH(1*(V(3,2)+1.1)))))*(1+DCgg_MOSVAR33)*1e-15,1e-18)' 
+ .model nwdio d
++LEVEL    = 3                   JS       = 6.96E-07   JSW      = 2.18E-12
++N        = 1.0202              RS       = 1.00e-10   IK       = 1.00e+21    
++IKR      = 1.96E+04            BV       = 14.00                  IBV      = 19.6
++TRS      = 2.10E-03            EG       = 1.16                   TREF     = 25.0                
++XTI      = 3.0                 TLEV     = 1                      TLEVC    = 1
++CJ       = 1.29E-04
++CJSW     = 5.49E-10
++MJ       = 0.375               PB       = 0.553               
++MJSW     = 0.271               PHP      = 0.649                
++TPB      = 0.0021353            TPHP     = 0.0021754               FCS      = 0 
++CTA      = 2.87E-03            CTP      = 1.24E-03               FC       = 0
+ .ends pvar33_ckt
+*
+
+******************************************************************************
+* MOM  model
+******************************************************************************
+
+*        *--------------------------------------------------*
+*        |      Model name    |  Architecture Definition    |
+*        *--------------------------------------------------*
+*        |      mom17_ckt     |  metal 1 stack to metal 7   |
+*        *--------------------------------------------------*
+*        |      mom27_ckt     |  metal 2 stack to metal 7   |
+*        *--------------------------------------------------*
+*        |      mom16_ckt     |  metal 1 stack to metal 6   |
+*        *--------------------------------------------------*
+*        |      mom26_ckt     |  metal 2 stack to metal 6   |
+*        *--------------------------------------------------*
+*        |      mom46_ckt     |  metal 4 stack to metal 6   |
+*        *--------------------------------------------------*
+*        |      mom15_ckt     |  metal 1 stack to metal 5   |
+*        *--------------------------------------------------*
+*        |      mom14_ckt     |  metal 1 stack to metal 4   |
+*        *--------------------------------------------------*
+*        |      mom13_ckt     |  metal 1 stack to metal 3   |
+*        *--------------------------------------------------*
+*        |      mom25_ckt     |  metal 2 stack to metal 5   |
+*        *--------------------------------------------------*
+*        |      mom24_ckt     |  metal 2 stack to metal 4   |
+*        *--------------------------------------------------*
+*        |      mom35_ckt     |  metal 3 stack to metal 5   |
+*        *--------------------------------------------------*
+* 1=port1, 2=port2
+*************************************************
+* 0.11um MOM Capacitor metal 1 to metal 7
+*************************************************
+.subckt mom17_ckt 1 2 l=0 n=0
+* mom capacitor model parameters
+.param
++c0 = 6.6568e-10    ctc1 = 2.563e-5
++cvc1  = -1.42e-7  cvc2 = 5.26e-7
++tcoef(temper) = '1.0+ctc1*(temper-25.0)'
++cf = '(c0*l*n)'
+*equivalent circuit
+cap 1 2  'cf*(1+dc0_mom17)*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))'
+.ends mom17_ckt
+*
+*************************************************
+* 0.11um MOM Capacitor metal 2 to metal 7
+*************************************************
+.subckt mom27_ckt 1 2 l=0 n=0
+* mom capacitor model parameters
+.param
++c0 = 5.825e-10    ctc1 = 2.727e-5
++cvc1 = -1.68e-6   cvc2 = 2.17e-7   
++tcoef(temper) = '1.0+ctc1*(temper-25.0)'
++cf = '(c0*l*n)'
+*equivalent circuit
+cap 1 2  'cf*(1+dc0_mom27)*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))'
+.ends mom27_ckt
+*
+*************************************************
+* 0.11um MOM Capacitor metal 1 to metal 6
+*************************************************
+.subckt mom16_ckt 1 2 l=0 n=0
+* mom capacitor model parameters
+.param
++c0 = 5.720e-10    ctc1 = 2.821e-5
++cvc1 = -1.819e-6  cvc2 = 2.427e-7   
++tcoef(temper) = '1.0+ctc1*(temper-25.0)'
++cf = '(c0*l*n)'    
+*equivalent circuit
+cap 1 2  'cf*(1+dc0_mom16)*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))'
+.ends mom16_ckt
+*
+*************************************************
+* 0.11um MOM Capacitor metal 2 to metal 6
+*************************************************
+.subckt mom26_ckt 1 2 l=0 n=0
+* mom capacitor model parameters
+.param
++c0 = 4.840e-10    ctc1 = 2.899e-5
++cvc1 = -1.995e-6  cvc2 = -1.689e-7   
++tcoef(temper) = '1.0+ctc1*(temper-25.0)'
++cf = '(c0*l*n)'    
+*equivalent circuit
+cap 1 2  'cf*(1+dc0_mom26)*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))'
+.ends mom26_ckt
+*
+*************************************************
+* 0.11um MOM Capacitor metal 4 to metal 6
+*************************************************
+.subckt mom46_ckt 1 2 l=0 n=0
+* mom capacitor model parameters
+.param
++c0 = 2.930e-10    ctc1 = 2.651e-5
++cvc1  = -5.05e-6  cvc2 = 8.10e-7
++tcoef(temper) = '1.0+ctc1*(temper-25.0)'
++cf = '(c0*l*n)'    
+*equivalent circuit
+cap 1 2  'cf*(1+dc0_mom46)*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))'
+.ends mom46_ckt
+*
+
+*************************************************
+* 0.11um MOM Capacitor metal 1 to metal 5
+*************************************************
+.subckt mom15_ckt 1 2 l=0 n=0
+* mom capacitor model parameters
+.param
++c0 = 5.311482E-10
++cvc1= -6.477554E-06  cvc2= 1.071913E-07
++ctc1= 1.492537E-05   
++tcoef(temper) = '1.0+ctc1*(temper-25.0)'
++cf = '(c0*l*n)'
+*mismatch parameter
+*+dc0_mis=ac0*geo_fac*sigma_mis*mismod_mom
+*+geo_fac='1/sqrt(l*n)+bc0'
+*+sigma_mis=agauss(0,1,1)
+*+ac0=.78e-14
+*+bc0=3.5e+1
+*equivalent circuit
+cap 1 2  'cf*(1+dc0_mom15)*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))'
+.ends mom15_ckt
+*
+*************************************************
+* 0.11um MOM Capacitor metal 1 to metal 4
+*************************************************
+.subckt mom14_ckt 1 2 l=0 n=0
+* mom capacitor model parameters
+.param
++c0 = 4.156810E-10
++cvc1= -7.651497E-06  cvc2= 1.323689E-06
++ctc1= 8.634069E-06   
++tcoef(temper) = '1.0+ctc1*(temper-25.0)'
++cf = '(c0*l*n)'
+*mismatch parameter
+*+dc0_mis=ac0*geo_fac*sigma_mis*mismod_mom
+*+geo_fac='1/sqrt(l*n)+bc0'
+*+sigma_mis=agauss(0,1,1)
+*+ac0=.9e-14
+*+bc0=3.0e+1
+*equivalent circuit
+cap 1 2  'cf*(1+dc0_mom14)*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))'
+.ends mom14_ckt
+*
+*************************************************
+* 0.11um MOM Capacitor metal 1 to metal 3
+*************************************************
+.subckt mom13_ckt 1 2 l=0 n=0
+* mom capacitor model parameters
+.param
++c0 = 3.041602E-10
++cvc1= 2.907613E-05  cvc2= 9.934267E-07
++ctc1= 1.991079E-05 
++tcoef(temper) = '1.0+ctc1*(temper-25.0)'
++cf = '(c0*l*n)'    
+*mismatch parameter
+*+dc0_mis=ac0*geo_fac*sigma_mis*mismod_mom
+*+geo_fac='1/sqrt(l*n)+bc0'
+*+sigma_mis=agauss(0,1,1)
+*+ac0=.68e-14
+*+bc0=4.6e+1
+*equivalent circuit
+cap 1 2  'cf*(1+dc0_mom13)*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))'
+.ends mom13_ckt
+*
+*************************************************
+* 0.11um MOM Capacitor metal 2 to metal 5
+*************************************************
+.subckt mom25_ckt 1 2 l=0 n=0
+* mom capacitor model parameters
+.param
++c0 = 4.401015E-10
++cvc1= -6.783568E-07  cvc2= 3.797064E-06
++ctc1= 3.137959E-05 
++tcoef(temper) = '1.0+ctc1*(temper-25.0)'
++cf = '(c0*l*n)'    
+*mismatch parameter
+*+dc0_mis=ac0*geo_fac*sigma_mis*mismod_mom
+*+geo_fac='1/sqrt(l*n)+bc0'
+*+sigma_mis=agauss(0,1,1)
+*+ac0=.66e-14
+*+bc0=3.0e+1
+*equivalent circuit
+cap 1 2  'cf*(1+dc0_mom25)*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))'
+.ends mom25_ckt
+*
+*************************************************
+* 0.11um MOM Capacitor metal 2 to metal 4
+*************************************************
+.subckt mom24_ckt 1 2 l=0 n=0
+* mom capacitor model parameters
+.param
++c0 = 3.252886E-10
++cvc1= 2.486103E-06  cvc2= -1.122350E-06
++ctc1= 1.212872E-05   
++tcoef(temper) = '1.0+ctc1*(temper-25.0)'
++cf = '(c0*l*n)'    
+*mismatch parameter
+*+dc0_mis=ac0*geo_fac*sigma_mis*mismod_mom
+*+geo_fac='1/sqrt(l*n)+bc0'
+*+sigma_mis=agauss(0,1,1)
+*+ac0=1.06e-14
+*+bc0=0.6e+1
+*equivalent circuit
+cap 1 2  'cf*(1+dc0_mom24)*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))'
+.ends mom24_ckt
+*
+*************************************************
+* 0.11um MOM Capacitor metal 3 to metal 5
+*************************************************
+.subckt mom35_ckt 1 2 l=0 n=0
+* mom capacitor model parameters
+.param
++c0 = 3.362772E-10
++cvc1= -7.311547E-06  cvc2= 1.888608E-06
++ctc1= 1.454786E-05      
++tcoef(temper) = '1.0+ctc1*(temper-25.0)'
++cf = '(c0*l*n)'    
+*mismatch parameter
+*+dc0_mis=ac0*geo_fac*sigma_mis*mismod_mom
+*+geo_fac='1/sqrt(l*n)+bc0'
+*+sigma_mis=agauss(0,1,1)
+*+ac0=1.06e-14
+*+bc0=0.6e+1
+*equivalent circuit
+cap 1 2  'cf*(1+dc0_mom35)*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))'
+.ends mom35_ckt
+
+* mim cap:
+*        *-----------------------------------------------------------------------------------------------------------------* 
+*        |  mim cap type           |  cspec = 1ff/um^2      | cspec = 1.5ff/um^2     | cspec = 2ff/um^2 | cspec = 3ff/um^2 |
+*        |=================================================================================================================| 
+*        |  mim model(one mask)    |     mim1_ckt           |   mim15_ckt            |    NA            |    mim3_ckt      |
+*        |-----------------------------------------------------------------------------------------------------------------|
+*        |  mim model(two mask)    |       NA               |      NA                |  mim2_tm_ckt     |       NA         |
+*        |-----------------------------------------------------------------------------------------------------------------|
+*        |  3t mim model(one mask) |       NA               |      mim15_3t_ckt      |     NA           |       NA         |
+*        |-----------------------------------------------------------------------------------------------------------------|
+* Valid temperature range is from -40C to 125C
+*
+
+******************************************************************************** 
+*         one-mask mim capacitor  (cspec = 1ff/um^2)                           * 
+********************************************************************************
+* 1=port1, 2=port2
+.subckt mim1_ckt 1 2 l=10u w=10u mr=1 mismod_mim=0
+.param 
+*** mismatch paramters
++ac0 = 0.0384    cc0 = 1.2717
++geo_fac='1/sqrt(ar_c0)'
++dmim1_mis      = 'ac0*pwr(geo_fac,cc0)*sigma_mis_mim*mismod_mim'
+*** low frequency capacitor    
++c0_a = 0.971
++cvc1  = 8.03e-6            cvc2 = 3.74e-6  ctc1 = 4.088E-05 
++ar_c0 = '(l*0.9)*(w*0.9)*mr*1e12'  
++c0    = 'c0_a*ar_c0'
++tcoef(temper) = '1.0+ctc1*(temper-25.0)'
+*** equivalent circuit
+c12 1 2 'max(c0*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))*(1+dmim1)*(1+dmim1_mis)*1e-15,1e-15)'
+*
+.ends mim1_ckt
+
+
+******************************************************************************** 
+*         one-mask mim capacitor  (cspec = 1.5ff/um^2)                         * 
+********************************************************************************
+* 1=port1, 2=port2
+.subckt mim15_ckt 1 2 l=10u w=10u mr=1 mismod_mim=0
+.param 
+*** mismatch paramters
++ac0 = 2.2793E-02    cc0 = 1.1757
++geo_fac='1/sqrt(ar_c0)'
++dmim15_mis      = 'ac0*pwr(geo_fac,cc0)*sigma_mis_mim*mismod_mim'
+*** low frequency capacitor    
++c0_a = 1.449
++cvc1  = 9.68e-6            cvc2 = 6.72e-6   ctc1 = 3.758E-05
++ar_c0 = '(l*0.9)*(w*0.9)*mr*1e12'   
++c0    = 'c0_a*ar_c0'
++tcoef(temper) = '1.0+ctc1*(temper-25.0)'
+*** equivalent circuit
+c12 1 2 'max(c0*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))*(1+dmim15)*(1+dmim15_mis)*1e-15,1e-15)'
+*
+.ends mim15_ckt
+
+******************************************************************************** 
+*         one-mask mim 3-terminal capacitor  (cspec = 1.5ff/um^2)                         * 
+********************************************************************************]
+* 1=port1, 2=port2 , p=port3
+.subckt mim15_3t_ckt 1 2 p l=10u w=10u mr=1 mismod_mim=0
+.param 
+*** mismatch paramters
++ac0 = 2.2793E-02    cc0 = 1.1757
++geo_fac='1/sqrt(ar_c0)'
++dmim15_mis      = 'ac0*pwr(geo_fac,cc0)*sigma_mis_mim*mismod_mim'
+*** low frequency capacitor    
++c0_a = 1.449
++cvc1  = 9.68e-6            cvc2 = 6.72e-6   ctc1 = 3.758E-05
++ar_c0 = '(l*0.9)*(w*0.9)*mr*1e12'   
++c0    = 'c0_a*ar_c0'
++tcoef(temper) = '1.0+ctc1*(temper-25.0)'
++Cpara1= '(0.08*pwr(w*l*0.81*1e12,0.5)+0.02)*mr'
++Cpara2= '(0.2*pwr(w*l*0.81*1e12,0.5)+0.46)*mr'
+*** equivalent circuit
+c12 1 2 'max(c0*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))*(1+dmim15)*(1+dmim15_mis)*1e-15,1e-15)'
+c1p 1 p 'max(Cpara1*1e-15,1e-18)'
+c2p 2 p 'max(Cpara2*1e-15,1e-18)'
+*
+.ends mim15_3t_ckt
+
+******************************************************************************** 
+*         two-mask mim capacitor  (cspec = 2ff/um^2)                           * 
+********************************************************************************
+* 1=port1, 2=port2
+.subckt mim2_tm_ckt 1 2 l=10u w=10u mr=1 mismod_mim=0
+.param 
+*** mismatch paramters
++ac0 = 0.132900035    cc0 = 0.000206611
++dmim2_tm_mis      = '(ac0/c0+cc0)*sigma_mis_mim*mismod_mim'
+*** low frequency capacitor    
++c0_a = 2.1  
++cvc1 = -6.119607E-05 cvc2 = 2.660293E-05  ctc1 = 3.25876E-05  
++ar_c0 = '(l*0.9)*(w*0.9)*mr*1e12'  
++c0    = 'c0_a*ar_c0'
++tcoef(temper) = '1.0+ctc1*(temper-25.0)'
+*** equivalent circuit
+c12 1 2 'max(c0*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))*(1+dmim2_tm)*(1+dmim2_tm_mis)*1e-15,1e-15)'
+*
+.ends mim2_tm_ckt
+
+**************************************************************** 
+*         one-mask stacked mim capacitor(cspec = 3ff/um^2)          * 
+****************************************************************
+* 1=port1, 2=port2
+.subckt mim3_ckt 1 2 l=10u w=10u mr=1 mismod_mim=0
+.param 
+*** mismatch paramters
++ac0 = 0.3305    cc0 = 0.000152
++dmim3_mis      = '(ac0/c0+cc0)*sigma_mis_mim*mismod_mim'
+*** low frequency capacitor    
++c0_a = 3.01368807   c0_p = 0.44926463
++cvc1 = 2.37303251E-06  cvc2 = 8.08656805E-06  ctc1 = 3.92547475E-05  ctc2=1.26746609E-07
+*
++ar_c0 = '(l*0.9)*(w*0.9)*mr*1e12'  
++pe_c0 = '2*(l*0.9+w*0.9)*mr*1e6' 
++c0    = 'c0_a*ar_c0+c0_p*pe_c0'
++tcoef(temper) = '1.0+ctc1*(temper-25.0)+ctc2*(temper-25.0)*(temper-25.0)'
+*** equivalent circuit
+c12 1 2 'max(c0*tcoef(temper)*(1.0+v(1,2)*(cvc1+cvc2*v(1,2)))*(1+dmim3)*(1+dmim3_mis)*1e-15,1e-15)'
+*
+.ends mim3_ckt

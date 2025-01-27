@@ -1,0 +1,286 @@
+//*Spectre Lib Format
+simulator lang=spectre  insensitive=yes
+
+library ms018_rf_v1p5
+// * This file contains 1.8V, 3.3V mos, resistor and mim corner model parameters.
+// * Five corners are supported: TT, FF, SS, SNFP, and FNSP.
+// * This file should be used with the model parameter file 'ms018_rf_v1p5_mos_spe.ckt', 'ms018_rf_v1p5_res_spe.ckt' and 'ms018_rf_v1p5_mim_spe.ckt'.
+// * No part of this file can be released without the consent of SMIC.
+
+section tt
+// *1.8V core NMOS
+parameters dtox_n18_rf = 0
+parameters dxl_n18_rf = 0
+parameters dxw_n18_rf = 0
+parameters dvth_n18_rf = 0
+parameters dcj_n18_rf = 0
+parameters dcjsw_n18_rf = 0
+parameters dpvth0_n18_rf = 0
+parameters dcgdo_n18_rf = 0
+parameters dcgso_n18_rf = 0
+// *1.8V core PMOS
+parameters dtox_p18_rf = 0
+parameters dxl_p18_rf = 0
+parameters dxw_p18_rf = 0
+parameters dvth_p18_rf = 0	
+parameters dcj_p18_rf = 0
+parameters dcjsw_p18_rf = 0
+parameters dpvth0_p18_rf = 0	
+parameters dcgdo_p18_rf = 0
+parameters dcgso_p18_rf = 0
+// *3.3V IO NMOS
+parameters dtox_n33_rf = 0
+parameters dxl_n33_rf = 0
+parameters dxw_n33_rf = 0
+parameters dvth_n33_rf = 0
+parameters dcj_n33_rf = 0
+parameters dcjsw_n33_rf = 0
+parameters dpvth0_n33_rf = 0
+parameters dcgdo_n33_rf = 0
+parameters dcgso_n33_rf = 0
+// *3.3V IO PMOS
+parameters dtox_p33_rf = 0
+parameters dxl_p33_rf = 0
+parameters dxw_p33_rf = 0
+parameters dvth_p33_rf = 0	
+parameters dcj_p33_rf = 0
+parameters dcjsw_p33_rf = 0
+parameters dpvth0_p33_rf = 0	
+parameters dcgdo_p33_rf = 0
+parameters dcgso_p33_rf = 0
+include "ms018_rf_v1p5_mos_spe.ckt"
+endsection tt
+
+
+section ff
+// *1.8V core NMOS
+parameters dtox_n18_rf = -1.0e-10
+parameters dxl_n18_rf = -1.0e-8
+parameters dxw_n18_rf = 2.2e-8
+parameters dvth_n18_rf = -0.04
+parameters dcj_n18_rf = -4.84e-5
+parameters dcjsw_n18_rf = -2.09e-11
+parameters dpvth0_n18_rf = -3e-15
+parameters dcgdo_n18_rf = 1.85e-11
+parameters dcgso_n18_rf = 1.85e-11
+// *1.8V core PMOS
+parameters dtox_p18_rf = -1.0e-10
+parameters dxl_p18_rf = -1.0e-8
+parameters dxw_p18_rf = 2.2e-8
+parameters dvth_p18_rf = 0.02
+parameters dcj_p18_rf = -5.35e-5
+parameters dcjsw_p18_rf = -2.535e-11
+parameters dpvth0_p18_rf = 1e-15
+parameters dcgdo_p18_rf = 2.1e-11
+parameters dcgso_p18_rf = 2.1e-11
+// *3.3V IO NMOS
+parameters dtox_n33_rf = -3.0e-10
+parameters dxl_n33_rf = -1.4e-8
+parameters dxw_n33_rf = 2.2e-8
+parameters dvth_n33_rf = -0.05
+parameters dcj_n33_rf = -4.225e-5
+parameters dcjsw_n33_rf = -1.705e-11
+parameters dpvth0_n33_rf = -3.5e-15
+parameters dcgdo_n33_rf = 1.93e-11
+parameters dcgso_n33_rf = 1.93e-11
+// *3.3V IO PMOS
+parameters dtox_p33_rf = -3.0e-10
+parameters dxl_p33_rf = -1.4e-8
+parameters dxw_p33_rf = 2.2e-8
+parameters dvth_p33_rf = 0.04	
+parameters dcj_p33_rf = -5.05e-5
+parameters dcjsw_p33_rf = -1.595e-11
+parameters dpvth0_p33_rf = 2e-15
+parameters dcgdo_p33_rf = 1.615e-11
+parameters dcgso_p33_rf = 1.615e-11
+include "ms018_rf_v1p5_mos_spe.ckt"
+endsection ff
+
+
+section ss
+// *1.8V core NMOS
+parameters dtox_n18_rf = 1.0e-10
+parameters dxl_n18_rf = 1.0e-8
+parameters dxw_n18_rf = -2.2e-8
+parameters dvth_n18_rf = 0.045
+parameters dcj_n18_rf = 4.84e-5
+parameters dcjsw_n18_rf = 2.09e-11
+parameters dpvth0_n18_rf = 3e-15
+parameters dcgdo_n18_rf = -1.85e-11
+parameters dcgso_n18_rf = -1.85e-11
+// *1.8V core PMOS
+parameters dtox_p18_rf = 1.0e-10
+parameters dxl_p18_rf = 1.0e-8
+parameters dxw_p18_rf = -2.2e-8
+parameters dvth_p18_rf = -0.02
+parameters dcj_p18_rf = 5.35e-5
+parameters dcjsw_p18_rf = 2.535e-11
+parameters dpvth0_p18_rf = -1e-15
+parameters dcgdo_p18_rf = -2.1e-11
+parameters dcgso_p18_rf = -2.1e-11
+// *3.3V IO NMOS
+parameters dtox_n33_rf = 3.0e-10
+parameters dxl_n33_rf = 1.4e-8
+parameters dxw_n33_rf = -2.2e-8
+parameters dvth_n33_rf = 0.05
+parameters dcj_n33_rf = 4.225e-5
+parameters dcjsw_n33_rf = 1.705e-11
+parameters dpvth0_n33_rf = 3.5e-15
+parameters dcgdo_n33_rf = -1.93e-11
+parameters dcgso_n33_rf = -1.93e-11
+// *3.3V IO PMOS
+parameters dtox_p33_rf = 3.0e-10
+parameters dxl_p33_rf = 1.4e-8
+parameters dxw_p33_rf = -2.2e-8
+parameters dvth_p33_rf = -0.04
+parameters dcj_p33_rf = 5.05e-5
+parameters dcjsw_p33_rf = 1.595e-11
+parameters dpvth0_p33_rf = -2e-15
+parameters dcgdo_p33_rf = -1.615e-11
+parameters dcgso_p33_rf = -1.615e-11
+include "ms018_rf_v1p5_mos_spe.ckt"
+endsection ss
+
+
+section fnsp
+// *1.8V core NMOS
+parameters dtox_n18_rf = 0
+parameters dxl_n18_rf = -1.00e-8
+parameters dxw_n18_rf = 1.8e-8
+parameters dvth_n18_rf = -0.04
+parameters dcj_n18_rf = -4.84e-5
+parameters dcjsw_n18_rf = -2.09e-11
+parameters dpvth0_n18_rf = -3e-15
+parameters dcgdo_n18_rf = 0
+parameters dcgso_n18_rf = 0
+// *1.8V core PMOS
+parameters dtox_p18_rf = 0
+parameters dxl_p18_rf = 1.00e-8
+parameters dxw_p18_rf = -1.8e-8
+parameters dvth_p18_rf = -0.02
+parameters dcj_p18_rf = 5.35e-5
+parameters dcjsw_p18_rf = 2.535e-11
+parameters dpvth0_p18_rf = -1e-15
+parameters dcgdo_p18_rf = 0
+parameters dcgso_p18_rf = 0
+// *3.3V IO NMOS
+parameters dtox_n33_rf = 0
+parameters dxl_n33_rf = -1.15e-8
+parameters dxw_n33_rf = 1.8e-8
+parameters dvth_n33_rf = -0.05
+parameters dcj_n33_rf = -4.225e-5
+parameters dcjsw_n33_rf = -1.705e-11
+parameters dpvth0_n33_rf = -3.5e-15
+parameters dcgdo_n33_rf = 0
+parameters dcgso_n33_rf = 0
+// *3.3V IO PMOS
+parameters dtox_p33_rf = 0
+parameters dxl_p33_rf = 1.15e-8
+parameters dxw_p33_rf = -1.8e-8
+parameters dvth_p33_rf = -0.04	
+parameters dcj_p33_rf = 5.05e-5
+parameters dcjsw_p33_rf = 1.595e-11
+parameters dpvth0_p33_rf = -2e-15
+parameters dcgdo_p33_rf = 0
+parameters dcgso_p33_rf = 0
+include "ms018_rf_v1p5_mos_spe.ckt"
+endsection fnsp
+
+
+section snfp
+// *1.8V core NMOS
+parameters dtox_n18_rf = 0
+parameters dxl_n18_rf = 1.00e-8
+parameters dxw_n18_rf = -1.8e-8
+parameters dvth_n18_rf = 0.045
+parameters dcj_n18_rf = 4.84e-5
+parameters dcjsw_n18_rf = 2.09e-11
+parameters dpvth0_n18_rf = 3e-15
+parameters dcgdo_n18_rf = 0
+parameters dcgso_n18_rf = 0
+// *1.8V core PMOS
+parameters dtox_p18_rf = 0
+parameters dxl_p18_rf = -1.00e-8
+parameters dxw_p18_rf = 1.8e-8
+parameters dvth_p18_rf = 0.02
+parameters dcj_p18_rf = -5.35e-5
+parameters dcjsw_p18_rf = -2.535e-11
+parameters dpvth0_p18_rf = 1e-15
+parameters dcgdo_p18_rf = 0
+parameters dcgso_p18_rf = 0
+// *3.3V IO NMOS
+parameters dtox_n33_rf = 0
+parameters dxl_n33_rf = 1.15e-8
+parameters dxw_n33_rf = -1.8e-8
+parameters dvth_n33_rf = 0.05
+parameters dcj_n33_rf = 4.225e-5
+parameters dcjsw_n33_rf = 1.705e-11
+parameters dpvth0_n33_rf = 3.5e-15
+parameters dcgdo_n33_rf = 0
+parameters dcgso_n33_rf = 0
+// *3.3V IO PMOS
+parameters dtox_p33_rf = 0
+parameters dxl_p33_rf = -1.15e-8
+parameters dxw_p33_rf = 1.8e-8
+parameters dvth_p33_rf = 0.04	
+parameters dcj_p33_rf = -5.05e-5
+parameters dcjsw_p33_rf = -1.595e-11
+parameters dpvth0_p33_rf = 2e-15
+parameters dcgdo_p33_rf = 0
+parameters dcgso_p33_rf = 0
+include "ms018_rf_v1p5_mos_spe.ckt"
+endsection snfp
+
+
+section res_tt
+// *Resistor
+parameters drndifsab_rf = 0
+parameters drpdifsab_rf = 0
+parameters drnposab_rf = 0
+parameters drpposab_rf = 0
+parameters drhrpo_rf = 0
+include "ms018_rf_v1p5_res_spe.ckt"
+endsection res_tt
+
+
+section res_ff
+// *Resistor
+parameters drndifsab_rf = -20.6
+parameters drpdifsab_rf = -40.1
+parameters drnposab_rf = -38.1
+parameters drpposab_rf = -48.7
+parameters drhrpo_rf = -201.2
+include "ms018_rf_v1p5_res_spe.ckt"
+endsection res_ff
+
+
+section res_ss
+// *Resistor
+parameters drndifsab_rf = 20.5
+parameters drpdifsab_rf = 40
+parameters drnposab_rf = 38.1
+parameters drpposab_rf = 48.6
+parameters drhrpo_rf = 201.2
+include "ms018_rf_v1p5_res_spe.ckt"
+endsection res_ss
+
+
+section mim_tt
+parameters dmim1_rf = 0
+include "ms018_rf_v1p5_mim_spe.ckt"
+endsection mim_tt
+
+
+section mim_ff
+parameters dmim1_rf = -2e-4
+include "ms018_rf_v1p5_mim_spe.ckt"
+endsection mim_ff
+
+
+section mim_ss
+parameters dmim1_rf = 2e-4
+include "ms018_rf_v1p5_mim_spe.ckt"
+endsection mim_ss
+
+
+endlibrary ms018_rf_v1p5

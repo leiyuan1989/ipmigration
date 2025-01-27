@@ -1,0 +1,2913 @@
+// this rule file will check TM1/TV1 as Top Metal/Via
+
+//$Author: Drincy_Wei 
+//$Revision: 1.1 
+//$Date: 2006/11/07 06:40:34 $
+//=================================================================================
+//|                                                                               |
+//|  0.18um HV 1P5M Calibre DRC rule file for                                     |
+//|                                                                               |
+//|       SMIC:           0.18um HV 1P6M(1P5M,1P4M) Salicide 1.8V/5.5V/32V(30V)	  |
+//|		          Version A Process Design Rules   		 	  |
+//|       Doc. No.:       TD-HV18-DR-2001         Rev.: 10T                       |
+//|                                                                               |
+//|       SMIC DSD Technologies  		                                  |
+//|                                                                               |
+//|===============================================================================|
+//|                                                                               |
+//|    DISCLAIMER                                                                 |
+//|                                                                               |
+//|   SMIC hereby provides the quality information to you but makes no claims,    |
+//| promises or guarantees about the accuracy, completeness, or adequacy of the   |
+//| information herein. The information contained herein is provided on an "AS IS"|
+//| basis without any warranty, and SMIC assumes no obligation to provide support |
+//| of any kind or otherwise maintain the information.                            |
+//|                                                                               |
+//|   SMIC disclaims any representation that the information does not infringe any|
+//| intellectual property rights or proprietary rights of any third parties.SMIC  |
+//| makes no other warranty, whether express, implied or statutory as to any      |
+//| matter whatsoever, including but not limited to the accuracy or sufficiency of|
+//| any information or the merchantability and fitness for a particular purpose.  |
+//| Neither SMIC nor any of its representatives shall be liable for any cause of  |
+//| action incurred to connect to this service.                                   |
+//|                                                                               |
+//|===============================================================================|
+//|                                                                               |
+//|    STATEMENT OF USE AND CONFIDENTIALITY                                       |
+//|                                                                               |
+//|   The following/attached material contains confidential and proprietary       |
+//| information of SMIC. This material is based upon information which SMIC       |
+//| considers reliable, but SMIC neither represents nor warrants that such        |
+//| information is accurate or complete, and it must not be relied upon as such.  |
+//| This information was prepared for informational purposes and is for the use by|
+//| SMIC's customer only. SMIC reserves the right to make changes in the          |
+//| information at any time without notice.                                       |
+//|   No part of this information may be reproduced, transmitted, transcribed,    |
+//| stored in a retrieval system, or translated into any human or computer        |
+//| language, in any form or by any means, electronic, mechanical, magnetic,      |
+//| optical, chemical, manual, or otherwise, without the prior written consent of |
+//| SMIC. Any unauthorized use or disclosure of this material is strictly         |
+//| prohibited and may be unlawful. By accepting this material, the receiving     |
+//| party shall be deemed to have acknowledged, accepted, and agreed to be bound  |
+//| by the foregoing limitations and restrictions. Thank you.                     |
+//|                                                                               |
+//|===============================================================================|
+//| Read Me First !                                                               |
+//|                                                                               |
+//| 1. Skip the following rules:                                                  |
+//|       1)      Metal Fuse Rules                                                |
+//|       2)      Mark.1~6                                                        |
+//| 2. Use MT as top metal                       	 			  |
+//|		MT - "Top Metal", use regular top metal				  |
+//|    		MTT - "Thick Top Metal", use a thick top metal         	 	  |
+//| 3. Please pay attention to "User Choice" block to make some useful choices    |
+//|                                                                               |
+//|===============================================================================|
+//|                                                                               |
+//| Revision History :                                                            |
+//|                                                                               |
+//|   rev         date           who              what                            |
+//| -------  -------------  ----------  ------------------------------------------|
+//|   1.1    27-Oct-2006    Drincy Wei  Update based on 10T DR:                   |     
+//|                                      just change file name,                   |
+//|                                      NDRF_9&PDRF_9 has been updated in 9T_v1.1|
+//|                                                                               |
+//|*******************************************************************************|
+//| Old file name : SmicDR9T_cal018HV_LDMOS_p1mt6_sail_32V.drc                    |
+//|                                                                               |
+//|   1.1    20-Sep-2006    Drincy Wei  Update based on 9T DR                     |
+//|                                     Revise AA_1_2a, AA_2b, AA_3_4             |
+//|                                     Delete DG_6                               |
+//|                                     Modify NDRF_9 & PDRF_9 : 2 -> 1.5         |
+//|                                                                               |
+//|*******************************************************************************|
+//| Old file name : SmicDR8T_cal018HV_LDMOS_p1mt6_sail_32V.drc                    |
+//|                                                                               |
+//|   1.1    29-Jun-2006    Drincy Wei  Update based on 8T DR			  |
+//|                                     Modify TG_6A_B                            |
+//|                                                                               |
+//|*******************************************************************************|
+//| Old file name : SmicDR7T_cal018HV_LDMOS_p1mt6_sail_32V.drc			  |
+//|                                                                               |
+//|   1.1    12-Jun-2006    Drincy Wei  Update based on 7T DR			  |
+//|                                     Change file name			  |
+//|                                                                               |
+//|*******************************************************************************|
+//| Old file name : SmicDR6T_cal018HV_LDMOS_p1mt4_sail_30V.drc			  |
+//|                                                                               |
+//|   1.1    28-Jun-2005   Jenny Jiang  Update to 6T basing on DR                 |
+//|                                     Change GT.9 from 0.5 to 0.6um             |
+//|                                                                               |
+//|*******************************************************************************|
+//| Old file name : SmicDR5T_cal018HV_LDMOS_p1mt4_sail_30V.drc                    |
+//|                                                                               |
+//|   1.1    18-Apr-2005   Jenny Jiang  Update to 5T basing on DR                 |
+//|                                     1)AA.2 MV rule:0.22-->0.30                | 
+//|                                     2)Del SN.21/SP.21;Del Mn.10&MT.10         |
+//|                                     3)Change SUBD as SUBDMY                   | 
+//|                                     4)Add NW.5b,HVAA.9,NDRF.10,PDRF.10        |
+//|*******************************************************************************|
+//| Old file name : SmicDR4T_cal018HV_LDMOS_p1mt4_sail_30V.drc                    |
+//|                                                                               |
+//|   1.1     26-Nov-2004     Rimbo Yan       update to 4T; HVAA.7 modified       |
+//|                                           add NDRF.9 ,PDRF.9                  |
+//|                                                                               |
+//|*******************************************************************************|
+//| Old file name : SmicDR3T_cal018HV_LDMOS_p1mt4_sail_30V.drc                    |
+//|                                                                               |
+//|   1.2     22-Nov-2004     Rimbo Yan       NDRF_4,PDRF_4,DNW_1, modified       |
+//|                                           PW definition modified              |
+//|   1.1     27-Oct-2004     Rimbo Yan       update to 3T; change file name      |
+//|                                                                               |
+//|*******************************************************************************|
+//| Old file name : SmicDR2T_cal018HV_LDMOS_p1mt4_sail.drc                        |
+//|                                                                               |
+//|   1.2     08-Oct-2004     Rimbo Yan       modified SN.3,AP.3,CT.15a;          |
+//|                                           HVGT definition                     |
+//|   1.1     20-Jul-2004     Rimbo Yan       initial version                     |
+//|                                                                               |
+//|===============================================================================|
+
+
+
+
+
+//*****************************************************************************************
+//   User Choice !  ( Recommended to make some useful choices to speed DRC running time! )
+//*****************************************************************************************
+
+
+// DRC UNSELECT CHECK GMS      		//; Mix-Rules checking choice !
+					//; Open the mark is NOT to check Mix-rules
+					//; For Logic-User, can open the mark
+					//; For Mix-User, should mark this command 
+
+
+   DRC UNSELECT CHECK GPD		//; Pattern-Density checking choice !
+					//; Open the mark is NOT to check Pattern-Density
+
+
+   DRC UNSELECT CHECK MIM_9b MIM_9c	//; Guidelines checking choice !
+					//; Open the mark is NOT to check guidelines 
+					//; MIM.9b, MIM.9c are guidelines, user can decide follow or not
+
+   DRC UNSELECT CHECK GGR		//; Guidelines checking choice !
+					//; Open the mark is NOT to check guidelines
+                                        //; "Poly Resistor" rule are guidelines, user can decide follow or not
+
+
+//*************************************
+//     DIRECTIVE SECTION  
+//*************************************
+
+LAYOUT PRIMARY "bitcell_4x2_novss_88" 
+LAYOUT PATH
+"/home/joewcchan/designs/denver_A1/custom/calibre/gds/bitcell_4x2_novss_88.gds"
+LAYOUT SYSTEM GDSII 
+
+DRC RESULTS DATABASE "bitcell_4x2_novss_88" ASCII 
+DRC SUMMARY REPORT "bitcell_4x2_novss_88.sum" 
+
+PRECISION 	1000
+RESOLUTION 	5	     
+
+FLAG ACUTE YES
+FLAG NONSIMPLE YES
+//FLAG OFFGRID YES
+FLAG SKEW YES
+
+TEXT DEPTH PRIMARY 
+LVS POWER NAME "?VDD?" "?VCC?" 
+
+
+//************************************                
+//    INPUT LAYER STATEMENTS
+//************************************                
+
+LAYER	AAi	10 12 13 //	Active Area / SDG
+LAYER	NWi	14  	//	LV N-Well and Vt adjustment region
+LAYER   DNWi    19      //      Deep Nwell
+LAYER 	DGi	29  	//	Dual Gate
+LAYER 	GTi	30  	//	Poly Gate, Poly-1, ONO Gate
+LAYER   NLLi	35  	//	NMOS LDD Implant for Low VDD
+LAYER   NLHi	36  	//	NMOS LDD Implant for High VDD
+LAYER   PLHi    37  	//	PMOS LDD Implant for High VDD
+LAYER   PLLi    38  	//	PMOS LDD Implant for Low VDD
+LAYER   HRPi    39      //      High Resistance Poly
+LAYER   SNi 	40  	//	Define (LV/MV/HV)NMOS S/D Implant
+LAYER   SPi 	43  	//	Define (LV/MV/HV)PMOS S/D Implant
+LAYER   VTPHi   46      //      HVPMOS VT adjustment 
+LAYER   SABi	48  	//	Resist Protect Oxide / Salicide block
+LAYER   CTi  	50  	//	Contact Hole
+LAYER   MIMi    58      //      Top Plate of MiM capacitor
+LAYER   M1i  	61  	//	Metal-1
+LAYER   M2i 	62  	//	Metal-2
+LAYER   M3i 	63  	//	Metal-3
+LAYER   M4i 	64  	//	Metal-4
+LAYER   TM1i 	120  	//	Top Metal
+LAYER   V1i  	70  	//	Via-1 Hole
+LAYER   V2i 	71  	//	Via-2 Hole
+LAYER   V3i 	72  	//	Via-3 Hole
+LAYER   TV1i 	121  	//	Top Via Hole
+LAYER   PAi 	80  	//	Passivation / Pad
+LAYER   RESNW   95  	//	Dummy Pattern for NWELL Resistor
+LAYER   SURNWi  209  	//	Dummy Pattern for surrounding NW
+LAYER   RESP1   96  	//	Dummy Pattern for Poly-1 Resistor
+LAYER   RESAA   97  	//	Dummy Pattern for AA Resistor
+LAYER	OPCBA	100  	//	Blocking Layer for OPC operation on AA
+LAYER	OPCBP	101  	//	Blocking Layer for OPC operation on GT
+LAYER	OPCBM	102  	//	Blocking Layer for OPC operation on M1
+LAYER   NDRFi   103     //      HV NMOS drift implant
+LAYER   PDRFi   104     //      HV PMOS drift implant
+LAYER   NWHTi   110     //      Define HV Nwell
+LAYER   MAP     120   DATATYPE==3  320
+LAYER   TM1TXT  320     //      TM-1 Text Layer
+LAYER   TGi     125     //      HV transistor gate oxide area  
+LAYER   EXCLU   132     //      Un-DRC region
+
+LAYER   STIDMYi  215     //      on HV transistor Field plate
+LAYER   SUBDMY  216     //      Dummy layer to define HV area for logic operation
+LAYER   HRPDMY  210     //      HRP dummy
+LAYER   MIMDMY  211     //      recognize MIM used as dummy
+
+AAO	= AAi NOT EXCLU                      
+NW	= NWi NOT EXCLU
+DG      = DGi NOT EXCLU
+GTO	= GTi NOT EXCLU
+NLL 	= NLLi NOT EXCLU
+NLH 	= NLHi NOT EXCLU
+PLH   = PLHi NOT EXCLU
+PLL   = PLLi NOT EXCLU
+SN  	= SNi NOT EXCLU
+SP  	= SPi NOT EXCLU
+SAB 	= SABi NOT EXCLU
+CTO  	= CTi NOT EXCLU
+M1O  	= M1i NOT EXCLU
+M2  	= M2i NOT EXCLU
+M3  	= M3i NOT EXCLU
+M4  	= M4i NOT EXCLU
+TM1  	= TM1i NOT EXCLU
+V1O  	= V1i NOT EXCLU
+V2  	= V2i NOT EXCLU
+V3  	= V3i NOT EXCLU
+TV1  	= TV1i NOT EXCLU
+PA  	= PAi NOT EXCLU
+
+DNW     =  DNWi NOT EXCLU
+NDRF    =  NDRFi NOT EXCLU
+PDRF    =  PDRFi NOT EXCLU
+VTPH    =  VTPHi NOT EXCLU
+HRP     =  HRPi NOT EXCLU
+MIM     =  MIMi NOT EXCLU
+TG      =  TGi  NOT EXCLU
+NWHT    =  NWHTi NOT EXCLU
+SURNW   =  SURNWi NOT EXCLU
+
+STIDMY  = SIZE STIDMYi BY -0.15
+
+TEXT	LAYER	61  141
+TEXT	LAYER	62  142
+TEXT	LAYER	63  143
+TEXT	LAYER	64  144
+TEXT	LAYER	120 320
+
+ATTACH	141	M1i
+ATTACH	142	M2i
+ATTACH	143	M3i
+ATTACH	144	M4i
+ATTACH	320	TM1i
+ATTACH	61	M1i
+ATTACH	62	M2i
+ATTACH	63	M3i
+ATTACH	64	M4i
+ATTACH	120	TM1i
+
+DRC:1 = EXTENT
+BULK = SIZE DRC:1 BY 1.0
+MVNW = NW AND DG
+MVPW = DG NOT MVNW
+PWHT = SUBDMY NOT NWHT
+LVNW = NW NOT DG
+LVPW = ((BULK NOT SUBDMY) NOT DG) NOT LVNW
+PW   = (BULK NOT SUBDMY) NOT NW
+PWi  = (BULK NOT NWHTi) NOT NWi
+
+CONNECT TM1i M4i BY TV1i
+CONNECT M4i M3i BY V3i
+CONNECT M3i M2i BY V2i
+CONNECT M2i M1i BY V1i
+CONNECT M1i GTi NTAPi PTAPi PSDi NSDi BY CTi
+CONNECT NTAPi PSDi 
+CONNECT PTAPi NSDi
+SCONNECT NTAPi NWi
+SCONNECT NTAPi NWHTi
+LABEL ORDER  TM1i M4i M3i M2i M1i NTAPi PTAPi NSDi PSDi GTi NWi
+
+VIRTUAL CONNECT NAME "?VDD?" "?VCC?" "?VSS?" "?GND?"
+VIRTUAL CONNECT COLON YES 
+
+
+//*******************************************       
+//    LAYER DERIVATIONS AND OPERATIONS
+//*******************************************       
+
+AA 	= NOT AAO OPCBA
+GT 	= NOT GTO OPCBP
+CT 	= NOT CTO OPCBM
+M1 	= NOT M1O OPCBM
+V1 	= NOT V1O OPCBM
+
+//==================
+// For Connectivity
+//==================
+
+PACTi   = SPi AND AAi
+NACTi   = SNi AND AAi
+
+PTAPi   = PACTi AND PWi
+NTAPi   = NACTi AND NWi
+
+PGATEi  = PACTi AND GTi
+NGATEi  = NACTi AND GTi
+
+PSDi    = (PACTi NOT PGATEi) TOUCH PGATEi
+NSDi    = (NACTi NOT NGATEi) TOUCH NGATEi
+
+
+PACT    = SP AND AA
+NACT    = SN AND AA
+ACT     = PACT OR NACT
+
+MVAA    = AA AND DG
+HVAA    = AA AND SUBDMY
+LVAA    = (AA NOT DG) NOT HVAA
+LMVAA   = AA NOT HVAA
+
+HVGT    = (GT AND SUBDMY) NOT INTERACT RESP1
+
+LPACT   = SP AND LVAA
+LNACT   = SN AND LVAA
+MPACT   = SP AND MVAA
+MNACT   = SN AND MVAA
+HPACT   = SP AND HVAA
+HNACT   = SN AND HVAA
+
+LPTAP   = LPACT AND LVPW
+LNTAP   = LNACT AND LVNW
+MPTAP   = MPACT AND MVPW
+MNTAP   = MNACT AND MVNW
+HPTAP   = HPACT AND PWHT
+HNTAP   = HNACT AND NWHT
+LMPTAP  = LPTAP OR MPTAP
+LMNTAP  = NACT AND NW
+PTAP    = LMPTAP OR HPTAP
+NTAP    = LMNTAP OR HNTAP
+
+LMOSP   = LPACT AND LVNW
+LMOSN   = LNACT AND LVPW
+MMOSP   = MPACT AND MVNW
+MMOSN   = MNACT AND MVPW
+HMOSP   = HPACT AND NWHT
+HMOSN   = HNACT AND PWHT
+LMMOSP  = LMOSP OR MMOSP
+LMMOSN  = LMOSN OR MMOSN
+MOSP    = LMMOSP OR HMOSP
+MOSN    = LMMOSN OR HMOSN
+
+GATE    = AA AND GT
+NGATE   = GATE AND SN
+PGATE   = GATE AND SP
+LMGATE  = GATE AND (LVNW OR LVPW)
+LNGATE  = LMOSN AND GT
+LPGATE  = LMOSP AND GT
+MNGATE  = MMOSN AND GT
+MPGATE  = MMOSP AND GT
+HNGATE  = HMOSN AND GT
+HPGATE  = HMOSP AND GT
+
+/*
+LMOSP 	= PACT AND LVNW
+LMOSN	= NACT AND (PW NOT DG)
+MMOSP 	= PACT AND MVN
+MMOSN 	= NACT AND MVP
+HMOSP 	= PACT AND NWHT
+HMOSN 	= NACT AND PWHT
+MOSP    = (LMOSP OR MMOSP) OR HMOSP
+MOSN    = (LMOSN OR MMOSN) OR HMOSN
+
+LPTAP	= PACT AND (PW NOT DG)
+LNTAP	= NACT AND LVNW
+MPTAP	= PACT AND MVP
+MNTAP	= NACT AND MVN
+HPTAP   = PACT AND PWHT
+HNTAP   = NACT AND NWHT
+
+LPGATE	= LMOSP AND GT
+LNGATE	= LMOSN AND GT
+MPGATE	= MMOSP AND GT
+MNGATE	= MMOSN AND GT
+HPGATE	= HMOSP AND GT
+HNGATE	= HMOSN AND GT
+LGATE   = LPGATE OR LNGATE
+MGATE   = MPGATE OR MNGATE
+HGATE   = HPGATE OR HNGATE
+
+HVGT    = (GT AND (NWHT OR PWHT)) NOT INTERACT RESP1 
+HVN_AA  = NACT AND PWHT
+HVNGATE = HVN_AA AND GT
+HVP_AA  = PACT AND NWHT
+HVPGATE = HVP_AA AND GT
+HV_AA    = AA AND (PWHT OR NWHT)
+MV_AA  = ((MMOSP OR MMOSN) OR MPTAP) OR MNTAP
+LM_AA  = AA NOT HV_AA
+LMPTAP = LPTAP OR MPTAP
+LMNTAP = LNTAP OR MNTAP
+PTAP   = LMPTAP OR HPTAP
+NTAP   = LMNTAP OR HNTAP
+*/
+
+LMMOSAA	= ((LMOSP OR LMOSN) OR MMOSP) OR MMOSN
+
+PSD	= (AA NOT GATE) TOUCH PGATE
+NSD	= (AA NOT GATE) TOUCH NGATE
+SD	= PSD OR NSD
+
+NGATE_CAP = (NACT AND GT ) AND NW
+MOSN_CAP  = NACT INTERACT NGATE_CAP
+GT_MOSCAP = GT INTERACT NGATE_CAP
+NSD_CAP   = (MOSN_CAP NOT GT_MOSCAP) TOUCH NGATE_CAP
+
+
+NLLAA   = AA AND NLL
+NLHAA   = AA AND NLH
+PLLAA   = AA AND PLL
+PLHAA   = AA AND PLH
+
+INTERGT = GT NOT GATE
+
+NR	= (NW INSIDE AA) INTERACT RESNW
+AAR 	= AA INTERACT NR
+SNR 	= SN INTERACT NR
+
+GTR	= GT INTERACT RESP1
+
+NWDEV	= LVNW NOT NR 
+
+NW_USIZE = SIZE (NW NOT NWHT) BY -0.43
+PW_USIZE = SIZE PW BY -0.43
+ACT_CT   = CT AND ACT
+INTERCT  = CT AND INTERGT
+
+GT_HRP   = GT INTERACT HRP
+HR_GT    = GT_HRP AND HRPDMY
+SAB_GT   = GT_HRP AND SAB
+
+
+//********************************************
+//         CHECK GROUP DEFINITIONS
+//********************************************
+
+//=================
+//   Logic Part 
+//=================
+
+GROUP GLG
+  GNW
+  GNR
+  GAA
+  GDG
+  GGT
+  GGR
+  GNLL
+  GPLL
+  GNLH
+  GPLH
+  GSN
+  GSP
+  GSAB
+  GCT
+  GM1
+  GM2
+  GM3
+  GM4
+  GMT
+  GV1
+  GV2
+  GV3
+  GVT
+  GPD
+
+//===================
+//  Mix-Signal Part
+//===================
+
+GROUP GMS 
+  GDNW 
+  GHRP 
+  GMIM 
+
+
+//=====================
+//  NW - Nwell DRC
+//=====================
+
+GROUP GNW NW_?
+
+NW_1 {
+@ Minimum width of an NW region is 0.86um
+  INT NW < 0.86 ABUT<90 SINGULAR REGION
+}
+NW_2 {
+@ Minimum dimension of an NW region which is not connected to the most
+@ positive power supply is 2.10um.
+@ Need to be changed depending on your power supply name
+@ In this case the most positive voltage
+  NWwoMPV    =  NOT NET NW ?VDD? ?VCC?
+  RESULT1 = INT NWwoMPV < 2.1 ABUT<90 SINGULAR REGION
+
+  A = M1 WITH TEXT ?VDD?
+  B = M1 WITH TEXT ?VCC?
+  VDD_M1a = NET AREA RATIO M1 A >= 1
+  VDD_M1b = NET AREA RATIO M1 B >= 1
+  VDD_M1 = VDD_M1a OR VDD_M1b
+
+  VDD_CT = CT AND VDD_M1
+  VDD_NTAP = LMNTAP INTERACT VDD_CT
+  NO_VDD_NW = NW NOT INTERACT VDD_NTAP
+
+  RESULT2 = INT NO_VDD_NW < 2.1 ABUT<90 SINGULAR REGION
+
+  RESULT1 AND RESULT2
+}
+NW_3 {
+@ Minimum space between two NW regions with the same potential is 0.60um
+@ Merge if space is less than 0.6um
+  EXT NW < 0.60 ABUT<90 SINGULAR REGION CONNECTED
+}
+//NW_4 {
+//@ All the NW inside the same DNW must keep with the same potential.
+//  DNW INTERACT NW ABUT<90 SINGULAR REGION CONNECTED
+//}
+NW_5 {
+@ Min NW enclosure N+ AA plug in NW is 0.12
+  ENC LMNTAP (NW NOT NR) < 0.12 ABUT<90 SINGULAR REGION
+}
+NW_6 {
+@ Min NW enclosure P+AA in NW is 0.43
+  ENC LMMOSP NW < 0.43 ABUT<90 SINGULAR REGION
+}
+NW_7 {
+@ Min space between NW and P+AA plug outside NW is 0.12
+  EXT NW LMPTAP < 0.12 ABUT<90 SINGULAR REGION
+}
+NW_8 {
+@ Min space between NW and N+ AA outside NW is 0.43
+  EXT LMMOSN (NW NOT NR) < 0.43 ABUT<90 SINGULAR REGION
+}
+//NW_9 {
+//@ Put an NW resistor in AA region to minimize the influence of process variation on NW resistance. 
+//}
+//NW_10 {
+//@ Minimum space between NW and SUBDMY is 8.0
+//} Covered by SUBDMY_4
+NW_11 {
+@ Minimum space between NW and DNW is 7.5
+  EXT DNW NW < 7.5 ABUT<90 SINGULAR REGION
+} 
+NW_12 {
+@ Minimum space of two 1.8V NWs with different potential is 1.4 
+  EXT LVNW < 1.40 ABUT<90 SINGULAR REGION NOT CONNECTED  
+}
+NW_13 {
+@ Minimum space of two 5.5V NWs with different potential is 2.0
+  EXT MVNW < 2.0 ABUT<90 SINGULAR REGION NOT CONNECTED
+}
+NW_14 {
+@ Minimum space of 1.8V NW and 5.5V NW with different potential is 2.0
+  EXT LVNW MVNW < 2.0 ABUT<90 SINGULAR REGION NOT CONNECTED
+}
+
+
+
+//============================
+//  NR - Nwell Resister DRC
+//============================
+
+GROUP GNR NR_?
+
+NR_1 {
+@ Minimum enclosure of an AA beyond NW is 1.0
+  ENC NR AA < 1.0 ABUT<90 SINGULAR REGION
+}
+NR_2 {
+@ Minimum enclosure of a salicide NW beyond CT is 0.3
+  ENC CT NR < 0.3 ABUT<90 SINGULAR REGION
+}
+NR_3 {
+@ Minimum space from SAB to related NW is 0.3
+  EXT NR SAB < 0.3 ABUT<90 SINGULAR REGION
+}
+NR_4 {
+@ Minimum space from SAB to related AA is 0.22
+  X = AAR INSIDE EDGE SAB
+  ENC X SAB < 0.22 ABUT<90 REGION
+}
+NR_5 {
+@ Minimum overlap of SAB to SN inside NW is 0.4
+  INT SNR SAB < 0.4 ABUT<90 SINGULAR REGION
+}
+NR_6 {
+@ Minimum space from SAB to related CT in SAB hole is 0.3
+  X = CT AND NR
+  EXT X SAB < 0.3 ABUT<90 SINGULAR REGION
+}
+NR_7A {
+@ Min. LV NW space is 1.4
+  EXT (NR NOT INTERACT DG) < 1.4 ABUT<90 SINGULAR REGION 
+}
+NR_7B {
+@ Min. MV NW space is 2.0
+  EXT (NR INTERACT DG) < 2.0 ABUT<90 SINGULAR REGION
+}
+NR_8 {
+@ LDD,SN and SP implant inside NW resistance region is not allowed
+  X = (NR INTERACT SAB) AND RESNW
+  AND SN X
+  AND SP X
+  AND NLL X
+  AND NLH X
+  AND PLL X
+  AND PLH X
+}
+
+//===========================
+//  NWHT - HV Nwell area DRC
+//===========================
+NWHT_1 {
+@ Minimum width an NWHT region is 3
+INT NWHT < 3 ABUT<90 SINGULAR REGION
+}
+ 
+NWHT_2a {
+@ Minimum space between two NWHT regions with the same potential is 5.0
+@ Merge if space is less than 5.0 um
+EXT NWHT < 5.0 ABUT<90 SINGULAR REGION CONNECTED
+}
+NWHT_2b {
+@ Minimum space between two NWHT regions with the different potential is 8.5
+EXT NWHT < 8.5 ABUT<90 SINGULAR REGION NOT CONNECTED
+}
+NWHT_3 {
+@ Min space of NWHT enclosure N+ AA plug which is in NWHT is 3.5
+ENC HNTAP NWHT < 3.5 ABUT<90 SINGULAR REGION
+}
+NWHT_4 {
+@ Min space of NWHT enclosure P+AA which is in NWHT is 6.42
+ENC HMOSP NWHT < 6.42 ABUT<90 SINGULAR REGION
+}
+NWHT_5 {
+@ Min space of NWHT to N+ AA which is outside NWHT and inside SUBDMY is 6.42
+EXT HMOSN NWHT < 6.42 ABUT<90 SINGULAR REGION
+}
+NWHT_6 {
+@ Min space of NWHT to P+ AA which is outside NWHT and inside SUBDMY is 3.5
+EXT HPTAP NWHT < 3.5 ABUT<90 SINGULAR REGION 
+}
+//NWHT.7A {
+//@ Recommend to add P+ AA guarding surround DNW 
+//}  Covered by DNW.9B
+//NWHT.7B {
+//@ Recommend to add P+ AA guarding surround NWHT
+//}  Covered by NWHT.6
+//NWHT.7C {
+//@ Recommend to add N+ AA guarding at the frontier of NWHT
+//}  Covered by NWHT.3
+NWHT_8 {
+@ NWHT must be inside SUBDMY
+NWHT NOT SUBDMY
+}
+
+
+//===========================
+//  SUBDMY - Dummy layer for HV device
+//===========================
+
+SUBDMY_1 {
+@ Min SUBDMY width 3.0
+INT SUBDMY < 3.0 ABUT<90 SINGULAR REGION
+}
+SUBDMY_2 {
+@  Min SUBDMY to SUBDMY space is 5.0um, merge if space less than 3um
+EXT SUBDMY < 5.0 ABUT<90 SINGULAR REGION
+}
+SUBDMY_3 {
+@ Min SUBDMY enclosure NWHT space is 3.0
+ENC NWHT SUBDMY < 3.0 ABUT<90 SINGULAR REGION
+}
+SUBDMY_4 {
+@ Minimum SUBDMY to NW space is 8.0
+EXT SUBDMY NW < 8.0 ABUT<90 SINGULAR REGION
+}
+SUBDMY_5 {
+@ Minimum SUBDMY to DNW space is 4.0
+EXT SUBDMY DNW < 4.0 ABUT<90 SINGULAR REGION
+}
+SUBDMY_6 {
+@ Min space of SUBDMY enclosure P+ pickup AA inside SUBDMY is 3.5 
+ENC HPTAP SUBDMY < 3.5 ABUT<90 SINGULAR REGION
+}
+SUBDMY_7 {
+@ Min space of SUBDMY to N+ AA outside SUBDMY is 8.0
+EXT NACT SUBDMY < 8.0 ABUT<90 SINGULAR REGION
+}
+SUBDMY_8 {
+@ Min space of SUBDMY to P+ pickup AA outside SUBDMY is 3.0
+EXT LMPTAP SUBDMY < 3.0 ABUT<90 SINGULAR REGION
+}
+SUBDMY_9 {
+@ Min space of SUBDMY to N+AA inside SUBDMY is 6.42
+ENC NACT SUBDMY < 6.42 ABUT<90 SINGULAR REGION
+}
+//SUBDMY_10 {
+//@ SUBDMY is a dummy layer for logic operation to generate PWHT
+//}
+//SUBDMY_11 {
+//@ PWHT is generated by (SUBDMY - NWHT)
+//}
+
+
+
+//===========================
+//  AA - for LV & MV device 
+//===========================
+
+GROUP GAA AA_?
+
+AA_1_2a {
+@ Minimum width of an active region for interconnect is 0.22um
+@ Minimum width of an active region to define the width of NMOS/PMOS is 0.22um
+  INT LMVAA < 0.22 ABUT<90 SINGULAR REGION
+}
+AA_2b {
+@ Minimum width of an active region to define the width of NMOS/PMOS is 0.30
+  X = MMOSN OR MMOSP
+  INT X < 0.30 ABUT<90 SINGULAR REGION
+}
+AA_3_4 {
+@ AA3. Minimum space between N+ AA and N+ AA or P+ AA and P+ AA is 0.28um
+@ (both regions are either inside or outside NW)
+@ AA4. Minimum space between N+ AA to P+ AA plug or P+ AA to N+ AA plug
+  EXT LMVAA < 0.28 ABUT<90 SINGULAR REGION
+}
+AA_5 {
+@ Minimum space between poly edge and edge of a butted diffusion AA region is 0.32um
+  EXT LPGATE (LNTAP TOUCH LMOSP) < 0.32 ABUT<90 SINGULAR REGION
+  EXT LNGATE (LPTAP TOUCH LMOSN) < 0.32 ABUT<90 SINGULAR REGION
+  EXT MPGATE (MNTAP TOUCH MMOSP) < 0.32 ABUT<90 SINGULAR REGION
+  EXT MNGATE (MPTAP TOUCH MMOSN) < 0.32 ABUT<90 SINGULAR REGION
+}
+AA_6 {
+@ Minimum space between N+ AA and P+ AA for butted diffusion is 0.00um
+  AND PACT NACT
+}
+AA_7a {
+@ Minimum area of a butted diffusion AA is 0.176um2. At lease
+@ one segment(AA.7) of the consecutive SN/SP edge of butted
+@ diffusion AA should be longer than 0.42um.
+  X = LMNTAP TOUCH PACT
+  AREA X < 0.176
+  Y = LMPTAP TOUCH NACT
+  AREA Y < 0.176
+}
+AA_7b {
+@ Minimum area of a butted diffusion AA is 0.176um2. At lease
+@ one segment(AA.7) of the consecutive SN/SP edge of butted
+@ diffusion AA should be longer than 0.42um.
+  X = LMNTAP COIN EDGE PACT
+  Y = LENGTH X >= 0.42
+  (LMNTAP TOUCH PACT) NOT WITH EDGE Y >=1
+  A = LMPTAP COIN EDGE NACT
+  B = LENGTH A >= 0.42
+  (LMPTAP TOUCH NACT) NOT WITH EDGE B >=1
+}
+AA_8 {
+@ Minimum area of a stand-along AA region is 0.20um
+  AREA AA < 0.20
+}
+AA_9 {
+@ For the situation where N-well and P-well pick-ups are put
+@ head-to-head across the well boundary, the space between N-
+@ pick-up and P-pick-up should be 0.36um in order to meet
+@ the implant layout rules
+  EXT LNTAP LPTAP < 0.36 ABUT<90 SINGULAR REGION
+  EXT MNTAP MPTAP < 0.36 ABUT<90 SINGULAR REGION
+}
+
+//==========================
+//  AA DR for HV device 
+//==========================
+//HVAA.1A ,1B including NDRF.1 and PDRF.1
+HVAA_2 {
+@ Min & Max STI width for HV transistor field plate length is 2
+INT STIDMY < 2.0 ABUT<90 SINGULAR REGION
+SIZE STIDMY BY -1 
+}
+HVAA_3 {
+@ Min AA width for HV transistor source & drain region length is 0.68
+INT ((HMOSP AND PDRF) NOT TG) < 0.68 ABUT<90 SINGULAR REGION
+INT ((HMOSN AND NDRF) NOT TG) < 0.68 ABUT<90 SINGULAR REGION
+}
+HVAA_4 {
+@ Min AA width for HV transistor channel width is 4
+LENGTH (PDRF INSIDE EDGE HMOSP) < 4  
+LENGTH (NDRF INSIDE EDGE HMOSN) < 4 
+}
+HVAA_5 {
+@ Min AA width for AA interconnect  is 3
+INT (((AA AND NWHT) NOT HNTAP) NOT INTERACT PDRF) < 3 ABUT<90 SINGULAR REGION
+INT (((AA AND PWHT) NOT HPTAP) NOT INTERACT NDRF) < 3 ABUT<90 SINGULAR REGION
+}
+HVAA_6 {
+@ 6. Minimum N+ AA to N+ AA space ;Minimum P+ AA to P+ AA space is 5.42
+X= EXT HMOSN < 5.42 ABUT<90 SINGULAR REGION
+Y= EXT HMOSP < 5.42 ABUT<90 SINGULAR REGION
+X NOT INTERACT STIDMY
+Y NOT INTERACT STIDMY
+}
+HVAA_7 {
+@ 7. Minimum N+ AA to P+ AA plug space ;Minimum P+ AA to N+ AA plug space is 2.5
+EXT HMOSN HPTAP < 2.5 ABUT<90 SINGULAR REGION
+EXT HMOSP HNTAP < 2.5 ABUT<90 SINGULAR REGION
+}
+//HVAA_8 {
+//@ Add Dummy layer "STIDMY" on the HV transistor Field plate area for DRC check
+//@ Min & Max STIDMY enclosure STI plate space is 0.15 }
+HVAA_9 {
+@Recommend to put a guard-ring AA enclosure HV NMOS and HVPMOS for better isolation.
+@Min AA width of guard-ring AA is 0.42 um
+X = HOLES HVAA INNER EMPTY
+(X NOT PGATE) OR (X NOT NGATE)
+INT HVAA < 0.42 ABUT<90 SINGULAR REGION
+}
+
+//==========================
+//  TG - HV thick xoide open area DRC
+//==========================
+TG_1 {
+@ Min TG width is 1.0
+INT TG < 1.0 ABUT<90 SINGULAR REGION
+}
+TG_2 {
+@ Minimum TG to TG space .Merge if lessthan 1.0 um
+EXT TG < 1.0 ABUT<90 SINGULAR REGION
+}
+TG_3 {
+@ Minimum and Maximum TG enclosure HV transistor channel AA region is 1.0
+X = SIZE (HVAA AND TG) BY 1
+Y = TG INTERACT HVAA
+X XOR Y
+}
+TG_4 {
+@ Minimum and Maximum Field plate enclosure TG space is 1.0
+ENC TG STIDMY < 1.0 ABUT<90 SINGULAR REGION 
+STIDMY NOT (SIZE TG BY 1)
+}
+TG_5A {
+@ TG can only cover HV channel area, HV source & drain AA area must not be covered by TG
+(HMOSN CUT NDRF) NOT INTERACT TG
+(HMOSP CUT PDRF) NOT INTERACT TG
+TG AND (AA INSIDE PDRF)
+TG AND (AA INSIDE NDRF)
+}
+TG_6A_B {
+@A. TG cover non-channel AA region is not allowed
+@B. TG cover HV AA pickup is not allowed
+TG AND (HVAA NOT INTERACT HVGT)
+TG NOT INTERACT (HVAA INTERACT HVGT)    
+}    
+// TG_7  @TG cover LV &MV area is not allowed ;  include in TG_6
+
+
+//==========================
+//  VTPH - adjust HV PMOS Vt  
+//==========================
+VTPH_1 {
+@ Minimum VTPH width is 0.72
+INT VTPH < 0.72  ABUT<90 SINGULAR REGION
+}
+VTPH_2 {
+@ Minimum VTPH to VTPH space is 0.42
+EXT VTPH < 0.42 ABUT<90 SINGULAR REGION
+}
+VTPH_3 {
+@ Minimum VTPH enclosure to related AA is 0.35
+ENC AA VTPH < 0.35 ABUT<90 SINGULAR REGION
+}
+VTPH_4 {
+@ Minimum VTPH space to Unrelated AA is 0.7
+EXT AA VTPH < 0.7 ABUT<90 SINGULAR REGION
+}
+VTPH_5 {
+@ Minimum NWHT enclosure VTPH is 0.42
+ENC VTPH NWHT < 0.42 ABUT<90 SINGULAR REGION
+} 
+
+/*
+//==========================
+//  VTNH - adjust HV NMOS Vt
+//==========================
+VTNH_1 {
+@ Minimum VTNH width is 0.72
+INT VTNH < 0.72  ABUT<90 SINGULAR REGION
+}
+VTNH_2 {
+@ Minimum VTNH to VTNH space is 0.42
+EXT VTNH < 0.42 ABUT<90 SINGULAR REGION
+}
+VTNH_3 {
+@ Minimum VTNH enclosure to related AA is 0.35
+ENC AA VTNH < 0.35 ABUT<90 SINGULAR REGION
+}
+VTNH_4 {
+@ Minimum VTNH space to Unrelated AA is 0.7
+EXT AA VTNH < 0.7 ABUT<90 SINGULAR REGION
+}
+VTNH_5 {
+@ Minimum VTNH to HVNW space is 0.42 
+EXT VTNH NWHT < 0.42 ABUT<90 SINGULAR REGION
+}
+*/
+ 
+     
+//==========================
+//  NDRF - define HV NMOS drift imolant area  
+//==========================
+
+NDRF_SD = NDRF ENCLOSE STIDMY
+HVNCH   = (AA INSIDE TG) INTERACT NDRF 
+
+NDRF_1A {
+@ Minimum Ndirft to Ndirft space in the Symmetric HV transistor channel region is 3.5
+@ Define the Symmetric HV transistor channel length
+X = EXT NDRF_SD < 3.5 ABUT<90 SINGULAR REGION
+HVNCH AND X
+}    
+NDRF_2A {
+@ Min & Max Ndrift extension channel AA in the channel region for Symmetric HV transistor is 0.5
+INT NDRF HVNCH < 0.5 ABUT<90 SINGULAR REGION
+NDRF AND (SIZE HVNCH BY -0.5)
+}
+NDRF_3 {
+@ Min & Max Ndrift enclosure HV AA in the field region is 0.5
+Y = NDRF_SD NOT (SIZE TG BY 0.5)
+(HMOSN INSIDE NDRF_SD) XOR (SIZE Y BY -0.5)
+}
+NDRF_4 {
+@ Min Ndrift to Ndrift space in the non_channel region is 4.0
+X = EXT NDRF < 4 ABUT<90 SINGULAR REGION
+X NOT INTERACT HVNCH
+}
+NDRF_5 {
+@ Min Ndrit width  is 2.5
+INT NDRF < 2.5 ABUT<90 SINGULAR REGION
+}
+NDRF_6 {
+@ Min space between NWHT to Ndrift is 5.92
+EXT NDRF NWHT < 5.92 ABUT<90 SINGULAR REGION
+}
+NDRF_7 {
+@ Ndrift cover HV AA pickup area is not allowed 
+NDRF AND HPTAP
+}
+NDRF_8 {
+@ Ndrift cover LV & MV area is not allowed
+(NDRF AND AA) NOT PWHT   
+}
+NDRF_9 {
+@ Min space between Ndrift to unrelated SP area 1.5
+EXT NDRF SP < 1.5 ABUT<90 SINGULAR REGION
+}
+NDRF_10{
+@ Asymmetric HV NMOS is not allowed
+HNGATE CUT SP
+}
+
+
+
+//==========================
+//  PDRF - define HV PMOS drift imolant area
+//==========================
+
+PDRF_SD = PDRF ENCLOSE STIDMY
+HVPCH   = (AA INSIDE TG) INTERACT PDRF
+
+PDRF_1A {
+@ Minimum Pdirft to Pdirft space in the Symmetric HV transistor channel region is 3.5
+@ Defin the Symmetric HV transistor channel length
+X = EXT PDRF_SD < 3.5 ABUT<90 SINGULAR REGION
+HVPCH AND X
+}
+PDRF_2A {
+@ Min & Max Pdrift extension channel AA in the channel region for symmetric HV transistor is 0.5
+INT PDRF HVPCH < 0.5 ABUT<90 SINGULAR REGION
+PDRF AND (SIZE HVPCH BY -0.5)
+}
+PDRF_3 {
+@ Min & Max Pdrift enclosure HV AA in the field region is 0.5
+Y = PDRF_SD NOT (SIZE TG BY 0.5)
+(HMOSP INSIDE PDRF_SD) XOR (SIZE Y BY -0.5)
+}
+PDRF_4 {
+@ Min Pdrift to Pdrift space in the non_channel region is 4
+X = EXT PDRF < 4 ABUT<90 SINGULAR REGION
+X NOT INTERACT HVPCH
+}
+PDRF_5 {
+@ Min Pdrit width  is 2.5
+INT PDRF < 2.5 ABUT<90 SINGULAR REGION
+}
+PDRF_6 {
+@ Min HVNW enclosure Pdrift space is 5.92
+ENC PDRF NWHT < 5.92 ABUT<90 SINGULAR REGION
+}
+PDRF_7 {
+@ Pdrift cover HV AA pickup area is not allowed
+PDRF AND HNTAP
+}
+PDRF_8 {
+@ Pdrift cover LV & MV area is not allowed
+(PDRF AND AA) NOT NWHT
+}
+PDRF_9 {
+@ Min space between Pdrift to unrelated SN area 1.5
+EXT PDRF SN < 1.5 ABUT<90 SINGULAR REGION
+}
+PDRF_10{
+@ Asymmetric HV PMOS is not allowed                
+HPGATE CUT SN
+}
+
+
+//==========================
+//  DG - Dual Gate DRC
+//==========================
+
+GROUP GDG DG_?
+
+DG_1 {
+@ Minimum DG width is 0.86
+  INT DG < 0.86 ABUT<90 SINGULAR REGION
+}
+DG_2 {
+@ Minimum space between two DG is 0.86, align if the space is less than 0.86
+  EXT DG < 0.86 ABUT<90 SINGULAR REGION
+}
+DG_3 {
+@ Minimum space of  DG edge to NW edge is 0.86, align if the space is less than 0.86
+  X = DG NOT TOUCH EDGE NW
+  ENC X NW < 0.86 ABUT<90 REGION
+  ENC NW X < 0.86 ABUT<90 REGION
+}
+DG_4 {
+@ Minimum enclosure of DG beyond MV transistor gate poly is 0.4
+  X = MNGATE OR MPGATE
+  ENC X DG < 0.4 ABUT<90 SINGULAR REGION
+}
+DG_5 {
+@ Minimum space of DG edge to LV transistor gate poly is 0.4
+  X = LNGATE OR LPGATE
+  EXT X DG < 0.4 ABUT<90 SINGULAR REGION
+}
+//DG_6 {
+//@ Minimum overlap of DG and NW is 0.86
+//  INT DG NW < 0.86 ABUT<90 SINGULAR REGION
+//}
+DG_7a {
+@ Minimum enclosure of DG beyond the active N+ AA region is 0.43
+  ENC MMOSN DG < 0.43 ABUT<90 SINGULAR REGION
+}
+DG_7b {
+@ Minimum enclosure of DG beyond the active P+ AA region is 0.43
+  ENC MMOSP DG < 0.43 ABUT<90 SINGULAR REGION
+}
+DG_7c {
+@ Minimum enclosure of DG beyond the N+ pickup AA region is 0.12
+  ENC MNTAP DG < 0.12 ABUT<90 SINGULAR REGION
+}
+DG_7d {
+@ Minimum enclosure of DG beyond the P+ pickup AA region is 0.12
+  ENC MNTAP DG < 0.12 ABUT<90 SINGULAR REGION
+}
+DG_8a {
+@ Minimum space between DG edge and active N+ AA region is 0.43
+  EXT LMOSN DG < 0.43 ABUT<90 SINGULAR REGION
+}
+DG_8b {
+@ Minimum space between DG edge and active P+ AA region is 0.43
+  EXT LMOSP DG < 0.43 ABUT<90 SINGULAR REGION
+}
+DG_8c {
+@ Minimum space between DG edge and N+ pickup AA region is 0.12
+  EXT LNTAP DG < 0.12 ABUT<90 SINGULAR REGION
+}
+DG_8d {
+@ Minimum space between DG edge and P+ pickup AA region is 0.12
+  EXT LNTAP DG < 0.12 ABUT<90 SINGULAR REGION
+}
+//DG_9 {
+//@ DG layer is used to define MV well tube. NW covered by DG is defined as MVNW, while (DG-NW) is defined as MVPW.  
+//}
+DG_9 {
+@ DG must be outside SUBDMY entirely
+  AND DG SUBDMY
+}
+  
+//========================
+//  GT - Poly 1 Gate DRC
+//     a.for LV & MV device
+//========================
+
+GROUP GGT GT_?
+
+GT_1 {
+@ Minimum width of a GT region for interconnects is 0.18um
+  INT INTERGT  < 0.18 ABUT<90 SINGULAR REGION
+}
+GT_2a&b {
+@ Minimum width of a GT region for channel length of LV MOS is 0.18um
+  X = GT INSIDE EDGE LVAA
+  INT X < 0.18 ABUT<90 REGION
+}
+GT_3 {
+@ Minimum space between two GT regions on AA with no contact is 0.25um
+  EXT LMGATE < 0.25 ABUT<90 SINGULAR REGION
+}
+GT_4 {
+@ Minimum space between two GT regions on field oxide area is 0.25um
+  X = INTERGT NOT COIN EDGE LMGATE
+  EXT X < 0.25 ABUT<90 REGION
+}
+GT_5 {
+@ Extension beyond diffusion to form poly end cap is 0.22um
+  X = ACT INSIDE EDGE GT
+  ENC X GT < 0.22 ABUT<90 REGION
+}
+GT_6 {
+@ Minimum extension from AA region to GT is 0.32um
+  ENC GT AA < 0.32 ABUT<90 SINGULAR REGION
+}
+GT_7 {
+@ Minimum space between field interconnect poly and AA is 0.10um
+  X = AA INSIDE EDGE GT
+  Y = AA NOT COIN EDGE X
+  EXT Y INTERGT < 0.10 ABUT<90 REGION
+}
+GT_8 {
+@ Minimum width of a GT region for MV PMOS is 0.60um
+  X = GT INSIDE EDGE MMOSP
+  INT X < 0.60 ABUT<90 REGION
+}
+GT_9 {
+@ Minimum width of GT region for channel length of MV NMOS is 0.6um
+  X = GT INSIDE EDGE MMOSN
+  INT X < 0.60 ABUT<90 REGION
+}
+GT_10ab {
+@ Maximum length of poly between two contacts is 50um when poly width <=0.24
+@ Maximum length of poly between 1 contact and poly line is 50um  when poly width <=0.24
+Z = INT INTERGT <= 0.24 ABUT<90 REGION  
+POLY = Z ENCLOSE CT > 0
+  X = SIZE INTERCT BY 25 INSIDE OF POLY STEP 0.25
+  POLY INTERACT X > 1
+
+  Y = SIZE X BY 25 INSIDE OF POLY STEP 0.25
+  POLY NOT Y
+}
+GT_11a_b {
+@ a. 90 degree bent gate is not allowed
+@ b. GT enter AA region must be perpendicularly
+  X = NOT COINCIDENT EDGE LMGATE AA
+  INT X < 0.01 ABUT == 90 REGION
+  EXT X < 0.01 ABUT == 90 REGION
+
+}
+
+//GT_12 { @ Minimum GT density must be greater than 15%    Covered by PD.GT }
+
+GT_13 {
+@ Minimum space between two GT's with CT on active area is 0.375um
+  X = (SD OR NSD_CAP) INTERACT CT
+  Y = COINCIDENT EDGE LMGATE X
+  EXT Y < 0.375 ABUT<90 REGION
+}
+GT_14 {
+@ Minimum channel length of LV device poly gate on AA with 45 bent is 0.21
+X = LMGATE ANGLE==45
+INT X < 0.21 ABUT<90 REGION
+}
+
+//========================
+//  GT - Poly 1 Gate DRC
+//     b. for HV device 
+//========================
+
+HVGT_1 {
+@ Poly as interconnect is not allowed ,all interconnect must be metal
+HVGT NOT INTERACT (HMOSN OR HMOSP)
+}
+HVGT_2 {
+@ Min & Max GT overlap Field plate space is 1.0
+INT HVGT STIDMY < 1.0 ABUT<90 SINGULAR REGION
+(SIZE HVGT BY -1) AND STIDMY
+}
+HVGT_3 {
+@ Min & Max GT extension AA to form poly end cap is 1.5
+X = HVAA OR STIDMY 
+Y = X INSIDE EDGE GT
+Z = EXPAND EDGE Y OUTSIDE BY 1.5
+((HVGT NOT X) NOT INTERACT CT) NOT Z    
+}
+
+
+
+
+//==========================
+//  GR - Poly Resistor DRC
+//==========================
+
+GROUP GGR GR_?
+
+GR_1 {
+@ The resistor width is larger than 2.0um
+  INT GTR < 2.0 ABUT<90 SINGULAR REGION
+}
+GR_2 {
+@ The separation from SAB to contact on poly must be equal to 0.22um
+  X = (GTR INTERACT SAB) INTERACT CT
+  Y = SAB INTERACT X
+  Z = CT INSIDE X
+  EXPCT = SIZE Z BY 0.22 STEP 0.05 INSIDE OF X
+  EXPCT NOT TOUCH Y
+}
+GR_3 {
+@ The space from an un-related SAB to a resistor poly must be larger than 0.3um
+  X = SAB NOT INTERACT GTR
+  EXT GTR X < 0.30 ABUT<90 REGION
+}
+GR_4a {
+@ The Min. separation between resistors with un-related implant region is 0.26um
+  X = SN NOT INTERACT RESP1
+  EXT GTR X < 0.26 ABUT<90 REGION
+}
+GR_4b {
+@ The Min. separation between resistors with un-related implant region is 0.26um
+  X = SP NOT INTERACT RESP1
+  EXT GTR X < 0.26 ABUT<90 REGION
+}
+GR_4c {
+@ The Min. separation between resistors with un-related implant region is 0.26um
+  X = NLL NOT INTERACT RESP1
+  EXT GTR X < 0.26 ABUT<90 REGION
+}
+GR_4d {
+@ The Min. separation between resistors with un-related implant region is 0.26um
+  X = NLH NOT INTERACT RESP1
+  EXT GTR X < 0.26 ABUT<90 REGION
+}
+GR_4e {
+@ The Min. separation between resistors with un-related implant region is 0.26um
+  X = PLL NOT INTERACT RESP1
+  EXT GTR X < 0.26 ABUT<90 REGION
+}
+GR_4f {
+@ The Min. separation between resistors with un-related implant region is 0.26um
+  X = PLH NOT INTERACT RESP1
+  EXT GTR X < 0.26 ABUT<90 REGION
+}
+
+//Skip GR_5 { The contact to pick-up poly resistor should be a single column }
+//Skip GR_6 { Can not use dog-bone at the end of poly resistor for contact pick-up }
+
+GR_7 {
+@ LDD implant are not allowed in N or P poly resistor
+  AND NLL (GTR INTERACT (SN OR SP))
+  AND NLH (GTR INTERACT (SN OR SP))
+  AND PLL (GTR INTERACT (SN OR SP))
+  AND PLH (GTR INTERACT (SN OR SP))
+} 
+
+
+/*
+//====================================
+//  SDOP - for the asymmetric LV source region AA oxide remove
+//====================================
+
+SDOP_1_2 {
+@ Min & Max SDOP overlap Gate edge for Asymmetric HVMOS LV source region 0.3
+@ Min & Max SDOP Extension from AA for Asymmetric HVMOS LV source region 0.3
+
+SDOPAA = (SDOP AND HVAA) NOT HVGT
+SDOP XOR (SIZE SDOPAA BY 0.3)  
+}
+SDOP_3 {
+@ SDOP cover Symmetric device is not allowed 
+SDOP AND (AA INTERACT NDRF_SD)
+SDOP AND (AA INTERACT PDRF_SD)
+}
+SDOP_4 {
+@ SDOP cover LV & MV region is not allowed 
+SDOP AND (LVAA OR MVAA)
+} 
+*/
+
+
+
+//====================================
+//  NLL - LV NLDD Implantation DRC
+//====================================
+
+GROUP GNLL NLL_?
+
+NLL_1 {
+@ Minimum width of an NLL region is 0.44um
+  INT NLL < 0.44 ABUT<90 SINGULAR REGION
+}
+NLL_2 {
+@ Minimum space between two NLL regions is 0.44um
+@ Merge if the space is less than 0.44um
+  EXT NLL < 0.44 ABUT<90 SINGULAR REGION
+}
+NLL_3 {
+@ Minimum space between an NLL region and a P+ AA region is 0.26um
+  X = (PACT NOT LPTAP) NOT TOUCH EDGE NLL
+  EXT NLL X < 0.26 ABUT<90 REGION
+}
+NLL_4 {
+@ Minimum space between an NLL region and a P+ pick-up AA region is 0.10um
+  X = LPTAP NOT TOUCH EDGE NACT
+  EXT NLL X < 0.10 ABUT<90 REGION
+}
+NLL_5 {
+@ Minimum overlap from an NLL edge to an AA is 0.23um
+  INT NLL NACT < 0.23 ABUT<90 SINGULAR REGION
+}
+NLL_6 {
+@ Minimum enclosure of an NLL region over SN active region is 0.18um
+ENC ((AA AND SN) INSIDE EDGE NLL) NLL < 0.18 ABUT<90 REGION
+}
+NLL_7 {
+@ Minimum space between an NLL region and an NLH AA region is 0.21um
+  X = NLHAA NOT TOUCH EDGE NLLAA
+  EXT NLL X < 0.21 ABUT<90 REGION
+}
+NLL_8_12 {
+@ Minimum enclosure of an NLL region to an N-channel poly gate is 0.32um
+@ Minimum enclosure of an NLL region over N-channel
+@ along the direction of poly gate is 0.35
+  X = GT INSIDE EDGE NACT
+  A = EXPAND EDGE X INSIDE BY 0.32 OUTSIDE BY 0.32 CORNER FILL
+  NGATE = GT AND NACT
+  Y = NGATE COIN EDGE NACT
+  B = EXPAND EDGE Y OUTSIDE BY 0.35 EXTEND BY 0.32
+  C = A OR B
+  (C INTERACT NLL) NOT NLL
+}
+NLL_9 {
+@ Minimum area of an NLL region is 0.40um
+  AREA NLL < 0.40
+}
+NLL_10 {
+@ Separation from an NLL to a butted edge of a butted diffustion P+AA is 0
+  AND NLL LPTAP
+}
+NLL_11_NLH_11 {
+@ Minimum space between NLL and NLH if two AAs are overlapped is 0
+  AND NLL NLH
+}
+//NLL_12 {
+//@ Minimum enclosure of an NLL region over N-channel
+//@ along the direction of poly gate is 0.35
+//  X = NACT INSIDE EDGE GT
+//  ENC X NLL < 0.35 ABUT<90 REGION
+//}
+//NLL_13 {
+//@ Minimum NLL area for a N-channel poly gate must follow NLL.8 and NLL.12
+//}
+
+NLL_14 {
+@ NLL is not allowed in Non-salicide AA/poly resistor 
+  NLL AND ((AA INTERACT RESAA) AND SAB )    
+  NLL AND (GTR AND SAB) 
+} 
+
+
+//======================================
+//  PLL - LV PLDD Implantation DRC
+//======================================
+
+GROUP GPLL PLL_?
+
+PLL_1 {
+@ Minimum width of a PLL region is 0.44um
+  INT PLL < 0.44 ABUT<90 SINGULAR REGION
+}
+PLL_2 {
+@ Minimum space between two PLL regions is 0.44um
+@ Merge if the space is less than 0.44um
+  EXT PLL < 0.44 ABUT<90 SINGULAR REGION
+}
+PLL_3 {
+@ Minimum space from a PLL region to an N+ AA region is 0.26um
+  X = (NACT NOT LNTAP) NOT TOUCH EDGE PLL
+  EXT PLL X < 0.26 ABUT<90 REGION
+}
+PLL_4 {
+@ Minimum space from a PLL region to an N+ pick-up AA region is 0.10um
+  X = LNTAP NOT TOUCH EDGE PACT
+  EXT PLL X < 0.10 ABUT<90 REGION
+}
+PLL_5 {
+@ Minimum enclosure from a PLL edge to an AA is 0.23um
+  INT PLL PACT < 0.23 ABUT<90 SINGULAR REGION
+}
+PLL_6 {
+@ Minimum enclosure of a PLL region beyond a SP active region is 0.18um
+ENC ((AA AND SP) INSIDE EDGE PLL) PLL < 0.18 ABUT<90 REGION
+}
+PLL_7 {
+@ Minimum space of a PLL region to a PLH AA region is 0.21um
+  X = PLHAA NOT TOUCH EDGE PLLAA
+  EXT PLL X < 0.21 ABUT<90 REGION
+}
+PLL_8_12 {
+@ Minimum enclosure of an PLL region to an P-channel poly gate is 0.32um
+@ Minimum enclosure of an PLL region over P-channel
+@ along the direction of poly gate is 0.35
+  X = GT INSIDE EDGE PACT
+  A = EXPAND EDGE X INSIDE BY 0.32 OUTSIDE BY 0.32 CORNER FILL
+  PGATE = GT AND PACT
+  Y = PGATE COIN EDGE PACT
+  B = EXPAND EDGE Y OUTSIDE BY 0.35 EXTEND BY 0.32
+  C = A OR B
+  (C INTERACT PLL) NOT PLL
+}
+PLL_9 {
+@ Minimum area of a PLL region is 0.40um
+  AREA PLL < 0.40
+}
+PLL_10 {
+@ Separation from a PLL to a butted edge of a butted diffustion N+ AA is 0.00um
+  AND PLL LNTAP
+}
+PLL_11_PLH_11 {
+@ Minimum space between PLL and PLH if two AAs are overlapped is 0.00um
+  AND PLL PLH
+}
+//PLL_12 {
+//@ Minimum enclosure of a PLL region of P-channel
+//@ along the direction of poly gate is 0.35
+//  X = PACT INSIDE EDGE GT
+//  ENC X PLL < 0.35 ABUT<90 REGION
+//}
+//PLL_13 {
+//@ Minimum PLL area for a P-channel poly gate must follow PLL.8 and PLL.12
+//}
+
+PLL_14 {
+@ PLL implant is not allowed in Non-salicide AA/poly resistor 
+  PLL AND ((AA INTERACT RESAA) AND SAB)
+  PLL AND (GTR AND SAB) 
+} 
+
+
+//=====================================
+//  NLH - 3.3V NLDD Implantation DRC
+//=====================================
+
+GROUP GNLH NLH_?
+
+NLH_1 {
+@ Minimum width of an NLH region is 0.44um
+  INT NLH < 0.44 ABUT<90 SINGULAR REGION
+}
+NLH_2 {
+@ Minimum space between two NLH regions is 0.44um
+@ Merge if the space is less than 0.44um
+  EXT NLH < 0.44 ABUT<90 SINGULAR REGION
+}
+NLH_3 {
+@ Minimum space between an NLH region and a P+ AA region is 0.26um
+  X = (PACT NOT MPTAP) NOT TOUCH EDGE NLH
+  EXT NLH X < 0.26 ABUT<90 REGION
+}
+NLH_4 {
+@ Minimum space between an NLH region and a Pwell pick-up P+ AA is 0.10um
+  X = MPTAP NOT TOUCH EDGE NACT
+  EXT NLH X < 0.10 ABUT<90 REGION
+}
+NLH_5 {
+@ Minimum overlap from an NLH edge to an AA is 0.23um
+  INT NLH NACT < 0.23 ABUT<90 SINGULAR REGION
+}
+NLH_6 {
+@ Minimum enclosure of an NLH region beyond an NP active region is 0.18um
+ENC ((AA AND SN) INSIDE EDGE NLH) NLH < 0.18 ABUT<90 REGION
+}
+NLH_7 {
+@ Minimum space between an NLH region and an NLL AA region is 0.21um
+  X = NLLAA NOT TOUCH EDGE NLHAA
+  EXT NLH X < 0.21 ABUT<90 REGION
+}
+NLH_8_12 {
+@ Minimum enclosure of an NLH region to an N-channel poly gate is 0.32um
+@ Minimum enclosure of an NLH region over N-channel
+@ along the direction of poly gate is 0.35
+  X = GT INSIDE EDGE NACT
+  A = EXPAND EDGE X INSIDE BY 0.32 OUTSIDE BY 0.32 CORNER FILL
+  NGATE = GT AND NACT
+  Y = NGATE COIN EDGE NACT
+  B = EXPAND EDGE Y OUTSIDE BY 0.35 EXTEND BY 0.32
+  C = A OR B
+  (C INTERACT NLH) NOT NLH
+}
+NLH_9 {
+@ Minimum area of an NLH region is 0.40um
+  AREA NLH < 0.40
+}
+NLH_10 {
+@ Separation from an NLH to a butted edge of a butted diffustion P+ AA is 0.00um
+  AND NLH MPTAP
+}
+//NLH_12 {
+//@ Minimum enclosure of an NLH region to N-channel
+//@ along the direction of poly gate is 0.35um
+//  X = NACT INSIDE EDGE GT
+//  ENC X NLH < 0.35 ABUT<90 REGION
+//}
+//NLH_13 {
+//@ Minimum NLH area for a N-channel poly gate must follow NLH.8 and NLH.12
+//}
+
+NLH_14 {
+@ NLH is not allowed in Non-salicide AA/poly resistor 
+  NLH AND ((AA INTERACT RESAA) AND SAB) 
+  NLH AND (GTR AND SAB) 
+} 
+  
+
+//====================================
+//  PLH - 3.3V PLDD Implantation DRC
+//====================================
+
+GROUP GPLH PLH_?
+
+PLH_1 {
+@ Minimum width of a PLH region is 0.44um
+  INT PLH < 0.44 ABUT<90 SINGULAR REGION
+}
+PLH_2 {
+@ Minimum space between two PLH regions is less than 0.44um
+  EXT PLH < 0.44 ABUT<90 SINGULAR REGION
+}
+PLH_3 {
+@ Minimum space between a PLH region and an N+ AA is 0.26um
+  X = (NACT NOT MNTAP) NOT TOUCH EDGE PLH
+  EXT PLH X < 0.26 ABUT<90 REGION
+}
+PLH_4 {
+@ Minimum space between a PLH region and an N+ pick-up AA region is 0.10um
+  X = MNTAP NOT TOUCH EDGE PACT
+  EXT PLH X < 0.10 ABUT<90 REGION
+}
+PLH_5 {
+@ Minimum overlap from a PLH edge to an AA is 0.23um
+  INT PLH PACT < 0.23 ABUT<90 SINGULAR REGION
+}
+PLH_6 {
+@ Minimum enclosure of a PLH region beyond a SP active region is 0.18um
+ENC ((AA AND SP) INSIDE EDGE PLH) PLH < 0.18 ABUT<90 REGION
+}
+PLH_7 {
+@ Minimum space between a PLH region and a PLL AA region is 0.21um
+  X = PLLAA NOT TOUCH EDGE PLHAA
+  EXT PLH X < 0.21 ABUT<90 REGION
+}
+PLH_8_12 {
+@ Minimum enclosure of an PLH region to an P-channel poly gate is 0.32um
+@ Minimum enclosure of an PLH region over P-channel
+@ along the direction of poly gate is 0.35
+  X = GT INSIDE EDGE PACT
+  A = EXPAND EDGE X INSIDE BY 0.32 OUTSIDE BY 0.32 CORNER FILL
+  PGATE = GT AND PACT
+  Y = PGATE COIN EDGE PACT
+  B = EXPAND EDGE Y OUTSIDE BY 0.35 EXTEND BY 0.32
+  C = A OR B
+  (C INTERACT PLH) NOT PLH
+}
+PLH_9 {
+@ Minimum area of a PLH region is 0.40um
+  AREA PLH < 0.40
+}
+PLH_10 {
+@ Separation from a PLH to butted edge of a butted N+ AA
+  AND PLH MNTAP
+}
+//PLH_12 {
+//@ Minimum enclosure of an PLH region to P-channel
+//@ along the direction of poly gate is 0.35um
+//  X = PACT INSIDE EDGE GT
+//  ENC X PLH < 0.35 ABUT<90 REGION
+//}
+//PLH_13 {
+//@ Minimum PLH area for a P-channel poly gate must follow PLH.8 and PLH.12
+//}
+
+PLH_14 {
+@ PLH is not allowed in Non-salicide AA/poly resistor 
+  PLH AND ((AA INTERACT RESAA) AND SAB) 
+  PLH AND (GTR AND SAB) 
+} 
+
+
+//=============================
+//  SN - N+ Implantation DRC
+//=============================
+
+GROUP GSN SN_?
+
+SN_1 {
+@ Minimum width of a SN region is 0.44um
+  INT SN < 0.44 ABUT<90 SINGULAR REGION
+}
+SN_2 {
+@ Minimum space between two SN regions is less than 0.44um
+  EXT SN < 0.44 ABUT<90 SINGULAR REGION
+}
+SN_3 {
+@ Minimum space between a SN region and a P+ AA is 0.26um (inside NW)
+  X = LMMOSP NOT TOUCH EDGE  NTAP
+  EXT (SN INTERACT NTAP) X < 0.26 ABUT<90 REGION
+}
+SN_4 {
+@ Minimum space between a SN region and of P+ pick-up AA region is 0.10um
+  X = NOT TOUCH EDGE PTAP  SN
+  EXT SN X < 0.10 ABUT<90 REGION
+}
+SN_5 {
+@ Minimum space between a SN region and a non-butted edge of P-well pick-up
+@ P+ AA region if the distance between P+ AA and N-well<0.43um is 0.18um
+  NW_over = SIZE NWDEV BY 0.425
+  tmp = NW_over NOT NWDEV
+  Y = PTAP AND NW_over
+  Z = PTAP NOT NW_over
+  X = SN NOT INSIDE EDGE AA
+  EXT Y X < 0.18 ABUT<90 REGION OPPOSITE
+  EXT Z X < 0.10 ABUT<90 REGION OPPOSITE
+}
+SN_6 {
+@ Minimum space from a SN edge to a P-channel Poly gate is 0.32um
+  X = PGATE NOT TOUCH EDGE AA
+  EXT SN X < 0.32 ABUT<90 OPPOSITE
+}
+SN_7_17 {
+@ Minimum enclosure of a SN edge to an N-channel Poly gate is 0.32um
+@ Minimum space from a SN edge to a N-channel Poly gate
+@ along the direction of poly gate is 0.35
+  X = GT INSIDE EDGE (NACT NOT (AA CUT NDRF)) 
+  A = EXPAND EDGE X INSIDE BY 0.32 OUTSIDE BY 0.32 CORNER FILL
+  NGATE = GT AND (NACT NOT (AA CUT NDRF))
+  Y = NGATE COIN EDGE (NACT NOT (AA CUT NDRF))
+  B = EXPAND EDGE Y OUTSIDE BY 0.35 EXTEND BY 0.32
+  C = A OR B
+
+  E1 = GT INSIDE EDGE (AA NOT CUT NDRF)
+  ENC E1 SN < 0.32 ABUT<90
+
+  E2 = (AA NOT CUT NDRF) INSIDE EDGE GT
+  R = ENC E2 SN < 0.35 ABUT<90 REGION
+
+  R AND C
+}
+SN_8 {
+@ Minimum overlap from a SN edge to an AA is 0.23um
+  X = NOT TOUCH EDGE SN AA
+  INT AA X < 0.23 ABUT<90 REGION
+}
+SN_9 {
+@ Minimum enclosure of a SN region beyond a SN active region is 0.18um
+  X = (((NACT NOT (AA CUT NDRF))  NOT NTAP) NOT SNR) NOT COIN EDGE PACT
+  ENC X SN < 0.18 ABUT<90 REGION
+}
+SN_10&11 {
+@ Minimum enclosure of a SN region beyond an N+ pick-up AA region is 0.02um
+@ if the distance between N+ AA and P-well>=0.43um
+@ a. To obey this rule and SN.3 simultaneously, the minimum space
+@ between N+ pick-up AA and SP active AA should be increased to 0.44um
+@ b. To obey this rule and SN.5 simultaneously, the minimum space
+@ between N+ pick-up AA and SP active AA should be increased to 0.36um
+  NTAP1 = (NTAP NOT AAR) INSIDE NW_USIZE
+  NTAP2 = (NTAP NOT AAR) NOT INSIDE NW_USIZE
+  X = NOT TOUCH EDGE NTAP1 SP
+  Y1 = (NOT NTAP2 NW_USIZE) NOT INSIDE NWHT
+  Y2 = (NOT NTAP2 NW_USIZE) INSIDE NWHT
+  Z = AND NTAP2 NW_USIZE
+  ENC X SN < 0.02 ABUT<90 REGION
+  ENC ((Y1 NOT COIN EDGE Z) NOT COIN EDGE SP) SN < 0.18 ABUT<90 REGION OPPOSITE
+  ENC (Y2 NOT COIN EDGE SP) SN < 0.02 ABUT<90 REGION OPPOSITE
+  ENC ((Z NOT COIN EDGE Y1) NOT COIN EDGE SP) SN < 0.02 ABUT<90 REGION OPPOSITE
+}
+SN_12&SP_12 {
+@ Separation from a SN region to butted edge of a butted diffusion SP AA is 0.00um
+  AND LMOSN LPTAP
+  AND MMOSN MPTAP
+  AND HMOSN HPTAP
+  X = (NACT TOUCH SP) NOT COIN EDGE PACT
+  X TOUCH EDGE SP
+  Y = (PACT TOUCH SN) NOT COIN EDGE NACT
+  Y TOUCH EDGE SN
+}
+SN_13&SP_13 {
+@ Minimum extension of a SN region along the edge of a butted diffusion N+ AA/P+ AA is 0.00um
+  AND LMOSP LNTAP
+  AND MMOSP MNTAP
+  AND HMOSP HNTAP
+}
+SN_14 {
+@ Minimum area of a SN region is 0.40um
+  AREA SN < 0.40
+}
+SN_15 {
+@ Minimum extension of a SN region beyond a poly as a resistor
+@ SAB poly without SN or SP is not allowed
+  ENC GTR SN < 0.18 ABUT<90 SINGULAR REGION
+  ((GTR INTERACT SAB) NOT SN) NOT SP 
+}
+SN_16 {
+@ Minimum space from a SN edge to a P-channel Poly gate
+@ along the direction of poly gate is 0.35
+  X = PACT INSIDE EDGE GT
+  EXT X SN < 0.35 ABUT<90 REGION
+}
+SN_17 {
+@ Minimum enclosure from a SN edge to a N-channel Poly gate
+@ along the direction of poly gate is 0.35
+  X = MOSN INSIDE EDGE GT
+  ENC X SN < 0.35 ABUT<90 REGION
+}
+SN_18&SP_18 {
+@ SN is not allowed to overlap with SP
+  AND SN SP
+}
+//SN_19 { @ It's prohibited that SN being generated by reverse tone of SP, 
+//          since this operation might violate SN.3 & SN.4 }
+//SN_20 { @ Minimum SN area for a N-channel Poly gate must follow SN.7 & SN.17 }
+
+
+//==============================
+//  SP - P+ Implantation DRC
+//==============================
+
+GROUP GSP SP_?
+
+SP_1 {
+@ Minimum width of a SP region is 0.44um
+  INT SP < 0.44 ABUT<90 SINGULAR REGION
+}
+SP_2 {
+@ Minimum space between two SP regions is 0.44um
+@ Merge if the space is less than 0.44um
+  EXT SP < 0.44 ABUT<90 SINGULAR REGION
+}
+SP_3 {
+@ Minimum space between a SP region and a N+ AA is 0.26um (inside PW)
+  X = MOSN NOT TOUCH EDGE PTAP
+  EXT ((SP INTERACT PTAP) NOT TOUCH SN) X < 0.26 ABUT<90 REGION
+}
+SP_4 {
+@ Minimum space between a SP region and a N+ pick-up AA region is 0.10um
+  X = NOT TOUCH EDGE NTAP SP
+  EXT SP X < 0.10 ABUT<90 REGION
+}
+SP_5 {
+@ Minimum space between a SP region and a non-butted edge of N-well pick-up
+@ N+AA region if the distance between N+ AA and P-well<0.43um is 0.18um
+  PB_over = SIZE PW BY 0.425
+  tmp = PB_over NOT PW
+  Y = NTAP AND PB_over
+  Z = NTAP NOT PB_over
+  X = SP NOT INSIDE EDGE AA
+  EXT Y X < 0.18 ABUT<90 REGION OPPOSITE
+  EXT Z X < 0.10 ABUT<90 REGION OPPOSITE
+}
+SP_6 {
+@ Minimum space from a SP edge to N-channel Poly gate is 0.32um
+  X = GT INSIDE EDGE AA
+  EXT SP X < 0.32 ABUT<90 OPPOSITE
+}
+SP_7_17 {
+@ Minimum enclosure of a SP edge to P-channel Poly gate is 0.32um
+@ Minimum space from a SP edge to a P-channel Poly gate
+@ along the direction of poly gate is 0.35
+  X = GT INSIDE EDGE (PACT NOT (AA CUT PDRF))
+  A = EXPAND EDGE X INSIDE BY 0.32 OUTSIDE BY 0.32 CORNER FILL
+  PGATE = GT AND (PACT NOT (AA CUT PDRF))
+  Y = PGATE COIN EDGE (PACT NOT (AA CUT PDRF))
+  B = EXPAND EDGE Y OUTSIDE BY 0.35 EXTEND BY 0.32
+  C = A OR B
+
+  E1 = GT INSIDE EDGE (AA NOT CUT PDRF)
+  ENC E1 SP < 0.32 ABUT<90
+
+  E2 = (AA NOT CUT PDRF) INSIDE EDGE GT
+  R = ENC E2 SP < 0.35 ABUT<90 REGION
+
+  R AND C
+}
+SP_8 {
+@ Minimum overlap from a SP edge to an AA is 0.23um
+  X = NOT TOUCH EDGE SP AA
+  INT AA X < 0.23 ABUT<90 REGION
+}
+SP_9 {
+@ Minimum enclosure of a SP region beyond a SP active region is 0.18um
+  X = ((PACT NOT (AA CUT PDRF)) NOT PTAP) NOT COIN EDGE NACT
+  ENC X SP < 0.18 ABUT<90 REGION
+}
+SP_10&11 {
+@ Minimum extension of an SP region beyond a P+ pick-up AA region is 0.02um
+@ if the distance between P+AA and Nwell>=0.43um
+@ c. To obey this rule and SP.3 simultaneously,
+@ P+ pick-up AA to SN active AA minimum spacing must be increased to 0.44um
+@ d. To obey this rule and SP.5 simultaneously,
+@ P+ pick-up AA to SN pick-up AA minimum spacing must be increased to 0.36um
+  PTAP1 = PTAP INSIDE PW_USIZE
+  PTAP2 = PTAP NOT INSIDE PW_USIZE
+  X = NOT TOUCH EDGE PTAP1 SN
+  Y1 = (NOT PTAP2 PW_USIZE) NOT INSIDE PWHT
+  Y2 = (NOT PTAP2 PW_USIZE) INSIDE PWHT
+  Z = AND PTAP2 PW_USIZE
+  ENC X SP < 0.02 ABUT<90 REGION OPPOSITE
+  ENC ((Y1 NOT COIN EDGE Z) NOT COIN EDGE SN) SP < 0.18 ABUT<90 REGION OPPOSITE
+  ENC (Y2 NOT COIN EDGE SN) SP < 0.02 ABUT<90 REGION OPPOSITE
+  ENC ((Z NOT COIN EDGE Y1) NOT COIN EDGE SN) SP < 0.02 ABUT<90 REGION OPPOSITE
+}
+SP_14 {
+@ Minimum area of a SP region is 0.40um
+  AREA SP < 0.40
+}
+SP_15 {
+@ Minimum extension of a SP region beyond a poly as a resistor
+  GTRes = GTR OR GT_HRP
+  ENC GTRes SP < 0.18 ABUT<90 SINGULAR REGION
+  ((GTR INTERACT SAB) NOT SN) NOT SP 
+  (GT_HRP NOT HR_GT) NOT SP
+}
+SP_16 {
+@ Minimum space from a SP edge to a N-channel Poly gate
+@ along the direction of poly gate is 0.35
+  X = NACT INSIDE EDGE GT
+  EXT X SP < 0.35 ABUT<90 REGION
+}
+SP_17 {
+@ Minimum space from a SP edge to a P-channel Poly gate
+@ along the direction of poly gate is 0.35
+  X = LMMOSP INSIDE EDGE GT
+  ENC X SP < 0.35 ABUT<90 REGION
+}
+//SP_19 {
+//@ It is prohibited that SP is generated by the reverse tone of SN,
+//@ since this operation might violated SP.3 and SP.4
+//}
+//SP_20 {
+//@ Minimum SP area for a P-channel poly gate must follow SP.7 and SP.17
+//}
+
+
+//==============================
+//  SAB - Salicide Block DRC
+//==============================
+
+GROUP GSAB SAB_?
+
+SAB_1 {
+@ Minimum width is 0.43um
+  INT SAB < 0.43 ABUT<90 SINGULAR REGION
+}
+SAB_2 {
+@ Minimum space is 0.43um
+  EXT SAB < 0.43 ABUT<90 SINGULAR REGION
+}
+SAB_3 {
+@ Minimum space to unrelated diffusion is 0.22um
+  EXT SAB AA < 0.22 ABUT<90 SINGULAR REGION
+}
+SAB_4 {
+@ Minimum space to contact is 0.22um
+  EXT SAB CT < 0.22 ABUT<90 SINGULAR REGION
+}
+SAB_5 {
+@ Minimum space to poly on diffusion is 0.45um
+  EXT SAB GATE < 0.45 ABUT<90 SINGULAR REGION
+}
+SAB_6 {
+@ Minimum extension over related diffusion is 0.22um
+  ENC AA SAB < 0.22 ABUT<90 SINGULAR REGION
+}
+SAB_7 {
+@ Minimum extension of an diffusion over related SAB is 0.22um
+  ENC SAB AA < 0.22 ABUT<90 SINGULAR REGION
+}
+SAB_8 {
+@ Minimum extension of SAB over related poly on field oxide is 0.22um
+//  X = SAB NOT COINCIDENT EDGE INTERGT
+//  ENC INTERGT X < 0.22 ABUT<90 REGION
+  X = GT INTERACT RESP1
+  ENC X SAB < 0.22 ABUT<90 REGION
+}
+SAB_9 {
+@ Minimum space of SAB to unrelated poly on field oxide is 0.30um
+  EXT SAB INTERGT < 0.30 ABUT<90 SINGULAR REGION
+}
+SAB_10 {
+@ Minimum area of SAB is 2.00um
+  AREA SAB < 2.00
+}
+
+HVCT = CT AND (HVAA OR HVGT)
+HVM1 = M1 INTERACT HVCT
+HVV1 = V1 AND HVM1
+HVM2 = M2 INTERACT HVV1
+HVV2 = V2 AND HVM2
+HVM3 = M3 INTERACT HVV2
+HVV3 = V3 AND HVM2
+HVM4 = M4 INTERACT HVV3
+HVTV1 = TV1 AND HVM3
+HVTM1 = TM1 INTERACT HVTV1 
+
+
+//====================
+//  CT - Contact DRC
+//====================
+
+GROUP GCT CT_?
+
+CT_1 {
+@ Mininmum/Maximum contact size is 0.22um
+  NOT RECTANGLE CT == 0.22 BY == 0.22
+}
+CT_2 {
+@ Minimum space between two contacts is 0.25um
+  EXT CT < 0.25 ABUT<90 SINGULAR REGION
+}
+CT_3 {
+@ Minimum space between two contacts in a contact array
+@ with row and column numbers are both greater than 3 is 0.28um
+  X = SIZE CT BY 0.155 OVERUNDER
+  Y = SIZE X BY 0.814 UNDEROVER
+  Z = CT INSIDE Y
+  EXT Z < 0.28 ABUT<90 SINGULAR REGION
+}
+CT_4 {
+@ Minimum space between poly contact to AA is 0.20um
+  EXT INTERCT AA < 0.20 ABUT<90 SINGULAR REGION
+}
+CT_5 {
+@ Minimum space between poly to diffusion contact is 0.16um
+  EXT GATE ACT_CT < 0.16 ABUT<90 SINGULAR REGION
+}
+CT_6_7 {
+@ Minimum enclosure of an AA region beyond an AA CT region is 0.10um
+@ Minimum enclosure of a poly region beyond a poly CT region is 0.10um
+  ENC CT (AA OR GT) < 0.10 ABUT<90 OVERLAP OUTSIDE ALSO SINGULAR
+}
+CT_8 {
+@ Minimum enclosure of a SN region beyond an AA CT region is 0.12um
+  ENC ACT_CT SN < 0.12 ABUT<90 SINGULAR REGION
+}
+CT_9 {
+@ Minimum enclosure of an SP region beyond an AA CT region is 0.12um
+  ENC ACT_CT SP < 0.12 ABUT<90 SINGULAR REGION
+}
+CT_10 {
+@ CT on gate region is forbidden
+  AND GATE CT
+}
+CT_11 {
+@ AA contact located on SN/SP boundary is not allowed
+  PACT_CT = SP AND ACT_CT
+  NACT_CT = SN AND ACT_CT
+  NOT RECTANGLE NACT_CT == 0.22 BY == 0.22
+  NOT RECTANGLE PACT_CT == 0.22 BY == 0.22
+}
+//CT_12 {
+//@ Non-salicided contacts are not allowed
+//  AND SAB CT
+//}
+CT_13 {
+@ CT on HV region must be > = 2 contacts
+ (M1 AND HVAA) INTERACT CT  == 1
+ (M1 AND HVGT)  INTERACT CT  == 1
+}
+CT_14 {
+@ Minimum space between high voltage poly contact to diffusion area is 0.5
+EXT (CT AND HVAA) HVGT <0.5 ABUT<90 SINGULAR REGION
+}
+CT_15a {
+@ Minimum space of HV AA enclosure HV AA CT is 0.23
+ENC (CT AND HVAA) HVAA < 0.23 ABUT<90 SINGULAR REGION 
+}
+CT_15b {
+@ Minimum space of HV GT enclosure HV GT CT is 0.23
+ENC CT HVGT < 0.23 ABUT<90 SINGULAR REGION  
+}
+ 
+//====================
+//  M1 - Metal 1 DRC
+//====================
+
+
+//--* Find Wide Metal *--//
+
+
+WIDE_M1 = M1 INTERACT (SIZE M1 BY -5)   // wide metal
+
+// begin shrink
+WDM1_45 = ANGLE WIDE_M1 >0<90
+WDM1_90 = NOT ANGLE WIDE_M1 >0<90
+
+WDM1_EXP_45 = EXPAND EDGE WDM1_45 INSIDE BY 5*1.414213562
+WDM1_EXP_90 = EXPAND EDGE WDM1_90 INSIDE BY 5 EXTEND BY 5
+
+THIN_M1_TMP = WIDE_M1 NOT (WDM1_EXP_45 OR WDM1_EXP_90)
+THIN_M1 = SNAP THIN_M1_TMP 1            // end of shrink
+
+// begin grow
+TNM1_45 = ANGLE THIN_M1 >0<90
+TNM1_90 = NOT ANGLE THIN_M1 >0<90
+
+TNM1_EXP_45_TMP = EXPAND EDGE TNM1_45 OUTSIDE BY 5*1.414213562
+TNM1_EXP_45 = SNAP TNM1_EXP_45_TMP 1
+TNM1_EXP_90 = EXPAND EDGE TNM1_90 OUTSIDE BY 5 EXTEND BY 5
+
+TNM1_EXP = TNM1_EXP_45 OR TNM1_EXP_90
+
+WDM1_PRE = TNM1_EXP OR THIN_M1
+WDM1_PRE_FILL = EXT WDM1_PRE < 5 ABUT>0<90 INTERSECTING ONLY REGION
+
+M1OVER10 = WDM1_PRE OR WDM1_PRE_FILL    // end of grow
+
+
+//--* End of Finding Wide Metal *--//
+
+
+GROUP GM1 M1_?
+
+M1_1 {
+@ Minimum width of M1 region is 0.23um
+  INT M1 < 0.23 ABUT<90 SINGULAR REGION
+}
+M1_2 {
+@ Minimum space between two M1 regions is 0.23um
+  EXT M1 < 0.23 ABUT<90 SINGULAR REGION
+}
+M1_3&4 {
+@ Minimum enclosure of M1 region over CT region is 0.005um
+@ Minimum enclosure of M1 line end region beyond CT region is 0.06um
+@ For CT at 90 degree corner, one side must be considered as line end
+  X = RECTANGLE ENC CT M1 ABUT<90  OUTSIDE ALSO
+  GOOD 0.005 OPPOSITE 0.06 OPPOSITE 0.005 OPPOSITE 0.06 OPPOSITE
+
+  ENC X M1 < 0.005 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO
+
+  Y = ENC [x] M1 < 0.06 OPPOSITE
+  INT Y < 0.01 ABUT==90 INTERSECTING ONLY
+}
+M1_5 {
+@ Minimum space between M1 lines with one or both metal line width
+@ and length are greater than 10um is 0.60um
+@ The minimum space must be maintained between a metal line and a
+@ small piece of metal(<10) that is connected to the wide metal
+@ within 1.0um range from the wide metal
+  X = SIZE M1OVER10 BY 1.0 STEP 0.148 INSIDE OF WIDE_M1
+  EXT X M1 < 0.60 ABUT<90 SINGULAR REGION
+}
+M1_6 {
+@ Minimum area of M1 region is 0.20um
+  AREA M1 < 0.20
+}
+
+//M1_7 { @ Minimum density of M1 area is 30%
+// 	 Covered by PD.M1 }
+//M1_8 {
+//@ Dummy metal spacing to be larger than 1.0um and there should be
+//@ no active device underneath dummy metal pattern.A dummmy metal example
+//@ which SMIC used in qual vehicle is 2.0umx5um dummy lines with line spacing of 2.0um
+//}
+
+//M1_9 {
+//@ M1 as interconnect is allowed just for internal HV transistor
+//@ External interconnect between two HV transistors must be Mn
+//}
+M1_10 {
+@ M1 pass through both HV area and LV/MV area is not allowed 
+@ Interconnect passed through HV and LV/MV area must be Mn(n>=2)
+HVM1 AND (NW OR PW)
+}
+
+//====================
+//  M2 - Metal 2 DRC
+//====================
+
+
+//--* Find Wide Metal *--//
+
+WIDE_M2        = M2 INTERACT (SIZE M2 BY -5)   // wide metal
+
+// begin shrink
+WDM2_45        = ANGLE WIDE_M2 >0<90
+WDM2_90        = NOT ANGLE WIDE_M2 >0<90
+
+WDM2_EXP_45    = EXPAND EDGE WDM2_45 INSIDE BY 5*1.414213562
+WDM2_EXP_90    = EXPAND EDGE WDM2_90 INSIDE BY 5 EXTEND BY 5
+
+THIN_M2_TMP    = WIDE_M2 NOT (WDM2_EXP_45 OR WDM2_EXP_90)
+THIN_M2        = SNAP THIN_M2_TMP 1            // end of shrink
+
+// begin grow
+TNM2_45        = ANGLE THIN_M2 >0<90
+TNM2_90        = NOT ANGLE THIN_M2 >0<90
+
+TNM2_EXP_45_TMP = EXPAND EDGE TNM2_45 OUTSIDE BY 5*1.414213562
+TNM2_EXP_45    = SNAP TNM2_EXP_45_TMP 1
+TNM2_EXP_90    = EXPAND EDGE TNM2_90 OUTSIDE BY 5 EXTEND BY 5
+
+TNM2_EXP       = TNM2_EXP_45 OR TNM2_EXP_90
+
+WDM2_PRE       = TNM2_EXP OR THIN_M2
+WDM2_PRE_FILL  = EXT WDM2_PRE < 5 ABUT>0<90 INTERSECTING ONLY REGION
+
+M2OVER10       = WDM2_PRE OR WDM2_PRE_FILL    // end of grow
+
+
+//--* End of Finding Wide Metal *--//
+
+
+GROUP GM2 M2_?
+
+M2_1 {
+@ Minimum width of an M2 region is 0.28um
+  INT M2 < 0.28 ABUT<90 SINGULAR REGION
+}
+M2_2 {
+@ Minimum space between two M2 regions is 0.28um
+  EXT M2 < 0.28 ABUT<90 SINGULAR REGION
+}
+M2_3_4 {
+@ Minimum extension of M2 region beyond V1 region is 0.01
+@ Minimum extension of M2 line end region beyond V1 region is 0.06
+  X = RECTANGLE ENC V1 M2 ABUT<90  OUTSIDE ALSO
+  GOOD 0.01 OPPOSITE 0.06 OPPOSITE 0.01 OPPOSITE 0.06 OPPOSITE
+
+  ENC X M2 < 0.01 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO
+
+  Y = ENC [x] M2 < 0.06 OPPOSITE
+  INT Y < 0.01 ABUT==90 INTERSECTING ONLY
+}
+M2_5 {
+@ Minimum space between M2 lines with one or both metal line width
+@ and length are greater than 10um is 0.60um
+@ The minimum space must be maintained between a metal line and a
+@ small piece of metal(<10) that is connected to the wide metal
+@ within 1.0um range from the wide metal
+  X = SIZE M2OVER10 BY 1.0 STEP 0.148 INSIDE OF WIDE_M2
+  EXT X M2 < 0.60 ABUT<90 SINGULAR REGION
+}
+M2_6 {
+@ Minimum area of a M2 region is 0.20um
+  AREA M2 < 0.20
+}
+
+//M2_7 { @ Minimum density of M2 area is 30%
+//	  Covered by PD.M2 }
+//M2_8 {
+//@ Dummy metal spacing to be larger than 1.0um and there should be
+//@ no active device underneath dummy metal pattern.A dummmy metal example
+//@ which SMIC used in qual vehicle is 2.0umx5um dummy lines with line spacing of 2.0um
+//}
+
+M2_9 {
+@ Minimum space between two HV M2 interconnect is 0.5
+EXT HVM2 < 0.5 ABUT<90 SINGULAR REGION
+}
+
+
+//====================
+//  M3 - Metal 3 DRC
+//====================
+
+
+//--* Find Wide Metal *--//
+
+WIDE_M3        = M3 INTERACT (SIZE M3 BY -5)   // wide metal
+
+// begin shrink
+WDM3_45        = ANGLE WIDE_M3 >0<90
+WDM3_90        = NOT ANGLE WIDE_M3 >0<90
+
+WDM3_EXP_45    = EXPAND EDGE WDM3_45 INSIDE BY 5*1.414213562
+WDM3_EXP_90    = EXPAND EDGE WDM3_90 INSIDE BY 5 EXTEND BY 5
+
+THIN_M3_TMP    = WIDE_M3 NOT (WDM3_EXP_45 OR WDM3_EXP_90)
+THIN_M3        = SNAP THIN_M3_TMP 1            // end of shrink
+
+// begin grow
+TNM3_45        = ANGLE THIN_M3 >0<90
+TNM3_90        = NOT ANGLE THIN_M3 >0<90
+
+TNM3_EXP_45_TMP = EXPAND EDGE TNM3_45 OUTSIDE BY 5*1.414213562
+TNM3_EXP_45    = SNAP TNM3_EXP_45_TMP 1
+TNM3_EXP_90    = EXPAND EDGE TNM3_90 OUTSIDE BY 5 EXTEND BY 5
+
+TNM3_EXP       = TNM3_EXP_45 OR TNM3_EXP_90
+
+WDM3_PRE       = TNM3_EXP OR THIN_M3
+WDM3_PRE_FILL  = EXT WDM3_PRE < 5 ABUT>0<90 INTERSECTING ONLY REGION
+
+M3OVER10       = WDM3_PRE OR WDM3_PRE_FILL    // end of grow
+
+
+//--* End of Finding Wide Metal *--//
+
+
+GROUP GM3 M3_?
+
+M3_1 {
+@ Minimum width of an M3 region is 0.28um
+  INT M3 < 0.28 ABUT<90 SINGULAR REGION
+}
+M3_2 {
+@ Minimum space between two M3 regions is 0.28um
+  EXT M3 < 0.28 ABUT<90 SINGULAR REGION
+}
+M3_3_4 {
+@ Minimum extension of M3 region beyond V2 region is 0.01
+@ Minimum extension of M3 line end region beyond V2 region is 0.06
+  X = RECTANGLE ENC V2 M3 ABUT<90  OUTSIDE ALSO
+  GOOD 0.01 OPPOSITE 0.06 OPPOSITE 0.01 OPPOSITE 0.06 OPPOSITE
+
+  ENC X M3 < 0.01 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO
+
+  Y = ENC [x] M3 < 0.06 OPPOSITE
+  INT Y < 0.01 ABUT==90 INTERSECTING ONLY
+}
+M3_5 {
+@ Minimum space between M3 lines with one or both metal line width
+@ and length are greater than 10um is 0.60um
+@ The minimum space must be maintained between a metal line and a
+@ small piece of metal(<10) that is connected to the wide metal
+@ within 1.0um range from the wide metal
+  X = SIZE M3OVER10 BY 1.0 STEP 0.148 INSIDE OF WIDE_M3
+  EXT X M3 < 0.60 ABUT<90 SINGULAR REGION
+}
+M3_6 {
+@ Minimum area of a M3 region is 0.20um
+  AREA M3 < 0.20
+}
+
+//M3_7 { @ Minimum density of M3 area is 30%
+//	  Covered by PD.M3 }
+//M3_8 {
+//@ Dummy metal spacing to be larger than 1.0um and there should be
+//@ no active device underneath dummy metal pattern.A dummmy metal example
+//@ which SMIC used in qual vehicle is 2.0umx5um dummy lines with line spacing of 2.0um
+//}
+
+M3_9 {
+@ Minimum space between two HV M3 interconnect is 0.5
+EXT HVM3 < 0.5 ABUT<90 SINGULAR REGION
+}
+
+
+//====================
+//  M4 - Metal 4 DRC
+//====================
+
+
+//--* Find Wide Metal *--//
+
+WIDE_M4        = M4 INTERACT (SIZE M4 BY -5)   // wide metal
+
+// begin shrink
+WDM4_45        = ANGLE WIDE_M4 >0<90
+WDM4_90        = NOT ANGLE WIDE_M4 >0<90
+
+WDM4_EXP_45    = EXPAND EDGE WDM4_45 INSIDE BY 5*1.414213562
+WDM4_EXP_90    = EXPAND EDGE WDM4_90 INSIDE BY 5 EXTEND BY 5
+
+THIN_M4_TMP    = WIDE_M4 NOT (WDM4_EXP_45 OR WDM4_EXP_90)
+THIN_M4        = SNAP THIN_M4_TMP 1            // end of shrink
+
+// begin grow
+TNM4_45        = ANGLE THIN_M4 >0<90
+TNM4_90        = NOT ANGLE THIN_M4 >0<90
+
+TNM4_EXP_45_TMP = EXPAND EDGE TNM4_45 OUTSIDE BY 5*1.414213562
+TNM4_EXP_45    = SNAP TNM4_EXP_45_TMP 1
+TNM4_EXP_90    = EXPAND EDGE TNM4_90 OUTSIDE BY 5 EXTEND BY 5
+
+TNM4_EXP       = TNM4_EXP_45 OR TNM4_EXP_90
+
+WDM4_PRE       = TNM4_EXP OR THIN_M4
+WDM4_PRE_FILL  = EXT WDM4_PRE < 5 ABUT>0<90 INTERSECTING ONLY REGION
+
+M4OVER10       = WDM4_PRE OR WDM4_PRE_FILL    // end of grow
+
+
+//--* End of Finding Wide Metal *--//
+
+GROUP GM4 M4_?
+
+M4_1 {
+@ Minimum width of an M4 region is 0.28um
+  INT M4 < 0.28 ABUT<90 SINGULAR REGION
+}
+M4_2 {
+@ Minimum space between two M4 regions is 0.28um
+  EXT M4 < 0.28 ABUT<90 SINGULAR REGION
+}
+M4_3_4 {
+@ Minimum extension of M4 region beyond V3 region is 0.01
+@ Minimum extension of M4 line end region beyond V3 region is 0.06
+  X = RECTANGLE ENC V3 M4 ABUT<90  OUTSIDE ALSO
+  GOOD 0.01 OPPOSITE 0.06 OPPOSITE 0.01 OPPOSITE 0.06 OPPOSITE
+
+  ENC X M4 < 0.01 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO
+
+  Y = ENC [x] M4 < 0.06 OPPOSITE
+  INT Y < 0.01 ABUT==90 INTERSECTING ONLY
+}
+M4_5 {
+@ Minimum space between M4 lines with one or both metal line width
+@ and length are greater than 10um is 0.60um
+@ The minimum space must be maintained between a metal line and a
+@ small piece of metal(<10) that is connected to the wide metal
+@ within 1.0um range from the wide metal
+  X = SIZE M4OVER10 BY 1.0 STEP 0.148 INSIDE OF WIDE_M4
+  EXT X M4 < 0.60 ABUT<90 SINGULAR REGION
+}
+M4_6 {
+@ Minimum area of a M4 region is 0.20um
+  AREA M4 < 0.20
+}
+
+//M4_7 { @ Minimum density of M4 area is 30%
+//        Covered by PD.M4 }
+//M4_8 {
+//@ Dummy metal spacing to be larger than 1.0um and there should be
+//@ no active device underneath dummy metal pattern.A dummmy metal example
+//@ which SMIC used in qual vehicle is 2.0umx5um dummy lines with line spacing of 2.0um
+//}
+
+M4_9 {
+@ Minimum space between two HV M4 interconnect is 0.5
+EXT HVM4 < 0.5 ABUT<90 SINGULAR REGION
+}
+
+
+
+//====================
+//  MT - Top Metal DRC
+//====================
+
+//--* Find Wide Metal *--//
+
+WIDE_TM1     = TM1 INTERACT (SIZE TM1 BY -5)   // wide metal
+
+// begin shrink
+WDTM1_45     = ANGLE WIDE_TM1 >0<90
+WDTM1_90     = NOT ANGLE WIDE_TM1 >0<90
+
+WDTM1_EXP_45 = EXPAND EDGE WDTM1_45 INSIDE BY 5*1.414213562
+WDTM1_EXP_90 = EXPAND EDGE WDTM1_90 INSIDE BY 5 EXTEND BY 5
+
+THIN_TM1_TMP = WIDE_TM1 NOT (WDTM1_EXP_45 OR WDTM1_EXP_90)
+THIN_TM1     = SNAP THIN_TM1_TMP 1            // end of shrink
+
+// begin grow
+TNTM1_45     = ANGLE THIN_TM1 >0<90
+TNTM1_90     = NOT ANGLE THIN_TM1 >0<90
+
+TNTM1_EXP_45_TMP = EXPAND EDGE TNTM1_45 OUTSIDE BY 5*1.414213562
+TNTM1_EXP_45 = SNAP TNTM1_EXP_45_TMP 1
+TNTM1_EXP_90 = EXPAND EDGE TNTM1_90 OUTSIDE BY 5 EXTEND BY 5
+
+TNTM1_EXP    = TNTM1_EXP_45 OR TNTM1_EXP_90
+
+WDTM1_PRE    = TNTM1_EXP OR THIN_TM1
+WDTM1_PRE_FILL = EXT WDTM1_PRE < 5 ABUT>0<90 INTERSECTING ONLY REGION
+
+TM1OVER10    = WDTM1_PRE OR WDTM1_PRE_FILL    // end of grow
+
+
+//--* End of Finding Wide Metal *--//
+
+
+GROUP GMT MT_?
+
+MT_1 {
+@ Minimum width of a top metal is 0.44um
+  INT TM1 < 0.44 ABUT<90 SINGULAR REGION
+}
+MT_2 {
+@ Minimum space between two top metal regions is 0.46um
+  EXT TM1 < 0.46 ABUT<90 SINGULAR REGION
+}
+MT_3 {
+@ Minimum extension of MT region over TV1 region is 0.09
+  ENC TV1 TM1 < 0.09 ABUT<90 SINGULAR REGION OVERLAP OUTSIDE ALSO
+}
+MT_4 {
+@ Minimum space between top metal lines with one or both metal line width
+@ and length are greater than 10um is 0.60um
+  X = SIZE TM1OVER10 BY 1.0 STEP 0.148 INSIDE OF WIDE_TM1
+  EXT X TM1 < 0.60 ABUT<90 SINGULAR REGION
+}
+MT_5 {
+@ Minimum area of an MT region is 0.56um
+  AREA TM1 < 0.56
+}
+
+//MT_6 { @ Minimum density of MT area is 30%
+//	 Covered by PD.MT }
+//MT_7 {
+//@ Dummy metal spacing to be larger than 1.0um and there should be
+//@ no active device underneath dummy metal pattern.A dummmy metal example
+//@ which SMIC used in qual vehicle is 2.0umx5um dummy lines with line spacing of 2.0um
+//}
+
+MT_8 {
+@ Minimum space between two HV top metal MT regions is 0.8
+EXT HVTM1 < 0.8 ABUT<90 SINGULAR REGION
+}
+
+
+//===================
+//  V1 - Via 1 DRC
+//===================
+
+GROUP GV1 V1_?
+
+V1_1 {
+@ Minimum/maximum size of a V1 is 0.26um 
+  NOT RECTANGLE V1 == 0.26 BY == 0.26
+}
+V1_2 {
+@ Minimum space between two V1 is 0.26um
+  EXT V1 < 0.26 ABUT<90 SINGULAR REGION
+}
+V1_3_4 {
+@ Minimum metal 1 enclosure for a V1 is 0.01um
+@ If Metal 1 line end beyond V1, 0.06um
+@ For V1 located at the 90 degree corner, one side of metal extension
+@ must be treated as end-of-line and the other side follows V1.3
+  X = RECTANGLE ENC V1 M1 ABUT<90  OUTSIDE ALSO
+  GOOD 0.01 OPPOSITE 0.06 OPPOSITE 0.01 OPPOSITE 0.06 OPPOSITE
+
+  ENC X M1 < 0.01 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO
+
+  Y = ENC [x] M1 < 0.06 OPPOSITE
+  INT Y < 0.01 ABUT==90 INTERSECTING ONLY
+}
+//V1_5 { @ Stacked Via's and contacts are allowed }
+
+V1_6 {
+@ HV via1 must be couple Via1
+(HVM1 AND HVM2) INTERACT HVV1 ==1
+}
+
+
+
+//===================
+//  V2 - Via 2 DRC
+//===================
+
+GROUP GV2 V2_?
+
+V2_1 {
+@ Minimum/maximum size of a V2 is 0.26um 
+  NOT RECTANGLE V2 == 0.26 BY == 0.26
+}
+V2_2 {
+@ Minimum space between two V2 is 0.26um
+  EXT V2 < 0.26 ABUT<90 SINGULAR REGION
+}
+V2_3_4 {
+@ Minimum metal 2 enclosure for a V2 is 0.01um
+@ If Metal 2 line end beyond V2, 0.06um
+@ For V2 located at the 90 degree corner, one side of metal extension
+@ must be treated as end-of-line and the other side follows V2.3
+  X = RECTANGLE ENC V2 M2 ABUT<90  OUTSIDE ALSO
+  GOOD 0.01 OPPOSITE 0.06 OPPOSITE 0.01 OPPOSITE 0.06 OPPOSITE
+
+  ENC X M2 < 0.01 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO
+
+  Y = ENC [x] M2 < 0.06 OPPOSITE
+  INT Y < 0.01 ABUT==90 INTERSECTING ONLY
+}
+
+//V2_5 { @ V2 can fully or partially stacked on V1, any structure such as stacked Vn/Vn-1/CT }
+
+V2_6 {
+@ HV via2 must be couple Via2
+(HVM3 AND HVM2) INTERACT HVV2 ==1
+}
+
+
+//===================
+//  V3 - Via 3 DRC
+//===================
+
+GROUP GV3 V3_?
+
+V3_1 {
+@ Minimum/maximum size of a V3 is 0.26um
+  NOT RECTANGLE V3 == 0.26 BY == 0.26
+}
+V3_2 {
+@ Minimum space between two V3 is 0.26um
+  EXT V3 < 0.26 ABUT<90 SINGULAR REGION
+}
+V3_3_4 {
+@ Minimum metal 3 enclosure for a V3 is 0.01um
+@ If Metal 3 line end beyond V3, 0.06um
+@ For V3 located at the 90 degree corner, one side of metal extension
+@ must be treated as end-of-line and the other side follows V3.3
+  X = RECTANGLE ENC V3 M3 ABUT<90  OUTSIDE ALSO
+  GOOD 0.01 OPPOSITE 0.06 OPPOSITE 0.01 OPPOSITE 0.06 OPPOSITE
+
+  ENC X M3 < 0.01 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO
+
+  Y = ENC [x] M3 < 0.06 OPPOSITE
+  INT Y < 0.01 ABUT==90 INTERSECTING ONLY
+}
+
+//V3_5 { @ V3 can fully or partially stacked on V2, any structure such as stacked Vn/Vn-1/CT }
+
+V3_6 {
+@ HV via3 must be couple Via3
+(HVM4 AND HVM3) INTERACT HVV3 ==1
+}
+
+
+
+//==================
+//  VT - Top Via DRC
+//==================
+
+GROUP GVT VT_?
+
+VT_1 {
+@ Minimum/maximum size of a VT is 0.36um
+  NOT RECTANGLE TV1 == 0.36 BY == 0.36
+}
+VT_2 {
+@ Minimum space between two VT is 0.35um
+  EXT TV1 < 0.35 ABUT<90 SINGULAR REGION
+}
+VT_3_4 {
+@ Minimum M4 enclosure for VT is 0.01um
+@ Minimum enclosure of M4 over VT along metal line direction is 0.06um
+  X = RECTANGLE ENC TV1 M4 ABUT<90  OUTSIDE ALSO
+  GOOD 0.01 OPPOSITE 0.06 OPPOSITE 0.01 OPPOSITE 0.06 OPPOSITE
+
+  ENC X M4 < 0.01 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO
+
+  Y = ENC [x] M4 < 0.06 OPPOSITE
+  INT Y < 0.01 ABUT==90 INTERSECTING ONLY
+}
+//VT_5 { @ Top via can be fully or partially stacked on V2, any structure such as stacked TV/Vn/Vn-1/CT }
+VT_6 {
+@ HV Top Via must be couple TV1
+(HVTM1 AND HVM4) INTERACT HVTV1 ==1
+}
+
+
+
+
+//***************************************
+//         Mix-Signal Rules
+//***************************************
+
+
+//=========================
+//  DNW - Deep N-Well DRC
+//=========================
+
+GROUP GDNW DNW_?
+
+HOLE_INNW = HOLES NW
+NW_HOLE = NW TOUCH HOLE_INNW
+
+DNW_1 {
+@ DNW.1
+@ DNW must be surrounded by NW 
+DNW OUTSIDE EDGE (NW INTERACT SURNW)
+}
+DNW_2 {
+@ DNW.2
+@ It's not allowed to use DNW layer as resistor
+  AND RESNW DNW
+}
+DNW_3A {
+@ DNW.3A
+@ PMOS is not allowed in surrounding NW
+  PGATE AND ( NW INTERACT SURNW )
+}
+DNW_3C {
+@ DNW.3C
+@ Add dummy layer "SURNW" on surrounding NW for DRC check
+@ Min & Max "SURNW" enclosure surrounding NW space is 0.15
+  (SIZE SURNW BY -0.15) XOR (SURNW AND NW) 
+}
+DNW_4 {
+@ DNW.4
+@ Min & Max extension of surounding NW beyond DNW is 1.50um
+  X = NW INTERACT SURNW
+  Y = HOLES X
+  Z = X OR Y
+  (SIZE Z BY -1.50) XOR DNW
+}
+DNW_5 {
+@ DNW.5
+@ Minimum overlap of surounding NW to DNW is 2.00um
+  ENC HOLE_INNW DNW < 2 ABUT<90 SINGULAR REGION
+}
+//DNW_6 {
+//@ DNW.6
+//@ Minimum space from DNW to SUBDMY is 4
+//  EXT SUBDMY DNW < 4 ABUT<90 SINGULAR REGION
+//} Covered by SUBDMY_5
+DNW_7 {
+@ DNW.7
+@ Minimum width of a DNW region is 3.00
+  INT DNW < 3 ABUT<90 SINGULAR REGION
+}
+DNW_8 {
+@ DNW.8
+@ Minimum space between 2 DNW region is 6.00
+  EXT DNW < 6.0 ABUT<90 SINGULAR REGION
+}
+DNW_9A {
+@ DNW.9A
+@ Minimum space from the DNW to a N+ AA outside DNW is 7.93
+  X = NACT OUTSIDE DNW
+  EXT DNW X < 7.93 ABUT<90 SINGULAR REGION
+}
+DNW_9B {
+@ DNW.9B
+@ Minimum space from the DNW to a P+ AA outside DNW is 7.62
+  EXT DNW HPACT < 7.62 ABUT<90 SINGULAR REGION
+}
+DNW_10 {
+@ DNW.10
+@ Minimum DNW enclosure a N+ pickup AA is 0.5
+  ENC LMNTAP DNW < 0.5 ABUT < 90 SINGULAR REGION
+}
+DNW_11 {
+@ DNW.11
+@ Minimum space of DNW to NW which is outside DNW is 7.5
+  EXT NW DNW < 7.5 ABUT < 90 SINGULAR REGION
+}
+//DNW_12 {
+//@ DNW.12
+//@ Recommend to keep surround NW be in reverse bias for lower leakage application.
+//}
+DNW_13 {
+@ It's not allowed to use surrounding NW  as resistor
+  (NW INTERACT SURNW) INTERACT RESNW
+}
+//DNW_14 {
+//@ PWHT ring will be generated outside surrounding NW by LOTA
+//}
+
+
+
+//==================================
+//  HRP - High Resistance Poly DRC
+//==================================
+
+GROUP GHRP HRP_?
+
+//Skip HRP_1 { @ It's strongly suggest that resistor square number > 5 for precision Rs
+
+HRP_2 {
+@ HRP.2
+@ Minimum extension from HRP region beyond a PO resistor region is 0.26
+  ENC GT_HRP HRP < 0.26 ABUT SINGULAR REGION
+}
+HRP_3_4 {
+@ HRP.3 ; HRP.4
+@ Minimum clearance from HRP region to Polygate of NMOS/PMOS is 0.32
+  GT_MOS = GT INTERACT GATE
+  EXT HRP GT_MOS < 0.32 ABUT SINGULAR REGION
+}
+HRP_5 {
+@ HRP.5
+@ Minimum and maximum P+ implant for pickup oerlap with SAB is 0.30
+  SP_HRP = SP INTERACT HRP
+  SAB_HRP = SAB INTERACT HRP
+  INT SP_HRP SAB_HRP < 0.30 ABUT<90 SINGULAR REGION
+
+  SIZE_SP = SIZE SP_HRP BY -0.30
+  AND SIZE_SP SAB_HRP
+}
+HRP_6 {
+@ HRP.6
+@ Minimum extension from SAB region beyond a PO resistor region is 0.22
+  ENC GT_HRP SAB < 0.22 ABUT<90 SINGULAR REGION
+}
+HRP_7 {
+@ HRP.7
+@ Minimum width of Poly region for high resistance poly resistor is 2.00
+  INT HR_GT < 2.00 ABUT<90 SINGULAR REGION
+}
+HRP_8 {
+@ HRP.8
+@ Dummy layer "HRPDMY" is needed for DRC for high resistance Poly region
+  SAB_HRP = SAB INTERACT HRP
+  SAB_HRP NOT INTERACT HRPDMY
+}
+//Skip HRP_9 { @ For Contact Rule, pls follow baseline rule }
+
+
+//=================================== 
+//  MIM - Metal-Insulator-Metal DRC
+//===================================
+
+CAP_MIM  = MIM INTERACT MIMDMY
+DMY_MIM  = MIM NOT CAP_MIM
+
+M4_CAPMIM = (M4 INTERACT CAP_MIM) AND MIMDMY
+M4_DMYMIM = (M4 INTERACT DMY_MIM) NOT MIMDMY
+
+TV1_MIM = TV1 AND CAP_MIM
+TV1_CAPM4 = (TV1 AND M4_CAPMIM) NOT TV1_MIM
+
+GROUP GMIM MIM_?
+
+MIM_1 {
+@ MIM.1
+@ Minimum width of MIM region as top plate is 4.00
+  INT CAP_MIM < 4.0 ABUT<90 SINGULAR REGION
+}
+MIM_2 {
+@ MIM.2
+@ Minimum space between two MIM region as top plate is 1.20
+  EXT CAP_MIM < 1.20 ABUT<90 SINGULAR REGION
+}
+MIM_3 {
+@ MIM.3
+@ Minimum extension of MIM region beyond a Via which connect
+@ to this MIM is 0.24
+  X = TV1 AND MIM
+  ENC X MIM < 0.24 ABUT<90 SINGULAR REGION
+}
+MIM_4 {
+@ MIM.4
+@ Minimum extension of bottom plate(Mn) region on a MIM region is 0.4
+  ENC CAP_MIM M4_CAPMIM < 0.40 ABUT<90 OUTSIDE ALSO SINGULAR REGION
+}
+MIM_5 {
+@ MIM.5
+@ MIM region cross bottom plate (Mn) Metal region is not allowed
+  MIM NOT INSIDE M4
+}
+MIM_6 {
+@ MIM.6
+@ Both active and passive devices under MIM region are not allowed
+  X = (AA OR GT) OR RESNW
+  AND X MIM
+}
+MIM_7 {
+@ MIM.7
+@ Maximum dimension of a MIM region as capacitor top metal is 30.0
+  SIZE CAP_MIM BY 15 UNDEROVER
+}
+MIM_8 {
+@ MIM.8
+@ Maximum dimension of a bottom metal (Mn) region in capacitor is 35
+@ If capacitor larger than 35*35,please use combination of smaller capacitor
+  SIZE M4_CAPMIM BY 17.5 UNDEROVER
+}
+MIM_9a {
+@ MIM.9a
+@ Min. density of MIM pattern is 3 %
+  DENSITY MIMi < 0.03
+}
+MIM_9b {
+@ MIM.9b (GuideLine, could be controled by User)
+@ Dummy MIM pattern suggested 2*5 um*um
+  X = INT DMY_MIM == 2 REGION
+  Y = LENGTH X == 5
+  DMY_MIM NOT WITH EDGE Y
+}
+MIM_9c {
+@ MIM.9c (GuideLine, could be controled by User)
+@ Dummy MIM pattern suggested 2*5 um*um with space 1.5 um
+  X = INT DMY_MIM == 2 REGION
+  Y = LENGTH X == 5
+  Z = DMY_MIM WITH EDGE Y
+  EXT Z < 1.5 ABUT<90 SINGULAR REGION
+}
+MIM_10 {
+@ MIM.10
+@ No Via and metal layers under MIM region are allowed.
+@ One DRC dummy layer "MIMDMY" is needed to separate MIM region from metal interconnection
+  Vn = (V1 OR V2) OR V3
+  Mn = (M1 OR M2) OR M3
+  X = MIM INTERACT TV1
+  Y = X OR CAP_MIM 
+  AND Vn Y
+  AND Mn Y
+}
+MIM_11 {
+@ MIM.11
+@ Minimum extension of capacitor bottom metal beyond Via connect to Mn is 0.12
+  ENC TV1_CAPM4 M4_CAPMIM < 0.12 ABUT<90 SINGULAR REGION
+}
+MIM_12 {
+@ MIM.12
+@ Minimum clearance of a top Via to MIM region is 0.40
+  EXT CAP_MIM TV1_CAPM4 < 0.40 ABUT<90 SINGULAR REGION
+}
+MIM_13 {
+@ MIM.13
+@ Minimum space between two Via on MIM is 2.00
+  EXT TV1_MIM < 2.0 ABUT<90 SINGULAR REGION
+}
+MIM_14 {
+@ MIM.14
+@ Minimum space between two Via on bottom metal(Mn) is 4.0
+  EXT TV1_CAPM4 < 4.0 ABUT<90 SINGULAR REGION
+}
+MIM_15 {
+@ MIM.15
+@ Minimum width of dummy MIM region is 0.40
+  INT DMY_MIM < 0.4 ABUT<90 SINGULAR REGION
+}
+MIM_16 {
+@ MIM.16
+@ Minimum space of dummy MIM to MIM region is 0.80
+  EXT DMY_MIM CAP_MIM < 0.80 ABUT<90 SINGULAR REGION
+}
+MIM_17 {
+@ MIM.17
+@ Minimum space of dummy Mn to Mn is 0.80
+  EXT M4_CAPMIM M4_DMYMIM < 0.8 ABUT<90 SINGULAR REGION
+}
+MIM_18 {
+@ MIM.18
+@ Minimum extension of dummy layer MIMDMY beyond Mn region is 2.00
+  ENC M4 MIMDMY < 2.00 ABUT<90 SINGULAR REGION
+}
+//MIM_19 {
+//@The MIM structure is placed within top metal and next 1 metal.
+// include in check MIM.10
+//}
+
+
+
+//========================
+//  PD - Density Check
+//========================
+
+GROUP GPD PD_?
+
+PD_GT {
+@ Min. Poly GDS pattern density is 14%
+  DENSITY GTi < 0.14 PRINT density_report_GT.log   
+}
+PD_M1 {
+@ Min. Metal 1 GDS pattern density is 30%
+  DENSITY M1i < 0.30 PRINT density_report_M1.log    
+}
+PD_M2 {
+@ Min. Metal 2 GDS pattern density is 30%
+  DENSITY M2i < 0.30 PRINT density_report_M2.log    
+}
+PD_M3 {
+@ Min. Metal 3 GDS pattern density is 30%
+  DENSITY M3i < 0.30 PRINT density_report_M3.log    
+}
+PD_M4 {
+@ Min. Metal 4 GDS pattern density is 30%
+  DENSITY M4i < 0.30 PRINT density_report_M4.log
+}
+PD_TM1 {
+@ Min. Top Metal GDS pattern density is 30%
+  DENSITY TM1i < 0.30 PRINT density_report_TM1.log    
+}
+
+
+
+

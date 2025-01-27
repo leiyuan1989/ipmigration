@@ -1,0 +1,20 @@
+
+.subckt diff_opamp dd gnd inp inn net7 out
+
+M1  net2 inp  net1 dd   p33 W={w1} L={l1}
+M2  net3 inn  net1 dd   p33 W={w1} L={l1}
+M3  net1 net7 dd   dd   p33 W={w2} L={l2} 
+M4  net7 net7 dd   dd   p33 W={w2} L={l2}  
+M5  net2 net4 gnd  gnd  n33 W={w3} L={l3} 
+M6  net3 net4 gnd  gnd  n33 W={w3} L={l3} 
+M7  net6 net5 net2 gnd  n33 W={w4} L={l4} 
+M8  out  net5 net3 gnd  n33 W={w4} L={l4} 
+M9  net6 net6 net8 dd   p33 W={w5} L={l5} 
+M10 out  net6 net9 dd   p33 W={w5} L={l5} 
+M11 net8 net8 dd   dd   p33 W={w6} L={l6} 
+M12 net9 net8 dd   dd   p33 W={w6} L={l6} 
+
+vb1 net4 gnd  dc 0.9
+vb2 net5 gnd  dc 1.1
+ 
+.ends

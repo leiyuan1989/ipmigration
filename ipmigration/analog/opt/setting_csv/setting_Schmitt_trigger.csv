@@ -1,0 +1,26 @@
+item,value,comment
+log_flag,1,
+logfilename_prefix,"Schmitt_Trigger_",
+op_targets_name,
+op_targets_value,
+cheap_targets_name,"vih [V], vil [V], hysterisis_window [mV]"
+cheap_targets_value,"2.31, 0.99, 300"
+expensive_targets_name,
+expensive_targets_value,
+targets_min_max_type,"-1, 1, 1"
+capacitance_range,
+inductance_range,
+resistance_range,
+current_source_range,
+voltage_source_range,
+W_L_ratios_range,"1:20:0.3, 1:20:0.3, 1:20:0.3, 1:20:0.3, 1:20:0.3, 1:20:0.3"
+lengths_values,"0.3, 0.3, 0.3, 0.35, 0.35, 0.35"
+corner_list,"tt, ff, ss, fnsp, snfp"
+objective_index,
+simulation_circuit_func,simulation_schmitt_trigger
+num_generation,10
+population_size,20
+num_offsprings,20
+seed,66
+DNN_mode,
+Optimizer_type,"USGA3"

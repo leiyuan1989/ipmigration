@@ -1,0 +1,100 @@
+Starting Monte Carlo Sampling...
+
+Current time: Tue Mar 26 10:24:40 2013 
+Best design point: 1
+Design specs: 
+	AC	corner	Nominal - 
+	Op_Region		0	Yes
+	Current		1.132m	Yes
+	UGF		554.7M	Yes
+	Gain		46.74	Yes
+	Voffset		3.082m	Yes
+	GainCm		347.8m
+	CMRR		46.39	Yes
+	GainVsupply1		-5.81
+	PSRR		52.55	Yes
+	TRAN	corner	Nominal - 
+	Swing		1.009	Yes
+	SettlingTime		7.739n	Yes
+	RelativeSwingPercent		77.61	Yes
+	PhaseMargin		20.11	Yes
+	SRp		1.308G	Yes
+Design parameters: 
+	rload		1k
+	cload		100f
+	vdd		1.3
+
+Best design point: 4
+Design specs: 
+	AC	corner	Nominal - 
+	Op_Region		0	Yes
+	Current		1.127m	Yes
+	UGF		557.5M	Yes
+	Gain		46.75	Yes
+	Voffset		2.775m	Yes
+	GainCm		324.6m
+	CMRR		46.42	Yes
+	GainVsupply1		-5.985
+	PSRR		52.73	Yes
+	TRAN	corner	Nominal - 
+	Swing		1.008	Yes
+	SettlingTime		7.694n	Yes
+	RelativeSwingPercent		77.52	Yes
+	PhaseMargin		21.31	Yes
+	SRp		1.345G	Yes
+Design parameters: 
+	rload		1k
+	cload		100f
+	vdd		1.3
+
+Best design point: 34
+Design specs: 
+	AC	corner	Nominal - 
+	Op_Region		0	Yes
+	Current		1.111m	Yes
+	UGF		545.8M	Yes
+	Gain		46.75	Yes
+	Voffset		2.609m	Yes
+	GainCm		50.54m
+	CMRR		46.7	Yes
+	GainVsupply1		-7.116
+	PSRR		53.87	Yes
+	TRAN	corner	Nominal - 
+	Swing		1.009	Yes
+	SettlingTime		7.821n	Yes
+	RelativeSwingPercent		77.63	Yes
+	PhaseMargin		20.38	Yes
+	SRp		1.15G	Yes
+Design parameters: 
+	rload		1k
+	cload		100f
+	vdd		1.3
+
+Best design point: 28
+Design specs: 
+	AC	corner	Nominal - 
+	Op_Region		0	Yes
+	Current		1.126m	Yes
+	UGF		561.3M	Yes
+	Gain		46.74	Yes
+	Voffset		2.248m	Yes
+	GainCm		534.3m
+	CMRR		46.2	Yes
+	GainVsupply1		-5.88
+	PSRR		52.62	Yes
+	TRAN	corner	Nominal - 
+	Swing		1.008	Yes
+	SettlingTime		7.74n	Yes
+	RelativeSwingPercent		77.54	Yes
+	PhaseMargin		20.88	Yes
+	SRp		1.323G	Yes
+Design parameters: 
+	rload		1k
+	cload		100f
+	vdd		1.3
+
+MonteCarlo.17 stopped automatically because the yield is significantly lower than the target.
+Number of points completed: 108
+Number of simulation errors: 0
+MonteCarlo.17 completed. 
+Current time: Tue Mar 26 10:26:40 2013 

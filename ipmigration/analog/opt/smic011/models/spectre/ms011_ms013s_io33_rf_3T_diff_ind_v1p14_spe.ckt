@@ -1,0 +1,1457 @@
+//* No part of this file can be released without the consent of SMIC.
+//*
+//* Note: SMIC recommends that users use version 6.1.0 08/15/2006 15:48 (usimlx111), or version 6.2.0 09/04/2007 08:19 (usimlx110),
+//* or Spectre 7.01ISR20 , or Spectre 7.1ISR6 , or Spectre version after 7.1ISR6. And please do not use Spectre version 6.2.1 32bit 05/29/2008 05:19 (sfrh56)  
+//* until  the version before 7.01ISR20 to run simulation, because the mutual coupling coefficient K will be restricted to [-1,1] within these versions.
+//* Note: SMIC recommends that users set options reltol=1e-2 if circuit is not convergence.
+//******************************************************************************************
+//* 0.11um Mixed Signal 1P8M with MIM Salicide 1.2V/3.3V RF SPICE Model (for SPECTRE only) *
+//******************************************************************************************
+//*
+//* Release version    : 1.14
+//*
+//* Release date       : 03/30/2016
+//*
+//* Simulation tool    : Cadence spectre V6.0
+//*
+//*
+//*  Inductor   :
+//*
+//*        *-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------* 
+//*        | Inductor model  |  diff_ind_3t_rf               |   diff_ind_3t_rf_psub            |   diff_ind_3t_alpa_rf          |  diff_ind_3t_rf_pgs_psub      |                               |     
+//*        *-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*
+//*        |                 |  diff_ind_3t_rf_pgs_t1d5      |   diff_ind_3t_rf_pgs_psub_t1d5   |   diff_ind_3t_rf_pgs_t2        |  diff_ind_3t_rf_pgs_psub_t2   |  diff_ind_3t_rf_pgs_t2d5      |
+//*        *-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*     
+//*        |                 |  diff_ind_3t_rf_pgs_psub_t2d5 |   diff_ind_3t_rf_pgs_t3          |   diff_ind_3t_rf_pgs_psub_t3   |  diff_ind_3t_rf_pgs_t3d5      |  diff_ind_3t_rf_pgs_psub_t3d5 |
+//*        *-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*
+//*        |                 |  diff_ind_3t_rf_pgs_t4        |   diff_ind_3t_rf_pgs_psub_t4     |   diff_ind_3t_rf_pgs_t4d5      |  diff_ind_3t_rf_pgs_psub_t4d5 |  diff_ind_3t_rf_pgs_t5        |
+//*        *-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*
+//*        |                 |  diff_ind_3t_rf_pgs_psub_t5   |   diff_ind_3t_rf_pgs_t5d5        |   diff_ind_3t_rf_pgs_psub_t5d5 |  diff_ind_3t_rf_pgs_t6        |  diff_ind_3t_rf_pgs_psub_t6   |
+//*        *-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*
+//*        |                 |  diff_ind_3t_rf_pgs_t6d5      |   diff_ind_3t_rf_pgs_psub_t6d5   |                                |                               |                               |
+//*        *-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*
+simulator lang=spectre  insensitive=yes
+//************************************************
+//* 0.11um differential Inductor with center tap
+//************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um
+subckt diff_ind_3t_rf (1 2 t1) 
+parameters r=30e-6 n=5.5 
++LP1 = max(1.2e-12*(int(n)*8+(int(n)-1)*1.5-4),1e-12)
++RP1 = max(0.1125*(int(n)*9.5e-6-1.5e-6)/8.0e-6,1e-3)
++LS1 = max((0.204e-12*pwr((r*1e+6),1.313)+13.91e-12)*pwr(n,2.0)+(2.159e-12*(r*1e+6)-71.17e-12),1e-12)
++LS11 = max((0.1643e-12*pwr((r*1e+6),1.208)+61.50e-12)*n-0.1e-9,1e-12)
++LS2 = LS1
++LS22 = LS11
++COXP1 = max((0.4136e-12*pwr((r*1e+6),-0.5684)-20.09e-15),1e-18)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = max((6.784e-15*pwr((r*1e+4),0.8242)+0.955e-15)*pwr(n,1.8)+(4.334e-15*pwr((r*1e+4),4.112)+6.629e-15),1e-18)
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = max((0.1116*pwr((r*1e+4),1.361)+0.1023)*pwr(n,1.5)+(0.3417*pwr((r*1e+4),0.7684)-0.0136),1e-3)
++RS11 = RS1*1.2
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = max((1750/n)+(-18.72*(r*1e+6)+3.396e+3),1e-3)
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = (1.0-0.6777*pwr((n-0.1),-0.9))
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 0)           resistor    r=RSBP1
+csbp1 (np1 0)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 0)           resistor    r=RSBP2
+csbp2 (nP2 0)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 0)           resistor    r=RSBT1
+csbt1 (nt1 0)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf
+//********************************************************************
+//* 0.11um differential Inductor with center tap and psub terminals  *
+//********************************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um
+subckt diff_ind_3t_rf_psub (1 2 t1 psub) 
+parameters r=30e-6 n=5.5 
++LP1 = max(1.2e-12*(int(n)*8+(int(n)-1)*1.5-4),1e-12)
++RP1 = max(0.1125*(int(n)*9.5e-6-1.5e-6)/8.0e-6,1e-3)
++LS1 = max((0.204e-12*pwr((r*1e+6),1.313)+13.91e-12)*pwr(n,2.0)+(2.159e-12*(r*1e+6)-71.17e-12),1e-12)
++LS11 = max((0.1643e-12*pwr((r*1e+6),1.208)+61.50e-12)*n-0.1e-9,1e-12)
++LS2 = LS1
++LS22 = LS11
++COXP1 = max((0.4136e-12*pwr((r*1e+6),-0.5684)-20.09e-15),1e-18)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = max((6.784e-15*pwr((r*1e+4),0.8242)+0.955e-15)*pwr(n,1.8)+(4.334e-15*pwr((r*1e+4),4.112)+6.629e-15),1e-18)
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = max((0.1116*pwr((r*1e+4),1.361)+0.1023)*pwr(n,1.5)+(0.3417*pwr((r*1e+4),0.7684)-0.0136),1e-3)
++RS11 = RS1*1.2
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = max((1750/n)+(-18.72*(r*1e+6)+3.396e+3),1e-3)
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = (1.0-0.6777*pwr((n-0.1),-0.9))
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 psub)           resistor    r=RSBP1
+csbp1 (np1 psub)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 psub)           resistor    r=RSBP2
+csbp2 (nP2 psub)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 psub)           resistor    r=RSBT1
+csbt1 (nt1 psub)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_psub
+//*
+//******************************************************************
+//* 0.11um differential Inductor with center tap(formed from ALPA)
+//******************************************************************
+//* 1=port1(ALPA), 2=port2(ALPA), t1 is connected with center tap(M7)
+//* R means inner redius; N means turns
+//* Spacing is fixed at 4um and width is fixed at 8um
+subckt diff_ind_3t_alpa_rf (1 2 t1) 
+parameters r=30u n=5.5 
+//* equivalent circuit
+rs1 (nt1p1 st1)   resistor    r=max(((0.000194*r*r*1e12 + 1.4528*r*1e6 + 26.24)*n+( -0.001322*r*r*1e12 - 0.61117*r*1e6 - 45.475))*7,1e-6)
+ls11 (nt1p1 st11)     inductor    l=max(((0.00005*r*1e6 - 0.0012)*n*n+(0.0000001*r*r*1e12 - 0.00013*r*1e6 + 0.0184)*n+(-0.000002*r*r*1e12 + 0.00071*r*1e6 - 0.0359))*1e-9,1e-12)
+rs11 (st11 st1)    resistor    r=max((0.000012*r*r*1e12 - 0.00243*r*1e6 + 0.1644)*n*n+(-0.000108*r*r*1e12 + 0.02895*r*1e6 - 0.7049)*n+(0.000295*r*r*1e12 - 0.05437*r*1e6 + 2.5182),1e-6)
+ls1 (1 nt1p1)         inductor    l=max(((0.000001*r*r*1e12 - 0.0006*r*1e6 + 0.0652)*n*n+(-0.00001*r*r*1e12 + 0.01159*r*1e6 - 0.4375)*n+(0.000015*r*r*1e12 - 0.0198*r*1e6 + 0.9976))*1e-9,1e-12)
+coxp1 (1 np1)       capacitor   c=5e-15
+rsbp1 (np1 0)       resistor    r=10
+csbp1 (np1 0)       capacitor   c=5e-15
+rs2 (nt1p2 2)      resistor      r=max(((0.000194*r*r*1e12 + 1.4528*r*1e6 + 26.24)*n+( -0.001322*r*r*1e12 - 0.61117*r*1e6 - 45.475))*7,1e-6)
+rs22 (st22 2)       resistor     r=max((0.000012*r*r*1e12 - 0.00243*r*1e6 + 0.1644)*n*n+(-0.000108*r*r*1e12 + 0.02895*r*1e6 - 0.7049)*n+(0.000295*r*r*1e12 - 0.05437*r*1e6 + 2.5182),1e-6)
+ls22 (nt1p2 st22)    inductor    l=max(((0.00005*r*1e6 - 0.0012)*n*n+(0.0000001*r*r*1e12 - 0.00013*r*1e6 + 0.0184)*n+(-0.000002*r*r*1e12 + 0.00071*r*1e6 - 0.0359))*1e-9,1e-12)
+ls2 (st1 nt1p2)        inductor    l=max(((0.000001*r*r*1e12 - 0.0006*r*1e6 + 0.0652)*n*n+(-0.00001*r*r*1e12 + 0.01159*r*1e6 - 0.4375)*n+(0.000015*r*r*1e12 - 0.0198*r*1e6 + 0.9976))*1e-9,1e-12)
+coxp2 (2 np2)       capacitor   c=5e-15
+rsbp2 (np2 0)     resistor    r=10
+csbp2 (nP2 0)     capacitor   c=5e-15
+coxt1 (st1 nt1)    capacitor   c=20e-15
+rsbt1 (nt1 0)   resistor    r=10
+csbt1 (nt1 0)    capacitor   c=20e-15
+rp1 (st1 nst1)   resistor    r=max(-0.0053*r*1e6+1.02,1e-6)
+lp1 (nst1 t1)       inductor    l=max(((0.0000007*r*r*1e12 + 0.00175*r*1e6 + 0.3331)*exp((0.0000005*r*r*1e12 - 0.0005*r*1e6 - 0.5041)*n))*1e-9,1e-12)
+cp1p2 (1 2)            capacitor   c=max(((-0.000012*r*r*1e12 + 0.01726*r*1e6 - 0.4357)*n*n+(0.000062*r*r*1e12 - 0.00288*r*1e6 + 10.717)*n+(0.000133*r*r*1e12 + 0.10895*r*1e6 - 29.477))*1e-15,1e-18)
+kp11  mutual_inductor coupling=max((-0.0000001*r*r*1e12+ 0.00004*r*1e6 + 0.0037)*n*n+(0.000022*r*r*1e12-0.00526*r*1e6 + 0.3429)*n+(-0.000186*r*r*1e12 + 0.04355*r*1e6 - 1.388),1e-3) ind1=ls1 ind2=ls22
+kp22  mutual_inductor coupling=max((-0.0000001*r*r*1e12+ 0.00004*r*1e6 + 0.0037)*n*n+(0.000022*r*r*1e12-0.00526*r*1e6 + 0.3429)*n+(-0.000186*r*r*1e12 + 0.04355*r*1e6 - 1.388),1e-3) ind1=ls2 ind2=ls11
+ends diff_ind_3t_alpa_rf
+//*
+
+
+//***********************************************************************
+//* 0.11um differential psub Inductor with center tap(formed from ALPA)
+//***********************************************************************
+//* 1=port1(ALPA), 2=port2(ALPA), t1 is connected with center tap(M7)
+//* R means inner redius; N means turns
+//* Spacing is fixed at 4um and width is fixed at 8um
+subckt diff_ind_3t_alpa_rf_psub (1 2 t1 psub) 
+parameters r=30u n=5.5 
+//* equivalent circuit
+rs1 (nt1p1 st1)   resistor    r=max(((0.000194*r*r*1e12 + 1.4528*r*1e6 + 26.24)*n+( -0.001322*r*r*1e12 - 0.61117*r*1e6 - 45.475))*7,1e-6)
+ls11 (nt1p1 st11)     inductor    l=max(((0.00005*r*1e6 - 0.0012)*n*n+(0.0000001*r*r*1e12 - 0.00013*r*1e6 + 0.0184)*n+(-0.000002*r*r*1e12 + 0.00071*r*1e6 - 0.0359))*1e-9,1e-12)
+rs11 (st11 st1)    resistor    r=max((0.000012*r*r*1e12 - 0.00243*r*1e6 + 0.1644)*n*n+(-0.000108*r*r*1e12 + 0.02895*r*1e6 - 0.7049)*n+(0.000295*r*r*1e12 - 0.05437*r*1e6 + 2.5182),1e-6)
+ls1 (1 nt1p1)         inductor    l=max(((0.000001*r*r*1e12 - 0.0006*r*1e6 + 0.0652)*n*n+(-0.00001*r*r*1e12 + 0.01159*r*1e6 - 0.4375)*n+(0.000015*r*r*1e12 - 0.0198*r*1e6 + 0.9976))*1e-9,1e-12)
+coxp1 (1 np1)       capacitor   c=5e-15
+rsbp1 (np1 psub)       resistor    r=10
+csbp1 (np1 psub)       capacitor   c=5e-15
+rs2 (nt1p2 2)      resistor      r=max(((0.000194*r*r*1e12 + 1.4528*r*1e6 + 26.24)*n+( -0.001322*r*r*1e12 - 0.61117*r*1e6 - 45.475))*7,1e-6)
+rs22 (st22 2)       resistor     r=max((0.000012*r*r*1e12 - 0.00243*r*1e6 + 0.1644)*n*n+(-0.000108*r*r*1e12 + 0.02895*r*1e6 - 0.7049)*n+(0.000295*r*r*1e12 - 0.05437*r*1e6 + 2.5182),1e-6)
+ls22 (nt1p2 st22)    inductor    l=max(((0.00005*r*1e6 - 0.0012)*n*n+(0.0000001*r*r*1e12 - 0.00013*r*1e6 + 0.0184)*n+(-0.000002*r*r*1e12 + 0.00071*r*1e6 - 0.0359))*1e-9,1e-12)
+ls2 (st1 nt1p2)        inductor    l=max(((0.000001*r*r*1e12 - 0.0006*r*1e6 + 0.0652)*n*n+(-0.00001*r*r*1e12 + 0.01159*r*1e6 - 0.4375)*n+(0.000015*r*r*1e12 - 0.0198*r*1e6 + 0.9976))*1e-9,1e-12)
+coxp2 (2 np2)       capacitor   c=5e-15
+rsbp2 (np2 psub)     resistor    r=10
+csbp2 (nP2 psub)     capacitor   c=5e-15
+coxt1 (st1 nt1)    capacitor   c=20e-15
+rsbt1 (nt1 psub)   resistor    r=10
+csbt1 (nt1 psub)    capacitor   c=20e-15
+rp1 (st1 nst1)   resistor    r=max(-0.0053*r*1e6+1.02,1e-6)
+lp1 (nst1 t1)       inductor    l=max(((0.0000007*r*r*1e12 + 0.00175*r*1e6 + 0.3331)*exp((0.0000005*r*r*1e12 - 0.0005*r*1e6 - 0.5041)*n))*1e-9,1e-12)
+cp1p2 (1 2)            capacitor   c=max(((-0.000012*r*r*1e12 + 0.01726*r*1e6 - 0.4357)*n*n+(0.000062*r*r*1e12 - 0.00288*r*1e6 + 10.717)*n+(0.000133*r*r*1e12 + 0.10895*r*1e6 - 29.477))*1e-15,1e-18)
+kp11  mutual_inductor coupling=max((-0.0000001*r*r*1e12+ 0.00004*r*1e6 + 0.0037)*n*n+(0.000022*r*r*1e12-0.00526*r*1e6 + 0.3429)*n+(-0.000186*r*r*1e12 + 0.04355*r*1e6 - 1.388),1e-3) ind1=ls1 ind2=ls22
+kp22  mutual_inductor coupling=max((-0.0000001*r*r*1e12+ 0.00004*r*1e6 + 0.0037)*n*n+(0.000022*r*r*1e12-0.00526*r*1e6 + 0.3429)*n+(-0.000186*r*r*1e12 + 0.04355*r*1e6 - 1.388),1e-3) ind1=ls2 ind2=ls11
+ends diff_ind_3t_alpa_rf_psub
+//*
+//************************************************
+//* 0.11um differential PGS Inductor with center tap
+//************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 1.5
+subckt diff_ind_3t_rf_pgs_t1d5 (1 2 t1) 
+parameters r=30e-6 n=1.5 
++LP1 = 1.2e-12*(int(1.5)*8+(int(1.5)-1)*1.5-4)
++RP1 = 0.1125*(int(1.5)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 2.7401e-05*pwr(R,1.2154e+00)
++LS11 = 1.0844e-11*exp(1.6877e+04*R)
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = 2.3567e-10*R+6.8133e-15
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = (0.1116*pwr((R*1e+4),1.361)+0.1023)*pwr(1.5,1.5)+(0.3417*pwr((R*1e+4),0.7684)-0.0136)
++RS11 = 1.2*RS1
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = (1750/1.5)+(-18.72*(R*1e+6)+3.396e+3)
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((1.5-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 0)           resistor    r=RSBP1
+csbp1 (np1 0)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 0)           resistor    r=RSBP2
+csbp2 (nP2 0)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 0)           resistor    r=RSBT1
+csbt1 (nt1 0)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_t1d5
+//********************************************************************
+//* 0.11um differential Inductor with center tap and psub terminals  *
+//********************************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 1.5
+subckt diff_ind_3t_rf_pgs_psub_t1d5 (1 2 t1 psub) 
+parameters r=30e-6 n=1.5 
++LP1 = 1.2e-12*(int(1.5)*8+(int(1.5)-1)*1.5-4)
++RP1 = 0.1125*(int(1.5)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 2.7401e-05*pwr(R,1.2154e+00)
++LS11 = 1.0844e-11*exp(1.6877e+04*R)
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = 2.3567e-10*R+6.8133e-15
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = (0.1116*pwr((R*1e+4),1.361)+0.1023)*pwr(1.5,1.5)+(0.3417*pwr((R*1e+4),0.7684)-0.0136)
++RS11 = 1.2*RS1
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = (1750/1.5)+(-18.72*(R*1e+6)+3.396e+3)
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((1.5-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 psub)           resistor    r=RSBP1
+csbp1 (np1 psub)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 psub)           resistor    r=RSBP2
+csbp2 (nP2 psub)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 psub)           resistor    r=RSBT1
+csbt1 (nt1 psub)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_psub_t1d5
+//*
+//************************************************
+//* 0.11um differential PGS Inductor with center tap
+//************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 2
+subckt diff_ind_3t_rf_pgs_t2 (1 2 t1) 
+parameters r=30e-6 n=2
++LP1 = -6.6667e-08*R+7.0000e-12
++RP1 = 0.1125*(int(2)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = (0.204e-12*pwr((R*1e+6),1.313)+13.91e-12)*pwr(2,2.0)+(2.159e-12*(R*1e+6)-71.17e-12)
++LS11 = (0.1643e-12*pwr((R*1e+6),1.208)+61.50e-12)*2-0.1e-9
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = 3.1400e-10*R+5.1600e-15
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 0.95*((0.1116*pwr((R*1e+4),1.361)+0.1023)*pwr(2,1.5)+(0.3417*pwr((R*1e+4),0.7684)-0.0136))
++RS11 = 1.2*RS1
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 6.6667e+06*R+3.6000e+03
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((2-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 0)           resistor    r=RSBP1
+csbp1 (np1 0)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 0)           resistor    r=RSBP2
+csbp2 (nP2 0)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 0)           resistor    r=RSBT1
+csbt1 (nt1 0)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_t2
+//********************************************************************
+//* 0.11um differential Inductor with center tap and psub terminals  *
+//********************************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 2
+subckt diff_ind_3t_rf_pgs_psub_t2 (1 2 t1 psub) 
+parameters r=30e-6 n=2 
++LP1 = -6.6667e-08*R+7.0000e-12
++RP1 = 0.1125*(int(2)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = (0.204e-12*pwr((R*1e+6),1.313)+13.91e-12)*pwr(2,2.0)+(2.159e-12*(R*1e+6)-71.17e-12)
++LS11 = (0.1643e-12*pwr((R*1e+6),1.208)+61.50e-12)*2-0.1e-9
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = 3.1400e-10*R+5.1600e-15
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 0.95*((0.1116*pwr((R*1e+4),1.361)+0.1023)*pwr(2,1.5)+(0.3417*pwr((R*1e+4),0.7684)-0.0136))
++RS11 = 1.2*RS1
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 6.6667e+06*R+3.6000e+03
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((2-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 psub)           resistor    r=RSBP1
+csbp1 (np1 psub)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 psub)           resistor    r=RSBP2
+csbp2 (nP2 psub)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 psub)           resistor    r=RSBT1
+csbt1 (nt1 psub)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_psub_t2
+//*
+//************************************************
+//* 0.11um differential PGS Inductor with center tap
+//************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 2.5
+subckt diff_ind_3t_rf_pgs_t2d5 (1 2 t1) 
+parameters r=30e-6 n=2.5 
++LP1 = 1.2e-12*(int(2.5)*8+(int(2.5)-1)*1.5-4)
++RP1 = 0.1125*(int(2.5)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 3.4285e-05*pwr(R,1.1575e+00)
++LS11 = (0.1643e-12*pwr((R*1e+6),1.208)+61.50e-12)*2.5-0.1e-9
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = 4.8833e-10*R+1.3267e-14
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 5.3461e-01*exp(7.8130e+03*R)
++RS11 = 1.2*RS1
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 6.6667e+06*R+4.6000e+03
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((2.5-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 0)           resistor    r=RSBP1
+csbp1 (np1 0)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 0)           resistor    r=RSBP2
+csbp2 (nP2 0)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 0)           resistor    r=RSBT1
+csbt1 (nt1 0)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_t2d5
+//********************************************************************
+//* 0.11um differential Inductor with center tap and psub terminals  *
+//********************************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 2.5
+subckt diff_ind_3t_rf_pgs_psub_t2d5 (1 2 t1 psub) 
+parameters r=30e-6 n=2.5 
++LP1 = 1.2e-12*(int(2.5)*8+(int(2.5)-1)*1.5-4)
++RP1 = 0.1125*(int(2.5)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 3.4285e-05*pwr(R,1.1575e+00)
++LS11 = (0.1643e-12*pwr((R*1e+6),1.208)+61.50e-12)*2.5-0.1e-9
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = 4.8833e-10*R+1.3267e-14
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 5.3461e-01*exp(7.8130e+03*R)
++RS11 = 1.2*RS1
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 6.6667e+06*R+4.6000e+03
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((2.5-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 psub)           resistor    r=RSBP1
+csbp1 (np1 psub)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 psub)           resistor    r=RSBP2
+csbp2 (nP2 psub)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 psub)           resistor    r=RSBT1
+csbt1 (nt1 psub)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_psub_t2d5
+//*
+//************************************************
+//* 0.11um differential PGS Inductor with center tap
+//************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 3
+subckt diff_ind_3t_rf_pgs_t3 (1 2 t1) 
+parameters r=30e-6 n=3 
++LP1 = 3.3333e-07*R+3.0000e-11
++RP1 = 0.1125*(int(3)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 1.1110e-05*R-7.9270e-11
++LS11 =  1.0699e-10*Log(R) + 1.1941e-09
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = 6.0450e-10*R+1.2897e-14
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 1.7036e-01*exp(1.6433e+04*R)+0.585
++RS11 = 1.2*RS1
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 3.3333e+06*R+5.7000e+03
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((3-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 0)           resistor    r=RSBP1
+csbp1 (np1 0)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 0)           resistor    r=RSBP2
+csbp2 (nP2 0)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 0)           resistor    r=RSBT1
+csbt1 (nt1 0)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_t3
+//********************************************************************
+//* 0.11um differential Inductor with center tap and psub terminals  *
+//********************************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 3
+subckt diff_ind_3t_rf_pgs_psub_t3 (1 2 t1 psub) 
+parameters r=30e-6 n=3 
++LP1 = 3.3333e-07*R+3.0000e-11
++RP1 = 0.1125*(int(3)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 1.1110e-05*R-7.9270e-11
++LS11 =  1.0699e-10*Log(R) + 1.1941e-09
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = 6.0450e-10*R+1.2897e-14
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 1.7036e-01*exp(1.6433e+04*R)+0.585
++RS11 = 1.2*RS1
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 3.3333e+06*R+5.7000e+03
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((3-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 psub)           resistor    r=RSBP1
+csbp1 (np1 psub)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 psub)           resistor    r=RSBP2
+csbp2 (nP2 psub)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 psub)           resistor    r=RSBT1
+csbt1 (nt1 psub)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_psub_t3
+//*
+//************************************************
+//* 0.11um differential PGS Inductor with center tap
+//************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 3.5
+subckt diff_ind_3t_rf_pgs_t3d5 (1 2 t1) 
+parameters r=30e-6 n=3.5 
++LP1 = 1.2e-12*(int(3.5)*8+(int(3.5)-1)*1.5-4)
++RP1 = 0.1125*(int(3.5)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 1.4342e-05*R-6.6333e-11
++LS11 = 2.1201e-06*R+5.5196e-11
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = 7.3333e-10*R+2.3167e-14
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 7.3333e+03*R+9.2667e-01
++RS11 = 1.2*RS1
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 1.0000e+07*R+4.9000e+03
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((3.5-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 0)           resistor    r=RSBP1
+csbp1 (np1 0)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 0)           resistor    r=RSBP2
+csbp2 (nP2 0)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 0)           resistor    r=RSBT1
+csbt1 (nt1 0)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_t3d5
+//********************************************************************
+//* 0.11um differential Inductor with center tap and psub terminals  *
+//********************************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 3.5
+subckt diff_ind_3t_rf_pgs_psub_t3d5 (1 2 t1 psub) 
+parameters r=30e-6 n=3.5 
++LP1 = 1.2e-12*(int(3.5)*8+(int(3.5)-1)*1.5-4)
++RP1 = 0.1125*(int(3.5)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 1.4342e-05*R-6.6333e-11
++LS11 = 2.1201e-06*R+5.5196e-11
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = 7.3333e-10*R+2.3167e-14
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 7.3333e+03*R+9.2667e-01
++RS11 = 1.2*RS1
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 1.0000e+07*R+4.9000e+03
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((3.5-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 psub)           resistor    r=RSBP1
+csbp1 (np1 psub)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 psub)           resistor    r=RSBP2
+csbp2 (nP2 psub)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 psub)           resistor    r=RSBT1
+csbt1 (nt1 psub)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_psub_t3d5
+//*
+//************************************************
+//* 0.11um differential PGS Inductor with center tap
+//************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 4
+subckt diff_ind_3t_rf_pgs_t4 (1 2 t1) 
+parameters r=30e-6 n=4 
++LP1 = 1.2e-12*(int(4)*8+(int(4)-1)*1.5-4)
++RP1 = 0.1125*(int(4)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 1.7534e-05*R-6.9244e-11
++LS11 = 2.3468e-06*R+8.6264e-11
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = 8.2838e-10*R+2.5033e-14
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 1.0942e+00*exp(5.6395e+03*R)
++RS11 = 1.2*RS1
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 5000
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((4-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 0)           resistor    r=RSBP1
+csbp1 (np1 0)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 0)           resistor    r=RSBP2
+csbp2 (nP2 0)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 0)           resistor    r=RSBT1
+csbt1 (nt1 0)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_t4
+//********************************************************************
+//* 0.11um differential Inductor with center tap and psub terminals  *
+//********************************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 4
+subckt diff_ind_3t_rf_pgs_psub_t4 (1 2 t1 psub) 
+parameters r=30e-6 n=4 
++LP1 = 1.2e-12*(int(4)*8+(int(4)-1)*1.5-4)
++RP1 = 0.1125*(int(4)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 1.7534e-05*R-6.9244e-11
++LS11 = 2.3468e-06*R+8.6264e-11
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = 8.2838e-10*R+2.5033e-14
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 1.0942e+00*exp(5.6395e+03*R)
++RS11 = 1.2*RS1
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 5000
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((4-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 psub)           resistor    r=RSBP1
+csbp1 (np1 psub)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 psub)           resistor    r=RSBP2
+csbp2 (nP2 psub)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 psub)           resistor    r=RSBT1
+csbt1 (nt1 psub)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_psub_t4
+//*
+//************************************************
+//* 0.11um differential PGS Inductor with center tap
+//************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 4.5
+subckt diff_ind_3t_rf_pgs_t4d5 (1 2 t1) 
+parameters r=30e-6 n=4.5
++LP1 = 1.2e-12*(int(4.5)*8+(int(4.5)-1)*1.5-4)
++RP1 = 0.1125*(int(4.5)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 2.2333e-05*R-6.6667e-11
++LS11 = 2.9735e-06*R+9.1294e-11
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = 8.6473e-10*R+3.9211e-14
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 1.3531e+00*exp(5.5333e+03*R)
++RS11 = 1.5048e+00*Log(R)+1.6678e+01
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 9.3612e+04*pwr(R,2.9147e-01)
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((4.5-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 0)           resistor    r=RSBP1
+csbp1 (np1 0)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 0)           resistor    r=RSBP2
+csbp2 (nP2 0)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 0)           resistor    r=RSBT1
+csbt1 (nt1 0)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_t4d5
+//********************************************************************
+//* 0.11um differential Inductor with center tap and psub terminals  *
+//********************************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 4.5
+subckt diff_ind_3t_rf_pgs_psub_t4d5 (1 2 t1 psub) 
+parameters r=30e-6 n=4.5 
++LP1 = 1.2e-12*(int(4.5)*8+(int(4.5)-1)*1.5-4)
++RP1 = 0.1125*(int(4.5)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 2.2333e-05*R-6.6667e-11
++LS11 = 2.9735e-06*R+9.1294e-11
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = 8.6473e-10*R+3.9211e-14
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 1.3531e+00*exp(5.5333e+03*R)
++RS11 = 1.5048e+00*Log(R)+1.6678e+01
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 9.3612e+04*pwr(R,2.9147e-01)
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((4.5-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 psub)           resistor    r=RSBP1
+csbp1 (np1 psub)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 psub)           resistor    r=RSBP2
+csbp2 (nP2 psub)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 psub)           resistor    r=RSBT1
+csbt1 (nt1 psub)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_psub_t4d5
+//*
+//************************************************
+//* 0.11um differential PGS Inductor with center tap
+//************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 5
+subckt diff_ind_3t_rf_pgs_t5 (1 2 t1) 
+parameters r=30e-6 n=5
++LP1 = 3.3333e-07*R+5.2000e-11
++RP1 = 0.1125*(int(5)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 2.6383e-05*R-7.1336e-11
++LS11 = 1.4028e-10*exp(1.1964e+04*R)
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = (6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(5,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 1.8354e-01*exp(1.6201e+04*R)+1.7
++RS11 = 1.5259e+00*Log(R)+1.7233e+01
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 5500
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((5-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 0)           resistor    r=RSBP1
+csbp1 (np1 0)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 0)           resistor    r=RSBP2
+csbp2 (nP2 0)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 0)           resistor    r=RSBT1
+csbt1 (nt1 0)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_t5
+//********************************************************************
+//* 0.11um differential Inductor with center tap and psub terminals  *
+//********************************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 5
+subckt diff_ind_3t_rf_pgs_psub_t5 (1 2 t1 psub) 
+parameters r=30e-6 n=5 
++LP1 = 3.3333e-07*R+5.2000e-11
++RP1 = 0.1125*(int(5)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 2.6383e-05*R-7.1336e-11
++LS11 = 1.4028e-10*exp(1.1964e+04*R)
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = (6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(5,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 1.8354e-01*exp(1.6201e+04*R)+1.7
++RS11 = 1.5259e+00*Log(R)+1.7233e+01
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 5500
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((5-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 psub)           resistor    r=RSBP1
+csbp1 (np1 psub)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 psub)           resistor    r=RSBP2
+csbp2 (nP2 psub)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 psub)           resistor    r=RSBT1
+csbt1 (nt1 psub)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_psub_t5
+//*
+//************************************************
+//* 0.11um differential PGS Inductor with center tap
+//************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 5.5
+subckt diff_ind_3t_rf_pgs_t5d5 (1 2 t1) 
+parameters r=30e-6 n=5.5
++LP1 = 1.2e-12*(int(5.5)*8+(int(5.5)-1)*1.5-4)
++RP1 = 0.1125*(int(5.5)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = (0.204e-12*pwr((R*1e+6),1.313)+13.91e-12)*pwr(5.5,2.0)+(2.159e-12*(R*1e+6)-71.17e-12)
++LS11 = 3.2533e-06*R+1.8840e-10
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = (6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(5.5,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 9.1631e-02*exp(2.7447e+04*R)+1.76
++RS11 = 1.2*RS1
++RS2 = RS1*0.95
++RS22 = 1.6097e+00*Log(R)+1.8376e+01
++RSBP1 = 2.0000e+07*R+2.2000e+03
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((5.5-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 0)           resistor    r=RSBP1
+csbp1 (np1 0)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 0)           resistor    r=RSBP2
+csbp2 (nP2 0)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 0)           resistor    r=RSBT1
+csbt1 (nt1 0)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_t5d5
+//********************************************************************
+//* 0.11um differential Inductor with center tap and psub terminals  *
+//********************************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 5.5
+subckt diff_ind_3t_rf_pgs_psub_t5d5 (1 2 t1 psub) 
+parameters r=30e-6 n=5.5 
++LP1 = 1.2e-12*(int(5.5)*8+(int(5.5)-1)*1.5-4)
++RP1 = 0.1125*(int(5.5)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = (0.204e-12*pwr((R*1e+6),1.313)+13.91e-12)*pwr(5.5,2.0)+(2.159e-12*(R*1e+6)-71.17e-12)
++LS11 = 3.2533e-06*R+1.8840e-10
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = (6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(5.5,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 9.1631e-02*exp(2.7447e+04*R)+1.76
++RS11 = 1.2*RS1
++RS2 = RS1*0.95
++RS22 = 1.6097e+00*Log(R)+1.8376e+01
++RSBP1 = 2.0000e+07*R+2.2000e+03
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((5.5-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 psub)           resistor    r=RSBP1
+csbp1 (np1 psub)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 psub)           resistor    r=RSBP2
+csbp2 (nP2 psub)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 psub)           resistor    r=RSBT1
+csbt1 (nt1 psub)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_psub_t5d5
+//*
+//************************************************
+//* 0.11um differential PGS Inductor with center tap
+//************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 6
+subckt diff_ind_3t_rf_pgs_t6 (1 2 t1) 
+parameters r=30e-6 n=6
++LP1 = 1.2e-12*(int(6)*8+(int(6)-1)*1.5-4)
++RP1 = 0.1125*(int(6)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 3.6667e-05*R-4.6000e-11
++LS11 = 4.6520e-08*pwr(R,4.8751e-01)
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = (6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(6,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 1.0968e-01*exp(2.7168e+04*R)+1.95
++RS11 = 2.3526*Log(R)+25.819
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 3.333e+07*R+2.500e+03
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((6-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 0)           resistor    r=RSBP1
+csbp1 (np1 0)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 0)           resistor    r=RSBP2
+csbp2 (nP2 0)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 0)           resistor    r=RSBT1
+csbt1 (nt1 0)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_t6
+//********************************************************************
+//* 0.11um differential Inductor with center tap and psub terminals  *
+//********************************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 6
+subckt diff_ind_3t_rf_pgs_psub_t6 (1 2 t1 psub) 
+parameters r=30e-6 n=6 
++LP1 = 1.2e-12*(int(6)*8+(int(6)-1)*1.5-4)
++RP1 = 0.1125*(int(6)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = 3.6667e-05*R-4.6000e-11
++LS11 = 4.6520e-08*pwr(R,4.8751e-01)
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = (6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(6,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 1.0968e-01*exp(2.7168e+04*R)+1.95
++RS11 = 2.3526*Log(R)+25.819
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = 3.333e+07*R+2.500e+03
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((6-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 psub)           resistor    r=RSBP1
+csbp1 (np1 psub)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 psub)           resistor    r=RSBP2
+csbp2 (nP2 psub)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 psub)           resistor    r=RSBT1
+csbt1 (nt1 psub)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_psub_t6
+//*
+//************************************************
+//* 0.11um differential PGS Inductor with center tap
+//************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 6.5
+subckt diff_ind_3t_rf_pgs_t6d5 (1 2 t1) 
+parameters r=30e-6 n=6.5
++LP1 = 1.2e-12*(int(6.5)*8+(int(6.5)-1)*1.5-4)
++RP1 = 0.1125*(int(6.5)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = (0.204e-12*pwr((R*1e+6),1.313)+13.91e-12)*pwr(6.5,2.0)+(2.159e-12*(R*1e+6)-71.17e-12)
++LS11 = (0.1643e-12*pwr((R*1e+6),1.208)+61.50e-12)*6.5-0.1e-9
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = (6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(6.5,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 4.7917e-01*exp(1.6860e+04*R)+1.6
++RS11 = 3.3668e+03*pwr(R,7.0825e-01)
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = (1750/6.5)+(-18.72*(R*1e+6)+3.396e+3)
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((6.5-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 0)           resistor    r=RSBP1
+csbp1 (np1 0)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 0)           resistor    r=RSBP2
+csbp2 (nP2 0)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 0)           resistor    r=RSBT1
+csbt1 (nt1 0)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_t6d5
+//********************************************************************
+//* 0.11um differential Inductor with center tap and psub terminals  *
+//********************************************************************
+//* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+//* R means inner redius; N means turns
+//* Spacing is fixed at 1.5um and width is fixed at 8um, turn is fixed at 6.5
+subckt diff_ind_3t_rf_pgs_psub_t6d5 (1 2 t1 psub) 
+parameters r=30e-6 n=6.5 
++LP1 = 1.2e-12*(int(6.5)*8+(int(6.5)-1)*1.5-4)
++RP1 = 0.1125*(int(6.5)*9.5e-6-1.5e-6)/8.0e-6
++LS1 = (0.204e-12*pwr((R*1e+6),1.313)+13.91e-12)*pwr(6.5,2.0)+(2.159e-12*(R*1e+6)-71.17e-12)
++LS11 = (0.1643e-12*pwr((R*1e+6),1.208)+61.50e-12)*6.5-0.1e-9
++LS2 = LS1
++LS22 = LS11
++COXP1 = (0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)
++COXP2 = COXP1
++COXT1 = 1e-18
++CP1P2 = (6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(6.5,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 4.7917e-01*exp(1.6860e+04*R)+1.6
++RS11 = 3.3668e+03*pwr(R,7.0825e-01)
++RS2 = RS1*0.95
++RS22 = RS11
++RSBP1 = (1750/6.5)+(-18.72*(R*1e+6)+3.396e+3)
++RSBP2 = RSBP1
++RSBT1 = 1e+6
++KK = 1.0-0.6777*pwr((6.5-0.1),-0.9)
+//* equivalent circuit
+rs1 (nt1p1 st1)         resistor    r=(RS1*(1+drs11_rf)) tc1=3.69e-03
+ls11 (nt1p1 st11)       inductor    l=LS11
+rs11 (st11 st1)         resistor    r=(RS11*(1+drs11_rf)) tc1=3.69e-03
+ls1 (1 nt1p1)           inductor    l=(LS1*(1+dls1_rf))
+coxp1 (1 np1)           capacitor   c=COXP1
+rsbp1 (np1 psub)           resistor    r=RSBP1
+csbp1 (np1 psub)           capacitor   c=CSBP1
+rs2 (nt1p2 2)           resistor    r=(RS2*(1+drs11_rf)) tc1=3.69e-03
+rs22 (st22 2)           resistor    r=(RS22*(1+drs11_rf)) tc1=3.69e-03
+ls22 (nt1p2 st22)       inductor    l=LS22
+ls2 (st1 nt1p2)         inductor    l=(LS2*(1+dls1_rf))
+coxp2 (2 np2)           capacitor   c=COXP2
+rsbp2 (np2 psub)           resistor    r=RSBP2
+csbp2 (nP2 psub)           capacitor   c=CSBP2
+coxt1 (st1 nt1)         capacitor   c=COXT1
+rsbt1 (nt1 psub)           resistor    r=RSBT1
+csbt1 (nt1 psub)           capacitor   c=CSBT1
+rp1 (st1 nst1)          resistor    r=(RP1*(1+drs11_rf)) tc1=3.69e-03
+lp1 (nst1 t1)           inductor    l=(LP1*(1+dls1_rf))
+cp1p2 (1 2)             capacitor   c=CP1P2
+kp11  mutual_inductor   coupling=0.03 ind1=ls1 ind2=ls22
+kp22  mutual_inductor   coupling=0.03 ind1=ls2 ind2=ls11
+kp12_rf mutual_inductor coupling=KK ind1=ls1 ind2=ls2
+ka1 mutual_inductor coupling=(KK*0.03) ind1=ls22 ind2=ls2
+ka2 mutual_inductor coupling=(KK*0.03) ind1=ls11 ind2=ls1
+ends diff_ind_3t_rf_pgs_psub_t6d5
+//*

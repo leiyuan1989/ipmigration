@@ -1,0 +1,38 @@
+
+include "/home/shunqidai/Sizing/SizingDemoLinuxSpectre/smic018/models/spectre/ms018_v1p7_spe.lib" section=tt
+
+parameters vdd=3.3 cload=5pf
+
+subckt diff_opamp vdd vss inp inn net36 out
+
+	MM24 (net10 net10 vdd vdd) p33 l=l3 w=w3 m=1
+	MM22 (out net21 vdd vdd) p33 l=l13 w=w13 m=1
+	MM19 (net23 net21 net22 vdd) p33 l=l10 w=w10 m=1
+	MM18 (net16 net16 vdd vdd) p33 l=l10 w=w10 m=1
+	MM17 (net22 net16 vdd vdd) p33 l=l10 w=w10 m=1
+	MM15 (net17 net17 vdd vdd) p33 l=l9 w=w9 m=1
+	MM14 (net25 net17 net28 vdd) p33 l=l6 w=w6*0.5 m=1
+	MM13 (net21 net17 net28 vdd) p33 l=l6 w=w6*0.5 m=1
+	MM12 (net15 net17 net19 vdd) p33 l=l6 w=w6 m=1
+	MM11 (net28 net10 vdd vdd) p33 l=l2 w=w2 m=1
+	MM10 (net19 net10 vdd vdd) p33 l=l2 w=w2 m=1
+	MM3 (net7 net10 vdd vdd) p33 l=l3 w=w3 m=1
+	MM2 (net1 net10 vdd vdd) p33 l=l2 w=w2 m=1
+	MM1 (net8 inp net1 vdd) p33 l=l1 w=w1 m=1
+	MM0 (net4 inn net1 vdd) p33 l=l1 w=w1 m=1
+	MM26 (net36 net36 vss vss) n33 l=l8 w=w8 m=1
+	MM25 (net10 net36 vss vss) n33 l=l8 w=w8 m=1
+	MM23 (out net25 vss vss) n33 l=l12 w=w12 m=1
+	MM21 (net16 net25 vss vss) n33 l=l11 w=w11 m=1
+	MM20 (net23 net23 vss vss) n33 l=l7 w=w7*0.5 m=1
+	MM16 (net17 net36 vss vss) n33 l=l8 w=w8 m=1
+	MM9 (net8 net15 vss vss) n33 l=l5 w=w5 m=1
+	MM8 (net4 net15 vss vss) n33 l=l5 w=w5 m=1
+	MM7 (net25 net23 net8 vss) n33 l=l4 w=w4*0.5 m=1
+	MM6 (net21 net7 net8 vss) n33 l=l4 w=w4*0.5 m=1
+	MM5 (net15 net7 net4 vss) n33 l=l4 w=w4 m=1
+	MM4 (net7 net7 vss vss) n33 l=l7 w=w7 m=1
+
+	CC1  (net25 out)  capacitor  c=cc
+	CC0  (net21 out)  capacitor  c=cc
+ends diff_opamp

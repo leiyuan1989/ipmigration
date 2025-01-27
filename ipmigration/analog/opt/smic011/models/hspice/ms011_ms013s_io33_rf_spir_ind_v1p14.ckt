@@ -1,0 +1,2348 @@
+* 
+* No part of this file can be released without the consent of SMIC.
+*
+* Note: SMIC recommends that users set VNTOL=1E-9 at .option for more smooth convergence.
+******************************************************************************************
+* 0.11um Mixed Signal 1P8M with MIM Salicide 1.2V/3.3V RF SPICE Model (for HSPICE only)  *
+******************************************************************************************
+** * release version    : 1.14
+** * 
+** * release date       : 03/30/2016
+** * 
+** * simulation tool    : Synopsys Star-HSPICE version C-2009.09 
+** * 
+*  Inductor   :
+*
+* *  *-----------------*-------------------------*-------------------------*-------------------------*-------------------------*
+*    |  Turn & Radius  |  Turn=1.5,rin=60~150um  |   Turn=2,rin=60~150um   |  Turn=2.5,rin=30~150um  |   Turn=3,rin=30~150um   |
+     *-------------------------------------------*-------------------------*-------------------------*-------------------------*
+*    |     Model Name  |       ind_rf_t1d5       |        ind_rf_t2        |       ind_rf_t2d5       |        ind_rf_t3        |   
+*    *-----------------*-------------------------*-------------------------*-------------------------*-------------------------* 
+*    |  Turn & Radius  |  Turn=3.5,rin=30~150um  |   Turn=4,rin=30~150um   |  Turn=4.5,rin=30~150um  |   Turn=5,rin=30~150um   |
+     *-------------------------------------------*-------------------------*-------------------------*-------------------------*
+*    |     Model Name  |       ind_rf_t3d5       |        ind_rf_t4        |       ind_rf_t4d5       |        ind_rf_t5        |   
+*    *-----------------*-------------------------*-------------------------*-------------------------*-------------------------*
+*    |  Turn & Radius  |  Turn=5.5,rin=30~150um  |   Turn=6,rin=30~150um   |  Turn=6.5,rin=30~150um  | 
+     *-------------------------------------------*-------------------------*-------------------------*
+*    |     Model Name  |       ind_rf_t5d5       |        ind_rf_t6        |       ind_rf_t6d5       |    
+*    *-----------------*-------------------------*-------------------------*-------------------------*
+* *  *-----------------*-------------------------*-------------------------*-------------------------*-------------------------*
+*    |  Turn & Radius  |  Turn=1.5,rin=60~150um  |   Turn=2,rin=60~150um   |  Turn=2.5,rin=30~150um  |   Turn=3,rin=30~150um   |
+     *-------------------------------------------*-------------------------*-------------------------*-------------------------*
+*    |     Model Name  |    ind_rf_psub_t1d5     |     ind_rf_psub_t2      |    ind_rf_psub_t2d5     |     ind_rf_psub_t3      |   
+*    *-----------------*-------------------------*-------------------------*-------------------------*-------------------------* 
+*    |  Turn & Radius  |  Turn=3.5,rin=30~150um  |   Turn=4,rin=30~150um   |  Turn=4.5,rin=30~150um  |   Turn=5,rin=30~150um   |
+     *-------------------------------------------*-------------------------*-------------------------*-------------------------*
+*    |     Model Name  |    ind_rf_psub_t3d5     |     ind_rf_psub_t4      |    ind_rf_psub_t4d5     |     ind_rf_psub_t5      |   
+*    *-----------------*-------------------------*-------------------------*-------------------------*-------------------------*
+*    |  Turn & Radius  |  Turn=5.5,rin=30~150um  |   Turn=6,rin=30~150um   |  Turn=6.5,rin=30~150um  | 
+     *-------------------------------------------*-------------------------*-------------------------*
+*    |     Model Name  |    ind_rf_psub_t5d5     |     ind_rf_psub_t6      |    ind_rf_psub_t6d5     |    
+*    *-----------------*-------------------------*-------------------------*-------------------------*
+
+* *  *-----------------*-------------------------*-------------------------*-------------------------*-------------------------*
+*    |  Turn & Radius  |  Turn=1.5,rin=60~150um  |   Turn=2,rin=60~150um   |  Turn=2.5,rin=30~150um  |   Turn=3,rin=30~150um   |
+     *-------------------------------------------*-------------------------*-------------------------*-------------------------*
+*    |     Model Name  |     ind_rf_pgs_t1d5     |      ind_rf_pgs_t2      |     ind_rf_pgs_t2d5     |      ind_rf_pgs_t3      |   
+*    *-----------------*-------------------------*-------------------------*-------------------------*-------------------------* 
+*    |  Turn & Radius  |  Turn=3.5,rin=30~150um  |   Turn=4,rin=30~150um   |  Turn=4.5,rin=30~150um  |   Turn=5,rin=30~150um   |
+     *-------------------------------------------*-------------------------*-------------------------*-------------------------*
+*    |     Model Name  |     ind_rf_pgs_t3d5     |      ind_rf_pgs_t4      |     ind_rf_pgs_t4d5     |      ind_rf_pgs_t5      |   
+*    *-----------------*-------------------------*-------------------------*-------------------------*-------------------------*
+*    |  Turn & Radius  |  Turn=5.5,rin=30~150um  |   Turn=6,rin=30~150um   |  Turn=6.5,rin=30~150um  | 
+     *-------------------------------------------*-------------------------*-------------------------*
+*    |     Model Name  |     ind_rf_pgs_t5d5     |      ind_rf_pgs_t6      |     ind_rf_pgs_t6d5     |    
+*    *-----------------*-------------------------*-------------------------*-------------------------*
+
+* *  *-----------------*-------------------------*-------------------------*-------------------------*-------------------------*
+*    |  Turn & Radius  |  Turn=1.5,rin=60~150um  |   Turn=2,rin=60~150um   |  Turn=2.5,rin=30~150um  |   Turn=3,rin=30~150um   |
+     *-------------------------------------------*-------------------------*-------------------------*-------------------------*
+*    |     Model Name  |  ind_rf_pgs_psub_t1d5   |   ind_rf_pgs_psub_t2    |  ind_rf_pgs_psub_t2d5   |   ind_rf_pgs_psub_t3    |   
+*    *-----------------*-------------------------*-------------------------*-------------------------*-------------------------* 
+*    |  Turn & Radius  |  Turn=3.5,rin=30~150um  |   Turn=4,rin=30~150um   |  Turn=4.5,rin=30~150um  |   Turn=5,rin=30~150um   |
+     *-------------------------------------------*-------------------------*-------------------------*-------------------------*
+*    |     Model Name  |  ind_rf_pgs_psub_t3d5   |   ind_rf_pgs_psub_t4    |  ind_rf_pgs_psub_t4d5   |   ind_rf_pgs_psub_t5    |   
+*    *-----------------*-------------------------*-------------------------*-------------------------*-------------------------*
+*    |  Turn & Radius  |  Turn=5.5,rin=30~150um  |   Turn=6,rin=30~150um   |  Turn=6.5,rin=30~150um  | 
+     *-------------------------------------------*-------------------------*-------------------------*
+*    |     Model Name  |  ind_rf_pgs_psub_t5d5   |   ind_rf_pgs_psub_t6    |  ind_rf_pgs_psub_t6d5   |    
+*    *-----------------*-------------------------*-------------------------*-------------------------*
+
+
+**************************
+* 0.11um Sprial Inductor *
+**************************
+* 1=port1(UTM), 2=port2(UTM)
+* R means inner radius; N means turns
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 60um to 150um and turn is fixed at 1.5.   *
+**************************************************************************************************************
+.subckt ind_rf_t1d5 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=1.5
+
++Ldc       = '0.00001369*R-0.0000000001633'
++Cf        = '0.0000000001443*R+ 0.000000000000006426'
++Rdc       = '6746*R + 0.142' 
++Rsub1     = '-8852000*R + 1815' 
++Csub1     = '0.0000000003566*R- 0.000000000000009844'
++Cox1      = '0.0000000001668*R + 0.00000000000002093'
++Rsub2     = '-6639000*R + 1486' 
++Csub2     = '0.0000000003459*R - 0.00000000000001041'
++Cox2      = '0.0000000001736*R + 0.00000000000001786'
++Rsub3     = '-3107000*R + 814.3' 
++Csub3     = '1e-14'
++Cox3      = '0.0000000007869*R - 0.00000000000002031'
++Krp       = '1.2' 
++Klp       = '-610.7*R + 0.1814'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+.ends ind_rf_t1d5
+
+
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 60um to 150um and turn is fixed at 2.   *
+**************************************************************************************************************
+.subckt ind_rf_t2 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=2
+
++Ldc       = '0.00002133*R - 0.000000000279'
++Cf        = '0.0000000002328*R + 0.0000000000000002787'
++Rdc       = '9000*R + 0.1977'
++Rsub1     = '-3893000*R + 1086' 
++Csub1     = '0.0000000002787*R + 0.00000000000001087'
++Cox1      = '0.00000000000002853*exp(3871*R)'
++Rsub2     = '-3893000*R + 1086'
++Csub2     = '0.00000000000001686*exp(6806*R)'
++Cox2      = '0.00000000000002526*EXP(4399*R)'
++Rsub3     = '704*EXP(-5679*R)' 
++Csub3     = '0.0000000001*R + 0.000000000000005'
++Cox3      = '0.0000000009869*R - 0.00000000000002231'
++Krp       = '1668*R + 0.9493' 
++Klp       = '-663.9*R + 0.1886'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+.ends ind_rf_t2
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 2.5.   *
+**************************************************************************************************************
+.subckt ind_rf_t2d5 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=2.5
+
++Ldc       = '0.00005989*pwr(R,1.079)'
++Cf        = '0.0000000002*R + 0.000000000000011'
++Rdc       = '11250*R + 0.2576'
++Rsub1     = '0.273*pwr(R,-0.8249)' 
++Csub1     = '0.00000000037*R - 0.0000000000000028'
++Cox1      = '0.00000000000002641*EXP(6189*R)'
++Rsub2     = '0.7991*pwr(R,-0.7362)'
++Csub2     = '0.000000000305*R - 0.00000000000000395'
++Cox2      = '0.0000000003025*R + 0.00000000000001803'
++Rsub3     = '827.9*EXP(-5814*R)' 
++Csub3     = '0.000000000075*R + 0.00000000000000675'
++Cox3      = '0.000000001*R - 0.00000000000001'
++Krp       = '0.5282*log(R) + 6.218' 
++Klp       = '-750*R + 0.2025'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+.ends ind_rf_t2d5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 3.   *
+**************************************************************************************************************
+.subckt ind_rf_t3 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=3
+
++Ldc       = '0.0002071*pwr(R,1.188)+0.0000000002'
++Cf        = '0.0000000002*R + 0.00000000000001'
++Rdc       = '13500*R + 0.3351'
++Rsub1     = '0.4778*pwr(R,-0.7592)' 
++Csub1     = '0.00000000044*R - 0.0000000000000001'
++Cox1      = '0.00000000000003169*EXP(5621*R)'
++Rsub2     = '1.326*pwr(R,-0.6713)'
++Csub2     = '0.0000000003525*R - 0.000000000000003475'
++Cox2      = '0.00000000000002798*EXP(6288*R)'
++Rsub3     = '-2500000*R + 675' 
++Csub3     = '0.000000000000006121*EXP(7886*R)'
++Cox3      = '0.000000001173*R - 0.00000000000001278'
++Krp       = '12380*R + 0.2238' 
++Klp       = '0.13'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+.ends ind_rf_t3
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 3.5.   *
+**************************************************************************************************************
+.subckt ind_rf_t3d5 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=3.5
+
++Ldc       = '0.000273*pwr(R,1.187)+0.00000000035'
++Cf        = '0.0000000002075*R + 0.00000000000001408'
++Rdc       = '15760*R + 0.4156'
++Rsub1     = '3.452*pwr(R,-0.554)' 
++Csub1     = '0.00000003795*pwr(R,1.521)+0.00000000000001'
++Cox1      = '0.0000000004188*R + 0.00000000000002669'
++Rsub2     = '0.04372*pwr(R,-0.9887)+300'
++Csub2     = '0.000008194*pwr(R,2.157)+0.000000000000007'
++Cox2      = '0.0000000004175*R + 0.00000000000002317'
++Rsub3     = '-2500000*R + 675' 
++Csub3     = '0.000000000125*R + 0.00000000000000625'
++Cox3      = '0.000000001175*R - 0.00000000000000525'
++Krp       = '306400*pwr(R,1.29)' 
++Klp       = '0.13'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+.ends ind_rf_t3d5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 4.   *
+**************************************************************************************************************
+.subckt ind_rf_t4 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=4
+
++Ldc       = '0.0003819*pwr(R,1.2)+0.0000000005'
++Cf        = '0.00000000019*R + 0.0000000000000139'
++Rdc       = '17990*R + 0.5154'
++Rsub1     = '0.635*pwr(R,-0.7039)' 
++Csub1     = '0.0000000005075*R + 0.000000000000001575'
++Cox1      = '0.00000000000003903*EXP(5895*R)'
++Rsub2     = '1548*EXP(-9176*R)'
++Csub2     = '0.000000000000006043*EXP(17040*R)'
++Cox2      = '0.00000000000003417*EXP(6609*R)'
++Rsub3     = '-3225000*R + 732.7' 
++Csub3     = '0.000000000125*R + 0.00000000000000625'
++Cox3      = '0.000000001383*R - 0.000000000000002175'
++Krp       = '16130*R + 0.1113' 
++Klp       = '-570*R + 0.1743'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+.ends ind_rf_t4
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 4.5.   *
+**************************************************************************************************************
+.subckt ind_rf_t4d5 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=4.5
+
++Ldc       = '0.0007182*pwr(R,1.247)+0.0000000009'
++Cf        = '0.0000000002075*R + 0.00000000000001708'
++Rdc       = '20250*R + 0.6175'
++Rsub1     = '843.3*EXP(-6913*R)' 
++Csub1     = '0.0000000004875*R + 0.000000000000005875'
++Cox1      = '0.000000000465*R + 0.00000000000002965'
++Rsub2     = '1.652*pwr(R,-0.6267)'
++Csub2     = '0.000000000000006725*EXP(15980*R)'
++Cox2      = '0.000000000475*R + 0.00000000000002375'
++Rsub3     = '0.2766*pwr(R,-0.7793)' 
++Csub3     = '0.000000000125*R + 0.00000000000000625'
++Cox3      = '0.000000001485*R + 0.00000000000001435'
++Krp       = '16130*R + 0.1113' 
++Klp       = '-570*R + 0.1743'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+.ends ind_rf_t4d5
+
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 5.   *
+**************************************************************************************************************
+.subckt ind_rf_t5 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=5
+
++Ldc       = '0.00059*pwr(R,1.204)+0.00000000098'
++Cf        = '0.00000000000001358*log(R) + 0.0000000000001639'
++Rdc       = '22480*R + 0.7388'
++Rsub1     = '6.947*pwr(R,-0.4305)' 
++Csub1     = '0.00000000000001327*EXP(12760*R)'
++Cox1      = '0.0000000000000344*EXP(7836*R)'
++Rsub2     = '2.947*pwr(R,-0.5611)'
++Csub2     = '0.000000000000005215*EXP(17610*R)'
++Cox2      = '0.00000000000002914*EXP(8604*R)'
++Rsub3     = '1025*EXP(-9839*R)' 
++Csub3     = '0.00000000025*R + 0.0000000000000075'
++Cox3      = '0.00000000152*R + 0.0000000000000382'
++Krp       = '16130*R + 0.1113' 
++Klp       = '-570*R + 0.1743'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+.ends ind_rf_t5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 5.5.   *
+**************************************************************************************************************
+.subckt ind_rf_t5d5 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=5.5
+
++Ldc       = '0.0009466*pwr(R,1.238)+0.0000000015'
++Cf        = '0.000000000000009926*log(R) + 0.0000000000001326'
++Rdc       = '24730*R + 0.8633'
++Rsub1     = '1.306*pwr(R,-0.5983)' 
++Csub1     = '0.0000000006025*R - 0.000000000000000975'
++Cox1      = '0.0000000006275*R + 0.00000000000002528'
++Rsub2     = '1516*EXP(-10540*R)'
++Csub2     = '0.0000001588*pwr(R,1.64)'
++Cox2      = '0.000000000635*R + 0.00000000000001685'
++Rsub3     = '880*EXP(-8683*R)' 
++Csub3     = '0.000000000125*R + 0.00000000000001625'
++Cox3      = '0.000000001603*R + 0.00000000000004802'
++Krp       = '16130*R + 0.1113' 
++Klp       = '-570*R + 0.1743'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+.ends ind_rf_t5d5
+
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 6.   *
+**************************************************************************************************************
+.subckt ind_rf_t6 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=6
+
++Ldc       = '0.000855*pwr(R,1.209)+0.0000000017'
++Cf        = '0.00000000014*R + 0.0000000000000244'
++Rdc       = '26980*R + 1.004'
++Rsub1     = '-3425000*R + 710.8' 
++Csub1     = '0.00000000068*R - 0.0000000000000047'
++Cox1      = '0.000000000615*R + 0.00000000000003415'
++Rsub2     = '1508*EXP(-10850*R)'
++Csub2     = '0.0000004191*pwr(R,1.754)'
++Cox2      = '0.0000000006*R + 0.000000000000027'
++Rsub3     = '0.5557*pwr(R,-0.694)' 
++Csub3     = '0.000000000125*R + 0.00000000000002125'
++Cox3      = '0.000000001863*R + 0.00000000000004363'
++Krp       = '1.076*log(R) + 11.94' 
++Klp       = '-570*R + 0.1743'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+.ends ind_rf_t6
+
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 6.5.   *
+**************************************************************************************************************
+.subckt ind_rf_t6d5 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=6.5
+
++Ldc       = '0.001134*pwr(R,1.225)+0.0000000023'
++Cf        = '0.00000000017*R + 0.0000000000000297'
++Rdc       = '29210*R + 1.152'
++Rsub1     = '1019*EXP(-11720*R)' 
++Csub1     = '0.0000000006725*R - 0.000000000000004275'
++Cox1      = '0.00000000000004985*EXP(6891*R)'
++Rsub2     = '1731*EXP(-12870*R)'
++Csub2     = '0.00000000067*R - 0.0000000000000173'
++Cox2      = '0.00000000000004166*EXP(7596*R)'
++Rsub3     = '626*EXP(-5061*R)' 
++Csub3     = '0.000000000125*R + 0.00000000000002625'
++Cox3      = '0.000000001953*R + 0.00000000000005403'
++Krp       = '1.076*log(R) + 11.94' 
++Klp       = '0.1835*EXP(-4688*R)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+.ends ind_rf_t6d5
+
+************************************
+* 0.11um Sprial Inductor with PSUB *
+************************************
+* 1=port1(UTM), 2=port2(UTM)
+* R means inner radius; N means turns
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 60um to 150um and turn is fixed at 1.5.   *
+**************************************************************************************************************
+.subckt ind_rf_psub_t1d5 1 2 PSUB 
+* inductor scalable model parameters
+.param R=60.0e-6 N=1.5
+
++Ldc       = '0.00001369*R-0.0000000001633'
++Cf        = '0.0000000001443*R+ 0.000000000000006426'
++Rdc       = '6746*R + 0.142' 
++Rsub1     = '-8852000*R + 1815' 
++Csub1     = '0.0000000003566*R- 0.000000000000009844'
++Cox1      = '0.0000000001668*R + 0.00000000000002093'
++Rsub2     = '-6639000*R + 1486' 
++Csub2     = '0.0000000003459*R - 0.00000000000001041'
++Cox2      = '0.0000000001736*R + 0.00000000000001786'
++Rsub3     = '-3107000*R + 814.3' 
++Csub3     = '1e-14'
++Cox3      = '0.0000000007869*R - 0.00000000000002031'
++Krp       = '1.2' 
++Klp       = '-610.7*R + 0.1814'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+.ends ind_rf_psub_t1d5
+
+
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 60um to 150um and turn is fixed at 2.   *
+**************************************************************************************************************
+.subckt ind_rf_psub_t2 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=2
+
++Ldc       = '0.00002133*R - 0.000000000279'
++Cf        = '0.0000000002328*R + 0.0000000000000002787'
++Rdc       = '9000*R + 0.1977'
++Rsub1     = '-3893000*R + 1086' 
++Csub1     = '0.0000000002787*R + 0.00000000000001087'
++Cox1      = '0.00000000000002853*exp(3871*R)'
++Rsub2     = '-3893000*R + 1086'
++Csub2     = '0.00000000000001686*exp(6806*R)'
++Cox2      = '0.00000000000002526*EXP(4399*R)'
++Rsub3     = '704*EXP(-5679*R)' 
++Csub3     = '0.0000000001*R + 0.000000000000005'
++Cox3      = '0.0000000009869*R - 0.00000000000002231'
++Krp       = '1668*R + 0.9493' 
++Klp       = '-663.9*R + 0.1886'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+.ends ind_rf_psub_t2
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 2.5.   *
+**************************************************************************************************************
+.subckt ind_rf_psub_t2d5 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=2.5
+
++Ldc       = '0.00005989*pwr(R,1.079)'
++Cf        = '0.0000000002*R + 0.000000000000011'
++Rdc       = '11250*R + 0.2576'
++Rsub1     = '0.273*pwr(R,-0.8249)' 
++Csub1     = '0.00000000037*R - 0.0000000000000028'
++Cox1      = '0.00000000000002641*EXP(6189*R)'
++Rsub2     = '0.7991*pwr(R,-0.7362)'
++Csub2     = '0.000000000305*R - 0.00000000000000395'
++Cox2      = '0.0000000003025*R + 0.00000000000001803'
++Rsub3     = '827.9*EXP(-5814*R)' 
++Csub3     = '0.000000000075*R + 0.00000000000000675'
++Cox3      = '0.000000001*R - 0.00000000000001'
++Krp       = '0.5282*log(R) + 6.218' 
++Klp       = '-750*R + 0.2025'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+.ends ind_rf_psub_t2d5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 3.   *
+**************************************************************************************************************
+.subckt ind_rf_psub_t3 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=3
+
++Ldc       = '0.0002071*pwr(R,1.188)+0.0000000002'
++Cf        = '0.0000000002*R + 0.00000000000001'
++Rdc       = '13500*R + 0.3351'
++Rsub1     = '0.4778*pwr(R,-0.7592)' 
++Csub1     = '0.00000000044*R - 0.0000000000000001'
++Cox1      = '0.00000000000003169*EXP(5621*R)'
++Rsub2     = '1.326*pwr(R,-0.6713)'
++Csub2     = '0.0000000003525*R - 0.000000000000003475'
++Cox2      = '0.00000000000002798*EXP(6288*R)'
++Rsub3     = '-2500000*R + 675' 
++Csub3     = '0.000000000000006121*EXP(7886*R)'
++Cox3      = '0.000000001173*R - 0.00000000000001278'
++Krp       = '12380*R + 0.2238' 
++Klp       = '0.13'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+.ends ind_rf_psub_t3
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 3.5.   *
+**************************************************************************************************************
+.subckt ind_rf_psub_t3d5 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=3.5
+
++Ldc       = '0.000273*pwr(R,1.187)+0.00000000035'
++Cf        = '0.0000000002075*R + 0.00000000000001408'
++Rdc       = '15760*R + 0.4156'
++Rsub1     = '3.452*pwr(R,-0.554)' 
++Csub1     = '0.00000003795*pwr(R,1.521)+0.00000000000001'
++Cox1      = '0.0000000004188*R + 0.00000000000002669'
++Rsub2     = '0.04372*pwr(R,-0.9887)+300'
++Csub2     = '0.000008194*pwr(R,2.157)+0.000000000000007'
++Cox2      = '0.0000000004175*R + 0.00000000000002317'
++Rsub3     = '-2500000*R + 675' 
++Csub3     = '0.000000000125*R + 0.00000000000000625'
++Cox3      = '0.000000001175*R - 0.00000000000000525'
++Krp       = '306400*pwr(R,1.29)' 
++Klp       = '0.13'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+.ends ind_rf_psub_t3d5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 4.   *
+**************************************************************************************************************
+.subckt ind_rf_psub_t4 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=4
+
++Ldc       = '0.0003819*pwr(R,1.2)+0.0000000005'
++Cf        = '0.00000000019*R + 0.0000000000000139'
++Rdc       = '17990*R + 0.5154'
++Rsub1     = '0.635*pwr(R,-0.7039)' 
++Csub1     = '0.0000000005075*R + 0.000000000000001575'
++Cox1      = '0.00000000000003903*EXP(5895*R)'
++Rsub2     = '1548*EXP(-9176*R)'
++Csub2     = '0.000000000000006043*EXP(17040*R)'
++Cox2      = '0.00000000000003417*EXP(6609*R)'
++Rsub3     = '-3225000*R + 732.7' 
++Csub3     = '0.000000000125*R + 0.00000000000000625'
++Cox3      = '0.000000001383*R - 0.000000000000002175'
++Krp       = '16130*R + 0.1113' 
++Klp       = '-570*R + 0.1743'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+.ends ind_rf_psub_t4
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 4.5.   *
+**************************************************************************************************************
+.subckt ind_rf_psub_t4d5 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=4.5
+
++Ldc       = '0.0007182*pwr(R,1.247)+0.0000000009'
++Cf        = '0.0000000002075*R + 0.00000000000001708'
++Rdc       = '20250*R + 0.6175'
++Rsub1     = '843.3*EXP(-6913*R)' 
++Csub1     = '0.0000000004875*R + 0.000000000000005875'
++Cox1      = '0.000000000465*R + 0.00000000000002965'
++Rsub2     = '1.652*pwr(R,-0.6267)'
++Csub2     = '0.000000000000006725*EXP(15980*R)'
++Cox2      = '0.000000000475*R + 0.00000000000002375'
++Rsub3     = '0.2766*pwr(R,-0.7793)' 
++Csub3     = '0.000000000125*R + 0.00000000000000625'
++Cox3      = '0.000000001485*R + 0.00000000000001435'
++Krp       = '16130*R + 0.1113' 
++Klp       = '-570*R + 0.1743'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+.ends ind_rf_psub_t4d5
+
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 5.   *
+**************************************************************************************************************
+.subckt ind_rf_psub_t5 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=5
+
++Ldc       = '0.00059*pwr(R,1.204)+0.00000000098'
++Cf        = '0.00000000000001358*log(R) + 0.0000000000001639'
++Rdc       = '22480*R + 0.7388'
++Rsub1     = '6.947*pwr(R,-0.4305)' 
++Csub1     = '0.00000000000001327*EXP(12760*R)'
++Cox1      = '0.0000000000000344*EXP(7836*R)'
++Rsub2     = '2.947*pwr(R,-0.5611)'
++Csub2     = '0.000000000000005215*EXP(17610*R)'
++Cox2      = '0.00000000000002914*EXP(8604*R)'
++Rsub3     = '1025*EXP(-9839*R)' 
++Csub3     = '0.00000000025*R + 0.0000000000000075'
++Cox3      = '0.00000000152*R + 0.0000000000000382'
++Krp       = '16130*R + 0.1113' 
++Klp       = '-570*R + 0.1743'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+.ends ind_rf_psub_t5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 5.5.   *
+**************************************************************************************************************
+.subckt ind_rf_psub_t5d5 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=5.5
+
++Ldc       = '0.0009466*pwr(R,1.238)+0.0000000015'
++Cf        = '0.000000000000009926*log(R) + 0.0000000000001326'
++Rdc       = '24730*R + 0.8633'
++Rsub1     = '1.306*pwr(R,-0.5983)' 
++Csub1     = '0.0000000006025*R - 0.000000000000000975'
++Cox1      = '0.0000000006275*R + 0.00000000000002528'
++Rsub2     = '1516*EXP(-10540*R)'
++Csub2     = '0.0000001588*pwr(R,1.64)'
++Cox2      = '0.000000000635*R + 0.00000000000001685'
++Rsub3     = '880*EXP(-8683*R)' 
++Csub3     = '0.000000000125*R + 0.00000000000001625'
++Cox3      = '0.000000001603*R + 0.00000000000004802'
++Krp       = '16130*R + 0.1113' 
++Klp       = '-570*R + 0.1743'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+.ends ind_rf_psub_t5d5
+
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 6.   *
+**************************************************************************************************************
+.subckt ind_rf_psub_t6 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=6
+
++Ldc       = '0.000855*pwr(R,1.209)+0.0000000017'
++Cf        = '0.00000000014*R + 0.0000000000000244'
++Rdc       = '26980*R + 1.004'
++Rsub1     = '-3425000*R + 710.8' 
++Csub1     = '0.00000000068*R - 0.0000000000000047'
++Cox1      = '0.000000000615*R + 0.00000000000003415'
++Rsub2     = '1508*EXP(-10850*R)'
++Csub2     = '0.0000004191*pwr(R,1.754)'
++Cox2      = '0.0000000006*R + 0.000000000000027'
++Rsub3     = '0.5557*pwr(R,-0.694)' 
++Csub3     = '0.000000000125*R + 0.00000000000002125'
++Cox3      = '0.000000001863*R + 0.00000000000004363'
++Krp       = '1.076*log(R) + 11.94' 
++Klp       = '-570*R + 0.1743'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+.ends ind_rf_psub_t6
+
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 6.5.   *
+**************************************************************************************************************
+.subckt ind_rf_psub_t6d5 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=6.5
+
++Ldc       = '0.001134*pwr(R,1.225)+0.0000000023'
++Cf        = '0.00000000017*R + 0.0000000000000297'
++Rdc       = '29210*R + 1.152'
++Rsub1     = '1019*EXP(-11720*R)' 
++Csub1     = '0.0000000006725*R - 0.000000000000004275'
++Cox1      = '0.00000000000004985*EXP(6891*R)'
++Rsub2     = '1731*EXP(-12870*R)'
++Csub2     = '0.00000000067*R - 0.0000000000000173'
++Cox2      = '0.00000000000004166*EXP(7596*R)'
++Rsub3     = '626*EXP(-5061*R)' 
++Csub3     = '0.000000000125*R + 0.00000000000002625'
++Cox3      = '0.000000001953*R + 0.00000000000005403'
++Krp       = '1.076*log(R) + 11.94' 
++Klp       = '0.1835*EXP(-4688*R)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+.ends ind_rf_psub_t6d5
+
+
+***********************************
+* 0.11um Sprial Inductor with PGS *
+***********************************
+* 1=port1(UTM), 2=port2(UTM)
+* R means inner radius; N means turns
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 60um to 150um and turn is fixed at 1.5.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_t1d5 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=1.5
+
++Ldc       = '0.0000093602*R - 0.000000000015725'
++Cf        = '0.000000000047869*R + 0.0000000000000037869'
++Rdc       = '6746*R + 0.142' 
++Rsub1     = '20' 
++Csub1     = '1/(0.7664*pwr(R,-2.9065)+1900000000000)'
++Cox1      = '0.00000000014971*pwr(R,0.87498)'
++Rsub2     = '20' 
++Csub2     = '1/(1.3886*pwr(R,-2.9288)+1780000000000)'
++Cox2      = '0.00000000022684*pwr(R,0.917)'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.000000000000019109*EXP(8685*R)'
++Krp       = '0.36232*log(R) + 4.1798' 
++Klp       = '0.16'
++mm        = '1600*R + 0.14'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_t1d5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 60um to 150um and turn is fixed at 2.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_t2 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=2
+
++Ldc       = '0.000014594*R - 0.000000000043865'                  
++Cf        = '0.0000000000020479*pwr(R,0.53761)'                                 
++Rdc       = '9000*R + 0.1977'                                                   
++Rsub1     = '20'                                                                
++Csub1     = '1/(0.7664*pwr(R,-2.9065)+1900000000000)'                           
++Cox1      = '0.00000000049959*R + 0.000000000000003209'                         
++Rsub2     = '20'                                                                
++Csub2     = '1/(1.3886*pwr(R,-2.9288)+1780000000000)'                           
++Cox2      = '0.00000000051598*R + 0.0000000000000033484'                        
++Rsub3     = '5'                                                                 
++Csub3     = '0.000000000225*R + 0.00000000000000925'                            
++Cox3      = '0.00000000052377*R + 0.000000000000016877'                         
++Krp       = '0.36232*log(R) + 4.1798'                                           
++Klp       = '0.16'                                                              
++mm        = '1600*R + 0.14'                                                     
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'                                      
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'                                      
++Rs1       = '(1+1/Krp)*Rdc/2'                                                   
++Rs2       = '(1+1/Krp)*Rdc/2'                                                   
++Rp1       = 'Krp*Rs1'                                                           
++Rp2       = 'Krp*Rs2'                                                           
++Lp1       = 'Klp*Ls1'                                                           
++Lp2       = 'Klp*Ls2'                                                           
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_t2
+
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 2.5.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_t2d5 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=2.5
+
++Ldc       = '0.000072807*pwr(R,1.1568)+0.0000000001'
++Cf        = '0.0000000000013878*pwr(R,0.45609)'
++Rdc       = '11250*R + 0.2576' 
++Rsub1     = '23.036*EXP(8243.7*R)' 
++Csub1     = '0.0000000012505*pwr(R,0.87285)'
++Cox1      = '0.000000030336*pwr(R,1.4671)+0.000000000000013'
++Rsub2     = '3.6499*EXP(16077*R)+49' 
++Csub2     = '0.0000000031786*R + 0.000000000000021786'
++Cox2      = '0.00000000056464*R + 0.0000000000000018464'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.000000000026366*pwr(R,0.60506)'
++Krp       = '199.56*pwr(R,0.58183)' 
++Klp       = '-0.04966*log(R) - 0.27651'
++mm        = '350*R + 0.5555'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_t2d5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 3.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_t3 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=3
+
++Ldc       = '0.00014223*pwr(R,1.1997)+0.00000000018'
++Cf        = '1/(767400000*pwr(R,-1.095)+14500000000000)'
++Rdc       = '13500*R + 0.3351' 
++Rsub1     = '976.08*pwr(R,0.11328)' 
++Csub1     = '0.000000000000070134*EXP(10569*R)'
++Cox1      = '0.00000000000002033*EXP(10010*R)'
++Rsub2     = '93.442*log(R) + 1076.6' 
++Csub2     = '0.000000000000017399*EXP(17870*R)+0.00000000000007'
++Cox2      = '0.000000000000016544*EXP(11241*R)'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.000000000035236*pwr(R,0.60657)'
++Krp       = '161.46*pwr(R,0.54465)' 
++Klp       = '0.198'
++mm        = '350*R + 0.5555'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_t3
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 3.5.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_t3d5 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=3.5
+
++Ldc       = '0.00016355*pwr(R,1.1871)+0.0000000003'
++Cf        = '0.00000000020357*R + 0.000000000000012536'
++Rdc       = '15760*R + 0.4156' 
++Rsub1     = '174.07*EXP(7788.2*R)' 
++Csub1     = '0.0000000019286*R + 0.000000000000049286'
++Cox1      = '0.00000000059018*R + 0.0000000000000096518'
++Rsub2     = '818890*pwr(R,0.83826)' 
++Csub2     = '0.000000000000074931*EXP(9799.7*R)'
++Cox2      = '0.00000000060357*R + 0.0000000000000045357'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.0000000010946*R + 0.000000000000038446'
++Krp       = '11107*R + 0.13107' 
++Klp       = '0.29932*EXP(-7303*R)'
++mm        = '0.5713*EXP(1061.2*R)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_t3d5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 4.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_t4 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=4
+
++Ldc       = '0.00024329*pwr(R,1.2046)+0.0000000004'
++Cf        = '0.00000000019375*R + 0.000000000000015188'
++Rdc       = '17990*R + 0.5154' 
++Rsub1     = '2196400*R + 226.96' 
++Csub1     = '0.0000000019286*R + 0.000000000000049286'
++Cox1      = '0.00000000079554*R + 7.0536E-16'
++Rsub2     = '199.52*log(R) + 2267.8' 
++Csub2     = '0.000000000000056847*EXP(11649*R)'
++Cox2      = '0.00000000080446*R - 0.0000000000000042054'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.00000000094286*R + 0.000000000000068429'
++Krp       = '11964*R + 0.019643' 
++Klp       = '-1000*R + 0.25'
++mm        = '1/(0.1902*EXP(-8889.6*R)+1.55)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_t4
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 4.5.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_t4d5 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=4.5
+
++Ldc       = '0.00033798*pwr(R,1.2213)+0.00000000065'
++Cf        = '0.00000000019643*R + 0.000000000000019964'
++Rdc       = '20250*R + 0.6175' 
++Rsub1     = '307.75*EXP(3958*R)' 
++Csub1     = '0.0000000019286*R + 0.000000000000049286'
++Cox1      = '0.00000000082857*R + 0.0000000000000027857'
++Rsub2     = '87.344*log(R) + 1274.8' 
++Csub2     = '0.000000000000046001*EXP(13202*R)'
++Cox2      = '0.0000000008375*R - 0.000000000000003625'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.0000000011446*R + 0.000000000000075946'
++Krp       = '369010000*pwr(R,2.1059)+0.24' 
++Klp       = '-1000*R + 0.25'
++mm        = '1/(0.000066881*pwr(R,-0.79487)+1.43)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_t4d5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 5.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_t5 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=5
+
++Ldc       = '0.00037174*pwr(R,1.2117)+0.0000000008'
++Cf        = '0.00000000021071*R + 0.000000000000019607'
++Rdc       = '22480*R + 0.7388' 
++Rsub1     = '307.75*EXP(3958*R)' 
++Csub1     = '0.0000000019286*R + 0.000000000000049286'
++Cox1      = '0.00000000085714*R + 0.0000000000000035714'
++Rsub2     = '87.344*log(R) + 1274.8' 
++Csub2     = '0.000000000000046001*EXP(13202*R)'
++Cox2      = '0.00000000085536*R - 0.0000000000000029464'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.0000000013482*R + 0.000000000000088982'
++Krp       = '369010000*pwr(R,2.1059)+0.24' 
++Klp       = '-1000*R + 0.25'
++mm        = '1/(0.000066881*pwr(R,-0.79487)+1.43)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_t5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 5.5.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_t5d5 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=5.5
+
++Ldc       = '0.00035763*pwr(R,1.1891)+0.000000001'
++Cf        = '1/(17910000*pwr(R,-1.302)+20500000000000)'
++Rdc       = '24730*R + 0.8633' 
++Rsub1     = '1750000*R + 297.5' 
++Csub1     = '0.00000000175*R + 0.0000000000000775'
++Cox1      = '0.0000000007661*R + 0.00000000000001316'
++Rsub2     = '1750000*R + 327.5' 
++Csub2     = '0.000000001375*R + 0.00000000000003875'
++Cox2      = '0.0000000007375*R + 0.000000000000009875'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.000000001786*R + 0.00000000000008286'
++Krp       = '18540*R - 0.2846' 
++Klp       = '-910.7*R + 0.2259'
++mm        = '1/(0.01551*pwr(R,-0.3499)+1.1)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_t5d5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 6.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_t6 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=6
+
++Ldc       = '0.00048921*pwr(R,1.2088)+0.00000000135'
++Cf        = '0.0000000000047644*pwr(R,0.49363)'
++Rdc       = '26980*R + 1.004' 
++Rsub1     = '1750000*R + 297.5' 
++Csub1     = '0.0000000000001019*EXP(9040*R)'
++Cox1      = '0.0000000008089*R + 0.00000000000001359'
++Rsub2     = '168.2*log(R) + 2137' 
++Csub2     = '0.00000000000005796*EXP(11230*R)'
++Cox2      = '0.0000000007768*R + 0.000000000000009268'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.000000001973*R + 0.00000000000009923'
++Krp       = '18540*R - 0.2846' 
++Klp       = '-910.7*R + 0.2259'
++mm        = '1/(0.01551*pwr(R,-0.3499)+1.1)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_t6
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 6.5.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_t6d5 1 2 
+* inductor scalable model parameters
+.param R=60.0e-6 N=6.5
+
++Ldc       = '0.00052655*pwr(R,1.2008)+0.0000000017'
++Cf        = '1/(688490000000*pwr(R,-0.35639))'
++Rdc       = '29210*R + 1.152' 
++Rsub1     = '1.5586*EXP(39335*R)+395' 
++Csub1     = '0.0000000015893*R + 0.00000000000011089'
++Cox1      = '0.00000000085*R + 0.0000000000000185'
++Rsub2     = '583930*R + 612.34' 
++Csub2     = '0.000000000000054*EXP(13094*R)'
++Cox2      = '0.00000000083036*R + 0.000000000000010304'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.0000000021429*R + 0.00000000000010843'
++Krp       = '18540*R - 0.2846' 
++Klp       = '-910.7*R + 0.2259'
++mm        = '1/(0.01551*pwr(R,-0.3499)+1.1)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  0 Rsub1
+Csub1_Ind  4  0 Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  0 Rsub2
+Csub2_Ind  5  0 Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  0 Rsub3
+Csub3_Ind  6  0 Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_t6d5
+
+
+******************************************
+* 0.11um Sprial Inductor with PGS & PSUB *
+******************************************
+* 1=port1(UTM), 2=port2(UTM)
+* R means inner radius; N means turns
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 60um to 150um and turn is fixed at 1.5.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_psub_t1d5 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=1.5
+
++Ldc       = '0.0000093602*R - 0.000000000015725'
++Cf        = '0.000000000047869*R + 0.0000000000000037869'
++Rdc       = '6746*R + 0.142' 
++Rsub1     = '20' 
++Csub1     = '1/(0.7664*pwr(R,-2.9065)+1900000000000)'
++Cox1      = '0.00000000014971*pwr(R,0.87498)'
++Rsub2     = '20' 
++Csub2     = '1/(1.3886*pwr(R,-2.9288)+1780000000000)'
++Cox2      = '0.00000000022684*pwr(R,0.917)'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.000000000000019109*EXP(8685*R)'
++Krp       = '0.36232*log(R) + 4.1798' 
++Klp       = '0.16'
++mm        = '1600*R + 0.14'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_psub_t1d5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 60um to 150um and turn is fixed at 2.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_psub_t2 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=2
+
++Ldc       = '0.000014594*R - 0.000000000043865'                  
++Cf        = '0.0000000000020479*pwr(R,0.53761)'                                 
++Rdc       = '9000*R + 0.1977'                                                   
++Rsub1     = '20'                                                                
++Csub1     = '1/(0.7664*pwr(R,-2.9065)+1900000000000)'                           
++Cox1      = '0.00000000049959*R + 0.000000000000003209'                         
++Rsub2     = '20'                                                                
++Csub2     = '1/(1.3886*pwr(R,-2.9288)+1780000000000)'                           
++Cox2      = '0.00000000051598*R + 0.0000000000000033484'                        
++Rsub3     = '5'                                                                 
++Csub3     = '0.000000000225*R + 0.00000000000000925'                            
++Cox3      = '0.00000000052377*R + 0.000000000000016877'                         
++Krp       = '0.36232*log(R) + 4.1798'                                           
++Klp       = '0.16'                                                              
++mm        = '1600*R + 0.14'                                                     
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'                                      
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'                                      
++Rs1       = '(1+1/Krp)*Rdc/2'                                                   
++Rs2       = '(1+1/Krp)*Rdc/2'                                                   
++Rp1       = 'Krp*Rs1'                                                           
++Rp2       = 'Krp*Rs2'                                                           
++Lp1       = 'Klp*Ls1'                                                           
++Lp2       = 'Klp*Ls2'                                                           
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_psub_t2
+
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 2.5.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_psub_t2d5 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=2.5
+
++Ldc       = '0.000072807*pwr(R,1.1568)+0.0000000001'
++Cf        = '0.0000000000013878*pwr(R,0.45609)'
++Rdc       = '11250*R + 0.2576' 
++Rsub1     = '23.036*EXP(8243.7*R)' 
++Csub1     = '0.0000000012505*pwr(R,0.87285)'
++Cox1      = '0.000000030336*pwr(R,1.4671)+0.000000000000013'
++Rsub2     = '3.6499*EXP(16077*R)+49' 
++Csub2     = '0.0000000031786*R + 0.000000000000021786'
++Cox2      = '0.00000000056464*R + 0.0000000000000018464'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.000000000026366*pwr(R,0.60506)'
++Krp       = '199.56*pwr(R,0.58183)' 
++Klp       = '-0.04966*log(R) - 0.27651'
++mm        = '350*R + 0.5555'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_psub_t2d5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 3.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_psub_t3 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=3
+
++Ldc       = '0.00014223*pwr(R,1.1997)+0.00000000018'
++Cf        = '1/(767400000*pwr(R,-1.095)+14500000000000)'
++Rdc       = '13500*R + 0.3351' 
++Rsub1     = '976.08*pwr(R,0.11328)' 
++Csub1     = '0.000000000000070134*EXP(10569*R)'
++Cox1      = '0.00000000000002033*EXP(10010*R)'
++Rsub2     = '93.442*log(R) + 1076.6' 
++Csub2     = '0.000000000000017399*EXP(17870*R)+0.00000000000007'
++Cox2      = '0.000000000000016544*EXP(11241*R)'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.000000000035236*pwr(R,0.60657)'
++Krp       = '161.46*pwr(R,0.54465)' 
++Klp       = '0.198'
++mm        = '350*R + 0.5555'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_psub_t3
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 3.5.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_psub_t3d5 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=3.5
+
++Ldc       = '0.00016355*pwr(R,1.1871)+0.0000000003'
++Cf        = '0.00000000020357*R + 0.000000000000012536'
++Rdc       = '15760*R + 0.4156' 
++Rsub1     = '174.07*EXP(7788.2*R)' 
++Csub1     = '0.0000000019286*R + 0.000000000000049286'
++Cox1      = '0.00000000059018*R + 0.0000000000000096518'
++Rsub2     = '818890*pwr(R,0.83826)' 
++Csub2     = '0.000000000000074931*EXP(9799.7*R)'
++Cox2      = '0.00000000060357*R + 0.0000000000000045357'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.0000000010946*R + 0.000000000000038446'
++Krp       = '11107*R + 0.13107' 
++Klp       = '0.29932*EXP(-7303*R)'
++mm        = '0.5713*EXP(1061.2*R)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_psub_t3d5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 4.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_psub_t4 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=4
+
++Ldc       = '0.00024329*pwr(R,1.2046)+0.0000000004'
++Cf        = '0.00000000019375*R + 0.000000000000015188'
++Rdc       = '17990*R + 0.5154' 
++Rsub1     = '2196400*R + 226.96' 
++Csub1     = '0.0000000019286*R + 0.000000000000049286'
++Cox1      = '0.00000000079554*R + 7.0536E-16'
++Rsub2     = '199.52*log(R) + 2267.8' 
++Csub2     = '0.000000000000056847*EXP(11649*R)'
++Cox2      = '0.00000000080446*R - 0.0000000000000042054'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.00000000094286*R + 0.000000000000068429'
++Krp       = '11964*R + 0.019643' 
++Klp       = '-1000*R + 0.25'
++mm        = '1/(0.1902*EXP(-8889.6*R)+1.55)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_psub_t4
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 4.5.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_psub_t4d5 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=4.5
+
++Ldc       = '0.00033798*pwr(R,1.2213)+0.00000000065'
++Cf        = '0.00000000019643*R + 0.000000000000019964'
++Rdc       = '20250*R + 0.6175' 
++Rsub1     = '307.75*EXP(3958*R)' 
++Csub1     = '0.0000000019286*R + 0.000000000000049286'
++Cox1      = '0.00000000082857*R + 0.0000000000000027857'
++Rsub2     = '87.344*log(R) + 1274.8' 
++Csub2     = '0.000000000000046001*EXP(13202*R)'
++Cox2      = '0.0000000008375*R - 0.000000000000003625'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.0000000011446*R + 0.000000000000075946'
++Krp       = '369010000*pwr(R,2.1059)+0.24' 
++Klp       = '-1000*R + 0.25'
++mm        = '1/(0.000066881*pwr(R,-0.79487)+1.43)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_psub_t4d5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 5.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_psub_t5 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=5
+
++Ldc       = '0.00037174*pwr(R,1.2117)+0.0000000008'
++Cf        = '0.00000000021071*R + 0.000000000000019607'
++Rdc       = '22480*R + 0.7388' 
++Rsub1     = '307.75*EXP(3958*R)' 
++Csub1     = '0.0000000019286*R + 0.000000000000049286'
++Cox1      = '0.00000000085714*R + 0.0000000000000035714'
++Rsub2     = '87.344*log(R) + 1274.8' 
++Csub2     = '0.000000000000046001*EXP(13202*R)'
++Cox2      = '0.00000000085536*R - 0.0000000000000029464'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.0000000013482*R + 0.000000000000088982'
++Krp       = '369010000*pwr(R,2.1059)+0.24' 
++Klp       = '-1000*R + 0.25'
++mm        = '1/(0.000066881*pwr(R,-0.79487)+1.43)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_psub_t5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 5.5.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_psub_t5d5 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=5.5
+
++Ldc       = '0.00035763*pwr(R,1.1891)+0.000000001'
++Cf        = '1/(17910000*pwr(R,-1.302)+20500000000000)'
++Rdc       = '24730*R + 0.8633' 
++Rsub1     = '1750000*R + 297.5' 
++Csub1     = '0.00000000175*R + 0.0000000000000775'
++Cox1      = '0.0000000007661*R + 0.00000000000001316'
++Rsub2     = '1750000*R + 327.5' 
++Csub2     = '0.000000001375*R + 0.00000000000003875'
++Cox2      = '0.0000000007375*R + 0.000000000000009875'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.000000001786*R + 0.00000000000008286'
++Krp       = '18540*R - 0.2846' 
++Klp       = '-910.7*R + 0.2259'
++mm        = '1/(0.01551*pwr(R,-0.3499)+1.1)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_psub_t5d5
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 6.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_psub_t6 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=6
+
++Ldc       = '0.00048921*pwr(R,1.2088)+0.00000000135'
++Cf        = '0.0000000000047644*pwr(R,0.49363)'
++Rdc       = '26980*R + 1.004' 
++Rsub1     = '1750000*R + 297.5' 
++Csub1     = '0.0000000000001019*EXP(9040*R)'
++Cox1      = '0.0000000008089*R + 0.00000000000001359'
++Rsub2     = '168.2*log(R) + 2137' 
++Csub2     = '0.00000000000005796*EXP(11230*R)'
++Cox2      = '0.0000000007768*R + 0.000000000000009268'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.000000001973*R + 0.00000000000009923'
++Krp       = '18540*R - 0.2846' 
++Klp       = '-910.7*R + 0.2259'
++mm        = '1/(0.01551*pwr(R,-0.3499)+1.1)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_psub_t6
+
+**************************************************************************************************************
+* Spacing is fixed at 1.5um, width is fixed at 8um, radius is from 30um to 150um and turn is fixed at 6.5.   *
+**************************************************************************************************************
+.subckt ind_rf_pgs_psub_t6d5 1 2 PSUB
+* inductor scalable model parameters
+.param R=60.0e-6 N=6.5
+
++Ldc       = '0.00052655*pwr(R,1.2008)+0.0000000017'
++Cf        = '1/(688490000000*pwr(R,-0.35639))'
++Rdc       = '29210*R + 1.152' 
++Rsub1     = '1.5586*EXP(39335*R)+395' 
++Csub1     = '0.0000000015893*R + 0.00000000000011089'
++Cox1      = '0.00000000085*R + 0.0000000000000185'
++Rsub2     = '583930*R + 612.34' 
++Csub2     = '0.000000000000054*EXP(13094*R)'
++Cox2      = '0.00000000083036*R + 0.000000000000010304'
++Rsub3     = '5' 
++Csub3     = '0.000000000225*R + 0.00000000000000925'
++Cox3      = '0.0000000021429*R + 0.00000000000010843'
++Krp       = '18540*R - 0.2846' 
++Klp       = '-910.7*R + 0.2259'
++mm        = '1/(0.01551*pwr(R,-0.3499)+1.1)'
++Ls1       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Ls2       = '1/(1+Klp/pwr(1+Krp,2))*Ldc/2'
++Rs1       = '(1+1/Krp)*Rdc/2'
++Rs2       = '(1+1/Krp)*Rdc/2'
++Rp1       = 'Krp*Rs1'
++Rp2       = 'Krp*Rs2'
++Lp1       = 'Klp*Ls1'
++Lp2       = 'Klp*Ls2'
+
+Cf_Ind     1  2 Cf
+Ls1_Ind    1  10 'Ls1*(1+DLS_RF)'
+Rs1_Ind    10 3 'Rs1*(1+DRS_RF)' tc1=3.69e-03
+Ls2_Ind    3  20 'Ls2*(1+DLS_RF)'
+Rs2_Ind    20 2 'Rs2*(1+DRS_RF)' tc1=3.69e-03
+Lp1_Ind    10 11 Lp1
+Rp1_Ind    11 3 Rp1 tc1=3.69e-03
+Lp2_Ind    20 21 Lp2
+Rp2_Ind    21 2 Rp2 tc1=3.69e-03
+Cox1_Ind   1  4 Cox1
+Rsub1_Ind  4  PSUB Rsub1
+Csub1_Ind  4  PSUB Csub1
+Cox2_Ind   2  5 Cox2
+Rsub2_Ind  5  PSUB Rsub2
+Csub2_Ind  5  PSUB Csub2
+Cox3_Ind   3  6 Cox3
+Rsub3_Ind  6  PSUB Rsub3
+Csub3_Ind  6  PSUB Csub3
+Klm1  Ls1_Ind  Ls2_Ind mm
+.ends ind_rf_pgs_psub_t6d5

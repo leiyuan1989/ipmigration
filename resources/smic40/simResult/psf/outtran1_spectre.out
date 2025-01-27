@@ -1,0 +1,259 @@
+
+Spectre (R) Circuit Simulator
+Version 23.1.0.063 64bit -- 10 Jun 2023
+Copyright (C) 1989-2023 Cadence Design Systems, Inc. All rights reserved worldwide. Cadence and Spectre are registered trademarks of Cadence Design Systems, Inc. All others are the property of their respective holders.
+
+Includes RSA BSAFE(R) Cryptographic or Security Protocol Software from RSA Security, Inc.
+
+User: shunqidai   Host: icetserver01   HostID: 7F0100   PID: 250121
+Memory  available: 380.6551 GB  physical: 404.9105 GB
+Linux   : CentOS Linux release 7 (Core)
+CPU Type: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+        Socket: Processors [Frequency] (Hyperthreaded Processor)
+        0:       0 [799.9] ( 80 ),  4 [1835.8] ( 84 ),  8 [802.1] ( 88 )
+                12 [800.1] ( 92 ), 16 [800.1] ( 96 ), 20 [828.4] ( 100 )
+                24 [799.9] ( 104 ), 28 [799.9] ( 108 ), 32 [810.7] ( 112 )
+                36 [799.9] ( 116 ), 40 [992.4] ( 120 ), 44 [799.9] ( 124 )
+                48 [997.2] ( 128 ), 52 [799.9] ( 132 ), 56 [799.9] ( 136 )
+                60 [800.2] ( 140 ), 64 [799.9] ( 144 ), 68 [799.9] ( 148 )
+                72 [800.1] ( 152 ), 76 [799.9] ( 156 )
+        1:       1 [3223.4] ( 81 ),  5 [1866.9] ( 85 ),  9 [800.1] ( 89 )
+                13 [799.9] ( 93 ), 17 [799.9] ( 97 ), 21 [799.9] ( 101 )
+                25 [799.9] ( 105 ), 29 [800.1] ( 109 ), 33 [800.1] ( 113 )
+                37 [800.1] ( 117 ), 41 [845.2] ( 121 ), 45 [807.1] ( 125 )
+                49 [799.9] ( 129 ), 53 [896.8] ( 133 ), 57 [799.9] ( 137 )
+                61 [805.3] ( 141 ), 65 [1014.4] ( 145 ), 69 [799.9] ( 149 )
+                73 [978.4] ( 153 ), 77 [799.9] ( 157 )
+        2:       2 [821.9] ( 82 ),  6 [799.9] ( 86 ), 10 [799.9] ( 90 )
+                14 [802.6] ( 94 ), 18 [800.1] ( 98 ), 22 [799.9] ( 102 )
+                26 [799.9] ( 106 ), 30 [799.9] ( 110 ), 34 [800.1] ( 114 )
+                38 [827.5] ( 118 ), 42 [799.9] ( 122 ), 46 [800.1] ( 126 )
+                50 [800.1] ( 130 ), 54 [799.9] ( 134 ), 58 [799.9] ( 138 )
+                62 [846.6] ( 142 ), 66 [799.9] ( 146 ), 70 [799.9] ( 150 )
+                74 [799.9] ( 154 ), 78 [821.0] ( 158 )
+        3:       3 [799.9] ( 83 ),  7 [800.8] ( 87 ), 11 [799.9] ( 91 )
+                15 [799.9] ( 95 ), 19 [836.3] ( 99 ), 23 [799.9] ( 103 )
+                27 [800.1] ( 107 ), 31 [799.9] ( 111 ), 35 [799.9] ( 115 )
+                39 [799.9] ( 119 ), 43 [800.1] ( 123 ), 47 [799.9] ( 127 )
+                51 [799.9] ( 131 ), 55 [799.9] ( 135 ), 59 [887.9] ( 139 )
+                63 [799.9] ( 143 ), 67 [799.9] ( 147 ), 71 [799.9] ( 151 )
+                75 [834.2] ( 155 ), 79 [799.9] ( 159 )
+        
+System load averages (1min, 5min, 15min) : 0.3 %, 0.6 %, 0.7 %
+Hyperthreading is enabled
+HPC is enabled
+
+
+Simulating `./smic40/simResult/test_diffamp1_tran1.scs' on icetserver01 at 10:03:27 AM, Thur Dec 19, 2024 (process id: 250121).
+Current working directory: /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell
+Environment variable:
+    SPECTRE_DEFAULTS=-E -f psfbin
+Command line:
+    /opt/icdesign/CAD/cadence/SPECTRE231/tools/bin/spectre -64  \
+        ./smic40/simResult/test_diffamp1_tran1.scs +escchars =log  \
+        ./smic40/simResult/psf/outtran1_spectre.out -format psfascii  \
+        -raw ./smic40/simResult/psf ++aps=moderate +mt=32 +lqtimeout  \
+        900 -maxw 5 -maxn 5 +logstatus
+
+Licensing Information:
+[10:03:28.287602] Configured Lic search path (22.01-s002): 5280@10.6.64.182:27001@10.6.126.11
+
+Licensing Information:
+[10:03:28.411417] Periodic Lic check successful
+
+Loading /opt/icdesign/CAD/cadence/SPECTRE231/tools.lnx86/cmi/lib/64bit/5.0/libinfineon_sh.so ...
+Loading /opt/icdesign/CAD/cadence/SPECTRE231/tools.lnx86/cmi/lib/64bit/5.0/libphilips_sh.so ...
+Loading /opt/icdesign/CAD/cadence/SPECTRE231/tools.lnx86/cmi/lib/64bit/5.0/libsparam_sh.so ...
+Loading /opt/icdesign/CAD/cadence/SPECTRE231/tools.lnx86/cmi/lib/64bit/5.0/libstmodels_sh.so ...
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/simResult/test_diffamp1_tran1.scs
+Reading file:  /opt/icdesign/CAD/cadence/SPECTRE231/tools.lnx86/spectre/etc/configs/spectre.cfg
+Reading file:  /usr/include/stdc-predef.h
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/models/spectre/l0040ll_v1p4_1r_spe.lib
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/models/spectre/l0040ll_v1p4_1r_spe.mdl
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/models/spectre/l0040ll_lpe_v1p4_1r_n11ll_spe.mdl
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/models/spectre/l0040ll_lpe_v1p4_1r_p11ll_spe.mdl
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/models/spectre/l0040ll_lpe_v1p4_1r_nhvt11ll_spe.mdl
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/models/spectre/l0040ll_lpe_v1p4_1r_phvt11ll_spe.mdl
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/models/spectre/l0040ll_lpe_v1p4_1r_nlvt11ll_spe.mdl
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/models/spectre/l0040ll_lpe_v1p4_1r_plvt11ll_spe.mdl
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/models/spectre/l0040ll_lpe_v1p4_1r_n25ll_spe.mdl
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/models/spectre/l0040ll_lpe_v1p4_1r_nod33ll_spe.mdl
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/models/spectre/l0040ll_lpe_v1p4_1r_nud18ll_spe.mdl
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/models/spectre/l0040ll_lpe_v1p4_1r_p25ll_spe.mdl
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/models/spectre/l0040ll_lpe_v1p4_1r_pod33ll_spe.mdl
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/models/spectre/l0040ll_lpe_v1p4_1r_pud18ll_spe.mdl
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/ckt_netlist/twoStageOpamp2.scs
+Time for NDB Parsing: CPU = 518.548 ms, elapsed = 1.15805 s.
+Time accumulated: CPU = 720.958 ms, elapsed = 1.15806 s.
+Peak resident memory used = 117 Mbytes.
+
+
+Warning from spectre during hierarchy flattening.
+    WARNING (SFE-1131): Scope option `scale' specified with scope `TopCircuit' at line `30' has also been specified at line `29' in file `./smic40/simResult/test_diffamp1_tran1.scs'. As a result, the last specified value will be used for simulation.
+    WARNING (SFE-884): "/home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic40/models/spectre/l0040ll_v1p4_1r_spe.lib" 30: The option 'gmin' is deleted because it is redefined at './smic40/simResult/test_diffamp1_tran1.scs':line '29'.
+
+Time for Elaboration: CPU = 20.443 ms, elapsed = 20.5669 ms.
+Time accumulated: CPU = 741.5 ms, elapsed = 1.17872 s.
+Peak resident memory used = 123 Mbytes.
+
+
+Notice from spectre during hierarchy flattening.
+    The value 'psf' specified for the 'checklimitdest' option will no longer be supported in future releases. Use 'spectre -h' to see other recommended values for the 'checklimitdest' option.
+
+
+Time for EDB Visiting: CPU = 1.024 ms, elapsed = 1.02687 ms.
+Time accumulated: CPU = 742.619 ms, elapsed = 1.17984 s.
+Peak resident memory used = 124 Mbytes.
+
+
+Notice from spectre during initial setup.
+    Multithreading is disabled due to the size of the design being too small.
+
+
+Global user options:
+            vabstol = 1e-06
+            iabstol = 1e-12
+               temp = 27
+               gmin = 1e-12
+             rforce = 1
+           maxnotes = 5
+           maxwarns = 5
+             digits = 5
+               cols = 80
+             pivrel = 0.001
+           sensfile = ../psf/sens.output
+     checklimitdest = psf
+               save = allpub
+     subcktprobelvl = 2
+             reltol = 0.001
+               tnom = 27
+             scalem = 1
+              scale = 1e-06
+
+Scoped user options:
+
+Circuit inventory:
+              nodes 9
+              bsim4 8     
+          capacitor 2     
+            isource 1     
+           resistor 1     
+            vsource 3     
+
+Analysis and control statement inventory:
+               tran 1     
+
+Output statements:
+             .probe 0     
+           .measure 0     
+               save 0     
+
+
+Notice from spectre during initial setup.
+    Fast APS enabled.
+
+Time for parsing: CPU = 3.593 ms, elapsed = 5.35107 ms.
+Time accumulated: CPU = 746.288 ms, elapsed = 1.18527 s.
+Peak resident memory used = 126 Mbytes.
+
+~~~~~~~~~~~~~~~~~~~~~~
+Pre-Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~
+   -   (Fast APS) Multi-threading. The recommended number of threads is 1, consider adding +mt=1 on command line.
+~~~~~~~~~~~~~~~~~~~~~~
+
+***************************************************
+Transient Analysis `outtran1': time = (0 s -> 1 us)
+***************************************************
+DC simulation time: CPU = 857 us, elapsed = 859.976 us.
+
+Opening the PSFASCII file ./smic40/simResult/psf/outtran1.tran.tran ...
+Important parameter values:
+    start = 0 s
+    outputstart = 0 s
+    stop = 1 us
+    step = 1 ns
+    maxstep = 20 ns
+    ic = all
+    useprevic = no
+    skipdc = no
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.5
+    relref = sigglobal
+    cmin = 0 F
+    gmin = 1 pS
+    rabsshort = 1 mOhm
+
+
+Notice from spectre during transient analysis `outtran1'.
+    Multithreading is disabled due to the size of the design being too small.
+
+
+Output and IC/nodeset summary:
+                 save   41      (current)
+                 save   9       (voltage)
+
+    outtran1: time = 30.63 ns    (3.06 %), step = 6.686 ns     (669 m%)
+    outtran1: time = 85.8 ns     (8.58 %), step = 11.51 ns     (1.15 %)
+    outtran1: time = 137.6 ns    (13.8 %), step = 12.95 ns     (1.29 %)
+    outtran1: time = 186.1 ns    (18.6 %), step = 15.05 ns     (1.51 %)
+    outtran1: time = 235.1 ns    (23.5 %), step = 13.21 ns     (1.32 %)
+    outtran1: time = 279.6 ns      (28 %), step = 15.29 ns     (1.53 %)
+    outtran1: time = 332.5 ns    (33.2 %), step = 15.53 ns     (1.55 %)
+    outtran1: time = 378.4 ns    (37.8 %), step = 12.8 ns      (1.28 %)
+    outtran1: time = 429.6 ns      (43 %), step = 7.097 ns     (710 m%)
+    outtran1: time = 484.4 ns    (48.4 %), step = 15.58 ns     (1.56 %)
+    outtran1: time = 526.2 ns    (52.6 %), step = 13.85 ns     (1.39 %)
+    outtran1: time = 579.7 ns      (58 %), step = 14.56 ns     (1.46 %)
+    outtran1: time = 626.2 ns    (62.6 %), step = 3.82 ns      (382 m%)
+    outtran1: time = 677.2 ns    (67.7 %), step = 8.931 ns     (893 m%)
+    outtran1: time = 727 ns      (72.7 %), step = 19.42 ns     (1.94 %)
+    outtran1: time = 778.7 ns    (77.9 %), step = 9.365 ns     (936 m%)
+    outtran1: time = 829.7 ns      (83 %), step = 18.11 ns     (1.81 %)
+    outtran1: time = 885.4 ns    (88.5 %), step = 14.98 ns      (1.5 %)
+    outtran1: time = 931.5 ns    (93.2 %), step = 16.35 ns     (1.63 %)
+    outtran1: time = 981.8 ns    (98.2 %), step = 9.384 ns     (938 m%)
+Number of accepted tran steps =             115
+
+Maximum value achieved for any signal of each quantity: 
+V: V(dd) = 3.3 V
+I: I(vdd:p) = 73.27 uA
+If your circuit contains signals of the same quantity that are vastly different in size (such as high voltage circuitry combined with low voltage control circuitry), you should consider specifying global option `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (2.0 %)       8 (1.9 %)      15 (10.7 %)     82 (1.9 %)
+        87 (14.7 %)     88 (2.0 %)      94 (13.5 %)     96 (1.9 %)
+        100 (2.9 %)     108 (3.9 %)     116 (3.9 %)     152 (40.2 %)
+        Total: 120.9%
+Initial condition solution time: CPU = 905 us, elapsed = 909.09 us.
+Intrinsic tran analysis time:    CPU = 19.824 ms, elapsed = 20.1929 ms.
+Total time required for tran analysis `outtran1': CPU = 22.007 ms, elapsed = 23.011 ms, util. = 95.6%.
+Time accumulated: CPU = 772.717 ms, elapsed = 1.21619 s.
+Peak resident memory used = 131 Mbytes.
+
+Licensing Information:
+Lic Summary:
+[10:03:28.469153] Cdslmd servers:5280@10.6.64.182:27001@10.6.126.11
+[10:03:28.469169] Feature usage summary:
+[10:03:28.469170] Virtuoso_Multi_mode_Simulation
+
+
+Aggregate audit (10:03:28 AM, Thur Dec 19, 2024):
+Time used: CPU = 777 ms, elapsed = 1.22 s, util. = 63.6%.
+Time spent in licensing: elapsed = 251 ms, percentage of total = 20.6%.
+Peak memory used = 131 Mbytes.
+Simulation started at: 10:03:27 AM, Thur Dec 19, 2024, ended at: 10:03:28 AM, Thur Dec 19, 2024, with elapsed time (wall clock): 1.22 s.
+spectre completes with 0 errors, 2 warnings, and 5 notices.

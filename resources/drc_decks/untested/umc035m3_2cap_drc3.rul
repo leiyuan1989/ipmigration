@@ -1,0 +1,1801 @@
+;Assura DRC Rule File 
+;/////////////////////////////////////////////////////////////////////// 
+;//                                                                   //
+;//     Title      : DRC(ASSURA) of 0.35um MIXED-MODE 3.3V/5V 2P5M Process for FAB8AB
+;//     DRC Version: 2.9-P1-A( add MIM capacitor by KCAU )
+;//     Parent Doc : G-03-MIXED-MODE35/30-3.3V/5V-2P5M-SALICIDE-TLR-8AB V2.9-P1
+;//	Required   : G-DF-MIXEDMODE35-3.3V_5V-2P5M-SALICIDE-ASSURA-DRC-8AB-2.9-P1.rul
+;//                                                                   //
+;//     LIMITATION OF LIABILITY:                                      //
+;//        United Microelectronics Corp. is not  liable  for  any     //
+;//        property damage, personal  injury,  loss  of  profits,     //
+;//        interruption of business,  or  for  any other special,     //
+;//        consequential or incidental  damages, however  caused,     //
+;//        whether for breach of warranty,contract tort(including     //
+;//        negligence),strict liability or otherwise.                 //
+;//                                                                   //
+;//	Assura version: 3.0 (IC4.6)			     	      //
+;//								      //
+;///////////////////////////////////////////////////////////////////////
+;// revision    date       who              changes                   //
+;//========= ========== ========= =================================== //
+;//  2.8-P1  01/13/2006   S M      New Create  	        	      //
+;//  2.9-P1  03/13/2006   S M     Update the e8I,e12F,e13Ea rules     //
+;//  2.9-P1  03/13/2006   S M     Update the e14,16,18,20,22E rules   //
+;// 2.9-P1-A 05/09/2008   KCAU    Add MIM                             //
+;///////////////////////////////////////////////////////////////////////
+;// Notice (Important, Read Me First)
+;// =================================
+;//
+;// (1) The layer definition in this rule file is based on UMC Official
+;//	Layer Mapping Table. If your layer definition is inconsistent
+;//	with UMC Official Layer Mapping Table, please modify the
+;//	layer definition in layerDefs() according to your database.
+;//
+;// (2) Switches are used for implementing various run options.  The
+;//     switches are defined as follows in the control (.rsf) file:
+;//
+;//         avParameters(
+;//                     ...
+;//                     ...
+;//                     ?set "switch_name1" 
+;//                     ?set "switch_name2" 
+;//                     ?set "switch_name3" 
+;//                     ...
+;//                     ...
+;//                     ) ; end avParameters
+;//
+;//     Note that multiple switches are allowed.
+;//
+;//     The following switches are present in this file:
+;//
+;//     Technology Switches
+;//       - "metal2_is_top"         Specifies 2-Metal Technology
+;//       - "metal3_is_top"         Specifies 3-Metal Technology
+;//       - "metal4_is_top"         Specifies 4-Metal Technology
+;//       - "metal5_is_top"         Specifies 5-Metal Technology
+;//     Chip-Level Switches
+;//       - "SR"                    Seal ring rules are checked
+;//     Run-Time Intensive Switches
+;//       - "check_density"         Metal coverage rules are checked
+;//       - "check_slots"           Slot rules are checked
+;//
+;//     By default, if none of the switches are set, the file will
+;//     assume the following:
+;//       - The design incorporates 5-metal technology
+;//       - The run-time intensive checks will NOT be performed.
+;//
+;//     WARNING:  If multiple "metalX_is_top" switches are set, there is
+;//               no way of knowing how the check will be performed.
+;//
+;// (3) This file produces a number of "info" messages during the run.
+;//     These messages should be ignored.
+;//
+;//
+;// Assumptions:
+;//
+;// 1)  Resistor Identification Layers - The following layer definitions
+;//     are assumed:
+;//	- NWR (Layer 40) - N-Well Resistor
+;//     - RSYMBOL (Layer 81) - Diffusion resistor ID - not used for DRC
+;//     - PSYMBOL (Layer 82) - Poly resistor ID - not used for DRC
+;// 
+;// 2)  45/90-Degree Checks
+;//     Checks for non-45-degree or non-90-degree edges are not
+;//     included in this file because the rsf file checks all
+;//     polygons for non-45 or non-90.
+;//
+;// 3)  Off-Grid Checks
+;//     Off-Grid checks are not implemented in this rule file because
+;//     the rsf file checks all polygons against a grid value.
+;//
+;// 4)  N-Well Equal vs. Non-Equal Potentials
+;//     The definition of Wells being at equal potentials was assumed to
+;//     be based on electrical connectivity - if multiple wells are
+;//     electrically connected, those wells are considered to be at
+;//     equal potentials.
+;//
+;// 5) Soft contacts are prohibited
+;//     Soft contacts refer to the creation of an electrical connection between
+;//     butted diffusions through the salicide, allowing for only one of the
+;//     diffusions to be connected to Metal1 through contacts.  This is not
+;//     allowed; BOTH diffusions must be connected to Metal1 through contacts.
+;//     These checks were implemented as part of rules 4.10E which
+;//     indicate the butting diffusions must be at the same potential
+;//     (electrically connected).  
+;//
+;// 6) Wide metal spacing checks
+;//     The definition for wide metal spacing checks are that any metal
+;//     edge that is part of a wide metal portion must obey the wide
+;//     metal spacing rules to all other metal edges.  Note that a metal
+;//     piece can be composed of both wide and narrow portions.  Also,
+;//     the spacing between two edges that are BOTH part of narrow
+;//     portions are allowed to be at the standard spacing even though
+;//     that space "touches" a wide metal edge.  
+;//
+;// 7) Rules 5 - Seal Ring Rules
+;//     Due to lack of defining layer, seal ring is defined by very
+;//     large holes in pdiff (>=10,000 sq. microns).
+;//
+;// 8) Rules 6.1 - Metal Slot Rules
+;//     These rules were updated to "ignore" pad metals.  It is assumed
+;//     that pad metal is defined as metal overlapping pad layer.
+;//
+;// Rules not Coded:
+;//
+;//
+;//////////////////////////////////////////////////////////////////////
+; 
+; ********  Input Layer Definitions  ********
+; 
+drcExtractRules(
+  layerDefs( "gds2"
+    DIFF	= layer( 1 type( 0 ) )     ; Active
+    NWEL	= layer( 3 )     ; N-Well
+    PPLUS	= layer( 11 )    ; P+ Implant
+    NPLUS	= layer( 12 )    ; N+ Implant
+    VTNH        = layer(16  type( 0 )); High Vt NMOS
+    TG		= layer( 37 )    ; Thick Gate
+    PESD	= layer( 32 )	 ; P+ ESD Implant
+    NWR		= layer( 40 )	; N-well Resistor
+    PO1		= layer( 41 type( 0 ))    ; Poly1 for gate
+    PO0		= layer( 41 type( 1 )); Poly0 for capacitor
+    SAB		= layer( 36 )    ; Salicide Block
+    CONT	= layer( 39 )    ; Contact
+    ME1		= layer( 46 )    ; Metal 1
+    VI1		= layer( 47 )    ; Via 1
+    ME2		= layer( 48 )    ; Metal 2
+    VI2		= layer( 49 )    ; Via 2
+    ME3		= layer( 50 )    ; Metal 3
+    VI3		= layer( 51 )    ; Via 3
+    ME4		= layer( 52 )    ; Metal 4
+    VI4		= layer( 53 )    ; Via 4
+    ME5		= layer( 54 )    ; Metal 5
+    PAD		= layer( 66 )    ; Pad
+    RSYMBOL	= layer( 81 )    ; Diffusion Resistor ID
+    PSYMBOL	= layer( 82 )    ; Poly Resistor ID
+    IOID	= layer( 91 )    ; Marker layer for ESD protection devices
+    ROM	        = layer( 93  type( 0 ))  ; ROM cell ID layer
+    BDSP	= layer( 98  type( 0 ))  ; Bordered SP SRAM cell ID layer
+    HR		= layer( 38  type( 0 ))  ;
+    MMC		= layer( 65  type( 0 ))  ; MMC
+    
+    m1slmk	= layer( 72  type( 7 ))  ; Metal-1 Slot Marking Layer
+    m2slmk	= layer( 73  type( 7 ))  ; Metal-2 Slot Marking Layer
+    m3slmk	= layer( 74  type( 7 ))  ; Metal-3 Slot Marking Layer
+    m4slmk	= layer( 75  type( 7 ))  ; Metal-4 Slot Marking Layer
+    m5slmk	= layer( 76  type( 7 ))  ; Metal-5 Slot Marking Layer
+
+    po_text	= textToPin( 100 ) ; Poly Text Layer
+    m1_text	= textToPin( 101 ) ; Metal-1 Text Layer
+    m2_text	= textToPin( 102 ) ; Metal-2 Text Layer
+    m3_text	= textToPin( 103 ) ; Metal-3 Text Layer
+    m4_text	= textToPin( 104 ) ; Metal-4 Text Layer
+    m5_text	= textToPin( 105 ) ; Metal-5 Text Layer
+    
+    po_pin	= textToPin( 41 )  ; dummy definition
+    m1_pin	= textToPin( 46 )  ; dummy definition
+    m2_pin	= textToPin( 48 )  ; dummy definition
+    m3_pin	= textToPin( 50 )  ; dummy definition
+    m4_pin	= textToPin( 52 )  ; dummy definition
+    m5_pin	= textToPin( 54 )  ; dummy definition
+
+    po_textt	= textToPin( 41 )
+    m1_textt	= textToPin( 46 )    
+    m2_textt	= textToPin( 48 )    
+    m3_textt	= textToPin( 50 )    
+    m4_textt	= textToPin( 52 )    
+    m5_textt	= textToPin( 54 )    
+    
+    
+  ) ; layerDefs complete
+
+  layerDefs( "df2"
+   ;namein	= layer( df2_layer_name type("purpose") )  ; name
+    DIFF	= layer( "DIFF"	    type("drawing")) ; Active
+    NWEL	= layer( "NWEL"	    type("drawing")) ; N-Well
+    PPLUS	= layer( "PPLUS"    type("drawing")) ; P+ Implant
+    NPLUS	= layer( "NPLUS"    type("drawing")) ; N+ Implant
+    VTNH        = layer( "VT"       type("VTNH"))    ; High Vt NMOS
+    TG		= layer( "TG"	    type("drawing")) ; Thick Gate
+    NWR		= layer( "NWR"	    type("drawing")) ; N-well Resistor
+    PO1		= layer( "PO1"	    type("drawing")) ; Poly1
+    PO0		= layer( "PO0"	    type("drawing")) ; Poly0
+    SAB		= layer( "SAB"	    type("drawing")) ; Salicide block
+    PESD	= layer( "PESD"	    type("drawing")) ; P+ ESD Implant
+    CONT	= layer( "CONT"	    type("drawing")) ; Contact
+    ME1		= layer( "ME1"	    type("drawing")) ; Metal 1
+    VI1		= layer( "VI1"	    type("drawing")) ; Via 1
+    ME2		= layer( "ME2"	    type("drawing")) ; Metal 2
+    VI2		= layer( "VI2"	    type("drawing")) ; Via 2
+    ME3		= layer( "ME3"	    type("drawing")) ; Metal 3
+    VI3		= layer( "VI3"	    type("drawing")) ; Via 3
+    ME4		= layer( "ME4"	    type("drawing")) ; Metal 4
+    VI4		= layer( "VI4"	    type("drawing")) ; Via 4
+    ME5		= layer( "ME5"	    type("drawing")) ; Metal 5
+    PAD		= layer( "PAD"	    type("drawing")) ; Pad
+    RSYMBOL	= layer("RSYMBOL"   type("drawing")) ; Diffusion Resistor ID
+    PSYMBOL	= layer("PSYMBOL"   type("drawing")) ; Poly Resistor ID
+    IOID	= layer("IOID"	    type("drawing")) ; Marker layer for ESD protection devices
+    ROM    	= layer("SP"   	    type("ROM_ID")) ; ROM cell ID layer
+    BDSP	= layer("SP"   	    type("BDSP_ID")) ; Bordered SP SRAM cell ID layer
+    HR		= layer( "HR"	    type("drawing")) ; HR
+    MMC		= layer( "MMC"	    type("drawing")) ; MMC
+    
+    m1slmk	= layer( "M1_CAD" type("Slot_Mark"))  ; Metal-1 Slot Marking Layer
+    m2slmk	= layer( "M2_CAD" type("Slot_Mark"))  ; Metal-2 Slot Marking Layer
+    m3slmk	= layer( "M3_CAD" type("Slot_Mark"))  ; Metal-3 Slot Marking Layer
+    m4slmk	= layer( "M4_CAD" type("Slot_Mark"))  ; Metal-4 Slot Marking Layer
+    m5slmk	= layer( "M5_CAD" type("Slot_Mark"))  ; Metal-5 Slot Marking Layer
+
+    po_textt	= textToPin( "PO1"  type("drawing")) ; Poly Text
+    m1_textt	= textToPin( "ME1"  type("drawing")) ; Metal-1 Text
+    m2_textt	= textToPin( "ME2"  type("drawing")) ; Metal-2 Text
+    m3_textt	= textToPin( "ME3"  type("drawing")) ; Metal-3 Text
+    m4_textt	= textToPin( "ME4"  type("drawing")) ; Metal-4 Text
+    m5_textt	= textToPin( "ME5"  type("drawing")) ; Metal-5 Text
+    
+    po_text	= textToPin( "PO1_CAD" type("TEXT"))
+    m1_text	= textToPin( "M1_CAD"  type("TEXT"))
+    m2_text	= textToPin( "M2_CAD"  type("TEXT"))
+    m3_text	= textToPin( "M3_CAD"  type("TEXT"))
+    m4_text	= textToPin( "M4_CAD"  type("TEXT"))
+    m5_text	= textToPin( "M5_CAD"  type("TEXT"))
+    
+    po_pin	= pinText( "PO1" )
+    m1_pin	= pinText( "ME1" )
+    m2_pin	= pinText( "ME2" )
+    m3_pin	= pinText( "ME3" )
+    m4_pin	= pinText( "ME4" )
+    m5_pin	= pinText( "ME5" )
+
+  ) ; layerDefs complete
+;
+; Note: Undefined Layers - The following layers are assumed to be
+;       generated and are therefore not defined:
+;       - PWELL Layer
+;       - Vtp Layer
+;       - Vtn Layer
+;       - N- Layer
+;       - N+ Layer
+
+;
+; ******  Define NWELL Resistor  ****** 
+;
+
+  nwrdummy  = geomCat( NWR )
+  nwres     = geomOverlap( NWEL nwrdummy )     ; N-Well resistor
+  nwell     = geomAndNot( NWEL nwres )         ; N-Well non-resistor
+  nwres_body= geomAnd( NWR nwres )
+
+;
+;
+; ******  Define Basic Layers  ******
+;
+  diff_ps	= geomAndNot( DIFF NWEL )        ; Active in P-Sub
+  diff_nw	= geomAndNot( DIFF diff_ps )     ; Active in N-Well
+
+  pdif = geomAnd( DIFF PPLUS )             ; P+ Active
+  ndif = geomAndNot( DIFF pdif )           ; N+ Active
+  
+  ndif_ps = geomAndNot( diff_ps PPLUS )	; N+ Active in P-Sub
+  ptap	  = geomAndNot( diff_ps ndif_ps ) 
+  ntap	  = geomAndNot( diff_nw PPLUS ) ; N+ Active in N-Well
+  pdif_nw = geomAndNot( diff_nw ntap )
+  
+  pdif3_nw = geomOverlap( pdif_nw TG )
+  pdif1_nw = geomAndNot( pdif_nw pdif3_nw )
+  ndif3_ps = geomOverlap( ndif_ps TG )
+  ndif1_ps = geomAndNot( ndif_ps ndif3_ps )
+
+
+  pplus_edge_in_diff = geomGetEdge( PPLUS inside DIFF )
+
+  psd  = geomAndNot( pdif_nw PO1 )
+  nsd  = geomAndNot( ndif_ps PO1 )
+  nvar = geomAndNot( ntap PO1 )
+  pvar = geomAndNot( ptap PO1 )
+  
+  butt_psd	= geomButtOrOver( psd ntap )
+  butt_ntap	= geomButtOrOver( ntap psd )
+  butt_nsd	= geomButtOrOver( nsd ptap )
+  butt_ptap	= geomButtOrOver( ptap nsd )
+  
+  poly_con	= geomOutside( CONT DIFF )
+  diff_con	= geomAndNot( CONT poly_con )
+  pdif_con	= geomAnd( diff_con PPLUS )
+  ndif_con	= geomAndNot( diff_con pdif_con )  
+  co_psd	= geomCat( geomEnclose( psd diff_con ) geomEnclose( pvar diff_con ) )
+  co_nsd	= geomCat( geomEnclose( nsd diff_con ) geomEnclose( nvar diff_con ) )
+
+  expol	  = geomAndNot( PO1 DIFF )           ; Field Poly
+  intpol  = geomAvoiding( expol CONT )      ; Interconnect Poly
+  gate    = geomButtOnly( geomAnd( PO1 DIFF ) expol keep >= 2 ) ; Gate Poly
+  gate_w  = geomGetEdge( PO1 coincident gate )
+  gate1_w = geomGetEdge( gate_w not_over TG )
+  gate3_w = geomGetEdge( gate_w  over    TG )
+
+  gate1   = geomAndNot( gate TG )
+  gate3   = geomAndNot( gate gate1 )
+
+  expol3   = geomButtOrOver( expol gate3 )
+  expol1   = geomAndNot( expol expol3 )
+  expol3_e = geomGetEdge( expol3 outside DIFF )
+  expol1_e = geomGetEdge( expol1 outside DIFF )
+
+
+  pgate = geomAnd( gate PPLUS )            ; All P+ Gates
+  ngate = geomAndNot( gate pgate )         ; All N+ Gate 
+  allsd = geomCat( nsd psd )               ; All Source/Drain Diffusions
+  allact = geomCat( ndif pdif )            ; All Active Areas
+
+  ctfpol = geomAnd( CONT expol )           ; Field Poly Contact
+  ctdiff = geomAndNot( CONT geomOutside( CONT DIFF ) ) ; Active Contact
+  ctpdif = geomAnd( ctdiff PPLUS )        ; P+ Diffusion Contact
+  ctndif = geomAndNot( ctdiff ctpdif )   ; N+ Diffusion Contact 
+ 
+  ngate1 = geomAndNot( ngate TG )          ; 3.3V N+ Gates
+  pgate1 = geomAndNot( pgate TG )          ; 3.3V P+ Gates
+  ngate3 = geomAndNot( ngate ngate1 )      ; 5V N+ Gates
+  pgate3 = geomAndNot( pgate pgate1 )      ; 5V P+ Gates
+  ndif2 = geomAndNot( ndif TG )            ; 3.3V N+ Active
+  ndif3 = geomAndNot( ndif ndif2 )         ; 5V N+ Active
+  pdif2 = geomAndNot( pdif TG )            ; 3.3V P+ Active
+  pdif3 = geomAndNot( pdif pdif2 )         ; 5V P+ Active
+  nsd2 = geomAndNot( nsd TG )              ; 3.3V N+ Source/Drain
+  psd2 = geomAndNot( psd TG )              ; 3.3V P+ Source/Drain
+  nsd3 = geomAndNot( nsd nsd2 )            ; 5V N+ Source/Drain
+  psd3 = geomAndNot( psd psd2 )            ; 5V P+ Source/Drain
+  nwel2 = geomEnclose( NWEL gate1 )        ; N-Well with at least one 3.3V gate
+  nwel3 = geomEnclose( NWEL gate3 )        ; N-Well with at least one 5V gate
+  nwelnot2 = geomAndNot( nwell nwel2 )   ; N-Well without 3.3V gate
+  nwelnot23 = geomAndNot( nwelnot2 nwel3 ) ; N-Well without 3.3V and 5V gate
+  
+  aumvia1 = geomAnd( VI1 MMC )
+  auavia1 = geomAndNot( VI1 MMC )
+  aumvia2 = geomAnd( VI2 MMC )
+  auavia2 = geomAndNot( VI2 MMC )
+  aumvia3 = geomAnd( VI3 MMC )
+  auavia3 = geomAndNot( VI3 MMC )
+  aumvia4 = geomAnd( VI4 MMC )
+  auavia4 = geomAndNot( VI4 MMC )
+
+;
+;
+; ****** N-WELL RULE ******
+;
+; Connection Definition for Equal Potential checks
+;
+
+  ntap_con = geomAnd( ntap CONT )
+  if( (avSwitch  "metal2_is_top") then
+    CMIM = geomAnd( MMC ME1 ) 
+
+    geomConnect(
+      via( aumvia1   ME2  MMC  )
+      via( auavia1   ME2  ME1  )
+      via( ntap_con  ME1  ntap )
+      label( m1_text ME1 )
+      label( m2_text ME2 )
+
+      label( m1_textt ME1 )
+      label( m2_textt ME2 )
+                    
+      label( m1_pin ME1 )
+      label( m2_pin ME2 )
+      )
+      else
+  if( (avSwitch  "metal3_is_top") then
+    CMIM = geomAnd( MMC ME2 ) 
+
+    geomConnect(
+     	via( aumvia2   ME3  MMC  )
+     	via( auavia2   ME3  ME2  )
+     	via( VI1       ME2  ME1  )
+      via( ntap_con  ME1  ntap )
+      label( m1_text ME1 )
+      label( m2_text ME2 )
+      label( m3_text ME3 )
+
+      label( m1_textt ME1 )
+      label( m2_textt ME2 )
+      label( m3_textt ME3 )
+                   
+      label( m1_pin ME1 )
+      label( m2_pin ME2 )
+      label( m3_pin ME3 )
+      )
+      else
+  if( (avSwitch  "metal4_is_top") then
+    CMIM = geomAnd( MMC ME3 ) 
+
+    geomConnect(
+     	via( aumvia3   ME4  MMC )
+     	via( auavia3   ME4  ME3 )
+     	via( VI2       ME3  ME2 )
+     	via( VI1       ME2  ME1 )
+      via( ntap_con  ME1  ntap )
+      label( m1_text ME1 )
+      label( m2_text ME2 )
+      label( m3_text ME3 )
+      label( m4_text ME4 )
+
+      label( m1_textt ME1 )
+      label( m2_textt ME2 )
+      label( m3_textt ME3 )
+      label( m4_textt ME4 )
+                    
+      label( m1_pin ME1 )
+      label( m2_pin ME2 )
+      label( m3_pin ME3 )
+      label( m4_pin ME4 )
+      )
+  else
+    CMIM = geomAnd( MMC ME4 ) 
+
+    geomConnect(
+     	via( aumvia4  ME5  MMC )
+     	via( auavia4  ME5  ME4 )
+      via( VI3	  ME4 ME3 )
+      via( VI2	  ME3 ME2 )
+      via( VI1	  ME2 ME1 )
+      via( ntap_con ME1 ntap )
+      label( m1_text ME1 )
+      label( m2_text ME2 )
+      label( m3_text ME3 )
+      label( m4_text ME4 )
+      label( m5_text ME5 )
+
+      label( m1_textt ME1 )
+      label( m2_textt ME2 )
+      label( m3_textt ME3 )
+      label( m4_textt ME4 )
+      label( m5_textt ME5 )
+                    
+      label( m1_pin ME1 )
+      label( m2_pin ME2 )
+      label( m3_pin ME3 )
+      label( m4_pin ME4 )
+      label( m5_pin ME5 )
+      )
+)))
+
+
+
+  if( ( avSwitch "Skip_Soft-Connect_Checks" ) then
+    geomStamp( nwell ntap )
+  else
+    geomStamp( nwell ntap error )
+  ) ; endif
+
+
+  e1Aa = geomOr( drc( nwell width < 1.5 ) 
+  		 drc( nwell width < 0.01 withCornerTouch fig ) )
+  errorLayer( e1Aa "5.1A.a: Minimum N-Well width is 1.5um." )
+
+  e1Ab = geomOr( drc( nwres width < 3.0 )
+       		 drc( nwres width < 0.01 withCornerTouch fig ) )
+  errorLayer( e1Ab "5.1A.b: Minimum N-Well width for resistor is 3.0um." )
+
+;
+; Note: Rule 5.1B.a - N-Well to N-Well spacing 
+;       The rule specifies the distance as "0 or > 1.0" - this is
+;       assumed to mean that the spacing must be exactly 0 or a
+;       minimum of 1.0um.
+;
+  e1Ba = geomOr( drc( nwell 0 < sepNotch < 1.0 ) )
+  errorLayer( e1Ba "5.1B.a: Minimum N-Well to N-Well spacing (equal-potential) is 0 or > 1.0um." )
+
+  e1Bb =geomOr( drc( nwell sep < 3 diffNet ) )
+  errorLayer( e1Bb "5.1B.b1: Minimum N-Well to N-Well spacing (non-equal-potential, 5V device) is 3um." )
+ 
+;
+; Note: Rule 5.1B.c - N-well Resistor spacing 
+;       N-well resistor includes the terminals which are NOT covered
+;       by the resistor ID layer.
+;
+  e1Bc = geomOr( drc( nwres NWEL 0 < sep < 3.0 ) )
+  errorLayer( e1Bc "5.1B.c: Minimum N-Well to N-Well spacing (N-Well resistor) is 3um." )
+
+;
+; ****** ACTIVE AREA (DIFFUSION) RULE ******
+;
+  e3AB = geomOr( drc( DIFF width < 0.5 )
+  	         drc( DIFF width < 0.01 withCornerTouch fig ) )
+  errorLayer( e3AB "5.3A_2B: Minimum Diffusion width is 0.5um." )
+
+  e3C = geomOr( drc( DIFF sepNotch < 0.55 ))
+  errorLayer( e3C "5.3C.a/b: Minimum Diffusion to Diffusion spacing (in the same Well) is 0.55um." )
+
+  e3Da = geomOr( geomOr( drc( NWEL ndif1_ps sep < 1.2  ) 
+  			 drc( NWEL ndif1_ps sep < 0.01 fig ))
+  		         geomButting( NWEL ndif1_ps ) )
+  errorLayer( e3Da "5.3D.a: Minimum N-Well to N+ Diffusion spacing (5V device) is 1.2um." )
+  
+  e3Db = geomOr( geomOr( drc( NWEL ndif3_ps sep < 1.5 ) 
+  		 	 drc( NWEL ndif3_ps sep < 0.01 fig ))
+  		 	 geomButting( NWEL ndif3_ps ))
+  errorLayer( e3Db "5.3D.b: Minimum N-Well to N+ Diffusion spacing (5V device) is 1.5um." )
+
+  e3E = geomOr( drc( NWEL ntap enc < 0.5 ) 
+  		drc( NWEL ntap enc < 0.01 fig ))
+  errorLayer( e3E "5.3E: Minimum N-Well overlap N+ Diffusion is 0.5um." )
+
+  e3F = geomOr( drc( NWEL ptap sep < 0.5 ) 
+  		drc( NWEL ptap sep < 0.01 fig ))
+  errorLayer( e3F "5.3F: Minimum N-Well to P+ Diffusion spacing is 0.5um." )
+
+  e3Ga = geomOr( geomOr( drc( NWEL pdif1_nw enc < 1.2 ) 
+  		 	 drc( NWEL pdif1_nw enc < 0.01 fig ) ) 
+  		 	 geomButting( pdif1_nw NWEL ) )
+  errorLayer( e3Ga "5.3G.a: Minimum N-Well overlap P+ Diffusion (3.3V device) is 1.2um." )
+  
+  e3Gb = geomOr( geomOr( drc( NWEL pdif3_nw enc < 1.5 ) 
+  		   	 drc( NWEL pdif3_nw enc < 0.01 fig ))
+  		   	 geomButting( pdif3_nw NWEL ))
+  errorLayer( e3Gb "5.3G.b: Minimum N-Well overlap P+ Diffusion (5V device) is 1.5um." )
+
+
+;;==============================================
+;;===  VTNH Layer Rules (P95)                ===
+;;==============================================
+
+dif_vtnh = geomAnd( ndif3 VTNH )
+DIFF3_VTNH     = geomAndNot( dif_vtnh PPLUS );
+DIF3_NOT_VTNH  = geomAndNot( ndif3 DIFF3_VTNH );
+
+  e5A = geomOr( drc( VTNH width < 0.75 )
+                drc( VTNH width < 0.01 withCornerTouch fig ) )
+  errorLayer( e5A "5.5A: Minimum width of VTNH region is 0.75um." )
+
+  e5B =drc(VTNH sepNotch<0.75 shielded);
+  errorLayer( e5B "5.5B:Minimum space between two VTNH regions is 0.75um");
+
+  e5C_1 = drc(VTNH DIFF3_VTNH enc<0.4 )
+  e5C_2=geomGetEdge(VTNH inside ndif3);
+  e5C = geomOr(e5C_1 e5C_2)
+  errorLayer(e5C
+  "5.5C:Minimum VTNH overlap N+ diffusion of 5V NMOS device is 0.4um");
+
+  e5D = drc(VTNH  DIF3_NOT_VTNH sep<0.4 )
+  errorLayer(e5D
+  "5.5D:Minimum VTNH to unrelated diffusion spacing is 0.40um");
+
+;
+; ****** TG RULE ******
+;
+  e6A = geomOr( drc( TG width < 0.75 ) 
+  		drc( TG width < 0.01 withCornerTouch fig ) )
+  errorLayer( e6A "5.6A: Minimum TG width is 0.75um." )
+
+  e6B = geomOr( drc( TG sepNotch < 0.75 ) )
+  errorLayer( e6B "5.6B: Minimum TG to TG spacing is 0.75um." )
+
+  e6C = geomOr( drc( TG DIFF enc < 0.4 ) 
+  		drc( TG DIFF enc < 0.01 fig ) )
+  errorLayer( e6C "5.6C: Minimum TG overlap Diffusion of 5V device is 0.4um." )
+  
+  e6D = geomOr( drc( TG DIFF sep < 0.4 ) 
+  		drc( TG DIFF sep < 0.01 fig ))
+  errorLayer( e6D "5.6D: Minimum TG to unrelated Diffusion spacing is 0.4um." )
+
+;
+;
+; ****** POLY0 RULE ******
+;
+
+;//For High Resistor PO0
+
+HRPOLY  = geomOverlap(PO0 HR)
+PURPOLY = geomAndNot(PO0 HRPOLY)
+SAB_E_IN_HRPOLY = geomGetEdge(SAB coincident  HRPOLY)
+SABPOLY = geomGetEdge(HRPOLY inside SAB)
+HRCONT  = geomOverlap(CONT HR)
+
+  e7A = geomOr( drc( PO0 width < 0.55 )
+                drc( PO0 width < 0.01 withCornerTouch fig ) )
+  errorLayer( e7A "5.7A: Minimum Poly0 width is 0.55um." )
+
+  e7B = drc( PO0 sep < 0.65 )
+  errorLayer( e7B "5.7B: Minimum Poly0 spacing is 0.65um." )
+
+  e7Ca = drc( PO0 DIFF sep < 0.6 withSingularPoint )
+  errorLayer( e7Ca "5.7Ca: Minimum Poly0(non-HR) to diffusion spacing is 0.6um." )
+
+  e7Cb = drc( HRPOLY DIFF sep < 1.5 withSingularPoint )
+  errorLayer( e7Cb "5.7Cb : Minimum Poly0(HR) to diffusion spacing is 1.5um." )
+
+  CAP_PO1 = geomButtOrOver( PO1 PO0 )
+;  CAP_PO1 = geomInside( PO1 PO0 )
+  NON_CAP_PO1 = geomAndNot( PO1 CAP_PO1 )
+
+  e7D = drc( NON_CAP_PO1 PO0 sep < 0.5 withSingularPoint )
+  errorLayer( e7D "5.7D : Minimum Poly0 to unrelated poly1 spacing is 0.5um." )
+
+  e7E = geomOr( drc( PO0 PO1 enc < 0.55 )
+                drc( PO0 PO1 enc <0.01 fig))
+  errorLayer( e7E "5.7E : Minimum Poly0 overlap poly1 is 0.55um." )
+
+  e7Fa = drc( PO0 PPLUS sep < 1.0 withSingularPoint )
+  errorLayer( e7Fa "5.7Fa: Minimum Poly0(non-HR) to P+ implant spacing is 1.0um." )
+
+  e7Fb = drc( HRPOLY PPLUS sep < 1.5 withSingularPoint )
+  errorLayer( e7Fb "5.7Fb: Minimum Poly0(HR) to P+ implant spacing is 1.5um." )
+
+  e7G = drc( PO0 CONT enc < 0.35 withSingularPoint )
+  errorLayer( e7G "5.7G: Minimum Poly0 overlap contact is 0.35um." )
+
+  CAP_CNT = geomInside( CONT PO0 )
+
+  e7H = drc( PO1 CAP_CNT sep < 0.6 withSingularPoint )
+  errorLayer( e7H "5.7H: Minimum Poly0 contact to poly1 spacing is 0.6um." )
+
+  CAP_AREA = geomAnd( PO0 PO1 )
+
+  MAX_CAP_AREA = drc( CAP_AREA area <= 10000 )
+  e7I = geomAndNot( CAP_AREA MAX_CAP_AREA )
+  errorLayer( e7I "4.7I: Maximum Poly0 overlap poly1 area is 100 x 100 um^2." )
+ 
+  e7J = drc( TG PO0 enc < 0.5 )
+  errorLayer( e7J "5.7J: Minimum TG overlap PO0 is 0.5um." )
+
+  e7K = geomAnd( PO0 DIFF )
+  errorLayer( e7K "5.7K: PO0 overlap diffusion is not allowed." )
+
+  e7L = geomAndNot( CAP_PO1 CAP_AREA )
+  errorLayer( e7L "5.7L: PO1 cross over PO0 is not allowed." )
+
+  e7M = geomAnd( PPLUS PO0 )
+  errorLayer( e7M "5.7M: P+ implant layer overlap PO0 is not allowed." )
+
+  e7N = geomOutside( PO0 TG )
+  errorLayer( e7N "5.7N: PO0 must be covered by TG." )
+
+
+;
+; ****** HR RULE ******
+;
+
+  hr_po1     = geomButtOrOver( PO1 HR)
+  hr_po1_con = geomAnd(CONT hr_po1)
+
+  e8A = geomOr( drc( HR width < 0.8 ) 
+  	        drc( HR width < 0.01 withCornerTouch fig ) )
+  errorLayer( e8A "5.8A: Minimum HR width is 0.8um." )
+
+  e8B = geomOr( drc( HR sepNotch < 0.8 ) )
+  errorLayer( e8B "5.8B: Minimum HR to SAB spacing is 0.8um." )
+
+  e8C_1 = geomGetEdge(hr_po1 inside SAB)
+  e8C   = geomOr( drc( e8C_1 width < 2.0))
+  errorLayer( e8C "5.8C: Minimum HR Poly width is 2.0um." )
+
+;; 12Cb waive
+  
+  e8D_1 = geomGetEdge(SAB inside hr_po1)
+  e8D   = geomOr( drc( e8D_1 width < 2))
+  errorLayer( e8D "5.8D: Minimum SAB width for HR PO1 resistor is 2um." )
+
+  e8E =  geomOr( geomOr( drc( HR hr_po1 enc <1)
+  		         drc( HR hr_po1 enc <0.01 fig)) 
+  		  geomAndNot( hr_po1 HR))
+  errorLayer( e8E "5.8E: Minimum HR mask overlap HR Poly resistor is 1um." )
+
+  e8F = geomOr( geomOr( drc( HR PO1 sep < 1 )
+  			drc( HR PO1 sep < 0.01 fig ) )
+  	         geomButting( HR PO1))
+  errorLayer( e8F "5.8F: Minimum spacing of HR to unrelated Poly is 1um." )
+  
+  e8G =  geomOr( drc( SAB hr_po1 enc <1.0)
+                 drc( SAB hr_po1 enc <0.01 fig))
+  errorLayer( e8G "5.8G: Minimum SAB extension over HR Poly is 1.0um." )
+
+  e8H = geomOr( geomOr( drc( hr_po1_con SAB sep < 0.5 )
+                        drc( hr_po1_con SAB sep < 0.01 fig ) )
+                 geomAnd( hr_po1_con SAB))
+  errorLayer( e8H "5.8H: Minimum spacing of HR Poly CONT to SAB is 0.5um." )
+
+  e8I = geomOr( drc( PO0 SAB sep < 1.5 )
+                        drc( PO0 SAB sep < 0.01 fig ) )
+  errorLayer( e8I "5.8I: Minimum spacing of Poly0 to SAB is 1.5um." )
+
+  e8J = geomAnd( NPLUS hr_po1 )
+  errorLayer( e8J "5.8J: N+ imp extened to HR poly is not allowed." )
+
+  e8K = geomAnd( PPLUS hr_po1 )
+  errorLayer( e8K "5.8K: P+ imp into HR poly is not allowed." )
+
+  
+;
+;
+; ****** POLY RULE ******
+;
+; Note: A general rule checking for ANY poly width < 0.35um was implemented.
+;
+  END_CAP = geomButtOnly( intpol gate keep == 1 )
+
+  e9AaBaC = geomAndNot( geomOr( drc( PO1 width < 0.35 ) 
+  		              drc( PO1 width < 0.01 withCornerTouch fig ) )
+	  	        END_CAP )
+  errorLayer( e9AaBaC "5.9Aa/Ba/C: Minimum Poly width is 0.35um." )
+;
+; Note: Rules 5.9A/B - Minimum Poly width for NMOS/PMOS devices
+;       This rule is specified as a minimum "poly" width, not as a
+;       minimum "active device" polygon width.  Thus, these checks are
+;       all performed with respect to the edges of the "gate" that
+;       butt diffusion and not the "edges" that butt field poly
+;       because these are NOT real poly edges.
+;
+  e9AbBb = geomOr( drc( gate3_w width < 0.5 ) )
+  errorLayer( e9AbBb "5.9A.b/5.9B.b: Minimum Poly width for 5V NMOS & PMOS is 0.5um." )
+
+  e9Da = geomOr( drc( gate_w sep < 0.35 opposite ) )
+  errorLayer( e9Da "5.9D.a: Minimum Poly to Poly spacing on diffusion region is 0.35um." )
+
+  e9Db = geomOr( geomAndNot( drc( PO1 sep < 0.4 ) DIFF ) )
+  errorLayer( e9Db "5.9D.b: Minimum Poly to Poly spacing on field region is 0.4um." )
+
+  e9E = geomAnd( geomOr( drc( PO1 DIFF enc < 0.4 ) 
+  	                 drc( PO1 DIFF enc < 0.01 fig ) ) END_CAP )
+  errorLayer( e9E "5.9E: Minimum Poly extension onto field region (end cap) is 0.4um." )
+  e9E1 = geomGetEdge( PO1 coincident DIFF )
+  errorLayer( e9E1 "5.9E: Minimum Poly extension onto field region (end cap) is 0.4um." )  
+
+  e9F = geomOr( geomOr( drc( PO1 DIFF sep < 0.1 ) 
+  			drc( PO1 DIFF sep < 0.01 fig ) )
+  			            geomButting( PO1 DIFF ) )
+  errorLayer( e9F "5.9F: Minimum Poly on field region to Diffusion spacing is 0.1um." )
+
+;
+; Note: This version of 5.9G is consistent with Cadence Methodology
+;       and also takes into account notches in active in third party
+;       libraries.
+;
+
+  endcappo = geomOverlap( PO1 END_CAP )
+  endcappoB = geomOverlap( END_CAP drc( endcappo DIFF enc < 0.34 ) )
+  endcappoA = geomAndNot( END_CAP endcappoB )
+  endcapeA = geomGetAdjacentEdge( endcappoA gate )
+  endcapeB = geomGetAdjacentEdge( endcappoB gate )
+
+  e9Ga = geomOr( drc( endcapeA DIFF  0 < sep < 0.2 opposite ) )
+  errorLayer( e9Ga "5.9G.a: Minimum end cap Poly to related Diffusion spacing (Poly end cap extension >= 0.34um) is 0.2um." )
+  
+  e9Gb = geomOr( drc( endcapeB DIFF  0 < sep < 0.2 opposite ) ) 
+  errorLayer( e9Gb "5.9G.b: Minimum end cap Poly to related Diffusion spacing (Poly end cap extension < 0.34um) is 0.2um." ) 
+
+  e9H = geomOr( drc( DIFF gate_w 0 < enc < 0.4 parallel ) )
+  errorLayer( e9H "5.9H: Minimum Poly gate to field edge spacing is 0.4um." )
+
+
+;
+; Note: Rule 5.9K is implemented as a purely area-based rule (6400 sq.
+;       micron) and NOT a width and length limitation.
+;
+  mgate = drc( gate area <= 10000 )
+  e9I = geomAndNot( gate mgate )
+  errorLayer( e9I "5.9I: Maximum Poly overlap Diffusion area is 100 x 100 um^2." )
+
+;
+;
+; ****** P+ IMPLANT RULE ******
+;
+  e11A = geomOr( drc( PPLUS width < 0.75 )
+  		 drc( PPLUS width < 0.01 withCornerTouch fig ) )
+  errorLayer( e11A "5.11A: Minimum P+ implant width is 0.75um." )
+
+  e11B = geomOr( drc( PPLUS sepNotch < 0.75 ) )
+  errorLayer( e11B "5.11B: Minimum P+ implant to P+ implant spacing is 0.75um." )
+
+  e11Ca = geomOr( drc( PPLUS diff_nw enc < 0.4 ) 
+  		  drc( PPLUS diff_nw enc < 0.01 fig ) )
+  errorLayer( e11Ca "5.11C.a: Minimum P+ implant overlap P+ Diffusion (inside N-Well) is 0.4um." )
+  
+  e11Cb = geomOr( drc( PPLUS diff_ps enc < 0.15 ) 
+  		  drc( PPLUS diff_ps enc < 0.01 fig ) )
+  errorLayer( e11Cb "5.11C.b: Minimum P+ implant overlap P+ Diffusion (inside P-Well) is 0.15um." )
+  
+  e11Da = geomOr( drc( PPLUS diff_ps sep < 0.4 )
+  		  drc( PPLUS diff_ps sep < 0.01 fig ) )
+  errorLayer( e11Da "5.11D.a: Minimum P+ implant to N+ Diffusion spacing (inside P-Well) is 0.4um." )
+
+  e11Db = geomOr( drc( PPLUS diff_nw sep < 0.15 )
+  		  drc( PPLUS diff_nw sep < 0.01 fig )  )
+  errorLayer( e11Db "5.11D.b: Minimum P+ implant to N+ Diffusion spacing (inside N-Well) is 0.15um." ) 
+
+
+;
+;
+; ****** N+/P+ BUTTING RULE ******
+;
+
+;
+; Note: Rules 5.11E is not coded since min the N+ to P+ diffusion spacing is always 0 
+;       for butting N+/P+ diffusion.
+;
+  
+  e11F = geomOr( drc( pplus_edge_in_diff DIFF ovlp < 0.6 ) 
+  		 drc( PPLUS DIFF ovlp < 0.01 fig ) )
+  errorLayer( e11F "5.11F: Minimum P+ implant overlap Diffusion to form P+ region is 0.6um." )
+ 
+  e11G = geomOr( drc( DIFF pplus_edge_in_diff enc < 0.6 ) 
+  		 drc( DIFF PPLUS enc < 0.01 fig ) )
+  errorLayer( e11G "5.11G: Minimum Diffusion extension over P+ implant to form N+ region is 0.6um." )
+
+  e11H = geomOr( drc( pplus_edge_in_diff gate_w sep < 0.6 ) 
+  		 geomAnd( geomStraddle( gate PPLUS ) PPLUS ) )
+  errorLayer( e11H "5.11H: Minimum P+ implant to Poly spacing to form N+ S/D region is 0.6um." )
+
+  e11I = geomOr( drc( pplus_edge_in_diff gate_w enc < 0.6 ) )
+  errorLayer( e11I "5.11I: Minimum P+ implant extension over Poly to form P+ S/D region is 0.6um." )
+
+  e11J = geomOr( drc( PPLUS pdif_con enc < 0.2 ) 
+  		 drc( PPLUS pdif_con enc < 0.01 fig ) )
+  errorLayer( e11J "5.11J: Minimum P+ implant overlap P+ contact is 0.2um." )
+
+  e11K = geomOr( geomOr( drc( PPLUS ndif_con sep < 0.2 ) 
+  			 drc( PPLUS ndif_con sep < 0.01 fig ) )
+  			 geomButting( ndif_con PPLUS ) )
+  errorLayer( e11K "5.11K: Minimum P+ implant to N+ contact spacing is 0.2um." )
+
+  e11L1 = geomAndNot( butt_psd geomEnclose( butt_psd CONT ) )
+  e11L2 = geomAndNot( butt_nsd geomEnclose( butt_nsd CONT ) )
+  e11L3 = geomAndNot( butt_ntap geomEnclose( butt_ntap CONT ) )
+  e11L4 = geomAndNot( butt_ptap geomEnclose( butt_ptap CONT ) )
+  e11L = geomOr( geomOr( geomOr( e11L1 e11L2 ) e11L3 ) e11L4 )
+  errorLayer( e11L "5.11L: Soft Contacts areprohibited." )
+  
+
+;
+;
+; ****** SAB RULE ******
+;
+
+  e12A = geomOr( drc( SAB width < 0.8 ) 
+  		 drc( SAB width < 0.01 withCornerTouch fig ) )
+  errorLayer( e12A "5.12A: Minimum SAB width is 0.8um." )
+
+  e12B = geomOr( drc( SAB sepNotch < 0.8 ) )
+  errorLayer( e12B "5.12B: Minimum SAB to SAB spacing is 0.8um." )
+
+  e12C = geomAnd( SAB CONT )
+  errorLayer( e12C "5.12C: Non-salicide contact is not allowed." )
+;  
+; Note: Rules 5.12.1 and 5.12.2 - SAB Device and Resistor Definitions
+;       SAB layer is used for ESD protection (device), poly resistors
+;       and diffusion resistors.  The following definitions are
+;       implemented:
+;       - SAB Devices - Defined when SAB overlaps diffusion (P-diff in
+;         N-Well or N-Diff in P-Sub) that IS touching a gate.
+;       - SAB Poly Resistors - Defined when SAB overlaps field poly
+;         that is not touching gate poly within the same SAB.
+;       - SAB Diffusion Resistors - Defined when SAB overlaps
+;         diffusion that is NOT touching a gate.
+;       The check also assumes that each SAB will be dedicated to a
+;       single definition.
+
+  sab_dif = geomButtOrOver( DIFF SAB )         ; SAB Diffusion
+  io_sd = geomButtOrOver( sab_dif gate )      ; SAB Diffusion (w/ gate)
+  io_sab = geomButtOrOver( SAB  io_sd )       ; I/O SAB
+  res_sab = geomAndNot( SAB io_sab )          ; Resistor SAB
+  sab_dif_res = geomAndNot( sab_dif geomOverlap( sab_dif gate ) ) ; Diffusion Resistor SAB
+  sab_pol = geomAndNot(geomButtOrOver( expol res_sab ) hr_po1)    ; SAB Poly
+  p_sab_pol = geomInside( sab_pol PPLUS )     ; P+ SAB Poly
+  n_sab_pol = geomAndNot( sab_pol p_sab_pol ) ; N+ SAB Poly
+
+   
+; ****** SAB Rules for Device ******
+;
+
+  e12D = geomOr( drc( io_sab io_sd enc < 0.3 ) 
+  		 drc( io_sab io_sd enc < 0.01 fig ) )
+  errorLayer( e12D "5.12D: Minimum SAB extention over Diffusion is 0.3um." )
+  
+  e12E = geomOr( drc( SAB PO1 sep < 0.25 ) 
+  		 drc( SAB PO1 sep < 0.01 fig ) )
+  errorLayer( e12E "5.12E: Minimum SAB to Poly spacing is 0.25um." )
+
+  e12F = geomOr( geomOr( drc( io_sd CONT enc < 2.0 ) 
+  		 	 drc( io_sd CONT enc < 0.01 fig) )
+  		 	 geomButting( io_sd CONT ) )
+  errorLayer( e12F "5.12F: Minimum contact to Diffusion edge spacing is 2.0um." )
+  
+; ****** SAB Rules for Non-Salicide Resistor ******
+;
+
+  e12H = geomOr( drc( res_sab  sab_dif_res enc < 0.5 ) 
+  		 drc( res_sab  sab_dif_res enc < 0.01 fig ) )
+  errorLayer( e12H "5.12H: Minimum SAB extension over Diffusion resistor is 0.5um." )
+  
+  e12I = geomOr( drc( res_sab sab_pol enc < 0.5 ) 
+  		 drc( res_sab sab_pol enc < 0.01 fig ) )
+  errorLayer( e12I "5.12I: Minimum SAB extension over Poly resistor is 0.5um." )
+  
+  res_con = geomAnd( CONT geomCat( sab_dif_res sab_pol ) )
+  e12J = geomOr( geomOr( drc( res_sab res_con sep < 0.5 )
+  			 drc( res_sab res_con sep < 0.01 fig ) )
+	  	 	 geomButting( res_sab CONT ) )
+  errorLayer( e12J "5.12J: Minimum SAB to salicide Contact spacing is 0.5um." )
+
+  e12K = geomOr( geomOr( drc( PPLUS sab_pol enc < 0.4 )
+  			 drc( PPLUS sab_pol enc < 0.01 fig ) )
+	  	 	 geomAndNot( geomOverlap( sab_pol PPLUS ) PPLUS ) )
+  errorLayer( e12K "5.12K: Minimum P+ implant layer overlap P+ Poly resistor is 0.4um." )
+
+  e12L = geomOr( geomOr( drc( PPLUS sab_pol sep < 0.4 ) 
+  		 	 drc( PPLUS sab_pol sep < 0.01 fig ) )
+  		 	 geomButting( n_sab_pol PPLUS ) )
+  errorLayer( e12L "5.12L: Minimum P+ implant layer to N+ Poly resistor spacing is 0.4um." )
+
+;
+;
+; ****** CONT RULE ******
+;
+  e13A = geomContactCheck( CONT length == 0.4 width == 0.4 ignore )
+  errorLayer( e13A "5.13A: Maximum and Minimum Contact size is 0.4 X 0.4um^2." )
+
+  e13B = geomOr( drc( CONT sep < 0.5 )
+  			     drc( CONT sep < 0.01 fig ) )
+  errorLayer( e13B "5.13B: Minimum Contact to Contact spacing is 0.5um." )
+
+  e13C = geomOr( geomOr(	drc( gate1 diff_con sep < 0.3 )
+  			      		drc( PO1 diff_con sep < 0.01 fig ) ) 
+  			      		geomAnd( CONT gate ) )
+  errorLayer( e13C "5.13C: Minimum Diffusion Contact to Poly spacing is 0.3um." )
+
+  e13D = geomOr( drc( poly_con DIFF sep < 0.3 ) 
+  			     geomButting( poly_con DIFF ) )
+  errorLayer( e13D "5.13D: Minimum Poly Contact to Diffusion edge spacing is 0.3um." )
+
+  e13Ea = geomOr( drc( PO1 poly_con enc < 0.2 ) 
+  	          drc( PO1 poly_con enc < 0.01 fig )) 
+  errorLayer( e13Ea "5.13Ea: Minimum Poly overlap Contact is 0.2um." )
+
+  e13Eb = geomOr( drc( CAP_PO1 poly_con enc < 0.4 )
+                  drc( CAP_PO1 poly_con enc < 0.01 fig ))
+  errorLayer( e13Eb "5.13Eb: Minimum Poly overlap Contact is 0.4um." )
+
+  e13F = geomOr( geomOr( drc( pdif pdif_con enc < 0.2 ) 
+  		   	             drc( pdif pdif_con enc < 0.01 fig ))
+  		   	     geomStraddle( diff_con DIFF ))
+  errorLayer( e13F "5.13F: Minimum P+ Diffusion overlap P+ Diffusion Contact is 0.2um." )
+
+  e13G = geomOr( drc( ndif ndif_con enc < 0.2 ) 
+                 drc( ndif ndif_con enc < 0.01 fig ) )
+  errorLayer( e13G "5.13G: Minimum N+ Diffusion overlap N+ Diffusion Contact is 0.2um." )
+
+;
+;
+; ****** METAL1 RULE ******
+;
+; Note: All metal spaces are checked to the smaller design rule.  For
+;       the wide metal spacing check, any edge that is considered part
+;       of a wide metal is checked for spacing violations to all other
+;       metal edges.
+
+  e14A = geomOr( drc( ME1 width < 0.5 )
+  		 drc( ME1 width < 0.01 withCornerTouch fig ) )
+  errorLayer( e14A "5.14A: Minimum Metal1 width is 0.5um." )
+
+  e14Ba = geomOr( drc( ME1 sepNotch < 0.45 ) )
+  errorLayer( e14Ba "5.14B.a: Minimum Metal1 to Metal1 spacing is 0.45um." )
+
+  bmet1 = geomAnd( geomSize( ME1 -4.99 downUp ) ME1 ) 
+  bmet1_edge = geomGetEdge( bmet1 coincident ME1 )
+
+  if( ( avSwitch "Skip_Soft-Connect_Checks" ) then
+    geomStamp( bmet1 ME1 )
+  else
+    geomStamp( bmet1 ME1 error )
+  ) ; endif
+  
+  e14Bb = geomOr( drc( bmet1_edge ME1 0 < sep < 0.65 ) 
+  		  drc( bmet1 ME1 0< sep < 0.65 diffNet ) )
+  errorLayer( e14Bb "5.14B.b: Minimum Metal1 to Metal1 spacing (Metal1 width >= 10um) is 0.65um." )
+
+  if( avSwitch( "check_max_metal_space" )
+    then
+      m1_up250 = geomSize( ME1 250 )
+      m1_up250_hole = geomHoles( m1_up250 )
+      m1_max_space_vio = geomSize( m1_up250_hole 250 )
+      errorLayer( m1_max_space_vio
+        "5.14C: Maximum Metal1 to Metal1 spacing is 500um" )
+    ) ; end if "check_max_metal_space"
+    
+;
+; Note: Rule 5.14D can be defined as Metal1 overlap of contact must be
+;       0.15um over two entire opposing edges.
+
+;  logic_con = geomAndNot( CONT BDSP )
+  e14Dbc = drc( ME1 CONT venc( enc1<0.05 enc2<0.15 enc3<0.05 enc4<0.15 ))
+  errorLayer( e14Dbc "5.14D.a/b/c/d: Metal1 must enclose Contact on two entire non-adjacent edges over 0.05/0.15um." )
+
+  e14E = geomAndNot( geomOr( drc( ME1 0 < area < 0.9 ) ) geomOr( BDSP ROM ) )
+  errorLayer( e14E "5.14E: Minimum Metal1 area is 0.9 um^2." )
+;
+; Use switch to check M1 coverage over the entire chip 
+;
+  if( avSwitch( "check_density" )
+    then
+      m1r1 = drc( ME1 coverage < 0.30 )
+      m1r1_cov = geomGetCoverage(m1r1 keep < 0.30 )
+      errorLayer( m1r1_cov "5.14F: The Metal1 coverage must be larger than 30% of the entire chip area." )
+    ) ; end if "check_density"
+
+;
+;
+; ****** VIA1 RULE ******
+;
+  e15A = geomContactCheck( VI1 length == 0.45 width == 0.45 ignore )
+  errorLayer( e15A "5.15A: Maximum and minimum Mvia1 size is 0.45 X 0.45um^2." )
+
+  e15B = geomOr( drc( VI1 sep < 0.5 ) drc( VI1 sep < 0.01 fig ))
+  errorLayer( e15B "5.15B: Minimum Mvia1 to Mvia1 spacing is 0.5um." )
+
+; Note: Rule 5.15C.a can be defined as Mvia1 must be covered by Metal1.
+
+  e15Ca = drc( ME1 VI1 enc < 0.2 with_perp )
+  errorLayer( e15Ca "5.15C.a: Minimum Metal1 overlap Mvia1 is 0.2um." )
+
+  widemet1 = geomAnd( geomSize( ME1 -4.99 downUp ) ME1 )
+  v1_bmet1 = geomInside( VI1 widemet1 )
+  e15Cb = geomOr( drc( ME1 v1_bmet1 enc < 0.4 ) drc( ME1 v1_bmet1 enc < 0.01 figb ))
+  errorLayer( e15Cb "5.15C.b: Minimum Metal1 Overlap Mvia1 (Metal1 width >= 10um) is 0.4um." )
+
+
+;
+; ****** METAL2 RULE ******
+;
+  if( avSwitch( "metal2_is_top" )
+    then
+      mett = geomCat( ME2 )
+      viat = geomCat( VI1 )
+      lsm  = geomCat( ME1 )
+        geomConnect(
+          via( aumvia1   mett  MMC  )
+          via( auavia1   mett  ME1  )
+          via( ntap_con  ME1  ntap )
+          label( m1_text ME1 )
+          label( m2_text ME2 )
+        
+          label( m1_textt ME1 )
+          label( m2_textt ME2 )
+                        
+          label( m1_pin ME1 )
+          label( m2_pin ME2 )
+          )
+
+    else
+
+      e16A = geomOr( drc( ME2 width < 0.55 )
+      		     drc( ME2 width < 0.01 withCornerTouch fig ) )
+      errorLayer( e16A "5.16A: Minimum Metal2 width is 0.55um." )
+
+      e16B = geomOr( drc( ME2 sepNotch < 0.5 ) )
+      errorLayer( e16B "5.16B: Minimum Metal2 to Metal2 spacing is 0.5um." )
+
+  bmet2 = geomAnd( geomSize( ME2 -4.99 downUp ) ME2 )
+  bmet2_edge = geomGetEdge( bmet2 coincident ME2 )
+
+  if( ( avSwitch "Skip_Soft-Connect_Checks" ) then
+    geomStamp( bmet2 ME2 )
+  else
+    geomStamp( bmet2 ME2 error )
+  ) ; endif
+
+  e16Bb = geomOr( drc( bmet2_edge ME2 0 < sep < 0.7 )
+                  drc( bmet2 ME2 0< sep < 0.7 diffNet ) )
+  errorLayer( e16Bb "5.16B.b: Minimum Metal2 to Metal2 spacing (Metal2 width >= 10um) is 0.7um." )
+
+
+    if( avSwitch( "check_max_metal_space" )
+      then
+        m2_up250 = geomSize( ME2 250 )
+        m2_up250_hole = geomHoles( m2_up250 )
+        m2_max_space_vio = geomSize( m2_up250_hole 250 )
+        errorLayer( m2_max_space_vio
+          "5.16C: Maximum Metal2 to Metal2 spacing is 500um" )
+      ) ; end if "check_max_metal_space"
+
+;
+; Note: Rule 5.16D can be defined as Metal2 overlap of Via1 must be
+;       0.15um over two entire opposing edges
+
+      e16Dbc = drc( ME2 VI1 venc( enc1<0.05 enc2<0.15 enc3<0.05 enc4<0.15 ) )
+      errorLayer( e16Dbc "5.16D.b/c: Metal2 must enclose Mvia1 on two entire non-adjacent edges over 0.05/0.15um." )
+
+      e16E = geomOr( drc( ME2 0 < area < 0.9 ) )
+      errorLayer( e16E "5.16E: Minimum Metal2 area is 0.9 um^2." )
+;
+; Use switch to check M2 coverage over the entire chip 
+;
+      if( avSwitch( "check_density" )
+        then
+          m2r1 = drc( ME2 coverage < 0.30 )
+          m2r1_cov = geomGetCoverage(m2r1 keep < 0.30 )
+          errorLayer( m2r1_cov "5.16F: The Metal2 coverage must be larger than 30% of the entire chip area." )
+        ) ; end if "check_density"
+;
+;
+; ****** VIA2 RULE ******
+;
+      e17A = geomContactCheck( VI2  length == 0.45 width == 0.45 ignore )
+      errorLayer( e17A "5.17A: Maximum and minimum MVia2 size is 0.45 X 0.45um^2." )
+
+      e17B = geomOr( drc( VI2  sep < 0.5 ) drc( VI2  sep < 0.01 fig) )
+      errorLayer( e17B "5.17B: Minimum Mvia2 to Mvia2 spacing is 0.5um." )
+
+      e17Ca = drc( ME2 VI2 enc < 0.2 with_perp )
+      errorLayer( e17Ca "5.17C.a: Minimum Metal2 overlap Mvia2 is 0.2um." )
+
+      bmet2 = geomAnd( geomSize( ME2 -4.99 downUp ) ME2 )
+      v2_bmet2 = geomInside( VI2  bmet2 )
+      e17Cb = geomOr( drc( ME2 v2_bmet2 enc < 0.4 ) drc( ME2 v2_bmet2 enc < 0.01 figb ) )
+      errorLayer( e17Cb "5.17C.b: Minimum Metal2 overlap Mvia2 (Metal2 width >= 10um) is 0.4um." )
+
+;
+;
+; ****** METAL3 RULE ******
+;
+      if( avSwitch( "metal3_is_top" )
+        then
+          mett = geomCat( ME3 )
+          viat = geomCat( VI2 )
+          lsm  = geomCat( ME2 )
+            geomConnect(
+             	via( aumvia2   mett  MMC  )
+             	via( auavia2   mett  ME2  )
+             	via( VI1       ME2  ME1  )
+              via( ntap_con  ME1  ntap )
+              label( m1_text ME1 )
+              label( m2_text ME2 )
+              label( m3_text ME3 )
+           
+              label( m1_textt ME1 )
+              label( m2_textt ME2 )
+              label( m3_textt ME3 )
+                           
+              label( m1_pin ME1 )
+              label( m2_pin ME2 )
+              label( m3_pin ME3 )
+              )
+
+        else
+
+          e18A = geomOr( drc( ME3 width < 0.55 )
+          	 	 drc( ME3 width < 0.01 withCornerTouch fig ) )
+          errorLayer( e18A "5.18A: Minimum Metal3 width is 0.55um." )
+
+          e18B = geomOr( drc( ME3 sepNotch < 0.5 ) )
+          errorLayer( e18B "5.18B: Minimum Metal3 to Metal3 spacing is 0.5." )
+          
+  bmet3 = geomAnd( geomSize( ME3 -4.99 downUp ) ME3 )
+  bmet3_edge = geomGetEdge( bmet3 coincident ME3 )
+
+  if( ( avSwitch "Skip_Soft-Connect_Checks" ) then
+    geomStamp( bmet3 ME3 )
+  else
+    geomStamp( bmet3 ME3 error )
+  ) ; endif
+
+  e18Bb = geomOr( drc( bmet3_edge ME3 0 < sep < 0.7 )
+                  drc( bmet3 ME3 0< sep < 0.7 diffNet ) )
+  errorLayer( e18Bb "5.18B.b: Minimum Metal3 to Metal3 spacing (Metal3 width >= 10um) is 0.7um." )
+
+          if( avSwitch( "check_max_metal_space" )
+            then
+              m3_up250 = geomSize( ME3 250 )
+              m3_up250_hole = geomHoles( m3_up250 )
+              m3_max_space_vio = geomSize( m3_up250_hole 250 )
+              errorLayer( m3_max_space_vio
+                "5.18C: Maximum Metal3 to Metal3 spacing is 500um" )
+            ) ; end if "check_max_metal_space"
+
+          e18Dbc = drc( ME3 VI2 venc( enc1<0.05 enc2<0.15 enc3<0.05 enc4<0.15 ) )
+          errorLayer( e18Dbc "5.18D.b/c: Metal3 must enclose the Via2 on two entire non-adjacent edges over 0.05/0.15um." )
+
+          e18E = geomOr( drc( ME3 0 < area < 0.9 ) )
+          errorLayer( e18E "5.18E: Minimum Metal3 area is 0.9 um^2." )
+;
+; Use switch to check M3 coverage over the entire chip
+;
+          if( avSwitch( "check_density" )
+            then
+              m3r1 = drc( ME3 coverage < 0.30 )
+              m3r1_cov = geomGetCoverage(m3r1 keep < 0.30 )
+              errorLayer( m3r1_cov "5.18F: The Metal3 coverage must be larger than 30% of the entire chip area." )
+            ) ; end if "check_density"
+;
+;
+; ****** VIA3 RULE ******
+;
+          e19A = geomContactCheck( VI3 length == 0.45 width == 0.45 ignore )
+          errorLayer( e19A "5.19A: Maximum and minimum MVia3 size = 0.45umx0.45um." )
+
+          e19B = geomOr( drc( VI3 sep < 0.5 ) drc( VI3 sep < 0.01 fig ) )
+          errorLayer( e19B "5.19B: Minimum Mvia3 to Mvia3 spacing is 0.5um." )
+   
+          e19Ca = drc( ME3 VI3 enc < 0.2 with_perp )
+          errorLayer( e19Ca "5.19C.a: Minimum Metal3 overlap Mvia3 is 0.2um." )
+
+          bmet3 = geomAnd( geomSize( ME3 -4.99 downUp ) ME3 )
+          v3_bmet3 = geomInside( VI3 bmet3 )
+          e19Cb = geomOr( drc( ME3 v3_bmet3 enc < 0.4 ) drc( ME3 v3_bmet3 enc < 0.01 figb))
+          errorLayer( e19Cb "5.19C.b: Minimum Metal3 overlap Mvia3 ( Metal3 width >= 10um) is 0.4um." )
+
+;
+;
+; ****** METAL4 RULE ******
+;
+          if( avSwitch( "metal4_is_top" )
+            then
+              mett = geomCat( ME4 )
+              viat = geomCat( VI3 )
+              lsm  = geomCat( ME3 )
+                geomConnect(
+                 	via( aumvia3   mett  MMC )
+                 	via( auavia3   mett  ME3 )
+                 	via( VI2       ME3  ME2 )
+                 	via( VI1       ME2  ME1 )
+                  via( ntap_con  ME1  ntap )
+                  label( m1_text ME1 )
+                  label( m2_text ME2 )
+                  label( m3_text ME3 )
+                  label( m4_text ME4 )
+                
+                  label( m1_textt ME1 )
+                  label( m2_textt ME2 )
+                  label( m3_textt ME3 )
+                  label( m4_textt ME4 )
+                                
+                  label( m1_pin ME1 )
+                  label( m2_pin ME2 )
+                  label( m3_pin ME3 )
+                  label( m4_pin ME4 )
+                  )
+
+            else
+              mett = geomCat( ME5 )
+              viat = geomCat( VI4 )
+              lsm  = geomCat( ME4 )
+
+                geomConnect(
+                 	via( aumvia4  mett  MMC )
+                 	via( auavia4  mett  ME4 )
+                  via( VI3	  ME4 ME3 )
+                  via( VI2	  ME3 ME2 )
+                  via( VI1	  ME2 ME1 )
+                  via( ntap_con ME1 ntap )
+                  label( m1_text ME1 )
+                  label( m2_text ME2 )
+                  label( m3_text ME3 )
+                  label( m4_text ME4 )
+                  label( m5_text ME5 )
+                
+                  label( m1_textt ME1 )
+                  label( m2_textt ME2 )
+                  label( m3_textt ME3 )
+                  label( m4_textt ME4 )
+                  label( m5_textt ME5 )
+                                
+                  label( m1_pin ME1 )
+                  label( m2_pin ME2 )
+                  label( m3_pin ME3 )
+                  label( m4_pin ME4 )
+                  label( m5_pin ME5 )
+                  )
+
+
+              e20A = geomOr( drc( ME4 width < 0.55 )
+              		     drc( ME4 width < 0.01 withCornerTouch fig ) )
+              errorLayer( e20A "5.20A: Minimum Metal4 width is 0.55um." )              		      
+              		     
+              e20B = geomOr( drc( ME4 sepNotch < 0.5 ) )
+              errorLayer( e20B "5.20B: Minimum Metal4 to Metal4 spacing is 0.5um." )
+
+  bmet4 = geomAnd( geomSize( ME4 -4.99 downUp ) ME4 )
+  bmet4_edge = geomGetEdge( bmet4 coincident ME4 )
+
+  if( ( avSwitch "Skip_Soft-Connect_Checks" ) then
+    geomStamp( bmet4 ME4 )
+  else
+    geomStamp( bmet4 ME4 error )
+  ) ; endif
+
+  e20Bb = geomOr( drc( bmet4_edge ME4 0 < sep < 0.7 )
+                  drc( bmet4 ME4 0< sep < 0.7 diffNet ) )
+  errorLayer( e20Bb "5.20B.b: Minimum Metal4 to Metal4 spacing (Metal4 width >= 10um) is 0.7um." )
+
+              if( avSwitch( "check_max_metal_space" )
+                then
+                  m4_up250 = geomSize( ME4 250 )
+                  m4_up250_hole = geomHoles( m4_up250 )
+                  m4_max_space_vio = geomSize( m4_up250_hole 250 )
+                  errorLayer( m4_max_space_vio
+                    "5.20C: Maximum Metal4 to Metal4 spacing is 500um" )
+                ) ; end if "check_max_metal_space"
+
+;
+; Note: Rule 5.20D can be defined as Metal4 overlap of Via3 must be
+;       0.15um over two entire opposing edges
+
+              e20D2 = drc( ME4 VI3 venc( enc1<0.05 enc2<0.15 enc3<0.05 enc4<0.15 ) )
+              errorLayer( e20D2 "5.20D.b/c: Metal4 must enclose the Via3 on two entire non-adjacent edges over 0.05/0.15um." )
+
+              e20E = geomOr( drc( ME4 0 < area < 0.9 ) )
+              errorLayer( e20E "5.20E: Minimum Metal4 area is 0.9 um^2." )
+;
+; Use switch to check M4 coverage over the entire chip 
+;
+              if( avSwitch( "check_density" )
+                then
+                  m4r1 = drc( ME4 coverage < 0.30 )
+                  m4r1_cov = geomGetCoverage(m4r1 keep < 0.30 )
+                  errorLayer( m4r1_cov "5.20F: The Metal4 coverage must be larger than 30% of the entire chip area." )
+                ) ; end if "check_density"
+;
+;
+; ****** VIA4 RULE ******
+;
+              e21A = geomContactCheck( VI4 length == 0.45 width == 0.45 ignore )
+              errorLayer( e21A "5.21A: Maximum and minimum Mvia4 size is 0.45 X 0.45um^2." )
+
+              e21B = geomOr( drc( VI4 sep < 0.5 ) drc( VI4 sep < 0.01 fig ) )
+              errorLayer( e21B "5.21B: Minimum Mvia4 to Mvia4 spacing is 0.5um." )       
+
+              e21Ca = drc( ME4 VI4 enc < 0.2 with_perp )
+              errorLayer( e21Ca "5.21C.a: Minimum Metal4 overlap Mvia4 is 0.2um.")
+
+              bmet4 = geomAnd( geomSize( ME4 -4.99 downUp ) ME4 )
+              v4_bmet4 = geomInside( VI4 bmet4 )
+              e21Cb = geomOr( drc( ME4 v4_bmet4 enc <0.4) drc( ME4 v4_bmet4 enc <0.01 figb))
+              errorLayer( e21Cb "5.21C.b: Minimum Metal4 overlap Mvia4 (Metal4 width >= 10um) is 0.4um." )
+
+;
+          ) ;end if "metal4_is_top"
+      ) ;end if "metal3_is_top"
+  ) ;end if "metal2_is_top"
+
+
+; ****** TOP METAL RULE ******
+;
+
+      e22A = geomOr( drc( mett width < 0.6 )
+      		     drc( mett width < 0.01 withCornerTouch fig ) )
+      errorLayer( e22A "5.22A: Minimum top Metal width is 0.6um." )
+
+      e22B = geomOr( drc( mett sepNotch < 0.6 ) )
+      errorLayer( e22B "5.22B: Minimum top Metal to top Metal spacing is 0.6um." )
+
+  bmett = geomAnd( geomSize( mett -4.99 downUp ) mett )
+  bmett_edge = geomGetEdge( bmett coincident mett )
+
+  if( ( avSwitch "Skip_Soft-Connect_Checks" ) then
+    geomStamp( bmett mett )
+  else
+    geomStamp( bmett mett error )
+  ) ; endif
+
+  e22Bb = geomOr( drc( bmett_edge mett 0 < sep < 0.8 )
+                  drc( bmett mett 0< sep < 0.8 diffNet ) )
+  errorLayer( e22Bb "5.22B.b: Minimum top Metal to top Metal spacing (Metal5 width >= 10um) is 0.8um." )
+
+              if( avSwitch( "check_max_metal_space" )
+                then
+                  m5_up250 = geomSize( mett 250 )
+                  m5_up250_hole = geomHoles( m5_up250 )
+                  m5_max_space_vio = geomSize( m5_up250_hole 250 )
+                  errorLayer( m5_max_space_vio
+                    "5.22C: Maximum top Metal to top Metal spacing is 500um" )
+                ) ; end if "check_max_metal_space"
+
+  e22Da = geomOr( drc( mett viat enc < 0.15 with_perp ) )
+  errorLayer( e22Da "5.22D.a: Minimum top Metal overlap LMVIA is 0.15um." )
+
+  e22Db = geomOr( drc( bmett viat enc < 0.35 with_perp ) )
+  errorLayer( e22Db "5.22D.b: Minimum top Metal overlap LMVIA is 0.35um." )
+
+  e22E = geomOr( drc( mett 0 < area < 1.0 ) )
+  errorLayer( e22E "5.22E: Minimum top Metal area is 1.0 um^2." )
+;
+; Use switch to check TopMetal coverage over the entire chip
+;
+  if( avSwitch( "check_density" )
+    then
+      mtr1 = drc( mett coverage < 0.30 )
+      mtr1_cov = geomGetCoverage(mtr1 keep < 0.30 )
+      errorLayer( mtr1_cov "5.22E: The top Metal coverage must be larger than 30% of the entire chip area." )
+    ) ; end if "check_density"
+
+;============================
+;===  MMC Rule (P62)      ===
+;============================
+
+e4_21A_E = geomOr( drc( MMC width < 0.60 ) geomSize( drc( MMC width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+;e4_21A = geomAndNot( e4_21A_E LOGOMK )
+errorLayer(e4_21A_E "4.21A: Minimum METAL_CAP width is 0.60um")
+
+
+e4_21B_E = geomOr( drc( MMC sepNotch < 0.55 shielded withIntersection ) )
+;e4_21B = geomAndNot( e4_21B_E LOGOMK )
+errorLayer(e4_21B_E "4.21B: Minimum METAL_CAP to METAL_CAP spacing is 0.55um")
+
+
+e4_21C_E = geomOr( drc( lsm MMC 0 < enc < 0.50 shielded withIntersection ) geomSize( geomGetEdge( MMC not_over lsm ) -0.001 edges ) )
+;e4_21C = geomAndNot( e4_21C_E LOGOMK )
+errorLayer(e4_21C_E "4.21C: Minimum LSM overlap METAL_CAP is 0.50um, no METAL_CAP outside LSM")
+
+
+e4_21D_E = geomOr( drc( MMC viat enc < 0.5 withIntersection shielded ) geomStraddle( viat MMC ) )
+;e4_21D = geomAndNot( e4_21D_E LOGOMK )
+errorLayer(e4_21D_E "4.21D: Minimum METAL_CAP overlap LMVIA is 0.50um")
+
+e4_21E_E = geomOr( drc( MMC viat 0 < sep < 0.50 shielded ) geomSize( drc( MMC viat sep < 0.01 edge ) -0.001 edges ) )
+;e4_21E = geomAndNot( e4_21E_E LOGOMK )
+errorLayer(e4_21E_E "4.21E: Minimum METAL_CAP to unrelated LMVIA is 0.50um")
+
+e4_21F_E = geomAnd( MMC lsm )
+e4_21F = drc( e4_21F_E area > 10000 )
+errorLayer(e4_21F "4.21F: Maximum MMC overlap LSM area is 100*100 um2")
+
+e4_21Note_1_E = geomAndNot( MMC lsm )
+;e4_21Note_1 = geomAndNot( e4_21Note_1_E LOGOMK )
+errorLayer(e4_21Note_1_E "4.21Note.1: METAL_CAP layer must be restricted within LSM area")
+
+;
+;
+; ****** Seal Ring Rule ******
+;
+
+  if( avSwitch( "SR" ) then
+
+; Note: Due to lack of defining layer, seal ring is identified by very
+;       large holes in pdiff.  To change the area filter size for seal
+;       ring, enter new value in the pdiff area check below.
+
+    SRdiffhole_1 = geomHoles( pdif )
+    SRdiffhole = drc( SRdiffhole_1 area > 10000 fig )
+    SRdiff = geomButtOnly( pdif SRdiffhole )
+    SRcont = geomOverlap( CONT SRdiff )
+    SRmet1 = geomOverlap( ME1 SRdiff )
+    SRvia1 = geomOverlap( VI1 SRmet1 )
+    SRmet2 = geomOverlap( ME2 SRmet1 )
+    SRvia2 = geomOverlap( VI2 SRmet2 )
+    SRmet3 = geomOverlap( ME3 SRmet2 )
+    SRvia3 = geomOverlap( VI3 SRmet3 )
+    SRmet4 = geomOverlap( ME4 SRmet3 )
+    SRvia4 = geomOverlap( VI4 SRmet4 )
+    SRmet5 = geomOverlap( ME5 SRmet4 )
+;
+; Note: The following set of code is used to filter out contacts and
+;       vias that need to be checked for potential spacing violations.
+;       This is implemented for performance improvements.
+;
+    SRcont_up2 = geomSize( SRcont 2.0 )
+    SRvia1_up2 = geomSize( SRvia1 2.0 )
+    SRvia2_up2 = geomSize( SRvia2 2.0 )
+    SRvia3_up2 = geomSize( SRvia3 2.0 )
+    SRvia4_up2 = geomSize( SRvia4 2.0 )
+
+    SRcont_nearv1 = geomButtOrOver( SRcont SRvia1_up2 )
+    SRvia1_nearct = geomButtOrOver( SRvia1 SRcont_up2 )
+    SRvia1_nearv2 = geomButtOrOver( SRvia1 SRvia2_up2 )
+    SRvia2_nearv1 = geomButtOrOver( SRvia2 SRvia1_up2 )
+    SRvia2_nearv3 = geomButtOrOver( SRvia2 SRvia3_up2 )
+    SRvia3_nearv2 = geomButtOrOver( SRvia3 SRvia2_up2 )
+    SRvia3_nearv4 = geomButtOrOver( SRvia3 SRvia4_up2 )
+    SRvia4_nearv3 = geomButtOrOver( SRvia4 SRvia3_up2 )
+
+    drc( SRcont PAD sep < 6
+      "SR.5.1A Minimum passivation overlap substrate Contact is 6um" )
+    drc( SRmet1 SRcont enc < 2
+      "SR.5.1B Minimum Metal1 overlap substrate Contact is 2um" )
+    ; SR.5.1C covered in contact rules
+    drc( SRdiff SRcont enc < 1
+      "SR.5.1D Minimum Diffusion overlap substrate Contact is 1um" )
+;    drc( SRcont SRvia1 sep < 2
+    drc( SRcont_nearv1 SRvia1_nearct sep < 2
+      "SR.5.1E Minimum Mvia1 to substrate Contact spacing is 2um" )
+    ; SR.5.1F covered in mvia1 rules
+    drc( SRmet2 SRvia1 enc < 1
+      "SR.5.1G Minimum Metal2 overlap Mvia1 is 1um" )
+    drc( SRmet3 SRvia2 enc < 1
+      "SR.5.1H Minimum Metal3 overlap Mvia2 is 1um" )
+    ; SR.5.1I covered by mvia2 rules
+;    drc( SRvia1 SRvia2 sep < 2
+    drc( SRvia1_nearv2 SRvia2_nearv1 sep < 2
+      "SR.5.1J Minimum Mvia1 to Mvia2 spacing is 2um" )
+    ; SR.5.1K no scribe identification layer
+;    drc( SRvia2 SRvia3 sep < 2
+    drc( SRvia2_nearv3 SRvia3_nearv2 sep < 2
+      "SR.5.1L Minimum Mvia2 to Mvia3 spacing is 2um" )
+    ; SR.5.1M covered by mvia3 rules
+    drc( SRmet4 SRvia3 enc < 1
+      "SR.5.1N Minimum Metal4 overlap Mvia3 = 1um" )
+    drc( SRmet5 SRvia4 enc < 1
+      "SR.5.1O Minimum Metal5 overlap Mvia4 is 1um" )
+    ; SR.5.1P covered by mvia4 rules
+;    drc( SRvia3 SRvia4 sep < 2.0
+    drc( SRvia3_nearv4 SRvia4_nearv3 sep < 2.0
+      "SR.5.1Q Minimum Mvia3 to Mvia4 spacing is 2um" )
+    SRall1 = geomCat( SRdiff SRmet1 SRmet2 SRmet3 SRmet4 SRmet5 )
+    SRall = geomOr( SRall1 )
+    drc( SRall width < 10 "SR5.1.R Minimum Die seal ring width is 10um" )
+    foreach( (metlayer ) '(ME1 ME2 ME3 ME4 ME5) 
+      pad_metal = geomOverlap( eval(metlayer) PAD )
+      drc( pad_metal SRall sep < 10 
+        "SR.5.1S Minimum PAD metal edge to die seal ring spacing is 10um" )
+    )
+    sr51t = geomWidth( SRdiff keep > 20 )
+    errorLayer( sr51t "SR.5.1T Maximum Diffusion width is 20um" )
+    ; SR.5.1U no way to detect cont/via ditch without using cont/via bar
+
+  ) ; end "SR"
+;
+;
+;
+; ****** METAL SLOT RULE ******
+;
+; Note: The slot rules do NOT apply to the Pad Metal and Pad Metal is
+;       defined as metal overlapped by PAD window.
+
+  if( avSwitch( "Skip_check_Slot" ) then
+    else    
+
+;;ME1
+      met1_block_slot = geomAnd( ME1 m1slmk )
+      met1_slot_temp = geomHoles( met1_block_slot )
+      met1_slot = geomInside( met1_slot_temp  m1slmk )
+      met1_slot_all = geomOr(met1_block_slot met1_slot)
+      
+      met1_nopad = geomAndNot( ME1 PAD )  ; Metal definition w/o Pad
+      met1_edge = geomGetEdge(met1_nopad coincident ME1)
+            
+      e6_1A_M1 = geomWidth( geomButtOrOver( met1_nopad geomSize( geomGetLength( met1_edge keep >30 ) -0.001)) keep > 20 )
+      errorLayer( e6_1A_M1 "6.1A_M1: Maximum Metal width without slotting is 20um when length is greater than 30um" ) 
+
+      e6_1B_M1 = geomOr( geomOr( drc( met1_slot width < 2.0 )
+      			         geomSize( drc( met1_slot width < 0.01 edge ) -0.001 edges ))
+      			         geomWidth( met1_slot  keep > 5 ))
+      errorLayer( e6_1B_M1 "6.1B_M1: Minimum Slot widths are 2um and 5um respectively" )
+
+
+      sqr_met1_slot = geomGetVertex( met1_slot keep == 4 )
+      e6_1Cab1_M1 = geomAndNot( sqr_met1_slot geomGetLength( sqr_met1_slot 10 <= keep <= 250 fig ))
+
+      polygon_met1_slot = geomAndNot( met1_slot sqr_met1_slot )
+      met1_slot_line_end = geomLineEnd( polygon_met1_slot 5 2 outBox( 5.005 2 ) )
+      met1_slot_leg = geomAndNot( polygon_met1_slot met1_slot_line_end edges )
+      e6_1Cab_M1 = geomOr( e6_1Cab1_M1 geomButtOrOver( met1_slot geomOr( geomSize( 
+		    geomGetLength( met1_slot_leg keep < 10 contiguous ) -0.001) geomSize( 
+		    geomGetLength( met1_slot_leg keep > 250 contiguous ) -0.001 ))) e6_1Cab1_M1 )
+      errorLayer( e6_1Cab_M1 "6.1C.a_b_M1: Min. and Max. ME1 slot lengths are 10um and 250um respectively." ) 
+
+
+      e6_1Da_M1 = geomOr( drc( met1_slot sepNotch < 9 ) )
+      errorLayer( e6_1Da_M1 "6.1D.a_M1: Minimum space between slot regions is 9 um." ) 
+
+      e6_1DbEb_M1 = geomSizeAnd( geomSize( met1_block_slot -10 ) met1_block_slot 1.5 20 )
+      errorLayer( e6_1DbEb_M1 "6.1D.b__6.1E.b_M1: Maximun spacing of slot to slot or slot to metal edge is 20 um." ) 
+
+      met1_slot_x = geomOr(met1_slot ME1)
+      e6_1Ea_M1 = geomOr( drc( met1_slot_x met1_slot enc < 9 shielded )
+    	 	           geomAndNot( met1_slot met1_slot_x ) )
+      errorLayer( e6_1Ea_M1 "6.1E.a_M1: Minimum slot to ME1 edge spacing is 9 um." ) 
+ 
+;;ME2
+      met2_block_slot = geomAnd( ME2 m2slmk )
+      met2_slot_temp = geomHoles( met2_block_slot )
+      met2_slot = geomInside( met2_slot_temp  m2slmk )
+      met2_slot_all = geomOr(met2_block_slot met2_slot)
+      
+      met2_nopad = geomAndNot( ME2 PAD )  ; Metal definition w/o Pad
+      met2_edge = geomGetEdge(met2_nopad coincident ME2)
+            
+      e6_1A_M2 = geomWidth( geomButtOrOver( met2_nopad geomSize( geomGetLength( met2_edge keep >30 ) -0.001)) keep > 20 )
+      errorLayer( e6_1A_M2 "6.1A_M2: Maximum Metal width without slotting is 20um when length is greater than 30um" ) 
+
+      e6_1B_M2 = geomOr( geomOr( drc( met2_slot width < 2.0 )
+      			         geomSize( drc( met2_slot width < 0.01 edge ) -0.001 edges ))
+      			         geomWidth( met2_slot  keep > 5 ))
+      errorLayer( e6_1B_M2 "6.1B_M2: Minimum Slot widths are 2um and 5um respectively" )
+
+
+      sqr_met2_slot = geomGetVertex( met2_slot keep == 4 )
+      e6_1Cab1_M2 = geomAndNot( sqr_met2_slot geomGetLength( sqr_met2_slot 10 <= keep <= 250 fig ))
+
+      polygon_met2_slot = geomAndNot( met2_slot sqr_met2_slot )
+      met2_slot_line_end = geomLineEnd( polygon_met2_slot 5 2 outBox( 5.005 2 ) )
+      met2_slot_leg = geomAndNot( polygon_met2_slot met2_slot_line_end edges )
+      e6_1Cab_M2 = geomOr( e6_1Cab1_M2 geomButtOrOver( met2_slot geomOr( geomSize( 
+		    geomGetLength( met2_slot_leg keep < 10 contiguous ) -0.001) geomSize( 
+		    geomGetLength( met2_slot_leg keep > 250 contiguous ) -0.001 ))) e6_1Cab1_M2 )
+      errorLayer( e6_1Cab_M2 "6.1C.a_b_M2: Min. and Max. ME2 slot lengths are 10um and 250um respectively." ) 
+
+
+      e6_1Da_M2 = geomOr( drc( met2_slot sepNotch < 9 ) )
+      errorLayer( e6_1Da_M2 "6.1D.a_M2: Minimum space between slot regions is 9 um." ) 
+
+      e6_1DbEb_M2 = geomSizeAnd( geomSize( met2_block_slot -10 ) met2_block_slot 1.5 20 )
+      errorLayer( e6_1DbEb_M2 "6.1D.b__6.1E.b_M2: Maximun spacing of slot to slot or slot to metal edge is 20 um." ) 
+
+      met2_slot_x = geomOr(met2_slot ME2)
+      e6_1Ea_M2 = geomOr( drc( met2_slot_x met2_slot enc < 9 shielded )
+    	 	           geomAndNot( met2_slot met2_slot_x ) )
+      errorLayer( e6_1Ea_M2 "6.1E.a_M2: Minimum slot to ME2 edge spacing is 9 um." ) 
+
+;;ME3      
+      met3_block_slot = geomAnd( ME3 m3slmk )
+      met3_slot_temp = geomHoles( met3_block_slot )
+      met3_slot = geomInside( met3_slot_temp  m3slmk )
+      met3_slot_all = geomOr(met3_block_slot met3_slot)
+      
+      met3_nopad = geomAndNot( ME3 PAD )  ; Metal definition w/o Pad
+      met3_edge = geomGetEdge(met3_nopad coincident ME3)
+            
+      e6_1A_M3 = geomWidth( geomButtOrOver( met3_nopad geomSize( geomGetLength( met3_edge keep >30 ) -0.001)) keep > 20 )
+      errorLayer( e6_1A_M3 "6.1A_M3: Maximum Metal width without slotting is 20um when length is greater than 30um" ) 
+
+      e6_1B_M3 = geomOr( geomOr( drc( met3_slot width < 2.0 )
+      			         geomSize( drc( met3_slot width < 0.01 edge ) -0.001 edges ))
+      			         geomWidth( met3_slot  keep > 5 ))
+      errorLayer( e6_1B_M3 "6.1B_M3: Minimum Slot widths are 2um and 5um respectively" )
+
+
+      sqr_met3_slot = geomGetVertex( met3_slot keep == 4 )
+      e6_1Cab1_M3 = geomAndNot( sqr_met3_slot geomGetLength( sqr_met3_slot 10 <= keep <= 250 fig ))
+
+      polygon_met3_slot = geomAndNot( met3_slot sqr_met3_slot )
+      met3_slot_line_end = geomLineEnd( polygon_met3_slot 5 2 outBox( 5.005 2 ) )
+      met3_slot_leg = geomAndNot( polygon_met3_slot met3_slot_line_end edges )
+      e6_1Cab_M3 = geomOr( e6_1Cab1_M3 geomButtOrOver( met3_slot geomOr( geomSize( 
+		    geomGetLength( met3_slot_leg keep < 10 contiguous ) -0.001) geomSize( 
+		    geomGetLength( met3_slot_leg keep > 250 contiguous ) -0.001 ))) e6_1Cab1_M3 )
+      errorLayer( e6_1Cab_M3 "6.1C.a_b_M3: Min. and Max. ME3 slot lengths are 10um and 250um respectively." ) 
+
+
+      e6_1Da_M3 = geomOr( drc( met3_slot sepNotch < 9 ) )
+      errorLayer( e6_1Da_M3 "6.1D.a_M3: Minimum space between slot regions is 9 um." ) 
+
+      e6_1DbEb_M3 = geomSizeAnd( geomSize( met3_block_slot -10 ) met3_block_slot 1.5 20 )
+      errorLayer( e6_1DbEb_M3 "6.1D.b__6.1E.b_M3: Maximun spacing of slot to slot or slot to metal edge is 20 um." ) 
+
+      met3_slot_x = geomOr(met3_slot ME3)
+      e6_1Ea_M3 = geomOr( drc( met3_slot_x met3_slot enc < 9 shielded )
+    	 	           geomAndNot( met3_slot met3_slot_x ) )
+      errorLayer( e6_1Ea_M3 "6.1E.a_M3: Minimum slot to ME3 edge spacing is 9 um." ) 
+
+;;ME4      
+      met4_block_slot = geomAnd( ME4 m4slmk )
+      met4_slot_temp = geomHoles( met4_block_slot )
+      met4_slot = geomInside( met4_slot_temp  m4slmk )
+      met4_slot_all = geomOr(met4_block_slot met4_slot)
+      
+      met4_nopad = geomAndNot( ME4 PAD )  ; Metal definition w/o Pad
+      met4_edge = geomGetEdge(met4_nopad coincident ME4)
+            
+      e6_1A_M4 = geomWidth( geomButtOrOver( met4_nopad geomSize( geomGetLength( met4_edge keep >30 ) -0.001)) keep > 20 )
+      errorLayer( e6_1A_M4 "6.1A_M4: Maximum Metal width without slotting is 20um when length is greater than 30um" ) 
+
+      e6_1B_M4 = geomOr( geomOr( drc( met4_slot width < 2.0 )
+      			         geomSize( drc( met4_slot width < 0.01 edge ) -0.001 edges ))
+      			         geomWidth( met4_slot  keep > 5 ))
+      errorLayer( e6_1B_M4 "6.1B_M4: Minimum Slot widths are 2um and 5um respectively" )
+
+
+      sqr_met4_slot = geomGetVertex( met4_slot keep == 4 )
+      e6_1Cab1_M4 = geomAndNot( sqr_met4_slot geomGetLength( sqr_met4_slot 10 <= keep <= 250 fig ))
+
+      polygon_met4_slot = geomAndNot( met4_slot sqr_met4_slot )
+      met4_slot_line_end = geomLineEnd( polygon_met4_slot 5 2 outBox( 5.005 2 ) )
+      met4_slot_leg = geomAndNot( polygon_met4_slot met4_slot_line_end edges )
+      e6_1Cab_M4 = geomOr( e6_1Cab1_M4 geomButtOrOver( met4_slot geomOr( geomSize( 
+		    geomGetLength( met4_slot_leg keep < 10 contiguous ) -0.001) geomSize( 
+		    geomGetLength( met4_slot_leg keep > 250 contiguous ) -0.001 ))) e6_1Cab1_M4 )
+      errorLayer( e6_1Cab_M4 "6.1C.a_b_M4: Min. and Max. ME4 slot lengths are 10um and 250um respectively." ) 
+
+
+      e6_1Da_M4 = geomOr( drc( met4_slot sepNotch < 9 ) )
+      errorLayer( e6_1Da_M4 "6.1D.a_M4: Minimum space between slot regions is 9 um." ) 
+
+      e6_1DbEb_M4 = geomSizeAnd( geomSize( met4_block_slot -10 ) met4_block_slot 1.5 20 )
+      errorLayer( e6_1DbEb_M4 "6.1D.b__6.1E.b_M4: Maximun spacing of slot to slot or slot to metal edge is 20 um." ) 
+
+      met4_slot_x = geomOr(met4_slot ME4)
+      e6_1Ea_M4 = geomOr( drc( met4_slot_x met4_slot enc < 9 shielded )
+    	 	           geomAndNot( met4_slot met4_slot_x ) )
+      errorLayer( e6_1Ea_M4 "6.1E.a_M4: Minimum slot to ME4 edge spacing is 9 um." ) 
+                 
+;;ME5      
+      met5_block_slot = geomAnd( ME5 m5slmk )
+      met5_slot_temp = geomHoles( met5_block_slot )
+      met5_slot = geomInside( met5_slot_temp  m5slmk )
+      met5_slot_all = geomOr(met5_block_slot met5_slot)
+      
+      met5_nopad = geomAndNot( ME5 PAD )  ; Metal definition w/o Pad
+      met5_edge = geomGetEdge(met5_nopad coincident ME5)
+            
+      e6_1A_M5 = geomWidth( geomButtOrOver( met5_nopad geomSize( geomGetLength( met5_edge keep >30 ) -0.001)) keep > 20 )
+      errorLayer( e6_1A_M5 "6.1A_M5: Maximum Metal width without slotting is 20um when length is greater than 30um" ) 
+
+      e6_1B_M5 = geomOr( geomOr( drc( met5_slot width < 2.0 )
+      			         geomSize( drc( met5_slot width < 0.01 edge ) -0.001 edges ))
+      			         geomWidth( met5_slot  keep > 5 ))
+      errorLayer( e6_1B_M5 "6.1B_M5: Minimum Slot widths are 2um and 5um respectively" )
+
+
+      sqr_met5_slot = geomGetVertex( met5_slot keep == 4 )
+      e6_1Cab1_M5 = geomAndNot( sqr_met5_slot geomGetLength( sqr_met5_slot 10 <= keep <= 250 fig ))
+
+      polygon_met5_slot = geomAndNot( met5_slot sqr_met5_slot )
+      met5_slot_line_end = geomLineEnd( polygon_met5_slot 5 2 outBox( 5.005 2 ) )
+      met5_slot_leg = geomAndNot( polygon_met5_slot met5_slot_line_end edges )
+      e6_1Cab_M5 = geomOr( e6_1Cab1_M5 geomButtOrOver( met5_slot geomOr( geomSize( 
+		    geomGetLength( met5_slot_leg keep < 10 contiguous ) -0.001) geomSize( 
+		    geomGetLength( met5_slot_leg keep > 250 contiguous ) -0.001 ))) e6_1Cab1_M5 )
+      errorLayer( e6_1Cab_M5 "6.1C.a_b_M5: Min. and Max. ME5 slot lengths are 10um and 250um respectively." ) 
+
+
+      e6_1Da_M5 = geomOr( drc( met5_slot sepNotch < 9 ) )
+      errorLayer( e6_1Da_M5 "6.1D.a_M5: Minimum space between slot regions is 9 um." ) 
+
+      e6_1DbEb_M5 = geomSizeAnd( geomSize( met5_block_slot -10 ) met5_block_slot 1.5 20 )
+      errorLayer( e6_1DbEb_M5 "6.1D.b__6.1E.b_M5: Maximun spacing of slot to slot or slot to metal edge is 20 um." ) 
+
+      met5_slot_x = geomOr(met5_slot ME5)
+      e6_1Ea_M5 = geomOr( drc( met5_slot_x met5_slot enc < 9 shielded )
+    	 	           geomAndNot( met5_slot met5_slot_x ) )
+      errorLayer( e6_1Ea_M5 "6.1E.a_M5: Minimum slot to ME5 edge spacing is 9 um." ) 
+  )	; end if "Skip_check_Slot"
+  
+
+; =============================
+; ====== DIE CORNER RULE ======
+; =============================
+
+  if( ( avSwitch "Skip_Die_Corner_Checks" ) then
+  else
+
+    die_corner   = geomGetCorner( geomBkgnd() manhattanOnly )
+     
+    cornerA_400W = geomGetBBox( geomGrowCorner( die_corner 401 inside ))
+    cornerA_400  = geomGetBBox( geomGrowCorner( die_corner 400 inside ))		
+    cornerA_300  = geomGetBBox( geomGrowCorner( die_corner 300 inside ))		
+
+    e6Aa_ME1 = geomAnd( geomStretchCorner( geomGetCorner( geomAnd( ME1 cornerA_400W ) ignore == 135 increment = 90 ) 0.1 angleAll) cornerA_400 )
+    errorLayer( e6Aa_ME1 "6Aa.ME1: For die corners of 400um*400um area, ME1 must make a 135-degree turn ." )
+    e6Ab_ME1 = geomAnd(ME1 cornerA_300 )
+    errorLayer( e6Ab_ME1 "6Ab.ME1: Min Metal to die corner is 300um ." )
+
+    e6Aa_ME2 = geomAnd( geomStretchCorner( geomGetCorner( geomAnd( ME2 cornerA_400W ) ignore == 135 increment = 90 ) 0.1 angleAll) cornerA_400 )
+    errorLayer( e6Aa_ME2 "6Aa.ME2: For die corners of 400um*400um area, ME2 must make a 135-degree turn ." )
+    e6Ab_ME2 = geomAnd(ME2 cornerA_300 )
+    errorLayer( e6Ab_ME2 "6Ab.ME2: Min Metal to die corner is 300um ." )
+
+
+    e6Aa_ME3 = geomAnd( geomStretchCorner( geomGetCorner( geomAnd( ME3 cornerA_400W ) ignore == 135 increment = 90 ) 0.1 angleAll) cornerA_400 )
+    errorLayer( e6Aa_ME3 "6Aa.ME3: For die corners of 400um*400um area, ME3 must make a 135-degree turn ." )
+    e6Ab_ME3 = geomAnd(ME3 cornerA_300 )
+    errorLayer( e6Ab_ME3 "6Ab.ME3: Min Metal to die corner is 300um ." )
+
+    e6Aa_ME4 = geomAnd( geomStretchCorner( geomGetCorner( geomAnd( ME4 cornerA_400W ) ignore == 135 increment = 90 ) 0.1 angleAll) cornerA_400 )
+    errorLayer( e6Aa_ME4 "6Aa.ME4: For die corners of 400um*400um area, ME4 must make a 135-degree turn ." )
+    e6Ab_ME4 = geomAnd(ME4 cornerA_300 )
+    errorLayer( e6Ab_ME4 "6Ab.ME4: Min Metal to die corner is 300um ." )
+
+    e6Aa_ME5 = geomAnd( geomStretchCorner( geomGetCorner( geomAnd( ME5 cornerA_400W ) ignore == 135 increment = 90 ) 0.1 angleAll) cornerA_400 )
+    errorLayer( e6Aa_ME5 "6Aa.ME5: For die corners of 400um*400um area, ME5 must make a 135-degree turn ." )
+    e6Ab_ME5 = geomAnd(ME5 cornerA_300 )
+    errorLayer( e6Ab_ME5 "6Ab.ME5: Min Metal to die corner is 300um ." )
+
+      )	; endif Skip_Die_Corner_Checks
+
+;
+;**************************************************
+; RULES TO CHECK THE BORDERED SP SRAM CORE REGIONS
+;**************************************************
+
+  BDSP_ROM_e14E = geomAnd( geomOr( drc( ME1 0 < area < 0.7225 ) ) geomOr( BDSP ROM ) )
+  errorLayer( BDSP_ROM_e14E "5.14E: Minimum Metal1 area is 0.7225 um^2." )
+
+) ; drcExtractRules complete

@@ -1,0 +1,1472 @@
+* 
+* No part of this file can be released without the consent of SMIC.
+*
+* Note: SMIC recommends that users set VNTOL=1E-9 at .option for more smooth convergence.
+******************************************************************************************
+*   0.11um Mixed Signal 1P8M with MIM Salicide 1.2V/3.3V RF SPICE Model (for HSPICE only)       *
+******************************************************************************************
+** * release version    : 1.14
+** * 
+** * release date       : 03/30/2016
+** * 
+** * simulation tool    : Synopsys Star-HSPICE version C-2009.09 
+** * 
+*  Inductor   :
+*
+*        *-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------* 
+*        | Inductor model  |  diff_ind_3t_rf               |   diff_ind_3t_rf_psub            |   diff_ind_3t_alpa_rf          |  diff_ind_3t_rf_pgs_psub      |                               |     
+*        *-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*
+*        |                 |  diff_ind_3t_rf_pgs_t1d5      |   diff_ind_3t_rf_pgs_psub_t1d5   |   diff_ind_3t_rf_pgs_t2        |  diff_ind_3t_rf_pgs_psub_t2   |  diff_ind_3t_rf_pgs_t2d5      |
+*        *-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*     
+*        |                 |  diff_ind_3t_rf_pgs_psub_t2d5 |   diff_ind_3t_rf_pgs_t3          |   diff_ind_3t_rf_pgs_psub_t3   |  diff_ind_3t_rf_pgs_t3d5      |  diff_ind_3t_rf_pgs_psub_t3d5 |
+*        *-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*
+*        |                 |  diff_ind_3t_rf_pgs_t4        |   diff_ind_3t_rf_pgs_psub_t4     |   diff_ind_3t_rf_pgs_t4d5      |  diff_ind_3t_rf_pgs_psub_t4d5 |  diff_ind_3t_rf_pgs_t5        |
+*        *-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*
+*        |                 |  diff_ind_3t_rf_pgs_psub_t5   |   diff_ind_3t_rf_pgs_t5d5        |   diff_ind_3t_rf_pgs_psub_t5d5 |  diff_ind_3t_rf_pgs_t6        |  diff_ind_3t_rf_pgs_psub_t6   |
+*        *-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*
+*        |                 |  diff_ind_3t_rf_pgs_t6d5      |   diff_ind_3t_rf_pgs_psub_t6d5   |                                |                               |                               |
+*        *-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*
+****************************************************
+* 0.11um differential Inductor with centre tap     *
+****************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf 1 2 T1 R=radius N=turns
+* inductor scalable model parameters
+.param
++LP1 = 'max(1.2e-12*(int(N)*8+(int(N)-1)*1.5-4),1e-12)'
++RP1 = 'max(0.1125*(int(N)*9.5e-6-1.5e-6)/8.0e-6,1e-3)'
++LS1 = 'max((0.204e-12*pwr((R*1e+6),1.313)+13.91e-12)*pwr(N,2.0)+(2.159e-12*(R*1e+6)-71.17e-12),1e-12)'
++LS11 = 'max((0.1643e-12*pwr((R*1e+6),1.208)+61.50e-12)*N-0.1e-9,1e-12)'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = 'max((0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15),1e-18)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = 'max((6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(N,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15),1e-18)'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 'max((0.1116*pwr((R*1e+4),1.361)+0.1023)*pwr(N,1.5)+(0.3417*pwr((R*1e+4),0.7684)-0.0136),1e-3)'
++RS11 = 'RS1*1.2'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = 'max((1750/N)+(-18.72*(R*1e+6)+3.396e+3),1e-3)'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '(1.0-0.6777*pwr((N-0.1),-0.9))'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 0     RSBP1
+CSBP1_rf NP1 0     CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 0     RSBP2
+CSBP2_rf NP2 0     CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 0     RSBT1 
+CSBT1_rf NT1 0     CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf
+***********************************************************************
+* 0.11um differential Inductor with centre tap and psub terminals     *
+***********************************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_psub 1 2 T1 psub R=radius N=turns
+* inductor scalable model parameters
+.param
++LP1 = 'max(1.2e-12*(int(N)*8+(int(N)-1)*1.5-4),1e-12)'
++RP1 = 'max(0.1125*(int(N)*9.5e-6-1.5e-6)/8.0e-6,1e-3)'
++LS1 = 'max((0.204e-12*pwr((R*1e+6),1.313)+13.91e-12)*pwr(N,2.0)+(2.159e-12*(R*1e+6)-71.17e-12),1e-12)'
++LS11 = 'max((0.1643e-12*pwr((R*1e+6),1.208)+61.50e-12)*N-0.1e-9,1e-12)'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = 'max((0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15),1e-18)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = 'max((6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(N,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15),1e-18)'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = 'max((0.1116*pwr((R*1e+4),1.361)+0.1023)*pwr(N,1.5)+(0.3417*pwr((R*1e+4),0.7684)-0.0136),1e-3)'
++RS11 = 'RS1*1.2'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = 'max((1750/N)+(-18.72*(R*1e+6)+3.396e+3),1e-3)'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '(1.0-0.6777*pwr((N-0.1),-0.9))'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 psub  RSBP1
+CSBP1_rf NP1 psub  CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 psub  RSBP2
+CSBP2_rf NP2 psub  CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 psub  RSBT1 
+CSBT1_rf NT1 psub  CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_psub
+*****************************************************************
+* 0.11um differential Inductor with centre tap(formed from ALPA)*
+*****************************************************************
+* 1=port1(ALPA), 2=port2(ALPA), t1 is connected with center tap (M7)
+* R means inner redius; N means turns
+* Spacing is fixed at 4um and width is fixed at 8um
+.subckt diff_ind_3t_alpa_rf 1 2 T1 R=radius N=turns
+* inductor scalable model parameters
+.param
++LP1 ='max(((0.0000007*R*R*1E12 + 0.00175*R*1E6 + 0.3331)*exp((0.0000005*R*R*1E12 - 0.0005*R*1E6 - 0.5041)*N))*1e-9,1E-12)'
++LS1 ='max(((0.000001*R*R*1E12 - 0.0006*R*1E6 + 0.0652)*N*N+(-0.00001*R*R*1E12 + 0.01159*R*1E6 - 0.4375)*N+(0.000015*R*R*1E12 - 0.0198*R*1E6 + 0.9976))*1E-9,1E-12)'
++LS11 ='max(((0.00005*R*1E6 - 0.0012)*N*N+(0.0000001*R*R*1E12 - 0.00013*R*1E6 + 0.0184)*N+(-0.000002*R*R*1E12 + 0.00071*R*1E6 - 0.0359))*1E-9,1E-12)'
++LS2 ='max(((0.000001*R*R*1E12 - 0.0006*R*1E6 + 0.0652)*N*N+(-0.00001*R*R*1E12 + 0.01159*R*1E6 - 0.4375)*N+(0.000015*R*R*1E12 - 0.0198*R*1E6 + 0.9976))*1E-9,1E-12)'
++LS22 ='max(((0.00005*R*1E6 - 0.0012)*N*N+(0.0000001*R*R*1E12 - 0.00013*R*1E6 + 0.0184)*N+(-0.000002*R*R*1E12 + 0.00071*R*1E6 - 0.0359))*1E-9,1E-12)'
++KP11 ='max((-0.0000001*R*R*1E12+ 0.00004*R*1E6 + 0.0037)*N*N+(0.000022*R*R*1E12-0.00526*R*1E6 + 0.3429)*N+(-0.000186*R*R*1E12 + 0.04355*R*1E6 - 1.388),1e-6)'
++KP22 ='max((-0.0000001*R*R*1E12+ 0.00004*R*1E6 + 0.0037)*N*N+(0.000022*R*R*1E12-0.00526*R*1E6 + 0.3429)*N+(-0.000186*R*R*1E12 + 0.04355*R*1E6 - 1.388),1e-6)'
++COXP1 ='5E-15'
++COXP2 ='5E-15'
++COXT1 ='20E-15'
++CP1P2 ='max(((-0.000012*R*R*1E12 + 0.01726*R*1E6 - 0.4357)*N*N+(0.000062*R*R*1E12 - 0.00288*R*1E6 + 10.717)*N+(0.000133*R*R*1E12 + 0.10895*R*1E6 - 29.477))*1E-15,1E-18)'
++CSBP1 ='5E-15'
++CSBP2 ='5E-15'
++CSBT1 ='20E-15'
++RP1 ='max(-0.0053*R*1E6+1.02,1e-6)'
++RS1 ='max(((0.000194*R*R*1E12 + 1.4528*R*1E6 + 26.24)*N+( -0.001322*R*R*1E12 - 0.61117*R*1E6 - 45.475))*7,1E-6)'
++RS11 ='max((0.000012*R*R*1E12 - 0.00243*R*1E6 + 0.1644)*N*N+(-0.000108*R*R*1E12 + 0.02895*R*1E6 - 0.7049)*N+(0.000295*R*R*1E12 - 0.05437*R*1E6 + 2.5182),1E-6)'
++RS2 ='max(((0.000194*R*R*1E12 + 1.4528*R*1E6 + 26.24)*N+( -0.001322*R*R*1E12 - 0.61117*R*1E6 - 45.475))*7,1E-6)'
++RS22 ='max((0.000012*R*R*1E12 - 0.00243*R*1E6 + 0.1644)*N*N+(-0.000108*R*R*1E12 + 0.02895*R*1E6 - 0.7049)*N+(0.000295*R*R*1E12 - 0.05437*R*1E6 + 2.5182),1E-6)'
++RSBP1 ='10'
++RSBP2 ='10'
++RSBT1 ='10'
+* equivalent circuit
+RS1_rf NT1P1 ST1 RS1
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1 RS11
+LS1_rf 1 NT1P1 LS1
+COXP1_rf 1 NP1 COXP1
+RSBP1_rf NP1 0 RSBP1
+CSBP1_rf NP1 0 CSBP1
+RS2_rf NT1P2 2 RS2
+RS22_rf ST22 2 RS22
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2 LS2
+COXP2_rf 2 NP2 COXP2
+RSBP2_rf NP2 0 RSBP2
+CSBP2_rf NP2 0 CSBP2
+COXT1_rf ST1 NT1 COXT1
+RSBT1_rf NT1 0 RSBT1
+CSBT1_rf NT1 0 CSBT1
+RP1_rf ST1 NST1 RP1
+LP1_rf NST1 T1 LP1
+CP1P2_rf 1 2 CP1P2
+KP11_rf LS1_rf LS22_rf KP11
+KP22_rf LS2_rf LS11_rf KP22
+.ends diff_ind_3t_alpa_rf
+
+**********************************************************************
+* 0.11um differential psub Inductor with centre tap(formed from ALPA)*
+**********************************************************************
+* 1=port1(ALPA), 2=port2(ALPA), t1 is connected with center tap (M7)
+* R means inner redius; N means turns
+* Spacing is fixed at 4um and width is fixed at 8um
+*******************************************************************
+.subckt diff_ind_3t_alpa_rf_psub 1 2 T1 psub R=radius N=turns
+* inductor scalable model parameters
+.param
++LP1 ='max(((0.0000007*R*R*1E12 + 0.00175*R*1E6 + 0.3331)*exp((0.0000005*R*R*1E12 - 0.0005*R*1E6 - 0.5041)*N))*1e-9,1E-12)'
++LS1 ='max(((0.000001*R*R*1E12 - 0.0006*R*1E6 + 0.0652)*N*N+(-0.00001*R*R*1E12 + 0.01159*R*1E6 - 0.4375)*N+(0.000015*R*R*1E12 - 0.0198*R*1E6 + 0.9976))*1E-9,1E-12)'
++LS11 ='max(((0.00005*R*1E6 - 0.0012)*N*N+(0.0000001*R*R*1E12 - 0.00013*R*1E6 + 0.0184)*N+(-0.000002*R*R*1E12 + 0.00071*R*1E6 - 0.0359))*1E-9,1E-12)'
++LS2 ='max(((0.000001*R*R*1E12 - 0.0006*R*1E6 + 0.0652)*N*N+(-0.00001*R*R*1E12 + 0.01159*R*1E6 - 0.4375)*N+(0.000015*R*R*1E12 - 0.0198*R*1E6 + 0.9976))*1E-9,1E-12)'
++LS22 ='max(((0.00005*R*1E6 - 0.0012)*N*N+(0.0000001*R*R*1E12 - 0.00013*R*1E6 + 0.0184)*N+(-0.000002*R*R*1E12 + 0.00071*R*1E6 - 0.0359))*1E-9,1E-12)'
++KP11 ='max((-0.0000001*R*R*1E12+ 0.00004*R*1E6 + 0.0037)*N*N+(0.000022*R*R*1E12-0.00526*R*1E6 + 0.3429)*N+(-0.000186*R*R*1E12 + 0.04355*R*1E6 - 1.388),1e-6)'
++KP22 ='max((-0.0000001*R*R*1E12+ 0.00004*R*1E6 + 0.0037)*N*N+(0.000022*R*R*1E12-0.00526*R*1E6 + 0.3429)*N+(-0.000186*R*R*1E12 + 0.04355*R*1E6 - 1.388),1e-6)'
++COXP1 ='5E-15'
++COXP2 ='5E-15'
++COXT1 ='20E-15'
++CP1P2 ='max(((-0.000012*R*R*1E12 + 0.01726*R*1E6 - 0.4357)*N*N+(0.000062*R*R*1E12 - 0.00288*R*1E6 + 10.717)*N+(0.000133*R*R*1E12 + 0.10895*R*1E6 - 29.477))*1E-15,1E-18)'
++CSBP1 ='5E-15'
++CSBP2 ='5E-15'
++CSBT1 ='20E-15'
++RP1 ='max(-0.0053*R*1E6+1.02,1e-6)'
++RS1 ='max(((0.000194*R*R*1E12 + 1.4528*R*1E6 + 26.24)*N+( -0.001322*R*R*1E12 - 0.61117*R*1E6 - 45.475))*7,1E-6)'
++RS11 ='max((0.000012*R*R*1E12 - 0.00243*R*1E6 + 0.1644)*N*N+(-0.000108*R*R*1E12 + 0.02895*R*1E6 - 0.7049)*N+(0.000295*R*R*1E12 - 0.05437*R*1E6 + 2.5182),1E-6)'
++RS2 ='max(((0.000194*R*R*1E12 + 1.4528*R*1E6 + 26.24)*N+( -0.001322*R*R*1E12 - 0.61117*R*1E6 - 45.475))*7,1E-6)'
++RS22 ='max((0.000012*R*R*1E12 - 0.00243*R*1E6 + 0.1644)*N*N+(-0.000108*R*R*1E12 + 0.02895*R*1E6 - 0.7049)*N+(0.000295*R*R*1E12 - 0.05437*R*1E6 + 2.5182),1E-6)'
++RSBP1 ='10'
++RSBP2 ='10'
++RSBT1 ='10'
+* equivalent circuit
+RS1_rf NT1P1 ST1 RS1
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1 RS11
+LS1_rf 1 NT1P1 LS1
+COXP1_rf 1 NP1 COXP1
+RSBP1_rf NP1 psub RSBP1
+CSBP1_rf NP1 psub CSBP1
+RS2_rf NT1P2 2 RS2
+RS22_rf ST22 2 RS22
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2 LS2
+COXP2_rf 2 NP2 COXP2
+RSBP2_rf NP2 psub RSBP2
+CSBP2_rf NP2 psub CSBP2
+COXT1_rf ST1 NT1 COXT1
+RSBT1_rf NT1 psub RSBT1
+CSBT1_rf NT1 psub CSBT1
+RP1_rf ST1 NST1 RP1
+LP1_rf NST1 T1 LP1
+CP1P2_rf 1 2 CP1P2
+KP11_rf LS1_rf LS22_rf KP11
+KP22_rf LS2_rf LS11_rf KP22
+.ends diff_ind_3t_alpa_rf_psub
+****************************************************
+* 0.11um differential PGS Inductor with centre tap     *
+****************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_t1d5 1 2 T1 R=radius N=1.5
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(1.5)*8+(int(1.5)-1)*1.5-4)'
++RP1 = '0.1125*(int(1.5)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '2.7401e-05*pwr(R,1.2154e+00)'
++LS11 = '1.0844e-11*exp(1.6877e+04*R)'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '2.3567e-10*R+6.8133e-15'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '(0.1116*pwr((R*1e+4),1.361)+0.1023)*pwr(1.5,1.5)+(0.3417*pwr((R*1e+4),0.7684)-0.0136)'
++RS11 = '1.2*RS1'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '(1750/1.5)+(-18.72*(R*1e+6)+3.396e+3)'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((1.5-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 0     RSBP1
+CSBP1_rf NP1 0     CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 0     RSBP2
+CSBP2_rf NP2 0     CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 0     RSBT1 
+CSBT1_rf NT1 0     CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_t1d5
+***********************************************************************
+* 0.11um differential PGS Inductor with centre tap and psub terminals     *
+***********************************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_psub_t1d5 1 2 T1 psub R=radius N=1.5
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(1.5)*8+(int(1.5)-1)*1.5-4)'
++RP1 = '0.1125*(int(1.5)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '2.7401e-05*pwr(R,1.2154e+00)'
++LS11 = '1.0844e-11*exp(1.6877e+04*R)'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '2.3567e-10*R+6.8133e-15'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '(0.1116*pwr((R*1e+4),1.361)+0.1023)*pwr(1.5,1.5)+(0.3417*pwr((R*1e+4),0.7684)-0.0136)'
++RS11 = '1.2*RS1'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '(1750/1.5)+(-18.72*(R*1e+6)+3.396e+3)'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((1.5-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 psub  RSBP1
+CSBP1_rf NP1 psub  CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 psub  RSBP2
+CSBP2_rf NP2 psub  CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 psub  RSBT1 
+CSBT1_rf NT1 psub  CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_psub_t1d5
+
+****************************************************
+* 0.11um differential PGS Inductor with centre tap     *
+****************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_t2 1 2 T1 R=radius N=2
+* inductor scalable model parameters
+.param
++LP1 = '-6.6667e-08*R+7.0000e-12'
++RP1 = '0.1125*(int(2)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '(0.204e-12*pwr((R*1e+6),1.313)+13.91e-12)*pwr(2,2.0)+(2.159e-12*(R*1e+6)-71.17e-12)'
++LS11 = '(0.1643e-12*pwr((R*1e+6),1.208)+61.50e-12)*2-0.1e-9'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '3.1400e-10*R+5.1600e-15'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '0.95*((0.1116*pwr((R*1e+4),1.361)+0.1023)*pwr(2,1.5)+(0.3417*pwr((R*1e+4),0.7684)-0.0136))'
++RS11 = '1.2*RS1'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '6.6667e+06*R+3.6000e+03'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((2-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 0     RSBP1
+CSBP1_rf NP1 0     CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 0     RSBP2
+CSBP2_rf NP2 0     CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 0     RSBT1 
+CSBT1_rf NT1 0     CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_t2
+***********************************************************************
+* 0.11um differential PGS Inductor with centre tap and psub terminals     *
+***********************************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_psub_t2 1 2 T1 psub R=radius N=2
+* inductor scalable model parameters
+.param
++LP1 = '-6.6667e-08*R+7.0000e-12'
++RP1 = '0.1125*(int(2)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '(0.204e-12*pwr((R*1e+6),1.313)+13.91e-12)*pwr(2,2.0)+(2.159e-12*(R*1e+6)-71.17e-12)'
++LS11 = '(0.1643e-12*pwr((R*1e+6),1.208)+61.50e-12)*2-0.1e-9'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '3.1400e-10*R+5.1600e-15'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '0.95*((0.1116*pwr((R*1e+4),1.361)+0.1023)*pwr(2,1.5)+(0.3417*pwr((R*1e+4),0.7684)-0.0136))'
++RS11 = '1.2*RS1'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '6.6667e+06*R+3.6000e+03'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((2-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 psub  RSBP1
+CSBP1_rf NP1 psub  CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 psub  RSBP2
+CSBP2_rf NP2 psub  CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 psub  RSBT1 
+CSBT1_rf NT1 psub  CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_psub_t2
+
+****************************************************
+* 0.11um differential PGS Inductor with centre tap     *
+****************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_t2d5 1 2 T1 R=radius N=2.5
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(2.5)*8+(int(2.5)-1)*1.5-4)'
++RP1 = '0.1125*(int(2.5)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '3.4285e-05*pwr(R,1.1575e+00)'
++LS11 = '(0.1643e-12*pwr((R*1e+6),1.208)+61.50e-12)*2.5-0.1e-9'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '4.8833e-10*R+1.3267e-14'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '5.3461e-01*exp(7.8130e+03*R)'
++RS11 = '1.2*RS1'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '6.6667e+06*R+4.6000e+03'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((2.5-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 0     RSBP1
+CSBP1_rf NP1 0     CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 0     RSBP2
+CSBP2_rf NP2 0     CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 0     RSBT1 
+CSBT1_rf NT1 0     CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_t2d5
+***********************************************************************
+* 0.11um differential PGS Inductor with centre tap and psub terminals     *
+***********************************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_psub_t2d5 1 2 T1 psub R=radius N=2.5
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(2.5)*8+(int(2.5)-1)*1.5-4)'
++RP1 = '0.1125*(int(2.5)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '3.4285e-05*pwr(R,1.1575e+00)'
++LS11 = '(0.1643e-12*pwr((R*1e+6),1.208)+61.50e-12)*2.5-0.1e-9'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '4.8833e-10*R+1.3267e-14'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '5.3461e-01*exp(7.8130e+03*R)'
++RS11 = '1.2*RS1'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '6.6667e+06*R+4.6000e+03'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((2.5-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 psub  RSBP1
+CSBP1_rf NP1 psub  CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 psub  RSBP2
+CSBP2_rf NP2 psub  CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 psub  RSBT1 
+CSBT1_rf NT1 psub  CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_psub_t2d5
+
+****************************************************
+* 0.11um differential PGS Inductor with centre tap     *
+****************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_t3 1 2 T1 R=radius N=3
+* inductor scalable model parameters
+.param
++LP1 = '3.3333e-07*R+3.0000e-11'
++RP1 = '0.1125*(int(3)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '1.1110e-05*R-7.9270e-11'
++LS11 =  '1.0699e-10*Log(R) + 1.1941e-09'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '6.0450e-10*R+1.2897e-14'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '1.7036e-01*exp(1.6433e+04*R)+0.585'
++RS11 = '1.2*RS1'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '3.3333e+06*R+5.7000e+03'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((3-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 0     RSBP1
+CSBP1_rf NP1 0     CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 0     RSBP2
+CSBP2_rf NP2 0     CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 0     RSBT1 
+CSBT1_rf NT1 0     CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_t3
+***********************************************************************
+* 0.11um differential PGS Inductor with centre tap and psub terminals     *
+***********************************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_psub_t3 1 2 T1 psub R=radius N=3
+* inductor scalable model parameters
+.param
++LP1 = '3.3333e-07*R+3.0000e-11'
++RP1 = '0.1125*(int(3)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '1.1110e-05*R-7.9270e-11'
++LS11 =  '1.0699e-10*Log(R) + 1.1941e-09'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '6.0450e-10*R+1.2897e-14'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '1.7036e-01*exp(1.6433e+04*R)+0.585'
++RS11 = '1.2*RS1'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '3.3333e+06*R+5.7000e+03'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((3-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 psub  RSBP1
+CSBP1_rf NP1 psub  CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 psub  RSBP2
+CSBP2_rf NP2 psub  CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 psub  RSBT1 
+CSBT1_rf NT1 psub  CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_psub_t3
+
+****************************************************
+* 0.11um differential PGS Inductor with centre tap     *
+****************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_t3d5 1 2 T1 R=radius N=3.5
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(3.5)*8+(int(3.5)-1)*1.5-4)'
++RP1 = '0.1125*(int(3.5)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '1.4342e-05*R-6.6333e-11'
++LS11 = '2.1201e-06*R+5.5196e-11'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '7.3333e-10*R+2.3167e-14'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '7.3333e+03*R+9.2667e-01'
++RS11 = '1.2*RS1'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '1.0000e+07*R+4.9000e+03'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((3.5-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 0     RSBP1
+CSBP1_rf NP1 0     CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 0     RSBP2
+CSBP2_rf NP2 0     CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 0     RSBT1 
+CSBT1_rf NT1 0     CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_t3d5
+***********************************************************************
+* 0.11um differential PGS Inductor with centre tap and psub terminals     *
+***********************************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_psub_t3d5 1 2 T1 psub R=radius N=3.5
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(3.5)*8+(int(3.5)-1)*1.5-4)'
++RP1 = '0.1125*(int(3.5)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '1.4342e-05*R-6.6333e-11'
++LS11 = '2.1201e-06*R+5.5196e-11'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '7.3333e-10*R+2.3167e-14'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '7.3333e+03*R+9.2667e-01'
++RS11 = '1.2*RS1'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '1.0000e+07*R+4.9000e+03'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((3.5-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 psub  RSBP1
+CSBP1_rf NP1 psub  CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 psub  RSBP2
+CSBP2_rf NP2 psub  CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 psub  RSBT1 
+CSBT1_rf NT1 psub  CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_psub_t3d5
+
+****************************************************
+* 0.11um differential PGS Inductor with centre tap     *
+****************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_t4 1 2 T1 R=radius N=4
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(4)*8+(int(4)-1)*1.5-4)'
++RP1 = '0.1125*(int(4)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '1.7534e-05*R-6.9244e-11'
++LS11 = '2.3468e-06*R+8.6264e-11'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '8.2838e-10*R+2.5033e-14'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '1.0942e+00*exp(5.6395e+03*R)'
++RS11 = '1.2*RS1'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = 5000
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((4-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 0     RSBP1
+CSBP1_rf NP1 0     CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 0     RSBP2
+CSBP2_rf NP2 0     CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 0     RSBT1 
+CSBT1_rf NT1 0     CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_t4
+***********************************************************************
+* 0.11um differential PGS Inductor with centre tap and psub terminals     *
+***********************************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_psub_t4 1 2 T1 psub R=radius N=4
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(4)*8+(int(4)-1)*1.5-4)'
++RP1 = '0.1125*(int(4)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '1.7534e-05*R-6.9244e-11'
++LS11 = '2.3468e-06*R+8.6264e-11'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '8.2838e-10*R+2.5033e-14'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '1.0942e+00*exp(5.6395e+03*R)'
++RS11 = '1.2*RS1'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = 5000
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((4-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 psub  RSBP1
+CSBP1_rf NP1 psub  CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 psub  RSBP2
+CSBP2_rf NP2 psub  CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 psub  RSBT1 
+CSBT1_rf NT1 psub  CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_psub_t4
+
+****************************************************
+* 0.11um differential PGS Inductor with centre tap     *
+****************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_t4d5 1 2 T1 R=radius N=4.5
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(4.5)*8+(int(4.5)-1)*1.5-4)'
++RP1 = '0.1125*(int(4.5)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '2.2333e-05*R-6.6667e-11'
++LS11 = '2.9735e-06*R+9.1294e-11'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '8.6473e-10*R+3.9211e-14'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '1.3531e+00*exp(5.5333e+03*R)'
++RS11 = '1.5048e+00*Log(R)+1.6678e+01'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '9.3612e+04*pwr(R,2.9147e-01)'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((4.5-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 0     RSBP1
+CSBP1_rf NP1 0     CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 0     RSBP2
+CSBP2_rf NP2 0     CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 0     RSBT1 
+CSBT1_rf NT1 0     CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_t4d5
+***********************************************************************
+* 0.11um differential PGS Inductor with centre tap and psub terminals     *
+***********************************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_psub_t4d5 1 2 T1 psub R=radius N=4.5
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(4.5)*8+(int(4.5)-1)*1.5-4)'
++RP1 = '0.1125*(int(4.5)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '2.2333e-05*R-6.6667e-11'
++LS11 = '2.9735e-06*R+9.1294e-11'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '8.6473e-10*R+3.9211e-14'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '1.3531e+00*exp(5.5333e+03*R)'
++RS11 = '1.5048e+00*Log(R)+1.6678e+01'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '9.3612e+04*pwr(R,2.9147e-01)'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((4.5-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 psub  RSBP1
+CSBP1_rf NP1 psub  CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 psub  RSBP2
+CSBP2_rf NP2 psub  CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 psub  RSBT1 
+CSBT1_rf NT1 psub  CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_psub_t4d5
+
+
+****************************************************
+* 0.11um differential PGS Inductor with centre tap     *
+****************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_t5 1 2 T1 R=radius N=5
+* inductor scalable model parameters
+.param
++LP1 = '3.3333e-07*R+5.2000e-11'
++RP1 = '0.1125*(int(5)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '2.6383e-05*R-7.1336e-11'
++LS11 = '1.4028e-10*exp(1.1964e+04*R)'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '(6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(5,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '1.8354e-01*exp(1.6201e+04*R)+1.7'
++RS11 = '1.5259e+00*Log(R)+1.7233e+01'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = 5500
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((5-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 0     RSBP1
+CSBP1_rf NP1 0     CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 0     RSBP2
+CSBP2_rf NP2 0     CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 0     RSBT1 
+CSBT1_rf NT1 0     CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_t5
+***********************************************************************
+* 0.11um differential PGS Inductor with centre tap and psub terminals     *
+***********************************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_psub_t5 1 2 T1 psub R=radius N=5
+* inductor scalable model parameters
+.param
++LP1 = '3.3333e-07*R+5.2000e-11'
++RP1 = '0.1125*(int(5)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '2.6383e-05*R-7.1336e-11'
++LS11 = '1.4028e-10*exp(1.1964e+04*R)'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '(6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(5,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '1.8354e-01*exp(1.6201e+04*R)+1.7'
++RS11 = '1.5259e+00*Log(R)+1.7233e+01'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = 5500
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((5-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 psub  RSBP1
+CSBP1_rf NP1 psub  CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 psub  RSBP2
+CSBP2_rf NP2 psub  CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 psub  RSBT1 
+CSBT1_rf NT1 psub  CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_psub_t5
+
+****************************************************
+* 0.11um differential PGS Inductor with centre tap     *
+****************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_t5d5 1 2 T1 R=radius N=5.5
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(5.5)*8+(int(5.5)-1)*1.5-4)'
++RP1 = '0.1125*(int(5.5)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '(0.204e-12*pwr((R*1e+6),1.313)+13.91e-12)*pwr(5.5,2.0)+(2.159e-12*(R*1e+6)-71.17e-12)'
++LS11 = '3.2533e-06*R+1.8840e-10'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '(6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(5.5,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '9.1631e-02*exp(2.7447e+04*R)+1.76'
++RS11 = '1.2*RS1'
++RS2 = 'RS1*0.95'
++RS22 = '1.6097e+00*Log(R)+1.8376e+01'
++RSBP1 = '2.0000e+07*R+2.2000e+03'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((5.5-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 0     RSBP1
+CSBP1_rf NP1 0     CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 0     RSBP2
+CSBP2_rf NP2 0     CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 0     RSBT1 
+CSBT1_rf NT1 0     CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_t5d5
+***********************************************************************
+* 0.11um differential PGS Inductor with centre tap and psub terminals     *
+***********************************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_psub_t5d5 1 2 T1 psub R=radius N=5.5
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(5.5)*8+(int(5.5)-1)*1.5-4)'
++RP1 = '0.1125*(int(5.5)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '(0.204e-12*pwr((R*1e+6),1.313)+13.91e-12)*pwr(5.5,2.0)+(2.159e-12*(R*1e+6)-71.17e-12)'
++LS11 = '3.2533e-06*R+1.8840e-10'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '(6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(5.5,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '9.1631e-02*exp(2.7447e+04*R)+1.76'
++RS11 = '1.2*RS1'
++RS2 = 'RS1*0.95'
++RS22 = '1.6097e+00*Log(R)+1.8376e+01'
++RSBP1 = '2.0000e+07*R+2.2000e+03'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((5.5-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 psub  RSBP1
+CSBP1_rf NP1 psub  CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 psub  RSBP2
+CSBP2_rf NP2 psub  CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 psub  RSBT1 
+CSBT1_rf NT1 psub  CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_psub_t5d5
+
+****************************************************
+* 0.11um differential PGS Inductor with centre tap     *
+****************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_t6 1 2 T1 R=radius N=6
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(6)*8+(int(6)-1)*1.5-4)'
++RP1 = '0.1125*(int(6)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '3.6667e-05*R-4.6000e-11'
++LS11 = '4.6520e-08*pwr(R,4.8751e-01)'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '(6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(6,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '1.0968e-01*exp(2.7168e+04*R)+1.95'
++RS11 = '2.3526*Log(R)+25.819'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '3.333e+07*R+2.500e+03'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((6-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 0     RSBP1
+CSBP1_rf NP1 0     CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 0     RSBP2
+CSBP2_rf NP2 0     CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 0     RSBT1 
+CSBT1_rf NT1 0     CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_t6
+***********************************************************************
+* 0.11um differential PGS Inductor with centre tap and psub terminals     *
+***********************************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_psub_t6 1 2 T1 psub R=radius N=6
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(6)*8+(int(6)-1)*1.5-4)'
++RP1 = '0.1125*(int(6)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '3.6667e-05*R-4.6000e-11'
++LS11 = '4.6520e-08*pwr(R,4.8751e-01)'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '(6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(6,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '1.0968e-01*exp(2.7168e+04*R)+1.95'
++RS11 = '2.3526*Log(R)+25.819'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '3.333e+07*R+2.500e+03'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((6-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 psub  RSBP1
+CSBP1_rf NP1 psub  CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 psub  RSBP2
+CSBP2_rf NP2 psub  CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 psub  RSBT1 
+CSBT1_rf NT1 psub  CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_psub_t6
+
+****************************************************
+* 0.11um differential PGS Inductor with centre tap     *
+****************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_t6d5 1 2 T1 R=radius N=6.5
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(6.5)*8+(int(6.5)-1)*1.5-4)'
++RP1 = '0.1125*(int(6.5)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '(0.204e-12*pwr((R*1e+6),1.313)+13.91e-12)*pwr(6.5,2.0)+(2.159e-12*(R*1e+6)-71.17e-12)'
++LS11 = '(0.1643e-12*pwr((R*1e+6),1.208)+61.50e-12)*6.5-0.1e-9'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '(6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(6.5,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '4.7917e-01*exp(1.6860e+04*R)+1.6'
++RS11 = '3.3668e+03*pwr(R,7.0825e-01)'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '(1750/6.5)+(-18.72*(R*1e+6)+3.396e+3)'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((6.5-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 0     RSBP1
+CSBP1_rf NP1 0     CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 0     RSBP2
+CSBP2_rf NP2 0     CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 0     RSBT1 
+CSBT1_rf NT1 0     CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_t6
+***********************************************************************
+* 0.11um differential PGS Inductor with centre tap and psub terminals     *
+***********************************************************************
+* 1=port1(TM2), 2=port2(TM2), t1 is connected with center tap
+* R means inner redius; N means turns
+* Spacing is fixed at 1.5um and width is fixed at 8um
+.subckt diff_ind_3t_rf_pgs_psub_t6d5 1 2 T1 psub R=radius N=6.5
+* inductor scalable model parameters
+.param
++LP1 = '1.2e-12*(int(6.5)*8+(int(6.5)-1)*1.5-4)'
++RP1 = '0.1125*(int(6.5)*9.5e-6-1.5e-6)/8.0e-6'
++LS1 = '(0.204e-12*pwr((R*1e+6),1.313)+13.91e-12)*pwr(6.5,2.0)+(2.159e-12*(R*1e+6)-71.17e-12)'
++LS11 = '(0.1643e-12*pwr((R*1e+6),1.208)+61.50e-12)*6.5-0.1e-9'
++LS2 = 'LS1'
++LS22 = 'LS11'
++COXP1 = '(0.4136e-12*pwr((R*1e+6),-0.5684)-20.09e-15)'
++COXP2 = 'COXP1'
++COXT1 = 1e-18
++CP1P2 = '(6.784e-15*pwr((R*1e+4),0.8242)+0.955e-15)*pwr(6.5,1.8)+(4.334e-15*pwr((R*1e+4),4.112)+6.629e-15)'
++CSBP1 = 1e-15
++CSBP2 = 1e-15
++CSBT1 = 1e-15
++RS1 = '4.7917e-01*exp(1.6860e+04*R)+1.6'
++RS11 = '3.3668e+03*pwr(R,7.0825e-01)'
++RS2 = 'RS1*0.95'
++RS22 = 'RS11'
++RSBP1 = '(1750/6.5)+(-18.72*(R*1e+6)+3.396e+3)'
++RSBP2 = 'RSBP1'
++RSBT1 = 1e+6
++KK = '1.0-0.6777*pwr((6.5-0.1),-0.9)'
+* equivalent circuit
+RS1_rf NT1P1 ST1   'RS1*(1+DRS11_RF)' tc1=3.69e-03
+LS11_rf NT1P1 ST11 LS11
+RS11_rf ST11 ST1   'RS11*(1+DRS11_RF)' tc1=3.69e-03
+LS1_rf 1 NT1P1     'LS1*(1+DLS1_RF)'
+COXP1_rf 1 NP1     COXP1
+RSBP1_rf NP1 psub  RSBP1
+CSBP1_rf NP1 psub  CSBP1
+RS2_rf NT1P2 2     'RS2*(1+DRS11_RF)' tc1=3.69e-03
+RS22_rf ST22 2     'RS22*(1+DRS11_RF)' tc1=3.69e-03
+LS22_rf NT1P2 ST22 LS22
+LS2_rf ST1 NT1P2   'LS2*(1+DLS1_RF)'
+COXP2_rf 2 NP2     COXP2
+RSBP2_rf NP2 psub  RSBP2
+CSBP2_rf NP2 psub  CSBP2
+COXT1_rf ST1 NT1   COXT1
+RSBT1_rf NT1 psub  RSBT1 
+CSBT1_rf NT1 psub  CSBT1
+RP1_rf ST1 NST1    'RP1*(1+DRS11_RF)' tc1=3.69e-03
+LP1_rf NST1 T1     'LP1*(1+DLS1_RF)'
+CP1P2_rf 1 2       CP1P2
+KP11_rf LS1_rf LS22_rf K = 0.03
+KP22_rf LS2_rf LS11_rf K = 0.03
+KP12_rf LS1_rf LS2_rf K = KK
+.ends diff_ind_3t_rf_pgs_psub_t6d5
+

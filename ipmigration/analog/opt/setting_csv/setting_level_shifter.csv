@@ -1,0 +1,26 @@
+item,value,comment
+log_flag,1,"On: 1, Off: 0"
+logfilename_prefix,Level_Shifter_,"log file name prefix: end with ""_"""
+op_targets_name,,
+op_targets_value,,
+cheap_targets_name,"rise_time [s],fall_time [s],delay [s],average power [W]",
+cheap_targets_value,"0.000000001,0.000000001,0.0000000005,0.0001",
+expensive_targets_name,,
+expensive_targets_value,,
+targets_min_max_type,"-1,-1,-1,-1","minimize: -1, maximize: 1"
+capacitance_range,,"min:max:step,  unit: pF"
+inductance_range,,"min:max:step,  unit: nH"
+resistance_range,,"min:max:step,  unit: kohm"
+current_source_range,,"min:max:step,  unit: uA"
+voltage_source_range,,"min:max:step,  unit: V"
+W_L_ratios_range,"1:20:0.1,1:20:0.1,1:20:0.1,1:20:0.1,1:20:0.1,1:20:0.1",min:max:step
+lengths_values,"0.35,0.35,0.35,0.35,0.35,0.35",unit: um
+corner_list,tt,"tt, ff, ss, fnsp, snfp"
+objective_index,,"if not apply, pls leave blank"
+simulation_circuit_func,simulation_level_shifter,"opamp, levelshifter, schmitt_trigger, comparator"
+num_generation,10,
+population_size,20,
+num_offsprings,20,
+seed,66,
+DNN_mode,0,"On: 1, Off: 0"
+Optimizer_type,USGA3,"USGA3, NSGA2, RVEA"

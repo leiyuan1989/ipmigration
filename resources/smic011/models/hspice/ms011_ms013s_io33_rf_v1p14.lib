@@ -1,0 +1,881 @@
+* This file contains 0.11um RFMOS, MIM Capacitor, MOM Capacitor, MOS Varactor, SAB resistor, HRP resistor, Top metla resistor and Spiral/Differential Inductor corner model parameters.
+* This file should be used with the model/circuit parameter files: 
+* 'ms011_ms013s_io33_rf_mos_v1p14.ckt', 'ms011_ms013s_io33_rf_mom_v1p14.ckt', 'ms011_ms013s_io33_rf_res_v1p14.ckt','ms011_ms013s_io33_rf_TM2_res_v1p14.ckt',
+* 'ms011_ms013s_io33_rf_mim_v1p14.ckt', 'ms011_ms013s_io33_rf_var_v1p14.ckt','ms011_ms013s_io33_rf_spir_ind_v1p14.ckt', 'ms011_ms013s_io33_rf_diff_ind_v1p14.ckt',
+* 'ms011_ms013s_io33_rf_3T_diff_ind_v1p14.ckt','ms011_ms013s_io33_rf_3Tdiff_1talpa_psub_v1p14.ckt','ms011_ms013s_io33_rf_3Tdiff_1talpa_v1p14.ckt'.
+* 'ms011_ms013s_io33_diff_ind_3t_rf_pgs_n_v1p14.ckt','ms011_ms013s_io33_diff_ind_3t_rf_pgs_psub_n_v1p14.ckt','ms011_ms013s_io33_diff_ind_rf_pgs_n_v1p14.ckt','ms011_ms013s_io33_diff_ind_rf_pgs_psub_n_v1p14.ckt',
+* 'ms011_ms013s_io33_ind_rf_pgs_n_v1p14.ckt','ms011_ms013s_io33_ind_rf_pgs_psub_n_v1p14.ckt'
+* No part of this file can be released without the consent of SMIC.
+*
+********************
+*  MOS Corner model
+********************
+.LIB MOS_TT
+.OPTION GMINDC=1E-14 scale=0.9
+.PARAM
++sigma_mis_a_rf = agauss(0,1,1)
++sigma_mis_b_rf = agauss(0,1,1)
++sigma_mis_c_rf = agauss(0,1,1)
++sigma_mis_d_rf = agauss(0,1,1)
+
+*1.2V core NMOS _rf
++dtox_n12_rf      = 0            dxl_n12_rf       = 0            dxw_n12_rf       = 0 
++dvth_n12_rf      = 0            dcj_n12_rf      = 0            dcjsw_n12_rf     = 0
++du0_n12_rf       = 0            dnlx_n12_rf      = 0            dlu0_n12_rf      = 0            
++dlvsat_n12_rf    = 0            dk3_n12_rf       = 0            dpvth0_n12_rf    = 0            
++dpu0_n12_rf      = 0            dagidl_n12_rf    = 0
+
+*1.2V core PMOS
++dtox_p12_rf      = 0            dxl_p12_rf       = 0            dxw_p12_rf       = 0 
++dvth_p12_rf      = 0	      dcj_p12_rf       = 0            dcjsw_p12_rf     = 0
++du0_p12_rf       = 0            dnlx_p12_rf      = 0            dlu0_p12_rf      = 0
++dlvsat_p12_rf    = 0            dwu0_p12_rf      = 0            dpvth0_p12_rf    = 0            
++dpu0_p12_rf      = 0            dpvsat_p12_rf    = 0            dagidl_p12_rf    = 0
+
+*3.3v io nmos 
++dtox_n33_rf      = 0            dxl_n33_rf       = 0            dxw_n33_rf       = 0 
++dvth_n33_rf      = 0            dwvth0_n33_rf    = 0            dpvth0_n33_rf    = 0 
++dlvth0_n33_rf    = 0            du0_n33_rf       = 0            dwu0_n33_rf      = 0
++dcj_n33_rf       = 0            dcjsw_n33_rf     = 0            dagidl_n33_rf    = 0
++dlu0_n33_rf      = 0            dlvsat_n33_rf    = 0            dpu0_n33_rf      = 0            
+
+*3.3v io pmos
++dtox_p33_rf      = 0            dxl_p33_rf       = 0            dxw_p33_rf       = 0 
++dvth_p33_rf      = 0            dwvth0_p33_rf    = 0            dpvth0_p33_rf      = 0 
++dlvth0_p33_rf    = 0            du0_p33_rf       = 0            dwu0_p33_rf       = 0
++dcj_p33_rf       = 0            dcjsw_p33_rf     = 0            dpu0_p33_rf      = 0 
++dlu0_p33_rf      = 0            dlvsat_p33_rf    = 0            dagidl_p33_rf    = 0          
++dlagidl_p33_rf   = 0            dpvsat_p33_rf    =0          
+        
+
+.INC 'ms011_ms013s_io33_rf_mos_v1p14.ckt' 
+.ENDL  MOS_TT
+
+.LIB MOS_FF
+.OPTION GMINDC=1E-14 scale=0.9
+.PARAM
++sigma_mis_a_rf=agauss(0,1,1)
++sigma_mis_b_rf=agauss(0,1,1)
++sigma_mis_c_rf=agauss(0,1,1)
++sigma_mis_d_rf=agauss(0,1,1)
+
+*1.2V core NMOS 
++dtox_n12_rf      = -4e-11       dxl_n12_rf       = -7.00e-9     dxw_n12_rf       = 1.5e-8 
++dvth_n12_rf      = -0.0045      dcj_n12_rf       = -6.575e-5    dcjsw_n12_rf     = -5.2e-12
++du0_n12_rf       = 2.0e-4       dnlx_n12_rf      = -7.0e-9      dlu0_n12_rf      = 9.0e-11    
++dlvsat_n12_rf    = 0            dk3_n12_rf       = -0.15        dpvth0_n12_rf    = -1.7e-15   
++dpu0_n12_rf      = -6.0e-17     dagidl_n12_rf    = 3.1e-011
+
+*1.2V core PMOS
++dtox_p12_rf      = -4e-11       dxl_p12_rf       = -7.00e-9     dxw_p12_rf       = 1.5e-8 
++dvth_p12_rf      = 0.020        dcj_p12_rf       = -6.1e-5      dcjsw_p12_rf     = -3.765e-12
++du0_p12_rf       = 1.2e-4       dnlx_p12_rf      = -2.1e-8      dlu0_p12_rf      = 0
++dlvsat_p12_rf    = 0            dwu0_p12_rf      = 0            dpvth0_p12_rf    = 2.6e-15      
++dpu0_p12_rf      = -7e-17       dpvsat_p12_rf    = -3e-9        dagidl_p12_rf    = 3.1e-012
+                
+*3.3v io nmos 
++dtox_n33_rf      = -3e-010       dxl_n33_rf       = -1.8e-8      dxw_n33_rf       = 2.0e-8 
++dvth_n33_rf      = -0.0358       dwvth0_n33_rf    = -7.4e-009    dpvth0_n33_rf    = 6.4e-016 
++dlvth0_n33_rf    = -3.3633e-009  du0_n33_rf       = 0.0005       dwu0_n33_rf      = 0 
++dcj_n33_rf       = -4.500e-5     dcjsw_n33_rf     = -6.35e-12    dagidl_n33_rf    = 4.5e-13
++dlu0_n33_rf      = 7.4426e-010   dlvsat_n33_rf    = 0.0006       dpu0_n33_rf      = 0     
+
+*3.3v io pmos
++dtox_p33_rf      = -3e-010       dxl_p33_rf       = -1.8e-8      dxw_p33_rf       = 2.0e-8 
++dvth_p33_rf      = 0.0277        dwvth0_p33_rf    = 1.17e-008    dpvth0_p33_rf    = -1.52e-015 
++dlvth0_p33_rf    = 1.9400e-009   du0_p33_rf       = 0.00015      dwu0_p33_rf      = -4.6e-011 
++dcj_p33_rf       = -6.1e-5       dcjsw_p33_rf     = -2.28e-12    dlagidl_p33_rf   = 1e-017
++dlu0_p33_rf      = -3.2000e-011  dlvsat_p33_rf    = -0.0017      dpu0_p33_rf      = 1.5e-017     
++dagidl_p33_rf    = 2e-012        dpvsat_p33_rf    =1.2e-9 
+
+
+.INC 'ms011_ms013s_io33_rf_mos_v1p14.ckt' 
+.ENDL  MOS_FF
+
+.LIB MOS_SS
+.OPTION GMINDC=1E-14 scale=0.9
+.PARAM
++sigma_mis_a_rf=agauss(0,1,1)
++sigma_mis_b_rf=agauss(0,1,1)
++sigma_mis_c_rf=agauss(0,1,1)
++sigma_mis_d_rf=agauss(0,1,1)
+
+*1.2V core NMOS 
++dtox_n12_rf      = 4e-11        dxl_n12_rf       = 7.00e-9      dxw_n12_rf       = -1.5e-8 
++dvth_n12_rf      = 0.0045       dcj_n12_rf       = 6.575e-5     dcjsw_n12_rf     = 5.2e-12
++du0_n12_rf       = -5.0e-4      dnlx_n12_rf      = 6.0e-9       dlu0_n12_rf      = -9.0e-11   
++dlvsat_n12_rf    = -4.0e-4      dk3_n12_rf       = 0.75         dpvth0_n12_rf    = 1.7e-15     
++dpu0_n12_rf      = 1.8e-17      dagidl_n12_rf    = -3.1e-011
+
+*1.2V core PMOS
++dtox_p12_rf      = 4e-11        dxl_p12_rf       = 7.00e-9      dxw_p12_rf       = -1.5e-8 
++dvth_p12_rf      = -0.02        dcj_p12_rf       = 6.1e-5       dcjsw_p12_rf     = 3.765e-12
++du0_p12_rf       = -1.2e-4      dnlx_p12_rf      = 2.1e-8       dlu0_p12_rf      = -2.5e-11
++dlvsat_p12_rf    = 0            dwu0_p12_rf      = -5e-11       dpvth0_p12_rf    = -2.6e-15     
++dpu0_p12_rf      = 7e-17        dpvsat_p12_rf    = 3e-9         dagidl_p12_rf    = -3.1e-012
+                
+*3.3v io nmos 
++dtox_n33_rf      = 3e-010       dxl_n33_rf       = 1.8e-8          dxw_n33_rf       = -2.0e-8
++dvth_n33_rf      = 0.0352       dwvth0_n33_rf    = 6.54e-009       dpvth0_n33_rf    = -1.08e-015 
++dlvth0_n33_rf    = 4.4e-009     du0_n33_rf       = -0.00086        dwu0_n33_rf      = -6e-011 
++dcj_n33_rf       = 4.500e-5     dcjsw_n33_rf     = 6.35e-12        dagidl_n33_rf    = -4.5e-13
++dlu0_n33_rf      = -7e-010      dlvsat_n33_rf    = -0.00115        dpu0_n33_rf      =  -1.4e-016        
+
+*3.3v io pmos
++dtox_p33_rf      = 3e-010        dxl_p33_rf       = 1.8e-8         dxw_p33_rf       = -2.0e-8
++dvth_p33_rf      = -0.0274       dwvth0_p33_rf    = -1.03e-008     dpvth0_p33_rf    = 1.78e-015 
++dlvth0_p33_rf    = -2.97e-009    du0_p33_rf       = -0.00027       dwu0_p33_rf      = 1e-012 
++dcj_p33_rf       = 6.1e-5        dcjsw_p33_rf     = 2.28e-12       dlagidl_p33_rf   = -1e-018 
++dlu0_p33_rf      = 4e-011        dlvsat_p33_rf    = 0              dpu0_p33_rf      =  -2.6e-017     
++dagidl_p33_rf    = -2e-012       dpvsat_p33_rf    =0            
+
+
+.INC 'ms011_ms013s_io33_rf_mos_v1p14.ckt' 
+.ENDL  MOS_SS
+
+.LIB MOS_FNSP
+.OPTION GMINDC=1E-14 scale=0.9
+.PARAM
++sigma_mis_a_rf=agauss(0,1,1)
++sigma_mis_b_rf=agauss(0,1,1)
++sigma_mis_c_rf=agauss(0,1,1)
++sigma_mis_d_rf=agauss(0,1,1)
+
+*1.2V core NMOS 
++dtox_n12_rf      = 0            dxl_n12_rf       = 0            dxw_n12_rf       = 0 
++dvth_n12_rf      = -0.0045      dcj_n12_rf       = -6.575e-5    dcjsw_n12_rf     = -5.2e-12
++du0_n12_rf       = 2.0e-4       dnlx_n12_rf      = -7.0e-9      dlu0_n12_rf      = 9.0e-11    
++dlvsat_n12_rf    = 0            dk3_n12_rf       = -0.15        dpvth0_n12_rf    = -1.7e-15   
++dpu0_n12_rf      = -6.0e-17     dagidl_n12_rf    = 3.1e-011
+
+*1.2V core PMOS
++dtox_p12_rf      = 0            dxl_p12_rf       = 0            dxw_p12_rf       = 0 
++dvth_p12_rf      = -0.02        dcj_p12_rf       = 6.1e-5       dcjsw_p12_rf     = 3.765e-12
++du0_p12_rf       = -1.2e-4      dnlx_p12_rf      = 2.1e-8       dlu0_p12_rf      = -2.5e-11
++dlvsat_p12_rf    = 0            dwu0_p12_rf      = -5e-11       dpvth0_p12_rf    = -2.5e-15     
++dpu0_p12_rf      = 7e-17        dpvsat_p12_rf    = 3e-9         dagidl_p12_rf    = -3.1e-012
+
+         
+*3.3v io nmos 
++dtox_n33_rf      = 0            dxl_n33_rf       = 0            dxw_n33_rf       = 0 
++dvth_n33_rf      = -0.0463      dwvth0_n33_rf    = -4.63e-009   dpvth0_n33_rf    = 8.9e-016 
++dlvth0_n33_rf    = -4.8e-009    du0_n33_rf       = 0.00105      dwu0_n33_rf       = 8e-011 
++dcj_n33_rf       = -4.500e-5    dcjsw_n33_rf     = -6.35e-12    dagidl_n33_rf    = 3.15e-13
++dlu0_n33_rf      = 9e-010       dlvsat_n33_rf    = 0.0015       dpu0_n33_rf      = 1.8e-016 
+
+*3.3v io pmos
++dtox_p33_rf      = 0            dxl_p33_rf       = 0            dxw_p33_rf       = 0 
++dvth_p33_rf      = -0.047       dwvth0_p33_rf    = -6.6000e-009 dpvth0_p33_rf    = 1.01e-015 
++dlvth0_p33_rf    = -4.1e-009    du0_p33_rf       = -1e-007      dwu0_p33_rf       = -1.27e-010 
++dcj_p33_rf       = 6.1e-5       dcjsw_p33_rf     = 2.28e-12     dlagidl_p33_rf    = -1e-018 
++dlu0_p33_rf      = -2.7e-010    dlvsat_p33_rf    = 0            dpu0_p33_rf      = 4.3e-017    
++dagidl_p33_rf    = -1.4e-012    dpvsat_p33_rf    =0            
+
+
+.INC 'ms011_ms013s_io33_rf_mos_v1p14.ckt' 
+.ENDL  MOS_FNSP
+
+.LIB MOS_SNFP
+.OPTION GMINDC=1E-14 scale=0.9
+.PARAM
++sigma_mis_a_rf=agauss(0,1,1)
++sigma_mis_b_rf=agauss(0,1,1)
++sigma_mis_c_rf=agauss(0,1,1)
++sigma_mis_d_rf=agauss(0,1,1)
+
+*1.2V core NMOS 
++dtox_n12_rf      = 0            dxl_n12_rf       = 0            dxw_n12_rf       = 0 
++dvth_n12_rf      = 0.0045       dcj_n12_rf       = 6.575e-5     dcjsw_n12_rf     = 5.2e-12
++du0_n12_rf       = -5.0e-4      dnlx_n12_rf      = 6.0e-9       dlu0_n12_rf      = -9.0e-11   
++dlvsat_n12_rf    = -4.0e-4      dk3_n12_rf       = 0.75         dpvth0_n12_rf    = 1.7e-15     
++dpu0_n12_rf      = 1.8e-17      dagidl_n12_rf    = -3.1e-011
+
+*1.2V core PMOS
++dtox_p12_rf      = 0            dxl_p12_rf       = 0            dxw_p12_rf       = 0 
++dvth_p12_rf      = 0.020        dcj_p12_rf       = -6.1e-5      dcjsw_p12_rf     = -3.765e-12
++du0_p12_rf       = 1.2e-4       dnlx_p12_rf      = -2.1e-8      dlu0_p12_rf      = 0
++dlvsat_p12_rf    = 0            dwu0_p12_rf      = 0            dpvth0_p12_rf    = 2.6e-15      
++dpu0_p12_rf      = -6e-17       dpvsat_p12_rf    = -3e-9        dagidl_p12_rf    = 3.1e-012
+      
+*3.3v io nmos 
++dtox_n33_rf      = 0             dxl_n33_rf       = 0               dxw_n33_rf       = 0
++dvth_n33_rf      = 0.0475        dwvth0_n33_rf    = 4.24e-009       dpvth0_n33_rf    = -8.2e-016 
++dlvth0_n33_rf    = 4.56e-009     du0_n33_rf       = -0.00115        dwu0_n33_rf       = -1.4e-010 
++dcj_n33_rf       = 4.500e-5      dcjsw_n33_rf     = 6.35e-12        dagidl_n33_rf    = -3.15e-13
++dlu0_n33_rf      = -7e-010       dlvsat_n33_rf    = -0.00165        dpu0_n33_rf      =  -1e-016     
+
+*3.3v io pmos
++dtox_p33_rf      = 0            dxl_p33_rf       = 0                dxw_p33_rf       = 0
++dvth_p33_rf      = 0.0449       dwvth0_p33_rf    = 7.3e-009         dpvth0_p33_rf    = -1.08e-015 
++dlvth0_p33_rf    = 4.81e-009    du0_p33_rf       = 0.0003           dwu0_p33_rf       = 2.8e-011 
++dcj_p33_rf       = -6.1e-5      dcjsw_p33_rf     = -2.28e-12        dlagidl_p33_rf    = 1e-017   
++dlu0_p33_rf      = 1.9e-010     dlvsat_p33_rf    = 0                dpu0_p33_rf      =  -2e-017     
++dagidl_p33_rf    = 1.4e-012     dpvsat_p33_rf    =8.4e-10                    
+
+
+.INC 'ms011_ms013s_io33_rf_mos_v1p14.ckt' 
+.ENDL  MOS_SNFP
+
+*************************
+* MOS Monte Carlo Model * 
+*************************
+
+.LIB MOS_MC
+.OPTION GMINDC=1E-14 scale=0.9
+.PARAM
++sigma_rf          = agauss(0,1,3)
++a_rf                   = sigma_rf
++b_rf                   = sigma_rf
+
++sigma_mis_a_rf=agauss(0,1,1)
++sigma_mis_b_rf=agauss(0,1,1)
++sigma_mis_c_rf=agauss(0,1,1)
++sigma_mis_d_rf=agauss(0,1,1)
+
+*1.2V core NMOS 
++dtox_n12_rf      = '4e-11*a_rf'        dxl_n12_rf       = '7.00e-9*a_rf'      dxw_n12_rf       = '-1.5e-8*a_rf' 
++dvth_n12_rf      = '0.0045*a_rf'       dcj_n12_rf       = '6.575e-5*a_rf'     dcjsw_n12_rf     = '5.2e-12*a_rf'
++du0_n12_rf       = '-5.0e-4*a_rf'      dnlx_n12_rf      = '6.0e-9*a_rf'       dlu0_n12_rf      = '-9.0e-11*a_rf'   
++dlvsat_n12_rf    = '-4.0e-4*a_rf'      dk3_n12_rf       = '0.75*a_rf'         dpvth0_n12_rf    = '1.7e-15*a_rf'     
++dpu0_n12_rf      = '1.8e-17*a_rf'      dagidl_n12_rf    = '-3.1e-011*a_rf'                    
+
+*1.2V core PMOS
++dtox_p12_rf      = '4e-11*b_rf'        dxl_p12_rf       = '7.00e-9*b_rf'      dxw_p12_rf       = '-1.5e-8*b_rf' 
++dvth_p12_rf      = '-0.02*b_rf'        dcj_p12_rf       = '6.1e-5*b_rf'       dcjsw_p12_rf     = '3.765e-12*b_rf'
++du0_p12_rf       = '-1.2e-4*b_rf'      dnlx_p12_rf      = '2.1e-8*b_rf'       dlu0_p12_rf      = '-2.5e-11*b_rf'
++dlvsat_p12_rf    = '0*b_rf'            dwu0_p12_rf      = '-5e-11*b_rf'       dpvth0_p12_rf    = '-2.6e-15*b_rf'     
++dpu0_p12_rf      = '7e-17*b_rf'        dpvsat_p12_rf    = '3e-9*b_rf'         dagidl_p12_rf    = '-3.1e-012*b_rf'
+                
+*3.3v io nmos 
++dtox_n33_rf      = '3e-010*a_rf'       dxl_n33_rf       = '1.8e-8*a_rf'          dxw_n33_rf       = '-2.0e-8*a_rf'
++dvth_n33_rf      = '0.0352*a_rf'       dwvth0_n33_rf    = '6.54e-009*a_rf'       dpvth0_n33_rf    = '-1.08e-015*a_rf' 
++dlvth0_n33_rf    = '4.4e-009*a_rf'     du0_n33_rf       = '-0.00086*a_rf'        dwu0_n33_rf      = '-6e-011*a_rf' 
++dcj_n33_rf       = '4.500e-5*a_rf'     dcjsw_n33_rf     = '6.35e-12*a_rf'        dagidl_n33_rf    = '-4.5e-13*a_rf'
++dlu0_n33_rf      = '-7e-010*a_rf'      dlvsat_n33_rf    = '-0.00115*a_rf'        dpu0_n33_rf      =  '-1.4e-016*a_rf'        
+
+*3.3v io pmos
++dtox_p33_rf      = '-3e-010*b_rf'       dxl_p33_rf       = '-1.8e-8*b_rf'      dxw_p33_rf       = '2.0e-8*b_rf' 
++dvth_p33_rf      = '0.0277*b_rf'        dwvth0_p33_rf    = '1.17e-008*b_rf'    dpvth0_p33_rf    = '-1.52e-015*b_rf' 
++dlvth0_p33_rf    = '1.9400e-009*b_rf'   du0_p33_rf       = '0.00015*b_rf'      dwu0_p33_rf      = '-4.6e-011*b_rf' 
++dcj_p33_rf       = '-6.1e-5*b_rf'       dcjsw_p33_rf     = '-2.28e-12*b_rf'    dlagidl_p33_rf   = '1e-017*b_rf'
++dlu0_p33_rf      = '-3.2000e-011*b_rf'  dlvsat_p33_rf    = '-0.0017*b_rf'      dpu0_p33_rf      = '1.2e-017*b_rf'     
++dagidl_p33_rf    = '2e-012*b_rf'        dpvsat_p33_rf    = '1.2e-9*b_rf'  
+
+
+.INC 'ms011_ms013s_io33_rf_mos_v1p14.ckt' 
+.ENDL  MOS_MC
+
+***********************
+* Resistor Corner model
+***********************
+.LIB RES_TT
+.PARAM
++sigma_mis_r_rf=agauss(0,1,1)
++DRSH_RNPOSAB_RF   = 0           DRSH_RPPOSAB_RF    = 0                 
++DDW_RNPOSAB_RF     = 0          DDW_RPPOSAB_RF    = 0    
++DRSH_RHRPO_RF    = 0     DRSH_RHRPO_RF_3T   = 0
++DDW_RHRPO_RF     = 0     DDW_RHRPO_RF_3T    = 0
+
+.INC 'ms011_ms013s_io33_rf_res_v1p14.ckt'
+.ENDL RES_TT
+
+.LIB RES_FF
+.PARAM
++sigma_mis_r_rf=agauss(0,1,1)
++DRSH_RNPOSAB_RF    = -53.79     DRSH_RPPOSAB_RF    = -68.65     
++DDW_RNPOSAB_RF     = -1E-08     DDW_RPPOSAB_RF     = -1E-08
++DRSH_RHRPO_RF    = -42.06       DRSH_RHRPO_RF_3T   = -42.06
++DDW_RHRPO_RF     = 0            DDW_RHRPO_RF_3T    = 0
+
+.INC 'ms011_ms013s_io33_rf_res_v1p14.ckt'
+.ENDL RES_FF
+
+.LIB RES_SS
+.PARAM
++sigma_mis_r_rf=agauss(0,1,1)
++DRSH_RNPOSAB_RF    = 53.79      DRSH_RPPOSAB_RF    = 68.65      
++DDW_RNPOSAB_RF     = 1E-08      DDW_RPPOSAB_RF     = 1E-08 
++DRSH_RHRPO_RF    = 42.06        DRSH_RHRPO_RF_3T   = 42.06
++DDW_RHRPO_RF     = 0            DDW_RHRPO_RF_3T    = 0
+
+.INC 'ms011_ms013s_io33_rf_res_v1p14.ckt'
+.ENDL RES_SS
+
+******************************
+* Resistor Monte Carlo model *
+******************************
+
+.LIB RES_MC
+.PARAM
++sigma_mis_r_rf=agauss(0,1,1)
++sigma_res_rf          = agauss(0,1,3)
++DRSH_RNPOSAB_RF    = '-53.79*sigma_res_rf'     DRSH_RPPOSAB_RF    = '-68.65*sigma_res_rf'          
++DDW_RNPOSAB_RF     = '-1E-08*sigma_res_rf'     DDW_RPPOSAB_RF     = '-1E-08*sigma_res_rf'
++DRSH_RHRPO_RF    = '-42.06*sigma_res_rf'       DRSH_RHRPO_RF_3T   = '-42.06*sigma_res_rf'
++DDW_RHRPO_RF     = '0*sigma_res_rf'            DDW_RHRPO_RF_3T    = '0*sigma_res_rf'
+
+.INC 'ms011_ms013s_io33_rf_res_v1p14.ckt'
+.ENDL RES_MC
+
+*********************************
+* Top Metal Resistor Corner model
+*********************************
+.LIB TM2_RES_TT
+.PARAM
+*Resistor
++DRSH_TM2_RF      = 0     DRSH_ALPA_RF      = 0
++DDW_TM2_RF       = 0     DDW_ALPA_RF       = 0
++DCOX_TM2_RF      = 0     DCOX_ALPA_RF      = 0
++DCAPSW_TM2_RF    = 0     DCAPSW_ALPA_RF    = 0
+.INC 'ms011_ms013s_io33_rf_TM2_res_v1p14.ckt' 
+.ENDL  TM2_RES_TT
+
+.LIB TM2_RES_FF
+.PARAM
+*Resistor
++DRSH_TM2_RF      = -0.0015      DRSH_ALPA_RF      = -0.0065
++DDW_TM2_RF       = -5E-10       DDW_ALPA_RF       = 0
++DCOX_TM2_RF      = -3.93E-7     DCOX_ALPA_RF      = -1.33E-07
++DCAPSW_TM2_RF    = -1.548E-11   DCAPSW_ALPA_RF    = -7.100E-13
+.INC 'ms011_ms013s_io33_rf_TM2_res_v1p14.ckt' 
+.ENDL  TM2_RES_FF
+
+.LIB TM2_RES_SS
+.PARAM
+*Resistor
++DRSH_TM2_RF      = 0.0015       DRSH_ALPA_RF      = 0.0065
++DDW_TM2_RF       = 5E-10        DDW_ALPA_RF       = 0
++DCOX_TM2_RF      = 4.48E-7      DCOX_ALPA_RF      = 1.64E-07
++DCAPSW_TM2_RF    = 1.979E-11    DCAPSW_ALPA_RF    = 2.750E-12
+.INC 'ms011_ms013s_io33_rf_TM2_res_v1p14.ckt' 
+.ENDL  TM2_RES_SS
+
+****************************************
+* Top Metal Resistor Monte Carlo model *
+****************************************
+
+.LIB TM2_RES_MC
+.PARAM
++sigma_rtm          = agauss(0,1,3)
++DRSH_TM2_RF      = '-0.0015*sigma_rtm'      DRSH_ALPA_RF      = '-0.0065*sigma_rtm'
++DDW_TM2_RF       = '-5E-10*sigma_rtm'       DDW_ALPA_RF       = '0*sigma_rtm'
++DCOX_TM2_RF      = '-3.93E-7*sigma_rtm'     DCOX_ALPA_RF      = '-1.33E-07*sigma_rtm'
++DCAPSW_TM2_RF    = '-1.548E-11*sigma_rtm'   DCAPSW_ALPA_RF    = '-7.100E-13*sigma_rtm'
+.INC 'ms011_ms013s_io33_rf_TM2_res_v1p14.ckt' 
+.ENDL TM2_RES_MC
+
+******************
+* MIM Corner model
+******************
+.LIB MIM_TT
+.option scale =0.9 
+.PARAM
++sigma_mis_mim_rf    = agauss(0,1,1)
++DMIM1_RF         = 0          DMIM15_RF        = 0        DMIM2_RF_2mask        = 0
++DMIM1_shield_RF  = 0          DMIM15_shield_RF = 0        DMIM2_shield_RF_2mask = 0
++DMIM3_RF         = 0
+.INC 'ms011_ms013s_io33_rf_mim_v1p14.ckt'
+.ENDL MIM_TT
+
+.LIB MIM_FF
+.option scale =0.9 
+.PARAM
++sigma_mis_mim_rf    = agauss(0,1,1)
++DMIM1_RF         = -0.20597      DMIM15_RF        = -0.20704    DMIM2_RF_2mask        = -0.2 
++DMIM1_shield_RF  = -0.20597      DMIM15_shield_RF = -0.20704    DMIM2_shield_RF_2mask = -0.2 
++DMIM3_RF         = -0.2
+.INC 'ms011_ms013s_io33_rf_mim_v1p14.ckt'
+.ENDL MIM_FF
+
+.LIB MIM_SS
+.option scale =0.9 
+.PARAM
++sigma_mis_mim_rf    = agauss(0,1,1)
++DMIM1_RF         = 0.20597       DMIM15_RF        = 0.20704     DMIM2_RF_2mask        = 0.2
++DMIM1_shield_RF  = 0.20597       DMIM15_shield_RF = 0.20704     DMIM2_shield_RF_2mask = 0.2
++DMIM3_RF         = 0.2
+.INC 'ms011_ms013s_io33_rf_mim_v1p14.ckt'
+.ENDL MIM_SS
+
+*************************
+* MIM Monte Carlo model *
+*************************
+
+.LIB MIM_MC
+.option scale =0.9 
+.PARAM
++sigma_mis_mim_rf    = agauss(0,1,1)
++sigma_rf          = agauss(0,1,3)
++DMIM1_RF         = '-0.20597*sigma_rf'      DMIM15_RF        = '-0.20704*sigma_rf'     	DMIM2_RF_2mask        = '-0.2*sigma_rf' 
++DMIM1_shield_RF  = '-0.20597*sigma_rf'      DMIM15_shield_RF = '-0.20704*sigma_rf'     	DMIM2_shield_RF_2mask = '-0.2*sigma_rf' 
++DMIM3_RF         = '0.2*sigma_rf'
+.INC 'ms011_ms013s_io33_rf_mim_v1p14.ckt'
+.ENDL MIM_MC
+
+******************
+* MOM Corner model
+******************
+.LIB MOM_TT
+.PARAM
++DMOM_RF        = 0            
+.INC 'ms011_ms013s_io33_rf_mom_v1p14.ckt' 
+.ENDL MOM_TT
+
+.LIB MOM_FF
+.PARAM
++DMOM_RF        = -0.1   
+.INC 'ms011_ms013s_io33_rf_mom_v1p14.ckt' 
+.ENDL MOM_FF
+
+.LIB MOM_SS
+.PARAM
++DMOM_RF        = 0.1    
+.INC 'ms011_ms013s_io33_rf_mom_v1p14.ckt' 
+.ENDL MOM_SS
+
+*************************
+* MOM Monte Carlo model *
+*************************
+
+.LIB MOM_MC
+.PARAM
++sigma_mom_rf          = agauss(0,1,3)
++DMOM_RF        = '-0.1*sigma_mom_rf'   
+.INC 'ms011_ms013s_io33_rf_mom_v1p14.ckt' 
+.ENDL MOM_MC
+
+****************************
+* MOSVAR Corner model
+****************************
+.LIB VAR_TT
+.PARAM
++DTOX_MOSVAR12_RF    = 0	     DCgg_MOSVAR12_RF    = 0           DCgg_MOSVAR33_RF    = 0    
+.INC 'ms011_ms013s_io33_rf_var_v1p14.ckt'
+.ENDL VAR_TT
+
+.LIB VAR_FF
+.PARAM
++DTOX_MOSVAR12_RF    = -4E-11	     DCgg_MOSVAR12_RF    = 0.08       DCgg_MOSVAR33_RF    = 0.055    
+.INC 'ms011_ms013s_io33_rf_var_v1p14.ckt'
+.ENDL VAR_FF
+
+.LIB VAR_SS
+.PARAM
++DTOX_MOSVAR12_RF    = 4E-11        DCgg_MOSVAR12_RF    = -0.08        DCgg_MOSVAR33_RF    = -0.055 
+.INC 'ms011_ms013s_io33_rf_var_v1p14.ckt'
+.ENDL VAR_SS
+
+**********************************
+* MOS varactor Monte Carlo model *
+**********************************
+
+.LIB VAR_MC
+.PARAM
++sigma_var_rf          = agauss(0,1,3)
++DTOX_MOSVAR12_RF    = '4E-11*sigma_var_rf'	     DCgg_MOSVAR12_RF    = '-0.08*sigma_var_rf'       DCgg_MOSVAR33_RF    = '-0.055*sigma_var_rf'            
+.INC 'ms011_ms013s_io33_rf_var_v1p14.ckt'
+.ENDL VAR_MC
+******************************
+* Spiral Inductor Corner model
+******************************
+.LIB SPIRIND_TT
+.PARAM
++DRS_RF              = 0
++DLS_RF              = 0         
+.INC 'ms011_ms013s_io33_rf_spir_ind_v1p14.ckt'
+.ENDL SPIRIND_TT
+
+.LIB SPIRIND_FF
+.PARAM
+*+DRS_RF              = -0.136364
++DRS_RF              = -0.14
++DLS_RF              = -0.05         
+.INC 'ms011_ms013s_io33_rf_spir_ind_v1p14.ckt'
+.ENDL SPIRIND_FF
+
+.LIB SPIRIND_SS
+.PARAM
+*+DRS_RF              = 0.166667         
++DRS_RF              = 0.17        
++DLS_RF              = 0.05 
+.INC 'ms011_ms013s_io33_rf_spir_ind_v1p14.ckt'
+.ENDL SPIRIND_SS
+
+*************************************
+* Spiral Inductor Monte Carlo model *
+*************************************
+
+.LIB SPIRIND_MC
+.PARAM
++sigma_spir          = agauss(0,1,3)
++DRS_RF              = '-0.1*sigma_spir' 
++DLS_RF              = '-0.05*sigma_spir'         
+.INC 'ms011_ms013s_io33_rf_spir_ind_v1p14.ckt'
+.ENDL SPIRIND_MC
+
+************************************
+* Differential Inductor Corner model
+************************************
+.LIB DIFFIND_TT
+.PARAM
++DL00_RF             = 0         
++DR00_RF             = 0         
+.INC 'ms011_ms013s_io33_rf_diff_ind_v1p14.ckt'
+.ENDL DIFFIND_TT
+
+.LIB DIFFIND_FF
+.PARAM
++DL00_RF             = -0.05  
++DR00_RF             = -0.14         
+.INC 'ms011_ms013s_io33_rf_diff_ind_v1p14.ckt'
+.ENDL DIFFIND_FF
+
+.LIB DIFFIND_SS
+.PARAM
++DL00_RF             = 0.05
++DR00_RF             = 0.17         
+.INC 'ms011_ms013s_io33_rf_diff_ind_v1p14.ckt'
+.ENDL DIFFIND_SS
+
+*******************************************
+* Differential Inductor Monte Carlo model *
+*******************************************
+
+.LIB DIFFIND_MC
+.PARAM
++sigma_diff          = agauss(0,1,3)
++DL00_RF             = '-0.05*sigma_diff'   
++DR00_RF             = '-0.08*sigma_diff'           
+.INC 'ms011_ms013s_io33_rf_diff_ind_v1p14.ckt'
+.ENDL DIFFIND_MC
+
+
+***************************************
+* 3T Differential Inductor Corner model
+***************************************
+.LIB 3TDIFFIND_TT
+.PARAM
++DLS1_RF               =0
++DRS11_RF             = 0         
+.INC 'ms011_ms013s_io33_rf_3T_diff_ind_v1p14.ckt'
+.ENDL 3TDIFFIND_TT
+
+.LIB 3TDIFFIND_FF
+.PARAM
++DLS1_RF               =-0.05
++DRS11_RF             = -0.14         
+.INC 'ms011_ms013s_io33_rf_3T_diff_ind_v1p14.ckt'
+.ENDL 3TDIFFIND_FF
+
+.LIB 3TDIFFIND_SS
+.PARAM
++DLS1_RF               =0.05
++DRS11_RF             = 0.17         
+.INC 'ms011_ms013s_io33_rf_3T_diff_ind_v1p14.ckt'
+.ENDL 3TDIFFIND_SS
+
+**********************************************
+* 3T Differential Inductor Monte Carlo model *
+**********************************************
+
+.LIB 3TDIFFIND_MC
+.PARAM
++sigma_3t_diff          = agauss(0,1,3)
++DLS1_RF               ='-0.05*sigma_3t_diff'
++DRS11_RF             = '-0.08*sigma_3t_diff'         
+.INC 'ms011_ms013s_io33_rf_3T_diff_ind_v1p14.ckt'
+.ENDL 3TDIFFIND_MC
+
+************************************************
+* 3T-differential 1talpa Inductor Corner model *
+************************************************
+.LIB rf_3Tdiff_1talpa_tt
+.PARAM 
++drs_3Tdiff_1talpa = 0
++dls_3Tdiff_1talpa = 0
+.INC 'ms011_ms013s_io33_rf_3Tdiff_1talpa_v1p14.ckt' 
+.ENDL rf_3Tdiff_1talpa_tt
+
+.LIB rf_3Tdiff_1talpa_ff
+.PARAM 
++drs_3Tdiff_1talpa = -0.1
++dls_3Tdiff_1talpa = -0.015
+.INC 'ms011_ms013s_io33_rf_3Tdiff_1talpa_v1p14.ckt' 
+.ENDL rf_3Tdiff_1talpa_ff
+
+.LIB rf_3Tdiff_1talpa_ss
+.PARAM
++drs_3Tdiff_1talpa = 0.1
++dls_3Tdiff_1talpa = 0.015
+.INC 'ms011_ms013s_io33_rf_3Tdiff_1talpa_v1p14.ckt' 
+.ENDL rf_3Tdiff_1talpa_ss
+
+
+*****************************************************
+* 3T-differential 1talpa Inductor Monte Carlo model *
+*****************************************************
+
+.LIB rf_3Tdiff_1talpa_mc
+.PARAM
++sigma_3Tdiff_1talpa          = agauss(0,1,3)
++dls_3Tdiff_1talpa             = '-0.05*sigma_3Tdiff_1talpa'   
++drs_3Tdiff_1talpa             = '-0.08*sigma_3Tdiff_1talpa'           
+.INC 'ms011_ms013s_io33_rf_3Tdiff_1talpa_v1p14.ckt'
+.ENDL rf_3Tdiff_1talpa_mc
+
+
+**********************************************************
+* 3T-differential 1talpa Inductor with Psub Corner model *
+**********************************************************
+.LIB rf_3Tdiff_1talpa_psub_tt
+.PARAM 
++drs_3Tdiff_1talpa_psub = 0
++dls_3Tdiff_1talpa_psub = 0
+.INC 'ms011_ms013s_io33_rf_3Tdiff_1talpa_psub_v1p14.ckt' 
+.ENDL rf_3Tdiff_1talpa_psub_tt
+
+.LIB rf_3Tdiff_1talpa_psub_ff
+.PARAM 
++drs_3Tdiff_1talpa_psub = -0.1
++dls_3Tdiff_1talpa_psub = -0.015
+.INC 'ms011_ms013s_io33_rf_3Tdiff_1talpa_psub_v1p14.ckt' 
+.ENDL rf_3Tdiff_1talpa_psub_ff
+
+.LIB rf_3Tdiff_1talpa_psub_ss
+.PARAM
++drs_3Tdiff_1talpa_psub = 0.1
++dls_3Tdiff_1talpa_psub = 0.015
+.INC 'ms011_ms013s_io33_rf_3Tdiff_1talpa_psub_v1p14.ckt' 
+.ENDL rf_3Tdiff_1talpa_psub_ss
+
+
+***************************************************************
+* 3T-differential 1talpa Inductor with psub Monte Carlo model *
+***************************************************************
+
+.LIB rf_3Tdiff_1talpa_psub_mc
+.PARAM
++sigma_3Tdiff_1talpa_psub          = agauss(0,1,3)
++dls_3Tdiff_1talpa_psub             = '-0.05*sigma_3Tdiff_1talpa_psub'   
++drs_3Tdiff_1talpa_psub             = '-0.08*sigma_3Tdiff_1talpa_psub'           
+.INC 'ms011_ms013s_io33_rf_3Tdiff_1talpa_psub_v1p14.ckt'
+.ENDL rf_3Tdiff_1talpa_psub_mc
+
+
+************************************************
+* Spiral utm psub Inductor Corner model *
+************************************************
+.LIB ind_rf_pgs_psub_n_tt
+.PARAM 
++drs_rf_pgs_psub_n = 0
++dls_rf_pgs_psub_n = 0
+.INC 'ms011_ms013s_io33_ind_rf_pgs_psub_n_v1p14.ckt'
+.ENDL ind_rf_pgs_psub_n_tt
+
+.LIB ind_rf_pgs_psub_n_ff
+.PARAM 
++drs_rf_pgs_psub_n = -0.15
++dls_rf_pgs_psub_n = -0.015
+.INC 'ms011_ms013s_io33_ind_rf_pgs_psub_n_v1p14.ckt'
+.ENDL ind_rf_pgs_psub_n_ff
+
+.LIB ind_rf_pgs_psub_n_ss
+.PARAM
++drs_rf_pgs_psub_n = 0.15
++dls_rf_pgs_psub_n = 0.015
+.INC 'ms011_ms013s_io33_ind_rf_pgs_psub_n_v1p14.ckt'
+.ENDL ind_rf_pgs_psub_n_ss
+
+************************************************
+* Spiral utm Inductor Corner model *
+************************************************
+.LIB ind_rf_pgs_n_tt
+.PARAM 
++drs_rf_pgs_n = 0
++dls_rf_pgs_n = 0
+.INC 'ms011_ms013s_io33_ind_rf_pgs_n_v1p14.ckt'
+.ENDL ind_rf_pgs_n_tt
+
+.LIB ind_rf_pgs_n_ff
+.PARAM 
++drs_rf_pgs_n = -0.15
++dls_rf_pgs_n = -0.015
+.INC 'ms011_ms013s_io33_ind_rf_pgs_n_v1p14.ckt'
+.ENDL ind_rf_pgs_n_ff
+
+.LIB ind_rf_pgs_n_ss
+.PARAM
++drs_rf_pgs_n = 0.15
++dls_rf_pgs_n = 0.015
+.INC 'ms011_ms013s_io33_ind_rf_pgs_n_v1p14.ckt'
+.ENDL ind_rf_pgs_n_ss
+
+***************************************************************
+* 3T Differential utm psub Inductor Corner model *
+***************************************************************
+.LIB diff_ind_3t_rf_pgs_psub_n_tt
+.PARAM 
++dls_diff_ind_3t_rf_pgs_psub_n = 0
++drs_diff_ind_3t_rf_pgs_psub_n = 0
+.INC 'ms011_ms013s_io33_diff_ind_3t_rf_pgs_psub_n_v1p14.ckt'
+.ENDL diff_ind_3t_rf_pgs_psub_n_tt
+
+.LIB diff_ind_3t_rf_pgs_psub_n_ff
+.PARAM 
++dls_diff_ind_3t_rf_pgs_psub_n = -0.015
++drs_diff_ind_3t_rf_pgs_psub_n = -0.15
+.INC 'ms011_ms013s_io33_diff_ind_3t_rf_pgs_psub_n_v1p14.ckt'
+.ENDL diff_ind_3t_rf_pgs_psub_n_ff
+
+.LIB diff_ind_3t_rf_pgs_psub_n_ss
+.PARAM
++dls_diff_ind_3t_rf_pgs_psub_n = 0.015
++drs_diff_ind_3t_rf_pgs_psub_n = 0.15
+.INC 'ms011_ms013s_io33_diff_ind_3t_rf_pgs_psub_n_v1p14.ckt'
+.ENDL diff_ind_3t_rf_pgs_psub_n_ss
+
+***************************************************************
+* 3T Differential utm Inductor Corner model *
+***************************************************************
+.LIB diff_ind_3t_rf_pgs_n_tt
+.PARAM 
++dls_diff_ind_3t_rf_pgs_n = 0
++drs_diff_ind_3t_rf_pgs_n = 0
+.INC 'ms011_ms013s_io33_diff_ind_3t_rf_pgs_n_v1p14.ckt'
+.ENDL diff_ind_3t_rf_pgs_n_tt
+
+.LIB diff_ind_3t_rf_pgs_n_ff
+.PARAM 
++dls_diff_ind_3t_rf_pgs_n = -0.015
++drs_diff_ind_3t_rf_pgs_n = -0.15
+.INC 'ms011_ms013s_io33_diff_ind_3t_rf_pgs_n_v1p14.ckt'
+.ENDL diff_ind_3t_rf_pgs_n_ff
+
+.LIB diff_ind_3t_rf_pgs_n_ss
+.PARAM
++dls_diff_ind_3t_rf_pgs_n = 0.015
++drs_diff_ind_3t_rf_pgs_n = 0.15
+.INC 'ms011_ms013s_io33_diff_ind_3t_rf_pgs_n_v1p14.ckt'
+.ENDL diff_ind_3t_rf_pgs_n_ss
+
+*********************************************************
+* 2T Differential utm psub Inductor Corner model *
+*********************************************************
+.LIB diff_ind_rf_pgs_psub_n_tt
+.PARAM 
++dls_diff_ind_rf_pgs_psub_n = 0
++drs_diff_ind_rf_pgs_psub_n = 0
+.INC 'ms011_ms013s_io33_diff_ind_rf_pgs_psub_n_v1p14.ckt'
+.ENDL diff_ind_rf_pgs_psub_n_tt
+
+.LIB diff_ind_rf_pgs_psub_n_ff
+.PARAM 
++dls_diff_ind_rf_pgs_psub_n = -0.015
++drs_diff_ind_rf_pgs_psub_n = -0.15
+.INC 'ms011_ms013s_io33_diff_ind_rf_pgs_psub_n_v1p14.ckt'
+.ENDL diff_ind_rf_pgs_psub_n_ff
+
+.LIB diff_ind_rf_pgs_psub_n_ss
+.PARAM
++dls_diff_ind_rf_pgs_psub_n = 0.015
++drs_diff_ind_rf_pgs_psub_n = 0.15
+.INC 'ms011_ms013s_io33_diff_ind_rf_pgs_psub_n_v1p14.ckt'
+.ENDL diff_ind_rf_pgs_psub_n_ss
+
+*********************************************************
+* 2T Differential utm Inductor Corner model *
+*********************************************************
+.LIB diff_ind_rf_pgs_n_tt
+.PARAM 
++dls_diff_ind_rf_pgs_n = 0
++drs_diff_ind_rf_pgs_n = 0
+.INC 'ms011_ms013s_io33_diff_ind_rf_pgs_n_v1p14.ckt'
+.ENDL diff_ind_rf_pgs_n_tt
+
+.LIB diff_ind_rf_pgs_n_ff
+.PARAM 
++dls_diff_ind_rf_pgs_n = -0.015
++drs_diff_ind_rf_pgs_n = -0.15
+.INC 'ms011_ms013s_io33_diff_ind_rf_pgs_n_v1p14.ckt'
+.ENDL diff_ind_rf_pgs_n_ff
+
+.LIB diff_ind_rf_pgs_n_ss
+.PARAM
++dls_diff_ind_rf_pgs_n = 0.015
++drs_diff_ind_rf_pgs_n = 0.15
+.INC 'ms011_ms013s_io33_diff_ind_rf_pgs_n_v1p14.ckt'
+.ENDL diff_ind_rf_pgs_n_ss
+
+
+*****************************************************
+* Spiral utm psub inductor Monte Carlo model *
+*****************************************************
+
+.LIB ind_rf_pgs_psub_n_mc
+.PARAM 
++sigma_ind_rf_pgs_psub_n = agauss(0,1,3)
++drs_rf_pgs_psub_n = '-0.15*sigma_ind_rf_pgs_psub_n'
++dls_rf_pgs_psub_n = '-0.015*sigma_ind_rf_pgs_psub_n'
+.INC 'ms011_ms013s_io33_ind_rf_pgs_psub_n_v1p14.ckt'
+.ENDL ind_rf_pgs_psub_n_mc
+
+*****************************************************
+* Spiral utm inductor Monte Carlo model *
+*****************************************************
+
+.LIB ind_rf_pgs_n_mc
+.PARAM 
++sigma_ind_rf_pgs_n = agauss(0,1,3)
++drs_rf_pgs_n = '-0.15*sigma_ind_rf_pgs_n'
++dls_rf_pgs_n = '-0.015*sigma_ind_rf_pgs_n'
+.INC 'ms011_ms013s_io33_ind_rf_pgs_n_v1p14.ckt'
+.ENDL ind_rf_pgs_n_mc
+
+********************************************************************
+* 3T Differential utm psub inductor Monte Carlo model *
+********************************************************************
+
+.LIB diff_ind_3t_rf_pgs_psub_n_mc
+.PARAM 
++sigma_diff_ind_3t_rf_pgs_psub_n = agauss(0,1,3)
++dls_diff_ind_3t_rf_pgs_psub_n = '-0.015*sigma_diff_ind_3t_rf_pgs_psub_n'
++drs_diff_ind_3t_rf_pgs_psub_n = '-0.15*sigma_diff_ind_3t_rf_pgs_psub_n'
+.INC 'ms011_ms013s_io33_diff_ind_3t_rf_pgs_psub_n_v1p14.ckt'
+.ENDL diff_ind_3t_rf_pgs_psub_n_mc
+
+********************************************************************
+* 3T Differential utm inductor Monte Carlo model *
+********************************************************************
+
+.LIB diff_ind_3t_rf_pgs_n_mc
+.PARAM 
++sigma_diff_ind_3t_rf_pgs_n = agauss(0,1,3)
++dls_diff_ind_3t_rf_pgs_n = '-0.015*sigma_diff_ind_3t_rf_pgs_n'
++drs_diff_ind_3t_rf_pgs_n = '-0.15*sigma_diff_ind_3t_rf_pgs_n'
+.INC 'ms011_ms013s_io33_diff_ind_3t_rf_pgs_n_v1p14.ckt'
+.ENDL diff_ind_3t_rf_pgs_n_mc
+
+***************************************************************
+* 2T Differential utm psub inductor Monte Carlo model *
+***************************************************************
+
+.LIB diff_ind_rf_pgs_psub_n_mc
+.PARAM 
++sigma_diff_ind_rf_pgs_psub_n = agauss(0,1,3)
++dls_diff_ind_rf_pgs_psub_n = '-0.015*sigma_diff_ind_rf_pgs_psub_n'
++drs_diff_ind_rf_pgs_psub_n = '-0.15*sigma_diff_ind_rf_pgs_psub_n'
+.INC 'ms011_ms013s_io33_diff_ind_rf_pgs_psub_n_v1p14.ckt'
+.ENDL diff_ind_rf_pgs_psub_n_mc
+
+***************************************************************
+* 2T Differential utm inductor Monte Carlo model *
+***************************************************************
+
+.LIB diff_ind_rf_pgs_n_mc
+.PARAM 
++sigma_diff_ind_rf_pgs_n = agauss(0,1,3)
++dls_diff_ind_rf_pgs_n = '-0.015*sigma_diff_ind_rf_pgs_n'
++drs_diff_ind_rf_pgs_n = '-0.15*sigma_diff_ind_rf_pgs_n'
+.INC 'ms011_ms013s_io33_diff_ind_rf_pgs_n_v1p14.ckt'
+.ENDL diff_ind_rf_pgs_n_mc
+

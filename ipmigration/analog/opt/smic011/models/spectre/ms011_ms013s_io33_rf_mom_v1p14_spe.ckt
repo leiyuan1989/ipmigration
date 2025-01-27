@@ -1,0 +1,126 @@
+//* 
+//* No part of this file can be released without the consent of SMIC.
+//*
+//******************************************************************************************
+//* 0.11um Mixed Signal 1P8M with MIM Salicide 1.2V/3.3V RF SPICE Model (for SPECTRE only) *
+//******************************************************************************************
+//*
+//* Release version    : 1.14
+//*
+//* Release date       : 03/30/2016
+//*
+//* Simulation tool    : Cadence spectre V6.0
+//*
+//*
+//*  MOM Capacitor   :
+//*
+//*  MOM Capacitor   :
+//*
+//*        *------------------------------------------------* 
+//*        | mom subckt   |  mom_ckt_rf   |  mom_ckt_rf_3t  |
+//*        *------------------------------------------------*
+//*
+//*
+//* The parameter "bm" define the bottom metal layer of MOM, and it can only be 1, 2, 3, 4 or 5; 
+//* The parameter "tm" define the top metal layer of MOM", and it can only be 3, 4, 5, 6 or 7;
+//* (tm-bm+1) must larger than 3; all MOM's architecture are listed as below:
+//*
+//*        *-----------------------------------------------*
+//*        |   bm   |   tm   |  Architecture Definition    |
+//*        *-----------------------------------------------*
+//*        |    1   |    3   |  metal-1 stack to metal-3   |
+//*        *-----------------------------------------------*
+//*        |    1   |    4   |  metal-1 stack to metal-4   |
+//*        *-----------------------------------------------*
+//*        |    1   |    5   |  metal-1 stack to metal-5   |
+//*        *-----------------------------------------------*
+//*        |    1   |    6   |  metal-1 stack to metal-6   |
+//*        *-----------------------------------------------*
+//*        |    1   |    7   |  metal-1 stack to metal-7   |
+//*        *-----------------------------------------------*
+//*        |    2   |    4   |  metal-2 stack to metal-4   |
+//*        *-----------------------------------------------*
+//*        |    2   |    5   |  metal-2 stack to metal-5   |
+//*        *-----------------------------------------------*
+//*        |    2   |    6   |  metal-2 stack to metal-6   |
+//*        *-----------------------------------------------*
+//*        |    2   |    7   |  metal-2 stack to metal-7   |
+//*        *-----------------------------------------------*
+//*        |    3   |    5   |  metal-3 stack to metal-5   |
+//*        *-----------------------------------------------*
+//*        |    3   |    6   |  metal-3 stack to metal-6   |
+//*        *-----------------------------------------------*
+//*        |    3   |    7   |  metal-3 stack to metal-7   |
+//*        *-----------------------------------------------*
+//*        |    4   |    6   |  metal-4 stack to metal-6   |
+//*        *-----------------------------------------------*
+//*        |    4   |    7   |  metal-4 stack to metal-7   |
+//*        *-----------------------------------------------*
+//*        |    5   |    7   |  metal-5 stack to metal-7    |
+//*        *-----------------------------------------------*
+//*
+simulator lang=spectre  insensitive=yes
+//*************************************************
+//* 0.11um MOM Capacitor       
+//*************************************************
+//* 1=port1, 2=port2
+subckt mom_ckt_rf (1 2)
+//* mom capacitor model parameters
+parameters lr=0 nf=0 bm=1 tm=7
++ctc1      = 18.7176E-6                devt  = temp  
++cvc1      = -15.7774e-6               cvc2  = -0.167691e-6       
++tcoef     = 1.0+ctc1*(devt-25.0)
++cox       = (((0.0068*pwr(bm,-0.38))*nf*lr*1e6+(-0.125*bm+0.8))*(bm>1)+(0.01*nf*lr*1e6+0.033)*(bm==1))
++cf        = ((0.1376*(tm-bm+1)-0.048+(bm>1)*0.03)*nf*lr*1e6*0.9+(-1.06*(tm-bm+1)+0.17))
++ls_rf     = max(0.57*pwr(cf,-0.241)*1E-9,1E-12)
++cf_rf     = max(Cf*(1+DMOM_RF)*1e-15,1e-18)
++rs_rf     = max(37*pwr(cf,-0.92)+0.34,1E-5)
++rsub1_rf  = max(5400*pwr(cox,-0.75),1E-3)
++csub1_rf  = 1e-15  
++cox1_rf   = max(cox*1e-15,1E-18)
++rsub2_rf  = max(5400*pwr(cox,-0.75),1E-3)
++csub2_rf  = 1e-15  
++cox2_rf   = max(cox*1e-15,1E-18)
+//* equivalent circuit
+ls    (1 11)  inductor   l=ls_rf
+cf    (22 2)  capacitor  c=cf_rf*tcoef*(1+cvc1*v(22,2)+cvc2*v(22,2))
+rs    (11 22) resistor   r=rs_rf
+rsub1 (10 0)  resistor   r=rsub1_rf
+csub1 (10 0)  capacitor  c=csub1_rf
+cox1  (1 10)  capacitor  c=cox1_rf
+rsub2 (20 0)  resistor   r=rsub2_rf
+csub2 (20 0)  capacitor  c=csub2_rf
+cox2  (2 20)  capacitor  c=cox2_rf
+ends mom_ckt_rf
+//*************************************************
+//* 0.11um MOM Capacitor (three terminal)
+//*************************************************
+//* 1=port1, 2=port2, Nwell is N type well
+subckt mom_ckt_rf_3t (1 2 Nwell)
+//* mom capacitor model parameters
+parameters lr=0 nf=0 bm=1 tm=7
++ctc1      = 18.7176E-6                devt  = temp  
++cvc1      = -15.7774e-6               cvc2  = -0.167691e-6       
++tcoef     = 1.0+ctc1*(devt-25.0)
++cox       = (((0.0068*pwr(bm,-0.38))*nf*lr*1e6+(-0.125*bm+0.8))*(bm>1)+(0.01*nf*lr*1e6+0.033)*(bm==1))
++cf        = ((0.1376*(tm-bm+1)-0.048+(bm>1)*0.03)*nf*lr*1e6*0.9+(-1.06*(tm-bm+1)+0.17))
++ls_rf     = max(0.57*pwr(cf,-0.241)*1E-9,1E-12)
++cf_rf     = max(Cf*(1+DMOM_RF)*1e-15,1e-18)
++rs_rf     = max(37*pwr(cf,-0.92)+0.34,1E-5)
++rsub1_rf  = max(5400*pwr(cox,-0.75),1E-3)
++csub1_rf  = 1e-15  
++cox1_rf   = max(cox*1e-15,1E-18)
++rsub2_rf  = max(5400*pwr(cox,-0.75),1E-3)
++csub2_rf  = 1e-15  
++cox2_rf   = max(cox*1e-15,1E-18)
+//* equivalent circuit
+ls    (1 11)  inductor   l=ls_rf
+cf    (22 2)  capacitor  c=cf_rf*tcoef*(1+cvc1*v(22,2)+cvc2*v(22,2))
+rs    (11 22) resistor   r=rs_rf
+rsub1 (10 Nwell)  resistor   r=rsub1_rf
+csub1 (10 Nwell)  capacitor  c=csub1_rf
+cox1  (1 10)  capacitor  c=cox1_rf
+rsub2 (20 Nwell)  resistor   r=rsub2_rf
+csub2 (20 Nwell)  capacitor  c=csub2_rf
+cox2  (2 20)  capacitor  c=cox2_rf
+ends mom_ckt_rf_3t

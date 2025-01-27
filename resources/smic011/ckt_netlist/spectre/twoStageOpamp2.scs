@@ -1,0 +1,17 @@
+
+include "/home/shunqidai/Sizing/SizingDemoLinuxSpectre/smic018/models/spectre/ms018_v1p7_spe.lib" section=tt
+
+parameters vdd=3.3 cload=2pf
+
+subckt diff_opamp dd gnd inp inn net7 out
+	M1 (net1 inn  net3 net3) n33 W=w1 L=l1
+	M2 (net2 inp  net3 net3) n33 W=w1 L=l1
+	M3 (net1 net1 dd   dd  ) p33 W=w2 L=l2 
+	M4 (net2 net1 dd   dd  ) p33 W=w2 L=l2  
+	M5 (net3 net7 gnd  gnd ) n33 W=w3 L=l3 
+	M6 (out  net2 dd   dd  ) p33 W=w4 L=l4 
+	M7 (out  net7 gnd  gnd ) n33 W=w5 L=l5
+	M8 (net7 net7 gnd  gnd ) n33 W=w3 L=l3
+	cc (net8 out) capacitor  c=cc
+	r1 (net2 net8) resistor  r=cr
+ends diff_opamp

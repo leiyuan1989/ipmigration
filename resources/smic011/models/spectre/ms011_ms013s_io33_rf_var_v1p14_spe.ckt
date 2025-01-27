@@ -1,0 +1,111 @@
+//* 
+//* No part of this file can be released without the consent of SMIC.
+//*
+//******************************************************************************************
+//* 0.11um Mixed Signal 1P8M with MIM Salicide 1.2V/3.3V RF SPICE Model (for SPECTRE only) *
+//******************************************************************************************
+//*
+//* Release version    : 1.14
+//*
+//* Release date       : 03/30/2016
+//*
+//* Simulation tool    : Cadence spectre V6.0
+//*
+//*
+//*   MOSFET Varactor  :
+//*
+//*        *----------------------------------------------------------* 
+//*        |    MOSFET varactor subckt |          1.2V/3.3V           |
+//*        |==========================================================| 
+//*        |   NMOS in NWELL           |  pvar12_ckt_rf/pvar33_ckt_rf |
+//*        *----------------------------------------------------------*
+//*
+simulator lang=spectre  insensitive=yes
+ahdl_include "gc_rf.va"
+//*
+//**************************
+//* 0.11um 1.2V MOS Varactor
+//**************************
+//*This model is empirical model, and is provided for special customer.
+//* 1=port1, 2=port2
+//* Area=wr*0.9*lr*0.9*Nf
+subckt pvar12_ckt_rf (1 2)
+//* mos varactor scalable model parameters
+parameters lr=1u wr=10u nf=1 ar=lr*0.9*wr*0.9*nf 
++A2_Cgg     = 0.95*(2.106*(lr*0.9*1e6)+0.538)*(wr*0.9*1e6)*nf*0.85
++A1_Cgg     = (0.0015*pwr(lr*1e6*0.9,-3.7594)+12.4727)*pwr(wr*lr*nf*1e12*0.81,-0.0079*lr*1e6*0.9+1.0043)
++x0_Cgg     = (0.03366*(lr*0.9*1e6)+0.02576)*pwr((wr*0.9*1e6)*nf, (-0.01257*(lr*0.9*1e6)+0.0196))*1.5
++dx_Cgg     = (-0.146*pwr((wr*0.9*1e6)*nf, (-0.009)))
++TOX      = (2.52E-09+DTOX_MOSVAR12_RF) 		LLN      = 0.3896000           LWN      = 0.7395000           
++WLN      = 0.3557000           WWN      = 1.1000000           LINT     = 0.00                
++LL       = 3.5020000E-13       LW       = -3.1820000E-12      LWL      = 4.9390000E-15       
++WINT     = 1.2989999E-08       WL       = -2.5270001E-12      WW       = -5.7700000E-16      
++WWL      = -2.3550000E-18      XL       = 0.00     	       XW       = 0.00      
++GCARC    = 50                  GCEVGC   = 1.6                 GCETC    = 1000 
++GCETE    = 0.4                 GCIE     = 1.5                 
++Weff     = (wr*0.9+XW-2*(WINT+(WL/pwr(lr*0.9,WLN))+(WW/pwr(wr*0.9,WWN))+(WWL/(pwr(lr*0.9,WLN)*pwr(wr*0.9,WWN)))))*nf
++Leff     = lr*0.9+XL-2*(LINT+(LL/pwr(lr*0.9,LLN))+(LW/pwr(wr*0.9,LWN))+(LWL/(pwr(lr*0.9,LLN)*pwr(wr*0.9,LWN))))
+aigg (22 2) aigg_hdl weff=weff leff=leff tox=tox gcarc=gcarc gcevgc=gcevgc gcetc=gcetc gcete=gcete gcie=gcie
+//* equivalent circuit
+ls    (11 22)  inductor   l=max(((-1.523*(lr*0.9*1e6)+2.3108)/((wr*0.9*1e6)*nf))*1e-9, 1e-15)
+rs    (1  11)  resistor   r=max((1.9977*wr*wr*0.81*1e12-26.825*wr*1e6*0.9+119.99)*pwr(lr*1e6*0.9,(0.0000035114*pwr(wr*1e6*0.9,4.8791)+0.090338)*(-1))*pwr(nf,1*(-1)/(32.708*pwr(wr*1e6*0.9,-3.1185)+9.77)*log(lr*1e6*0.9)+1/(0.0735*pwr(wr*1e6*0.9,-0.4222)+0.93)*(-1))*(1+0.1*1/(9e-4*pwr(2.7183,0.9341*wr)+2.4989)/(V(22,2)*V(22,2)+0.45*0.45))*(1+2.6736e-3*(temp-25)+8.09e-6*(temp-25)*(temp-25)), 1E-6)
+rsub1 (10  0)  resistor   r=max(-2324.9*log(nf)+10000, 1e-3)
+csub1 (10  0)  capacitor  c=max((0.4097*nf+0.3628)*1e-15, 1e-18)
+cox1  (1  10)  capacitor  c=max((0.1237*nf+0.0541)*1e-15, 1e-18)
+rsub2 (20  0)  resistor   r=max(((1.0344*(lr*0.9*1e6)-3.4339)*(wr*0.9*1e6)*(wr*0.9*1e6)+(-19.534*(lr*0.9*1e6)+71.214)*(wr*0.9*1e6)+(36.86*(lr*0.9*1e6)-372.33))*log(nf)+((-1.6736*(lr*0.9*1e6)+11.209)*(wr*0.9*1e6)*(wr*0.9*1e6)+(37.52*(lr*0.9*1e6)-227.67)*(wr*0.9*1e6)+(-141.4*(lr*0.9*1e6)+1473.8)), 1e-3)
+csub2 (20  0)  capacitor  c=max((((-1.980E-02*(lr*0.9*1e6)-3.000E-03)*(wr*0.9*1e6)*(wr*0.9*1e6)+(3.560E-01*(lr*0.9*1e6)+3.210E-02)*(wr*0.9*1e6)+(5.028E-01*(lr*0.9*1e6)+9.300E-01))*nf+((-2.960E-01*(lr*0.9*1e6)+2.732E-01)*(wr*0.9*1e6)*(wr*0.9*1e6)+(4.564E-01*(lr*0.9*1e6)-6.830E-02)*(wr*0.9*1e6)+(3.269E+00*(lr*0.9*1e6)-1.837E+00)))*1e-15, 1e-18)
+cox2  (2  20)  capacitor  c=max((((1.615E-02*(lr*0.9*1e6)-8.062E-03)*(wr*0.9*1e6)*(wr*0.9*1e6)+(-8.660E-02*(lr*0.9*1e6)+1.261E-01)*(wr*0.9*1e6)+(1.457E+00*(lr*0.9*1e6)+2.570E-01))*nf+((-9.998E-02*(lr*0.9*1e6)+7.533E-02)*(wr*0.9*1e6)*(wr*0.9*1e6)+(1.162E+00*(lr*0.9*1e6)+3.602E-01)*(wr*0.9*1e6)+(-2.820E+00*(lr*0.9*1e6)+3.141E+00)))*1e-15, 1e-18)
+djnw  (0   2)  nwdio_rf   area=(2*0.23+(wr*0.9*1e6))*((lr*0.9*1e6)*nf+0.38*(nf-1)+2*0.38+2*0.23)*1e-12  pj=2*((2*0.23+(wr*0.9*1e6))+((lr*0.9*1e6)*nf+0.38*(nf-1)+2*0.38+2*0.23))*1e-6
+cgg   (22  2)  capacitor  c=max((A2_Cgg+(A1_Cgg-A2_Cgg)/(1+EXP((V(22,2)+x0_Cgg)/(dx_Cgg*(0.00143*(temp-25)+1)))))*(1+DCgg_MOSVAR12_RF)*1e-15, 1e-18)
+model nwdio_rf diode
++level = 1 is = 6.96e-07 allow_scaling = yes dskip = no imax=1e20 isw = 2.18e-12 
++n = 1.0202 ns = 1.0202 rs = 1.77e-07 ik = 7.52e+03 ikp = 2.36e-02 
++bv = 14.00 ibv = 19.6 
++trs = 2.10e-03 eg = 1.16 tnom = 25.0 
++xti = 3.0 tlev = 1 tlevc = 1 
++cjo = 0 
++cjsw = 0 
++mj = 0.375 vj = 0.553 
++mjsw = 0.271 vjsw = 0.649 
++pta = 2.87e-03 ptp = 2.64e-03 
++cta = 2.87e-03 ctp = 1.24e-03 fc = 0 
+ends pvar12_ckt_rf
+//*
+//**************************
+//* 0.11um 3.3V MOS Varactor
+//**************************
+//* 1=port1, 2=port2
+//* Area=wr*0.9*lr*0.9*Nf
+subckt pvar33_ckt_rf (1 2)
+//* mos varactor scalable model parameters
+parameters lr=1u wr=10u nf=12 ar=lr*0.9*wr*0.9*nf 
++R0_Rs	    = (56.304*pwr(wr*0.9*1e6,-1.4415)+25)*pwr(lr*0.9*1e6,-0.0115*wr*0.9*1e6*wr*0.9*1e6+0.1093*wr*0.9*1e6-0.7593)*pwr(nf,(0.0189*wr*0.9*1e6*wr*0.9*1e6-0.2465*wr*0.9*1e6+0.7754)*lr*0.9*1e6+(2.465*pwr(wr*0.9*1e6,-3.6029)+1.014)*(-1))
++A2_Cgg     = ((1.406*(lr*0.9*1e6)+0.2888)*(wr*0.9*1e6)*nf+(-0.1*(lr*0.9*1e6)+0.3))*(0.0018*pwr(lr*0.9*1e6,-3.6378)+0.9674)
++A1_Cgg     = (4.771*lr*0.9*1e6+0.3082)*pwr(wr*0.9*1e6*nf,1/(0.000040548*pwr(lr*0.9*1e6,-4.0301)+0.999688))*0.9862*pwr(wr*0.9*1e6,-0.0109)
++x0_Cgg     = -(-0.0188*(lr*0.9*1e6)+0.2758)*pwr((wr*0.9*1e6)*nf, (-0.005315*(lr*0.9*1e6)+0.003181))
++dx_Cgg     = -(-0.0178*(lr*0.9*1e6)+0.3438)*pwr((wr*0.9*1e6)*nf, (0.004636*(lr*0.9*1e6)-0.01081))
+//* equivalent circuit
+ls    (11 22)  inductor   l=max(((-2.895*(lr*0.9*1e6)+4.5603)/((wr*0.9*1e6)*nf))*1E-9, 1E-15)
+rs    (1  11)  resistor   r=1.2*R0_Rs*(1+0.1*0.2/((V(22,2)*V(22,2))+0.45*0.45))*(1+2.041e-3*(temp-25)+5.663e-6*(temp-25)*(temp-25))
+rsub1 (10  0)  resistor   r=max(4.0548E4*pwr(nf,-2.504)+920, 1E-3)
+csub1 (10  0)  capacitor  c=max((0.4097*nf+0.3628)*1E-15, 1E-18)
+cox1  (1  10)  capacitor  c=max(((-5.987E-03*(wr*0.9*1e6)+1.563E-01)*nf+(4.272E-02*(wr*0.9*1e6)-1.144E-01))*1E-15,1E-18)
+rsub2 (20  0)  resistor   r=max(((-0.0834*(lr*0.9*1e6)-1.7233)*(wr*0.9*1e6)*(wr*0.9*1e6)+(-1.15*(lr*0.9*1e6)+40.13)*(wr*0.9*1e6)+(-7.36*(lr*0.9*1e6)-243.37))*log(nf)+((1.1832*(lr*0.9*1e6)+4.9751)*(wr*0.9*1e6)*(wr*0.9*1e6)+(-10.96*(lr*0.9*1e6)-118.82)*(wr*0.9*1e6)+(17.18*(lr*0.9*1e6)+967.74)), 1E-3)
+csub2 (20  0)  capacitor  c=max((((5.160E-03*(lr*0.9*1e6)-1.631E-02)*(wr*0.9*1e6)*(wr*0.9*1e6)+(-2.860E-02*(lr*0.9*1e6)+1.922E-01)*(wr*0.9*1e6)+(1.556E+00*(lr*0.9*1e6)+9.280E-01))*nf+((-1.820E-01*(lr*0.9*1e6)+1.631E-01)*(wr*0.9*1e6)*(wr*0.9*1e6)+(1.930E+00*(lr*0.9*1e6)+7.260E-01)*(wr*0.9*1e6)+(-4.292E+00*(lr*0.9*1e6)-1.426E+00)))*1E-15, 1E-18)
+cox2  (2  20)  capacitor  c=max((((1.757E-02*(lr*0.9*1e6)-8.832E-03)*(wr*0.9*1e6)*(wr*0.9*1e6)+(-1.173E-01*(lr*0.9*1e6)+1.473E-01)*(wr*0.9*1e6)+(1.514E+00*(lr*0.9*1e6)+2.740E-01))*nf+((-1.098E-01*(lr*0.9*1e6)+7.314E-02)*(wr*0.9*1e6)*(wr*0.9*1e6)+(1.304E+00*(lr*0.9*1e6)+3.690E-01)*(wr*0.9*1e6)+(-2.935E+00*(lr*0.9*1e6)+2.911E+00)))*1E-15, 1E-18)
+djnw  (0   2)  nwdio_rf   area=(2*0.23+(wr*0.9*1e6))*((lr*0.9*1e6)*nf+0.38*(nf-1)+2*0.38+2*0.23)*1e-12  pj=2*((2*0.23+(wr*0.9*1e6))+((lr*0.9*1e6)*nf+0.38*(nf-1)+2*0.38+2*0.23))*1e-6
+Cgg   (22  2)  capacitor  c=max(((A2_Cgg*0.98+(A1_Cgg-0.98*A2_Cgg)/(1+exp((V(22,2)-x0_Cgg*0.84)/(dx_Cgg*(0.00143*(temp-25)+1))*1.15)))*(1+0.01*(1+tanh(5*(V(22,2)-0.5))))*(1+0.1*(1+tanh(1.2*(V(22,2)+1.5)))*(1-tanh(1*(V(22,2)+1.1)))))*(1+DCgg_MOSVAR33_RF)*1e-15,1e-18)
+model nwdio_rf diode
++level = 1 is = 6.96e-07 allow_scaling = yes dskip = no imax=1e20 isw = 2.18e-12 
++n = 1.0202 ns = 1.0202 rs = 1.77e-07 ik = 7.52e+03 ikp = 2.36E-02 
++bv = 14.00 ibv = 19.6 
++trs = 2.10e-03 eg = 1.16 tnom = 25.0 
++xti = 3.0 tlev = 1 tlevc = 1 
++cjo = 0 
++cjsw = 0 
++mj = 0.375 vj = 0.553 
++mjsw = 0.271 vjsw = 0.649 
++pta = 2.87e-03 ptp = 2.64e-03 
++cta = 2.87e-03 ctp = 1.24e-03 fc = 0 
+ends pvar33_ckt_rf
+//*

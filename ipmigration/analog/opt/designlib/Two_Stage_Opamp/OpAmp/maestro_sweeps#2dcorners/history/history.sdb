@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<setupdb version="7">history
+	<active>Active Setup</active>
+	<history>History
+		<historyentry assemblerOrExplorer="assembler" roOrView="view" runningOrFinished="finished">Interactive.0
+			<timestamp>Jun 8 06:41:29 2016</timestamp>
+			<uuid>{ca70d0f7-15b7-453c-89dc-76bc03cd60cd}</uuid>
+			<locked>1</locked>
+			<mode>Single Run, Sweeps and Corners</mode>
+			<resultsname>/home/hartong/projects/ADE/ISR4_EAV_RAK/EAV_RAK/libs/Two_Stage_Opamp/OpAmp/maestro_sweeps#2dcorners/results/maestro/$AXL_HISTORY_NAME.rdb</resultsname>
+			<simresults>$AXL_SETUPDB_DIR/results/maestro/$AXL_HISTORY_NAME.rdb</simresults>
+			<runlog>/home/hartong/projects/ADE/ISR4_EAV_RAK/EAV_RAK/libs/Two_Stage_Opamp/OpAmp/maestro_sweeps#2dcorners/results/maestro/$AXL_HISTORY_NAME.log</runlog>
+			<runlogfile>$AXL_SETUPDB_DIR/results/maestro/$AXL_HISTORY_NAME.log</runlogfile>
+			<psfdir>/home/hartong/projects/ADE/ISR4_EAV_RAK/EAV_RAK/simulation/Two_Stage_Opamp/OpAmp/maestro_sweeps-corners/results/maestro/$AXL_HISTORY_NAME</psfdir>
+			<simdir>$AXL_PROJECT_DIR/Two_Stage_Opamp/OpAmp/maestro_sweeps-corners/results/maestro/$AXL_HISTORY_NAME</simdir>
+		</historyentry>
+		<historyentry assemblerOrExplorer="assembler" roOrView="view" runningOrFinished="finished">ForVerification
+			<timestamp>Sep 18 11:43:04 2018</timestamp>
+			<uuid>{c844bfd6-64eb-4d22-a5a6-ea86beca7694}</uuid>
+			<locked>1</locked>
+			<mode>Single Run, Sweeps and Corners</mode>
+			<resultsname>/servers/ade_pe/SLA_RAK/EAV_RAK/libs/Two_Stage_Opamp/OpAmp/maestro_sweeps#2dcorners/results/maestro/$AXL_HISTORY_NAME.rdb</resultsname>
+			<simresults>$AXL_SETUPDB_DIR/results/maestro/$AXL_HISTORY_NAME.rdb</simresults>
+			<runlog>/servers/ade_pe/SLA_RAK/EAV_RAK/libs/Two_Stage_Opamp/OpAmp/maestro_sweeps#2dcorners/results/maestro/$AXL_HISTORY_NAME.log</runlog>
+			<runlogfile>$AXL_SETUPDB_DIR/results/maestro/$AXL_HISTORY_NAME.log</runlogfile>
+			<psfdir>/servers/ade_pe/SLA_RAK/EAV_RAK/simulation/Two_Stage_Opamp/OpAmp/maestro_sweeps-corners/results/maestro/$AXL_HISTORY_NAME</psfdir>
+			<simdir>$AXL_PROJECT_DIR/Two_Stage_Opamp/OpAmp/maestro_sweeps-corners/results/maestro/$AXL_HISTORY_NAME</simdir>
+		</historyentry>
+		<historyentry assemblerOrExplorer="assembler" roOrView="view" runningOrFinished="finished">FullCoverage
+			<timestamp>Sep 19 07:24:53 2018</timestamp>
+			<uuid>{44a76a98-af03-4d8b-bc4b-164fd9e82b91}</uuid>
+			<locked>1</locked>
+			<mode>Single Run, Sweeps and Corners</mode>
+			<resultsname>/home/hartong/projects/RAK/space/EAV_RAK/libs/Two_Stage_Opamp/OpAmp/maestro_sweeps#2dcorners/results/maestro/$AXL_HISTORY_NAME.rdb</resultsname>
+			<simresults>$AXL_SETUPDB_DIR/results/maestro/$AXL_HISTORY_NAME.rdb</simresults>
+			<runlog>/home/hartong/projects/RAK/space/EAV_RAK/libs/Two_Stage_Opamp/OpAmp/maestro_sweeps#2dcorners/results/maestro/$AXL_HISTORY_NAME.log</runlog>
+			<runlogfile>$AXL_SETUPDB_DIR/results/maestro/$AXL_HISTORY_NAME.log</runlogfile>
+			<psfdir>/home/hartong/projects/RAK/space/EAV_RAK/simulation/Two_Stage_Opamp/OpAmp/maestro_sweeps-corners/results/maestro/$AXL_HISTORY_NAME</psfdir>
+			<simdir>$AXL_PROJECT_DIR/Two_Stage_Opamp/OpAmp/maestro_sweeps-corners/results/maestro/$AXL_HISTORY_NAME</simdir>
+		</historyentry>
+	</history>
+</setupdb>

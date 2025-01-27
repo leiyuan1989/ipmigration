@@ -1,0 +1,38 @@
+//*Spectre Lib Format
+simulator lang=spectre  insensitive=yes
+
+library rf018_m6_res
+// * This file contains M6 corner model parameters.
+// * Three corners are supported: TT, FF, SS.
+// * This file should be used with the model parameter file 'rf018_m6_res_spe.mdl'.
+// * No part of this file can be released without the consent of SMIC.
+
+// ***********************
+// * Resistor Corner model
+// ***********************
+
+section res_tt
+// *Resistor
+parameters drsh_rm6_rf = 0
+parameters ddw_rm6_rf = 0
+include "rf018_m6_res_spe.mdl"
+endsection res_tt
+
+
+section res_ff
+// *Resistor
+parameters drsh_rm6_rf = -0.005
+parameters ddw_rm6_rf = 0
+include "rf018_m6_res_spe.mdl"
+endsection res_ff
+
+
+section res_ss
+// *Resistor
+parameters drsh_rm6_rf = 0.005
+parameters ddw_rm6_rf = 0
+include "rf018_m6_res_spe.mdl"
+endsection res_ss
+
+
+endlibrary rf018_m6_res

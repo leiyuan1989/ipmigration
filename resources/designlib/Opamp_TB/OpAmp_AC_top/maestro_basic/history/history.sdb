@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<setupdb version="7">history
+	<active>Active Setup</active>
+	<history>History
+		<historyentry assemblerOrExplorer="explorer" roOrView="view" runningOrFinished="finished">ExplorerRun.0
+			<timestamp>Sep 4 06:40:27 2018</timestamp>
+			<uuid>{aad7f69b-6a40-4b56-9374-24732c98c95e}</uuid>
+			<locked>0</locked>
+			<mode>Monte Carlo Sampling</mode>
+			<resultsname></resultsname>
+			<simresults></simresults>
+			<runlog></runlog>
+			<runlogfile></runlogfile>
+			<psfdir></psfdir>
+			<simdir></simdir>
+		</historyentry>
+	</history>
+</setupdb>

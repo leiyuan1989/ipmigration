@@ -1,0 +1,4 @@
+TDMCHECKPOINT="1.0"
+Two_Stage_Opamp/OpAmp_AC_top type="cell"
+Two_Stage_Opamp/OpAmp_TRAN_top type="cell"
+keepEmptyCategory type="unknown"

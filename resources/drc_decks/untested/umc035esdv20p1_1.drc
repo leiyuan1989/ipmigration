@@ -1,0 +1,211 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                                                                  ;;
+;;     Title     : Dracula DRC of 0.35um ESD Protection Design Rule ;;
+;;     Parent Doc  : G-03-GENERATION35_25-TLR/ESD  2.0_P1           ;;
+;;     DRC Version  :  2.0 P1                                       ;;
+;;                                                                  ;;
+;;     Copyright (c) United Microelectronics Corporation, 1980-2005 ;;
+;;     All Right Reserved.                                          ;;
+;;                                                                  ;;
+;;     LIMITATION OF LIABILITY:                                     ;;
+;;        United Microelectronics Corp. is not  liable  for  any    ;;
+;;        property damage, personal  injury,  loss  of  profits,    ;;
+;;        interruption of business,  or  for  any other special,    ;;
+;;        consequential or incidental  damages, however  caused,    ;;
+;;        whether for breach of warranty,contract tort(including    ;;
+;;        negligence),strict liability or otherwise.                ;;
+;;                                                                  ;;
+;;                      Dracula 4.7 compatible                      ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; revision  date   changes                                         ;;
+;; ======= =========================================================;;
+;;   5 P2   01/20/03 Created from document G-1B-007                 ;;            
+;;   6 P1   02/24/03 Update by Amy                                  ;;                                   
+;;                   Update E531 E531 E533                          ;;
+;;                   Delete E538                                    ;;
+;;   7 P1   01/16/04 (Amy)                                          ;;  
+;; 2.0 P1   05/03/05 C.C. Chang                                     ;; 
+;;                  1. Rename                                       ;;  
+;;                      from: g-df-1b_007-1p3m_035-dracula-drc-7-p1 ;;  
+;;                      to:   G-DF-GENERATION35-1P3M-ESD-DRACULA-   ;;
+;;                          DRC- 2.0-P1.                            ;; 
+;;                  2. Add DATATYPE in layer mapping                ;; 
+;;                                                                  ;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Notice: 1.Please set up INDISK,PRIMARY,OUTDISK,PRINTFILE
+;;           before run DRACULA drc.
+;;         2.List of Rules not being checked
+;;           5.1.1, 5.1.2, 5.1.5, 5.1.6, 5.1.7.
+;;         3.This document includes 6 files, they are all independent.
+;;           G-DF-GENERATION25-1P3M-ESD-DRACULA-DRC-2.0-P1
+;;           G-DF-GENERATION25-1P4M-ESD-DRACULA-DRC-2.0-P1
+;;           G-DF-GENERATION25-1P5M-ESD-DRACULA-DRC-2.0-P1
+;;           G-DF-GENERATION35-1P3M-ESD-DRACULA-DRC-2.0-P1
+;;           G-DF-GENERATION35-1P4M-ESD-DRACULA-DRC-2.0-P1
+;;           G-DF-GENERATION35-1P5M-ESD-DRACULA-DRC-2.0-P1
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+*DESCRIPTION
+ MAG-BEF-GRID=YES
+ INDISK=../../tapeout/ai4100_aa.gds
+ PRIMARY=AI4100_AA
+ OUTDISK=esd.gds
+ PRINTFILE=esd_drc
+ MODE=EXEC NOW
+ SYSTEM=GDS2
+ SCALE=0.001 MICRON
+ RESOLUTION=0.001 MICRON
+ LISTERROR=YES
+ KEEPDATA=INQUERY
+; PROGRAM-DIR=$ECAD/
+ FLAG-NON45=YES
+ FLAG-OFFGRID=YES 0.001
+ FLAG-ACUTEANGLE=YES
+ FLAG-SELFINTERS=YES
+ CNAMES-CSEN=YES 
+*END
+*INPUT-LAYER
+ SUBSTRATE=BULK 0
+ NWEL    =  3   DATATYPE 0
+ DIFF    =  1   DATATYPE 0
+ TG      =  37  DATATYPE 0
+ PO1     =  41  DATATYPE 0                              
+ PPLUS   =  11  DATATYPE 0
+ SAB     =  36  DATATYPE 0
+ CONT    =  39  DATATYPE 0
+ ME1     =  46  DATATYPE 0 
+ VI1     =  47  DATATYPE 0
+ ME2     =  48  DATATYPE 0
+ VI2     =  49  DATATYPE 0
+ ME3     =  50  DATATYPE 0
+ PAD     =  66  DATATYPE 0
+ ESD     =  31  DATATYPE 0
+ PESD    =  32  DATATYPE 0
+ IOID    =  91  DATATYPE 0     ;IO ID mark layer
+ 
+CONNECT-LAYER= MOSSD PICK ME1 ME2 ME3    
+*END
+
+*OPERATION
+;
+NOT BULK NWEL PWELL
+;
+AND DIFF   IOID IODIF
+AND PO1    IOID IOPO
+AND NWEL   IOID IONW
+AND SAB    IOID IOSAB
+;
+SEL IODIF  OVERLAP IOSAB SABDIF
+SEL SABDIF OUTSIDE PO1   DIFRES
+NOT IODIF  DIFRES        DIFMOS
+;
+AND IODIF  NWEL   DIFNW 
+AND IODIF  PWELL  DIFPS
+;
+AND DIFPS PPLUS PTAP
+AND DIFNW PPLUS PDIF
+NOT DIFPS PPLUS NDIF
+NOT DIFNW PPLUS NTAP
+;
+OR PTAP NTAP PICK 
+;
+NOT PDIF IOPO PSD
+NOT NDIF IOPO NSD
+;
+AND IOPO PDIF   PGATE
+AND IOPO NDIF   NGATE
+AND IOPO IODIF  GATE
+;
+;
+SEL IOPO OUTSIDE IODIF RPO
+SEL RPO  OVERLAP IOSAB   RESPO ;(resistor POLY)
+; 
+AND CONT IOPO   POLCNT
+AND CONT IODIF  DIFCNT 
+;
+SEL PSD  OVERLAP  SAB  PDA
+SEL PDA  TOUCH  GATE  PD
+
+SEL NSD  OVERLAP  SAB  NDA
+SEL NDA  TOUCH  GATE  ND
+
+OR  PD  ND  DRAIN
+
+NOT  PSD  PD  PS 
+NOT  NSD  ND  NS
+OR  PS  NS  SOURCE
+AND  DIFCNT  DRAIN  DDIFCNT
+AND  DIFCNT  SOURCE  SDIFCNT
+;
+SEL  SOURCE  ENCLOSE  DIFCNT  WSOURCE
+NOT  SOURCE  WSOURCE  NSOURCE
+
+SEL  GATE  TOUCH  NSOURCE  CASGATE
+SEL  DRAIN  TOUCH   CASGATE  CDRAIN
+SEL  SAB  OVERLAP  DRAIN  ISDRAIN
+SEL  ISDRAIN  OVERLAP  CDRAIN  ADRAIN
+NOT  ISDRAIN  ADRAIN  SABCAS
+;
+NOT DIFMOS GATE MOSSD  ;(MOS source and drain side)
+;
+CONNECT MOSSD  ME1 BY CONT
+CONNECT PICK   ME1 BY CONT
+CONNECT ME1   ME2 BY VI1
+CONNECT ME2   ME3 BY VI2
+;
+SEL MOSSD CONN PICK MOSS 
+NOT MOSSD MOSS MOSD1
+;
+;
+;
+;------ 5.1 General ESD design rules ------
+;
+ENC[T]   NGATE  IOPO   LT  0.001 &
+WIDTH    NGATE         LT  0.6   OUTPUT E513     45 ;(5V NMOS )
+ENC[T]   PGATE  IOPO   LT  0.001 &
+WIDTH    PGATE         LT  0.6   OUTPUT E514     45 ;(5V PMOS)
+EXT[TO]  DDIFCNT GATE  LT  2.0   OUTPUT E5181    45 
+EXT[TO]  SDIFCNT GATE  LT  0.6   OUTPUT E5182    45 ;(FOR 5V  device)
+ENC[TO]  DDIFCNT IODIF LT  2.0   OUTPUT E519     45
+;
+;------ ESD layer layout rules ------
+;
+WIDTH    ESD           LT  0.8   OUTPUT E521     45
+EXT[H]   ESD           LT  0.8   OUTPUT E522     45
+ENC[T]  NDIF  ESD      LT  0.5   OUTPUT E523     45
+EXT[T]  ESD   DIFF     LT  0.5   OUTPUT E524     45
+;
+;------ SAB ESD design rules ------
+;
+;
+;WIDTH    IOSAB            LT  0.8       OUTPUT E531     45;(refer logic35 TLR)
+;EXT      IOSAB            LT  0.8       OUTPUT E532     45;(refer logic35 TLR)
+;ENC[T]   IODIF  IOSAB     LT  0.3       OUTPUT E533     45;(refer logic35 TLR)
+INT[T]   GATE   IOSAB      LT  0.03      OUTPUT E534     45
+EXT      IOSAB  DIFF       LT  0.5       OUTPUT E535     45
+EXT[TO]  DIFCNT IOSAB      LT  0.3       OUTPUT E536     45
+WIDTH    SABCAS            LT  1.73      OUTPUT E537     45
+
+;
+;------  ESD Guideline rules ------
+;
+WIDTH    PICK          LT  3     OUTPUT E5412     45
+EXT[TO]  IONW    PTAP  LT  3     OUTPUT E543      45
+ENC[TO]  NTAP    IONW  LT  1     OUTPUT E544      45
+ENC[TO]  DDIFCNT   ME1   LT  2.0   OUTPUT E545      45
+
+;
+;------ Cascode structure and PESD implant rules ------
+;
+SEL IOSAB  OVERLAP PESD PESAB
+;
+EXT[TO]   DDIFCNT  GATE   LT  2.0       OUTPUT E551     45
+EXT[TO]   DDIFCNT  PESAB  LT  0.3       OUTPUT E552     45
+WIDTH     PESAB         LT  1.73      OUTPUT E553     45
+INT[T]    GATE   PESAB  LT  0.03      OUTPUT E554     45
+EXT[TO]   GATE   PESD   LT  1.0       OUTPUT E555     45
+ENC[T]    PESD   IODIF  LT  0.5       OUTPUT E556     45
+ENC[TO]   DDIFCNT  PESD   LT  1.0       OUTPUT E557     45
+
+*END
+
+

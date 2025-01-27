@@ -1,0 +1,19 @@
+
+//include "/home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic018/models/spectre/ms018_v1p7_spe.lib" section=tt
+
+// *SCHMITT TRIGGER
+parameters vdd=3.3 cload=10f
+
+subckt schmitt_trigger dd gnd in out
+	MP1  (net2 in   dd   dd) p33 w=w1 	l=l1
+	MP2  (out1 in   net2  dd) p33 w=w2 	l=l2
+	MP3  (gnd out1  net2  dd) p33 w=w3 	l=l3 
+
+	MN1  (net1 in  gnd  gnd  ) n33 w=w4 	l=l4
+	MN2  (out1 in  net1 gnd  ) n33 w=w5 	l=l5
+	MN3  (dd out1  net1 gnd  ) n33 w=w6   l=l6
+	
+	MP4  (out out1  dd   dd)  p33 w=1.0 	l=0.3 
+	MN4  (out out1  gnd  gnd) n33 w=0.5 	l=0.35
+
+ends schmitt_trigger 

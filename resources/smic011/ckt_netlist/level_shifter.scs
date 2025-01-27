@@ -1,0 +1,20 @@
+
+//include "/home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic018/models/spectre/ms018_v1p7_spe.lib" section=tt
+
+// *LEVEL SHIFTER
+parameters vddl=1.2 vddh=3.3 cload=100f
+
+subckt level_shifter ddh ddl gnd in out
+	MP1  (an in   ddl  ddl) p12 w=w1 	l=l1
+	MN1  (an in   gnd  gnd) n12 w=w2 	l=l2
+
+
+	MP2  (qn q   ddh  ddh) p33  w=w3 	l=l3
+	MP3  (q  qn  ddh  ddh) p33  w=w3 	l=l3 
+	MN2  (qn in  gnd  gnd ) n33 w=w4 	l=l4
+	MN3  (q  an  gnd  gnd ) n33 w=w4        l=l4
+	
+	MP4  (out qn  ddh  ddh)  p33 w=w5 	l=l5 
+	MN4  (out qn  gnd  gnd)  n33 w=w6 	l=l6
+
+ends level_shifter 

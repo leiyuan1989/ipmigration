@@ -1,0 +1,21 @@
+Starting Single Run, Sweeps and Corners...
+
+Current time: Mon Sep  3 08:26:04 2018 
+Best design point: 1
+Design specs: 
+	TRAN	corner	Nominal - 
+	Swing		1.008	Yes
+	SettlingTime		7.763n	Yes
+	RelativeSwingPercent		77.51	Yes
+	PhaseMargin		20.71	Yes
+Design parameters: 
+	rload		1K
+	cload		100f
+	vdd		1.3
+	nomGain		0
+
+Interactive.1
+Number of points completed: 1
+Number of simulation errors: 0
+Interactive.1 completed. 
+Current time: Mon Sep  3 08:26:15 2018 

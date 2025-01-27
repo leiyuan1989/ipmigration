@@ -1,0 +1,126 @@
+* 
+* No part of this file can be released without the consent of SMIC.
+*
+* Note: SMIC recommends that users set VNTOL=1E-9 at .option for more smooth convergence.
+******************************************************************************************
+* 0.11um Mixed Signal 1P8M with MIM Salicide 1.2V/3.3V RF SPICE Model (for HSPICE only)  *
+******************************************************************************************
+*
+* Release version    : 1.14
+*
+* Release date       : 03/30/2016
+*
+* Simulation tool    : Synopsys Star-HSPICE version 2006.09-SP1
+*
+*
+*  MOM Capacitor   :
+*
+*        *------------------------------------------------* 
+*        | mom subckt   |  mom_ckt_rf   |  mom_ckt_rf_3t  |
+*        *------------------------------------------------*
+*
+*
+* The parameter "bm" define the bottom metal layer of MOM, and it can only be 1, 2, 3, 4 or 5; 
+* The parameter "tm" define the top metal layer of MOM", and it can only be 3, 4, 5, 6 or 7;
+* (tm-bm+1) must larger than 3; all MOM's architecture are listed as below:
+*
+*        *-----------------------------------------------*
+*        |   bm   |   tm   |  Architecture Definition    |
+*        *-----------------------------------------------*
+*        |    1   |    3   |  metal-1 stack to metal-3   |
+*        *-----------------------------------------------*
+*        |    1   |    4   |  metal-1 stack to metal-4   |
+*        *-----------------------------------------------*
+*        |    1   |    5   |  metal-1 stack to metal-5   |
+*        *-----------------------------------------------*
+*        |    1   |    6   |  metal-1 stack to metal-6   |
+*        *-----------------------------------------------*
+*        |    1   |    7   |  metal-1 stack to metal-7   |
+*        *-----------------------------------------------*
+*        |    2   |    4   |  metal-2 stack to metal-4   |
+*        *-----------------------------------------------*
+*        |    2   |    5   |  metal-2 stack to metal-5   |
+*        *-----------------------------------------------*
+*        |    2   |    6   |  metal-2 stack to metal-6   |
+*        *-----------------------------------------------*
+*        |    2   |    7   |  metal-2 stack to metal-7   |
+*        *-----------------------------------------------*
+*        |    3   |    5   |  metal-3 stack to metal-5   |
+*        *-----------------------------------------------*
+*        |    3   |    6   |  metal-3 stack to metal-6   |
+*        *-----------------------------------------------*
+*        |    3   |    7   |  metal-3 stack to metal-7   |
+*        *-----------------------------------------------*
+*        |    4   |    6   |  metal-4 stack to metal-6   |
+*        *-----------------------------------------------*
+*        |    4   |    7   |  metal-4 stack to metal-7   |
+*        *-----------------------------------------------*
+*        |    5   |    7   |  metal-5 stack to metal-7    |
+*        *-----------------------------------------------*
+*
+*
+****************************************************************
+* 0.11um MOM Capacitor 
+****************************************************************
+* 1=port1, 2=port2
+.subckt mom_ckt_rf 1 2 lr=l nf=n bm=bmm tm=tmm
+* mom capacitor model parameters
+.param
++ctc1      = 18.7176E-6                dt    = temper
++cvc1      = -15.7774e-6               cvc2  = -0.167691e-6       
++tcoef     = '1.0+ctc1*(dt-25.0)'
++Cox       = '(((0.0068*pwr(bm,-0.38))*nf*lr*1e6+(-0.125*bm+0.8))*(bm>1)+(0.01*nf*lr*1e6+0.033)*(bm==1))'
++Cf        = '((0.1376*(tm-bm+1)-0.048+(bm>1)*0.03)*nf*lr*1e6*0.9+(-1.06*(tm-bm+1)+0.17))'
++Ls_rf     = 'max(0.57*pwr(Cf,-0.241)*1E-9,1E-12)'
++Cf_rf     = 'max(Cf*(1+DMOM_RF)*1e-15,1e-18)'
++Rs_rf     = 'max(37*pwr(Cf,-0.92)+0.34,1E-5)'
++Rsub1_rf  = 'max(5400*pwr(Cox,-0.75),1E-3)'
++Csub1_rf  = 1e-15  
++Cox1_rf   = 'max(Cox*1e-15,1E-18)'   
++Rsub2_rf  = 'max(5400*pwr(Cox,-0.75),1E-3)'
++Csub2_rf  = 1e-15  
++Cox2_rf   = 'max(Cox*1e-15,1E-18)'
+* equivalent circuit
+Ls 1 11    Ls_rf        
+Cf 22 2    'Cf_rf*tcoef*(1.0+v(22,2)*(cvc1+cvc2*v(22,2)))'
+Rs 11 22   Rs_rf    
+Rsub1 10 0 Rsub1_rf           
+Csub1 10 0 Csub1_rf
+Cox1 1 10  Cox1_rf  
+Rsub2 20 0 Rsub2_rf 
+Csub2 20 0 Csub2_rf        
+Cox2 2 20  Cox2_rf  
+.ends mom_ckt_rf
+****************************************************************
+* 0.11um MOM Capacitor (three terminal)
+****************************************************************
+* 1=port1, 2=port2, Nwell is N type well
+.subckt mom_ckt_rf_3t 1 2 Nwell lr=l nf=n bm=bmm tm=tmm
+* mom capacitor model parameters
+.param
++ctc1      = 18.7176E-6                dt    = temper
++cvc1      = -15.7774e-6               cvc2  = -0.167691e-6       
++tcoef     = '1.0+ctc1*(dt-25.0)'
++Cox       = '(((0.0068*pwr(bm,-0.38))*nf*lr*1e6+(-0.125*bm+0.8))*(bm>1)+(0.01*nf*lr*1e6+0.033)*(bm==1))'
++Cf        = '((0.1376*(tm-bm+1)-0.048+(bm>1)*0.03)*nf*lr*1e6*0.9+(-1.06*(tm-bm+1)+0.17))'
++Ls_rf     = 'max(0.57*pwr(Cf,-0.241)*1E-9,1E-12)'
++Cf_rf     = 'max(Cf*(1+DMOM_RF)*1e-15,1e-18)'
++Rs_rf     = 'max(37*pwr(Cf,-0.92)+0.34,1E-5)'
++Rsub1_rf  = 'max(5400*pwr(Cox,-0.75),1E-3)'
++Csub1_rf  = 1e-15  
++Cox1_rf   = 'max(Cox*1e-15,1E-18)'   
++Rsub2_rf  = 'max(5400*pwr(Cox,-0.75),1E-3)'
++Csub2_rf  = 1e-15  
++Cox2_rf   = 'max(Cox*1e-15,1E-18)'
+* equivalent circuit
+Ls 1 11    Ls_rf        
+Cf 22 2    'Cf_rf*tcoef*(1.0+v(22,2)*(cvc1+cvc2*v(22,2)))'
+Rs 11 22   Rs_rf    
+Rsub1 10 Nwell Rsub1_rf           
+Csub1 10 Nwell Csub1_rf
+Cox1 1 10  Cox1_rf  
+Rsub2 20 Nwell Rsub2_rf 
+Csub2 20 Nwell Csub2_rf        
+Cox2 2 20  Cox2_rf  
+.ends mom_ckt_rf_3t
+

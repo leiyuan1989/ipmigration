@@ -1,0 +1,13 @@
+*
+* No part of this file can be released without the consent of SMIC.
+*
+
+This file indicates the simulation tool version we used to generate this version of the SPICE models. If your simulator is older than what we used, mistake may occure. We suggest that users to use the same version or the newer version of the simulators specified below:
+
+A. Synopsys HSPICE version -------- C-2009.09
+C. Cadence spectre version -------- V6.2.1
+
+Special Notice: 
+1. For this 40LL spice model, device sizes need to be shrinked(*0.9), option scale=0.9 is alrealy set in .lib file. 
+2. If you want to run circuit simulation automatically in the ADE environment of Spectre, pls remember to change scale option from 1 to 0.9 by yourself.
+For this simulation doubt, pls contact Cadence or SMIC.

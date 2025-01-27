@@ -1,0 +1,517 @@
+
+Spectre (R) Circuit Simulator
+Version 23.1.0.063 64bit -- 10 Jun 2023
+Copyright (C) 1989-2023 Cadence Design Systems, Inc. All rights reserved worldwide. Cadence and Spectre are registered trademarks of Cadence Design Systems, Inc. All others are the property of their respective holders.
+
+Includes RSA BSAFE(R) Cryptographic or Security Protocol Software from RSA Security, Inc.
+
+User: leiyuan   Host: icetserver01   HostID: 7F0100   PID: 289673
+Memory  available: 387.2375 GB  physical: 404.9105 GB
+Linux   : CentOS Linux release 7 (Core)
+CPU Type: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+        Socket: Processors [Frequency] (Hyperthreaded Processor)
+        0:       0 [885.7] ( 80 ),  4 [920.2] ( 84 ),  8 [877.5] ( 88 )
+                12 [807.2] ( 92 ), 16 [799.9] ( 96 ), 20 [875.2] ( 100 )
+                24 [799.9] ( 104 ), 28 [1007.6] ( 108 ), 32 [909.6] ( 112 )
+                36 [881.3] ( 116 ), 40 [819.3] ( 120 ), 44 [841.6] ( 124 )
+                48 [846.1] ( 128 ), 52 [804.4] ( 132 ), 56 [995.8] ( 136 )
+                60 [799.9] ( 140 ), 64 [800.1] ( 144 ), 68 [875.8] ( 148 )
+                72 [993.2] ( 152 ), 76 [800.1] ( 156 )
+        1:       1 [799.9] ( 81 ),  5 [800.6] ( 85 ),  9 [799.9] ( 89 )
+                13 [876.8] ( 93 ), 17 [799.9] ( 97 ), 21 [800.1] ( 101 )
+                25 [804.4] ( 105 ), 29 [800.1] ( 109 ), 33 [799.9] ( 113 )
+                37 [799.9] ( 117 ), 41 [799.9] ( 121 ), 45 [800.1] ( 125 )
+                49 [800.1] ( 129 ), 53 [799.9] ( 133 ), 57 [847.5] ( 137 )
+                61 [799.9] ( 141 ), 65 [800.1] ( 145 ), 69 [800.1] ( 149 )
+                73 [799.9] ( 153 ), 77 [799.9] ( 157 )
+        2:       2 [800.1] ( 82 ),  6 [1715.2] ( 86 ), 10 [814.9] ( 90 )
+                14 [799.9] ( 94 ), 18 [811.0] ( 98 ), 22 [800.1] ( 102 )
+                26 [799.9] ( 106 ), 30 [800.1] ( 110 ), 34 [799.9] ( 114 )
+                38 [799.9] ( 118 ), 42 [800.2] ( 122 ), 46 [799.9] ( 126 )
+                50 [799.9] ( 130 ), 54 [800.1] ( 134 ), 58 [799.9] ( 138 )
+                62 [800.1] ( 142 ), 66 [799.9] ( 146 ), 70 [838.1] ( 150 )
+                74 [800.1] ( 154 ), 78 [799.9] ( 158 )
+        3:       3 [1361.1] ( 83 ),  7 [1753.7] ( 87 ), 11 [799.9] ( 91 )
+                15 [800.1] ( 95 ), 19 [812.4] ( 99 ), 23 [800.1] ( 103 )
+                27 [799.9] ( 107 ), 31 [800.1] ( 111 ), 35 [800.1] ( 115 )
+                39 [847.4] ( 119 ), 43 [799.9] ( 123 ), 47 [800.1] ( 127 )
+                51 [812.6] ( 131 ), 55 [800.1] ( 135 ), 59 [800.1] ( 139 )
+                63 [858.5] ( 143 ), 67 [826.3] ( 147 ), 71 [799.9] ( 151 )
+                75 [800.1] ( 155 ), 79 [799.9] ( 159 )
+        
+System load averages (1min, 5min, 15min) : 0.3 %, 0.6 %, 0.4 %
+Hyperthreading is enabled
+HPC is enabled
+
+
+Simulating `/data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/smic011/simResult/test_diffamp1_dc2.scs' on icetserver01 at 10:44:11 AM, Thur Jan 9, 2025 (process id: 289673).
+Current working directory: /data/icdesign/ams/ip_migration/users/leiyuan/cds
+Environment variable:
+    SPECTRE_DEFAULTS=-E -f psfbin
+Command line:
+    /opt/icdesign/CAD/cadence/SPECTRE231/tools/bin/spectre -64  \
+        /data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/smic011/simResult/test_diffamp1_dc2.scs  \
+        +escchars =log  \
+        /data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/smic011/simResult/psf/outdc2_spectre.out  \
+        -format psfascii -raw  \
+        /data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/smic011/simResult/psf  \
+        ++aps=moderate +mt=32 +lqtimeout 900 -maxw 5 -maxn 5 +logstatus
+
+Licensing Information:
+[10:44:12.287586] Configured Lic search path (22.01-s002): 5280@10.6.64.182:27001@10.6.126.11
+
+Licensing Information:
+[10:44:12.378539] Periodic Lic check successful
+
+Loading /opt/icdesign/CAD/cadence/SPECTRE231/tools.lnx86/cmi/lib/64bit/5.0/libinfineon_sh.so ...
+Loading /opt/icdesign/CAD/cadence/SPECTRE231/tools.lnx86/cmi/lib/64bit/5.0/libphilips_sh.so ...
+Loading /opt/icdesign/CAD/cadence/SPECTRE231/tools.lnx86/cmi/lib/64bit/5.0/libsparam_sh.so ...
+Loading /opt/icdesign/CAD/cadence/SPECTRE231/tools.lnx86/cmi/lib/64bit/5.0/libstmodels_sh.so ...
+Reading file:  /data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/smic011/simResult/test_diffamp1_dc2.scs
+Reading file:  /opt/icdesign/CAD/cadence/SPECTRE231/tools.lnx86/spectre/etc/configs/spectre.cfg
+Reading file:  /usr/include/stdc-predef.h
+Reading file:  /data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/smic018/models/spectre/ms018_v1p7_spe.lib
+Reading file:  /data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/smic018/models/spectre/ms018_v1p7_spe.mdl
+Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic018/ckt_netlist/twoStageOpamp2.scs
+Time for NDB Parsing: CPU = 261.56 ms, elapsed = 798.04 ms.
+Time accumulated: CPU = 452.553 ms, elapsed = 798.045 ms.
+Peak resident memory used = 106 Mbytes.
+
+Time for Elaboration: CPU = 40.075 ms, elapsed = 40.256 ms.
+Time accumulated: CPU = 492.94 ms, elapsed = 838.613 ms.
+Peak resident memory used = 112 Mbytes.
+
+
+Notice from spectre during hierarchy flattening.
+    The value 'psf' specified for the 'checklimitdest' option will no longer be supported in future releases. Use 'spectre -h' to see other recommended values for the 'checklimitdest' option.
+
+
+Time for EDB Visiting: CPU = 1.845 ms, elapsed = 2.46406 ms.
+Time accumulated: CPU = 495.008 ms, elapsed = 841.299 ms.
+Peak resident memory used = 113 Mbytes.
+
+
+Notice from spectre during initial setup.
+    Multithreading is disabled due to the size of the design being too small.
+
+
+Global user options:
+            vabstol = 1e-06
+            iabstol = 1e-12
+               temp = 27
+               gmin = 1e-12
+             rforce = 1
+           maxnotes = 5
+           maxwarns = 5
+             digits = 5
+               cols = 80
+             pivrel = 0.001
+           sensfile = ../psf/sens.output
+     checklimitdest = psf
+               save = allpub
+     subcktprobelvl = 2
+             reltol = 0.001
+               tnom = 27
+             scalem = 1
+              scale = 1e-06
+
+Scoped user options:
+
+Circuit inventory:
+              nodes 10
+            bsim3v3 8     
+          capacitor 2     
+            isource 1     
+           resistor 3     
+            vsource 3     
+
+Analysis and control statement inventory:
+                 dc 1     
+
+Output statements:
+             .probe 0     
+           .measure 0     
+               save 0     
+
+
+Notice from spectre during initial setup.
+    Fast APS enabled.
+
+Time for parsing: CPU = 8.511 ms, elapsed = 11.2951 ms.
+Time accumulated: CPU = 503.757 ms, elapsed = 853.317 ms.
+Peak resident memory used = 115 Mbytes.
+
+~~~~~~~~~~~~~~~~~~~~~~
+Pre-Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~
+   -   (Fast APS) Multi-threading. The recommended number of threads is 1, consider adding +mt=1 on command line.
+~~~~~~~~~~~~~~~~~~~~~~
+
+***************************************
+DC Analysis `outdc2': v_in = (0 -> 3.3)
+***************************************
+
+Opening the PSFASCII file /data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/smic011/simResult/psf/outdc2.dc ...
+Important parameter values:
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    gmindc = 1 pS
+    rabsshort = 1 mOhm
+
+Notice from spectre at v_in = 0 during DC analysis `outdc2'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(Xopamp.net1) = -3.08497 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+
+    outdc2: v_in = 90e-03      (2.73 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 100e-03     (3.03 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 110e-03     (3.33 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 120e-03     (3.64 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 130e-03     (3.94 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 140e-03     (4.24 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 150e-03     (4.55 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 160e-03     (4.85 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 170e-03     (5.15 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 180e-03     (5.45 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 190e-03     (5.76 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 200e-03     (6.06 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 210e-03     (6.36 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 220e-03     (6.67 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 230e-03     (6.97 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 240e-03     (7.27 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 250e-03     (7.58 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 260e-03     (7.88 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 270e-03     (8.18 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 280e-03     (8.48 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 290e-03     (8.79 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 300e-03     (9.09 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 310e-03     (9.39 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 320e-03      (9.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 330e-03       (10 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 340e-03     (10.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 350e-03     (10.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 360e-03     (10.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 370e-03     (11.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 380e-03     (11.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 390e-03     (11.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 400e-03     (12.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 410e-03     (12.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 420e-03     (12.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 430e-03       (13 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 440e-03     (13.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 450e-03     (13.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 460e-03     (13.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 470e-03     (14.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 480e-03     (14.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 490e-03     (14.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 500e-03     (15.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 510e-03     (15.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 520e-03     (15.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 530e-03     (16.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 540e-03     (16.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 550e-03     (16.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 560e-03       (17 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 570e-03     (17.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 580e-03     (17.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 590e-03     (17.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 600e-03     (18.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 610e-03     (18.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 620e-03     (18.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 630e-03     (19.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 640e-03     (19.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 650e-03     (19.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 660e-03       (20 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 670e-03     (20.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 680e-03     (20.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 690e-03     (20.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 700e-03     (21.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 710e-03     (21.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 720e-03     (21.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 730e-03     (22.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 740e-03     (22.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 750e-03     (22.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 760e-03       (23 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 770e-03     (23.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 780e-03     (23.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 790e-03     (23.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 800e-03     (24.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 810e-03     (24.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 820e-03     (24.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 830e-03     (25.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 840e-03     (25.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 850e-03     (25.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 860e-03     (26.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 870e-03     (26.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 880e-03     (26.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 890e-03       (27 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 900e-03     (27.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 910e-03     (27.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 920e-03     (27.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 930e-03     (28.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 940e-03     (28.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 950e-03     (28.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 960e-03     (29.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 970e-03     (29.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 980e-03     (29.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 990e-03       (30 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1           (30.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.01        (30.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.02        (30.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.03        (31.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.04        (31.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.05        (31.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.06        (32.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.07        (32.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.08        (32.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.09          (33 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.1         (33.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.11        (33.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.12        (33.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.13        (34.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.14        (34.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.15        (34.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.16        (35.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.17        (35.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.18        (35.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.19        (36.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.2         (36.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.21        (36.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.22          (37 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.23        (37.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.24        (37.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.25        (37.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.26        (38.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.27        (38.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.28        (38.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.29        (39.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.3         (39.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.31        (39.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.32          (40 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.33        (40.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.34        (40.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.35        (40.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.36        (41.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.37        (41.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.38        (41.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.39        (42.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.4         (42.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.41        (42.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.42          (43 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.43        (43.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.44        (43.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.45        (43.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.46        (44.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.47        (44.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.48        (44.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.49        (45.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.5         (45.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.51        (45.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.52        (46.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.53        (46.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.54        (46.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.55          (47 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.56        (47.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.57        (47.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.58        (47.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.59        (48.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.6         (48.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.61        (48.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.62        (49.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.63        (49.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.64        (49.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.65          (50 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.66        (50.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.67        (50.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.68        (50.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.69        (51.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.7         (51.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.71        (51.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.72        (52.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.73        (52.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.74        (52.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.75          (53 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.76        (53.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.77        (53.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.78        (53.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.79        (54.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.8         (54.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.81        (54.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.82        (55.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.83        (55.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.84        (55.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.85        (56.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.86        (56.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.87        (56.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.88          (57 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.89        (57.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.9         (57.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.91        (57.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.92        (58.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.93        (58.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.94        (58.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.95        (59.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.96        (59.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.97        (59.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.98          (60 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 1.99        (60.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2           (60.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.01        (60.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.02        (61.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.03        (61.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.04        (61.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.05        (62.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.06        (62.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.07        (62.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.08          (63 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.09        (63.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.1         (63.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.11        (63.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.12        (64.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.13        (64.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.14        (64.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.15        (65.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.16        (65.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.17        (65.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.18        (66.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.19        (66.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.2         (66.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.21          (67 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.22        (67.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.23        (67.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.24        (67.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.25        (68.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.26        (68.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.27        (68.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.28        (69.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.29        (69.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.3         (69.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.31          (70 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.32        (70.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.33        (70.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.34        (70.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.35        (71.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.36        (71.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.37        (71.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.38        (72.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.39        (72.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.4         (72.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.41          (73 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.42        (73.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.43        (73.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.44        (73.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.45        (74.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.46        (74.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.47        (74.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.48        (75.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.49        (75.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.5         (75.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.51        (76.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.52        (76.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.53        (76.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.54          (77 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.55        (77.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.56        (77.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.57        (77.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.58        (78.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.59        (78.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.6         (78.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.61        (79.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.62        (79.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.63        (79.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.64          (80 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.65        (80.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.66        (80.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.67        (80.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.68        (81.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.69        (81.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.7         (81.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.71        (82.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.72        (82.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.73        (82.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.74          (83 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.75        (83.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.76        (83.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.77        (83.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.78        (84.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.79        (84.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.8         (84.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.81        (85.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.82        (85.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.83        (85.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.84        (86.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.85        (86.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.86        (86.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.87          (87 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.88        (87.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.89        (87.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.9         (87.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.91        (88.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.92        (88.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.93        (88.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.94        (89.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.95        (89.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.96        (89.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.97          (90 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.98        (90.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 2.99        (90.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3           (90.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.01        (91.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.02        (91.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.03        (91.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.04        (92.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.05        (92.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.06        (92.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.07          (93 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.08        (93.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.09        (93.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.1         (93.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.11        (94.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.12        (94.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.13        (94.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.14        (95.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.15        (95.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.16        (95.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.17        (96.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.18        (96.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.19        (96.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.2           (97 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.21        (97.3 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.22        (97.6 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.23        (97.9 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.24        (98.2 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.25        (98.5 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.26        (98.8 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.27        (99.1 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.28        (99.4 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.29        (99.7 %), step = 10e-03       (303 m%)
+    outdc2: v_in = 3.3          (100 %), step = 10e-03       (303 m%)
+
+Maximum value achieved for any signal of each quantity: 
+V: V(in) = 3.3 V
+I: I(vdd:p) = 20.32 uA
+DC simulation time: CPU = 128.77 ms, elapsed = 181.934 ms.
+
+Notice from spectre at v_in = 3.3 during DC analysis `outdc2'.
+    The value of parameter 'v_in' has been reset to the original value 0.
+
+Total time required for dc analysis `outdc2': CPU = 128.879 ms, elapsed = 182.039 ms, util. = 70.8%.
+Time accumulated: CPU = 642.112 ms, elapsed = 1.04656 s.
+Peak resident memory used = 118 Mbytes.
+
+Licensing Information:
+Lic Summary:
+[10:44:12.392107] Cdslmd servers:5280@10.6.64.182:27001@10.6.126.11
+[10:44:12.392178] Feature usage summary:
+[10:44:12.392178] Virtuoso_Multi_mode_Simulation
+
+
+Aggregate audit (10:44:12 AM, Thur Jan 9, 2025):
+Time used: CPU = 645 ms, elapsed = 1.05 s, util. = 61.4%.
+Time spent in licensing: elapsed = 48.9 ms.
+Peak memory used = 118 Mbytes.
+Simulation started at: 10:44:11 AM, Thur Jan 9, 2025, ended at: 10:44:12 AM, Thur Jan 9, 2025, with elapsed time (wall clock): 1.05 s.
+spectre completes with 0 errors, 0 warnings, and 6 notices.

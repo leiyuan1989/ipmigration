@@ -1,0 +1,32 @@
+//
+`include "discipline.h"
+`include "constants.h"
+
+module aigg_hdl (g, s);
+inout g, s;
+electrical g, s;
+parameter real leff=0.0;
+parameter real weff=0.0;
+parameter real tox = 0;
+parameter real gcarc = 0;
+parameter real gcevgc = 0;
+parameter real gcetc = 0;
+parameter real gcete = 0;
+parameter real gcie = 0;
+
+real vgs, abvgs, vgscof, areacof, expcof, toxcof, phycof, igs, igstemp, flag;
+   analog
+	begin
+
+	vgs = V(g, s);
+    	abvgs = abs(vgs);
+    	vgscof = vgs*pow(abvgs,gcie);
+    	toxcof = gcetc*pow(tox,gcete);
+    	expcof = exp(gcevgc*vgs-toxcof);
+    	areacof = gcarc*weff*leff;
+    	phycof = areacof*expcof;        
+       igstemp = 2*vgscof*phycof;
+	I(g, s) <+ igstemp;
+  
+	end
+endmodule

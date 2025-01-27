@@ -1,0 +1,26 @@
+item,value,comment
+log_flag,1,"On: 1, Off: 0"
+logfilename_prefix,Dynamic_comparator_,"log file name prefix: end with ""_"""
+op_targets_name,,
+op_targets_value,,
+cheap_targets_name,"Offse voltage [mV],Vop risetime [ns],Vop falltime [ns],Von risetime [ns],Von falltime [ns],Delay rising edge [ns],Delay falling edge [ns]",
+cheap_targets_value,"0.1,1,1,1,1,1,1",
+expensive_targets_name,,
+expensive_targets_value,,
+targets_min_max_type,"-1,-1,-1,-1,-1,-1,-1","minimize: -1, maximize: 1"
+capacitance_range,,"min:max:step,  unit: pF"
+inductance_range,,"min:max:step,  unit: nH"
+resistance_range,,"min:max:step,  unit: kohm"
+current_source_range,,"min:max:step,  unit: uA"
+voltage_source_range,,"min:max:step,  unit: V"
+W_L_ratios_range,"1:200:0.5,1:200:0.5,1:200:0.5,1:200:0.5,1:10:0.5,1:200:0.5,1:200:0.5",min:max:step
+lengths_values,"0.2,0.2,0.2,0.2,0.2,0.2,0.2",unit: um
+corner_list,"tt","tt, ff, ss, fnsp, snfp"
+objective_index,,"if not apply, pls leave blank"
+simulation_circuit_func,simulation_dynamic_comparator,"opamp, levelshifter, schmitt_trigger, comparator"
+num_generation,20,
+population_size,20,
+num_offsprings,20,
+seed,66,
+DNN_mode,0,"On: 1, Off: 0"
+Optimizer_type,USGA3,"USGA3, NSGA2, RVEA"
