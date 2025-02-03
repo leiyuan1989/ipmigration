@@ -1,0 +1,97 @@
+PO.W.1    :  Width  >=  0.04   
+PO.W.2    :  Channel length of 2.5V MOS (for 2.5V overdrive to 3.3V ,  please refer to section OD25_33 Layout Rules)  >=  0.27   
+PO.W.3    :  Channel length of 3.3V MOS  >=  ^PO_W_3 um   
+PO.W.4    :  Channel length of 1.8 V MOS (For 2.5V underdrive to 1.8V ,  please refer to section OD25_18 Layout Rules. For 1.8V underdrive to 1.5V ,  please refer to section OD18_15 Layout Rules.)  >=  0.15   
+PO.W.6    :  Channel length of core device for GS (This check doesn't include the regions covered by layers of NT_N ,  SDI ,  and VAR.)  =  0.04 / 0.045 / 0.05 / 0.06 / 0.07 / 0.08~10   
+PO.W.7    :  Width of 45-degree FIELD PO (except PO fuse element ,  POFUSE ,  156;0). (Please make sure the vertex of 45 degree pattern is on 5nm grid (refer to the rule ,  G.6U ,  in section 3.7))  >=  0.17   
+PO.S.1    :  Space  >=  0.10   
+PO.S.3    :  {GATE inside OD2} space in the same OD  >=  0.22   
+PO.S.4    :  FIELD PO space to OD (except CSRDMY (166;0) region)  >=  0.03   
+PO.S.4.1  :  Gate space [L-shape OD and L-shape PO enclosed area  <  0.0121 um2 ]  >=  0.11   
+PO.S.6    :  L-shape PO space to OD when PO and OD are in the same MOS L-shape PO length (R1)  <=  0.06 um]  >=  0.04   
+PO.S.6.1  :  L-shape PO space to OD when PO and OD are in the same MOS [L-shape PO length  >  0.06 um (R1) and L-shape PO length  <=  0.1 um (R1)]  >=  0.05   
+PO.S.7    :  Space if at least one {PO OR SR_DPO} width  >  0.12 um ,  and the {PO OR SR_DPO} parallel run length  >  0.14 um (individual projection).  >=  0.16   
+PO.S.9    :  Space [in same RPO]  >=  0.18   
+PO.S.10   :  Space at {PO OR SR_DPO} line-end (W  < 0.07 um (Q1)) in a dense-line-end configuration: If {PO OR SR_DPO} has parallel run length with opposite {PO OR SR_DPO} (measured with T1  =  0.035 um extension) along 2 adjacent edges of {PO OR SR_DPO} [any one edge  <  Q1 distance from the corner of the two edges] ,  then one of the space (S1 or S2) needs to be at least this value (This check doesn't include small jog with edge length  <  0.04 um (R))  >=  0.11   
+PO.S.16   :  Space to 45-degree bent {PO OR SR_DPO}  >=  0.17   
+PO.EX.1   :  Extension on OD (end-cap)  >=  0.09   
+PO.EX.2   :  OD extension on PO  >=  0.09   
+PO.EX.3   :  Extension on OD (end-cap) when the PO to L-shape OD (in the same MOS) space  <  0.1 um. (This check doesn't include ACTIVE jog  <=  0.02 um.)  >=  0.11   
+PO.L.1    :  Maximum PO length between two contacts ,  as well as the length from any point inside PO gate to nearest CO when the PO width <  0.08 um.(This check doesn't include ESD protection devices.)  <=  18   
+PO.A.1    :  Area (This check doesn't include the pattern filling0.04 um x 0.3 um rectangular tile)  >=  0.022   
+PO.A.2    :  Area [with all of edge length <  0.21 um]  >=  0.055   
+PO.A.3    :  Enclosed area  >=  0.04   
+PO.A.4    :  Enclosed area [with all of inner edge length <  0.21 um]  >=  0.077   
+PO.R.1    :  GATE must be a rectangle orthogonal to grid. (Both bent GATE and gate with jog are not allowed). (Except CSRDMY region)   
+PO.R.4    :  PO intersecting OD must form two or more diffusions. (Except CSRDMY region)   
+PO.R.7_V  :  Poly gates of all SRAM cells (50;0 OR 186;0) must be uni-directional in a chip. (This check doesn't include the regions covered by layer 49 (RODMY) and RAM1TDMY (160;0)) Chips on MPW or shuttles may be rotated due to this rule   
+PO.R.7_H  :  Poly gates of all SRAM cells (50;0 OR 186;0) must be uni-directional in a chip. (This check doesn't include the regions covered by layer 49 (RODMY) and RAM1TDMY (160;0)) Chips on MPW or shuttles may be rotated due to this rule   
+PO.R.6    :  H-gate that fulfills the following conditions at the same time is not allowed. [inner space  <  0.43 um (U) ,  channel length  <  0.10 um (V) ,  interconnect PO width  <  0.25 um (W) ,  and interconnect PO length  >  0.065 um(X)]   
+PO.R.8    :  It is prohibited for Floating Gate if the effective source/drain is not connected together   
+PO.R.8.SRAM:  It is prohibited for Floating Gate if the effective source/drain is not connected together   
+PO.S.2    :  The poly space range to neighboring {PO OR SR_DPO} [for channel length  <  0.06um]. It allows the violation with length ratio  <  30% on one side and one segment. The length ratio  =  violation length / device width. The 0.12 ~ 0.125 are not shrinkable. This rule is for poly CDU control (Except SRAM (186;0) region)  =  0.12 ~ 0.22 or 0.32   
+PO.S.2_SkipBoundary:  The poly space range to neighboring {PO OR SR_DPO} [for channel length  <  0.06um]. It allows the violation with length ratio  <  30% on one side and one segment. The length ratio  =  violation length / device width. The 0.12 ~ 0.125 are not shrinkable. This rule is for poly CDU control (Except SRAM (186;0) region)  =  0.12 ~ 0.22 or 0.32   
+PO.S.2.1  :  Gate space [either one channel length  >=  ^PO_S_2_1_W ]  >=  ^PO_S_2_1   
+PO.S.2.1.1__PO.EX.2.1:  Maximum OD extension on the edge gate [channel length >=  ^PO_S_2_1_1_W ] and gate space [either one channel length  >=  ^PO_S_2_1_1_W ] in core device regions  <=  ^PO_S_2_1_1 . This check doesn't include the regions covered by SR_ESD.   
+OD.W.1    :  Width  >=  ^OD_W_1   
+OD.W.2    :  Channel width of core device  >=  0.12   
+OD.W.2.1  :  Maximum channel width of core NMOS device for GS and LPG G device  <=  10 (This rule doesn't include the NT_N ,  SR_ESD ,  VAR)   
+OD.W.2.2  :  Maximum channel width for core PMOS device for GS  <=  1.5 (This rule doesn't include the NT_N ,  SR_ESD ,  VAR)   
+OD.W.3    :  Channel width of MOS [for I/O device]  >=  ^OD_W_3   
+OD.W.4    :  Min. width of 45 degree bent OD ^OD_W_4 um   
+OD.S.1    :  Space  >=  ^OD_S_1   
+OD.S.2    :  Space (inside OD2)  >=  ^OD_S_2 um   
+OD.S.3    :  Space to OD [width  >  0.12 um] if the parallel length  >=  0.14 um (P)  >=  0.10   
+OD.S.3.1  :  Space to OD [width  >  0.12 um] if the parallel length  >=  0.14 um (P1) in PO gate direction  >=  0.11   
+OD.S.4    :  Space to 45-degree bent OD  >=  0.17   
+OD.S.5    :  Space between two segments of a U-shape or an O-shape OD (notch only)  >=  0.15   
+OD.A.1    :  Area (This check doesn't include the patterns filling 0.06 um x 0.26 um rectangular tile)  >=  0.035   
+OD.A.2    :  Area [with all of edge length  <  0.21 um]  >=  0.055   
+OD.A.3    :  Enclosed area  >=  0.04   
+OD.A.4    :  Enclosed area [with all of inner edge length  <  0.21 um]  >=  0.077   
+OD.A.5    :  Maximum ACTIVE area sum of ((checking Area INTERACT PO) NOT (PO OR SR_DPO)) in same checking Area  <=  300. Checking area is defined by size 0.22um in S/D direction and 0.08um in endcap direction from gate   
+OD.L.1    :  Length of active with width  <  ^OD_L_1_W um ,  connected to butted strap  <=  ^OD_L_1 um   
+OD.L.2    :  Max. OD length between 2 CO or CO to OD line end when OD width  <=  ^OD_L_2_W um  ^OD_L_2 um   
+OD.R.1    :  OD must be fully covered by {NP OR PP} except for {(DOD OR SR_DOD) OR NWDMY}   
+CO.W.1    :  Width (maximum  =  minimum) (Except butted CO in SRAM (186;0) region only)  =  0.06   
+CO.S.1    :  Space (Except SRAM (186;0) region)  >=  0.08   
+CO.S.2    :  Space to 3-neighboring CO (distance  <  0.11 um) (Except SRAM (186;0) region)  >=  0.10   
+CO.S.2.1  :  Space [different net] (Except SRAM (186;0) region)  >=  0.11   
+CO.S.3    :  Space to GATE (Overlap of GATE is not allowed) [space  >=  0.035 um is allowed inside SRAM word line driver covered by layer 186;5 or 186;4] (Except SRAM (186;0) region)  >=  0.04   
+CO.S.4    :  {CO inside PO} space to OD (Except SRAM (186;0) region)  >=  0.05   
+CO.S.5    :  {CO inside OD} space to I/O GATE  >=  0.08   
+CO.S.5.1  :  {CO inside drain side OD} space to HVD GATE  =  ^CO_S_5_1   
+CO.S.6    :  Space to butted PP/NP edge on OD (overlap of NP/PP boundary on OD is not allowed.)  >=  0.04   
+CO.EN.1   :  Enclosure by OD (Except SRAM (186;0) region)  >=  0.01   
+CO.EN.1.1_CO.EN.1.3:  Enclosure by OD [at least two opposite sides]  >=  ^CO_EN_1_1 or [four sides]  >=  ^CO_EN_1_3 ,  do not check butted contact   
+CO.EN.1.2 :  Enclosure by OD for STRAP NOT VAR [at least two opposite sides]  >=  0.02   
+CO.EN.0   :  Enclosure by PO is defined by either {CO.EN.2 and CO.EN.3} or {CO.EN.5 and CO.EN.6} ,  that is enclosure by poly must meet either 10/20/10/20nm or 5/30/15/30nm   
+CO.W.2    :  Width of CO bar. CO bar is only allowed in seal ring and SLDB.  ==  ^CO_W_2   
+M1.W.1    :  Width  >=  0.07   
+M1.W.2    :  Width of 45-degree bent M1. (Please make sure the vertex of 45 degree pattern is on 0.005 um grid (refer to the guideline ,  G.6gU ,  in section 3.7))  >=  0.17   
+M1.W.3    :  Maximum width (This check doesn't include the sealring (162;2) region)  <=  4.50   
+M1.S.1    :  Space  >=  0.07   
+M1.S.2    :  Min. Metal space (for W >  ^M1_S_2_W um & parallel length  >  ^M1_S_2_L um)  >=  ^M1_S_2 um   
+M1.S.2.1  :  Min. Metal space (for W >  ^M1_S_2_1_W um & parallel length  >  ^M1_S_2_1_L um)  >=  ^M1_S_2_1 um   
+M1.S.2.2  :  Min. Metal space (for W >  ^M1_S_2_2_W um & parallel length  >  ^M1_S_2_2_L um)  >=  ^M1_S_2_2 um   
+M1.S.2.3  :  Min. Metal space (for W >  ^M1_S_2_3_W um & parallel length  >  ^M1_S_2_3_L um)  >=  ^M1_S_2_3 um   
+M1.S.3    :   Min. Metal space (for W >  ^M1_S_3_W um & parallel length  >  ^M1_S_3_L um)  >=  ^M1_S_3 um   
+M1.S.5    :  If M1 has parallel run length with opposite M1 along two adjacent edges of M1 [any one edge  <  ^M1_S_5_W Q  =  ^M1_S_5_Q um and its opposite extension <  ^M1_S_5_T distance from the corner of the two edges of M1] ,  then one of the space (S1 or S2) to opposite M1 must be  >=  ^M1_S_5 um.   
+M1.S.6    :  Space to 45-degree bent M1  >=  0.17   
+M1.S.1.1  :  Space [any one of Mx connect to  >  3.3V and  <=  5V net]  >=  ^M1_S_1_1   
+M1.S.8.2  :  Space to neighboring {VIAx-1 or VIAx} [either VIAx-1 ,  VIAx or Mx connects to  >  3.3V and  <=  5V net]  >=  ^M1_S_8_2   
+M1.S.8    :  Space to VIA1 [different net ,  either VIA1 or M1 connects to 1.8V ~ 3.3V net] 0.1   
+M1.S.9    :  This rule is to check Metal (A) space to neighboring VIA1 [either VIA1 or M1 connects to  > 3.3V and  <=  5V net]. DRC methodology to find Metal (A) Find a edge (B) of metal line end [edge length  <=  0.12um] Run length (C) from edge (B) inside metal  >=  0.13um Jog length (D)  <=  0.01um within 0.13um run length Extend 0.06um outside from edge (B) to form a polygon metal (A) Metal (A) is defined if conditions 1~4 are all satisfied.  >=  0.15   
+M1.S.8.1  :  Space to VIA1 [different net ,  either VIA1 or M1 connects to  >=  1.5V and  <  1.8V net] 0.08   
+M1.EN.1   :  Enclosure of CO  >=  0.00 ,  do not check butted contact in SRAM   
+M1.EN.2__M1.EN.3__M1.EN.3.1__M1.EN.3.2:  Enclosure of CO [at least two opposite sides]  >=  ^M1_EN_2 ,  or [four sides]  >=  ^M1_EN_3 ,  or [four sides]  >=  ^M1_EN_3_1 with [at least two opposite sides]  >=  ^M1_EN_3_2   
+M1.EN.4   :  Enclosure of CO [M1 width  >  0.7 um] (except CSRDMY (166;0) region)  >=  0.03   
+M1.EN.5   :  Enclosure of CO [metal width  >=  0.11um ,  space  <  0.08 um and parallel run length  >  0.27 um] (This check doesn't include two or more COs resent in the metal intersection)  >=  0.015   
+M1.A.1    :  Area (Except SRAM (186;0) region)  >=  0.0215   
+M1.A.2    :  Area [with all of edge length <  0.17 um]. (This check doesn't include the patterns filling 0.07 um x 0.17 um rectangular tile) (Except SRAM (186;0) region)  >=  0.055   
+M1.A.3    :  Enclosed area  >=  0.2   
+M1.DN.6   :  Metal Desnsity  >=  ^M1_DN_6. All condition-A ,  Condition-B ,  and Condition-C must be followed.      Chip corner triangle empty areas if sealring is added by tsmc.      LOWMEDN   2. This rule is applied while the width of (checking window NOT above excluding region)  >=  ^M1_DN_6_E_A um for condition-A and  >=  ^M1_DN_6_E_BC um for both condition-B/condition-C   
+M1.R.2    :  Metal(pin) layers must be drawn only interact with one relative Metal(drawing) layers   
+M1.W.4    :  Width of M1 metal line in outer seal ring  ==  ^M1_W_4   
+M1.W.5    :  Width of M1 metal line in inner seal ring  ==  ^M1_W_5   
+M1.W.6    :  Width of M1 metal line in SLDB  ==  ^M1_W_6   

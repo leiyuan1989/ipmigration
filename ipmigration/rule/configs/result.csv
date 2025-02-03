@@ -1,0 +1,17 @@
+,rule,c153,s40,s65,s110
+0,GT_W,Right,Right,Right,Right
+1,GT_S,Right,Right,Right,Right
+2,GT_S_LAA_GT,Right,Right,Right,Right
+3,GT_S_LGT_AA,Right,Right,Right,Right
+4,GT_X_AA,Right,Right,Right,Right
+5,AA_X_GT,Right,Right,Right,Right
+6,CT_W,Right,Right,Right,Right
+7,CT_S,Right,Right,Right,Right
+8,CT_S_AA,Right,Right,Right,Right
+9,CT_S_GT,Right,Right,W: CT_4b CT_4a,Right
+10,CT_E_AA,Right,Right,Right,W: CT_7_8 CT_5
+11,CT_E_GT,Right,Right,Right,Right
+12,CT_E_M1,Right,Right,Right,Right
+13,CT_E_M1_END,Right,W: CT_7ab M1_7bc_AA,Right,Right
+14,M1_W,Right,Right,Right,Right
+15,M1_S,Right,Right,Right,Right

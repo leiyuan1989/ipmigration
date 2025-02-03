@@ -1,0 +1,103 @@
+,Layer,Rule,Category,Description,Value
+0,GT,GT_1a,Length,"Gate minimum channel length for 0.9/1.1/1.2V N/P MOS transistors (std, high, or low VT)",== 0.04
+1,GT,GT_1b,Length,GATE minimum channel length for 1.8V N/P MOS transistors,== 0.15
+2,GT,GT_1c,Length,GATE minimum channel length for 2.5V N/P MOS transistors,== 0.27
+3,GT,GT_1d,Length,Gate minimum channel length for 2.5V overdrive 3.3V NMOS transistors,== 0.55
+4,GT,GT_1e,Length,Gate minimum channel length for 2.5V overdrive 3.3V PMOS transistors,== 0.44
+5,GT,GT_1fg,Length,Gate minimum channel length for 2.5V underdrive 1.8V NMOS transistors,== 0.24
+6,GT,GT_1fg,Length,Gate minimum channel length for 2.5V underdrive 1.8V PMOS transistors,== 0.24
+7,GT,GT_1h,Length,Gate channel length for 1.8V underdrive 1.5V N/P MOS transistors,== 0.125
+8,GT,GT_2a,Width,Poly minimum width,== 0.04
+9,GT,GT_2b_R,Width,Non-floating poly outside of (extend AA W >= 2.5um) region minimum width,== 0.06
+10,GT,GT_3,Spacing,Space between two poly,== 0.1
+11,GT,GT_3c,Spacing,GT to GT space if one GT's width > 0.12um,>= 0.15
+12,GT,GT_4,Spacing,Space between AA and poly on field oxide,== 0.03
+13,GT,GT_5,Extension,Extension of AA outside of GATE,== 0.06
+14,GT,GT_6,Extension,Extension of poly outside of AA to form poly end-cap,== 0.09
+15,GT,GT_6a_R,Extension,Extension E of GT outside of AA to form poly end-cap,== 0.11
+16,GT,GT_7,Spacing,(poly_end with length < 0.120) minimum space to (poly_end with length < 0.120) (head to head space) with run length > 0,== 0.1
+17,GT,GT_8,Spacing,(poly_end with length < 0.120) minimum space to poly (head to side),> 0.1
+18,GT,GT_8a,Spacing,Space between GT line end to line (Dh) or GT line to line (Ds) when the layout structures meet the conditions of below: (Waive the GT small extrusion F < 0.04um),== 0.11
+19,GT,GT_10,Spacing,"For GT channel length >= 0.06, minimum gate space to (GT or GTDUM)",== 0.13
+20,GT,GT_17,Area,minimum area,== 0.012
+21,GT,GT_18,Area,poly minimum enclosed area,== 0.040
+22,GT,GT_19,Area,(GT AND AA) area GTAA. GTAA enclose 200x200um area. Maximum area for GTAA (um2),<= 50000
+23,GT,GT_21,Restrictions,No bent GATE (45 or 135 degree) on AA are allowed. All gate patterns on AA have to be orthogonal to AA edge,N/A
+24,GT,GT_22,Restrictions,"GT must be enclosed by (SN or SP) except the MOM, GTFUSE and (HRP AND GT). Exclude floating GT",N/A
+25,GT,GT_24,Spacing,L-shaped GT minimum space to AA,== 0.04
+26,GT,GT_25,Spacing,L-shape AA minimum space to poly(in same transistor),== 0.03
+27,GT,GT_26,Restrictions,"All memory cell transistor(transistors within INST layer), gate GT direction should be unidirectional in one chip",N/A
+28,GT,GT_27,Width,Bent 45 deg GT min width,== 0.16
+29,GT,GT_28,Spacing,The space between two bent 45 degree GTs,== 0.16
+30,AA,AA_1,Width,AA minimum width (The INST connected area apply SRAM design rule),== 0.06
+31,AA,AA_1a,Width,AA minimum width of NMOS/PMOS for 0.9/1.1/1.2V transistor,== 0.12
+32,AA,AA_2,Width,AA (enclosure by TG or DG) minimum width of NMOS/PMOS for 1.8/2.5V transistor,== 0.32
+33,AA,AA_4a,Spacing,AA minimum space,== 0.08
+34,AA,AA_4b_4c,Spacing,The space between two AA with gate along source/drain direction,>= 0.1
+35,AA,AA_4b_4c,Spacing,The space between two AA with gate along gate poly direction,>= 0.1
+36,AA,AA_4d,Spacing,Space between two AAs inside (DG OR TG),== 0.15
+37,AA,AA_9,Area,AA minimum area except floating AA,== 0.02
+38,AA,AA_9a,Area,AA minimum area at floating AA,== 0.015
+39,AA,AA_10,Restrictions,"DG, TG, or core transistors mixed in the same AA are prohibited",Prohibited
+40,AA,AA_11,Restrictions,"N+AA/P+AA crossing the NW, excluding LDMOS area, is not allowed. Waive the AA interact with RESNW",Not allowed
+41,AA,AA_12,Length,AA channel width of NMOS/PMOS for 0.9/1.1/1.2V transistor,<= 50
+42,AA,AA_13,Area,AA minimum enclosed area (um2),== 0.045
+43,AA,AA_14_a,Restrictions,"Waive RESNW, LOGO, seal ring (MARKS) areas. DRC check with the said window size and rule number and highlight as X. Y = X not (DG or TG), Z = (Y area)/(100*100)",Waived
+44,AA,AA_14_b,Restrictions,"Waive RESNW, LOGO, seal ring (MARKS) areas. DRC check with the said window size and rule number and highlight as X. Y = X not (DG or TG), Z = (Y area)/(100*100)",Waived
+45,AA,AA_14a_a,Restrictions,"DRC check with the said window size and rule number and highlight as X. Y = X and (DG or TG), Z = (Y area)/(100*100). If Z > 25%",> 25%
+46,AA,AA_16,Width,Bent 45 degree AA width,>= 0.16
+47,AA,AA_17,Spacing,45 degree AA space to parallel AA,>= 0.16
+48,AA,AA_18,Spacing,AA space for U shape (notch),>= 0.15
+49,AA,AA_19,Enclosure,AA must be fully covered by (SN OR SP). Waive the violations inside (AA INTERACT RESNW),Fully covered
+50,AA,AA_C_1,Area,Maximum containing rectangle of HDA,== 250*250
+51,AA,AA_C_3,Area,Maximum containing rectangle of LDA,== 50*50
+52,AA,AA_C_4,Area,Maximum containing rectangle of MDA,== 125*125
+53,AA,AA_C_5,Spacing,Minimum space between gate and minimum 50*50um LDA,== 20
+54,CT,CT_1,Area,Fixed CT size (square shape),== 0.06
+55,CT,CT.1a,Restrictions,"Non-square CT only allowed inside of [EFUSE, seal ring(MARKS), SRAM(INST)]",N/A
+56,CT,CT_2,Spacing,Minimum space between two contacts,== 0.080
+57,CT,CT_2a,Spacing,Minimum space between two contacts on different net,== 0.11
+58,CT,CT_3,Spacing,CT array minimum space to CT array for run length > 0.34 um,== 0.11
+59,CT,CT_3a,Spacing,Minimum space between two contacts in CT array,== 0.08
+60,CT,CT_4,Spacing,Minimum space between AA region and contact overlap poly,== 0.040
+61,CT,CT_5,Spacing,0.9/1.1/1.2V device minimum space between gate region and contact overlap AA,== 0.040
+62,CT,CT_5a,Spacing,1.8/2.5V device minimum space between gate(enclosure by TG or DG) to contact overlap AA,== 0.080
+63,CT,CT_6abd,Enclosure,CT enclosure by AA (four sides),>= 0.01
+64,CT,CT_6abd,Enclosure,CT enclosure by AA (exclude pick-up AA) for two opposite sides when either opposite sides < 0.01um,>= 0.005
+65,CT,CT_6abd,Enclosure,CT enclosure by AA,>= 0.005
+66,CT,CT_6acd,Enclosure,CT enclosure by AA (four sides),>= 0.01
+67,CT,CT_6acd,Enclosure,CT enclosure by pick-up AA for two opposite sides when either opposite sides < 0.01um,>= 0.005
+68,CT,CT_6acd,Enclosure,CT enclosure by AA,>= 0.005
+69,CT,CT_7ab,Enclosure,Minimum CT enclosure by poly,== 0.01
+70,CT,CT_7ab,Enclosure,Minimum CT enclosure by poly for two opposite sides is 0.02 when the either two opposite sides <= 0.01um,>= 0
+71,CT,CT_8,Enclosure,Minimum CT(on AA) enclosure by SP,== 0.03
+72,CT,CT_9,Enclosure,Minimum CT(on AA) enclosure by SN,== 0.03
+73,CT,CT_10,Restrictions,CT overlap (gate or (STI not GT)) region is forbidden,N/A
+74,CT,CT_11,Restrictions,It is not allowed that (CT not outside AA) touches or straddles on (SN or SP) edge,N/A
+75,CT,CT_12,Restrictions,Non-salicided contacts are not allowed,N/A
+76,CT,CT_19_R,Restrictions,Recommend to have redundant CT to prevent high contact resistance,N/A
+77,M1,M1_1,Width,M1 minimum width,== 0.07
+78,M1,M1_2,Width,M1 maximum width,== 4.5
+79,M1,M1_3,Spacing,M1 minimum space,== 0.07
+80,M1,M1_4,Area,M1 minimum area (The INST connected area apply SRAM design rule),== 0.0196
+81,M1,M1_5,Area,M1 minimum enclosed area,== 0.2
+82,M1,M1_6,Spacing,Minimum space between two length > 0.3 parallel metal lines with both metal line width > 0.22,== 0.08
+83,M1,M1_6a,Spacing,Minimum space between two length > 0.6 parallel metal lines with one or both metal line width > 0.7,== 0.12
+84,M1,M1_6b,Spacing,Minimum space between two length > 0.6 parallel metal lines with one metal line width > 0.22 and other metal line width > 0.7,== 0.14
+85,M1,M1_6c,Spacing,Minimum space between two length > 1.5 parallel metal lines with one or both metal line width > 1.5,== 0.3
+86,M1,M1_7,Enclosure,CT enclosed by M1,== 0.00
+87,M1,M1_7bc_AA,Enclosure,M1 minimum overlap past CT for two opposite sides with the other two sides >= 0um,== 0.025
+88,M1,M1_7bc_AA,Enclosure,All 4 sides with enclosure of 0.015,== 0.015
+89,M1,M1_7bc_GT,Enclosure,M1 minimum overlap past CT for two opposite sides with the other two sides >= 0um,== 0.025
+90,M1,M1_7bc_GT,Enclosure,All 4 sides with enclosure of 0.015,== 0.015
+91,M1,M1_7e,Enclosure,CT minimum enclosure by M1 (M1 width > 0.7um),== 0.03
+92,M1,M1_9,Width,(M1 at 45degree) minimum width (run length > 0um),== 0.17
+93,M1,M1_10,Spacing,(M1 at 45degree) minimum space to parallel M1 (run length > 0um),== 0.17
+94,M1,M1.11a,Spacing,Minimum space between an M1 line end to an M1 line (the parallel run length > 0um),== 0.07
+95,M1,M1.11b,Spacing,Minimum space between an M1 line end (with (CT or V1)) to an M1 (the parallel run length > 0um),== 0.07
+96,M1,M1.11b,Extension,When this M1 line end extend Q from (CT or V1),0.03 <= Q < 0.05
+97,M1,M1_13,Spacing,Minimum space CT to M1,== 0.085
+98,M1,M1_13,Restrictions,M1(enclosed CT) width > 0.12um,> 0.12
+99,M1,M1_13,Restrictions,M1(enclosed CT) to adjacent M1 space <= 0.08um,<= 0.08
+100,M1,M1_13,Restrictions,The projected parallel run length R of M1[A] to M1[B] R >= 0.27um,>= 0.27
+101,M1,M1_14,Spacing,"Minimum M1 to M1 space S at M1 line-end. Width W < W0. The minimum space can be line end head to other M1 or line end side to other M1. Rule check: S >= (Dh or Ds). E1 = 0.02, K1 = 0.065, W0 = 0.09um, Dh = Ds = 0.08 in the illustration. Schematic s Extension 1, Extension 2, and Extension 3: 1 Three extensions overlaps with other M1 => NG 2. When Extension 1 and one of the (extension 2 or extension 3) overlap with other M1. The remaining side extension's Ds need to size up from 0.08 to 0.11um. If this remaining extension interact with other M1(include touch edge), NG. Outside of SRAM(INST) area. Waive extrusion F < 0.07. Only Highlight either one of the situations: 1) There is only one CT in the same {(M1[A] and AA intersection) or (M1[A] and GT intersection) } and CT space to M1[B] Sh < 0.10um. 2) there is only one V1 in the M1[A] and M2 intersection, and V1 space to M1[B] Sh < 0.10um","S >= (Dh or Ds), W < W0, F < 0.07, Sh < 0.10"

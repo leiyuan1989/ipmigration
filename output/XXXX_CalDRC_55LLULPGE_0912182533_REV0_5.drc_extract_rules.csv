@@ -1,0 +1,108 @@
+,Layer,Rule,Category,Description,Value
+0,GT,PO_W_1,Width,PO width,
+1,GT,PO_W_2a,Width,Channel length for 0.9/1.2V NMOS/PMOS transistors,>= 0.06um
+2,GT,PO_W_2b,Width,Channel length for 1.8V NMOS/PMOS transistors,>= 0.20um
+3,GT,PO_W_2c,Width,Channel length for 2.5V NMOS/PMOS transistors,>= 0.28um
+4,GT,PO_W_2d,Width,Min Channel length for 3.3V NMOS transistors is 0.38   Min Channel length for 3.3V PMOS transistors is 0.38,= 0.38um
+5,GT,PO_W_2f,Width,Channel length for 2.5V NMOS/PMOS transistors (over drive to 3.3V and 4.1V),">= 0.50(NMOS)um, >= 0.40(PMOS)um"
+6,GT,PO_W_2e,Width,Channel length for 2.5V NMOS/PMOS transistors (under drive to 1.8V),>= 0.22um
+7,GT,PO_W_3,Width,Width of 45 degree PO,>= 0.18um
+8,GT,PO_S_1,Spacing,Space between two POs,>= 0.12um
+9,GT,PO_S_2,Spacing,"Space between two POs when one or both PO width is >= 0.13um, and the run length of two POs is >= 0.18um",>= 0.18um
+10,GT,PO_S_3,Spacing,Space between two POs on ACT,>= 0.13um
+11,GT,PO_S_4_R,Spacing,Recommended Space between POs on the same ACT,>= 0.2um
+12,GT,PO_S_5,Spacing,Space between POs on the same ACT inside TGOX,>= 0.24um
+13,GT,PO_S_6,Spacing,"Space to 45-degree PO, except EFUSEALL and FUSEALL region",>= 0.19um
+14,GT,PO_S_7,Spacing,GATE space when L-shape ACT and L-shape PO enclosed area is < 0.012um2,>= 0.15um
+15,GT,PO_S_7a_R,Spacing,Recommended GATE space when L-shape ACT and L-shape PO enclosed area is < 0.0196um2,>= 0.2um
+16,GT,PO_S_8_R,Spacing,Recommended space of GATE (channel length <= 0.08um) to neighboring poly for thr CDU control,<= 1.0
+17,GT,PO_S_9,Spacing,Space between PO dense line end to line (Dh) or PO line to line (Ds) when: 1. PO line end definition: PO width < 0.09um 2. Run length of PO line to line or PO line to end: E1 >= -0.03um 3. Any one edge distance from the corner of the two edges: K1 < 0.14um Any one of Dh or Ds meet this rule value is ok,>= 0.14um
+18,GT,PO_S_11,Spacing,Space between ACT and PO on STI,>= 0.05um
+19,GT,PO_S_12,Spacing,Minimum space of PO within SAB,>= 0.25
+20,GT,PO_S_13_R,Spacing,Strongly suggest the minimum space of GATE to neighboring poly for sensitive circuit with minimum PO width = 0.06um,>= 0.19
+21,GT,PO_S_15,Spacing,Min space between L-shape ACT to PO in the same MOS when channel width < 0.15um is 0.1,= 0.1um
+22,GT,PO_S_15a_R,Spacing,Min space between L-shape ACT to PO in the same MOS when channel width >= 0.15um is 0.1,= 0.1um
+23,GT,PO_S_16,Spacing,Min space between L-shape PO to ACT in the same MOS when channel width < 0.15um is 0.1,= 0.1um
+24,GT,PO_S_17,Spacing,Space between large PO and GATE with narrow channel length <= 0.08um,
+25,GT,PO_S_18_R,Spacing,Recommended core nmos gate space to (TGOX OR (NW1 OR PSUB)),>= 1.0
+26,GT,PO_EN_1_R,Enclosure,Recommended core pmos gate enclose by (NW1 NOT TGOX),>= 1.0
+27,GT,PO_EN_2_R,Enclosure,Recommended IO nmos gate enclose by (TGOX NOT (NW1 OR PSUB)),>= 2.0
+28,GT,PO_EN_3_R,Enclosure,Recommended IO pmos gate enclose by (TGOX AND NW1),>= 2.0
+29,GT,PO_EX_1,Extension,Extension of ACT outside of PO,>= 0.11um
+30,GT,PO_EX_1_R,Extension,Recommended Extension of ACT outside of PO(when channel width > 1 um),>= 0.18um
+31,GT,PO_EX_2,Extension,Extension of GATE poly outside of ACT,>= 0.14um
+32,GT,PO_EX_3_R,Extension,PO end-cap extension of ACT when: 1. PO space to L-shape ACT in the same MOS is < 0.14um 2. GATE channel width (W) is >= 0.15um,>= 0.16um
+33,GT,PO_L_1,Length,"PO length between two CTs without GATE, and the length from any point inside GATE to nearest CT, when the PO width is < 0.13um",<= 25.00um
+34,GT,PO_L_2_R,Length,Recommanded maximum L shape length of L-shape ACT which space to PO (in the same MOS with width >= 0.15um) <= 0.1 is <= 0.21,<= 0.21um
+35,GT,PO_A_1,Area,PO area,>= 0.04um2
+36,GT,PO_A_1_R,Area,PO area when PO is not GATE poly,>= 0.05um2
+37,GT,PO_A_2,Area,PO enclosed area,>= 0.09um2
+38,GT,PO_R_1,Restrictions,No bent PO on ACT is allowed. All PO patterns on ACT have to be orthogonal to ACT edge,
+39,GT,PO_R_2,Restrictions,PO must be enclosed by NP and/or PP,
+40,AA,ACT_W_1,Width,ACT width,>= 0.08um
+41,AA,ACT_W_2,Width,Width of 45 degree bent ACT,>= 0.18um
+42,AA,ACT_W_3a,Width,Channel width for 0.9/1.2V NMOS/PMOS transistors,>= 0.12um
+43,AA,ACT_W_3b,Width,Channel width for 1.8/2.5V/3.3V NMOS/PMOS transistors,>= 0.21um
+44,AA,ACT_W_3a_R,Width,Recommended Channel width for 0.9/1.2V NMOS/PMOS transistors,>= 0.15um
+45,AA,ACT_L_1,Length,"Maximum ACT length between two contacts, or between one contact and ACT line end when ACT width < 0.15um",<= 25.00um
+46,AA,ACT_L_2,Length,"Maximum ACT length of Source Active (without CT, width <= 0.15um) which butted with tap",<= 0.5um
+47,AA,ACT_S_1,Spacing,Space between two ACTs,>= 0.11um
+48,AA,ACT_S_1_R,Spacing,Recommended Space between two ACTs,>= 0.16um
+49,AA,ACT_S_2a_R,Spacing,Recommended Space between ACT and huge ACT(area > 2000000um2),== 0.35um
+50,AA,ACT_S_1a,Spacing,Space between two ACTs at least one ACT inside by TGOX,No value provided
+51,AA,ACT_S_2,Spacing,Space between ACTs when one or both ACT width greater than 0.2um parallel length,">= 0.3, >= 0.125"
+52,AA,ACT_S_3,Spacing,Space to 45 degree bent ACT,>= 0.18um
+53,AA,ACT_S_4,Spacing,Space between U-shape (or O-shape) ACT inner edges,>= 0.18um
+54,AA,ACT_S_5,Spacing,Space between NW1 and N+ACT inside PW except NW1 resistor region,>= 0.15um
+55,AA,ACT_S_6,Spacing,Space between NW1 and N+ACT inside TGOX,>= 0.31um
+56,AA,ACT_S_7,Spacing,"Space between N+ACT, which is not enclosed by DNW, and NW1 which encloses a DNW",>= 0.32um
+57,AA,ACT_S_8,Spacing,Space between NW1 and P+ pickup ACT except LDMOS region,>= 0.15um
+58,AA,ACT_EN_1,Enclosure,Enclosure of N+ACT by NW1 (excluding NW1 interacting with NW1res),>= 0.15um
+59,AA,ACT_EN_2,Enclosure,Enclosure P+ACT by NW1,>= 0.15um
+60,AA,ACT_EN_2a,Enclosure,Enclosure P+ACT by (NW1 INTERACT TGOX),>= 0.31um
+61,AA,ACT_A_1,Area,AA area,>= 0.038um2
+62,AA,ACT_A_2,Area,Enclosed area,>= 0.08um2
+63,AA,ACT_D_1_min,Restrictions,Density restriction,<= 80%
+64,AA,ACT_D_1_max,Restrictions,Density restriction,<= 80%
+65,AA,ACT_D_4_min,Restrictions,Density restriction,<= 75%
+66,AA,ACT_D_4_max,Restrictions,Density restriction,<= 75%
+67,AA,ACT_R_1,Restrictions,"ACT must be fully covered by (NP OR PP), except NW1 resistor region",No value provided
+68,CT,CT_W_1,Width,"Fixed CT width (square shape) exclude SRAMALL(177;4) FUSEALL, and GRID DRC waive rectangular CT in SRAM and EFUSEALL area, and waive protection ring purpose non-rectangular CT in GRID area",== 0.09um
+69,CT,CT_W_2,Width,"Fixed CT bar width, except rectangular CT in SRAMALL (177;4) FUSEALL region",== 0.09um
+70,CT,CT_S_1,Spacing,Space between two contacts,>= 0.11um
+71,CT,CT_S_1a,Spacing,Space between CT and 3-neighboring CTs (space is <= 0.15um),>= 0.14um
+72,CT,CT_S_2,Spacing,"CT space at different nets, except SRAMALL region",>= 0.12um
+73,CT,CT_S_3,Spacing,Space between ACT and contact on POLY,>= 0.065um
+74,CT,CT_S_4,Spacing,Space between POLY and contact on ACT for 0.9V/1.2V,>= 0.055um
+75,CT,CT_S_4_R,Spacing,Recommended Space between POLY and contact on ACT for 0.9V/1.2V,>= 0.06um
+76,CT,CT_S_5,Spacing,Space between GATE and contact on ACT for 1.8/2.5/3.3V,>= 0.09um
+77,CT,CT_S_6,Spacing,Space to butted SDN/SDP edge on ACT (overlap of NP/PP boundary on ACT is not allowed),>= 0.06um
+78,CT,CT_EN_1,Enclosure,"CT must be fully covered by M1 and (ACT OR POLY), except SRAMALL region",N/A
+79,CT,CT_EN_2a,Enclosure,CT enclosure by ACT for CT,>= 0.015um
+80,CT,CT_EN_2b,Enclosure,CT enclosure by ACT for at least two opposite sides,>= 0.03um
+81,CT,CT_EN_2_R,Enclosure,Recommended CT enclosure by ACT for all sides,>= 0.04um
+82,CT,CT_EN_3a_3b_3c,Enclosure,Min CT enclosure by poly is 0.01 Min CT enclosure by poly when one or both perpendicular directions < 0.04um is 0.04um,">= 0.01um, >= 0.04um"
+83,CT,CT_EN_3_R,Enclosure,Recommended CT enclosure by poly for all sides to avoid high RC,>= 0.06um
+84,CT,CT_EN_4b,Enclosure,Minimum M1 enclosure of CT in line end region at least two opposite sides,>= 0.04um
+85,CT,CT_EN_4a_4b_4c,Enclosure,Enclosure by M1 >= 0 um Enclosure by M1 at least two opposite sides < 0.04um >= 0.04um Enclosure by M1 for all sides >= 0.025 um,">= 0um, >= 0.04um, >= 0.025um"
+86,CT,CT_EN_4a_R_4b_R,Enclosure,Recommended M1 enclosure of CT to avoid high RC >= 0.04 um Recommended Minimum M1 enclosure of CT in line end region (at least two opposite sides),">= 0.04um, >= 0.06um"
+87,CT,CT_EN_4d,Enclosure,"Enclosure by M1, when M1 width is > 1um",>= 0.04um
+88,CT,CT_R_1,Restrictions,CT is not allowed to land on GATE,N/A
+89,CT,CT_R_2,Restrictions,CT is not allowed to interact SAB Waive the CT cutting AA in SRAM area,N/A
+90,CT,CT_R_3,Restrictions,45 degree CT is not allowed,N/A
+91,CT,CT_R_4,Restrictions,"Recommended at least two CTs for connection except Reserved area, DRC help to mark single CT",N/A
+92,CT,CT_R_5,Restrictions,Recommended to put CTs at both source side and butted well tap side. DRC can flag if the tap is butted on source and the tap or source region without CT,N/A
+93,M1,MET1_W_1,Width,M1 width,">= 0.09um, <= 10.00um"
+94,M1,MET1_W_2,Width,Width of metal1 with 45 degree,>= 0.19um
+95,M1,MET1_W_3,Width,"Minimum M1 width adjoining a huge non-metal region [area > 2000000 um2], non-metal region is defined as (NOT (Mx OR MxDUM))",>= 0.35um
+96,M1,MET1_S_1,Spacing,"Space between two M1s, DRC don't flag 89 to 90 degree spaces in the INDALL region",>= 0.09um
+97,M1,MET1_S_1_R,Spacing,Recommended space between two M1s,>= 0.12um
+98,M1,MET1_S_2,Spacing,"Min Space between two M1 is 0.15 um when one or both M1 width >= 0.42um, and the parallel run length of two M1s is >= 0.42um",>= 0.15um
+99,M1,MET1_S_3,Spacing,"Min Space between two M1 is 0.5 um when one or both M1 width >= 1.5um, and the parallel run length of two M1s is >= 1.5um",>= 0.5um
+100,M1,MET1_S_5,Spacing,Space between metal lines with one or both are 45 degree,>= 0.19um
+101,M1,MET1_S_6,Spacing,"Space to dense M1 line-end, Definition of dense M1 line-end: 1. M1 line-end: M1 edge with length < 0.11 um (W) between 2 outer vertex. 2. Other metal INTERACT Region 1. Region 1 = (T+Q) x S2. (W+S2) < 0.11 um. Space (S1) to dense M1 line-end (parallel run length > -0.025 um (T)), Definition of dense M1 line-end: 1. M1 line-end: M1 edge with length < 0.07 um (W) between 2 outer vertex. 2. Other metal INTERACT Region 1. Region 1 = (T+Q) x S2. (W+S2) < 0.12 um. This check doesn't include small jog with edge length < 0.05 um (R)",>= 0.11um
+102,M1,MET1_A_1,Area,M1 area,>= 0.042um2
+103,M1,MET1_A_2,Area,Enclosed dielectric area by M1,>= 0.18um2
+104,M1,MET1_D_2,Restrictions,Device sensitive areas can be waived,>= 10%
+105,M1,MET1_D_3,Restrictions,INDID/GRID/FUTR/SRINGBLK covered areas are excluded for this rule checking,<= 20%
+106,M1,MET1_R_1,Restrictions,M1 line end must be rectangular,N/A

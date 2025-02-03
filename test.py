@@ -9,7 +9,7 @@ Created on Thu Jan 23 11:39:47 2025
 #test ipmigration.analog.opt
 
 '''
-runfile('/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/ipmigration/analog/opt/aop.py', 
+runfile('tests/test_rule.py'), 
         wdir='/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/')
 
 '''

@@ -1,0 +1,55 @@
+GT_1a     :  GT width for 1.2V/1.5V NMOS/PMOS transistor is 0.13   
+GT_2      :  Interconnect width is 0.13um  ,  exclude SRAM region   
+GT_3      :  Space between GTs is 0.18 (exclude INDMY region) ,  exclude SRAM region   
+GT_4      :  Space between AA and GT on field oxide is 0.07 (exclude INDMY region) ,  (GT INTERACT (GT AND OPCBP))   
+GT_5      :  Extension of AA outside of GT is 0.23 ,  exclude SRAM region   
+GT_6      :  Extension of GT outside of AA is 0.17 ,  exclude SRAM region   
+GT_8      :  No bent GT on AA are allowed. All GT patterns on AA have to be orthogonal to AA edge (exclude INDMY region)   
+GT_9a     :  NLL extension outside of poly resistor is 0.18   
+GT_9b     :  NLH extension outside of poly resistor is 0.18   
+GT_9c     :  SN extension outside of poly resistor is 0.18   
+GT_9d     :  PLL extension outside of poly resistor is 0.18   
+GT_9e     :  PLH extension outside of poly resistor is 0.18   
+GT_9f     :  SP extension outside of poly resistor is 0.18   
+GT_10a    :  Space between a NLL and a P- type poly resistor is 0.18   
+GT_10b    :  Space between a NLH and a P- type poly resistor is 0.18   
+GT_10c    :  Space between a SN and a P- type poly resistor is 0.18   
+GT_10d    :  Space between a PLL and a N- type poly resistor is 0.18   
+GT_10e    :  Space between a PLH and a N- type poly resistor is 0.18   
+GT_10f    :  Space between a SP and a N- type poly resistor is 0.18   
+GT_11     :  GT used as MOS gate poly must be enclosed by SN or SP(except HRP resistor region)   
+GT_13_R   :  For small MOS(channel width  <= 0.3um) ,  Max AA size along channel width direction from the turning point when L-shape or H-shape AA space to GT is  >= 0.07um and  <= 0.08um ,  is 0.075um ,  exclude SRAM region   
+GT_14_R   :  Space between two CTs on poly (poly width  < 0.24um) to avoid voltage drop is  <=  1.Oum.   
+GT_15_R   :  Poly area is  >=  0.09   
+GT_16_R   :  Enclosed poly area is  >=  0.15um   
+AA_1_2    :  AA width MOS transistors is 0.15 ,  exclude (NW INTERACT OPCBA) ,  SRAM   AA width for interconnect is 0.15 , exclude (NW INTERACT OPCBA) ,  SRAM   
+AA_3      :  Space between AAs that are on the same well is 0.21 (exclude INDMY region). ,  exclude SRAM region.   
+AA_4      :  N+active enclosure by NW except NW resistor region is  >=  0.23 ,  exclude SRAM region.   
+AA_5      :  Space between NW and N+active is 0.30 ,  exclude SRAM region.   
+AA_6      :  P+active enclosure by NW is 0.30 ,  exclude (NW INTERACT OPCBA) ,  SRAM   
+AA_7      :  Space between NW to P+AA inside PW is 0.23 ,  exclude SRAM region.   
+AA_8      :  AA area is 0.1 (in um2)   
+AA_9      :  Space between N+AA and NW which enclosure a DNW (DRC doesn't flag N+AA inside NW or DNW) is  >=  0.4   DRC waive check when space between DNW to N+AA is  >=  2.6um in same direction.   
+AA_10     :  AA or AADUM pattern is not allowed to straddle on a boundary of NW except NW resistor region.   
+AA_11a    :  Waive RESNW ,  Metal Fuse ,  L Mark ,  LOGO and Inductor.   DRC check with the said window size and rule number and highlight as X. Y  =  X not (RESNW or Metal Fuse or L MARK or LOGO or INDMY) ,  Z =  (Y area)/(250*250)   
+AA_11b    :  Waive RESNW ,  Metal Fuse ,  L Mark ,  LOGO and Inductor.   DRC check with the said window size and rule number and highlight as X. Y  =  X not (RESNW or Metal Fuse or L MARK or LOGO or INDMY) ,  Z =  (Y area)/(250*250)   
+CT_1      :  Fixed contact size (edge of a square via) is 0.16 ,  exclude SRAM region.   
+CT_2      :  Space between contacts is 0.18   
+CT_3      :  Space between AA and contact on poly is 0.12 ,  exclude SRAM region.   
+CT_4a     :  Space between poly and contact on AA for 1.2 and 1.5V is  >=  0.11 ,  exclude SRAM region.   
+CT_5      :  CT enclosure by AA for CT landed on device AA is 0.06 ,  exclude SRAM region.   
+CT_5a     :  CT enclosure by AA for CT landed on pickup AA is 0.05   
+CT_6      :  CT enclosure by poly for CT landed on poly is 0.06 ,  exclude SRAM region.   
+CT_7_8    :  CT enclosure by M1 is  >=  0.00 ,  exclude SRAM region.   CT.8	M1 line end extension outside of CT 	 	0.05	um ,  exclude SRAM region.   
+CT_9      :  CT is not allowed to land on gate (exclude INDMY region) ,  exclude SRAM region.   
+CT_10     :  CT can not overlap with SAB layer or (STI NOT GT) region.  ,  exclude SRAM region.   
+CT_12     :  It's not allowed CT overlap with NW ,  AA ,  Poly or M1 resistor. For NW ,  AA ,  Poly resistor ,  please refer each resistor section definition.   M1 resistor definition: (M1 AND M1R).   
+M1_1      :  M1 width is 0.16 ,  exclude SRAM region   
+M1_2      :  Space between M1s is 0.17 ,  exclude SRAM region   
+M1_3a_R   :  Space between M1s with one or both M1 width greater than 0.4um is 0.2 ,  when runlength > 1um   
+M1_3b_R   :  Space between M1s with one or both M1 width greater than 2um is 0.4   
+M1_3c     :  Space between M1s with one or both M1 width greater than 10um is 0.5   
+M1_4      :  M1 area is 0.08   
+M1_5      :  Dielectric area enclosed by M1(um2) is 0.17   
+M1_7      :  Space between metal line and 45 degree bent metal line that are longer than 0.5um is 0.2   
+M1_8      : M1.8	Maximum line width allowed. Metal slot rule will apply for a metal with line width greater than this value. DRC skip to check (M1 interact AND with PA pattern).	 	14.00	um   

@@ -1,0 +1,81 @@
+PO.W.1    :  Width  >=  ^PO_W_1 um   
+PO.S.1    :  Space  >=  ^PO_S_1 um   
+PO.S.2    :  GATE space in the same OD  >=  ^PO_S_2 um.   
+PO.W.2    :  Channel length of 2.5V MOS  >=  ^PO_W_2 um   
+PO.W.3    :  Channel length of 3.3V MOS (except gate without PO CO in RFDMY)  >=  ^PO_W_3 um   
+PO.W.4    :  Channel length of 1.8V MOS  >=  ^PO_W_4 um   
+PO.W.5    :  Width of 45 degree FIELD poly  >=  ^PO_W_5 um   
+PO.S.16   :  Space to 45 degree FIELD poly  >=  ^PO_S_16 um   
+PO.S.2.1  :  Gate space [either one channel length  >  ^PO_S_2_1_W um]  >=  ^PO_S_2_1 um   
+PO.S.3    :  Min. two 1.8V , 2.5V or 3.3V POLY space on OD w/o contact  >=  ^PO_S_3 um   
+PO.S.4    :  Field PO space to OD  >=  ^PO_S_4 um   
+PO.S.4.1  :  Gate space when the area enclosed by (L-shape OD & PO  <  ^PO_S_4_1_A um2)  >=  ^PO_S_4_1 um   
+PO.S.5    :  Space to L-shape OD when PO & OD are in same MOS(channel width  <  ^PO_S_5_W ) ^PO_S_5 um   
+PO.S.6    :  L-shape PO space to OD when PO and OD are in same MOS (channel width  <  ^PO_S_6_W um) ^PO_S_6 um   
+PO.S.7    :  Space if at least one PO width is  >  0.13 um ,  and the PO parallel run length is  >  0.18 um (individual projection).  >=  0.18   
+PO.S.9    :  Space of {PO AND RPO}  >=  0.25   
+PO.S.10   :  Space at PO line-end (W < Q1 = 0.090) in a dense-line-end configuration: If PO has parallel run length with opposite PO (measured with T1 = 0.035 extension) along 2 adjacent edges of PO [any one edge  < Q1 distance from the corner of the two edges] ,  then one of the space (S1 or S2) needs to be at least this value (except for small jog with edge length  <  0.06 um(R))  >=  0.14   
+PO.EX.1   :  Extension on OD (end-cap)  >=  0.14   
+PO.EX.2   :  OD extension on PO  >=  0.115   
+PO.EX.3   :  Extension on OD (end-cap) when the PO space to L-shape OD (in the same MOS) is  <  0.1 um ,  and the channel width (W) is  >=  0.15 um.  >=  0.16   
+PO.L.1    :  Maximum PO length between 2 contacts ,  as well as the length bewteen one contact and the end of PO gate ,  when the PO width   <  ^PO_L_1_W um (except RTMOM region)  <=   ^PO_L_1 um   
+PO.A.1    :  Area  >=  0.042   
+PO.A.1.1  :  Area {PO not interacting with Gate}  >=  0.051   
+PO.A.2    :  Enclosed area  >=  0.094   
+PO.R.1    :  GATE must be a rectangle orthogonal to grid. (Both bent GATE and Gate to have jog are not allowed).   
+PO.R.4    :  PO intersecting OD must form two or more diffusions except RTMOM region (RTMOMDMY ,  CAD layer: 155;21).   
+PO.R.6    :  H-gate forbidden with channel length (V)  <  0.11 mm ,  PO center bar length (U)  <  0.425 mm ,  all four H-legs length (X)  >  0.065 mm ,  and all four H-legs width (Y)  <  0.255 mm.   
+PO.R.8    :  It is prohibited for Floating Gate if the effective source/drain is not connected together   
+PO.FU.R.8 :  FUSELINK must exist and be inside POFUSE if POFUSE is exist.   
+PO.S.1.SRM_SRAMDMY:  Spacing between POLY along the boundary of SRM and SRAMDMY   
+PO.S.14m  :  Gate space to ( OD2 OR (NW OR NT_N) ) in Core NMOS  >=  1.0um   
+PO.EN.1m  :  Recommmended 1.0V or 1.2V PMOS gate enclosure by ((NW NOT OD2) NOT NT_N) for 3.3V IO process  >=  1.0 um   Recommmended 1.0V or 1.2V PMOS gate enclosure by (NW NOT NT_N) for 1.8V or 2.5V IO process  >=  1.0 um   
+PO.EN.2m  :  Gate enclosure by ( OD2 NOT (NW OR NT_N) ) in IO NMOS  >=  2.0um   
+PO.EN.3m  :  Recommmended 3.3V PMOS gate enclosure by ((NW AND OD2) NOT NT_N)  >=  1.5 um   Recommmended 1.8V or 2.5V PMOS gate enclosure by (NW NOT NT_N)  >=  1.5 um   
+OD.W.1    :  Width  >=  0.08   
+OD.W.2    :  Width of MOS ( <=  1.2V) [for core device]  >=  0.12   
+OD.W.3    :  Width of MOS ( >  1.2V to  <=  3.3V) [for I/O device]  >=  0.4   
+OD.W.4    :  Width of 45 degree bent OD Please make sure the vertex of 45 degree pattern is on 5nm grid (refer to the guideline ,  G.6gU ,  in section 3.7)  >=  0.18   
+OD.S.1    :  Space  >=  0.11   
+OD.S.2    :  Space (inside OD2)  >=  0.18   
+OD.S.3    :  Space of two ODs (width (W)  >  0.15 m) ,  if the parallel length (L)  >=  0.2 m  >=  0.13   
+OD.S.3.1  :  Space to OD (width (W)  >  0.15 m) ,  if the parallel length (L)  >=  0.2 m  >=  0.125   
+OD.S.4    :  Space to 45-degree bent OD  >=  0.18   
+OD.S.5    :  Space between two segments of a U-shape or an O-shape OD (notch only)  >=  0.18   
+OD.A.1    :  Area  >=  0.054   
+OD.A.2    :  Enclosed area  >=  0.085   
+OD.L.1    :  Maximum length of {ACTIVE (source) [width  <  0.15 m] interacts with butted_STRAP}  <=  0.5   
+OD.L.2    :  Maximum OD length [OD width is  <  0.15 m] between two contacts as well as between one contact and the OD line end  <=  25   
+OD.R.1    :  OD must be fully covered by {NP OR PP} except for {DOD OR NWDMY}   
+OD.S.1.SRM_SRAMDMY:  Spacing between OD along the boundary of SRM and SRAMDMY   
+CO.W.1    :  Width (maximum  =  minimum except for seal-ring and fuse protection ring)  =  ^CO_W_1 um   CO.R.3  45-degree rotated CO is not allowed   
+CO.W.2    :  CO bar width  =  ^CO_W_2 um (CO bar is covered by SEALRING layer and only allowed in seal-ring and fuse protecion ring)   
+CO.S.1    :  Space  >=  0.11   
+CO.S.2    :  Space to 3-neighboring CO ( <  0.15 um distance)  >=  0.14   
+CO.S.2.1  :  Space to neighboring CO [different net and common parallel run length  >  0]   >=  0.14   
+CO.S.2.2  :  Space to neighboring CO [different net]  >=  0.12   
+CO.S.3    :  Space to GATE (Overlap of GATE is not allowed)  >=   ^CO_S_3   
+CO.S.4    :  {CO inside PO} space to OD  >=  0.07   
+CO.S.5    :  {CO inside OD} space to 1.8V or 2.5V or 3.3V GATE  >=  0.09   
+CO.S.6    :  Space to butted PP/NP edge on OD (overlap of NP/PP boundary on OD is not allowed.)  >=  0.06   
+CO.EN.1   :  Enclosure by OD  >=  ^CO_EN_1 um   
+CO.EN.1.1 :  Enclosure by OD [at least two opposite side]  >=  ^CO_EN_1_1 um.   
+CO.EN.2   :  Enclosure by PO  >=  ^CO_EN_2   
+CO.EN.3_CO.EN.4:  Enclosure by PO [at least two opposite sides]  >=  ^CO_EN_3  , or [all sides]  >=  ^CO_EN_4   
+CO.S.1.SRM_SRAMDMY:  Spacing between CO along the boundary of SRM and SRAMDMY   
+M1.W.1    :  Width  >=  0.09   
+M1.W.2    :  Width of 45-degree bent M1 Please make sure the vertex of 45 degree pattern is on 5nm grid (refer to the guideline ,  G.6gU ,  in section 3.7)  >=  0.19   
+M1.W.3    :  Maximum width  <=  12.00   
+M1.S.1    :  Space  >=  0.09   
+M1.S.2    :  Space [at least one metal line width  >  ^M1_S_2_W um  and the parallel metal run length  >  ^M1_S_2_L um ] (union projection)  >=  ^M1_S_2   
+M1.S.2.1  :  Space [at least one metal line width  >  ^M1_S_2_1_W um  and the parallel metal run length  >  ^M1_S_2_1_L um ] (union projection)  >=  ^M1_S_2_1   
+M1.S.3    :  Space [at least one metal line width  >  ^M1_S_3_W um  and the parallel metal run length  >  ^M1_S_3_L um ] (union projection)  >=  ^M1_S_3   
+M1.S.4    :  Space [at least one metal line width  >  ^M1_S_4_W um  and the parallel metal run length  >  ^M1_S_4_L um ] (union projection)  >=  ^M1_S_4   
+M1.S.5    :  Space at M1 line-end (W < Q = 0.110) in a dense-line-end configuration: If M1 has parallel run length with opposite M1 (measured with T = 0.035 extension) along 2 adjacent edges of M1 [any one edge  < Q distance from the corner of the two edges] ,  then one of the space (S1 or S2) needs to be at least this value (except for small jog with edge length  <  0.09 um (R))  >=  0.11   
+M1.S.6    :  Space to 45-degree bent M1  >=  0.19   
+M1.EN.1   :  Enclosure of CO  >=  0.00   
+M1.EN.2_M1.EN.3:  Enclosure of CO [at least two opposite sides]  >=  ^M1_EN_2 ,  or [all sides]  >=  ^M1_EN_3   
+M1.EN.4   :  Enclosure of CO [M1 width  >  1um]  >=  0.04   
+M1.A.1    :  Area  >=  ^M1_A_1 um2   
+M1.A.2    :  Enclosed area  >=   ^M1_A_2 um2   
+M1.S.1.SRM_SRAMDMY:  Spacing between M1 along the boundary of SRM and SRAMDMY   

@@ -1,0 +1,59 @@
+,Layer,Rule,Category,Description,Value
+0,GT,GT_1a,Width,GT width for 1.2V/1.5V NMOS/PMOS transistor,== 0.13
+1,GT,GT_2,Width,Interconnect width,== 0.13um
+2,GT,GT_3,Spacing,Space between GTs,== 0.18um
+3,GT,GT_4,Spacing,Space between AA and GT on field oxide,== 0.07um
+4,GT,GT_5,Extension,Extension of AA outside of GT,== 0.23um
+5,GT,GT_6,Extension,Extension of GT outside of AA,== 0.17um
+6,GT,GT_8,Restrictions,No bent GT on AA are allowed. All GT patterns on AA have to be orthogonal to AA edge,N/A
+7,GT,GT_9a,Extension,NLL extension outside of poly resistor,== 0.18um
+8,GT,GT_9b,Extension,NLH extension outside of poly resistor,== 0.18um
+9,GT,GT_9c,Extension,SN extension outside of poly resistor,== 0.18um
+10,GT,GT_9d,Extension,PLL extension outside of poly resistor,== 0.18um
+11,GT,GT_9e,Extension,PLH extension outside of poly resistor,== 0.18um
+12,GT,GT_9f,Extension,SP extension outside of poly resistor,== 0.18um
+13,GT,GT_10a,Spacing,Space between a NLL and a P-type poly resistor,== 0.18um
+14,GT,GT_10b,Spacing,Space between a NLH and a P-type poly resistor,== 0.18um
+15,GT,GT_10c,Spacing,Space between a SN and a P-type poly resistor,== 0.18um
+16,GT,GT_10d,Spacing,Space between a PLL and a N-type poly resistor,== 0.18um
+17,GT,GT_10e,Spacing,Space between a PLH and a N-type poly resistor,== 0.18um
+18,GT,GT_10f,Spacing,Space between a SP and a N-type poly resistor,== 0.18um
+19,GT,GT_11,Restrictions,GT used as MOS gate poly must be enclosed by SN or SP (except HRP resistor region),N/A
+20,GT,GT_13_R,Length,Max AA size along channel width direction from the turning point when L-shape or H-shape AA space to GT,>= 0.07um and <= 0.08um
+21,GT,GT_14_R,Spacing,Space between two CTs on poly (poly width < 0.24um) to avoid voltage drop,<= 1.0um
+22,GT,GT_15_R,Area,Poly area,>= 0.09
+23,GT,GT_16_R,Area,Enclosed poly area,>= 0.15um
+24,AA,AA_1_2,Width,AA width MOS transistors,== 0.15
+25,AA,AA_1_2,Width,AA width for interconnect,== 0.15
+26,AA,AA_3,Spacing,Space between AAs that are on the same well,== 0.21
+27,AA,AA_4,Enclosure,N+active enclosure by NW except NW resistor region,>= 0.23
+28,AA,AA_5,Spacing,Space between NW and N+active,== 0.30
+29,AA,AA_6,Enclosure,P+active enclosure by NW,== 0.30
+30,AA,AA_7,Spacing,Space between NW to P+AA inside PW,== 0.23
+31,AA,AA_8,Area,AA area,== 0.1
+32,AA,AA_9,Spacing,Space between N+AA and NW which enclosure a DNW,>= 0.4
+33,AA,AA_9,Spacing,DRC waive check when space between DNW to N+AA,>= 2.6
+34,AA,AA_10,Restrictions,AA or AADUM pattern is not allowed to straddle on a boundary of NW except NW resistor region,Not allowed
+35,AA,AA_11a,Restrictions,"Waive RESNW, Metal Fuse, L Mark, LOGO, and Inductor",Waived
+36,AA,AA_11b,Restrictions,"Waive RESNW, Metal Fuse, L Mark, LOGO, and Inductor",Waived
+37,CT,CT_1,Width,Fixed contact size (edge of a square via),== 0.16
+38,CT,CT_2,Spacing,Space between contacts,== 0.18
+39,CT,CT_3,Spacing,Space between AA and contact on poly,== 0.12
+40,CT,CT_4a,Spacing,Space between poly and contact on AA for 1.2 and 1.5V,>= 0.11
+41,CT,CT_5,Enclosure,CT enclosure by AA for CT landed on device AA,== 0.06
+42,CT,CT_5a,Enclosure,CT enclosure by AA for CT landed on pickup AA,== 0.05
+43,CT,CT_6,Enclosure,CT enclosure by poly for CT landed on poly,== 0.06
+44,CT,CT_7_8,Enclosure,CT enclosure by M1,>= 0.00
+45,CT,CT_7_8,Extension,M1 line end extension outside of CT,== 0.05
+46,CT,CT_9,Restrictions,CT is not allowed to land on gate,Not allowed
+47,CT,CT_10,Restrictions,CT can not overlap with SAB layer or (STI NOT GT) region,Not allowed
+48,CT,CT_12,Restrictions,"CT overlap with NW, AA, Poly or M1 resistor is not allowed",Not allowed
+49,M1,M1_1,Width,M1 width,== 0.16
+50,M1,M1_2,Spacing,Space between M1s,== 0.17
+51,M1,M1_3a_R,Spacing,Space between M1s with one or both M1 width greater than 0.4um when runlength > 1um,== 0.2
+52,M1,M1_3b_R,Spacing,Space between M1s with one or both M1 width greater than 2um,== 0.4
+53,M1,M1_3c,Spacing,Space between M1s with one or both M1 width greater than 10um,== 0.5
+54,M1,M1_4,Area,M1 area,== 0.08
+55,M1,M1_5,Area,Dielectric area enclosed by M1(um2),== 0.17
+56,M1,M1_7,Spacing,Space between metal line and 45 degree bent metal line that are longer than 0.5um,== 0.2
+57,M1,M1_8,Restrictions,Maximum line width allowed. Metal slot rule will apply for a metal with line width greater than this value. DRC skip to check (M1 interact AND with PA pattern).,<= 14.00
