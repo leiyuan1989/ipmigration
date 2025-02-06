@@ -1,0 +1,271 @@
+2025-02-06 14:53:05     INFO: ************Create Cicuit OpAmp Logger************
+2025-02-06 14:53:05     INFO: spectre -v
+2025-02-06 14:53:06     INFO: dcgain: 4.72555E+01 X
+2025-02-06 14:53:06     INFO: dcgain in dB: 33.5 dB
+2025-02-06 14:53:06     INFO: UnityGainFrequency: 2.66e+02 kHz
+2025-02-06 14:53:06     INFO: 3dB-bandwidth: 5.56e+00 kHz
+2025-02-06 14:53:06     INFO: PhaseMargin: 86.5 degree
+2025-02-06 14:53:06     INFO: spectre -v
+2025-02-06 14:53:07     INFO: slewRate: 8.0 V/us
+2025-02-06 14:53:07     INFO: spectre -v
+2025-02-06 14:53:09     INFO: slewRateNeg: 0.0 V/us
+2025-02-06 14:53:09     INFO: spectre -v
+2025-02-06 14:53:10     INFO: CMRR: 1.01964E+05 X
+2025-02-06 14:53:10     INFO: CMRR in dB: 100.2 dB
+2025-02-06 14:53:10     INFO: spectre -v
+2025-02-06 14:53:12     INFO: PSRR+: 3.04682E+03 X
+2025-02-06 14:53:12     INFO: PSRR+ in dB: 69.7 dB
+2025-02-06 14:53:12     INFO: spectre -v
+2025-02-06 14:53:13     INFO: Outout Swing: 3.099 V
+2025-02-06 14:53:13     INFO: Total simulation 
+ design variables:[2.19e-12, 82100.0, 1e-05, 1.0, 2.0, 2.0, 2.0, 2.0, 1.3, 56.2, 24.6, 86.8, 3.6] 
+ [num_saturation_device, DC Gain, GBW, Phase Margin, CMRR, PSRR, Output Swing, Positive Slewrate, Negative Slewrate]: [47.3, 0.3, 86.5, 101963.7, 3046.8, 3.1, 8.0, 0.0] 
+
+2025-02-06 14:53:13     INFO: spectre -v
+2025-02-06 14:53:15     INFO: dcgain: 1.37753E+05 X
+2025-02-06 14:53:15     INFO: dcgain in dB: 102.8 dB
+2025-02-06 14:53:15     INFO: UnityGainFrequency: 1.26e+04 kHz
+2025-02-06 14:53:15     INFO: 3dB-bandwidth: 1.92e-01 kHz
+2025-02-06 14:53:15     INFO: PhaseMargin: 32.1 degree
+2025-02-06 14:53:15     INFO: spectre -v
+2025-02-06 14:53:16     INFO: slewRate: 9.3 V/us
+2025-02-06 14:53:16     INFO: spectre -v
+2025-02-06 14:53:18     INFO: slewRateNeg: 3.5 V/us
+2025-02-06 14:53:18     INFO: spectre -v
+2025-02-06 14:53:19     INFO: CMRR: 1.46624E+05 X
+2025-02-06 14:53:19     INFO: CMRR in dB: 103.3 dB
+2025-02-06 14:53:19     INFO: spectre -v
+2025-02-06 14:53:21     INFO: PSRR+: 2.67402E+04 X
+2025-02-06 14:53:21     INFO: PSRR+ in dB: 88.5 dB
+2025-02-06 14:53:21     INFO: spectre -v
+2025-02-06 14:53:23     INFO: Outout Swing: 3.094 V
+2025-02-06 14:53:23     INFO: Total simulation 
+ design variables:[4.3e-13, 39400.0, 1e-05, 1.0, 2.0, 2.0, 2.0, 2.0, 5.8, 10.2, 34.2, 23.0, 38.2] 
+ [num_saturation_device, DC Gain, GBW, Phase Margin, CMRR, PSRR, Output Swing, Positive Slewrate, Negative Slewrate]: [137753.5, 12.6, 32.1, 146624.1, 26740.2, 3.1, 9.3, 3.5] 
+
+2025-02-06 14:53:23     INFO: spectre -v
+2025-02-06 14:53:24     INFO: dcgain: 4.50008E+01 X
+2025-02-06 14:53:24     INFO: dcgain in dB: 33.1 dB
+2025-02-06 14:53:24     INFO: UnityGainFrequency: 3.89e+02 kHz
+2025-02-06 14:53:24     INFO: 3dB-bandwidth: 8.19e+00 kHz
+2025-02-06 14:53:24     INFO: PhaseMargin: 105.4 degree
+2025-02-06 14:53:24     INFO: spectre -v
+2025-02-06 14:53:25     INFO: slewRate: 8.1 V/us
+2025-02-06 14:53:25     INFO: spectre -v
+2025-02-06 14:53:27     INFO: slewRateNeg: 7.6 V/us
+2025-02-06 14:53:27     INFO: spectre -v
+2025-02-06 14:53:28     INFO: CMRR: 2.10193E+04 X
+2025-02-06 14:53:28     INFO: CMRR in dB: 86.5 dB
+2025-02-06 14:53:28     INFO: spectre -v
+2025-02-06 14:53:30     INFO: PSRR+: 4.47748E+03 X
+2025-02-06 14:53:30     INFO: PSRR+ in dB: 73.0 dB
+2025-02-06 14:53:30     INFO: spectre -v
+2025-02-06 14:53:32     INFO: Outout Swing: 2.997 V
+2025-02-06 14:53:32     INFO: Total simulation 
+ design variables:[2.77e-12, 61600.0, 1e-05, 1.0, 2.0, 2.0, 2.0, 2.0, 8.6, 41.8, 13.0, 46.6, 73.4] 
+ [num_saturation_device, DC Gain, GBW, Phase Margin, CMRR, PSRR, Output Swing, Positive Slewrate, Negative Slewrate]: [45.0, 0.4, 105.4, 21019.3, 4477.5, 3.0, 8.1, 7.6] 
+
+2025-02-06 14:53:32     INFO: spectre -v
+2025-02-06 14:53:33     INFO: dcgain: 3.51221E+02 X
+2025-02-06 14:53:33     INFO: dcgain in dB: 50.9 dB
+2025-02-06 14:53:33     INFO: UnityGainFrequency: 2.92e+03 kHz
+2025-02-06 14:53:33     INFO: 3dB-bandwidth: 8.38e+00 kHz
+2025-02-06 14:53:33     INFO: PhaseMargin: 77.6 degree
+2025-02-06 14:53:33     INFO: spectre -v
+2025-02-06 14:53:34     INFO: slewRate: 3.5 V/us
+2025-02-06 14:53:34     INFO: spectre -v
+2025-02-06 14:53:36     INFO: slewRateNeg: 4.3 V/us
+2025-02-06 14:53:36     INFO: spectre -v
+2025-02-06 14:53:37     INFO: CMRR: 1.11657E+06 X
+2025-02-06 14:53:37     INFO: CMRR in dB: 121.0 dB
+2025-02-06 14:53:37     INFO: spectre -v
+2025-02-06 14:53:39     INFO: PSRR+: 8.23844E+03 X
+2025-02-06 14:53:39     INFO: PSRR+ in dB: 78.3 dB
+2025-02-06 14:53:39     INFO: spectre -v
+2025-02-06 14:53:41     INFO: Outout Swing: 3.096 V
+2025-02-06 14:53:41     INFO: Total simulation 
+ design variables:[1.17e-12, 9900.0, 1e-05, 1.0, 2.0, 2.0, 2.0, 2.0, 3.2, 26.8, 51.8, 68.6, 98.8] 
+ [num_saturation_device, DC Gain, GBW, Phase Margin, CMRR, PSRR, Output Swing, Positive Slewrate, Negative Slewrate]: [351.2, 2.9, 77.6, 1116565.5, 8238.4, 3.1, 3.5, 4.3] 
+
+2025-02-06 14:53:41     INFO: spectre -v
+2025-02-06 14:53:42     INFO: dcgain: 1.43287E+02 X
+2025-02-06 14:53:42     INFO: dcgain in dB: 43.1 dB
+2025-02-06 14:53:42     INFO: UnityGainFrequency: 1.10e+03 kHz
+2025-02-06 14:53:42     INFO: 3dB-bandwidth: 6.78e+00 kHz
+2025-02-06 14:53:42     INFO: PhaseMargin: 111.1 degree
+2025-02-06 14:53:42     INFO: spectre -v
+2025-02-06 14:53:43     INFO: slewRate: 6.4 V/us
+2025-02-06 14:53:43     INFO: spectre -v
+2025-02-06 14:53:44     INFO: slewRateNeg: 4.2 V/us
+2025-02-06 14:53:44     INFO: spectre -v
+2025-02-06 14:53:46     INFO: CMRR: 5.21796E+04 X
+2025-02-06 14:53:46     INFO: CMRR in dB: 94.4 dB
+2025-02-06 14:53:46     INFO: spectre -v
+2025-02-06 14:53:47     INFO: PSRR+: 4.28168E+03 X
+2025-02-06 14:53:47     INFO: PSRR+ in dB: 72.6 dB
+2025-02-06 14:53:47     INFO: spectre -v
+2025-02-06 14:53:48     INFO: Outout Swing: 2.998 V
+2025-02-06 14:53:48     INFO: Total simulation 
+ design variables:[2.71e-12, 39400.0, 1e-05, 1.0, 2.0, 2.0, 2.0, 2.0, 5.8, 10.2, 34.2, 21.2, 71.0] 
+ [num_saturation_device, DC Gain, GBW, Phase Margin, CMRR, PSRR, Output Swing, Positive Slewrate, Negative Slewrate]: [143.3, 1.1, 111.1, 52179.6, 4281.7, 3.0, 6.4, 4.2] 
+
+2025-02-06 14:53:48     INFO: spectre -v
+2025-02-06 14:53:50     INFO: dcgain: 2.97406E+02 X
+2025-02-06 14:53:50     INFO: dcgain in dB: 49.5 dB
+2025-02-06 14:53:50     INFO: UnityGainFrequency: 2.42e+03 kHz
+2025-02-06 14:53:50     INFO: 3dB-bandwidth: 8.27e+00 kHz
+2025-02-06 14:53:50     INFO: PhaseMargin: 63.4 degree
+2025-02-06 14:53:50     INFO: spectre -v
+2025-02-06 14:53:51     INFO: slewRate: 4.6 V/us
+2025-02-06 14:53:51     INFO: spectre -v
+2025-02-06 14:53:53     INFO: slewRateNeg: 2.9 V/us
+2025-02-06 14:53:53     INFO: spectre -v
+2025-02-06 14:53:54     INFO: CMRR: 1.23540E+05 X
+2025-02-06 14:53:54     INFO: CMRR in dB: 101.8 dB
+2025-02-06 14:53:54     INFO: spectre -v
+2025-02-06 14:53:55     INFO: PSRR+: 8.23283E+03 X
+2025-02-06 14:53:55     INFO: PSRR+ in dB: 78.3 dB
+2025-02-06 14:53:55     INFO: spectre -v
+2025-02-06 14:53:57     INFO: Outout Swing: 3.099 V
+2025-02-06 14:53:57     INFO: Total simulation 
+ design variables:[1.17e-12, 9900.0, 1e-05, 1.0, 2.0, 2.0, 2.0, 2.0, 3.2, 26.8, 51.8, 71.2, 39.4] 
+ [num_saturation_device, DC Gain, GBW, Phase Margin, CMRR, PSRR, Output Swing, Positive Slewrate, Negative Slewrate]: [297.4, 2.4, 63.4, 123539.7, 8232.8, 3.1, 4.6, 2.9] 
+
+2025-02-06 14:53:57     INFO: spectre -v
+2025-02-06 14:53:58     INFO: dcgain: 8.95589E+01 X
+2025-02-06 14:53:58     INFO: dcgain in dB: 39.0 dB
+2025-02-06 14:53:58     INFO: UnityGainFrequency: 2.87e+03 kHz
+2025-02-06 14:53:58     INFO: 3dB-bandwidth: 3.09e+01 kHz
+2025-02-06 14:53:58     INFO: PhaseMargin: 87.8 degree
+2025-02-06 14:53:58     INFO: spectre -v
+2025-02-06 14:54:00     INFO: slewRate: 12.5 V/us
+2025-02-06 14:54:00     INFO: spectre -v
+2025-02-06 14:54:01     INFO: slewRateNeg: 9.8 V/us
+2025-02-06 14:54:01     INFO: spectre -v
+2025-02-06 14:54:03     INFO: CMRR: 4.86073E+04 X
+2025-02-06 14:54:03     INFO: CMRR in dB: 93.7 dB
+2025-02-06 14:54:03     INFO: spectre -v
+2025-02-06 14:54:04     INFO: PSRR+: 2.36815E+04 X
+2025-02-06 14:54:04     INFO: PSRR+ in dB: 87.5 dB
+2025-02-06 14:54:04     INFO: spectre -v
+2025-02-06 14:54:06     INFO: Outout Swing: 3.092 V
+2025-02-06 14:54:06     INFO: Total simulation 
+ design variables:[4.2e-13, 61600.0, 1e-05, 1.0, 2.0, 2.0, 2.0, 2.0, 8.6, 41.8, 13.0, 46.6, 39.2] 
+ [num_saturation_device, DC Gain, GBW, Phase Margin, CMRR, PSRR, Output Swing, Positive Slewrate, Negative Slewrate]: [89.6, 2.9, 87.8, 48607.3, 23681.5, 3.1, 12.5, 9.8] 
+
+2025-02-06 14:54:06     INFO: spectre -v
+2025-02-06 14:54:07     INFO: dcgain: 7.34113E+01 X
+2025-02-06 14:54:07     INFO: dcgain in dB: 37.3 dB
+2025-02-06 14:54:07     INFO: UnityGainFrequency: 2.86e+03 kHz
+2025-02-06 14:54:07     INFO: 3dB-bandwidth: 3.82e+01 kHz
+2025-02-06 14:54:07     INFO: PhaseMargin: 89.4 degree
+2025-02-06 14:54:07     INFO: spectre -v
+2025-02-06 14:54:09     INFO: slewRate: 12.6 V/us
+2025-02-06 14:54:09     INFO: spectre -v
+2025-02-06 14:54:10     INFO: slewRateNeg: 8.0 V/us
+2025-02-06 14:54:10     INFO: spectre -v
+2025-02-06 14:54:11     INFO: CMRR: 2.01241E+04 X
+2025-02-06 14:54:11     INFO: CMRR in dB: 86.1 dB
+2025-02-06 14:54:11     INFO: spectre -v
+2025-02-06 14:54:13     INFO: PSRR+: 1.44941E+04 X
+2025-02-06 14:54:13     INFO: PSRR+ in dB: 83.2 dB
+2025-02-06 14:54:13     INFO: spectre -v
+2025-02-06 14:54:15     INFO: Outout Swing: 2.995 V
+2025-02-06 14:54:15     INFO: Total simulation 
+ design variables:[4.3e-13, 39400.0, 1e-05, 1.0, 2.0, 2.0, 2.0, 2.0, 5.8, 10.2, 34.2, 18.6, 97.4] 
+ [num_saturation_device, DC Gain, GBW, Phase Margin, CMRR, PSRR, Output Swing, Positive Slewrate, Negative Slewrate]: [73.4, 2.9, 89.4, 20124.1, 14494.1, 3.0, 12.6, 8.0] 
+
+2025-02-06 14:54:15     INFO: spectre -v
+2025-02-06 14:54:16     INFO: dcgain: 1.37753E+05 X
+2025-02-06 14:54:16     INFO: dcgain in dB: 102.8 dB
+2025-02-06 14:54:16     INFO: UnityGainFrequency: 1.26e+04 kHz
+2025-02-06 14:54:16     INFO: 3dB-bandwidth: 1.92e-01 kHz
+2025-02-06 14:54:16     INFO: PhaseMargin: 32.1 degree
+2025-02-06 14:54:16     INFO: spectre -v
+2025-02-06 14:54:18     INFO: slewRate: 9.3 V/us
+2025-02-06 14:54:18     INFO: spectre -v
+2025-02-06 14:54:19     INFO: slewRateNeg: 3.5 V/us
+2025-02-06 14:54:19     INFO: spectre -v
+2025-02-06 14:54:20     INFO: CMRR: 1.46624E+05 X
+2025-02-06 14:54:20     INFO: CMRR in dB: 103.3 dB
+2025-02-06 14:54:20     INFO: spectre -v
+2025-02-06 14:54:22     INFO: PSRR+: 2.67402E+04 X
+2025-02-06 14:54:22     INFO: PSRR+ in dB: 88.5 dB
+2025-02-06 14:54:22     INFO: spectre -v
+2025-02-06 14:54:24     INFO: Outout Swing: 3.094 V
+2025-02-06 14:54:25     INFO: Total simulation 
+ design variables:[4.3e-13, 39400.0, 1e-05, 1.0, 2.0, 2.0, 2.0, 2.0, 5.8, 10.2, 34.2, 23.0, 38.2] 
+ [num_saturation_device, DC Gain, GBW, Phase Margin, CMRR, PSRR, Output Swing, Positive Slewrate, Negative Slewrate]: [137753.5, 12.6, 32.1, 146624.1, 26740.2, 3.1, 9.3, 3.5] 
+
+2025-02-06 14:58:08     INFO: 
+Load Configuration: 
+  lib:smic011 cell:OpAmp view:schematic
+  log_folder:./demo/analog_opt/opamp/output 
+  tb_folder:./resources/smic018/tb_template 
+  result_folder:./resources/smic018/simResult
+  model_card:./resources/smic018/models/spectre/ms018_v1p7_spe.lib 
+  setting_outputs:./demo/analog_opt/opamp/setting_outputs.csv 
+  setting_variables:./demo/analog_opt/opamp/setting_variables.csv
+  optimizer:USGA3, num_generation:2 population_size:4 num_offsprings:4
+  corner_list:['tt'], objective_index:[] simulation_func:opamp
+
+2025-02-06 14:58:08     INFO: 
+Targets:
+       Name   Type      Spec             Details   Value
+0  dc_gain  cheap  maximize         DC Gain [X]  3162.0
+1      gbw  cheap  maximize            GBW[MHz]    10.0
+2       pm  cheap  maximize  Phase margin [deg]    60.0
+3     cmrr  cheap  maximize            CMRR [X]  3162.0
+4     psrr  cheap  maximize            PSRR [X]  1000.0
+5       sw  cheap  maximize    Output swing [V]     2.7
+6     sr_p  cheap  maximize   Slew rate +[MV/s]     5.0
+7     sr_n  cheap  maximize   Slew rate -[MV/s]     5.0
+2025-02-06 14:58:09     INFO: 
+Variables:
+                    item  ...                    comment
+0     capacitance_range  ...    min:max:step,  unit: pF
+1      inductance_range  ...    min:max:step,  unit: nH
+2      resistance_range  ...  min:max:step,  unit: kohm
+3  current_source_range  ...    min:max:step,  unit: uA
+4  voltage_source_range  ...     min:max:step,  unit: V
+5      W_L_ratios_range  ...               min:max:step
+6        lengths_values  ...                   unit: um
+
+[7 rows x 3 columns]
+2025-02-06 14:58:09     INFO: ************Create Cicuit OpAmp Logger************
+2025-02-06 15:05:38     INFO: ************Create Cicuit OpAmp Logger************
+2025-02-06 15:05:38     INFO: 
+Load Configuration: 
+  lib:smic011 cell:OpAmp view:schematic
+  log_folder:./demo/analog_opt/opamp/output 
+  tb_folder:./resources/smic018/tb_template 
+  result_folder:./resources/smic018/simResult
+  model_card:./resources/smic018/models/spectre/ms018_v1p7_spe.lib 
+  setting_outputs:./demo/analog_opt/opamp/setting_outputs.csv 
+  setting_variables:./demo/analog_opt/opamp/setting_variables.csv
+  optimizer:USGA3, num_generation:2 population_size:4 num_offsprings:4
+  corner_list:['tt'], objective_index:[] simulation_func:opamp
+
+2025-02-06 15:05:38     INFO: 
+Targets:
+       Name   Type      Spec             Details   Value
+0  dc_gain  cheap  maximize         DC Gain [X]  3162.0
+1      gbw  cheap  maximize            GBW[MHz]    10.0
+2       pm  cheap  maximize  Phase margin [deg]    60.0
+3     cmrr  cheap  maximize            CMRR [X]  3162.0
+4     psrr  cheap  maximize            PSRR [X]  1000.0
+5       sw  cheap  maximize    Output swing [V]     2.7
+6     sr_p  cheap  maximize   Slew rate +[MV/s]     5.0
+7     sr_n  cheap  maximize   Slew rate -[MV/s]     5.0
+2025-02-06 15:05:38     INFO: 
+Variables:
+                    item  ...                    comment
+0     capacitance_range  ...    min:max:step,  unit: pF
+1      inductance_range  ...    min:max:step,  unit: nH
+2      resistance_range  ...  min:max:step,  unit: kohm
+3  current_source_range  ...    min:max:step,  unit: uA
+4  voltage_source_range  ...     min:max:step,  unit: V
+5      W_L_ratios_range  ...               min:max:step
+6        lengths_values  ...                   unit: um
+
+[7 rows x 3 columns]

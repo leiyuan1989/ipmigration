@@ -1,0 +1,87 @@
+{
+    "ac1": {
+         "undefinedNetlist_file": "/template_diffamp1_ac1.scs",
+         "definedNetlist_file": "/test_diffamp1_ac1.scs",
+         "data_filename":  "outac1.ac"
+    },
+    "tran1": {
+         "undefinedNetlist_file": "/template_diffamp1_tran1.scs",
+         "definedNetlist_file": "/test_diffamp1_tran1.scs",
+         "data_filename":  "outtran1.tran.tran"
+    },
+
+    "tran2": {
+         "undefinedNetlist_file": "/template_diffamp1_tran2.scs",
+         "definedNetlist_file": "/test_diffamp1_tran2.scs",
+         "data_filename":  "outtran2.tran.tran"
+    },
+
+    "ac2": {
+        "undefinedNetlist_file": "/template_diffamp1_ac2.scs",
+        "definedNetlist_file": "/test_diffamp1_ac2.scs",
+        "data_filename":  "outac2.ac"
+    },
+
+    "ac3": {
+         "undefinedNetlist_file": "/template_diffamp1_ac3.scs",
+         "definedNetlist_file": "/test_diffamp1_ac3.scs",
+         "data_filename":  "outac3.ac"
+    },
+
+    "dc1": {
+        "undefinedNetlist_file": "/template_diffamp1_dc1.scs",
+        "definedNetlist_file": "/test_diffamp1_dc1.scs",
+        "data_filename":  "outdc1.dc"
+    },
+
+    "dc2": {
+        "undefinedNetlist_file": "/template_diffamp1_dc2.scs",
+        "definedNetlist_file": "/test_diffamp1_dc2.scs",
+        "data_filename":  "outdc2.dc"
+    },
+
+    "op1": {
+        "undefinedNetlist_file": "/template_diffamp1_op1.scs",
+        "definedNetlist_file": "/test_diffamp1_op1.scs",
+        "data_filename":  "outop1.dc"
+    },
+
+    "schmitt_trigger_tran1": {
+        "undefinedNetlist_file": "/template_st1_tran1.scs",
+        "definedNetlist_file": "/test_st1_tran1.scs",
+        "data_filename":  "outtran1.tran.tran"
+    },
+
+    "level_shifter_tran1": {
+        "undefinedNetlist_file": "/template_ls1_tran1.scs",
+        "definedNetlist_file": "/test_ls1_tran1.scs",
+        "data_filename":  "outtran1.tran.tran"
+    },
+
+    "dynamic_comparator_tran1": {
+        "undefinedNetlist_file": "/template_comparator1_tran1.scs",
+        "definedNetlist_file": "/test_comparator1_tran1.scs",
+        "data_filename":  "outtran1.tran.tran"
+    },
+
+    "dynamic_comparator_tran2": {
+        "undefinedNetlist_file": "/template_comparator1_tran2.scs",
+        "definedNetlist_file": "/test_comparator1_tran2.scs",
+        "data_filename":  "outtran2.tran.tran"
+    },
+
+    "comparator_tran1": {
+        "undefinedNetlist_file": "/template_comparator2_tran1.scs",
+        "definedNetlist_file": "/test_comparator2_tran1.scs",
+        "data_filename":  "outtran1.tran.tran"
+    },
+    "comparator_tran2": {
+        "undefinedNetlist_file": "/template_comparator2_tran2.scs",
+        "definedNetlist_file": "/test_comparator2_tran2.scs",
+        "data_filename":  "outtran2.tran.tran"
+    }
+}
+
+
+
+

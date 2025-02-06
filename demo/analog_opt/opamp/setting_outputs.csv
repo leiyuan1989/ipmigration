@@ -1,0 +1,9 @@
+Name,Type,Spec,Details,Value
+dc_gain,"cheap",maximize,"DC Gain [X]",3162
+gbw,"cheap",maximize,"GBW[MHz]",10
+pm,"cheap",maximize,"Phase margin [deg]",60
+cmrr,"cheap",maximize,"CMRR [X]",3162
+psrr,"cheap",maximize,"PSRR [X]",1000
+sw,"cheap",maximize,"Output swing [V]",2.7
+sr_p,"cheap",maximize,"Slew rate +[MV/s]",5
+sr_n,"cheap",maximize,"Slew rate -[MV/s]",5

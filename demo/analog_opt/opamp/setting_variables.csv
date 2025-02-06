@@ -1,0 +1,8 @@
+item,value,comment
+capacitance_range,0.1:3:0.01,"min:max:step,  unit: pF"
+inductance_range,,"min:max:step,  unit: nH"
+resistance_range,0.1:100:0.1,"min:max:step,  unit: kohm"
+current_source_range,10:10:0.1,"min:max:step,  unit: uA"
+voltage_source_range,,"min:max:step,  unit: V"
+W_L_ratios_range,"0.5:10:0.1,0.5:30:0.1,0.5:30:0.1,0.5:50:0.1,0.5:50:0.1",min:max:step
+lengths_values,"1,2,2,2,2",unit: um

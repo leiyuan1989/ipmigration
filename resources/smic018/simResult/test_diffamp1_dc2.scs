@@ -4,7 +4,7 @@ simulator lang=spectre
 global 0
 
 // include model card
-include "/home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic018/models/spectre/ms018_v1p7_spe.lib" section=tt
+include "./resources/smic018/models/spectre/ms018_v1p7_spe.lib" section=tt
 
 parameters w1 = 5.8  l1 = 1.0 w2 = 10.2 l2 = 2.0  w3 = 34.2 l3 = 2.0  w4 = 23.0  l4 = 2.0	w5 = 38.2  l5 = 2.0   cc=4.3e-13   cr=39400.0 ib=1e-05
 

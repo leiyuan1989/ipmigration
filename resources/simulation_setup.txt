@@ -1,9 +1,0 @@
-log_folder : /data/icdesign/ams/ip_migration/users/leiyuan/cds/
-model_card : /data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/smic018/models/spectre/ms018_v1p7_spe.lib
-/data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/setting.csv
-/data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/smic018/tb_template
-/data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/smic011/simResult
-USGA3
-2
-4
-4
