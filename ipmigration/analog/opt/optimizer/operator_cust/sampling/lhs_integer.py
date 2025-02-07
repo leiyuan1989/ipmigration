@@ -80,7 +80,8 @@ class LatinHypercubeSampling(Sampling):
         #        tmp=round(solution[j])
         #        X[i][j]=tmp
         X=(np.rint(X)).astype(int) # convert X to integer
-        print("int initial X:", X)
+        
+        #print("int initial X:", X)
         return X
 
 

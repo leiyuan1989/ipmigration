@@ -1,5 +1,5 @@
 simulator:[spectre]
-lib:[smic011]
+lib:[smic018]
 cell:[OpAmp]
 view:[schematic]
 log:[./demo/analog_opt/opamp/output]
@@ -9,9 +9,9 @@ variables:[./demo/analog_opt/opamp/setting_variables.csv]
 testbench:[./resources/smic018/tb_template]
 result:[./resources/smic018/simResult]
 opt:[USGA3]
-generation:[2]
-population:[4]
-offspring:[4]
+generation:[10]
+population:[40]
+offspring:[40]
 corner_list:[tt] ;"tt, ff, ss, fnsp, snfp"
 obj_index:[ ] ;leave a space here if not apply
 simulation_func:[opamp] ;"opamp, levelshifter, schmitt_trigger, comparator"

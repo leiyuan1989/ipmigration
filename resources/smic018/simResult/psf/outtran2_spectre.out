@@ -5,46 +5,46 @@ Copyright (C) 1989-2023 Cadence Design Systems, Inc. All rights reserved worldwi
 
 Includes RSA BSAFE(R) Cryptographic or Security Protocol Software from RSA Security, Inc.
 
-User: leiyuan   Host: icetserver01   HostID: 7F0100   PID: 24117
-Memory  available: 385.7380 GB  physical: 404.9105 GB
+User: leiyuan   Host: icetserver01   HostID: 7F0100   PID: 217636
+Memory  available: 384.5062 GB  physical: 404.9105 GB
 Linux   : CentOS Linux release 7 (Core)
 CPU Type: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
         Socket: Processors [Frequency] (Hyperthreaded Processor)
-        0:       0 [799.9] ( 80 ),  4 [3540.9] ( 84 ),  8 [910.9] ( 88 )
-                12 [800.1] ( 92 ), 16 [799.9] ( 96 ), 20 [845.8] ( 100 )
-                24 [803.9] ( 104 ), 28 [800.1] ( 108 ), 32 [900.9] ( 112 )
-                36 [799.9] ( 116 ), 40 [800.2] ( 120 ), 44 [914.4] ( 124 )
-                48 [960.4] ( 128 ), 52 [800.1] ( 132 ), 56 [800.1] ( 136 )
-                60 [899.1] ( 140 ), 64 [824.0] ( 144 ), 68 [800.1] ( 148 )
-                72 [800.1] ( 152 ), 76 [801.3] ( 156 )
-        1:       1 [1493.0] ( 81 ),  5 [996.3] ( 85 ),  9 [1738.2] ( 89 )
-                13 [827.9] ( 93 ), 17 [899.9] ( 97 ), 21 [799.9] ( 101 )
-                25 [894.4] ( 105 ), 29 [800.1] ( 109 ), 33 [799.9] ( 113 )
-                37 [997.3] ( 117 ), 41 [799.9] ( 121 ), 45 [897.3] ( 125 )
-                49 [799.9] ( 129 ), 53 [817.9] ( 133 ), 57 [847.9] ( 137 )
-                61 [800.1] ( 141 ), 65 [897.5] ( 145 ), 69 [897.5] ( 149 )
-                73 [895.4] ( 153 ), 77 [800.1] ( 157 )
-        2:       2 [3692.3] ( 82 ),  6 [852.4] ( 86 ), 10 [801.5] ( 90 )
-                14 [799.9] ( 94 ), 18 [799.9] ( 98 ), 22 [800.2] ( 102 )
-                26 [799.9] ( 106 ), 30 [799.9] ( 110 ), 34 [799.9] ( 114 )
-                38 [799.9] ( 118 ), 42 [826.6] ( 122 ), 46 [799.9] ( 126 )
-                50 [799.9] ( 130 ), 54 [800.1] ( 134 ), 58 [800.1] ( 138 )
-                62 [799.9] ( 142 ), 66 [800.1] ( 146 ), 70 [799.9] ( 150 )
-                74 [799.9] ( 154 ), 78 [800.1] ( 158 )
-        3:       3 [976.0] ( 83 ),  7 [850.0] ( 87 ), 11 [893.5] ( 91 )
-                15 [842.7] ( 95 ), 19 [799.9] ( 99 ), 23 [800.1] ( 103 )
-                27 [799.9] ( 107 ), 31 [845.2] ( 111 ), 35 [799.9] ( 115 )
-                39 [889.9] ( 119 ), 43 [805.2] ( 123 ), 47 [800.1] ( 127 )
-                51 [800.1] ( 131 ), 55 [800.2] ( 135 ), 59 [800.2] ( 139 )
-                63 [800.2] ( 143 ), 67 [799.9] ( 147 ), 71 [799.9] ( 151 )
-                75 [800.1] ( 155 ), 79 [800.1] ( 159 )
+        0:       0 [862.9] ( 80 ),  4 [799.9] ( 84 ),  8 [799.9] ( 88 )
+                12 [841.8] ( 92 ), 16 [800.1] ( 96 ), 20 [836.1] ( 100 )
+                24 [799.9] ( 104 ), 28 [800.1] ( 108 ), 32 [820.7] ( 112 )
+                36 [892.6] ( 116 ), 40 [800.1] ( 120 ), 44 [832.6] ( 124 )
+                48 [799.9] ( 128 ), 52 [799.9] ( 132 ), 56 [800.1] ( 136 )
+                60 [800.1] ( 140 ), 64 [799.9] ( 144 ), 68 [799.9] ( 148 )
+                72 [802.8] ( 152 ), 76 [799.9] ( 156 )
+        1:       1 [1196.2] ( 81 ),  5 [807.9] ( 85 ),  9 [1286.2] ( 89 )
+                13 [800.1] ( 93 ), 17 [800.1] ( 97 ), 21 [799.9] ( 101 )
+                25 [800.1] ( 105 ), 29 [799.9] ( 109 ), 33 [799.9] ( 113 )
+                37 [799.9] ( 117 ), 41 [799.9] ( 121 ), 45 [799.9] ( 125 )
+                49 [799.9] ( 129 ), 53 [846.6] ( 133 ), 57 [800.1] ( 137 )
+                61 [799.9] ( 141 ), 65 [799.9] ( 145 ), 69 [881.2] ( 149 )
+                73 [818.0] ( 153 ), 77 [799.9] ( 157 )
+        2:       2 [800.1] ( 82 ),  6 [839.2] ( 86 ), 10 [882.0] ( 90 )
+                14 [800.1] ( 94 ), 18 [800.1] ( 98 ), 22 [820.1] ( 102 )
+                26 [804.2] ( 106 ), 30 [799.9] ( 110 ), 34 [799.9] ( 114 )
+                38 [799.9] ( 118 ), 42 [800.1] ( 122 ), 46 [799.9] ( 126 )
+                50 [839.2] ( 130 ), 54 [799.9] ( 134 ), 58 [799.9] ( 138 )
+                62 [799.9] ( 142 ), 66 [800.2] ( 146 ), 70 [800.1] ( 150 )
+                74 [800.1] ( 154 ), 78 [799.9] ( 158 )
+        3:       3 [847.7] ( 83 ),  7 [1476.3] ( 87 ), 11 [799.9] ( 91 )
+                15 [800.1] ( 95 ), 19 [876.6] ( 99 ), 23 [799.9] ( 103 )
+                27 [883.0] ( 107 ), 31 [800.1] ( 111 ), 35 [1193.7] ( 115 )
+                39 [799.9] ( 119 ), 43 [800.1] ( 123 ), 47 [799.9] ( 127 )
+                51 [1095.5] ( 131 ), 55 [800.1] ( 135 ), 59 [800.3] ( 139 )
+                63 [799.9] ( 143 ), 67 [800.1] ( 147 ), 71 [799.9] ( 151 )
+                75 [799.9] ( 155 ), 79 [800.1] ( 159 )
         
-System load averages (1min, 5min, 15min) : 1.1 %, 1.1 %, 0.9 %
+System load averages (1min, 5min, 15min) : 0.7 %, 0.8 %, 0.8 %
 Hyperthreading is enabled
 HPC is enabled
 
 
-Simulating `./resources/smic018/simResult/test_diffamp1_tran2.scs' on icetserver01 at 3:06:51 PM, Thur Feb 6, 2025 (process id: 24117).
+Simulating `./resources/smic018/simResult/test_diffamp1_tran2.scs' on icetserver01 at 12:30:31 PM, Fri Feb 7, 2025 (process id: 217636).
 Current working directory: /data/icdesign/ams/ip_migration/users/leiyuan/ipmigration
 Environment variable:
     SPECTRE_DEFAULTS=-E -f psfbin
@@ -56,10 +56,10 @@ Command line:
         ++aps=moderate +mt=32 +lqtimeout 900 -maxw 5 -maxn 5 +logstatus
 
 Licensing Information:
-[15:06:51.287634] Configured Lic search path (22.01-s002): 5280@10.6.64.182:27001@10.6.126.11
+[12:30:32.287578] Configured Lic search path (22.01-s002): 5280@10.6.64.182:27001@10.6.126.11
 
 Licensing Information:
-[15:06:51.018713] Periodic Lic check successful
+[12:30:32.397794] Periodic Lic check successful
 
 Loading /opt/icdesign/CAD/cadence/SPECTRE231/tools.lnx86/cmi/lib/64bit/5.0/libinfineon_sh.so ...
 Loading /opt/icdesign/CAD/cadence/SPECTRE231/tools.lnx86/cmi/lib/64bit/5.0/libphilips_sh.so ...
@@ -71,22 +71,22 @@ Reading file:  /usr/include/stdc-predef.h
 Reading file:  /data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/resources/smic018/models/spectre/ms018_v1p7_spe.lib
 Reading file:  /data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/resources/smic018/models/spectre/ms018_v1p7_spe.mdl
 Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic018/ckt_netlist/twoStageOpamp2.scs
-Time for NDB Parsing: CPU = 246.26 ms, elapsed = 639.045 ms.
-Time accumulated: CPU = 443.05 ms, elapsed = 639.05 ms.
-Peak resident memory used = 112 Mbytes.
+Time for NDB Parsing: CPU = 259.809 ms, elapsed = 974.338 ms.
+Time accumulated: CPU = 462.129 ms, elapsed = 974.343 ms.
+Peak resident memory used = 104 Mbytes.
 
-Time for Elaboration: CPU = 40.86 ms, elapsed = 41.033 ms.
-Time accumulated: CPU = 484.218 ms, elapsed = 680.389 ms.
-Peak resident memory used = 118 Mbytes.
+Time for Elaboration: CPU = 37.606 ms, elapsed = 37.7641 ms.
+Time accumulated: CPU = 500.035 ms, elapsed = 1.01241 s.
+Peak resident memory used = 110 Mbytes.
 
 
 Notice from spectre during hierarchy flattening.
     The value 'psf' specified for the 'checklimitdest' option will no longer be supported in future releases. Use 'spectre -h' to see other recommended values for the 'checklimitdest' option.
 
 
-Time for EDB Visiting: CPU = 1.767 ms, elapsed = 2.36893 ms.
-Time accumulated: CPU = 486.228 ms, elapsed = 683.002 ms.
-Peak resident memory used = 119 Mbytes.
+Time for EDB Visiting: CPU = 1.579 ms, elapsed = 2.877 ms.
+Time accumulated: CPU = 501.827 ms, elapsed = 1.0155 s.
+Peak resident memory used = 111 Mbytes.
 
 
 Notice from spectre during initial setup.
@@ -135,9 +135,9 @@ Output statements:
 Notice from spectre during initial setup.
     Fast APS enabled.
 
-Time for parsing: CPU = 7.231 ms, elapsed = 9.93204 ms.
-Time accumulated: CPU = 493.675 ms, elapsed = 693.574 ms.
-Peak resident memory used = 121 Mbytes.
+Time for parsing: CPU = 7.095 ms, elapsed = 8.8861 ms.
+Time accumulated: CPU = 509.112 ms, elapsed = 1.02457 s.
+Peak resident memory used = 113 Mbytes.
 
 ~~~~~~~~~~~~~~~~~~~~~~
 Pre-Simulation Summary
@@ -148,7 +148,7 @@ Pre-Simulation Summary
 ***************************************************
 Transient Analysis `outtran2': time = (0 s -> 1 us)
 ***************************************************
-DC simulation time: CPU = 1.588 ms, elapsed = 1.59311 ms.
+DC simulation time: CPU = 1.611 ms, elapsed = 1.61505 ms.
 
 Opening the PSFASCII file ./resources/smic018/simResult/psf/outtran2.tran.tran ...
 Important parameter values:
@@ -183,44 +183,44 @@ Output and IC/nodeset summary:
                  save   9       (current)
                  save   9       (voltage)
 
-    outtran2: time = 33.66 ns    (3.37 %), step = 8.831 ns     (883 m%)
-    outtran2: time = 83.84 ns    (8.38 %), step = 20 ns           (2 %)
-    outtran2: time = 126.4 ns    (12.6 %), step = 3.842 ns     (384 m%)
-    outtran2: time = 175.3 ns    (17.5 %), step = 13.9 ns      (1.39 %)
-    outtran2: time = 237.6 ns    (23.8 %), step = 19.77 ns     (1.98 %)
-    outtran2: time = 277.6 ns    (27.8 %), step = 20 ns           (2 %)
-    outtran2: time = 337.6 ns    (33.8 %), step = 20 ns           (2 %)
-    outtran2: time = 377.6 ns    (37.8 %), step = 20 ns           (2 %)
-    outtran2: time = 437.6 ns    (43.8 %), step = 20 ns           (2 %)
-    outtran2: time = 477.6 ns    (47.8 %), step = 20 ns           (2 %)
-    outtran2: time = 537.6 ns    (53.8 %), step = 20 ns           (2 %)
-    outtran2: time = 577.6 ns    (57.8 %), step = 20 ns           (2 %)
+    outtran2: time = 31.84 ns    (3.18 %), step = 7.014 ns     (701 m%)
+    outtran2: time = 81.37 ns    (8.14 %), step = 16.16 ns     (1.62 %)
+    outtran2: time = 136.5 ns    (13.7 %), step = 19.87 ns     (1.99 %)
+    outtran2: time = 176.5 ns    (17.7 %), step = 20 ns           (2 %)
+    outtran2: time = 236.5 ns    (23.7 %), step = 20 ns           (2 %)
+    outtran2: time = 276.5 ns    (27.7 %), step = 20 ns           (2 %)
+    outtran2: time = 336.5 ns    (33.7 %), step = 20 ns           (2 %)
+    outtran2: time = 376.5 ns    (37.7 %), step = 20 ns           (2 %)
+    outtran2: time = 436.5 ns    (43.7 %), step = 20 ns           (2 %)
+    outtran2: time = 476.5 ns    (47.7 %), step = 20 ns           (2 %)
 
-Notice from spectre at time = 637.647 ns during transient analysis `outtran2'.
-    Found trapezoidal ringing on node vdd:p.
+Notice from spectre at time = 536.544 ns during transient analysis `outtran2'.
+    Found trapezoidal ringing on node Xopamp.net3.
 
-    outtran2: time = 637.6 ns    (63.8 %), step = 20 ns           (2 %)
+    outtran2: time = 536.5 ns    (53.7 %), step = 20 ns           (2 %)
 
-Notice from spectre at time = 657.647 ns during transient analysis `outtran2'.
-    Found trapezoidal ringing on node vdd:p.
-Notice from spectre at time = 677.647 ns during transient analysis `outtran2'.
-    Found trapezoidal ringing on node vdd:p.
+Notice from spectre at time = 556.544 ns during transient analysis `outtran2'.
+    Found trapezoidal ringing on node Xopamp.net3.
+Notice from spectre at time = 576.544 ns during transient analysis `outtran2'.
+    Found trapezoidal ringing on node Xopamp.net3.
 
-    outtran2: time = 677.6 ns    (67.8 %), step = 20 ns           (2 %)
+    outtran2: time = 576.5 ns    (57.7 %), step = 20 ns           (2 %)
 
-Notice from spectre at time = 697.647 ns during transient analysis `outtran2'.
-    Found trapezoidal ringing on node vdd:p.
-Notice from spectre at time = 717.647 ns during transient analysis `outtran2'.
-    Found trapezoidal ringing on node vdd:p.
+Notice from spectre at time = 596.544 ns during transient analysis `outtran2'.
+    Found trapezoidal ringing on node Xopamp.net3.
+Notice from spectre at time = 616.544 ns during transient analysis `outtran2'.
+    Found trapezoidal ringing on node Xopamp.net3.
         Further occurrences of this notice will be suppressed.
 
-    outtran2: time = 737.6 ns    (73.8 %), step = 20 ns           (2 %)
-    outtran2: time = 777.6 ns    (77.8 %), step = 20 ns           (2 %)
-    outtran2: time = 837.6 ns    (83.8 %), step = 20 ns           (2 %)
-    outtran2: time = 877.6 ns    (87.8 %), step = 20 ns           (2 %)
-    outtran2: time = 937.6 ns    (93.8 %), step = 20 ns           (2 %)
-    outtran2: time = 977.6 ns    (97.8 %), step = 20 ns           (2 %)
-Number of accepted tran steps =             76
+    outtran2: time = 636.5 ns    (63.7 %), step = 20 ns           (2 %)
+    outtran2: time = 676.5 ns    (67.7 %), step = 20 ns           (2 %)
+    outtran2: time = 736.5 ns    (73.7 %), step = 20 ns           (2 %)
+    outtran2: time = 776.5 ns    (77.7 %), step = 20 ns           (2 %)
+    outtran2: time = 836.5 ns    (83.7 %), step = 20 ns           (2 %)
+    outtran2: time = 876.5 ns    (87.7 %), step = 20 ns           (2 %)
+    outtran2: time = 936.5 ns    (93.7 %), step = 20 ns           (2 %)
+    outtran2: time = 976.5 ns    (97.7 %), step = 20 ns           (2 %)
+Number of accepted tran steps =             71
 
 Notice from spectre during transient analysis `outtran2'.
     Trapezoidal ringing is detected during tran analysis.
@@ -229,7 +229,7 @@ Notice from spectre during transient analysis `outtran2'.
 
 Maximum value achieved for any signal of each quantity: 
 V: V(dd) = 3.3 V
-I: I(vdd:p) = 54.04 uA
+I: I(vdd:p) = 74.5 uA
 If your circuit contains signals of the same quantity that are vastly different in size (such as high voltage circuitry combined with low voltage control circuitry), you should consider specifying global option `bin_relref=yes'.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -239,36 +239,34 @@ Post-Transient Simulation Summary
 
 
 During simulation, the CPU load for active processors is :
-         1 (31.1 %)      4 (4.0 %)       8 (13.7 %)     11 (14.9 %)
-        12 (2.7 %)      13 (2.7 %)      16 (2.7 %)      18 (1.3 %)
-        19 (1.4 %)      24 (1.3 %)      25 (1.4 %)      27 (1.4 %)
-        29 (4.1 %)      33 (1.4 %)      36 (1.4 %)      37 (1.4 %)
-        49 (2.7 %)      50 (1.4 %)      57 (1.4 %)      59 (1.4 %)
-        64 (1.4 %)      67 (1.4 %)      77 (1.4 %)      84 (11.0 %)
-        85 (1.4 %)      86 (35.6 %)     87 (47.2 %)     89 (4.1 %)
-        93 (1.4 %)      99 (2.7 %)      101 (2.7 %)     105 (2.7 %)
-        109 (4.0 %)     113 (4.1 %)     117 (2.7 %)     121 (5.4 %)
-        Total: 222.4%
-Initial condition solution time: CPU = 1.693 ms, elapsed = 1.69992 ms.
-Intrinsic tran analysis time:    CPU = 18.686 ms, elapsed = 153.902 ms.
-Total time required for tran analysis `outtran2': CPU = 22.654 ms, elapsed = 158.796 ms, util. = 14.3%.
-Time accumulated: CPU = 528.514 ms, elapsed = 866.356 ms.
-Peak resident memory used = 124 Mbytes.
+         4 (4.6 %)       5 (1.1 %)      10 (1.1 %)      11 (2.3 %)
+        13 (1.1 %)      14 (10.5 %)     20 (1.2 %)      26 (1.1 %)
+        28 (1.1 %)      35 (3.4 %)      36 (1.2 %)      47 (1.1 %)
+        48 (3.4 %)      52 (1.1 %)      53 (1.1 %)      71 (1.1 %)
+        72 (22.1 %)     84 (1.1 %)      85 (1.2 %)      86 (17.4 %)
+        88 (2.3 %)      96 (1.2 %)      100 (2.3 %)     104 (2.3 %)
+        108 (2.4 %)     112 (2.3 %)     116 (3.5 %)     
+        Total: 94.8%
+Initial condition solution time: CPU = 1.705 ms, elapsed = 1.71089 ms.
+Intrinsic tran analysis time:    CPU = 13.826 ms, elapsed = 16.098 ms.
+Total time required for tran analysis `outtran2': CPU = 17.744 ms, elapsed = 20.525 ms, util. = 86.5%.
+Time accumulated: CPU = 533.895 ms, elapsed = 1.05305 s.
+Peak resident memory used = 116 Mbytes.
 
 
 Notice from spectre.
-    15 notices suppressed.
+    20 notices suppressed.
 
 Licensing Information:
 Lic Summary:
-[15:06:52.057418] Cdslmd servers:5280@10.6.64.182:27001@10.6.126.11
-[15:06:52.057499] Feature usage summary:
-[15:06:52.057499] Virtuoso_Multi_mode_Simulation
+[12:30:32.217152] Cdslmd servers:5280@10.6.64.182:27001@10.6.126.11
+[12:30:32.217200] Feature usage summary:
+[12:30:32.217201] Virtuoso_Multi_mode_Simulation
 
 
-Aggregate audit (3:06:52 PM, Thur Feb 6, 2025):
-Time used: CPU = 532 ms, elapsed = 871 ms, util. = 61.1%.
-Time spent in licensing: elapsed = 47.8 ms, percentage of total = 5.49%.
-Peak memory used = 125 Mbytes.
-Simulation started at: 3:06:51 PM, Thur Feb 6, 2025, ended at: 3:06:52 PM, Thur Feb 6, 2025, with elapsed time (wall clock): 871 ms.
+Aggregate audit (12:30:32 PM, Fri Feb 7, 2025):
+Time used: CPU = 536 ms, elapsed = 1.06 s, util. = 50.8%.
+Time spent in licensing: elapsed = 450 ms, percentage of total = 42.6%.
+Peak memory used = 116 Mbytes.
+Simulation started at: 12:30:31 PM, Fri Feb 7, 2025, ended at: 12:30:32 PM, Fri Feb 7, 2025, with elapsed time (wall clock): 1.06 s.
 spectre completes with 0 errors, 0 warnings, and 12 notices.

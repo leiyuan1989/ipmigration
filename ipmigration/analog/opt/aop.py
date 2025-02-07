@@ -4,8 +4,10 @@ import time
 import logging
 
 from ipmigration.analog.opt.apis import config 
-from ipmigration.analog.opt.utils import log
+from ipmigration.analog.opt.utils import log,figureplot,monitor
 from ipmigration.analog.opt.optimizer.moo import Optimizer
+from ipmigration.analog.opt.simulator import spectre 
+
 
 logger = logging.getLogger(__name__)
 
@@ -16,32 +18,21 @@ def analog_optimizer(args):
     log.set_logger(cfg.log_folder, cfg.cell_name, log_level)
     
     cfg.load_cfgs()
-    
+
+    #test simulator 
+    if cfg.simulator == 'spectre':    
+        version = spectre.Circuit.check_cmd()
+        logger.info(version)
+    else:
+        raise ValueError("Simulator %s is not support now"%(cfg.simulator ))
+
+
     optimizer = Optimizer(cfg)
 
-
-    pareto_set, obj_loss, const_loss = optimizer.optimize_run(cfg.num_generation, DNN_mode=0)
-    run_time = optimizer.run_time
+    if args.monitor:
+        mon = monitor.Monitor(cfg.log_folder, cfg.targets_df)
+    pareto_set, obj_loss, const_loss = optimizer.optimize_run(cfg.num_generation, DNN_mode=0, monitor=mon)
     
-    ############### Plot result ###################
-    all_pareto_set_result=[]
-    all_pareto_set_corner_list=[]
-    for best_solution in pareto_set:
-        for corner in cfg.corner_list:
-            result=cfg.simulation_func(best_solution, cfg, mode="all", output=1, plot=1, corner=corner)
-        
-            all_pareto_set_result.append(result)
-            all_pareto_set_corner_list.append(corner)
-    
-    time.sleep(1)
-    print("\npareto set:")
-    for j in pareto_set:
-        print(j)
-    
-    print("Specification:\n", cfg.targets['all targets value'])
-    print("pareto set simulation result:")
-    for j in range(len(all_pareto_set_result)):
-        print(all_pareto_set_corner_list[j], all_pareto_set_result[j])
-    
-    print("run_time:", run_time)
+    mon.save()
+    figureplot.plot_result(cfg, optimizer,pareto_set)
 

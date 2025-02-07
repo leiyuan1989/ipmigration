@@ -7,7 +7,7 @@ global 0
 // include model card
 include "./resources/smic018/models/spectre/ms018_v1p7_spe.lib" section=tt
 
-parameters w1 = 5.8  l1 = 1.0 w2 = 10.2 l2 = 2.0  w3 = 34.2 l3 = 2.0  w4 = 23.0  l4 = 2.0	w5 = 38.2  l5 = 2.0   cc=4.3e-13   cr=39400.0 ib=1e-05
+parameters w1 = 2.3  l1 = 1.0 w2 = 4.2 l2 = 2.0  w3 = 9.4 l3 = 2.0  w4 = 37.6  l4 = 2.0	w5 = 40.8  l5 = 2.0   cc=1.87e-12   cr=44500.0 ib=1e-05
 
 // Include the circuit
 include    "/home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic018/ckt_netlist/twoStageOpamp2.scs"

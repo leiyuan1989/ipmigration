@@ -40,22 +40,25 @@ class Cfg:
         
     def load_gui_data(self, file):
         '''example
-            lib:[smic011]
-            cell:[OpAmp]
-            view:[schematic]
-            log:[/data/icdesign/ams/ip_migration/users/leiyuan/cds/]
-            model:[/data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/smic018/models/spectre/ms018_v1p7_spe.lib]
-            outputs:[/data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/setting_outputs.csv]
-            variables:[/data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/setting_variables.csv]
-            testbench:[/data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/smic018/tb_template]
-            result:[/data/icdesign/ams/ip_migration/users/leiyuan/ASMigration/ASOP/smic011/simResult]
-            opt:[USGA3]
-            generation:[2]
-            population:[4]
-            offspring:[4]
-            corner_list:[tt]
-            obj_index:[ ] 
-            simulation_func:[simulation_opamp]
+        simulator:[spectre]
+        lib:[smic018]
+        cell:[OpAmp]
+        view:[schematic]
+        log:[./demo/analog_opt/opamp/output]
+        model:[./resources/smic018/models/spectre/ms018_v1p7_spe.lib]
+        outputs:[./demo/analog_opt/opamp/setting_outputs.csv]
+        variables:[./demo/analog_opt/opamp/setting_variables.csv]
+        testbench:[./resources/smic018/tb_template]
+        result:[./resources/smic018/simResult]
+        opt:[USGA3]
+        generation:[2]
+        population:[4]
+        offspring:[4]
+        corner_list:[tt] ;"tt, ff, ss, fnsp, snfp"
+        obj_index:[ ] ;leave a space here if not apply
+        simulation_func:[opamp] ;"opamp, levelshifter, schmitt_trigger, comparator"
+        seed:[66]
+        output:[1]
         '''
         assert os.path.exists(file)
         with open(file,'r') as f:
@@ -120,11 +123,11 @@ class Cfg:
     def load_targets(self, file):
         assert os.path.exists(file)
         df = pd.read_csv(file)
-        
+        self.targets_df = df
         #log targets 
         logger.info('\nTargets:\n %s'%(str(df)))
         
-        spec_dict = {'maximize':1.0,'minimize':-1.0}
+        spec_dict = {'>=':1.0,'<=':-1.0}
         
         #all Type(cheap op expensive) must be equal?
         assert len(set(df.Type.tolist()))==1, 'all Type(cheap op expensive) must be equal?'
@@ -389,12 +392,13 @@ def get_design_space_setting(df):
         lengths_values=lengths_values.split(",")
         lengths_values=[float(item) for item in lengths_values]
     
-    print("capacitance_range: {0}, inductance_range: {1}".format(capacitance_range, inductance_range))
-    print("resistance_range:",resistance_range)
-    print("current_source_range:",current_source_range)
-    print("voltage_source_range:",voltage_source_range)
-    print("W_L_ratios_range:",W_L_ratios_range)
-    print("lengths_values: {0}".format(lengths_values))
+    # logger.info("capacitance_range: {0}, inductance_range: {1}".format(capacitance_range, inductance_range))
+    # logger.info("resistance_range:",resistance_range)
+    # logger.info("current_source_range:",current_source_range)
+    # logger.info("voltage_source_range:",voltage_source_range)
+    # logger.info("W_L_ratios_range:",W_L_ratios_range)
+    # logger.info("lengths_values: {0}".format(lengths_values))
+    
     return capacitance_range, inductance_range, \
         resistance_range, current_source_range, \
         voltage_source_range, W_L_ratios_range, lengths_values

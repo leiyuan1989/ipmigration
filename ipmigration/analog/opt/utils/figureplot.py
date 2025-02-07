@@ -6,10 +6,39 @@ Created on Tue Nov 21 15:36:54 2023
 
 add plotSchmittTrigger 27/08/2024
 """
+import time
 import numpy as np
 import matplotlib.pyplot as plt
 
+def plot_result(cfg, optimizer,pareto_set):
+    
+    ############### Plot result ###################
+        
+    run_time = optimizer.run_time
 
+    all_pareto_set_result=[]
+    all_pareto_set_corner_list=[]
+    for best_solution in pareto_set:
+        for corner in cfg.corner_list:
+            result=cfg.simulation_func(best_solution, cfg, mode="all", output=1, plot=1, corner=corner)
+        
+            all_pareto_set_result.append(result)
+            all_pareto_set_corner_list.append(corner)
+    
+    time.sleep(1)
+    print("\npareto set:")
+    for j in pareto_set:
+        print(j)
+    
+    print("Specification:\n", cfg.targets['all targets value'])
+    print("pareto set simulation result:")
+    for j in range(len(all_pareto_set_result)):
+        print(all_pareto_set_corner_list[j], all_pareto_set_result[j])
+    
+    print("run_time:", run_time)  
+    
+    
+    
 # -------------------------
 # Plotting helper functions
 # -------------------------

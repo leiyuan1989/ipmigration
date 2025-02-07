@@ -10,6 +10,7 @@ MODIFIED read_op_analysis
 
 #import time
 import os
+import logging
 import subprocess
 import shlex
 import numpy as np
@@ -17,6 +18,8 @@ import numpy as np
 import traceback
 from string import Formatter
 
+
+logger = logging.getLogger(__name__)
 
 class Circuit:
     """    cfg = {
@@ -52,7 +55,7 @@ class Circuit:
             #print("netlistUndefined:", self.netlistUndefined) 
         
         self.parameters=list(set(i[1] for i in Formatter().parse(self.netlistUndefined) if i[1] ))
-        print("&&&test4", self.parameters)      
+        #print("&&&test4", self.parameters)      
         # ['w1', 'l4', 'cr', 'l2', 'w3', 'w5', 'cc', 'w2', 'w4', 'l5', 'l3', 'ib', 'l1']  
         if self.parameters:
             # raise ValueError
@@ -108,19 +111,31 @@ class Circuit:
 
         #print("run_string:", run_string)
         run_command = shlex.split(run_string)
-        #try:
-        print("Running simulation...", run_command)
-        #subprocess.call(run_command)
-        process=subprocess.Popen(run_command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        stdout, stderr = process.communicate()
-        #print("Done.")
+        
+        try:
+            logger.debug("Running simulation: %s", str(run_command))
+            #subprocess.call(run_command)
+            process=subprocess.Popen(run_command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            stdout, stderr = process.communicate()
+            #print("Done.")
 
-        return 0
-        #except:
-         #   raise SimulationError("Spectre Simulation Error!!!")
+            return 0
+        except:
+            #TODO: revise ValueError
+            raise ValueError("Spectre Simulation Error!!!")
             
-    
-    
+    @staticmethod
+    def check_cmd():
+        try:
+            process=subprocess.Popen(['spectre','-V'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            stdout, stderr = process.communicate()
+
+            return stdout.decode('UTF-8')
+        except:
+            raise ValueError('Can not run cmd: spectre')
+        
+        
+        
     
     
     

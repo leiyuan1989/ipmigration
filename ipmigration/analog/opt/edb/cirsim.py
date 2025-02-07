@@ -31,11 +31,7 @@ class CirSimCfg:
         if cfg.simulator == 'spectre':    
             self.Circuit = spectre.Circuit
             self.simulator = 'spectre' #command to run on terminal
-            #test simulator here
-            try:
-                print('spectre -v')
-            except:
-                raise ValueError('Cannot run spectre command!')
+
      
         else:
             raise ValueError("Simulator %s is not support now"%(self.cfg.simulator))
@@ -120,6 +116,7 @@ def simulation_opamp(decision_variable_values, cfg,
         dvdsat_list = cir_op1_sim(values, config=[cfg, sim_cfg],corner=corner, output=output)
         op_sim_result = dvdsat_list
         if output:
+            #TODO revise
             print("Op simulation! \n design variables:{0} \n vdsat_list: {1} \n".format(values, op_sim_result))
         return op_sim_result
     
@@ -134,6 +131,7 @@ def simulation_opamp(decision_variable_values, cfg,
         cheap_sim_result = [float('{:.1f}'.format(i)) for i in cheap_sim_result]
         
         if output:
+            #TODO revise
             print("Cheap simulation! \n design variables:{0} \n [DC Gain, GBW, Phase Margin, CMRR, PSRR, Output Swing]: {1} \n".format(values, cheap_sim_result))
         if plot:
             #import figureplot
@@ -150,6 +148,7 @@ def simulation_opamp(decision_variable_values, cfg,
         expensive_sim_result = [slewRate/1.0e6, slewRateNeg/1.0e6]
         expensive_sim_result = [float('{:.1f}'.format(i)) for i in expensive_sim_result]
         if output:
+            #TODO revise
             print("Expensive simulation! \ndesign variables:{0} \n [Positive Slewrate, Negative slewRate]: {1} \n".format(values, expensive_sim_result))
         if plot:
             #import figureplot
@@ -195,8 +194,11 @@ def simulation_opamp(decision_variable_values, cfg,
             plt.plotTran(time_var1, vout_tran1)
             plt.plotCMRRorPSRR(freq_cmrr, vout_cmrr, title='CMRR')
             plt.plotDC(dc_sweep_ocmr, vout_dc_ocmr, title='OCMR')
+        
+        logger.info("\n run simulation_opamp: \n variables: %s \n outputs: %s"%(str(values), str(sim_result) ))
         if output:
-            print("Total simulation \n design variables:{0} \n [num_saturation_device, DC Gain, GBW, Phase Margin, CMRR, PSRR, Output Swing, Positive Slewrate, Negative Slewrate]: {1} \n".format(values, sim_result))
+            print("\n run simulation_opamp: \n variables: %s \n outputs: %s"%(str(values), str(sim_result) ))
+                            
         return sim_result
 
 
@@ -226,8 +228,10 @@ def simulation_level_shifter(decision_variable_values, cfg,
     rise_time, fall_time, delay, avg_total_power = levelShifter_tran1_sim(values, config=[cfg, sim_cfg], corner=corner, output=output)
     sim_result = [rise_time, fall_time, delay, avg_total_power]
     sim_result = [float('{:.2e}'.format(i)) for i in sim_result]
+    
+    logger.info("\n run simulation_level_shifter: \n variables: %s \n outputs: %s"%(str(values), str(sim_result) ))
     if output:
-        print("Level Shifter simulation! \n design variables:{0} \n [rise_time, fall_time, delay, avg_total_power]: {1} \n".format(values, sim_result))
+        print("\n run simulation_level_shifter: \n variables: %s \n outputs: %s"%(str(values), str(sim_result) ))
     if plot:
         plt.plotSchmittTrigger(time_var_in, vin_tran, time_var_out, vout_tran)
     return sim_result
@@ -258,8 +262,9 @@ def simulation_schmitt_trigger( decision_variable_values, cfg,
     vih, vil, window = schmittTrigger_tran1_sim(values, config=[cfg, sim_cfg], corner=corner, output=output)
     sim_result = [vih, vil, window]
     sim_result = [float('{:.2f}'.format(i)) for i in sim_result]
+    logger.info("\n run simulation_schmitt_trigger: \n variables: %s \n outputs: %s"%(str(values), str(sim_result) ))
     if output:
-        print("Schmitt Trigger simulation! \n design variables:{0} \n [vih, vil, hysterisis_window]: {1} \n".format(values, sim_result))
+        print("\n run simulation_schmitt_trigger: \n variables: %s \n outputs: %s"%(str(values), str(sim_result) ))
     if plot:
         plt.plotSchmittTrigger(time_var_in, vin_tran, time_var_out, vout_tran)
     return sim_result
@@ -295,8 +300,9 @@ def simulation_comparator(decision_variable_values, cfg,
     delay_rise, delay_fall, voh, vol, ipwr_avg = comparator_tran2_sim(values, config=[cfg, sim_cfg], corner=corner, output=output)
     sim_result = [vos, delay_rise, delay_fall, voh, vol, ipwr_avg]
     sim_result = [float('{:.3e}'.format(i)) for i in sim_result]
+    logger.info("\n run simulation_comparator: \n variables: %s \n outputs: %s"%(str(values), str(sim_result) ))
     if output:
-        print("Comparator simulation! \n design variables:{0} \n [vos, delay_rise, delay_fall, voh, vol, ipwr_avg]: {1} \n".format(values, sim_result))
+        print("\n run simulation_comparator: \n variables: %s \n outputs: %s"%(str(values), str(sim_result) ))
     if plot:
         plt.plotComparatorOffset(time_var_inp1, vinp_tran1, time_var_inn1,\
                                         vinn_tran1, time_var_out1, vout_tran1)
@@ -338,8 +344,9 @@ def simulation_dynamic_comparator(decision_variable_values, cfg,
     sim_result = [vos, vop_rise_time, vop_fall_time, \
                   von_rise_time, von_fall_time, delay_rise, delay_fall]
     sim_result = [float('{:.3e}'.format(i)) for i in sim_result]
+    logger.info("\n run simulation_dynamic_comparator: \n variables: %s \n outputs: %s"%(str(values), str(sim_result) ))
     if output:
-        print("Comparator simulation! \n design variables:{0} \n [vos, delay_rise, delay_fall]: {1} \n".format(values, sim_result))
+       print("\n run simulation_dynamic_comparator: \n variables: %s \n outputs: %s"%(str(values), str(sim_result) ))
     if plot:
         plt.plotDynamicComparatorOffset(time_var_clk1, vclk_tran1, \
                                         time_var_inp1, vinp_tran1, time_var_inn1,\
@@ -446,13 +453,14 @@ def cir_ac1_sim(values, config, corner=None, output=None):
     
     if output:
         #TODO move to log
-        print('dcgain: %.5E X' % dcGain)
-        print('dcgain in dB: %.1f dB' % dcGain_dB)
-        print('UnityGainFrequency: %.2e kHz' % float(ugf/1e3))
-        print('3dB-bandwidth: %.2e kHz' % float(bandwidth/1e3))
-        print('PhaseMargin: %.1f degree' % phaseMargin)
-        print('parameters:', device_parameters) 
-        print('parameters_values:', device_parameter_values) 
+        logger.info('run cir_ac1_sim')
+        logger.info('dcgain: %.5E X'%(dcGain))
+        logger.info('dcgain in dB: %.1f dB'%(dcGain_dB))
+        logger.info('UnityGainFrequency: %.2e kHz'%(float(ugf/1e3)))
+        logger.info('3dB-bandwidth: %.2e kHz'%(float(bandwidth/1e3)))
+        logger.info('PhaseMargin: %.1f degree'%(phaseMargin))
+        logger.info('parameters: %s'%(str(device_parameters))) 
+        logger.info('parameters_values: %s'%(str(device_parameter_values))) 
     return freq, vout, dcGain, ugf, bandwidth, phaseMargin
 
 
@@ -519,9 +527,9 @@ def cir_tran1_sim(values, config, corner=None, output=None):
     device_parameter_values=list(parameters_values)   
     
     if output:
-        print('slewRate: %.1f V/us' % slewRate_us)
-        print('parameters:', device_parameters)
-        print('parameters_values:', device_parameter_values) 
+        logger.info('slewRate: %.1f V/us' %(slewRate_us))
+        logger.info('parameters: %s'%(str(device_parameters)))
+        logger.info('parameters_values: %s'%(str(device_parameter_values)))
     return time_var, vout_tran, slewRate
 
 
@@ -590,9 +598,9 @@ def cir_tran2_sim(values, config, corner=None, output=None):
     device_parameter_values=list(parameters_values)   
     
     if output:
-        print('slewRateNeg: %.1f V/us' % slewRateNeg_us)
-        print('parameters:', device_parameters)
-        print('parameters_values:', device_parameter_values) 
+        logger.info('slewRateNeg: %.1f V/us'%(slewRateNeg_us))
+        logger.info('parameters: %s'%( str(device_parameters)))
+        logger.info('parameters_values: %s'%(str(device_parameter_values)))
     return time_var, vout_tran, slewRateNeg
 
 
@@ -642,10 +650,10 @@ def cir_ac2_sim(values, config, corner=None, output=None):
     device_parameter_values=list(parameters_values)
     
     if output:
-        print('CMRR: %.5E X' % CMRR)
-        print('CMRR in dB: %.1f dB' % CMRR_dB)
-        print('parameters:', device_parameters) 
-        print('parameters_values:', device_parameter_values) 
+        logger.info('CMRR: %.5E X' % CMRR)
+        logger.info('CMRR in dB: %.1f dB' % CMRR_dB)
+        logger.info('parameters: %s'%( str(device_parameters)))
+        logger.info('parameters_values: %s'%(str(device_parameter_values)))
     return freq, vout, CMRR
 
 def cir_ac3_sim(values, config, corner=None, output=None):    
@@ -694,10 +702,10 @@ def cir_ac3_sim(values, config, corner=None, output=None):
     device_parameter_values=list(parameters_values)
     
     if output:
-        print('PSRR+: %.5E X' % PSRR_pos)
-        print('PSRR+ in dB: %.1f dB' % PSRR_pos_dB)
-        print('parameters:', device_parameters) 
-        print('parameters_values:', device_parameter_values) 
+        logger.info('PSRR+: %.5E X' % PSRR_pos)
+        logger.info('PSRR+ in dB: %.1f dB' % PSRR_pos_dB)
+        logger.info('parameters: %s'%( str(device_parameters)))
+        logger.info('parameters_values: %s'%(str(device_parameter_values)))
     return freq, vout, PSRR_pos
 
 
@@ -744,9 +752,9 @@ def cir_dc1_sim(values, config, corner=None, output=None):
     device_parameter_values=list(parameters_values)
     
     if output:
-        print('ICMR: %.3f V' % ICMR)
-        print('parameters:', device_parameters) 
-        print('parameters_values:', device_parameter_values) 
+        logger.info('ICMR: %.3f V' % ICMR)
+        logger.info('parameters: %s'%( str(device_parameters)))
+        logger.info('parameters_values: %s'%(str(device_parameter_values)))
     return dc_sweep, vout_dc, ICMR
 
 def cir_dc2_sim(values, config, corner=None, output=None):    
@@ -793,9 +801,9 @@ def cir_dc2_sim(values, config, corner=None, output=None):
     device_parameter_values=list(parameters_values)
     
     if output:
-        print('Outout Swing: %.3f V' % OCMR)
-        print('parameters:', device_parameters) 
-        print('parameters_values:', device_parameter_values) 
+        logger.info('Outout Swing: %.3f V' % OCMR)
+        logger.info('parameters: %s'%( str(device_parameters)))
+        logger.info('parameters_values: %s'%(str(device_parameter_values)))
     return dc_sweep, vout_dc, OCMR
 
 def cir_op1_sim(values, config, corner=None, output=None):    
@@ -847,11 +855,11 @@ def cir_op1_sim(values, config, corner=None, output=None):
     #print("dvdsat_list:", dvdsat_list) 
     #print("num_saturation_device:", num_saturation_device) 
     if output:
-        print('{0} devices dvdsat list: {1}'.format(len(dvdsat_list), dvdsat_list))
-        print('parameters:', device_parameters) 
-        print('parameters_values:', device_parameter_values) 
-        print("device_name_list:", device_name_list)
-        print("dvdsat_list:", dvdsat_list) 
+        logger.info('{0} devices dvdsat list: {1}'.format(len(dvdsat_list), dvdsat_list))
+        logger.info('parameters: %s'%( str(device_parameters)))
+        logger.info('parameters_values: %s'%(str(device_parameter_values)))
+        logger.info("device_name_list %s:"%(str(device_name_list)))
+        logger.info("dvdsat_list: %s"%(str(dvdsat_list))) 
     return num_saturation_device
 
 
@@ -917,9 +925,9 @@ def levelShifter_tran1_sim(values, config, corner=None, output=None):
     device_parameter_values=list(parameters_values)   
     
     if output:
-        print('rise_time: {0:.2e}s, fall_time:{1:.2e}s, delay: {2:.2e}s, avg_total_power: {3:.2e}W'.format(rise_time, fall_time, delay, avg_total_power))
-        print('parameters:', device_parameters)
-        print('parameters_values:', device_parameter_values) 
+        logger.info('rise_time: {0:.2e}s, fall_time:{1:.2e}s, delay: {2:.2e}s, avg_total_power: {3:.2e}W'.format(rise_time, fall_time, delay, avg_total_power))
+        logger.info('parameters: %s'%( str(device_parameters)))
+        logger.info('parameters_values: %s'%(str(device_parameter_values)))
     return time_var_out, vout_tran, time_var_in, vin_tran,  ivddl_tran, ivddh_tran, rise_time, fall_time, delay, avg_total_power
 
 
@@ -996,9 +1004,9 @@ def schmittTrigger_tran1_sim(values, config, corner=None, output=None):
     device_parameter_values=list(parameters_values)   
     
     if output:
-        print('v_ih: {0:.3f}V, v_il:{1:.3f}V, window: {2:.1f}mV'.format(v_ih, v_il, window))
-        print('parameters:', device_parameters)
-        print('parameters_values:', device_parameter_values) 
+        logger.info('v_ih: {0:.3f}V, v_il:{1:.3f}V, window: {2:.1f}mV'.format(v_ih, v_il, window))
+        logger.info('parameters: %s'%( str(device_parameters)))
+        logger.info('parameters_values: %s'%(str(device_parameter_values)))
     return time_var_out, vout_tran, time_var_in, vin_tran, v_ih, v_il, window
 
 
@@ -1066,9 +1074,9 @@ def comparator_tran1_sim(values, config, corner=None, output=None):
     device_parameter_values=list(parameters_values)   
     
     if output:
-        print('offset_voltage vos: {0:.3e} mV'.format(vos))
-        print('parameters:', device_parameters)
-        print('parameters_values:', device_parameter_values) 
+        logger.info('offset_voltage vos: {0:.3e} mV'.format(vos))
+        logger.info('parameters: %s'%( str(device_parameters)))
+        logger.info('parameters_values: %s'%(str(device_parameter_values)))
     return  time_var_inp, vinp_tran, \
             time_var_inn, vinn_tran, time_var_out, vout_tran, \
            vos
@@ -1135,9 +1143,9 @@ def comparator_tran2_sim(values, config, corner=None, output=None):
     device_parameter_values=list(parameters_values)   
     
     if output:
-        print('delay_rise: {0:.3e} nsec, delay_fall: {1:.3e} nsec, voh: {2:.2f} V, vol: {3:.2f} V, ipwr_avg: {4:.3e} uA'.format(delay_rise, delay_fall, voh, vol, ipwr_avg))
-        print('parameters:', device_parameters)
-        print('parameters_values:', device_parameter_values) 
+        logger.info('delay_rise: {0:.3e} nsec, delay_fall: {1:.3e} nsec, voh: {2:.2f} V, vol: {3:.2f} V, ipwr_avg: {4:.3e} uA'.format(delay_rise, delay_fall, voh, vol, ipwr_avg))
+        logger.info('parameters: %s'%( str(device_parameters)))
+        logger.info('parameters_values: %s'%(str(device_parameter_values)))
         plt.plotTranPower(time_var_ivdd, ivdd_tran)
     return time_var_inp, vinp_tran, time_var_out, vout_tran, delay_rise, delay_fall, voh, vol, ipwr_avg
 
@@ -1213,12 +1221,12 @@ def dynamic_comparator_tran1_sim(values, config, corner=None, output=None):
     device_parameter_values=list(parameters_values)   
     
     if output:
-        print('offset_voltage vos: {0:.3e} mV,\
+        logger.info('offset_voltage vos: {0:.3e} mV,\
               vop_rise_time: {1:.3e} ns, vop_fall_time: {2:.3e} ns,  \
               von_rise_time: {3:.3e} ns, von_fall_time: {4:.3e} ns'.format(vos, vop_rise_time, vop_fall_time, \
                   von_rise_time, von_fall_time))
-        print('parameters:', device_parameters)
-        print('parameters_values:', device_parameter_values) 
+        logger.info('parameters: %s'%( str(device_parameters)))
+        logger.info('parameters_values: %s'%(str(device_parameter_values)))
     return time_var_clk, vclk_tran, time_var_inp, vinp_tran, time_var_inn, vinn_tran, time_var_outp, voutp_tran, \
            time_var_outn, voutn_tran, vos, vop_rise_time, vop_fall_time, von_rise_time, von_fall_time
 
@@ -1278,9 +1286,9 @@ def dynamic_comparator_tran2_sim(values, config, corner=None, output=None):
     device_parameter_values=list(parameters_values)   
     
     if output:
-        print('delay_rise: {0:.3e} nsec, delay_fall: {1:.3e}'.format(delay_rise, delay_fall))
-        print('parameters:', device_parameters)
-        print('parameters_values:', device_parameter_values) 
+        logger.info('delay_rise: {0:.3e} nsec, delay_fall: {1:.3e}'.format(delay_rise, delay_fall))
+        logger.info('parameters: %s'%( str(device_parameters)))
+        logger.info('parameters_values: %s'%(str(device_parameter_values)))
     return time_var_clk, vclk_tran, time_var_outp, voutp_tran, delay_rise, delay_fall
 
 

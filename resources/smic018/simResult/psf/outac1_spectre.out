@@ -5,46 +5,46 @@ Copyright (C) 1989-2023 Cadence Design Systems, Inc. All rights reserved worldwi
 
 Includes RSA BSAFE(R) Cryptographic or Security Protocol Software from RSA Security, Inc.
 
-User: leiyuan   Host: icetserver01   HostID: 7F0100   PID: 24025
-Memory  available: 385.7429 GB  physical: 404.9105 GB
+User: leiyuan   Host: icetserver01   HostID: 7F0100   PID: 217544
+Memory  available: 384.5103 GB  physical: 404.9105 GB
 Linux   : CentOS Linux release 7 (Core)
 CPU Type: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
         Socket: Processors [Frequency] (Hyperthreaded Processor)
-        0:       0 [799.9] ( 80 ),  4 [799.9] ( 84 ),  8 [896.1] ( 88 )
-                12 [799.9] ( 92 ), 16 [799.9] ( 96 ), 20 [800.1] ( 100 )
-                24 [800.1] ( 104 ), 28 [799.9] ( 108 ), 32 [832.1] ( 112 )
-                36 [1125.0] ( 116 ), 40 [1410.7] ( 120 ), 44 [892.7] ( 124 )
-                48 [800.1] ( 128 ), 52 [821.0] ( 132 ), 56 [823.0] ( 136 )
-                60 [799.9] ( 140 ), 64 [816.5] ( 144 ), 68 [800.1] ( 148 )
-                72 [799.9] ( 152 ), 76 [799.9] ( 156 )
-        1:       1 [800.1] ( 81 ),  5 [1661.5] ( 85 ),  9 [799.9] ( 89 )
-                13 [893.9] ( 93 ), 17 [813.1] ( 97 ), 21 [800.1] ( 101 )
-                25 [808.6] ( 105 ), 29 [799.9] ( 109 ), 33 [800.1] ( 113 )
-                37 [799.9] ( 117 ), 41 [802.4] ( 121 ), 45 [854.4] ( 125 )
-                49 [896.6] ( 129 ), 53 [880.7] ( 133 ), 57 [900.0] ( 137 )
-                61 [841.5] ( 141 ), 65 [799.9] ( 145 ), 69 [799.9] ( 149 )
-                73 [799.9] ( 153 ), 77 [799.9] ( 157 )
-        2:       2 [3725.1] ( 82 ),  6 [800.1] ( 86 ), 10 [878.0] ( 90 )
-                14 [799.9] ( 94 ), 18 [799.9] ( 98 ), 22 [799.9] ( 102 )
-                26 [836.3] ( 106 ), 30 [799.9] ( 110 ), 34 [799.9] ( 114 )
-                38 [807.2] ( 118 ), 42 [799.9] ( 122 ), 46 [799.9] ( 126 )
-                50 [799.9] ( 130 ), 54 [799.9] ( 134 ), 58 [800.2] ( 138 )
-                62 [799.9] ( 142 ), 66 [799.9] ( 146 ), 70 [799.9] ( 150 )
-                74 [800.1] ( 154 ), 78 [808.3] ( 158 )
-        3:       3 [817.4] ( 83 ),  7 [2559.4] ( 87 ), 11 [821.1] ( 91 )
-                15 [799.9] ( 95 ), 19 [799.9] ( 99 ), 23 [879.4] ( 103 )
-                27 [800.1] ( 107 ), 31 [829.9] ( 111 ), 35 [799.9] ( 115 )
-                39 [807.4] ( 119 ), 43 [800.1] ( 123 ), 47 [800.1] ( 127 )
-                51 [800.1] ( 131 ), 55 [799.9] ( 135 ), 59 [800.1] ( 139 )
-                63 [800.1] ( 143 ), 67 [799.9] ( 147 ), 71 [799.9] ( 151 )
-                75 [800.6] ( 155 ), 79 [799.9] ( 159 )
+        0:       0 [1118.1] ( 80 ),  4 [848.3] ( 84 ),  8 [1427.9] ( 88 )
+                12 [1035.6] ( 92 ), 16 [855.2] ( 96 ), 20 [799.9] ( 100 )
+                24 [799.9] ( 104 ), 28 [1122.3] ( 108 ), 32 [799.9] ( 112 )
+                36 [1227.4] ( 116 ), 40 [1018.0] ( 120 ), 44 [1364.8] ( 124 )
+                48 [799.9] ( 128 ), 52 [799.9] ( 132 ), 56 [1565.3] ( 136 )
+                60 [800.1] ( 140 ), 64 [1071.3] ( 144 ), 68 [1330.8] ( 148 )
+                72 [832.1] ( 152 ), 76 [800.1] ( 156 )
+        1:       1 [843.6] ( 81 ),  5 [888.8] ( 85 ),  9 [803.3] ( 89 )
+                13 [894.3] ( 93 ), 17 [801.7] ( 97 ), 21 [800.1] ( 101 )
+                25 [800.1] ( 105 ), 29 [799.9] ( 109 ), 33 [829.5] ( 113 )
+                37 [800.1] ( 117 ), 41 [830.8] ( 121 ), 45 [799.9] ( 125 )
+                49 [799.9] ( 129 ), 53 [840.7] ( 133 ), 57 [799.9] ( 137 )
+                61 [799.9] ( 141 ), 65 [799.9] ( 145 ), 69 [850.2] ( 149 )
+                73 [800.1] ( 153 ), 77 [799.9] ( 157 )
+        2:       2 [1496.9] ( 82 ),  6 [1024.9] ( 86 ), 10 [799.9] ( 90 )
+                14 [799.9] ( 94 ), 18 [799.9] ( 98 ), 22 [1126.8] ( 102 )
+                26 [799.9] ( 106 ), 30 [804.4] ( 110 ), 34 [799.9] ( 114 )
+                38 [799.9] ( 118 ), 42 [799.9] ( 122 ), 46 [799.9] ( 126 )
+                50 [799.9] ( 130 ), 54 [799.9] ( 134 ), 58 [799.9] ( 138 )
+                62 [892.1] ( 142 ), 66 [800.3] ( 146 ), 70 [800.1] ( 150 )
+                74 [976.0] ( 154 ), 78 [799.9] ( 158 )
+        3:       3 [999.4] ( 83 ),  7 [807.8] ( 87 ), 11 [978.2] ( 91 )
+                15 [800.3] ( 95 ), 19 [800.1] ( 99 ), 23 [799.9] ( 103 )
+                27 [863.0] ( 107 ), 31 [799.9] ( 111 ), 35 [800.1] ( 115 )
+                39 [799.9] ( 119 ), 43 [889.1] ( 123 ), 47 [800.1] ( 127 )
+                51 [800.1] ( 131 ), 55 [800.1] ( 135 ), 59 [799.9] ( 139 )
+                63 [799.9] ( 143 ), 67 [799.8] ( 147 ), 71 [799.9] ( 151 )
+                75 [799.9] ( 155 ), 79 [799.9] ( 159 )
         
-System load averages (1min, 5min, 15min) : 1.1 %, 1.1 %, 0.9 %
+System load averages (1min, 5min, 15min) : 0.7 %, 0.8 %, 0.8 %
 Hyperthreading is enabled
 HPC is enabled
 
 
-Simulating `./resources/smic018/simResult/test_diffamp1_ac1.scs' on icetserver01 at 3:06:48 PM, Thur Feb 6, 2025 (process id: 24025).
+Simulating `./resources/smic018/simResult/test_diffamp1_ac1.scs' on icetserver01 at 12:30:28 PM, Fri Feb 7, 2025 (process id: 217544).
 Current working directory: /data/icdesign/ams/ip_migration/users/leiyuan/ipmigration
 Environment variable:
     SPECTRE_DEFAULTS=-E -f psfbin
@@ -56,10 +56,10 @@ Command line:
         ++aps=moderate +mt=32 +lqtimeout 900 -maxw 5 -maxn 5 +logstatus
 
 Licensing Information:
-[15:06:48.287682] Configured Lic search path (22.01-s002): 5280@10.6.64.182:27001@10.6.126.11
+[12:30:29.287626] Configured Lic search path (22.01-s002): 5280@10.6.64.182:27001@10.6.126.11
 
 Licensing Information:
-[15:06:49.004465] Periodic Lic check successful
+[12:30:29.359288] Periodic Lic check successful
 
 Loading /opt/icdesign/CAD/cadence/SPECTRE231/tools.lnx86/cmi/lib/64bit/5.0/libinfineon_sh.so ...
 Loading /opt/icdesign/CAD/cadence/SPECTRE231/tools.lnx86/cmi/lib/64bit/5.0/libphilips_sh.so ...
@@ -71,22 +71,22 @@ Reading file:  /usr/include/stdc-predef.h
 Reading file:  /data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/resources/smic018/models/spectre/ms018_v1p7_spe.lib
 Reading file:  /data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/resources/smic018/models/spectre/ms018_v1p7_spe.mdl
 Reading file:  /home/shunqidai/Sizing/SizingDemoLinuxSpectre_integer_stdcell/smic018/ckt_netlist/twoStageOpamp2.scs
-Time for NDB Parsing: CPU = 265.792 ms, elapsed = 768.911 ms.
-Time accumulated: CPU = 453.801 ms, elapsed = 768.916 ms.
-Peak resident memory used = 106 Mbytes.
+Time for NDB Parsing: CPU = 229.811 ms, elapsed = 943.902 ms.
+Time accumulated: CPU = 418.336 ms, elapsed = 943.907 ms.
+Peak resident memory used = 104 Mbytes.
 
-Time for Elaboration: CPU = 39.955 ms, elapsed = 40.1239 ms.
-Time accumulated: CPU = 494.051 ms, elapsed = 809.345 ms.
-Peak resident memory used = 112 Mbytes.
+Time for Elaboration: CPU = 38.494 ms, elapsed = 38.6479 ms.
+Time accumulated: CPU = 457.14 ms, elapsed = 982.866 ms.
+Peak resident memory used = 110 Mbytes.
 
 
 Notice from spectre during hierarchy flattening.
     The value 'psf' specified for the 'checklimitdest' option will no longer be supported in future releases. Use 'spectre -h' to see other recommended values for the 'checklimitdest' option.
 
 
-Time for EDB Visiting: CPU = 1.732 ms, elapsed = 2.33483 ms.
-Time accumulated: CPU = 496.008 ms, elapsed = 811.905 ms.
-Peak resident memory used = 113 Mbytes.
+Time for EDB Visiting: CPU = 1.699 ms, elapsed = 2.46406 ms.
+Time accumulated: CPU = 459.052 ms, elapsed = 985.542 ms.
+Peak resident memory used = 111 Mbytes.
 
 
 Notice from spectre during initial setup.
@@ -135,9 +135,9 @@ Output statements:
 Notice from spectre during initial setup.
     Fast APS enabled.
 
-Time for parsing: CPU = 7.669 ms, elapsed = 10.335 ms.
-Time accumulated: CPU = 503.876 ms, elapsed = 822.439 ms.
-Peak resident memory used = 115 Mbytes.
+Time for parsing: CPU = 7.267 ms, elapsed = 9.89485 ms.
+Time accumulated: CPU = 466.513 ms, elapsed = 995.631 ms.
+Peak resident memory used = 113 Mbytes.
 
 ~~~~~~~~~~~~~~~~~~~~~~
 Pre-Simulation Summary
@@ -148,7 +148,7 @@ Pre-Simulation Summary
 ***********************************************
 AC Analysis `outac1': freq = (100 mHz -> 1 GHz)
 ***********************************************
-DC simulation time: CPU = 1.691 ms, elapsed = 1.69492 ms.
+DC simulation time: CPU = 1.666 ms, elapsed = 1.66988 ms.
 
 Opening the PSFASCII file ./resources/smic018/simResult/psf/outac1.ac ...
     outac1: freq = 199.5 mHz      (3 %), step = 41.04 mHz       (1 %)
@@ -249,22 +249,22 @@ Opening the PSFASCII file ./resources/smic018/simResult/psf/outac1.ac ...
     outac1: freq = 631 MHz       (98 %), step = 129.8 MHz       (1 %)
     outac1: freq = 794.3 MHz     (99 %), step = 163.4 MHz       (1 %)
     outac1: freq = 1 GHz        (100 %), step = 205.7 MHz       (1 %)
-Accumulated DC solution time =            1.80984 ms.
-Intrinsic ac analysis time =              32.1312 ms.
-Total time required for ac analysis `outac1': CPU = 26.575 ms, elapsed = 34.44 ms, util. = 77.2%.
-Time accumulated: CPU = 539.52 ms, elapsed = 867.086 ms.
-Peak resident memory used = 118 Mbytes.
+Accumulated DC solution time =            1.79386 ms.
+Intrinsic ac analysis time =              36.8481 ms.
+Total time required for ac analysis `outac1': CPU = 27.556 ms, elapsed = 38.7611 ms, util. = 71.1%.
+Time accumulated: CPU = 503.69 ms, elapsed = 1.04499 s.
+Peak resident memory used = 115 Mbytes.
 
 Licensing Information:
 Lic Summary:
-[15:06:49.386384] Cdslmd servers:5280@10.6.64.182:27001@10.6.126.11
-[15:06:49.386450] Feature usage summary:
-[15:06:49.386450] Virtuoso_Multi_mode_Simulation
+[12:30:29.223162] Cdslmd servers:5280@10.6.64.182:27001@10.6.126.11
+[12:30:29.223242] Feature usage summary:
+[12:30:29.223242] Virtuoso_Multi_mode_Simulation
 
 
-Aggregate audit (3:06:49 PM, Thur Feb 6, 2025):
-Time used: CPU = 542 ms, elapsed = 871 ms, util. = 62.3%.
-Time spent in licensing: elapsed = 48.7 ms, percentage of total = 5.59%.
-Peak memory used = 118 Mbytes.
-Simulation started at: 3:06:48 PM, Thur Feb 6, 2025, ended at: 3:06:49 PM, Thur Feb 6, 2025, with elapsed time (wall clock): 871 ms.
+Aggregate audit (12:30:29 PM, Fri Feb 7, 2025):
+Time used: CPU = 507 ms, elapsed = 1.05 s, util. = 48.3%.
+Time spent in licensing: elapsed = 449 ms, percentage of total = 42.8%.
+Peak memory used = 116 Mbytes.
+Simulation started at: 12:30:28 PM, Fri Feb 7, 2025, ended at: 12:30:29 PM, Fri Feb 7, 2025, with elapsed time (wall clock): 1.05 s.
 spectre completes with 0 errors, 0 warnings, and 4 notices.

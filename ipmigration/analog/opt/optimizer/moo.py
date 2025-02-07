@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+#TODO: Add a mechanism for storing data.
+
 import numpy as np
 import time
 import os
+import logging
 
 from pymoo.core.problem import Problem
 from pymoo.problems.static import StaticProblem
@@ -29,6 +32,7 @@ from ipmigration.analog.opt.ml import ml_predictor
 #from src.operator_cust.sampling import lhs_integer
 from ipmigration.analog.opt.optimizer.operator_cust.sampling.lhs_integer import LHS
 
+logger = logging.getLogger(__name__)
 
 class MyProblem(Problem):
     # Define Problem
@@ -110,17 +114,17 @@ class Optimizer:
         objective_index = self.objective_index
         spec = self.spec
         bounds = boundary.get_normalized_variables_range()
-        print("bounds:", bounds)
+        logger.info("Bounds: %s", str(bounds))
         
         xl=np.array(boundary.get_normalized_variables_lower())
         xu=np.array(boundary.get_normalized_variables_upper())
-        print("xl:", xl)
-        print("xu:", xu)
+        #print("xl:", xl)
+        #print("xu:", xu)
         sample_points=1
         for j in range(len(xu)):
             points_tmp=xu[j]-xl[j]+1
             sample_points=float(sample_points)*float(points_tmp)
-        print("sample points: {0:.3e}".format( sample_points))
+        logger.info("sample points: {0:.3e}".format( sample_points))
         n_var=len(bounds)
         if len(objective_index)>0:
             n_obj=len(objective_index)
@@ -128,7 +132,7 @@ class Optimizer:
         else:
             n_obj=1
             n_ieq_constr=len(spec)
-        print("n_var: {0}, n_obj: {1}, n_ieq_constr: {2}".format(n_var, n_obj, n_ieq_constr))
+        logger.info(("n_var: {0}, n_obj: {1}, n_ieq_constr: {2}".format(n_var, n_obj, n_ieq_constr)))
         self.xl=xl
         self.xu=xu
         self.n_var=n_var
@@ -263,7 +267,7 @@ class Optimizer:
         return predictor_dict
     
     
-    def optimize_run(self, max_generation, DNN_mode=None, gen_th=10, gen_period=3):
+    def optimize_run(self, max_generation, DNN_mode=None, gen_th=10, gen_period=3, monitor=None):
         # check corner num to determine DNN model:
         #num_corners=len(list(self.simulationFun.keys()))
         #if (num_corners!=1) or (DNN_mode==None):
@@ -293,8 +297,15 @@ class Optimizer:
         #model_cfg_list, target_bounds_list=None, None
         simulation_flag=1 # 1: SPICE simulation, 0: DNN
         # until the algorithm has no terminated
+        gen_time = time.time()
         while (algorithm.has_next() and n_gen<=num_generation):
-            print("##### No.{0} #####".format(n_gen))
+            print("Generation %d Run Time: %d s"%(n_gen-1 , time.time() - gen_time))
+            logger.info("Generation %d Run Time: %d s"%(n_gen-1 , time.time() - gen_time))
+            
+            gen_time = time.time()
+            
+            logger.info("########## No.{0} Generation ##########".format(n_gen))
+            print("########## No.{0} Generation ##########".format(n_gen))
             # check simulation flag
             #if DNN_mode and (n_gen>gen_th):
             if DNN_mode:
@@ -319,6 +330,10 @@ class Optimizer:
                 x=X[i]
                 if simulation_flag:
                     f, g, sim_result_dict = evaluate(x, problem)
+                    if monitor:
+                        monitor.update(sim_result_dict['tt'])
+                        
+                  
                     n_eval+=1
                 else:
                     #bounds=self.bounds
@@ -350,6 +365,7 @@ class Optimizer:
             #print("G:", G)
             Evaluator().eval(static, pop)
             # save generation's simulation result
+            #TODO move to file
             if simulation_flag:
                 if self.all_sim_result_dict is None:
                     self.all_sim_result_dict=generation_sim_result_dict
@@ -364,8 +380,16 @@ class Optimizer:
                 else:
                     self.all_solution=np.row_stack([self.all_solution, generation_solution])
             # returned the evaluated individuals which have been evaluated or even modified
-            algorithm.tell(infills=pop)
             
+            # print('test1$\n', self.all_solution)
+            # print('end test1$\n')
+            
+            algorithm.tell(infills=pop)
+            '''
+            TODO, output is:
+            1 |        0 |      1 |  0.7650000000 |  4.4261851676 |             - |      
+            '''
+                                               
             # setup and train DNN
             #bounds, targets=self.bounds, self.targets
             if DNN_mode and simulation_flag:
@@ -398,7 +422,7 @@ class Optimizer:
                 
             
             # do same more things, printing, logging, storing or even modifying the algorithm object
-            print("n_eval:", algorithm.n_eval)
+            # print("n_eval:", algorithm.n_eval)
             n_gen=algorithm.n_gen
             
         # obtain the result objective from the algorithm
