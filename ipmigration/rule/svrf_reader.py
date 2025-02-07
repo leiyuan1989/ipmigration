@@ -76,7 +76,7 @@ keywords = ['#DEFINE', '#IFDEF', '#ELSE', '#ENDIF', '#IFNDEF',
 
 
 class RuleFile:
-    def __init__(self, tech_name,  cal_file, save_dir, tech_align_file, dr_template,kws_file,log_level):       
+    def __init__(self, tech_name,  cal_file, save_dir, tech_align_file, dr_template,kws_file,log_level,llm_api):       
         self.log_level = log_level
         self.format = "svrf"
         self.tvf_rules = None
@@ -88,6 +88,8 @@ class RuleFile:
         self.read_tech_align(tech_align_file)
         self.read_kws_file(kws_file)
         self.save_dir = save_dir
+        self.llm = llm_api
+        
         
         self.preprocess(cal_file)
                 
@@ -448,7 +450,7 @@ class RuleFile:
             for i,v in self.tvf_rules.items():
                 for layer in self.layer_match_r:
                     if i.startswith(layer):
-                        rule = RuleCheck(i, v, self.kws_map)
+                        rule = RuleCheck(i, v, self.kws_map,self.variables)
                         if rule.layer:
                             if rule.layer in self.layer_list:
                                 # print('test',rule.name, rule.comment)
@@ -467,7 +469,8 @@ class RuleFile:
             
             if not(self.ignore):
                 if token_type == 'RULE':
-                    rule = RuleCheck(token, self.bracket_dic[token], self.kws_map)
+                    # print('test1:',self.variables)
+                    rule = RuleCheck(token, self.bracket_dic[token], self.kws_map, self.variables)
                     if rule.layer:
                         if rule.layer in self.layer_list:
                             # print('test',rule.name, rule.comment)
@@ -551,10 +554,7 @@ class RuleFile:
                 break
   
         #extract and process rules of select layer     
-        #create llm api
-        llm = API()
-        
-    
+
         data =[]
         for rule_layer,rules in self.cal_rules.items():
             if len(rules)>0:
@@ -562,13 +562,18 @@ class RuleFile:
 
                 for rule in rules:
                     rules_dict[rule.name] = rule.comment
-                    
-                ers = llm.response(rules_dict)   
+                # print(rules_dict) 
+                ers = self.llm.response(rules_dict)   
+                print('test1:',ers)
                 assert len(ers) != 0, 'llm may not work!'
                 for er in ers[1:]:
-                    data.append({'Layer':rule_layer,'Rule':er[0],'Category':er[1],'Description':er[2],'Value':er[3]})
+                    if len(er) == 4:
+                        data.append({'Layer':rule_layer,'Rule':er[0],'Category':er[1],'Description':er[2],'Value':er[3]})
+                    else:
+                        print("Warning: Rule not extracted:", er)
         df = pd.DataFrame(columns=['Layer','Rule','Category','Description','Value'],data=data)
-        df.to_csv(os.path.join(self.save_dir, self.file_name + '_extract_rules.csv'))
+        self.extracted_file = os.path.join(self.save_dir, self.file_name + '_extract_rules.csv')
+        df.to_csv(self.extracted_file)
     def read_LAYER(self,token):
         '''
         desprecated
@@ -744,12 +749,13 @@ class RuleFile:
         #generate 
 
 class RuleCheck:
-    def __init__(self, name, data, kws_map):
+    def __init__(self, name, data, kws_map, variables):
         self.name = name
         self.kws_map = kws_map
         self.comment = []
         self.rules = []
         self.layer = ''
+        self.variables =variables
         assert len(data)>0
         
         if '.' in name:
@@ -784,6 +790,22 @@ class RuleCheck:
         valid_comment = ''
         if len(self.comment) >0:
             for comment in self.comment:
+                if '^' in comment:
+                    # print(comment)
+                    new_comment = ''
+                    for word in comment.split(' '):
+                        if word.startswith('^'):
+                            try:
+                                # print(self.variables.keys())
+                                # print(word[1:], self.variables[word[1:]])
+                                new_comment += str(self.variables[word[1:]]) + ' '
+                            except:
+                                new_comment += word + ' '
+                        else:
+                            new_comment += word + ' '
+                    # print(new_comment)
+                    comment = new_comment
+                    # raise ValueError
                 # init_comment = comment
                 if not('density') in comment: #clear density
                     if self.name in comment:
