@@ -1,1 +1,0 @@
-{"cell_name": "NAND3HSV24.json", "nmos_loc": {"0": "MM1/NET17/A3/VSS", "1": "MM2/NET21/A2/NET17", "2": "MM5/ZN/A1/NET21"}, "pmos_loc": {"0": "MM4/ZN/A3/VDD", "1": "MM3/VDD/A2/ZN", "2": "MM0/ZN/A1/VDD"}}

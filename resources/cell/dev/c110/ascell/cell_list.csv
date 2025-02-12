@@ -1,3 +1,0 @@
-name,note
-lanhb0,"The LANHB cell is an active-high D-type transparent latch When the enable (G) is high, data is transferred to the outputs (Q, QN)."
-dfnrb0,"The DFNRB cell is a positive-edge triggered, static D-type flip-flop."
