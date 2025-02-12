@@ -1,14 +1,15 @@
-setting,value,explain
-model_file,,
-mapping_file,,
-rule_file,,
-netlist,,
-cell_height,2562,
-v_pin_grid,366,
-h_pin_grid,370,
-mos_length_P,130,
-mos_length_N,130,
-power_rail_width,260,
-cell_offset_x,50,
-np_ext_border,90,
-nw_ext_np,70,
+setting,value,description
+output_dir,../../../demo/cell_apr/outputs,"folder to save log and outputs"
+model_file,../../../demo/cell_apr/outputs,"model cdl file"
+mapping_file,../../../demo/cell_apr/outputs,"layer mapping file"
+rule_file,../../../demo/cell_apr/outputs,"design rule csv file"
+netlist,../../../demo/cell_apr/outputs,"netlist cdl file"
+cell_height,2562,"cell height"
+v_pin_grid,366,"cell height"
+h_pin_grid,370,"cell height"
+mos_length_P,130,"cell height"
+mos_length_N,130,"cell height"
+power_rail_width,260,"cell height"
+cell_offset_x,50,"cell height"
+np_ext_border,90,"cell height"
+nw_ext_np,70,"cell height"
