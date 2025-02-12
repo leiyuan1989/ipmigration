@@ -431,8 +431,9 @@ class RuleFile:
                     #not in layer list or others
                     return True, None, None, None
                 else:
-                    print('error',line)
-                    raise ValueError
+                    print('warning!: ',line)
+                    return True, None, None, None
+                    #raise ValueError
 
     def extract_rules(self):
         self.cal_rules = {t:[] for t in self.layer_list}
@@ -551,6 +552,7 @@ class RuleFile:
                                         pass
                 
             if not(result):
+                # pass
                 break
   
         #extract and process rules of select layer     
