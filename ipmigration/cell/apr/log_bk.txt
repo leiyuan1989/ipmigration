@@ -1,0 +1,730 @@
+------------c153:LABHB1-------------
+   |   |   |   |   |   |(N_13, N_4, N_7):M19 |(N_7, N_5, N_14):M24 |   |   |   |   |   |   | (VDD, N_7, N_9):M27 |
+   |   |   |   |   |   | (N_21, N_5, N_7):M8 |(N_7, N_4, N_23):M13 |   |   |   |   |   |   | (VSS, N_7, N_9):M12 |
+clk_n:N_4, clk_p:N_5, net_pm:N_7, net_bm:None
+11 devices left: (N_22, D, VSS):M4  (N_22, RN, N_21):M5  (N_24, N_9, VSS):M6  (N_7, N_6, VSS):M7  (N_24, RN, N_23):M9  (N_15, N_6, N_14):M14  (N_12, D, VDD):M18  (N_13, N_6, N_12):M20  (N_16, RN, VDD):M21  (N_15, N_9, VDD):M22  (N_7, N_6, N_16):M23  
+------------c153:LABLB1-------------
+   |   |   |   |   |   |(N_13, N_5, N_7):M19 |(N_7, N_4, N_14):M24 |   |   |   |   |   |   | (VDD, N_7, N_9):M27 |
+   |   |   |   |   |   | (N_21, N_4, N_7):M8 |(N_7, N_5, N_23):M13 |   |   |   |   |   |   | (VSS, N_7, N_9):M12 |
+clk_n:N_4, clk_p:N_5, net_pm:N_7, net_bm:None
+11 devices left: (N_22, D, VSS):M4  (N_22, RN, N_21):M5  (N_24, N_9, VSS):M6  (N_7, N_6, VSS):M7  (N_24, RN, N_23):M9  (N_15, N_6, N_14):M14  (N_12, D, VDD):M18  (N_13, N_6, N_12):M20  (N_16, RN, VDD):M21  (N_15, N_9, VDD):M22  (N_7, N_6, N_16):M23  
+------------c153:LACHB1-------------
+   |   |   |   |   |   |(N_31, N_7, N_3):M15 |(N_3, N_5, N_32):M17 |   |   |   |   |   |   | (VDD, N_3, N_2):M20 |
+   |   |   |   |   |   | (N_19, N_5, N_3):M5 |(N_3, N_7, N_20):M10 |   |   |   |   |   |   |  (VSS, N_3, N_2):M8 |
+clk_n:N_7, clk_p:N_5, net_pm:N_3, net_bm:None
+7 devices left: (N_18, D, VSS):M3  (N_19, RN, N_18):M4  (N_21, RN, N_20):M6  (N_21, N_2, VSS):M11  (N_31, D, VDD):M14  (N_3, RN, VDD):M16  (N_32, N_2, VDD):M21  
+------------c153:LACHQ1-------------
+   |   |   |   |   |   |(N_28, N_6, N_4):M14 |(N_4, N_3, N_29):M18 |   |   |   |   |   |   | (VDD, N_4, N_2):M17 |
+   |   |   |   |   |   | (N_17, N_3, N_4):M7 | (N_4, N_6, N_18):M9 |   |   |   |   |   |   |  (VSS, N_4, N_2):M5 |
+clk_n:N_6, clk_p:N_3, net_pm:N_4, net_bm:None
+7 devices left: (N_16, D, VSS):M3  (N_17, RN, N_16):M4  (N_19, RN, N_18):M8  (N_19, N_2, VSS):M10  (N_28, D, VDD):M13  (N_4, RN, VDD):M15  (N_29, N_2, VDD):M19  
+------------c153:LACLB1-------------
+   |   |   |   |   |   |(N_31, N_7, N_3):M15 |(N_3, N_5, N_32):M17 |   |   |   |   |   |   | (VDD, N_3, N_2):M20 |
+   |   |   |   |   |   | (N_19, N_5, N_3):M5 |(N_3, N_7, N_20):M10 |   |   |   |   |   |   |  (VSS, N_3, N_2):M8 |
+clk_n:N_5, clk_p:N_7, net_pm:N_3, net_bm:None
+7 devices left: (N_18, D, VSS):M3  (N_19, RN, N_18):M4  (N_21, RN, N_20):M6  (N_21, N_2, VSS):M11  (N_31, D, VDD):M14  (N_3, RN, VDD):M16  (N_32, N_2, VDD):M21  
+------------c153:LACLQ1-------------
+   |   |   |   |   |   |(N_28, N_3, N_8):M18 |(N_8, N_2, N_29):M19 |   |   |   |   |   |   | (VDD, N_8, N_6):M13 |
+   |   |   |   |   |   |(N_17, N_2, N_8):M10 | (N_8, N_3, N_18):M4 |   |   |   |   |   |   |  (VSS, N_8, N_6):M1 |
+clk_n:N_2, clk_p:N_3, net_pm:N_8, net_bm:None
+7 devices left: (N_19, RN, N_18):M3  (N_16, D, VSS):M5  (N_17, RN, N_16):M6  (N_19, N_6, VSS):M7  (N_8, RN, VDD):M11  (N_28, D, VDD):M14  (N_29, N_6, VDD):M15  
+------------c153:LANHB1-------------
+   |   |   |   |   |   |(N_25, N_4, N_5):M13 |(N_5, N_3, N_26):M17 |   |   |   |   |   |   | (VDD, N_5, N_2):M16 |
+   |   |   |   |   |   | (N_15, N_3, N_5):M8 | (N_5, N_4, N_16):M7 |   |   |   |   |   |   |  (VSS, N_5, N_2):M5 |
+clk_n:N_4, clk_p:N_3, net_pm:N_5, net_bm:None
+4 devices left: (N_15, D, VSS):M3  (N_16, N_2, VSS):M9  (N_25, D, VDD):M12  (N_26, N_2, VDD):M18  
+------------c153:LANHN1-------------
+   |   |   |   |   |   |(N_23, N_4, N_5):M12 |(N_5, N_3, N_24):M15 |   |   |   |   |   |   | (VDD, N_5, N_2):M14 |
+   |   |   |   |   |   | (N_14, N_3, N_5):M7 | (N_5, N_4, N_15):M6 |   |   |   |   |   |   |  (VSS, N_5, N_2):M5 |
+clk_n:N_4, clk_p:N_3, net_pm:N_5, net_bm:None
+4 devices left: (N_14, D, VSS):M3  (N_15, N_2, VSS):M8  (N_23, D, VDD):M11  (N_24, N_2, VDD):M16  
+------------c153:LANHQ1-------------
+   |   |   |   |   |   |(N_22, N_4, N_5):M12 |(N_5, N_3, N_23):M15 |   |   |   |   |   |   | (VDD, N_5, N_2):M13 |
+   |   |   |   |   |   | (N_13, N_3, N_5):M7 | (N_5, N_4, N_14):M6 |   |   |   |   |   |   |  (VSS, N_5, N_2):M4 |
+clk_n:N_4, clk_p:N_3, net_pm:N_5, net_bm:None
+4 devices left: (N_13, D, VSS):M3  (N_14, N_2, VSS):M8  (N_22, D, VDD):M11  (N_23, N_2, VDD):M16  
+------------c153:LANHT1-------------
+
+
+clk_n:N_4, clk_p:N_5, net_pm:None, net_bm:None
+16 devices left: (N_11, D, VSS):M3  (N_7, N_6, VSS):M4  (N_8, N_6, VSS):M5  (N_12, N_4, N_6):M6  (N_11, N_5, N_6):M7  (N_12, N_7, VSS):M8  (Q, OE, N_8):M9  (VSS, OE, N_3):M10  (N_25, D, VDD):M13  (N_6, N_4, N_25):M14  (N_8, N_6, VDD):M15  (N_7, N_6, VDD):M16  (N_26, N_5, N_6):M17  (N_26, N_7, VDD):M18  (Q, N_3, N_8):M19  (VDD, OE, N_3):M20  
+------------c153:LANLB1-------------
+   |   |   |   |   |   |(N_22, N_5, N_6):M13 |(N_6, N_4, N_23):M17 |   |   |   |   |   |   | (VDD, N_6, N_7):M16 |
+   |   |   |   |   |   | (N_10, N_4, N_6):M8 | (N_6, N_5, N_11):M7 |   |   |   |   |   |   |  (VSS, N_6, N_7):M5 |
+clk_n:N_4, clk_p:N_5, net_pm:N_6, net_bm:None
+4 devices left: (N_10, D, VSS):M3  (N_11, N_7, VSS):M9  (N_22, D, VDD):M12  (N_23, N_7, VDD):M18  
+------------c153:LANLN1-------------
+   |   |   |   |   |   |(N_23, N_4, N_5):M12 |(N_5, N_3, N_24):M15 |   |   |   |   |   |   | (VDD, N_5, N_2):M14 |
+   |   |   |   |   |   | (N_14, N_3, N_5):M7 | (N_5, N_4, N_15):M6 |   |   |   |   |   |   |  (VSS, N_5, N_2):M5 |
+clk_n:N_3, clk_p:N_4, net_pm:N_5, net_bm:None
+4 devices left: (N_14, D, VSS):M3  (N_15, N_2, VSS):M8  (N_23, D, VDD):M11  (N_24, N_2, VDD):M16  
+------------c153:LANLQ1-------------
+   |   |   |   |   |   |(N_22, N_4, N_5):M12 |(N_5, N_3, N_23):M15 |   |   |   |   |   |   | (VDD, N_5, N_2):M13 |
+   |   |   |   |   |   | (N_13, N_3, N_5):M7 | (N_5, N_4, N_14):M6 |   |   |   |   |   |   |  (VSS, N_5, N_2):M4 |
+clk_n:N_3, clk_p:N_4, net_pm:N_5, net_bm:None
+4 devices left: (N_13, D, VSS):M3  (N_14, N_2, VSS):M8  (N_22, D, VDD):M11  (N_23, N_2, VDD):M16  
+------------c153:LAPHB1-------------
+   |   |   |   |   |   |(N_27, N_4, N_7):M18 |(N_7, N_5, N_28):M13 |   |   |   |   |   |   | (VDD, N_7, N_9):M22 |
+   |   |   |   |   |   | (N_12, N_5, N_7):M1 |(N_7, N_4, N_13):M11 |   |   |   |   |   |   | (VSS, N_7, N_9):M10 |
+clk_n:N_4, clk_p:N_5, net_pm:N_7, net_bm:None
+7 devices left: (N_12, D, VSS):M5  (N_7, N_6, VSS):M6  (N_13, N_9, VSS):M7  (N_29, N_6, N_28):M12  (N_26, D, VDD):M17  (N_27, N_6, N_26):M19  (N_29, N_9, VDD):M20  
+------------c153:LAPLB1-------------
+   |   |   |   |   |   |(N_27, N_5, N_7):M18 |(N_7, N_4, N_28):M13 |   |   |   |   |   |   | (VDD, N_7, N_9):M22 |
+   |   |   |   |   |   | (N_12, N_4, N_7):M1 |(N_7, N_5, N_13):M11 |   |   |   |   |   |   | (VSS, N_7, N_9):M10 |
+clk_n:N_4, clk_p:N_5, net_pm:N_7, net_bm:None
+7 devices left: (N_12, D, VSS):M5  (N_7, N_6, VSS):M6  (N_13, N_9, VSS):M7  (N_29, N_6, N_28):M12  (N_26, D, VDD):M17  (N_27, N_6, N_26):M19  (N_29, N_9, VDD):M20  
+------------c153:TLATNCAD1-------------
+   |   |   |   |   |   | (N_9, N_4, N_5):M13 |(N_5, N_3, N_10):M12 |   |   |   |   |   |   | (VDD, N_5, N_6):M16 |
+   |   |   |   |   |   | (N_21, N_3, N_5):M3 | (N_5, N_4, N_22):M4 |   |   |   |   |   |   |  (VSS, N_5, N_6):M7 |
+clk_n:N_3, clk_p:N_4, net_pm:N_5, net_bm:None
+4 devices left: (N_21, E, VSS):M2  (N_22, N_6, VSS):M5  (N_9, E, VDD):M11  (N_10, N_6, VDD):M14  
+------------c153:TLATNTSCAD1-------------
+
+
+clk_n:N_3, clk_p:N_6, net_pm:None, net_bm:None
+20 devices left: (VSS, E, N_4):M1  (VSS, SE, N_4):M2  (VSS, N_4, N_5):M3  (N_27, N_5, VSS):M5  (N_27, N_3, N_7):M6  (N_28, N_6, N_7):M7  (N_28, N_8, VSS):M8  (ECK, N_7, VSS):M9  (N_8, N_7, VSS):M10  (ECK, N_3, VSS):M11  (N_4, E, N_11):M13  (VDD, SE, N_11):M14  (VDD, N_4, N_5):M15  (N_12, N_5, VDD):M17  (N_13, N_3, N_7):M18  (N_12, N_6, N_7):M19  (N_13, N_8, VDD):M20  (N_14, N_7, ECK):M21  (N_8, N_7, VDD):M22  (N_14, N_3, VDD):M23  
+------------c110:LABHB0-------------
+   |   |   |   |   |   | (N_6, N_4, N_7):M18 |(N_7, N_2, N_67):M17 |   |   |   |   |   |   |(VDD, N_7, N_17):M23 |
+   |   |   |   |   |   |  (N_6, N_2, N_7):M3 | (N_7, N_4, N_18):M6 |   |   |   |   |   |   |(VSS, N_7, N_17):M12 |
+clk_n:N_4, clk_p:N_2, net_pm:N_7, net_bm:None
+8 devices left: (N_6, D, N_5):M4  (N_5, RN, VSS):M5  (N_7, N_8, VSS):M7  (N_18, N_17, N_5):M9  (N_22, D, N_6):M15  (N_7, RN, N_22):M16  (N_67, N_17, N_22):M19  (N_22, N_8, VDD):M20  
+------------c110:LABHB1-------------
+   |   |   |   |   |   | (N_7, N_4, N_8):M20 |(N_8, N_2, N_71):M19 |   |   |   |   |   |   |(VDD, N_8, N_17):M27 |
+   |   |   |   |   |   |  (N_7, N_2, N_8):M3 | (N_8, N_4, N_18):M7 |   |   |   |   |   |   |(VSS, N_8, N_17):M14 |
+clk_n:N_4, clk_p:N_2, net_pm:N_8, net_bm:None
+8 devices left: (N_10, D, N_7):M4  (N_10, RN, VSS):M5  (N_8, N_14, VSS):M8  (N_18, N_17, N_10):M12  (N_22, D, N_7):M17  (N_8, RN, N_22):M18  (N_71, N_17, N_22):M21  (N_22, N_14, VDD):M22  
+------------c110:LABLB0-------------
+   |   |   |   |   |   |(N_15, N_2, N_12):M22 |(N_12, N_4, N_68):M23 |   |   |   |   |   |   |(VDD, N_12, N_7):M16 |
+   |   |   |   |   |   |(N_15, N_4, N_12):M11 |(N_12, N_2, N_18):M9 |   |   |   |   |   |   | (VSS, N_12, N_7):M4 |
+clk_n:N_4, clk_p:N_2, net_pm:N_12, net_bm:None
+8 devices left: (N_18, N_7, N_14):M7  (N_12, N_10, VSS):M8  (N_14, RN, VSS):M10  (N_14, D, N_15):M12  (N_20, N_10, VDD):M19  (N_20, D, N_15):M20  (N_68, N_7, N_20):M21  (N_12, RN, N_20):M24  
+------------c110:LABLB1-------------
+   |   |   |   |   |   | (N_5, N_2, N_7):M18 |(N_7, N_4, N_69):M17 |   |   |   |   |   |   |(VDD, N_7, N_10):M25 |
+   |   |   |   |   |   |  (N_5, N_4, N_7):M3 | (N_7, N_2, N_18):M8 |   |   |   |   |   |   | (VSS, N_7, N_10):M6 |
+clk_n:N_4, clk_p:N_2, net_pm:N_7, net_bm:None
+8 devices left: (N_6, D, N_5):M4  (N_6, RN, VSS):M7  (N_18, N_10, N_6):M9  (N_7, N_17, VSS):M10  (N_25, D, N_5):M15  (N_7, RN, N_25):M16  (N_69, N_10, N_25):M20  (N_25, N_17, VDD):M21  
+------------c110:LACHB0-------------
+   |   |   |   |   |   | (N_7, N_4, N_5):M17 |(N_5, N_2, N_25):M16 |   |   |   |   |   |   |(VDD, N_5, N_13):M21 |
+   |   |   |   |   |   |  (N_7, N_2, N_5):M3 | (N_5, N_4, N_14):M7 |   |   |   |   |   |   |(VSS, N_5, N_13):M11 |
+clk_n:N_4, clk_p:N_2, net_pm:N_5, net_bm:None
+7 devices left: (N_15, D, N_7):M4  (N_15, RN, VSS):M5  (N_16, RN, VSS):M6  (N_16, N_13, N_14):M8  (N_7, D, VDD):M14  (N_5, RN, VDD):M15  (N_25, N_13, VDD):M18  
+------------c110:LACHB1-------------
+   |   |   |   |   |   | (N_7, N_4, N_5):M17 |(N_5, N_2, N_26):M16 |   |   |   |   |   |   |(VDD, N_5, N_11):M21 |
+   |   |   |   |   |   |  (N_7, N_2, N_5):M3 | (N_5, N_4, N_14):M7 |   |   |   |   |   |   |(VSS, N_5, N_11):M10 |
+clk_n:N_4, clk_p:N_2, net_pm:N_5, net_bm:None
+7 devices left: (N_15, D, N_7):M4  (N_15, RN, VSS):M5  (N_16, RN, VSS):M6  (N_16, N_11, N_14):M8  (N_7, D, VDD):M14  (N_5, RN, VDD):M15  (N_26, N_11, VDD):M18  
+------------c110:LACLB0-------------
+   |   |   |   |   |   | (N_7, N_2, N_5):M19 |(N_5, N_4, N_26):M17 |   |   |   |   |   |   |(VDD, N_5, N_13):M13 |
+   |   |   |   |   |   |  (N_7, N_4, N_5):M3 | (N_5, N_2, N_14):M7 |   |   |   |   |   |   |(VSS, N_5, N_13):M11 |
+clk_n:N_4, clk_p:N_2, net_pm:N_5, net_bm:None
+7 devices left: (N_15, D, N_7):M4  (N_15, RN, VSS):M5  (N_16, RN, VSS):M6  (N_16, N_13, N_14):M8  (N_7, D, VDD):M16  (N_5, RN, VDD):M18  (N_26, N_13, VDD):M20  
+------------c110:LACLB1-------------
+   |   |   |   |   |   | (N_7, N_2, N_5):M17 |(N_5, N_4, N_25):M16 |   |   |   |   |   |   |(VDD, N_5, N_13):M21 |
+   |   |   |   |   |   |  (N_7, N_4, N_5):M3 | (N_5, N_2, N_14):M7 |   |   |   |   |   |   |(VSS, N_5, N_13):M11 |
+clk_n:N_4, clk_p:N_2, net_pm:N_5, net_bm:None
+7 devices left: (N_15, D, N_7):M4  (N_15, RN, VSS):M5  (N_16, RN, VSS):M6  (N_16, N_13, N_14):M8  (VDD, D, N_7):M14  (N_5, RN, VDD):M15  (N_25, N_13, VDD):M18  
+------------c110:LANHB0-------------
+   |   |   |   |   |   |(N_12, N_10, N_6):M13 |(N_6, N_5, N_13):M11 |   |   |   |   |   |   | (VDD, N_6, N_9):M17 |
+   |   |   |   |   |   | (N_19, N_5, N_6):M2 |(N_6, N_10, N_20):M3 |   |   |   |   |   |   |  (VSS, N_6, N_9):M8 |
+clk_n:N_10, clk_p:N_5, net_pm:N_6, net_bm:None
+4 devices left: (N_19, D, VSS):M1  (N_20, N_9, VSS):M6  (N_12, D, VDD):M10  (N_13, N_9, VDD):M14  
+------------c110:LANHB1-------------
+   |   |   |   |   |   |(N_21, N_2, N_8):M14 |(N_8, N_6, N_22):M12 |   |   |   |   |   |   |(VDD, N_8, N_11):M18 |
+   |   |   |   |   |   | (N_12, N_6, N_8):M3 | (N_8, N_2, N_13):M5 |   |   |   |   |   |   | (VSS, N_8, N_11):M9 |
+clk_n:N_2, clk_p:N_6, net_pm:N_8, net_bm:None
+4 devices left: (N_12, D, VSS):M2  (N_13, N_11, VSS):M7  (N_21, D, VDD):M11  (N_22, N_11, VDD):M16  
+------------c110:LANLB0-------------
+   |   |   |   |   |   |(N_12, N_5, N_6):M12 |(N_6, N_11, N_13):M13 |   |   |   |   |   |   | (VDD, N_6, N_9):M17 |
+   |   |   |   |   |   |(N_19, N_11, N_6):M3 | (N_6, N_5, N_20):M4 |   |   |   |   |   |   |  (VSS, N_6, N_9):M8 |
+clk_n:N_11, clk_p:N_5, net_pm:N_6, net_bm:None
+4 devices left: (N_19, D, VSS):M2  (N_20, N_9, VSS):M6  (N_12, D, VDD):M11  (N_13, N_9, VDD):M15  
+------------c110:LANLB1-------------
+   |   |   |   |   |   |(N_21, N_9, N_11):M16 |(N_11, N_5, N_22):M15 |   |   |   |   |   |   |(VDD, N_11, N_4):M18 |
+   |   |   |   |   |   |(N_12, N_5, N_11):M6 |(N_11, N_9, N_13):M9 |   |   |   |   |   |   | (VSS, N_11, N_4):M2 |
+clk_n:N_5, clk_p:N_9, net_pm:N_11, net_bm:None
+4 devices left: (N_12, D, VSS):M5  (N_13, N_4, VSS):M8  (N_21, D, VDD):M12  (N_22, N_4, VDD):M14  
+------------c110:LAPHB0-------------
+   |   |   |   |   |   |(N_13, N_7, N_14):M18 |(N_14, N_10, N_16):M21 |   |   |   |   |   |   |(VDD, N_14, N_4):M13 |
+   |   |   |   |   |   |(N_13, N_10, N_14):M8 |(N_14, N_7, N_62):M5 |   |   |   |   |   |   | (VSS, N_14, N_4):M2 |
+clk_n:N_7, clk_p:N_10, net_pm:N_14, net_bm:None
+7 devices left: (N_62, N_4, VSS):M7  (N_13, D, VSS):M9  (VSS, N_9, N_14):M10  (N_17, N_9, VDD):M19  (N_17, N_4, N_16):M20  (N_15, D, N_13):M22  (N_15, N_9, VDD):M23  
+------------c110:LAPHB1-------------
+   |   |   |   |   |   |(N_9, N_11, N_6):M19 |(N_6, N_4, N_64):M15 |   |   |   |   |   |   |(VDD, N_6, N_14):M22 |
+   |   |   |   |   |   |  (N_9, N_4, N_6):M4 |(N_6, N_11, N_17):M7 |   |   |   |   |   |   |(VSS, N_6, N_14):M10 |
+clk_n:N_11, clk_p:N_4, net_pm:N_6, net_bm:None
+7 devices left: (VSS, N_3, N_6):M2  (N_9, D, VSS):M3  (N_17, N_14, VSS):M5  (N_63, N_3, VDD):M13  (N_63, D, N_9):M14  (N_65, N_14, N_64):M16  (N_65, N_3, VDD):M17  
+------------c110:LAPLB0-------------
+   |   |   |   |   |   |(N_13, N_10, N_14):M21 |(N_14, N_6, N_16):M20 |   |   |   |   |   |   |(VDD, N_14, N_9):M16 |
+   |   |   |   |   |   |(N_13, N_6, N_14):M3 |(N_14, N_10, N_62):M5 |   |   |   |   |   |   |(VSS, N_14, N_9):M11 |
+clk_n:N_6, clk_p:N_10, net_pm:N_14, net_bm:None
+7 devices left: (VSS, N_3, N_14):M2  (N_62, N_9, VSS):M6  (N_13, D, VSS):M7  (N_15, N_3, VDD):M17  (N_17, N_3, VDD):M18  (N_17, N_9, N_16):M22  (N_15, D, N_13):M23  
+------------c110:LAPLB1-------------
+   |   |   |   |   |   | (N_8, N_4, N_7):M20 |(N_7, N_11, N_69):M15 |   |   |   |   |   |   |(VDD, N_7, N_16):M24 |
+   |   |   |   |   |   | (N_8, N_11, N_7):M3 | (N_7, N_4, N_17):M6 |   |   |   |   |   |   |(VSS, N_7, N_16):M11 |
+clk_n:N_11, clk_p:N_4, net_pm:N_7, net_bm:None
+9 devices left: (N_7, N_3, VSS):M4  (N_8, D, VSS):M5  (N_17, N_16, VSS):M7  (N_70, N_3, VDD):M13  (N_67, D, N_8):M16  (N_68, N_3, VDD):M17  (N_67, N_3, VDD):M18  (N_8, D, N_68):M19  (N_70, N_16, N_69):M21  
+------------c110:TLATNCAD0-------------
+   |   |   |   |   |   |(N_12, N_5, N_6):M13 |(N_6, N_10, N_13):M15 |   |   |   |   |   |   | (VDD, N_6, N_3):M11 |
+   |   |   |   |   |   |(N_49, N_10, N_6):M4 | (N_6, N_5, N_50):M3 |   |   |   |   |   |   |  (VSS, N_6, N_3):M1 |
+clk_n:N_10, clk_p:N_5, net_pm:N_6, net_bm:None
+4 devices left: (N_50, N_3, VSS):M2  (N_49, E, VSS):M6  (N_13, N_3, VDD):M12  (N_12, E, VDD):M16  
+------------c110:TLATNCAD1-------------
+   |   |   |   |   |   |(N_12, N_5, N_6):M14 |(N_6, N_10, N_13):M13 |   |   |   |   |   |   | (VDD, N_6, N_3):M16 |
+   |   |   |   |   |   |(N_49, N_10, N_6):M2 | (N_6, N_5, N_50):M4 |   |   |   |   |   |   |  (VSS, N_6, N_3):M6 |
+clk_n:N_10, clk_p:N_5, net_pm:N_6, net_bm:None
+4 devices left: (N_49, E, VSS):M1  (N_50, N_3, VSS):M5  (N_12, E, VDD):M11  (N_13, N_3, VDD):M15  
+------------c110:TLATNFCAD0-------------
+   |   |   |   |   |   |(N_12, N_2, N_8):M15 |(N_8, N_7, N_13):M17 |   |   |   |   |   |   | (VDD, N_8, N_5):M12 |
+   |   |   |   |   |   | (N_22, N_7, N_8):M6 | (N_8, N_2, N_23):M9 |   |   |   |   |   |   |  (VSS, N_8, N_5):M5 |
+clk_n:N_2, clk_p:N_7, net_pm:N_8, net_bm:None
+4 devices left: (N_22, E, VSS):M8  (N_23, N_5, VSS):M10  (N_12, E, VDD):M14  (N_13, N_5, VDD):M16  
+------------c110:TLATNFCAD1-------------
+   |   |   |   |   |   |(N_12, N_2, N_8):M15 |(N_8, N_7, N_13):M17 |   |   |   |   |   |   | (VDD, N_8, N_5):M12 |
+   |   |   |   |   |   | (N_22, N_7, N_8):M6 | (N_8, N_2, N_23):M9 |   |   |   |   |   |   |  (VSS, N_8, N_5):M5 |
+clk_n:N_2, clk_p:N_7, net_pm:N_8, net_bm:None
+4 devices left: (N_22, E, VSS):M8  (N_23, N_5, VSS):M10  (N_12, E, VDD):M14  (N_13, N_5, VDD):M16  
+------------c110:TLATNFTSCAD0-------------
+
+
+clk_n:N_4, clk_p:N_3, net_pm:None, net_bm:None
+12 devices left: (VSS, SE, N_9):M3  (N_9, E, VSS):M4  (N_8, N_3, N_9):M5  (N_52, N_6, VSS):M6  (N_6, N_8, VSS):M7  (N_52, N_4, N_8):M8  (VDD, SE, N_13):M13  (N_13, E, N_9):M14  (N_9, N_4, N_8):M15  (N_14, N_3, N_8):M16  (N_14, N_6, VDD):M17  (N_6, N_8, VDD):M18  
+------------c110:TLATNFTSCAD1-------------
+
+
+clk_n:N_4, clk_p:N_3, net_pm:None, net_bm:None
+12 devices left: (VSS, SE, N_8):M5  (N_8, E, VSS):M6  (N_6, N_9, VSS):M7  (N_54, N_6, VSS):M8  (N_54, N_4, N_9):M9  (N_9, N_3, N_8):M10  (N_6, N_9, VDD):M13  (N_14, N_6, VDD):M14  (N_14, N_3, N_9):M15  (N_9, N_4, N_8):M16  (VDD, SE, N_13):M17  (N_13, E, N_8):M18  
+------------c110:TLATNTSCAD0-------------
+
+
+clk_n:N_4, clk_p:N_3, net_pm:None, net_bm:None
+16 devices left: (N_8, E, VSS):M1  (VSS, SE, N_8):M2  (N_8, N_4, N_9):M3  (N_55, N_6, VSS):M4  (N_6, N_9, VSS):M5  (N_55, N_3, N_9):M6  (VSS, N_9, ECK):M9  (ECK, N_4, VSS):M10  (N_13, N_4, N_9):M13  (N_12, E, N_8):M14  (N_13, N_6, VDD):M15  (VDD, SE, N_12):M16  (N_6, N_9, VDD):M17  (N_9, N_3, N_8):M18  (VDD, N_9, N_14):M19  (ECK, N_4, N_14):M20  
+------------c110:TLATNTSCAD1-------------
+
+
+clk_n:N_7, clk_p:N_5, net_pm:None, net_bm:None
+12 devices left: (VSS, SE, N_9):M6  (N_9, E, VSS):M7  (N_16, N_5, N_14):M8  (N_14, N_7, N_9):M9  (N_16, N_12, VSS):M10  (N_12, N_14, VSS):M11  (VDD, SE, N_57):M14  (N_14, N_5, N_9):M15  (N_57, E, N_9):M16  (N_58, N_7, N_14):M17  (N_58, N_12, VDD):M18  (VDD, N_14, N_12):M19  
+------------s65:CLKLAHAQHSV1-------------
+
+
+clk_n:CN, clk_p:C, net_pm:None, net_bm:None
+18 devices left: (S, C, VSS):MM51  (M, PM, VSS):MM49  (S, PM, NT22):MM43  (NT12, E, VSS):MM52  (NT22, TEN, VSS):MM44  (VSS, M, NT14):MM11  (NT14, CN, PM):MM12  (VSS, BC, TEN):MM0  (PM, C, NT12):MM36  (S, C, NT21):MM45  (NT21, TEN, VDD):MM46  (NT11, E, VDD):MM53  (VDD, BC, TEN):MM1  (NT21, PM, VDD):MM54  (NT13, C, PM):MM14  (VDD, M, NT13):MM13  (M, PM, VDD):MM50  (PM, CN, NT11):MM39  
+------------s65:CLKLAHQHSV1-------------
+
+
+clk_n:CN, clk_p:C, net_pm:None, net_bm:None
+12 devices left: (HNET12, FC, VSS):MM51  (M, PM, VSS):MM49  (HNET12, E, VSS):MM52  (VSS, M, HNET22):MM11  (HNET22, CN, PM):MM12  (PM, C, HNET12):MM36  (HNET11, E, HNET13):MM53  (HNET13, FC, VDD):MM54  (HNET21, C, PM):MM14  (VDD, M, HNET21):MM13  (M, PM, VDD):MM50  (PM, CN, HNET11):MM39  
+------------s65:CLKLANAQHSV1-------------
+
+
+clk_n:CN, clk_p:C, net_pm:None, net_bm:None
+16 devices left: (NT22, BC, VSS):MM51  (M, PM, VSS):MM49  (S, C, NT22):MM43  (NT12, E, VSS):MM52  (NT22, M, VSS):MM44  (VSS, M, NT14):MM11  (NT14, C, PM):MM12  (PM, CN, NT12):MM36  (S, M, NT21):MM45  (S, C, VDD):MM46  (NT11, E, VDD):MM53  (NT21, BC, VDD):MM54  (NT13, CN, PM):MM14  (VDD, M, NT13):MM13  (M, PM, VDD):MM50  (PM, C, NT11):MM39  
+------------s65:CLKLANQHSV1-------------
+
+
+clk_n:CN, clk_p:C, net_pm:None, net_bm:None
+12 devices left: (HNET22, FC, VSS):MM51  (M, PM, VSS):MM49  (HNET22, E, VSS):MM52  (VSS, M, HNET38):MM11  (HNET38, C, PM):MM12  (PM, CN, HNET22):MM36  (HNET24, E, HNET26):MM53  (HNET26, FC, VDD):MM54  (HNET40, CN, PM):MM14  (VDD, M, HNET40):MM13  (M, PM, VDD):MM50  (PM, C, HNET24):MM39  
+------------s65:LAHHSV1-------------
+   |   |   |   |   |   |(NET0292, C, PM):MM10 |(PM, CN, NET0285): |   |   |   |   |   |   |(VDD, PM, NET_0154):MM1 |
+   |   |   |   |   |   | (NET69, CN, PM):MM9 |(PM, C, NET_0119):MM12 |   |   |   |   |   |   |(VSS, PM, NET_0154):MM0 |
+clk_n:C, clk_p:CN, net_pm:PM, net_bm:None
+4 devices left: (VSS, NET_0154, NET_0119):MM42  (NET69, D, VSS):MM7  (VDD, NET_0154, NET0285):MM13  (NET0292, D, VDD):MM8  
+------------s65:LAHRNHSV1-------------
+   |   |   |   |   |   |(NET128, C, PM):MM10 |(PM, CN, NET117):MM14 |   |   |   |   |   |   |(VDD, PM, NET_0154):MM1 |
+   |   |   |   |   |   | (NET69, CN, PM):MM9 | (PM, C, NET52):MM12 |   |   |   |   |   |   |(VSS, PM, NET_0154):MM0 |
+clk_n:C, clk_p:CN, net_pm:PM, net_bm:None
+7 devices left: (NET_0104, D, VSS):MM44  (VSS, NET_0154, NET_0119):MM42  (NET_0119, RDN, NET52):MM11  (NET69, RDN, NET_0104):MM7  (PM, RDN, VDD):MM43  (VDD, NET_0154, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:LAHRSNHSV1-------------
+   |   |   |   |   |   |(NET0292, C, PM):MM10 |(PM, CN, NET0285):MM14 |   |   |   |   |   |   |(VDD, PM, NET_0154):MM1 |
+   |   |   |   |   |   | (NET69, CN, PM):MM9 | (PM, C, NET52):MM12 |   |   |   |   |   |   |(VSS, PM, NET_0154):MM0 |
+clk_n:C, clk_p:CN, net_pm:PM, net_bm:None
+11 devices left: (PM, S, VSS):MM51  (NET_0104, D, VSS):MM44  (VSS, NET_0154, NET_0119):MM42  (NET_0119, RDN, NET52):MM11  (NET69, RDN, NET_0104):MM7  (NET0292, S, NET128):MM50  (PM, S, NET0252):MM52  (NET0252, RDN, VDD):MM43  (NET117, S, NET0285):MM53  (VDD, NET_0154, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:LAHSNHSV1-------------
+   |   |   |   |   |   |(NET0292, C, NET0127):MM10 |(NET0127, CN, NET0285):MM14 |   |   |   |   |   |   |(VDD, NET0127, NET_0154):MM1 |
+   |   |   |   |   |   |(NET69, CN, NET0127):MM9 |(NET0127, C, NET_0119):MM12 |   |   |   |   |   |   |(VSS, NET0127, NET_0154):MM0 |
+clk_n:C, clk_p:CN, net_pm:NET0127, net_bm:None
+7 devices left: (NET0127, S, VSS):MM51  (VSS, NET_0154, NET_0119):MM42  (NET69, D, VSS):MM7  (NET0292, S, NET128):MM50  (NET117, S, NET0285):MM53  (VDD, NET_0154, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:LALHSV1-------------
+   |   |   |   |   |   |(NET0292, CN, PM):MM10 |(PM, C, NET0285):MM14 |   |   |   |   |   |   |(VDD, PM, NET_0154):MM1 |
+   |   |   |   |   |   |  (NET69, C, PM):MM9 |(PM, CN, NET_0119):MM12 |   |   |   |   |   |   |(VSS, PM, NET_0154):MM0 |
+clk_n:C, clk_p:CN, net_pm:PM, net_bm:None
+4 devices left: (VSS, NET_0154, NET_0119):MM42  (NET69, D, VSS):MM7  (VDD, NET_0154, NET0285):MM13  (NET0292, D, VDD):MM8  
+------------s65:LALRNHSV1-------------
+   |   |   |   |   |   |(NET128, CN, PM):MM10 |(PM, C, NET117):MM14 |   |   |   |   |   |   |(VDD, PM, NET_0154):MM1 |
+   |   |   |   |   |   |  (NET69, C, PM):MM9 |(PM, CN, NET52):MM12 |   |   |   |   |   |   |(VSS, PM, NET_0154):MM0 |
+clk_n:C, clk_p:CN, net_pm:PM, net_bm:None
+7 devices left: (NET_0104, D, VSS):MM44  (VSS, NET_0154, NET_0119):MM42  (NET_0119, RDN, NET52):MM11  (NET69, RDN, NET_0104):MM7  (PM, RDN, VDD):MM43  (VDD, NET_0154, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:LALRSNHSV1-------------
+   |   |   |   |   |   |(NET0292, CN, PM):MM10 |(PM, C, NET0285):MM14 |   |   |   |   |   |   |(VDD, PM, NET_0154):MM1 |
+   |   |   |   |   |   |  (NET69, C, PM):MM9 |(PM, CN, NET52):MM12 |   |   |   |   |   |   |(VSS, PM, NET_0154):MM0 |
+clk_n:C, clk_p:CN, net_pm:PM, net_bm:None
+11 devices left: (PM, S, VSS):MM51  (NET_0104, D, VSS):MM44  (VSS, NET_0154, NET_0119):MM42  (NET_0119, RDN, NET52):MM11  (NET69, RDN, NET_0104):MM7  (NET0292, S, NET128):MM50  (PM, S, NET0252):MM52  (NET0252, RDN, VDD):MM43  (NET117, S, NET0285):MM53  (VDD, NET_0154, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:LALSNHSV1-------------
+   |   |   |   |   |   |(NET0292, CN, PM):MM10 |(PM, C, NET0285):MM14 |   |   |   |   |   |   |(VDD, PM, NET_0154):MM1 |
+   |   |   |   |   |   |  (NET69, C, PM):MM9 |(PM, CN, NET_0119):MM12 |   |   |   |   |   |   |(VSS, PM, NET_0154):MM0 |
+clk_n:C, clk_p:CN, net_pm:PM, net_bm:None
+7 devices left: (PM, S, VSS):MM51  (VSS, NET_0154, NET_0119):MM42  (NET69, D, VSS):MM7  (NET0292, S, NET128):MM50  (NET117, S, NET0285):MM53  (VDD, NET_0154, NET117):MM13  (NET128, D, VDD):MM8  
+------------s110:TLATNSRX1MTR-------------
+   |   |   |   |   |   |(NET075, CN, PM):MXP10 |(PM, C, NET70):MXP13 |   |   |   |   |   |   |(VDD, PM, M):MX_G2_MXPA1 |
+   |   |   |   |   |   |(NET052, C, PM):MX_T13 |(PM, CN, NET98):MX_T2 |   |   |   |   |   |   |(VSS, PM, M):MX_G2_MXNA1 |
+clk_n:C, clk_p:CN, net_pm:PM, net_bm:None
+11 devices left: (PM, NMS, VSS):MX_T6  (NET048, D, VSS):MXN7  (NET052, RN, NET048):MXN6  (NET98, RN, NET101):MXN8  (VSS, M, NET101):MXN9  (PM, NMS, NET61):MXP11  (NET61, RN, VDD):MX_T14  (NET083, D, VDD):MX_T9  (NET075, NMS, NET083):MXP9  (NET70, NMS, NET67):MXP12  (VDD, M, NET67):MX_T5  
+------------s110:TLATNX1MTR-------------
+   |   |   |   |   |   |(XI1_P1, C, PM):MXI1_MXPOEN |(PM, CN, XI0_P1):MXI0_MXPOEN |   |   |   |   |   |   |(VDD, PM, M):MX_G2_MXPA1 |
+   |   |   |   |   |   |(XI1_N1, CN, PM):MXI1_MXNOE |(PM, C, XI0_N1):MXI0_MXNOE |   |   |   |   |   |   |(VSS, PM, M):MX_G2_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:None
+4 devices left: (XI1_N1, D, VSS):MXI1_MXNA1  (XI0_N1, M, VSS):MXI0_MXNA1  (XI1_P1, D, VDD):MXI1_MXPA1  (XI0_P1, M, VDD):MXI0_MXPA1  
+------------s110:TLATSRX1MTR-------------
+   |   |   |   |   |   |(NET47, CN, PM):MXP1 | (PM, C, NET71):MXP4 |   |   |   |   |   |   |(VDD, PM, M):MX_G2_MXPA1 |
+   |   |   |   |   |   |(NET80, C, PM):MX_T13 |(PM, CN, NET100):MX_T2 |   |   |   |   |   |   |(VSS, PM, M):MX_G2_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:None
+11 devices left: (PM, NMS, VSS):MX_T6  (NET84, D, VSS):MXN1  (NET80, RN, NET84):MXN0  (NET100, RN, NET105):MXN2  (VSS, M, NET105):MXN3  (NET47, NMS, NET55):MXP0  (NET55, D, VDD):MX_T9  (NET63, RN, VDD):MX_T14  (PM, NMS, NET63):MXP2  (NET71, NMS, NET67):MXP3  (VDD, M, NET67):MX_T5  
+------------s110:TLATX1MTR-------------
+   |   |   |   |   |   |(X_G3_P1, CN, NET52):MX_G3_MXPOEN |(NET52, C, XI5_P1):MXI5_MXPOEN |   |   |   |   |   |   |(VDD, NET52, M):MX_G2_MXPA1 |
+   |   |   |   |   |   |(X_G3_N1, C, NET52):MX_G3_MXNOE |(NET52, CN, XI5_N1):MXI5_MXNOE |   |   |   |   |   |   |(VSS, NET52, M):MX_G2_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:NET52, net_bm:None
+4 devices left: (X_G3_N1, D, VSS):MX_G3_MXNA1  (XI5_N1, M, VSS):MXI5_MXNA1  (X_G3_P1, D, VDD):MX_G3_MXPA1  (XI5_P1, M, VDD):MXI5_MXPA1  
+------------c153:DFBFB1-------------
+   |   |   |   |   |   |(N_14, N_6, N_5):M23 |(N_5, N_4, N_15):M24 |   |   |   |   |   |   |(VDD, N_5, N_16):M27 |(N_16, N_10, N_7):M28 |  (N_7, SN, VDD):M29 |   |   |   |   |   |   |(N_17, N_4, N_8):M31 |(N_8, N_6, N_18):M32 |   |   |   |   |   |   |(VDD, N_8, N_19):M36 |(N_19, N_10, N_9):M35 |  (N_9, SN, VDD):M34 |
+   |   |   |   |   |   | (N_26, N_4, N_5):M3 | (N_5, N_6, N_27):M4 |   |   |   |   |   |   | (N_23, N_5, N_7):M7 |(N_7, N_10, N_23):M8 |  (N_23, SN, VSS):M9 |   |   |   |   |   |   |(N_28, N_6, N_8):M11 |(N_8, N_4, N_29):M12 |   |   |   |   |   |   |(N_21, N_8, N_9):M16 |(N_9, N_10, N_21):M15 | (N_21, SN, VSS):M14 |
+clk_n:N_6, clk_p:N_4, net_pm:N_5, net_bm:N_8
+8 devices left: (N_26, D, VSS):M2  (N_27, N_7, VSS):M5  (N_28, N_7, VSS):M10  (N_29, N_9, VSS):M13  (N_14, D, VDD):M22  (N_15, N_7, VDD):M25  (N_17, N_7, VDD):M30  (N_18, N_9, VDD):M33  
+------------c153:DFBRB1-------------
+   |   |   |   |   |   |(N_14, N_4, N_5):M24 |(N_5, N_6, N_15):M23 |   |   |   |   |   |   |(VDD, N_5, N_16):M27 |(N_16, N_10, N_7):M28 |  (N_7, SN, VDD):M29 |   |   |   |   |   |   |(N_17, N_6, N_8):M31 |(N_8, N_4, N_18):M32 |   |   |   |   |   |   |(VDD, N_8, N_19):M37 |(N_19, N_10, N_9):M36 |  (N_9, SN, VDD):M35 |
+   |   |   |   |   |   | (N_26, N_6, N_5):M3 | (N_5, N_4, N_27):M4 |   |   |   |   |   |   | (N_23, N_5, N_7):M7 |(N_7, N_10, N_23):M8 |  (N_23, SN, VSS):M9 |   |   |   |   |   |   |(N_28, N_4, N_8):M12 |(N_8, N_6, N_29):M11 |   |   |   |   |   |   |(N_21, N_8, N_9):M17 |(N_9, N_10, N_21):M16 | (N_21, SN, VSS):M15 |
+clk_n:N_6, clk_p:N_4, net_pm:N_5, net_bm:N_8
+8 devices left: (N_26, D, VSS):M2  (N_27, N_7, VSS):M5  (N_28, N_7, VSS):M10  (N_29, N_9, VSS):M14  (N_14, D, VDD):M22  (N_15, N_7, VDD):M25  (N_17, N_7, VDD):M30  (N_18, N_9, VDD):M34  
+------------c153:DFBRQ1-------------
+   |   |   |   |   |   |(N_12, N_5, N_6):M36 |(N_6, N_4, N_13):M37 |   |   |   |   |   |   |(VDD, N_6, N_14):M34 |(N_14, N_3, N_7):M33 |  (N_7, SN, VDD):M32 |   |   |   |   |   |   |(N_15, N_4, N_8):M30 |(N_8, N_5, N_16):M29 |   |   |   |   |   |   |(VDD, N_8, N_17):M24 |(N_17, N_3, N_9):M26 |  (N_9, SN, VDD):M27 |
+   |   |   |   |   |   |(N_28, N_4, N_6):M17 |(N_6, N_5, N_29):M16 |   |   |   |   |   |   |(N_21, N_6, N_7):M14 |(N_7, N_3, N_21):M13 | (N_21, SN, VSS):M12 |   |   |   |   |   |   | (N_30, N_5, N_8):M9 |(N_8, N_4, N_31):M10 |   |   |   |   |   |   | (N_25, N_8, N_9):M5 | (N_9, N_3, N_25):M6 |  (N_25, SN, VSS):M7 |
+clk_n:N_4, clk_p:N_5, net_pm:N_6, net_bm:N_8
+14 devices left: (N_26, SN, VSS):M2  (N_26, N_3, Q):M3  (N_26, N_8, Q):M4  (N_31, N_9, VSS):M8  (N_30, N_7, VSS):M11  (N_29, N_7, VSS):M15  (N_28, D, VSS):M18  (Q, SN, VDD):M22  (Q, N_3, N_18):M23  (N_18, N_8, VDD):M25  (N_16, N_9, VDD):M28  (N_15, N_7, VDD):M31  (N_13, N_7, VDD):M35  (N_12, D, VDD):M38  
+------------c153:DFCFB1-------------
+   |   |   |   |   |   |(N_21, N_4, N_6):M23 |(N_6, N_5, N_22):M22 |   |   |   |   |   |   |(VDD, N_6, N_23):M25 |(N_23, N_10, N_7):M26 |   |   |   |   |   |   |(N_24, N_5, N_8):M28 |(N_8, N_4, N_25):M29 |   |   |   |   |   |   |(VDD, N_8, N_26):M31 |(N_26, N_10, N_9):M32 |
+   |   |   |   |   |   | (N_14, N_5, N_6):M4 | (N_6, N_4, N_15):M5 |   |   |   |   |   |   |  (VSS, N_6, N_7):M7 | (N_7, N_10, VSS):M8 |   |   |   |   |   |   |(N_16, N_4, N_8):M10 |(N_8, N_5, N_17):M11 |   |   |   |   |   |   | (VSS, N_8, N_9):M13 |(N_9, N_10, VSS):M14 |
+clk_n:N_4, clk_p:N_5, net_pm:N_6, net_bm:N_8
+8 devices left: (N_14, D, VSS):M3  (N_15, N_7, VSS):M6  (N_16, N_7, VSS):M9  (N_17, N_9, VSS):M12  (N_21, D, VDD):M21  (N_22, N_7, VDD):M24  (N_24, N_7, VDD):M27  (N_25, N_9, VDD):M30  
+------------c153:DFCFQ1-------------
+   |   |   |   |   |   |(N_20, N_4, N_6):M30 |(N_6, N_5, N_21):M31 |   |   |   |   |   |   |(VDD, N_6, N_22):M28 |(N_22, N_10, N_7):M27 |   |   |   |   |   |   |(N_23, N_5, N_8):M25 |(N_8, N_4, N_24):M21 |   |   |   |   |   |   |(VDD, N_8, N_25):M18 |(N_25, N_10, N_9):M23 |
+   |   |   |   |   |   |(N_13, N_5, N_6):M14 |(N_6, N_4, N_14):M13 |   |   |   |   |   |   | (VSS, N_6, N_7):M11 |(N_7, N_10, VSS):M10 |   |   |   |   |   |   | (N_15, N_4, N_8):M8 | (N_8, N_5, N_16):M7 |   |   |   |   |   |   |  (VSS, N_8, N_9):M1 | (N_9, N_10, VSS):M5 |
+clk_n:N_4, clk_p:N_5, net_pm:N_6, net_bm:N_8
+8 devices left: (N_16, N_9, VSS):M2  (N_15, N_7, VSS):M9  (N_14, N_7, VSS):M12  (N_13, D, VSS):M15  (N_24, N_9, VDD):M19  (N_23, N_7, VDD):M26  (N_21, N_7, VDD):M29  (N_20, D, VDD):M32  
+------------c153:DFCRB1-------------
+   |   |   |   |   |   |(N_14, N_4, N_6):M32 |(N_6, N_5, N_15):M33 |   |   |   |   |   |   |(VDD, N_6, N_16):M30 |(N_16, N_10, N_7):M29 |   |   |   |   |   |   |(N_17, N_5, N_8):M27 |(N_8, N_4, N_18):M26 |   |   |   |   |   |   |(VDD, N_8, N_19):M24 |(N_19, N_10, N_9):M23 |
+   |   |   |   |   |   |(N_23, N_5, N_6):M15 |(N_6, N_4, N_24):M14 |   |   |   |   |   |   | (VSS, N_6, N_7):M12 |(N_7, N_10, VSS):M11 |   |   |   |   |   |   | (N_25, N_4, N_8):M9 | (N_8, N_5, N_26):M8 |   |   |   |   |   |   |  (VSS, N_8, N_9):M6 | (N_9, N_10, VSS):M5 |
+clk_n:N_5, clk_p:N_4, net_pm:N_6, net_bm:N_8
+8 devices left: (N_26, N_9, VSS):M7  (N_25, N_7, VSS):M10  (N_24, N_7, VSS):M13  (N_23, D, VSS):M16  (N_18, N_9, VDD):M25  (N_17, N_7, VDD):M28  (N_15, N_7, VDD):M31  (N_14, D, VDD):M34  
+------------c153:DFCRN1-------------
+   |   |   |   |   |   |(N_12, N_4, N_6):M28 |(N_6, N_5, N_13):M29 |   |   |   |   |   |   |(VDD, N_6, N_14):M26 |(N_14, N_10, N_7):M25 |   |   |   |   |   |   |(N_15, N_5, N_8):M23 |(N_8, N_4, N_16):M22 |   |   |   |   |   |   |(VDD, N_8, N_17):M20 |(N_17, N_10, N_9):M19 |
+   |   |   |   |   |   |(N_31, N_5, N_6):M13 |(N_6, N_4, N_32):M12 |   |   |   |   |   |   | (VSS, N_6, N_7):M10 | (N_7, N_10, VSS):M9 |   |   |   |   |   |   | (N_33, N_4, N_8):M7 | (N_8, N_5, N_34):M6 |   |   |   |   |   |   |  (VSS, N_8, N_9):M4 | (N_9, N_10, VSS):M3 |
+clk_n:N_5, clk_p:N_4, net_pm:N_6, net_bm:N_8
+8 devices left: (N_34, N_9, VSS):M5  (N_33, N_7, VSS):M8  (N_32, N_7, VSS):M11  (N_31, D, VSS):M14  (N_16, N_9, VDD):M21  (N_15, N_7, VDD):M24  (N_13, N_7, VDD):M27  (N_12, D, VDD):M30  
+------------c153:DFCRQ1-------------
+   |   |   |   |   |   |(N_12, N_4, N_6):M30 |(N_6, N_5, N_13):M31 |   |   |   |   |   |   |(VDD, N_6, N_14):M28 |(N_14, N_3, N_7):M27 |   |   |   |   |   |   |(N_15, N_5, N_8):M25 |(N_8, N_4, N_16):M24 |   |   |   |   |   |   |(VDD, N_8, N_18):M19 |  (N_18, N_3, Q):M21 |
+   |   |   |   |   |   |(N_32, N_5, N_6):M14 |(N_6, N_4, N_33):M13 |   |   |   |   |   |   | (VSS, N_6, N_7):M11 | (N_7, N_3, VSS):M10 |   |   |   |   |   |   | (N_34, N_4, N_8):M8 | (N_8, N_5, N_35):M7 |   |   |   |   |   |   |    (VSS, N_8, Q):M2 |    (Q, N_3, VSS):M3 |
+clk_n:N_5, clk_p:N_4, net_pm:N_6, net_bm:N_8
+12 devices left: (N_9, N_3, VSS):M4  (N_9, N_8, VSS):M5  (N_35, N_9, VSS):M6  (N_34, N_7, VSS):M9  (N_33, N_7, VSS):M12  (N_32, D, VSS):M15  (N_17, N_3, N_9):M20  (N_17, N_8, VDD):M22  (N_16, N_9, VDD):M23  (N_15, N_7, VDD):M26  (N_13, N_7, VDD):M29  (N_12, D, VDD):M32  
+------------c153:DFNFB1-------------
+   |   |   |   |   |   |(N_12, N_4, N_6):M24 |(N_6, N_5, N_13):M23 |   |   |   |   |   |   | (VDD, N_6, N_7):M21 |   |   |   |   |   |   |(N_14, N_5, N_8):M26 |(N_8, N_4, N_15):M19 |   |   |   |   |   |   | (VDD, N_8, N_9):M17 |
+   |   |   |   |   |   |(N_28, N_5, N_6):M10 | (N_6, N_4, N_29):M9 |   |   |   |   |   |   |  (VSS, N_6, N_7):M7 |   |   |   |   |   |   | (N_30, N_4, N_8):M5 |(N_8, N_5, N_31):M12 |   |   |   |   |   |   |  (VSS, N_8, N_9):M3 |
+clk_n:N_4, clk_p:N_5, net_pm:N_6, net_bm:N_8
+8 devices left: (N_31, N_9, VSS):M4  (N_30, N_7, VSS):M6  (N_29, N_7, VSS):M8  (N_28, D, VSS):M11  (N_15, N_9, VDD):M18  (N_14, N_7, VDD):M20  (N_13, N_7, VDD):M22  (N_12, D, VDD):M25  
+------------c153:DFNRB1-------------
+   |   |   |   |   |   |(N_13, N_5, N_6):M25 |(N_6, N_4, N_14):M24 |   |   |   |   |   |   | (VDD, N_6, N_7):M22 |   |   |   |   |   |   |(N_15, N_4, N_8):M19 |(N_8, N_5, N_16):M20 |   |   |   |   |   |   |(VDD, N_8, N_10):M17 |
+   |   |   |   |   |   |(N_29, N_4, N_6):M11 |(N_6, N_5, N_30):M10 |   |   |   |   |   |   |  (VSS, N_6, N_7):M8 |   |   |   |   |   |   | (N_31, N_5, N_8):M6 | (N_8, N_4, N_32):M5 |   |   |   |   |   |   | (VSS, N_8, N_10):M3 |
+clk_n:N_4, clk_p:N_5, net_pm:N_6, net_bm:N_8
+8 devices left: (N_32, N_10, VSS):M4  (N_31, N_7, VSS):M7  (N_30, N_7, VSS):M9  (N_29, D, VSS):M12  (VDD, N_10, N_16):M18  (N_15, N_7, VDD):M21  (N_14, N_7, VDD):M23  (N_13, D, VDD):M26  
+------------c153:DFNRN1-------------
+   |   |   |   |   |   |(N_11, N_5, N_6):M22 |(N_6, N_4, N_12):M21 |   |   |   |   |   |   | (VDD, N_6, N_7):M19 |   |   |   |   |   |   |(N_13, N_4, N_8):M24 |(N_8, N_5, N_14):M17 |   |   |   |   |   |   | (VDD, N_8, N_9):M15 |
+   |   |   |   |   |   | (N_26, N_4, N_6):M9 | (N_6, N_5, N_27):M8 |   |   |   |   |   |   |  (VSS, N_6, N_7):M6 |   |   |   |   |   |   | (N_28, N_5, N_8):M4 |(N_8, N_4, N_29):M11 |   |   |   |   |   |   |  (VSS, N_8, N_9):M2 |
+clk_n:N_4, clk_p:N_5, net_pm:N_6, net_bm:N_8
+8 devices left: (N_29, N_9, VSS):M3  (N_28, N_7, VSS):M5  (N_27, N_7, VSS):M7  (N_26, D, VSS):M10  (N_14, N_9, VDD):M16  (N_13, N_7, VDD):M18  (N_12, N_7, VDD):M20  (N_11, D, VDD):M23  
+------------c153:DFNRQ1-------------
+   |   |   |   |   |   |(N_11, N_5, N_6):M22 |(N_6, N_4, N_12):M21 |   |   |   |   |   |   | (VDD, N_6, N_7):M19 |   |   |   |   |   |   |(N_13, N_4, N_8):M24 |(N_8, N_5, N_14):M17 |   |   |   |   |   |   | (VDD, N_8, N_9):M15 |
+   |   |   |   |   |   | (N_26, N_4, N_6):M9 | (N_6, N_5, N_27):M8 |   |   |   |   |   |   |  (VSS, N_6, N_7):M6 |   |   |   |   |   |   | (N_28, N_5, N_8):M4 |(N_8, N_4, N_29):M11 |   |   |   |   |   |   |  (VSS, N_8, N_9):M2 |
+clk_n:N_4, clk_p:N_5, net_pm:N_6, net_bm:N_8
+8 devices left: (N_29, N_9, VSS):M3  (N_28, N_7, VSS):M5  (N_27, N_7, VSS):M7  (N_26, D, VSS):M10  (N_14, N_9, VDD):M16  (N_13, N_7, VDD):M18  (N_12, N_7, VDD):M20  (N_11, D, VDD):M23  
+------------c153:DFPFB1-------------
+   |   |   |   |   |   |(N_13, N_4, N_6):M30 |(N_6, N_5, N_14):M31 |   |   |   |   |   |   | (N_7, N_6, VDD):M28 |  (VDD, SN, N_7):M27 |   |   |   |   |   |   |(N_15, N_5, N_8):M25 |(N_8, N_4, N_16):M24 |   |   |   |   |   |   |  (N_9, SN, VDD):M22 | (VDD, N_8, N_9):M21 |
+   |   |   |   |   |   |(N_31, N_5, N_6):M14 |(N_6, N_4, N_32):M13 |   |   |   |   |   |   |(VSS, N_6, N_33):M11 | (N_33, SN, N_7):M10 |   |   |   |   |   |   | (N_34, N_4, N_8):M8 | (N_8, N_5, N_35):M7 |   |   |   |   |   |   |  (VSS, SN, N_36):M5 | (N_36, N_8, N_9):M4 |
+clk_n:N_4, clk_p:N_5, net_pm:N_6, net_bm:N_8
+8 devices left: (N_35, N_9, VSS):M6  (N_34, N_7, VSS):M9  (N_32, N_7, VSS):M12  (N_31, D, VSS):M15  (N_16, N_9, VDD):M23  (N_15, N_7, VDD):M26  (N_14, N_7, VDD):M29  (N_13, D, VDD):M32  
+------------c153:DFPRB1-------------
+   |   |   |   |   |   |(N_14, N_4, N_5):M21 |(N_5, N_12, N_15):M20 |   |   |   |   |   |   | (N_6, N_5, VDD):M26 |  (VDD, SN, N_6):M27 |   |   |   |   |   |   |(N_16, N_12, N_7):M30 |(N_7, N_4, N_17):M31 |   |   |   |   |   |   |  (N_8, SN, VDD):M33 | (VDD, N_7, N_8):M28 |
+   |   |   |   |   |   |(N_33, N_12, N_5):M3 | (N_5, N_4, N_34):M4 |   |   |   |   |   |   | (VSS, N_5, N_35):M9 | (N_35, SN, N_6):M10 |   |   |   |   |   |   |(N_36, N_4, N_7):M13 |(N_7, N_12, N_37):M14 |   |   |   |   |   |   | (VSS, SN, N_38):M16 |(N_38, N_7, N_8):M11 |
+clk_n:N_12, clk_p:N_4, net_pm:N_5, net_bm:N_7
+8 devices left: (N_33, D, VSS):M2  (N_34, N_6, VSS):M5  (N_36, N_6, VSS):M12  (N_37, N_8, VSS):M15  (N_14, D, VDD):M19  (N_15, N_6, VDD):M22  (N_16, N_6, VDD):M29  (N_17, N_8, VDD):M32  
+------------c153:DFPRQ1-------------
+   |   |   |   |   |   |(N_11, N_4, N_6):M28 |(N_6, N_5, N_12):M29 |   |   |   |   |   |   |  (N_7, SN, VDD):M25 | (VDD, N_6, N_7):M26 |   |   |   |   |   |   |(N_13, N_5, N_8):M23 |(N_8, N_4, N_14):M22 |   |   |   |   |   |   |    (Q, SN, VDD):M18 |   (VDD, N_8, Q):M17 |
+   |   |   |   |   |   |(N_28, N_5, N_6):M13 |(N_6, N_4, N_29):M12 |   |   |   |   |   |   |  (VSS, SN, N_30):M9 |(N_30, N_6, N_7):M10 |   |   |   |   |   |   | (N_31, N_4, N_8):M7 | (N_8, N_5, N_32):M6 |   |   |   |   |   |   |  (VSS, SN, N_27):M2 |   (N_27, N_8, Q):M1 |
+clk_n:N_5, clk_p:N_4, net_pm:N_6, net_bm:N_8
+12 devices left: (N_33, SN, VSS):M3  (N_9, N_8, N_33):M4  (N_32, N_9, VSS):M5  (N_31, N_7, VSS):M8  (N_29, N_7, VSS):M11  (N_28, D, VSS):M14  (N_9, SN, VDD):M19  (N_9, N_8, VDD):M20  (N_14, N_9, VDD):M21  (N_13, N_7, VDD):M24  (N_12, N_7, VDD):M27  (N_11, D, VDD):M30  
+------------c110:DENRQ0-------------
+
+
+clk_n:N_2, clk_p:N_12, net_pm:None, net_bm:None
+28 devices left: (N_33, D, VSS):M1  (N_6, E, N_33):M2  (VSS, E, N_5):M3  (N_34, N_5, N_6):M4  (N_34, N_17, VSS):M5  (N_35, N_12, N_9):M8  (VSS, N_8, N_35):M9  (N_8, N_9, VSS):M10  (N_17, N_16, VSS):M12  (N_9, N_2, N_6):M13  (N_37, N_2, N_16):M14  (N_36, N_8, VSS):M15  (N_16, N_12, N_36):M16  (N_37, N_17, VSS):M17  (N_18, D, VDD):M18  (VDD, E, N_5):M19  (N_6, E, N_19):M20  (N_6, N_5, N_18):M21  (N_19, N_17, VDD):M22  (N_6, N_12, N_9):M24  (N_20, N_8, VDD):M25  (N_8, N_9, VDD):M26  (N_20, N_2, N_9):M27  (N_17, N_16, VDD):M30  (N_21, N_2, N_16):M31  (N_21, N_8, VDD):M32  (N_22, N_12, N_16):M33  (N_22, N_17, VDD):M34  
+------------c110:DENRQ1-------------
+
+
+clk_n:N_2, clk_p:N_15, net_pm:None, net_bm:None
+28 devices left: (N_35, D, VSS):M1  (N_6, E, N_35):M2  (VSS, E, N_4):M3  (N_36, N_4, N_6):M4  (N_36, N_18, VSS):M5  (N_37, N_15, N_9):M7  (N_37, N_8, VSS):M8  (VSS, N_9, N_8):M9  (N_6, N_2, N_9):M10  (N_12, N_15, N_38):M11  (N_38, N_8, VSS):M12  (VSS, N_18, N_39):M13  (N_39, N_2, N_12):M14  (N_18, N_12, VSS):M17  (N_24, D, VDD):M18  (VDD, E, N_4):M19  (N_24, N_4, N_6):M20  (N_25, E, N_6):M21  (N_25, N_18, VDD):M22  (N_6, N_15, N_9):M24  (N_26, N_8, VDD):M25  (N_8, N_9, VDD):M26  (N_26, N_2, N_9):M28  (N_27, N_15, N_12):M29  (VDD, N_18, N_27):M30  (N_28, N_2, N_12):M31  (VDD, N_8, N_28):M32  (N_18, N_12, VDD):M35  
+------------c110:DFANRQ0-------------
+
+
+clk_n:N_15, clk_p:N_8, net_pm:None, net_bm:None
+22 devices left: (VSS, D0, N_26):M2  (N_5, N_15, N_4):M3  (N_27, N_8, N_5):M4  (VSS, N_2, N_27):M5  (VSS, N_5, N_2):M6  (N_26, D1, N_4):M7  (N_28, N_8, N_10):M9  (N_29, N_11, VSS):M10  (N_28, N_2, VSS):M11  (N_29, N_15, N_10):M12  (N_11, N_10, VSS):M14  (N_5, N_8, N_4):M15  (N_16, N_2, VDD):M16  (N_16, N_15, N_5):M17  (VDD, N_5, N_2):M18  (N_18, N_11, VDD):M20  (N_17, N_2, VDD):M21  (N_10, N_15, N_17):M22  (N_18, N_8, N_10):M23  (N_11, N_10, VDD):M25  (N_4, D0, VDD):M27  (VDD, D1, N_4):M28  
+------------c110:DFANRQ1-------------
+
+
+clk_n:N_3, clk_p:N_9, net_pm:None, net_bm:None
+22 devices left: (VSS, D0, N_15):M2  (N_15, D1, N_5):M3  (N_6, N_3, N_5):M4  (VSS, N_2, N_16):M5  (VSS, N_6, N_2):M6  (N_16, N_9, N_6):M7  (N_18, N_9, N_11):M8  (N_11, N_3, N_17):M9  (N_17, N_14, VSS):M10  (N_18, N_2, VSS):M11  (N_14, N_11, VSS):M14  (N_5, D0, VDD):M16  (VDD, D1, N_5):M17  (N_30, N_3, N_6):M18  (N_30, N_2, VDD):M19  (VDD, N_6, N_2):M20  (N_5, N_9, N_6):M21  (N_14, N_11, VDD):M23  (N_11, N_9, N_31):M24  (N_32, N_3, N_11):M25  (N_31, N_14, VDD):M26  (N_32, N_2, VDD):M27  
+------------c110:DFBFB0-------------
+   |   |   |   |   |   |(N_90, N_2, N_7):M20 |(N_7, N_3, N_89):M22 |   |   |   |   |   |   |(VDD, N_17, N_28):M27 |(N_28, N_7, N_9):M25 |   |   |   |   |   |   |(N_9, N_3, N_11):M24 |(N_11, N_2, N_32):M23 |   |   |   |   |   |   |(VDD, N_11, N_20):M32 |
+   |   |   |   |   |   | (N_22, N_3, N_7):M6 | (N_7, N_2, N_21):M4 |   |   |   |   |   |   | (N_8, N_7, N_9):M10 |  (VSS, SN, N_8):M12 |   |   |   |   |   |   | (N_9, N_2, N_11):M7 |(N_11, N_3, N_23):M8 |   |   |   |   |   |   |(VSS, N_11, N_20):M16 |
+clk_n:N_2, clk_p:N_3, net_pm:N_7, net_bm:N_11
+8 devices left: (N_22, D, VSS):M3  (N_21, N_9, VSS):M5  (N_23, N_20, N_8):M9  (N_11, N_17, N_8):M11  (N_90, D, VDD):M19  (N_89, N_9, VDD):M21  (N_28, N_20, N_32):M26  (VDD, SN, N_11):M28  
+------------c110:DFBFB1-------------
+   |   |   |   |   |   |(N_96, N_2, N_13):M22 |(N_13, N_3, N_95):M24 |   |   |   |   |   |   |(VDD, N_10, N_33):M29 |(N_33, N_13, N_15):M25 |   |   |   |   |   |   |(N_15, N_3, N_14):M28 |(N_14, N_2, N_34):M27 |   |   |   |   |   |   |(VDD, N_14, N_7):M20 |
+   |   |   |   |   |   |(N_23, N_3, N_13):M10 |(N_13, N_2, N_22):M8 |   |   |   |   |   |   |(N_16, N_13, N_15):M11 | (VSS, SN, N_16):M16 |   |   |   |   |   |   |(N_15, N_2, N_14):M12 |(N_14, N_3, N_24):M13 |   |   |   |   |   |   | (VSS, N_14, N_7):M4 |
+clk_n:N_2, clk_p:N_3, net_pm:N_13, net_bm:N_14
+8 devices left: (N_23, D, VSS):M7  (N_22, N_15, VSS):M9  (N_24, N_7, N_16):M14  (N_14, N_10, N_16):M15  (N_96, D, VDD):M21  (N_95, N_15, VDD):M23  (N_33, N_7, N_34):M31  (N_14, SN, VDD):M32  
+------------c110:DFBRB0-------------
+   |   |   |   |   |   |(N_90, N_2, N_7):M19 |(N_7, N_4, N_89):M21 |   |   |   |   |   |   |(VDD, N_14, N_31):M31 |(N_31, N_7, N_9):M23 |   |   |   |   |   |   |(N_9, N_4, N_11):M25 |(N_11, N_2, N_32):M24 |   |   |   |   |   |   |(VDD, N_11, N_17):M29 |
+   |   |   |   |   |   | (N_22, N_4, N_7):M5 | (N_7, N_2, N_21):M3 |   |   |   |   |   |   |  (N_8, N_7, N_9):M7 |  (VSS, SN, N_8):M16 |   |   |   |   |   |   | (N_9, N_2, N_11):M8 |(N_11, N_4, N_23):M9 |   |   |   |   |   |   |(VSS, N_11, N_17):M14 |
+clk_n:N_4, clk_p:N_2, net_pm:N_7, net_bm:N_11
+8 devices left: (N_21, N_9, VSS):M4  (N_22, D, VSS):M6  (N_23, N_17, N_8):M10  (N_11, N_14, N_8):M15  (N_89, N_9, VDD):M20  (N_90, D, VDD):M22  (N_31, N_17, N_32):M30  (VDD, SN, N_11):M32  
+------------c110:DFBRB1-------------
+   |   |   |   |   |   |(N_96, N_19, N_18):M33 |(N_18, N_21, N_95):M32 |   |   |   |   |   |   |(VDD, N_7, N_31):M25 |(N_31, N_18, N_13):M27 |   |   |   |   |   |   |(N_13, N_21, N_10):M30 |(N_10, N_19, N_30):M29 |   |   |   |   |   |   |(VDD, N_10, N_4):M18 |
+   |   |   |   |   |   |(N_24, N_21, N_18):M13 |(N_18, N_19, N_23):M11 |   |   |   |   |   |   |(N_9, N_18, N_13):M9 |   (VSS, SN, N_9):M5 |   |   |   |   |   |   |(N_13, N_19, N_10):M10 |(N_10, N_21, N_22):M7 |   |   |   |   |   |   | (VSS, N_10, N_4):M2 |
+clk_n:N_21, clk_p:N_19, net_pm:N_18, net_bm:N_10
+8 devices left: (N_10, N_7, N_9):M6  (N_22, N_4, N_9):M8  (N_23, N_13, VSS):M12  (N_24, D, VSS):M14  (N_10, SN, VDD):M21  (N_31, N_4, N_30):M24  (N_95, N_13, VDD):M31  (N_96, D, VDD):M34  
+------------c110:DFBRQ0-------------
+   |   |   |   |   |   |(N_84, N_6, N_14):M25 |(N_14, N_8, N_83):M27 |   |   |   |   |   |   |(VDD, N_11, N_28):M22 |(N_28, N_14, N_16):M28 |   |   |   |   |   |   |(N_16, N_8, N_4):M30 |(N_4, N_6, N_29):M29 |   |   |   |   |   |   | (VDD, N_4, N_2):M16 |
+   |   |   |   |   |   |(N_19, N_8, N_14):M11 |(N_14, N_6, N_20):M9 |   |   |   |   |   |   |(N_5, N_14, N_16):M12 |   (VSS, SN, N_5):M2 |   |   |   |   |   |   |(N_16, N_6, N_4):M13 |(N_4, N_8, N_21):M14 |   |   |   |   |   |   |  (VSS, N_4, N_2):M3 |
+clk_n:N_8, clk_p:N_6, net_pm:N_14, net_bm:N_4
+8 devices left: (N_5, N_11, N_4):M1  (N_19, D, VSS):M8  (N_20, N_16, VSS):M10  (N_21, N_2, N_5):M15  (N_28, N_2, N_29):M21  (N_4, SN, VDD):M23  (N_84, D, VDD):M24  (N_83, N_16, VDD):M26  
+------------c110:DFBRQ1-------------
+   |   |   |   |   |   |(N_36, N_9, N_4):M21 |(N_4, N_11, N_35):M20 |   |   |   |   |   |   |(VDD, N_14, N_30):M16 |(N_30, N_4, N_16):M29 |   |   |   |   |   |   |(N_16, N_11, N_7):M28 |(N_7, N_9, N_37):M27 |   |   |   |   |   |   | (VDD, N_7, N_6):M32 |
+   |   |   |   |   |   |(N_20, N_11, N_4):M4 | (N_4, N_9, N_19):M3 |   |   |   |   |   |   |(N_8, N_4, N_16):M15 |   (VSS, SN, N_8):M5 |   |   |   |   |   |   |(N_16, N_9, N_7):M14 |(N_7, N_11, N_21):M12 |   |   |   |   |   |   |  (VSS, N_7, N_6):M7 |
+clk_n:N_11, clk_p:N_9, net_pm:N_4, net_bm:N_7
+8 devices left: (N_19, N_16, VSS):M1  (N_20, D, VSS):M2  (N_8, N_14, N_7):M6  (N_21, N_6, N_8):M13  (N_35, N_16, VDD):M18  (N_36, D, VDD):M19  (N_37, N_6, N_30):M26  (N_7, SN, VDD):M31  
+------------c110:DFCFB0-------------
+   |   |   |   |   |   |(N_19, N_4, N_5):M21 |(N_5, N_2, N_20):M18 |   |   |   |   |   |   |(VDD, N_15, N_7):M25 | (N_7, N_5, N_8):M23 |   |   |   |   |   |   | (N_8, N_2, N_9):M22 |(N_9, N_4, N_21):M24 |   |   |   |   |   |   |(VDD, N_9, N_18):M30 |
+   |   |   |   |   |   | (N_29, N_2, N_5):M3 | (N_5, N_4, N_30):M6 |   |   |   |   |   |   |                None |  (N_8, N_5, VSS):M7 |   |   |   |   |   |   |  (N_8, N_4, N_9):M9 |(N_9, N_2, N_31):M10 |   |   |   |   |   |   |(VSS, N_9, N_18):M13 |
+clk_n:N_4, clk_p:N_2, net_pm:N_5, net_bm:N_9
+7 devices left: (N_29, D, VSS):M2  (N_30, N_8, VSS):M4  (VSS, N_15, N_9):M8  (VSS, N_18, N_31):M11  (N_19, D, VDD):M17  (N_20, N_8, VDD):M19  (N_21, N_18, N_7):M26  
+------------c110:DFCFB1-------------
+   |   |   |   |   |   |(N_84, N_4, N_6):M30 |(N_6, N_2, N_85):M27 |   |   |   |   |   |   |(VDD, N_18, N_29):M21 |(N_29, N_6, N_11):M24 |   |   |   |   |   |   |(N_11, N_2, N_10):M22 |(N_10, N_4, N_83):M20 |   |   |   |   |   |   |(VDD, N_10, N_9):M18 |
+   |   |   |   |   |   | (N_19, N_2, N_6):M3 | (N_6, N_4, N_20):M6 |   |   |   |   |   |   |                None |(N_11, N_6, VSS):M10 |   |   |   |   |   |   |(N_11, N_4, N_10):M13 |(N_10, N_2, N_21):M14 |   |   |   |   |   |   | (VSS, N_10, N_9):M8 |
+clk_n:N_4, clk_p:N_2, net_pm:N_6, net_bm:N_10
+7 devices left: (N_19, D, VSS):M2  (N_20, N_11, VSS):M4  (N_21, N_9, VSS):M9  (VSS, N_18, N_10):M12  (N_83, N_9, N_29):M19  (N_84, D, VDD):M26  (N_85, N_11, VDD):M28  
+------------c110:DFCRB0-------------
+   |   |   |   |   |   |(N_20, N_2, N_6):M19 |(N_6, N_5, N_21):M21 |   |   |   |   |   |   |(VDD, N_16, N_7):M27 | (N_7, N_6, N_8):M22 |   |   |   |   |   |   |(N_8, N_5, N_10):M26 |(N_10, N_2, N_22):M24 |   |   |   |   |   |   |(VDD, N_10, N_19):M31 |
+   |   |   |   |   |   | (N_77, N_5, N_6):M3 | (N_6, N_2, N_78):M5 |   |   |   |   |   |   |                None |  (N_8, N_6, VSS):M7 |   |   |   |   |   |   | (N_8, N_2, N_10):M8 |(N_10, N_5, N_79):M9 |   |   |   |   |   |   |(VSS, N_10, N_19):M15 |
+clk_n:N_5, clk_p:N_2, net_pm:N_6, net_bm:N_10
+7 devices left: (N_77, D, VSS):M2  (N_78, N_8, VSS):M4  (VSS, N_16, N_10):M10  (N_79, N_19, VSS):M11  (N_20, D, VDD):M17  (N_21, N_8, VDD):M18  (N_22, N_19, N_7):M25  
+------------c110:DFCRB1-------------
+   |   |   |   |   |   |(N_82, N_5, N_9):M22 |(N_9, N_7, N_83):M24 |   |   |   |   |   |   |(VDD, N_18, N_27):M30 |(N_27, N_9, N_12):M25 |   |   |   |   |   |   |(N_12, N_7, N_11):M29 |(N_11, N_5, N_84):M27 |   |   |   |   |   |   |(VDD, N_11, N_4):M18 |
+   |   |   |   |   |   | (N_19, N_7, N_9):M5 | (N_9, N_5, N_20):M7 |   |   |   |   |   |   |                None | (N_12, N_9, VSS):M9 |   |   |   |   |   |   |(N_12, N_5, N_11):M11 |(N_11, N_7, N_21):M12 |   |   |   |   |   |   | (VSS, N_11, N_4):M2 |
+clk_n:N_7, clk_p:N_5, net_pm:N_9, net_bm:N_11
+7 devices left: (N_19, D, VSS):M4  (N_20, N_12, VSS):M6  (N_11, N_18, VSS):M13  (N_21, N_4, VSS):M14  (N_82, D, VDD):M20  (N_83, N_12, VDD):M21  (N_84, N_4, N_27):M28  
+------------c110:DFCRQ0-------------
+   |   |   |   |   |   |(N_32, N_5, N_11):M24 |(N_11, N_7, N_33):M18 |   |   |   |   |   |   | (N_14, RN, VDD):M23 |(VDD, N_11, N_14):M20 |   |   |   |   |   |   |(N_14, N_7, N_13):M27 |(N_13, N_5, N_34):M28 |   |   |   |   |   |   |(VDD, N_13, N_4):M26 |
+   |   |   |   |   |   |(N_16, N_7, N_11):M5 |(N_11, N_5, N_17):M11 |   |   |   |   |   |   | (VSS, RN, N_18):M12 |(N_18, N_11, N_14):M8 |   |   |   |   |   |   |(N_14, N_5, N_13):M15 |(N_13, N_7, N_19):M6 |   |   |   |   |   |   | (VSS, N_13, N_4):M2 |
+clk_n:N_7, clk_p:N_5, net_pm:N_11, net_bm:N_13
+8 devices left: (N_17, N_14, VSS):M7  (N_16, N_9, VSS):M10  (N_15, RN, VSS):M13  (N_19, N_4, N_15):M14  (N_33, N_14, VDD):M19  (N_32, N_9, VDD):M22  (N_13, RN, VDD):M29  (N_34, N_4, VDD):M30  
+------------c110:DFCRQ1-------------
+   |   |   |   |   |   |(N_32, N_2, N_8):M22 |(N_8, N_4, N_33):M26 |   |   |   |   |   |   | (N_10, RN, VDD):M29 |(VDD, N_8, N_10):M23 |   |   |   |   |   |   |(N_10, N_4, N_11):M25 |(N_11, N_2, N_34):M27 |   |   |   |   |   |   |(VDD, N_11, N_14):M19 |
+   |   |   |   |   |   | (N_16, N_4, N_8):M8 | (N_8, N_2, N_17):M5 |   |   |   |   |   |   | (VSS, RN, N_18):M10 |(N_18, N_8, N_10):M6 |   |   |   |   |   |   |(N_10, N_2, N_11):M7 |(N_11, N_4, N_19):M9 |   |   |   |   |   |   |(VSS, N_11, N_14):M15 |
+clk_n:N_4, clk_p:N_2, net_pm:N_8, net_bm:N_11
+8 devices left: (N_16, N_6, VSS):M4  (N_15, RN, VSS):M11  (N_19, N_14, N_15):M12  (N_17, N_10, VSS):M13  (N_32, N_6, VDD):M21  (N_11, RN, VDD):M28  (N_34, N_14, VDD):M30  (N_33, N_10, VDD):M31  
+------------c110:DFNFB0-------------
+   |   |   |   |   |   |(N_15, N_5, N_6):M17 |(N_6, N_9, N_16):M18 |   |   |   |   |   |   | (VDD, N_6, N_2):M20 |   |   |   |   |   |   |(N_17, N_9, N_11):M22 |(N_11, N_5, N_18):M24 |   |   |   |   |   |   |(VDD, N_11, N_14):M28 |
+   |   |   |   |   |   | (N_26, N_9, N_6):M3 | (N_6, N_5, N_27):M6 |   |   |   |   |   |   |  (VSS, N_6, N_2):M5 |   |   |   |   |   |   |(N_28, N_5, N_11):M8 |(N_11, N_9, N_29):M10 |   |   |   |   |   |   |(VSS, N_11, N_14):M14 |
+clk_n:N_5, clk_p:N_9, net_pm:N_6, net_bm:N_11
+8 devices left: (N_26, D, VSS):M2  (N_27, N_2, VSS):M4  (N_28, N_2, VSS):M7  (N_29, N_14, VSS):M12  (N_15, D, VDD):M16  (N_16, N_2, VDD):M19  (N_17, N_2, VDD):M21  (N_18, N_14, VDD):M26  
+------------c110:DFNFB1-------------
+   |   |   |   |   |   |(N_72, N_4, N_6):M17 |(N_6, N_12, N_73):M18 |   |   |   |   |   |   | (VDD, N_6, N_3):M20 |   |   |   |   |   |   |(N_74, N_12, N_14):M26 |(N_14, N_4, N_75):M21 |   |   |   |   |   |   |(VDD, N_14, N_9):M28 |
+   |   |   |   |   |   |(N_15, N_12, N_6):M3 | (N_6, N_4, N_16):M6 |   |   |   |   |   |   |  (VSS, N_6, N_3):M5 |   |   |   |   |   |   |(N_17, N_4, N_14):M10 |(N_14, N_12, N_18):M9 |   |   |   |   |   |   | (VSS, N_14, N_9):M8 |
+clk_n:N_4, clk_p:N_12, net_pm:N_6, net_bm:N_14
+8 devices left: (N_15, D, VSS):M2  (N_16, N_3, VSS):M4  (N_18, N_9, VSS):M12  (N_17, N_3, VSS):M14  (N_72, D, VDD):M16  (N_73, N_3, VDD):M19  (N_75, N_9, VDD):M23  (N_74, N_3, VDD):M25  
+------------c110:DFNFQ0-------------
+   |   |   |   |   |   |(N_16, N_11, N_13):M24 |(N_13, N_6, N_17):M23 |   |   |   |   |   |   |(VDD, N_13, N_10):M21 |   |   |   |   |   |   |(N_15, N_6, N_8):M18 |(N_8, N_11, N_14):M17 |   |   |   |   |   |   | (VDD, N_8, N_4):M15 |
+   |   |   |   |   |   |(N_27, N_6, N_13):M11 |(N_13, N_11, N_28):M8 |   |   |   |   |   |   |(VSS, N_13, N_10):M9 |   |   |   |   |   |   |(N_26, N_11, N_8):M4 | (N_8, N_6, N_25):M3 |   |   |   |   |   |   |  (VSS, N_8, N_4):M2 |
+clk_n:N_11, clk_p:N_6, net_pm:N_13, net_bm:N_8
+8 devices left: (N_26, N_10, VSS):M6  (N_25, N_4, VSS):M7  (N_28, N_10, VSS):M10  (N_27, D, VSS):M12  (N_15, N_10, VDD):M19  (N_14, N_4, VDD):M20  (N_17, N_10, VDD):M22  (N_16, D, VDD):M25  
+------------c110:DFNFQ1-------------
+   |   |   |   |   |   |(N_30, N_7, N_9):M18 |(N_9, N_11, N_31):M19 |   |   |   |   |   |   | (VDD, N_9, N_6):M20 |   |   |   |   |   |   |(N_32, N_11, N_13):M25 |(N_13, N_7, N_33):M24 |   |   |   |   |   |   |(VDD, N_13, N_4):M15 |
+   |   |   |   |   |   |(N_14, N_11, N_9):M6 | (N_9, N_7, N_15):M5 |   |   |   |   |   |   |  (VSS, N_9, N_6):M7 |   |   |   |   |   |   |(N_17, N_7, N_13):M11 |(N_13, N_11, N_16):M12 |   |   |   |   |   |   | (VSS, N_13, N_4):M2 |
+clk_n:N_7, clk_p:N_11, net_pm:N_9, net_bm:N_13
+8 devices left: (N_14, D, VSS):M4  (N_15, N_6, VSS):M8  (N_17, N_6, VSS):M9  (N_16, N_4, VSS):M13  (N_30, D, VDD):M17  (N_31, N_6, VDD):M21  (N_32, N_6, VDD):M22  (N_33, N_4, VDD):M26  
+------------c110:DFNRB0-------------
+   |   |   |   |   |   |(N_28, N_7, N_13):M23 |(N_13, N_11, N_29):M25 |   |   |   |   |   |   |(VDD, N_13, N_10):M24 |   |   |   |   |   |   |(N_26, N_11, N_9):M19 |(N_9, N_7, N_27):M20 |   |   |   |   |   |   | (VDD, N_9, N_4):M16 |
+   |   |   |   |   |   |(N_17, N_11, N_13):M13 |(N_13, N_7, N_18):M9 |   |   |   |   |   |   |(VSS, N_13, N_10):M10 |   |   |   |   |   |   | (N_15, N_7, N_9):M6 |(N_9, N_11, N_16):M5 |   |   |   |   |   |   |  (VSS, N_9, N_4):M2 |
+clk_n:N_11, clk_p:N_7, net_pm:N_13, net_bm:N_9
+8 devices left: (N_16, N_4, VSS):M4  (N_15, N_10, VSS):M7  (N_18, N_10, VSS):M12  (N_17, D, VSS):M14  (N_27, N_4, VDD):M18  (N_26, N_10, VDD):M21  (N_29, N_10, VDD):M27  (N_28, D, VDD):M28  
+------------c110:DFNRB1-------------
+   |   |   |   |   |   |(N_73, N_7, N_13):M23 |(N_13, N_11, N_74):M26 |   |   |   |   |   |   |(VDD, N_13, N_10):M24 |   |   |   |   |   |   |(N_71, N_11, N_9):M19 |(N_9, N_7, N_72):M20 |   |   |   |   |   |   | (VDD, N_9, N_4):M16 |
+   |   |   |   |   |   |(N_17, N_11, N_13):M12 |(N_13, N_7, N_18):M9 |   |   |   |   |   |   |(VSS, N_13, N_10):M10 |   |   |   |   |   |   | (N_15, N_7, N_9):M6 |(N_9, N_11, N_16):M5 |   |   |   |   |   |   |  (VSS, N_9, N_4):M2 |
+clk_n:N_11, clk_p:N_7, net_pm:N_13, net_bm:N_9
+8 devices left: (N_16, N_4, VSS):M4  (N_15, N_10, VSS):M7  (N_18, N_10, VSS):M11  (N_17, D, VSS):M13  (N_72, N_4, VDD):M18  (N_71, N_10, VDD):M21  (N_74, N_10, VDD):M25  (N_73, D, VDD):M27  
+------------c110:DFNRQ0-------------
+   |   |   |   |   |   |(N_14, N_9, N_6):M16 |(N_6, N_5, N_15):M19 |   |   |   |   |   |   | (VDD, N_6, N_2):M14 |   |   |   |   |   |   |(N_17, N_5, N_10):M22 |(N_10, N_9, N_16):M21 |   |   |   |   |   |   |(VDD, N_10, N_13):M26 |
+   |   |   |   |   |   | (N_25, N_5, N_6):M6 | (N_6, N_9, N_26):M3 |   |   |   |   |   |   |  (VSS, N_6, N_2):M1 |   |   |   |   |   |   |(N_28, N_9, N_10):M9 |(N_10, N_5, N_27):M8 |   |   |   |   |   |   |(VSS, N_10, N_13):M13 |
+clk_n:N_5, clk_p:N_9, net_pm:N_6, net_bm:N_10
+8 devices left: (N_26, N_2, VSS):M2  (N_25, D, VSS):M5  (N_27, N_13, VSS):M7  (N_28, N_2, VSS):M10  (N_15, N_2, VDD):M15  (N_14, D, VDD):M18  (N_16, N_13, VDD):M20  (N_17, N_2, VDD):M23  
+------------c110:DFNRQ1-------------
+   |   |   |   |   |   |(N_29, N_8, N_5):M19 |(N_5, N_3, N_30):M16 |   |   |   |   |   |   | (VDD, N_5, N_2):M18 |   |   |   |   |   |   |(N_32, N_3, N_10):M22 |(N_10, N_8, N_31):M23 |   |   |   |   |   |   |(VDD, N_10, N_13):M26 |
+   |   |   |   |   |   | (N_14, N_3, N_5):M3 | (N_5, N_8, N_15):M6 |   |   |   |   |   |   |  (VSS, N_5, N_2):M5 |   |   |   |   |   |   |(N_17, N_8, N_10):M9 |(N_10, N_3, N_16):M10 |   |   |   |   |   |   |(VSS, N_10, N_13):M13 |
+clk_n:N_3, clk_p:N_8, net_pm:N_5, net_bm:N_10
+8 devices left: (N_14, D, VSS):M2  (N_15, N_2, VSS):M4  (N_17, N_2, VSS):M8  (N_16, N_13, VSS):M11  (N_29, D, VDD):M15  (N_30, N_2, VDD):M17  (N_32, N_2, VDD):M21  (N_31, N_13, VDD):M24  
+------------c110:DFPFB0-------------
+   |   |   |   |   |   |(N_17, N_4, N_5):M20 |(N_5, N_2, N_18):M17 |   |   |   |   |   |   | (VDD, N_5, N_9):M21 |                None |   |   |   |   |   |   |(N_9, N_2, N_10):M24 |(N_10, N_4, N_19):M22 |   |   |   |   |   |   |(VDD, N_10, N_16):M28 |
+   |   |   |   |   |   | (N_29, N_2, N_5):M3 | (N_5, N_4, N_30):M5 |   |   |   |   |   |   |                None | (N_26, SN, VSS):M13 |   |   |   |   |   |   |(N_9, N_4, N_10):M10 |(N_10, N_2, N_31):M12 |   |   |   |   |   |   |(VSS, N_10, N_16):M8 |
+clk_n:N_4, clk_p:N_2, net_pm:N_5, net_bm:N_10
+7 devices left: (N_29, D, VSS):M2  (VSS, N_9, N_30):M4  (N_31, N_16, N_26):M11  (N_17, D, VDD):M16  (N_18, N_9, VDD):M18  (N_19, N_16, VDD):M23  (N_10, SN, VDD):M25  
+------------c110:DFPFB1-------------
+   |   |   |   |   |   |(N_31, N_3, N_5):M19 |(N_5, N_2, N_32):M17 |   |   |   |   |   |   | (VDD, N_5, N_9):M21 |                None |   |   |   |   |   |   |(N_9, N_2, N_10):M25 |(N_10, N_3, N_33):M23 |   |   |   |   |   |   |(VDD, N_10, N_16):M29 |
+   |   |   |   |   |   | (N_17, N_2, N_5):M3 | (N_5, N_3, N_18):M5 |   |   |   |   |   |   |                None |  (N_7, SN, VSS):M11 |   |   |   |   |   |   | (N_9, N_3, N_10):M8 |(N_10, N_2, N_19):M10 |   |   |   |   |   |   |(VSS, N_10, N_16):M14 |
+clk_n:N_3, clk_p:N_2, net_pm:N_5, net_bm:N_10
+7 devices left: (N_17, D, VSS):M2  (VSS, N_9, N_18):M4  (N_19, N_16, N_7):M9  (N_31, D, VDD):M16  (N_32, N_9, VDD):M18  (N_33, N_16, VDD):M24  (N_10, SN, VDD):M26  
+------------c110:DFPRB0-------------
+   |   |   |   |   |   |(N_18, N_2, N_6):M19 |(N_6, N_5, N_19):M21 |   |   |   |   |   |   | (VDD, N_6, N_8):M22 |                None |   |   |   |   |   |   |(N_8, N_5, N_10):M26 |(N_10, N_2, N_20):M24 |   |   |   |   |   |   |(VDD, N_10, N_17):M30 |
+   |   |   |   |   |   | (N_30, N_5, N_6):M3 | (N_6, N_2, N_31):M5 |   |   |   |   |   |   |                None | (N_26, SN, VSS):M13 |   |   |   |   |   |   | (N_8, N_2, N_10):M9 |(N_10, N_5, N_32):M11 |   |   |   |   |   |   |(VSS, N_10, N_17):M15 |
+clk_n:N_5, clk_p:N_2, net_pm:N_6, net_bm:N_10
+7 devices left: (N_30, D, VSS):M2  (N_31, N_8, VSS):M4  (N_32, N_17, N_26):M10  (N_18, D, VDD):M17  (N_19, N_8, VDD):M18  (N_20, N_17, VDD):M25  (N_10, SN, VDD):M28  
+------------c110:DFPRB1-------------
+   |   |   |   |   |   |(N_34, N_10, N_14):M29 |(N_14, N_12, N_35):M26 |   |   |   |   |   |   |(VDD, N_14, N_6):M17 |                None |   |   |   |   |   |   |(N_6, N_12, N_9):M19 |(N_9, N_10, N_33):M21 |   |   |   |   |   |   | (VDD, N_9, N_4):M23 |
+   |   |   |   |   |   |(N_20, N_12, N_14):M12 |(N_14, N_10, N_21):M13 |   |   |   |   |   |   |                None |  (N_5, SN, VSS):M14 |   |   |   |   |   |   | (N_6, N_10, N_9):M7 |(N_9, N_12, N_19):M5 |   |   |   |   |   |   |  (VSS, N_9, N_4):M2 |
+clk_n:N_12, clk_p:N_10, net_pm:N_14, net_bm:N_9
+7 devices left: (N_19, N_4, N_5):M6  (N_20, D, VSS):M10  (N_21, N_6, VSS):M11  (N_33, N_4, VDD):M20  (N_34, D, VDD):M27  (N_35, N_6, VDD):M28  (N_9, SN, VDD):M30  
+------------c110:DFPRQ0-------------
+   |   |   |   |   |   |(N_24, N_6, N_18):M29 |(N_18, N_7, N_23):M31 |   |   |   |   |   |   |(VDD, N_9, N_11):M25 |(N_11, N_18, N_10):M20 |   |   |   |   |   |   |(N_10, N_7, N_13):M22 |(N_13, N_6, N_22):M23 |   |   |   |   |   |   |(VDD, N_13, N_4):M17 |
+   |   |   |   |   |   |(N_77, N_7, N_18):M11 |(N_18, N_6, N_78):M9 |   |   |   |   |   |   |                None |(N_10, N_18, VSS):M10 |   |   |   |   |   |   |(N_10, N_6, N_13):M8 |(N_13, N_7, N_76):M12 |   |   |   |   |   |   | (VSS, N_13, N_4):M2 |
+clk_n:N_7, clk_p:N_6, net_pm:N_18, net_bm:N_13
+7 devices left: (N_77, N_16, VSS):M6  (N_78, N_10, VSS):M7  (N_76, N_4, VSS):M13  (N_13, N_9, VSS):M14  (N_11, N_4, N_22):M24  (N_24, N_16, VDD):M28  (N_23, N_10, VDD):M30  
+------------c110:DFPRQ1-------------
+   |   |   |   |   |   |(N_81, N_2, N_11):M22 |(N_11, N_4, N_80):M24 |   |   |   |   |   |   |(VDD, N_15, N_26):M31 |(N_26, N_11, N_13):M25 |   |   |   |   |   |   |(N_13, N_4, N_14):M27 |(N_14, N_2, N_82):M28 |   |   |   |   |   |   |(VDD, N_14, N_7):M19 |
+   |   |   |   |   |   |(N_19, N_4, N_11):M11 |(N_11, N_2, N_20):M7 |   |   |   |   |   |   |                None |(N_13, N_11, VSS):M10 |   |   |   |   |   |   |(N_13, N_2, N_14):M9 |(N_14, N_4, N_18):M12 |   |   |   |   |   |   | (VSS, N_14, N_7):M4 |
+clk_n:N_4, clk_p:N_2, net_pm:N_11, net_bm:N_14
+7 devices left: (N_19, N_9, VSS):M6  (N_20, N_13, VSS):M8  (N_18, N_7, VSS):M13  (VSS, N_15, N_14):M15  (N_81, N_9, VDD):M21  (N_80, N_13, VDD):M23  (N_26, N_7, N_82):M29  
+------------c110:DFSCRQ0-------------
+   |   |   |   |   |   |(N_3, N_11, N_7):M21 |(N_7, N_4, N_15):M18 |   |   |   |   |   |   | (VDD, N_7, N_5):M20 |   |   |   |   |   |   |(N_16, N_4, N_13):M24 |(N_13, N_11, N_17):M25 |   |   |   |   |   |   |(VDD, N_13, N_14):M28 |
+   |   |   |   |   |   |  (N_3, N_4, N_7):M4 |(N_7, N_11, N_26):M7 |   |   |   |   |   |   |  (VSS, N_7, N_5):M6 |   |   |   |   |   |   |(N_27, N_11, N_13):M10 |(N_13, N_4, N_28):M11 |   |   |   |   |   |   |(VSS, N_13, N_14):M14 |
+clk_n:N_4, clk_p:N_11, net_pm:N_7, net_bm:N_13
+10 devices left: (VSS, D, N_25):M2  (N_25, RN, N_3):M3  (VSS, N_5, N_26):M5  (N_27, N_5, VSS):M9  (N_28, N_14, VSS):M12  (N_3, D, VDD):M16  (VDD, RN, N_3):M17  (N_15, N_5, VDD):M19  (N_16, N_5, VDD):M23  (N_17, N_14, VDD):M26  
+------------c110:DFSCRQ1-------------
+   |   |   |   |   |   | (N_5, N_9, N_6):M21 |(N_6, N_3, N_30):M18 |   |   |   |   |   |   | (VDD, N_6, N_2):M20 |   |   |   |   |   |   |(N_32, N_3, N_11):M23 |(N_11, N_9, N_31):M24 |   |   |   |   |   |   |(VDD, N_11, N_14):M28 |
+   |   |   |   |   |   |  (N_5, N_3, N_6):M4 | (N_6, N_9, N_16):M7 |   |   |   |   |   |   |  (VSS, N_6, N_2):M6 |   |   |   |   |   |   |(N_18, N_9, N_11):M9 |(N_11, N_3, N_17):M10 |   |   |   |   |   |   |(VSS, N_11, N_14):M14 |
+clk_n:N_3, clk_p:N_9, net_pm:N_6, net_bm:N_11
+10 devices left: (VSS, RN, N_15):M2  (N_15, D, N_5):M3  (VSS, N_2, N_16):M5  (N_17, N_14, VSS):M11  (N_18, N_2, VSS):M12  (N_5, RN, VDD):M16  (VDD, D, N_5):M17  (N_30, N_2, VDD):M19  (N_31, N_14, VDD):M25  (N_32, N_2, VDD):M26  
+------------s65:DGRNHSV1-------------
+   |   |   |   |   |   |(NET128, C, PM):MM10 |(PM, CN, NET117):MM14 |   |   |   |   |   |   |    (VDD, PM, M):MM1 |   |   |   |   |   |   |  (M, CN, NET43):MM4 |(NET43, C, NET109):MM25 |   |   |   |   |   |   |(VDD, NET43, S):MM18 |
+   |   |   |   |   |   | (NET69, CN, PM):MM9 | (PM, C, NET52):MM12 |   |   |   |   |   |   |    (VSS, PM, M):MM0 |   |   |   |   |   |   |   (M, C, NET43):MM3 |(NET43, CN, NET48):MM24 |   |   |   |   |   |   |(VSS, NET43, S):MM17 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:NET43
+8 devices left: (NET_0162, RN, VSS):MM38  (VSS, S, NET48):MM23  (VSS, M, NET52):MM11  (NET69, D, NET_0162):MM7  (NET128, RN, VDD):MM37  (VDD, S, NET109):MM26  (VDD, M, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:DGRNQHSV1-------------
+   |   |   |   |   |   |(NET128, C, PM):MM10 |(PM, CN, NET117):MM14 |   |   |   |   |   |   |    (VDD, PM, M):MM1 |   |   |   |   |   |   |  (M, CN, NET43):MM4 |(NET43, C, NET109):MM25 |   |   |   |   |   |   |(VDD, NET43, S):MM18 |
+   |   |   |   |   |   | (NET69, CN, PM):MM9 | (PM, C, NET52):MM12 |   |   |   |   |   |   |    (VSS, PM, M):MM0 |   |   |   |   |   |   |   (M, C, NET43):MM3 |(NET43, CN, NET48):MM24 |   |   |   |   |   |   |(VSS, NET43, S):MM17 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:NET43
+8 devices left: (NET_0162, RN, VSS):MM38  (VSS, S, NET48):MM23  (VSS, M, NET52):MM11  (NET69, D, NET_0162):MM7  (NET128, RN, VDD):MM37  (VDD, S, NET109):MM26  (VDD, M, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:DGRSNHSV1-------------
+   |   |   |   |   |   |(NET128, C, NET051):MM10 |(NET051, CN, NET117):MM14 |   |   |   |   |   |   |(VDD, NET051, NET049):MM1 |   |   |   |   |   |   |(NET049, CN, NET073):MM4 |(NET073, C, NET109):MM25 |   |   |   |   |   |   |(VDD, NET073, NET063):MM18 |
+   |   |   |   |   |   |(NET69, CN, NET051):MM9 |(NET051, C, NET52):MM12 |   |   |   |   |   |   |(VSS, NET051, NET049):MM0 |   |   |   |   |   |   |(NET049, C, NET073):MM3 |(NET073, CN, NET48):MM24 |   |   |   |   |   |   |(VSS, NET073, NET063):MM17 |
+clk_n:CN, clk_p:C, net_pm:NET051, net_bm:NET073
+10 devices left: (NET69, SNN, NET_0162):MM42  (NET_0162, RN, VSS):MM38  (VSS, NET063, NET48):MM23  (VSS, NET049, NET52):MM11  (NET69, D, NET_0162):MM7  (NET_0231, SNN, VDD):MM41  (NET128, RN, VDD):MM37  (VDD, NET063, NET109):MM26  (VDD, NET049, NET117):MM13  (NET128, D, NET_0231):MM8  
+------------s65:DGSNHSV1-------------
+   |   |   |   |   |   |(NET128, C, NET051):MM10 |(NET051, CN, NET117):MM14 |   |   |   |   |   |   |(VDD, NET051, NET049):MM1 |   |   |   |   |   |   |(NET049, CN, NET073):MM4 |(NET073, C, NET109):MM25 |   |   |   |   |   |   |(VDD, NET073, NET063):MM18 |
+   |   |   |   |   |   |(NET69, CN, NET051):MM9 |(NET051, C, NET52):MM12 |   |   |   |   |   |   |(VSS, NET051, NET049):MM0 |   |   |   |   |   |   |(NET049, C, NET073):MM3 |(NET073, CN, NET48):MM24 |   |   |   |   |   |   |(VSS, NET073, NET063):MM17 |
+clk_n:CN, clk_p:C, net_pm:NET051, net_bm:NET073
+8 devices left: (NET69, SNN, VSS):MM42  (VSS, NET063, NET48):MM23  (VSS, NET049, NET52):MM11  (NET69, D, VSS):MM7  (NET_0231, SNN, VDD):MM41  (VDD, NET063, NET109):MM26  (VDD, NET049, NET117):MM13  (NET128, D, NET_0231):MM8  
+------------s65:DHSV1-------------
+   |   |   |   |   |   |(NET128, C, PM):MM10 |(PM, CN, NET117):MM14 |   |   |   |   |   |   |    (VDD, PM, M):MM1 |   |   |   |   |   |   |(NET_0158, CN, NET43):MM38 |(NET43, C, NET109):MM25 |   |   |   |   |   |   |(VDD, NET43, S):MM18 |
+   |   |   |   |   |   | (NET69, CN, PM):MM9 | (PM, C, NET52):MM12 |   |   |   |   |   |   |    (VSS, PM, M):MM0 |   |   |   |   |   |   |(NET_099, C, NET43):MM39 |(NET43, CN, NET48):MM24 |   |   |   |   |   |   |(VSS, NET43, S):MM17 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:NET43
+8 devices left: (NET_099, M, VSS):MM40  (VSS, S, NET48):MM23  (VSS, M, NET52):MM11  (NET69, D, VSS):MM7  (NET_0158, M, VDD):MM41  (VDD, S, NET109):MM26  (VDD, M, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:DQHSV1-------------
+   |   |   |   |   |   |(NET128, C, PM):MM10 |(PM, CN, NET117):MM14 |   |   |   |   |   |   |    (VDD, PM, M):MM1 |   |   |   |   |   |   |(NET_0158, CN, NET43):MM38 |(NET43, C, NET109):MM25 |   |   |   |   |   |   |(VDD, NET43, S):MM18 |
+   |   |   |   |   |   | (NET69, CN, PM):MM9 | (PM, C, NET52):MM12 |   |   |   |   |   |   |    (VSS, PM, M):MM0 |   |   |   |   |   |   |(NET_099, C, NET43):MM39 |(NET43, CN, NET48):MM24 |   |   |   |   |   |   |(VSS, NET43, S):MM17 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:NET43
+8 devices left: (NET_099, M, VSS):MM40  (VSS, S, NET48):MM23  (VSS, M, NET52):MM11  (NET69, D, VSS):MM7  (NET_0158, M, VDD):MM41  (VDD, S, NET109):MM26  (VDD, M, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:DRNHSV1-------------
+   |   |   |   |   |   |(NET128, C, PM):MM10 |(PM, CN, NET117):MM14 |   |   |   |   |   |   |(VDD, PM, NET_0154):MM1 |   |   |   |   |   |   |(NET_0154, CN, NET43):MM4 |(NET43, C, NET109):MM25 |   |   |   |   |   |   |  (S, RDN, VDD):MM41 |(VDD, NET43, S):MM38 |
+   |   |   |   |   |   | (NET69, CN, PM):MM9 | (PM, C, NET52):MM12 |   |   |   |   |   |   |(VSS, PM, NET_0154):MM0 |   |   |   |   |   |   |(NET_0154, C, NET43):MM3 |(NET43, CN, NET48):MM24 |   |   |   |   |   |   |(VSS, RDN, NET_099):MM40 |(NET_099, NET43, S):MM39 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:NET43
+9 devices left: (NET_0104, RDN, VSS):MM44  (VSS, RDN, NET_0119):MM42  (VSS, S, NET48):MM23  (NET_0119, NET_0154, NET52):MM11  (NET69, D, NET_0104):MM7  (PM, RDN, VDD):MM43  (VDD, S, NET109):MM26  (VDD, NET_0154, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:DRNQHSV1-------------
+   |   |   |   |   |   |(NET128, C, PM):MM10 |(PM, CN, NET117):MM14 |   |   |   |   |   |   |(VDD, PM, NET_0154):MM1 |   |   |   |   |   |   |(NET_0154, CN, NET43):MM4 |(NET43, C, NET109):MM25 |   |   |   |   |   |   |  (S, RDN, VDD):MM41 |(VDD, NET43, S):MM38 |
+   |   |   |   |   |   | (NET69, CN, PM):MM9 | (PM, C, NET52):MM12 |   |   |   |   |   |   |(VSS, PM, NET_0154):MM0 |   |   |   |   |   |   |(NET_0154, C, NET43):MM3 |(NET43, CN, NET48):MM24 |   |   |   |   |   |   |(VSS, RDN, NET_099):MM40 |(NET_099, NET43, S):MM39 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:NET43
+9 devices left: (NET_0104, RDN, VSS):MM44  (VSS, RDN, NET_0119):MM42  (VSS, S, NET48):MM23  (NET_0119, NET_0154, NET52):MM11  (NET69, D, NET_0104):MM7  (PM, RDN, VDD):MM43  (VDD, S, NET109):MM26  (VDD, NET_0154, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:DRSNHSV1-------------
+   |   |   |   |   |   |(NET128, C, PM):MM10 |(PM, CN, NET117):MM14 |   |   |   |   |   |   |(VDD, R, NET_0243):MM44 |(NET_0243, PM, NET_0154):MM1 |(NET_0154, SDN, VDD):MM43 |   |   |   |   |   |   |(NET_0154, CN, NET43):MM4 |(NET43, C, NET109):MM25 |   |   |   |   |   |   |(VDD, NET43, S):MM38 |
+   |   |   |   |   |   | (NET69, CN, PM):MM9 | (PM, C, NET52):MM12 |   |   |   |   |   |   |(NET_0132, R, NET_0154):MM47 |(NET_0154, PM, NET_0132):MM0 |(NET_0132, SDN, VSS):MM48 |   |   |   |   |   |   |(NET_0154, C, NET43):MM3 |(NET43, CN, NET48):MM24 |   |   |   |   |   |   |(VSS, NET43, S):MM39 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:NET43
+8 devices left: (NET43, R, NET_0132):MM40  (NET_0132, S, NET48):MM23  (VSS, NET_0154, NET52):MM11  (NET69, D, VSS):MM7  (NET43, SDN, VDD):MM41  (NET_0243, S, NET109):MM26  (VDD, NET_0154, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:DSNHSV1-------------
+   |   |   |   |   |   |(NET128, C, PM):MM10 |(PM, CN, NET117):MM14 |   |   |   |   |   |   |(NET_0154, SDN, VDD):MM43 |(VDD, PM, NET_0154):MM1 |   |   |   |   |   |   |(NET_0154, CN, NET43):MM4 |(NET43, C, NET109):MM25 |   |   |   |   |   |   |(VDD, NET43, S):MM38 |
+   |   |   |   |   |   | (NET69, CN, PM):MM9 | (PM, C, NET52):MM12 |   |   |   |   |   |   |(VSS, SDN, NET_0132):MM48 |(NET_0132, PM, NET_0154):MM0 |   |   |   |   |   |   |(NET_0154, C, NET43):MM3 |(NET43, CN, NET48):MM24 |   |   |   |   |   |   |(VSS, NET43, S):MM39 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:NET43
+7 devices left: (NET_0132, S, NET48):MM23  (VSS, NET_0154, NET52):MM11  (NET69, D, VSS):MM7  (NET43, SDN, VDD):MM41  (VDD, S, NET109):MM26  (VDD, NET_0154, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:DXHSV1-------------
+
+
+clk_n:CN, clk_p:C, net_pm:None, net_bm:None
+28 devices left: (M, C, NET43):MM33  (VSS, DB, NET_0144):MM16  (VSS, SA, SAN):MM31  (NET48, CN, NET43):MM24  (VSS, S, NET48):MM23  (S, NET43, VSS):MM17  (NET52, C, PM):MM12  (VSS, M, NET52):MM11  (PM, CN, NET69):MM9  (NET_0148, SA, N43):MM3  (NET69, N43, VSS):MM7  (NET_0144, SAN, N43):MM5  (VSS, DA, NET_0148):MM2  (M, PM, VSS):MM0  (M, CN, NET43):MM38  (VDD, DB, NET_0144):MM37  (VDD, DA, NET_0148):MM15  (VDD, SA, SAN):MM32  (VDD, S, NET109):MM26  (NET109, C, NET43):MM25  (S, NET43, VDD):MM18  (NET117, CN, PM):MM14  (VDD, M, NET117):MM13  (PM, C, NET128):MM10  (NET128, N43, VDD):MM8  (NET_0148, SAN, N43):MM4  (NET_0144, SA, N43):MM6  (M, PM, VDD):MM1  
+------------s65:EDGRNHSV1-------------
+
+
+clk_n:CN, clk_p:C, net_pm:None, net_bm:None
+30 devices left: (NET_0157, S, NET_0149):MM40  (NET_0149, EN, NET_0164):MM41  (NET_0164, RN, VSS):MM42  (VSS, E, EN):MM31  (NET43, C, NET_0136):MM33  (NET_0136, M, VSS):MM34  (NET48, CN, NET43):MM24  (VSS, S, NET48):MM23  (S, NET43, VSS):MM17  (NET52, C, NET_0144):MM12  (VSS, M, NET52):MM11  (NET_0157, D, NET69):MM9  (NET_0157, CN, NET_0144):MM3  (NET69, E, NET_0164):MM7  (M, NET_0144, VSS):MM0  (NET_0157, S, NET_0228):MM37  (NET_0228, E, VDD):MM38  (NET_0157, RN, VDD):MM39  (VDD, E, EN):MM32  (VDD, S, NET109):MM26  (NET109, C, NET43):MM25  (S, NET43, VDD):MM18  (NET43, CN, NET_0211):MM35  (NET_0211, M, VDD):MM36  (NET117, CN, NET_0144):MM14  (VDD, M, NET117):MM13  (NET_0157, D, NET128):MM10  (NET128, EN, VDD):MM8  (NET_0157, C, NET_0144):MM4  (M, NET_0144, VDD):MM1  
+------------s65:EDGRNQHSV1-------------
+
+
+clk_n:CN, clk_p:C, net_pm:None, net_bm:None
+30 devices left: (NET_0157, S, NET_0149):MM40  (NET_0149, EN, NET_0164):MM41  (NET_0164, RN, VSS):MM42  (VSS, E, EN):MM31  (NET43, C, NET_0136):MM33  (NET_0136, M, VSS):MM34  (NET48, CN, NET43):MM24  (VSS, S, NET48):MM23  (S, NET43, VSS):MM17  (NET52, C, NET_0144):MM12  (VSS, M, NET52):MM11  (NET_0157, D, NET69):MM9  (NET_0157, CN, NET_0144):MM3  (NET69, E, NET_0164):MM7  (M, NET_0144, VSS):MM0  (NET_0157, S, NET_0228):MM37  (NET_0228, E, VDD):MM38  (NET_0157, RN, VDD):MM39  (VDD, E, EN):MM32  (VDD, S, NET109):MM26  (NET109, C, NET43):MM25  (S, NET43, VDD):MM18  (NET43, CN, NET_0211):MM35  (NET_0211, M, VDD):MM36  (NET117, CN, NET_0144):MM14  (VDD, M, NET117):MM13  (NET_0157, D, NET128):MM10  (NET128, EN, VDD):MM8  (NET_0157, C, NET_0144):MM4  (M, NET_0144, VDD):MM1  
+------------s65:EDHSV1-------------
+
+
+clk_n:CN, clk_p:C, net_pm:None, net_bm:None
+28 devices left: (NET_0157, S, NET_0149):MM40  (NET_0149, EN, VSS):MM41  (VSS, E, EN):MM31  (NET43, C, NET_0136):MM33  (NET_0136, M, VSS):MM34  (NET48, CN, NET43):MM24  (VSS, S, NET48):MM23  (S, NET43, VSS):MM17  (NET52, C, NET_0144):MM12  (VSS, M, NET52):MM11  (NET_0157, D, NET69):MM9  (NET_0157, CN, NET_0144):MM3  (NET69, E, VSS):MM7  (M, NET_0144, VSS):MM0  (NET_0157, S, NET_0228):MM37  (NET_0228, E, VDD):MM38  (VDD, E, EN):MM32  (VDD, S, NET109):MM26  (NET109, C, NET43):MM25  (S, NET43, VDD):MM18  (NET43, CN, NET_0211):MM35  (NET_0211, M, VDD):MM36  (NET117, CN, NET_0144):MM14  (VDD, M, NET117):MM13  (NET_0157, D, NET128):MM10  (NET128, EN, VDD):MM8  (NET_0157, C, NET_0144):MM4  (M, NET_0144, VDD):MM1  
+------------s65:EDQHSV1-------------
+
+
+clk_n:CN, clk_p:C, net_pm:None, net_bm:None
+28 devices left: (NET_0157, S, NET_0149):MM40  (NET_0149, EN, VSS):MM41  (VSS, E, EN):MM31  (NET43, C, NET_0136):MM33  (NET_0136, M, VSS):MM34  (NET48, CN, NET43):MM24  (VSS, S, NET48):MM23  (S, NET43, VSS):MM17  (NET52, C, NET_0144):MM12  (VSS, M, NET52):MM11  (NET_0157, D, NET69):MM9  (NET_0157, CN, NET_0144):MM3  (NET69, E, VSS):MM7  (M, NET_0144, VSS):MM0  (NET_0157, S, NET_0228):MM37  (NET_0228, E, VDD):MM38  (VDD, E, EN):MM32  (VDD, S, NET109):MM26  (NET109, C, NET43):MM25  (S, NET43, VDD):MM18  (NET43, CN, NET_0211):MM35  (NET_0211, M, VDD):MM36  (NET117, CN, NET_0144):MM14  (VDD, M, NET117):MM13  (NET_0157, D, NET128):MM10  (NET128, EN, VDD):MM8  (NET_0157, C, NET_0144):MM4  (M, NET_0144, VDD):MM1  
+------------s65:EDRNHSV1-------------
+
+
+clk_n:CN, clk_p:C, net_pm:None, net_bm:None
+33 devices left: (VSS, RDN, NET_0134):MM45  (NET_0157, S, NET_0149):MM40  (NET_0149, EN, NET_0213):MM41  (VSS, E, EN):MM31  (NET43, C, NET_0136):MM33  (NET_0136, M, VSS):MM34  (VSS, RDN, NET_0138):MM44  (NET48, CN, NET43):MM24  (NET_0138, S, NET48):MM23  (S, NET43, VSS):MM17  (NET52, C, NET_0144):MM12  (NET_0134, M, NET52):MM11  (NET_0157, D, NET69):MM9  (NET_0157, CN, NET_0144):MM3  (NET69, E, NET_0213):MM7  (NET_0213, RDN, VSS):MM46  (M, NET_0144, VSS):MM0  (VDD, RDN, NET_0144):MM42  (VDD, RDN, NET43):MM43  (NET_0157, S, NET_0228):MM37  (NET_0228, E, VDD):MM38  (VDD, E, EN):MM32  (VDD, S, NET109):MM26  (NET109, C, NET43):MM25  (S, NET43, VDD):MM18  (NET43, CN, NET_0211):MM35  (NET_0211, M, VDD):MM36  (NET117, CN, NET_0144):MM14  (VDD, M, NET117):MM13  (NET_0157, D, NET128):MM10  (NET128, EN, VDD):MM8  (NET_0157, C, NET_0144):MM4  (M, NET_0144, VDD):MM1  
+------------s65:EDRNQHSV1-------------
+
+
+clk_n:CN, clk_p:C, net_pm:None, net_bm:None
+33 devices left: (VSS, RDN, NET_0134):MM45  (NET_0157, S, NET_0149):MM40  (NET_0149, EN, NET_0213):MM41  (VSS, E, EN):MM31  (NET43, C, NET_0136):MM33  (NET_0136, M, VSS):MM34  (VSS, RDN, NET_0138):MM44  (NET48, CN, NET43):MM24  (NET_0138, S, NET48):MM23  (S, NET43, VSS):MM17  (NET52, C, NET_0144):MM12  (NET_0134, M, NET52):MM11  (NET_0157, D, NET69):MM9  (NET_0157, CN, NET_0144):MM3  (NET69, E, NET_0213):MM7  (NET_0213, RDN, VSS):MM46  (M, NET_0144, VSS):MM0  (VDD, RDN, NET_0144):MM42  (VDD, RDN, NET43):MM43  (NET_0157, S, NET_0228):MM37  (NET_0228, E, VDD):MM38  (VDD, E, EN):MM32  (VDD, S, NET109):MM26  (NET109, C, NET43):MM25  (S, NET43, VDD):MM18  (NET43, CN, NET_0211):MM35  (NET_0211, M, VDD):MM36  (NET117, CN, NET_0144):MM14  (VDD, M, NET117):MM13  (NET_0157, D, NET128):MM10  (NET128, EN, VDD):MM8  (NET_0157, C, NET_0144):MM4  (M, NET_0144, VDD):MM1  
+------------s65:NDHSV1-------------
+   |   |   |   |   |   |(NET128, C, PM):MM10 |(PM, CN, NET117):MM14 |   |   |   |   |   |   |    (VDD, PM, M):MM1 |   |   |   |   |   |   |(NET_0158, CN, NET43):MM38 |(NET43, C, NET109):MM25 |   |   |   |   |   |   |(VDD, NET43, S):MM18 |
+   |   |   |   |   |   | (NET69, CN, PM):MM9 | (PM, C, NET52):MM12 |   |   |   |   |   |   |    (VSS, PM, M):MM0 |   |   |   |   |   |   |(NET_099, C, NET43):MM39 |(NET43, CN, NET48):MM24 |   |   |   |   |   |   |(VSS, NET43, S):MM17 |
+clk_n:C, clk_p:CN, net_pm:PM, net_bm:NET43
+8 devices left: (NET_099, M, VSS):MM40  (VSS, S, NET48):MM23  (VSS, M, NET52):MM11  (NET69, D, VSS):MM7  (NET_0158, M, VDD):MM41  (VDD, S, NET109):MM26  (VDD, M, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:NDRNHSV1-------------
+   |   |   |   |   |   |(NET128, C, PM):MM10 |(PM, CN, NET117):MM14 |   |   |   |   |   |   |(VDD, PM, NET_0154):MM1 |   |   |   |   |   |   |(NET_0154, CN, NET43):MM4 |(NET43, C, NET109):MM25 |   |   |   |   |   |   |  (S, RDN, VDD):MM41 |(VDD, NET43, S):MM38 |
+   |   |   |   |   |   | (NET69, CN, PM):MM9 | (PM, C, NET52):MM12 |   |   |   |   |   |   |(VSS, PM, NET_0154):MM0 |   |   |   |   |   |   |(NET_0154, C, NET43):MM3 |(NET43, CN, NET48):MM24 |   |   |   |   |   |   |(VSS, RDN, NET_099):MM40 |(NET_099, NET43, S):MM39 |
+clk_n:C, clk_p:CN, net_pm:PM, net_bm:NET43
+9 devices left: (NET_0104, RDN, VSS):MM44  (VSS, RDN, NET_0119):MM42  (VSS, S, NET48):MM23  (NET_0119, NET_0154, NET52):MM11  (NET69, D, NET_0104):MM7  (PM, RDN, VDD):MM43  (VDD, S, NET109):MM26  (VDD, NET_0154, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:NDRSNHSV1-------------
+   |   |   |   |   |   |(NET128, C, PM):MM10 |(PM, CN, NET117):MM14 |   |   |   |   |   |   |(VDD, R, NET_0243):MM44 |(NET_0243, PM, NET_0154):MM1 |(NET_0154, SDN, VDD):MM43 |   |   |   |   |   |   |(NET_0154, CN, NET43):MM4 |(NET43, C, NET109):MM25 |   |   |   |   |   |   |(VDD, NET43, S):MM38 |
+   |   |   |   |   |   | (NET69, CN, PM):MM9 | (PM, C, NET52):MM12 |   |   |   |   |   |   |(NET_0132, R, NET_0154):MM47 |(NET_0154, PM, NET_0132):MM0 |(NET_0132, SDN, VSS):MM48 |   |   |   |   |   |   |(NET_0154, C, NET43):MM3 |(NET43, CN, NET48):MM24 |   |   |   |   |   |   |(VSS, NET43, S):MM39 |
+clk_n:C, clk_p:CN, net_pm:PM, net_bm:NET43
+8 devices left: (NET43, R, NET_0132):MM40  (NET_0132, S, NET48):MM23  (VSS, NET_0154, NET52):MM11  (NET69, D, VSS):MM7  (NET43, SDN, VDD):MM41  (NET_0243, S, NET109):MM26  (VDD, NET_0154, NET117):MM13  (NET128, D, VDD):MM8  
+------------s65:NDSNHSV1-------------
+   |   |   |   |   |   |(NET128, C, PM):MM10 |(PM, CN, NET117):MM14 |   |   |   |   |   |   |(NET_0154, SDN, VDD):MM43 |(VDD, PM, NET_0154):MM1 |   |   |   |   |   |   |(NET_0154, CN, NET43):MM4 |(NET43, C, NET109):MM25 |   |   |   |   |   |   |(VDD, NET43, S):MM38 |
+   |   |   |   |   |   | (NET69, CN, PM):MM9 | (PM, C, NET52):MM12 |   |   |   |   |   |   |(VSS, SDN, NET_0132):MM48 |(NET_0132, PM, NET_0154):MM0 |   |   |   |   |   |   |(NET_0154, C, NET43):MM3 |(NET43, CN, NET48):MM24 |   |   |   |   |   |   |(VSS, NET43, S):MM39 |
+clk_n:C, clk_p:CN, net_pm:PM, net_bm:NET43
+7 devices left: (NET_0132, S, NET48):MM23  (VSS, NET_0154, NET52):MM11  (NET69, D, VSS):MM7  (NET43, SDN, VDD):MM41  (VDD, S, NET109):MM26  (VDD, NET_0154, NET117):MM13  (NET128, D, VDD):MM8  
+------------s110:DFFHQNX1MTR-------------
+   |   |   |   |   |   |(NET050, C, VDD):MXP2 |(VDD, M, XI12_P1):MXI12_MXPA1 |(XI12_P1, CN, PM):MXI12_MXPOEN |   |   |   |   |   |   |(VDD, PM, M):MX_G5_MXPA1 |   |   |   |   |   |   |(M, CN, BM):MXI43_MXPOEN |(BM, C, XI11_P1):MXI11_MXPOEN |   |   |   |   |   |   |(VDD, BM, S):MX_G2_MXPA1 |
+   |   |   |   |   |   |(NET063, CN, VSS):MXN2 |(VSS, M, XI12_N1):MXI12_MXNA1 |(XI12_N1, C, PM):MXI12_MXNOE |   |   |   |   |   |   |(VSS, PM, M):MX_G5_MXNA1 |   |   |   |   |   |   |(M, C, BM):MXI43_MXNOE |(BM, CN, XI11_N1):MXI11_MXNOE |   |   |   |   |   |   |(VSS, BM, S):MX_G2_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:BM
+4 devices left: (PM, NMIN, NET063):MXN1  (XI11_N1, S, VSS):MXI11_MXNA1  (PM, NMIN, NET050):MXP3  (XI11_P1, S, VDD):MXI11_MXPA1  
+------------s110:DFFHQX1MTR-------------
+   |   |   |   |   |   |(NET62, C, VDD):MXP2 |(VDD, M, XI12_P1):MXI12_MXPA1 |(XI12_P1, CN, PM):MXI12_MXPOEN |   |   |   |   |   |   |(VDD, PM, M):MX_G5_MXPA1 |   |   |   |   |   |   |(M, CN, BM):MXI36_MXPOEN |(BM, C, XI11_P1):MXI11_MXPOEN |   |   |   |   |   |   |(VDD, BM, S):MX_G2_MXPA1 |
+   |   |   |   |   |   |(NET87, CN, VSS):MXN3 |(VSS, M, XI12_N1):MXI12_MXNA1 |(XI12_N1, C, PM):MXI12_MXNOE |   |   |   |   |   |   |(VSS, PM, M):MX_G5_MXNA1 |   |   |   |   |   |   |(M, C, BM):MXI36_MXNOE |(BM, CN, XI11_N1):MXI11_MXNOE |   |   |   |   |   |   |(VSS, BM, S):MX_G2_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:BM
+4 devices left: (PM, NMIN, NET87):MXN1  (XI11_N1, S, VSS):MXI11_MXNA1  (PM, NMIN, NET62):MXP5  (XI11_P1, S, VDD):MXI11_MXPA1  
+------------s110:DFFHX1MTR-------------
+   |   |   |   |   |   |(NET53, C, VDD):MXP2 |(VDD, M, XI0_P1):MXI0_MXPA1 |(XI0_P1, CN, PM):MXI0_MXPOEN |   |   |   |   |   |   |(VDD, PM, M):MX_G5_MXPA1 |   |   |   |   |   |   |(M, CN, BM):MXI32_MXPOEN |(BM, C, XI1_P1):MXI1_MXPOEN |   |   |   |   |   |   |(VDD, BM, S):MX_G2_MXPA1 |
+   |   |   |   |   |   |(NET42, CN, VSS):MXN3 |(VSS, M, XI0_N1):MXI0_MXNA1 |(XI0_N1, C, PM):MXI0_MXNOE |   |   |   |   |   |   |(VSS, PM, M):MX_G5_MXNA1 |   |   |   |   |   |   |(M, C, BM):MXI32_MXNOE |(BM, CN, XI1_N1):MXI1_MXNOE |   |   |   |   |   |   |(VSS, BM, S):MX_G2_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:BM
+4 devices left: (PM, NMIN, NET42):MXN1  (XI1_N1, S, VSS):MXI1_MXNA1  (PM, NMIN, NET53):MXP6  (XI1_P1, S, VDD):MXI1_MXPA1  
+------------s110:DFFNHX1MTR-------------
+   |   |   |   |   |   |(NET42, C, VDD):MXP2 |(VDD, M, XI10_P1):MXI10_MXPA1 |(XI10_P1, CN, PM):MXI10_MXPOEN |   |   |   |   |   |   |(VDD, PM, M):MX_G5_MXPA1 |   |   |   |   |   |   |(M, CN, BM):MXI37_MXPOEN |(BM, C, XI11_P1):MXI11_MXPOEN |   |   |   |   |   |   |(VDD, BM, S):MX_G2_MXPA1 |
+   |   |   |   |   |   |(NET67, CN, VSS):MXN2 |(VSS, M, XI10_N1):MXI10_MXNA1 |(XI10_N1, C, PM):MXI10_MXNOE |   |   |   |   |   |   |(VSS, PM, M):MX_G5_MXNA1 |   |   |   |   |   |   |(M, C, BM):MXI37_MXNOE |(BM, CN, XI11_N1):MXI11_MXNOE |   |   |   |   |   |   |(VSS, BM, S):MX_G2_MXNA1 |
+clk_n:C, clk_p:CN, net_pm:PM, net_bm:BM
+4 devices left: (PM, NET150, NET67):MXN1  (XI11_N1, S, VSS):MXI11_MXNA1  (PM, NET150, NET42):MXP3  (XI11_P1, S, VDD):MXI11_MXPA1  
+------------s110:DFFNSRHX1MTR-------------
+   |   |   |   |   |   | (PM, SN, VDD):MXP12 |(VDD, C, NET118):MXP9 |(NET118, NMIN, PM):MXP14 |(PM, CN, XI19_P1):MXI19_MXPOEN |(XI19_P1, M, VDD):MXI19_MXPA1 |   |   |   |   |   |   |(VDD, RN, NET154):MXP4 |(NET154, NMSET, BM):MXP16 |   |   |   |   |   |   |(M, CN, BM):MXI58_MXPOEN |(BM, C, NET110):MXP18 |   |   |   |   |   |   |(VDD, BM, S):MX_G2_MXPA1 |
+   |   |   |   |   |   |(VSS, SN, NET68):MXN12 |(NET68, CN, NET72):MXN11 |(NET72, NMIN, PM):MXN0 |(PM, C, XI19_N1):MXI19_MXNOE |(XI19_N1, M, VSS):MXI19_MXNA1 |   |   |   |   |   |   |                None |(BM, NMSET, VSS):MXN10 |   |   |   |   |   |   |(M, C, BM):MXI58_MXNOE |(BM, CN, NET91):MXN7 |   |   |   |   |   |   |(VSS, BM, S):MX_G2_MXNA1 |
+clk_n:C, clk_p:CN, net_pm:PM, net_bm:BM
+10 devices left: (M, PM, NET80):MXN4  (VSS, RN, NET80):MXN13  (M, NMSET, VSS):MXN6  (NET91, RN, NET88):MXN14  (VSS, S, NET88):MXN15  (M, PM, VDD):MXP11  (NET142, NMSET, VDD):MXP1  (M, RN, NET142):MXP15  (NET110, NMSET, NET114):MXP17  (VDD, S, NET114):MXP6  
+------------s110:DFFQNX1MTR-------------
+   |   |   |   |   |   |(XI4_P1, C, PM):MXI4_MXPOEN |(PM, CN, XI5_P1):MXI5_MXPOEN |   |   |   |   |   |   |(VDD, PM, M):MX_G5_MXPA1 |   |   |   |   |   |   |(XI6_P1, CN, NM):MXI6_MXPOEN |(NM, C, XI7_P1):MXI7_MXPOEN |   |   |   |   |   |   |(VDD, NM, S):MX_G2_MXPA1 |
+   |   |   |   |   |   |(XI4_N1, CN, PM):MXI4_MXNOE |(PM, C, XI5_N1):MXI5_MXNOE |   |   |   |   |   |   |(VSS, PM, M):MX_G5_MXNA1 |   |   |   |   |   |   |(XI6_N1, C, NM):MXI6_MXNOE |(NM, CN, XI7_N1):MXI7_MXNOE |   |   |   |   |   |   |(VSS, NM, S):MX_G2_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:NM
+8 devices left: (XI4_N1, D, VSS):MXI4_MXNA1  (XI5_N1, M, VSS):MXI5_MXNA1  (XI6_N1, M, VSS):MXI6_MXNA1  (XI7_N1, S, VSS):MXI7_MXNA1  (XI4_P1, D, VDD):MXI4_MXPA1  (XI5_P1, M, VDD):MXI5_MXPA1  (XI6_P1, M, VDD):MXI6_MXPA1  (XI7_P1, S, VDD):MXI7_MXPA1  
+------------s110:DFFQX1MTR-------------
+   |   |   |   |   |   |(XI4_P1, C, PM):MXI4_MXPOEN |(PM, CN, XI5_P1):MXI5_MXPOEN |   |   |   |   |   |   |(VDD, PM, M):MX_G5_MXPA1 |   |   |   |   |   |   |(XI6_P1, CN, NS):MXI6_MXPOEN |(NS, C, XI7_P1):MXI7_MXPOEN |   |   |   |   |   |   |(VDD, NS, S):MX_G2_MXPA1 |
+   |   |   |   |   |   |(XI4_N1, CN, PM):MXI4_MXNOE |(PM, C, XI5_N1):MXI5_MXNOE |   |   |   |   |   |   |(VSS, PM, M):MX_G5_MXNA1 |   |   |   |   |   |   |(XI6_N1, C, NS):MXI6_MXNOE |(NS, CN, XI7_N1):MXI7_MXNOE |   |   |   |   |   |   |(VSS, NS, S):MX_G2_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:NS
+8 devices left: (XI4_N1, D, VSS):MXI4_MXNA1  (XI5_N1, M, VSS):MXI5_MXNA1  (XI6_N1, M, VSS):MXI6_MXNA1  (XI7_N1, S, VSS):MXI7_MXNA1  (XI4_P1, D, VDD):MXI4_MXPA1  (XI5_P1, M, VDD):MXI5_MXPA1  (XI6_P1, M, VDD):MXI6_MXPA1  (XI7_P1, S, VDD):MXI7_MXPA1  
+------------s110:DFFRHQX1MTR-------------
+   |   |   |   |   |   |(NET134, C, VDD):MXP2 |(VDD, M, NET104):MXP5 |(NET104, CN, PM):MXP14 |   |   |   |   |   |   |   (M, RN, VDD):MXP7 |   (VDD, PM, M):MXP6 |   |   |   |   |   |   |(M, CN, BM):MXI58_MXPOEN |(BM, C, NET120):MXP16 |   |   |   |   |   |   |(VDD, BM, S):MXI52_MXPA1 |
+   |   |   |   |   |   |(NET89, CN, VSS):MXN10 |(VSS, M, NET66):MXN12 | (NET66, C, PM):MXN3 |   |   |   |   |   |   |(VSS, RN, NET73):MXN6 |(NET73, PM, M):MXN11 |   |   |   |   |   |   |(M, C, BM):MXI58_MXNOE |(BM, CN, NET85):MXN7 |   |   |   |   |   |   |(VSS, BM, S):MXI52_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:BM
+6 devices left: (PM, NMIN, NET89):MXN2  (NET85, RN, NET82):MXN13  (VSS, S, NET82):MXN14  (PM, NMIN, NET134):MXP12  (VDD, RN, BM):MXP17  (VDD, S, NET120):MXP15  
+------------s110:DFFRQX1MTR-------------
+   |   |   |   |   |   |(NET105, C, PM):MXP6 |(PM, CN, NET89):MXP8 |   |   |   |   |   |   |(VDD, PM, M):MX_G4_MXPA1 |   |   |   |   |   |   |(M, CN, NET119):MXI37_MXPOEN |(NET119, C, XI4_P1):MXI4_MXPOEN |   |   |   |   |   |   |(S, RN, VDD):MXI0_MXPA2 |(VDD, NET119, S):MXI0_MXPA1 |
+   |   |   |   |   |   |(NET78, CN, PM):MXN6 | (PM, C, NET71):MXN8 |   |   |   |   |   |   |(VSS, PM, M):MX_G4_MXNA1 |   |   |   |   |   |   |(M, C, NET119):MXI37_MXNOE |(NET119, CN, XI4_N1):MXI4_MXNOE |   |   |   |   |   |   |(VSS, RN, XI0_N1):MXI0_MXNA2 |(XI0_N1, NET119, S):MXI0_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:NET119
+9 devices left: (NET86, RN, VSS):MXN5  (NET78, D, NET86):MXN1  (NET66, M, NET71):MXN9  (NET66, RN, VSS):MXN7  (XI4_N1, S, VSS):MXI4_MXNA1  (PM, RN, VDD):MXP4  (NET105, D, VDD):MXP2  (VDD, M, NET89):MXP7  (XI4_P1, S, VDD):MXI4_MXPA1  
+------------s110:DFFRX1MTR-------------
+   |   |   |   |   |   | (NET68, C, PM):MXP5 |(PM, CN, NET72):MXP7 |   |   |   |   |   |   |(VDD, PM, M):MXI43_MXPA1 |   |   |   |   |   |   |(M, CN, BM):MXI40_MXPOEN |(BM, C, XI5_P1):MXI5_MXPOEN |   |   |   |   |   |   |(NET90, RN, VDD):MXI1_MXPA2 |(VDD, BM, NET90):MXI1_MXPA1 |
+   |   |   |   |   |   |(NET45, CN, PM):MXN2 | (PM, C, NET58):MXN9 |   |   |   |   |   |   |(VSS, PM, M):MXI43_MXNA1 |   |   |   |   |   |   |(M, C, BM):MXI40_MXNOE |(BM, CN, XI5_N1):MXI5_MXNOE |   |   |   |   |   |   |(VSS, RN, XI1_N1):MXI1_MXNA2 |(XI1_N1, BM, NET90):MXI1_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:BM
+9 devices left: (NET45, D, NET53):MXN6  (NET53, RN, VSS):MXN7  (NET61, M, NET58):MXN10  (NET61, RN, VSS):MXN8  (XI5_N1, NET90, VSS):MXI5_MXNA1  (NET68, D, VDD):MXP2  (PM, RN, VDD):MXP1  (VDD, M, NET72):MXP6  (XI5_P1, NET90, VDD):MXI5_MXPA1  
+------------s110:DFFSHQX1MTR-------------
+   |   |   |   |   |   |  (PM, SN, VDD):MXP4 |(VDD, C, NET091):MXP1 |(NET091, NMIN, PM):MXP8 |(PM, CN, XI6_P1):MXI6_MXPOEN |(XI6_P1, M, VDD):MXI6_MXPA1 |   |   |   |   |   |   |(VDD, PM, M):MX_G7_MXPA1 |   |   |   |   |   |   |(M, CN, BM):MXI53_MXPOEN |(BM, C, NET73):MXP12 |   |   |   |   |   |   |(VDD, BM, S):MX_G2_MXPA1 |
+   |   |   |   |   |   |(VSS, SN, NET92):MXN8 |(NET92, CN, NET89):MXN7 |(NET89, NMIN, PM):MXN3 |(PM, C, XI6_N1):MXI6_MXNOE |(XI6_N1, M, VSS):MXI6_MXNA1 |   |   |   |   |   |   |(VSS, PM, M):MX_G7_MXNA1 |   |   |   |   |   |   |(M, C, BM):MXI53_MXNOE |(BM, CN, NET101):MXN9 |   |   |   |   |   |   |(VSS, BM, S):MX_G2_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:BM
+4 devices left: (VSS, S, NET101):MXN10  (BM, NMSET_, VSS):MXN6  (NET73, NMSET_, NET76):MXP11  (VDD, S, NET76):MXP10  
+------------s110:DFFSQX1MTR-------------
+   |   |   |   |   |   |(X_G3_P1, C, PM):MX_G3_MXPOEN |(PM, CN, XI3_P1):MXI3_MXPOEN |   |   |   |   |   |   |   (M, SN, VDD):MXP5 |   (VDD, PM, M):MXP0 |   |   |   |   |   |   |(M, CN, BM):MXI34_MXPOEN | (BM, C, NET62):MXP8 |   |   |   |   |   |   |(VDD, BM, S):MX_G2_MXPA1 |
+   |   |   |   |   |   |(X_G3_N1, CN, PM):MX_G3_MXNOE |(PM, C, XI3_N1):MXI3_MXNOE |   |   |   |   |   |   | (VSS, SN, NSN):MXN1 |   (NSN, PM, M):MXN0 |   |   |   |   |   |   |(M, C, BM):MXI34_MXNOE |(BM, CN, NET84):MXN2 |   |   |   |   |   |   |(VSS, BM, S):MX_G2_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:BM
+7 devices left: (X_G3_N1, D, VSS):MX_G3_MXNA1  (XI3_N1, M, VSS):MXI3_MXNA1  (NSN, S, NET84):MXN4  (X_G3_P1, D, VDD):MX_G3_MXPA1  (XI3_P1, M, VDD):MXI3_MXPA1  (BM, SN, VDD):MXP6  (VDD, S, NET62):MXP7  
+------------s110:DFFSRHQX1MTR-------------
+   |   |   |   |   |   |  (PM, SN, VDD):MXP4 |(VDD, C, NET128):MXP1 |(NET128, NMIN, PM):MXP16 |(PM, CN, XI9_P1):MXI9_MXPOEN |(XI9_P1, M, VDD):MXI9_MXPA1 |   |   |   |   |   |   |(VDD, RN, NET112):MXP22 |(NET112, NMSET, BM):MXP23 |   |   |   |   |   |   |(M, CN, BM):MXI62_MXPOEN |(BM, C, NET108):MXP19 |   |   |   |   |   |   |(VDD, BM, S):MX_G2_MXPA1 |
+   |   |   |   |   |   |(VSS, SN, NET62):MXN13 |(NET62, CN, NET82):MXN12 |(NET82, NMIN, PM):MXN1 |(PM, C, XI9_N1):MXI9_MXNOE |(XI9_N1, M, VSS):MXI9_MXNA1 |   |   |   |   |   |   |                None |(BM, NMSET, VSS):MXN16 |   |   |   |   |   |   |(M, C, BM):MXI62_MXNOE |(BM, CN, NET101):MXN18 |   |   |   |   |   |   |(VSS, BM, S):MX_G2_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:BM
+10 devices left: (M, PM, NET70):MXN3  (VSS, RN, NET70):MXN14  (M, NMSET, VSS):MXN5  (NET101, RN, NET90):MXN19  (VSS, S, NET90):MXN17  (M, PM, VDD):MXP5  (NET144, NMSET, VDD):MXP18  (M, RN, NET144):MXP17  (NET108, NMSET, NET136):MXP21  (VDD, S, NET136):MXP20  
+------------s110:DFFSRX1MTR-------------
+   |   |   |   |   |   |(X_G3_P1, C, PM):MX_G3_MXPOEN |(PM, CN, XI4_P1):MXI4_MXPOEN |   |   |   |   |   |   |(VDD, NRN, NET_NRN):MXP2 |(NET_NRN, PM, M):MXP6 |   (M, SN, VDD):MXP1 |   |   |   |   |   |   |(M, CN, BM):MXI47_MXPOEN | (BM, C, NET75):MXP7 |   |   |   |   |   |   |(VDD, BM, S):MX_G2_MXPA1 |
+   |   |   |   |   |   |(X_G3_N1, CN, PM):MX_G3_MXNOE |(PM, C, XI4_N1):MXI4_MXNOE |   |   |   |   |   |   |  (NSN, NRN, M):MXN2 |   (M, PM, NSN):MXN0 | (NSN, SN, VSS):MXN6 |   |   |   |   |   |   |(M, C, BM):MXI47_MXNOE |(BM, CN, NET106):MXN8 |   |   |   |   |   |   |(VSS, BM, S):MX_G2_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:BM
+8 devices left: (X_G3_N1, D, VSS):MX_G3_MXNA1  (XI4_N1, M, VSS):MXI4_MXNA1  (BM, NRN, NSN):MXN3  (NSN, S, NET106):MXN7  (X_G3_P1, D, VDD):MX_G3_MXPA1  (XI4_P1, M, VDD):MXI4_MXPA1  (BM, SN, VDD):MXP8  (NET_NRN, S, NET75):MXP9  
+------------s110:DFFSX1MTR-------------
+   |   |   |   |   |   |(X_G3_P1, C, PM):MX_G3_MXPOEN |(PM, CN, XI3_P1):MXI3_MXPOEN |   |   |   |   |   |   |   (M, SN, VDD):MXP1 |   (VDD, PM, M):MXP0 |   |   |   |   |   |   |(M, CN, BM):MXI36_MXPOEN | (BM, C, NET73):MXP7 |   |   |   |   |   |   |(VDD, BM, S):MX_G2_MXPA1 |
+   |   |   |   |   |   |(X_G3_N1, CN, PM):MX_G3_MXNOE |(PM, C, XI3_N1):MXI3_MXNOE |   |   |   |   |   |   | (VSS, SN, BSN):MXN3 |   (BSN, PM, M):MXN0 |   |   |   |   |   |   |(M, C, BM):MXI36_MXNOE |(BM, CN, NET134):MXN1 |   |   |   |   |   |   |(VSS, BM, S):MX_G2_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:BM
+7 devices left: (X_G3_N1, D, VSS):MX_G3_MXNA1  (XI3_N1, M, VSS):MXI3_MXNA1  (BSN, S, NET134):MXN4  (X_G3_P1, D, VDD):MX_G3_MXPA1  (XI3_P1, M, VDD):MXI3_MXPA1  (BM, SN, VDD):MXP5  (VDD, S, NET73):MXP6  
+------------s110:DFFTRX1MTR-------------
+   |   |   |   |   |   | (NET62, C, PM):MXP3 |(PM, CN, XI3_P1):MXI3_MXPOEN |   |   |   |   |   |   |(VDD, PM, M):MX_G5_MXPA1 |   |   |   |   |   |   |(M, CN, BM):MXI47_MXPOEN |(BM, C, XI4_P1):MXI4_MXPOEN |   |   |   |   |   |   |(VDD, BM, S):MX_G2_MXPA1 |
+   |   |   |   |   |   |(NET132, CN, PM):MXN1 |(PM, C, XI3_N1):MXI3_MXNOE |   |   |   |   |   |   |(VSS, PM, M):MX_G5_MXNA1 |   |   |   |   |   |   |(M, C, BM):MXI47_MXNOE |(BM, CN, XI4_N1):MXI4_MXNOE |   |   |   |   |   |   |(VSS, BM, S):MX_G2_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:BM
+8 devices left: (NET129, RN, VSS):MXN4  (NET132, D, NET129):MXN3  (XI3_N1, M, VSS):MXI3_MXNA1  (XI4_N1, S, VSS):MXI4_MXNA1  (NET62, RN, VDD):MXP4  (NET62, D, VDD):MXP0  (XI3_P1, M, VDD):MXI3_MXPA1  (XI4_P1, S, VDD):MXI4_MXPA1  
+------------s110:DFFX1MTR-------------
+   |   |   |   |   |   |(XI14_P1, C, PM):MXI14_MXPOEN |(PM, CN, XI13_P1):MXI13_MXPOEN |   |   |   |   |   |   |(VDD, PM, M):MX_G5_MXPA1 |   |   |   |   |   |   |(XI12_P1, CN, NM):MXI12_MXPOEN |(NM, C, XI11_P1):MXI11_MXPOEN |   |   |   |   |   |   |(VDD, NM, S):MX_G2_MXPA1 |
+   |   |   |   |   |   |(XI14_N1, CN, PM):MXI14_MXNOE |(PM, C, XI13_N1):MXI13_MXNOE |   |   |   |   |   |   |(VSS, PM, M):MX_G5_MXNA1 |   |   |   |   |   |   |(XI12_N1, C, NM):MXI12_MXNOE |(NM, CN, XI11_N1):MXI11_MXNOE |   |   |   |   |   |   |(VSS, NM, S):MX_G2_MXNA1 |
+clk_n:CN, clk_p:C, net_pm:PM, net_bm:NM
+8 devices left: (XI14_N1, D, VSS):MXI14_MXNA1  (XI13_N1, M, VSS):MXI13_MXNA1  (XI12_N1, M, VSS):MXI12_MXNA1  (XI11_N1, S, VSS):MXI11_MXNA1  (XI14_P1, D, VDD):MXI14_MXPA1  (XI13_P1, M, VDD):MXI13_MXPA1  (XI12_P1, M, VDD):MXI12_MXPA1  (XI11_P1, S, VDD):MXI11_MXPA1  
+------------s110:EDFFHQX1MTR-------------
+
+
+clk_n:CN, clk_p:C, net_pm:None, net_bm:None
+28 devices left: (VSS, D, NMIN):MX_G13_MXNA1  (NMSI, E, NMIN):MX_T8  (VSS, E, NMEN):MX_G6_MXNA1  (NMSI, NMEN, NET104):MX_T45  (VSS, S, NET104):MXN1  (VSS, CN, NET98):MXN2  (PM, NMSI, NET98):MX_T2  (PM, C, XI5_N1):MXI5_MXNOE  (XI5_N1, M, VSS):MXI5_MXNA1  (M, PM, VSS):MX_G7_MXNA1  (BM, C, M):MX_T0  (BM, CN, XI6_N1):MXI6_MXNOE  (XI6_N1, S, VSS):MXI6_MXNA1  (S, BM, VSS):MX_G2_MXNA1  (VDD, D, NMIN):MX_G13_MXPA1  (NMIN, NMEN, NMSI):MX_T9  (VDD, E, NMEN):MX_G6_MXPA1  (NMSI, E, NET73):MXP1  (VDD, S, NET73):MX_T47  (NET047, C, VDD):MX_T3I2  (PM, NMSI, NET047):MXP2  (PM, CN, XI5_P1):MXI5_MXPOEN  (XI5_P1, M, VDD):MXI5_MXPA1  (M, PM, VDD):MX_G7_MXPA1  (M, CN, BM):MX_T1  (BM, C, XI6_P1):MXI6_MXPOEN  (XI6_P1, S, VDD):MXI6_MXPA1  (S, BM, VDD):MX_G2_MXPA1  
+------------s110:EDFFTRX1MTR-------------
+
+
+clk_n:CN, clk_p:C, net_pm:None, net_bm:None
+30 devices left: (VSS, E, NMEN):MX_G8_MXNA1  (NET122, S, NET140):MXN0  (NET122, NMEN, NET106):MXN3  (NET107, E, NET106):MXN2  (NET140, D, NET107):MXN1  (NET106, RN, VSS):MX_T3  (PM, CN, NET140):MX_T19  (PM, C, XI15_N1):MXI15_MXNOE  (XI15_N1, M, VSS):MXI15_MXNA1  (M, PM, VSS):MX_G5_MXNA1  (XI11_N1, M, VSS):MXI11_MXNA1  (BNM, C, XI11_N1):MXI11_MXNOE  (BNM, CN, XI5_N1):MXI5_MXNOE  (XI5_N1, S, VSS):MXI5_MXNA1  (S, BNM, VSS):MX_G2_MXNA1  (VDD, E, NMEN):MX_G8_MXPA1  (NET77, S, NET73):MXP3  (VDD, E, NET73):MXP2  (VDD, NMEN, NET76):MX_T5  (NET76, D, NET77):MXP0  (VDD, RN, NET77):MXP1  (NET77, C, PM):MXP4  (PM, CN, XI15_P1):MXI15_MXPOEN  (XI15_P1, M, VDD):MXI15_MXPA1  (M, PM, VDD):MX_G5_MXPA1  (XI11_P1, M, VDD):MXI11_MXPA1  (BNM, CN, XI11_P1):MXI11_MXPOEN  (BNM, C, XI5_P1):MXI5_MXPOEN  (XI5_P1, S, VDD):MXI5_MXPA1  (S, BNM, VDD):MX_G2_MXPA1  
+------------s110:EDFFX1MTR-------------
+
+
+clk_n:CN, clk_p:C, net_pm:None, net_bm:None
+28 devices left: (VSS, E, NMEN):MX_G8_MXNA1  (NET120, S, NET129):MXN3  (NET120, NMEN, VSS):MXN0  (NET123, E, VSS):MXN1  (NET129, D, NET123):MXN2  (PM, CN, NET129):MX_T19  (PM, C, XI0_N1):MXI0_MXNOE  (XI0_N1, M, VSS):MXI0_MXNA1  (M, PM, VSS):MX_G5_MXNA1  (XI1_N1, M, VSS):MXI1_MXNA1  (NM, C, XI1_N1):MXI1_MXNOE  (NM, CN, XI2_N1):MXI2_MXNOE  (XI2_N1, S, VSS):MXI2_MXNA1  (S, NM, VSS):MX_G2_MXNA1  (VDD, E, NMEN):MX_G8_MXPA1  (NET38, S, NET36):MXP1  (VDD, E, NET36):MXP0  (VDD, NMEN, NET39):MX_T5  (NET39, D, NET38):MXP3  (NET38, C, PM):MXP2  (PM, CN, XI0_P1):MXI0_MXPOEN  (XI0_P1, M, VDD):MXI0_MXPA1  (M, PM, VDD):MX_G5_MXPA1  (XI1_P1, M, VDD):MXI1_MXPA1  (NM, CN, XI1_P1):MXI1_MXPOEN  (NM, C, XI2_P1):MXI2_MXPOEN  (XI2_P1, S, VDD):MXI2_MXPA1  (S, NM, VDD):MX_G2_MXPA1  
+------------s110:MDFFHQX1MTR-------------
+
+
+clk_n:CN, clk_p:C, net_pm:None, net_bm:None
+28 devices left: (NMSI, S0, NMIN1):MX_T8  (VSS, D1, NMIN1):MX_G13_MXNA1  (VSS, S0, NMS0):MX_G6_MXNA1  (NMSI, NMS0, NMIN0):MX_T11  (VSS, D0, NMIN0):MX_G16_MXNA1  (NET135, CN, VSS):MXN0  (PM, NMSI, NET135):MX_T2  (PM, C, XI13_N1):MXI13_MXNOE  (XI13_N1, M, VSS):MXI13_MXNA1  (M, PM, VSS):MX_G7_MXNA1  (BM, C, M):MX_T0  (BM, CN, XI12_N1):MXI12_MXNOE  (XI12_N1, S, VSS):MXI12_MXNA1  (S, BM, VSS):MX_G2_MXNA1  (NMIN1, NMS0, NMSI):MX_T9  (VDD, D1, NMIN1):MX_G13_MXPA1  (VDD, S0, NMS0):MX_G6_MXPA1  (NMIN0, S0, NMSI):MX_T10  (VDD, D0, NMIN0):MX_G16_MXPA1  (NET61, C, VDD):MX_T3I2  (PM, NMSI, NET61):MXP1  (PM, CN, XI13_P1):MXI13_MXPOEN  (XI13_P1, M, VDD):MXI13_MXPA1  (M, PM, VDD):MX_G7_MXPA1  (M, CN, BM):MX_T1  (BM, C, XI12_P1):MXI12_MXPOEN  (XI12_P1, S, VDD):MXI12_MXPA1  (S, BM, VDD):MX_G2_MXPA1  

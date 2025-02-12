@@ -1,0 +1,13 @@
+cell_height           1800
+gate_length           60
+v_pin_grid            200
+h_pin_grid            200
+power_rail_width      280               		    
+transistor_offset_y   140 
+transistor_offset_x   50 
+wire_width_poly_v     40
+wire_width_m1_v       70
+wire_width m2_v       80
+wire_width_poly_h     40
+wire_width_m1_h       70
+wire_width m2_h       80

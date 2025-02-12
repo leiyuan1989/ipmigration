@@ -1,0 +1,20 @@
+*ready
+.SUBCKT CLK1 CK VDD VSS C CN 
+PM1 CN   CK  VDD VDD pmos l=1 w=1 n=1 ro=2 co=1
+PM2 VDD  CN  C   VDD pmos l=1 w=1 n=1 ro=2 co=2
+NM1 CN   CK  VSS VSS nmos l=1 w=1 n=1 ro=5 co=1
+NM2 VSS  CN  C   VSS nmos l=1 w=1 n=1 ro=5 co=2  
+.ends CLK1
+
+
+.SUBCKT CLK2 CK VDD VSS C CN
+pmos_1 nck   CK  VDD VDD pmos l=1 w=1 n=1 ro=1 co=1
+nmos_1 nck   CK  VSS VSS nmos l=1 w=1 n=1 ro=1 co=1
+pmos_2 VDD  nck  C   VDD pmos l=1 w=1 n=1 ro=1 co=2
+nmos_2 VSS  nck  C   VSS nmos l=1 w=1 n=1 ro=1 co=2  
+pmos_3 VDD  CK  net1 VDD pmos l=1 w=1 n=1 ro=1 co=3
+nmos_3 VSS  CK  CN   VSS nmos l=1 w=1 n=1 ro=1 co=3
+pmos_4 net1 C   CN   VDD pmos l=1 w=1 n=1 ro=1 co=4
+.ends CLK2
+
+

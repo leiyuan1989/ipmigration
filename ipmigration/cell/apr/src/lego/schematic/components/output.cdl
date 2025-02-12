@@ -1,0 +1,61 @@
+
+
+
+
+.SUBCKT OUT_SR1 CK SN NRN VDD VSS OUT1
+pmos_1 OUT1 SN VDD VDD pmos  l=1 w=1 n=1
+pmos_2 OUT1 NRN N_18 VDD pmos  l=1 w=1 n=1
+pmos_3 N_18 IN1 VDD VDD pmos  l=1 w=1 n=1
+
+nmos_1 N_26 SN VSS VSS nmos l=1 w=1 n=1
+nmos_2 N_26 NRN OUT1 VSS nmos l=1 w=1 n=1
+nmos_3 N_26 IN1 OUT1 VSS nmos  l=1 w=1 n=1
+.ends OUT_SR1
+
+*ready
+.SUBCKT OUT_2INV IN1 IN2 VDD VSS OUT1 OUT2
+pmos_1 OUT1 IN1  VDD  VDD pmos l=1 w=1 n=1 ro=5 co=1
+nmos_1 OUT1 IN1  VSS  VSS nmos l=1 w=1 n=1 ro=2 co=1
+pmos_2 VDD  IN2  OUT2 VDD pmos l=1 w=1 n=1 ro=5 co=2
+nmos_2 VSS  IN2  OUT2 VSS nmos l=1 w=1 n=1 ro=2 co=2
+.ends OUT_2INV
+
+
+.SUBCKT OUT_INV IN1 VDD VSS OUT1
+pmos_1 VDD  IN1  OUT1 VDD pmos l=1 w=1 n=1 ro=5 co=1
+nmos_1 VSS  IN1  OUT1 VSS nmos l=1 w=1 n=1 ro=2 co=1
+.ends OUT_INV
+
+.SUBCKT OUT_NOR2 IN1 IN2 VDD VSS OUT1
+pmos_1 VDD  IN1  net1 VDD pmos l=1 w=1 n=1
+nmos_1 VSS  IN1  OUT1  VSS nmos l=1 w=1 n=1
+pmos_2 net1 IN2  OUT1  VDD pmos l=1 w=1 n=1
+nmos_2 OUT1 IN2  VSS  VSS nmos l=1 w=1 n=1   
+.ends OUT_NOR2
+
+.SUBCKT OUT_NAND2 IN1 IN2 VDD VSS OUT1
+pmos_1 OUT1 IN1  VDD VDD pmos l=1 w=1 n=1
+nmos_1 VSS  IN1  net1  VSS nmos l=1 w=1 n=1
+pmos_2 VDD  IN2  OUT1  VDD pmos l=1 w=1 n=1
+nmos_2 net1 IN2  OUT1  VSS nmos l=1 w=1 n=1   
+.ends OUT_NAND2
+
+.SUBCKT OUT_AND2 IN1 IN2 VDD VSS OUT1
+pmos_1 VDD  IN1  net1 VDD pmos l=1 w=1 n=1
+nmos_1 net1 IN1  net2 VSS nmos l=1 w=1 n=1
+pmos_2 net1 IN2  VDD  VDD pmos l=1 w=1 n=1
+nmos_2 net2 IN2  VSS  VSS nmos l=1 w=1 n=1
+pmos_3 VDD  net1  OUT1  VDD pmos l=1 w=1 n=1
+nmos_3 VSS  net1  OUT1  VSS nmos l=1 w=1 n=1
+.ends OUT_AND2
+
+.SUBCKT OUT_OR2 IN1 IN2 VDD VSS OUT1
+pmos_1 net1  IN1  net2 VDD pmos l=1 w=1 n=1
+nmos_1 VSS   IN1  net1 VSS nmos l=1 w=1 n=1
+pmos_2 net2  IN2  VDD  VDD pmos l=1 w=1 n=1
+nmos_2 net1  IN2  VSS  VSS nmos l=1 w=1 n=1
+pmos_3 VDD  net1  OUT1  VDD pmos l=1 w=1 n=1
+nmos_3 VSS  net1  OUT1  VSS nmos l=1 w=1 n=1
+.ends OUT_OR2
+
+

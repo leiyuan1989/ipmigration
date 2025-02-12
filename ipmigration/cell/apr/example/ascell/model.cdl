@@ -1,0 +1,2 @@
+.model mn5 nmos4 l=1 w=1 n=1
+.model mp5 pmos4 l=1 w=1 n=1

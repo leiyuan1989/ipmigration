@@ -1,0 +1,64 @@
+2024-10-13 11:00:08     INFO: ==================================================Begin ASCell: c153 ==================================================
+2024-10-13 11:00:08     INFO: Cfg initial check is sucessfull: c153 
+2024-10-13 11:00:09     INFO: tech-> Load tech files of tech [c153] sucessfully
+2024-10-13 11:00:09     INFO: ascell-> Read cell para file successfully
+2024-10-13 11:00:09     INFO: ascell-> Begin processing techc153 @ Sun Oct 13 11:00:09 2024
+2024-10-13 11:00:12     INFO: Tech:c153 ->Pass: 46; Fail: 1; rate: 97.87% 
+
+2024-10-13 11:00:12     INFO: Fail list: [('LANHT1', 'LA')] 
+
+2024-10-13 11:00:12     INFO: Total ->Pass: 46; Fail: 1; rate: 97.87% 
+
+2024-10-13 11:00:12     INFO: Circuits deconstruction use : 3 s 
+
+2024-10-13 11:00:12     INFO: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+2024-10-13 11:00:12     INFO: Begin processing circuit LANHB1
+2024-10-13 11:00:13     INFO: Success! Circuit LANHB1
+2024-10-13 11:00:13     INFO: Time used:  : 0 s 
+
+2024-10-13 11:00:13     INFO: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+2024-10-13 11:00:13     INFO: Begin processing circuit LANHN1
+2024-10-13 11:00:13     INFO: Success! Circuit LANHN1
+2024-10-13 11:00:13     INFO: Time used:  : 0 s 
+
+2024-10-13 11:00:13     INFO: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+2024-10-13 11:00:13     INFO: Begin processing circuit LANHQ1
+2024-10-13 11:00:14     INFO: Success! Circuit LANHQ1
+2024-10-13 11:00:14     INFO: Time used:  : 0 s 
+
+2024-10-13 11:00:14     INFO: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+2024-10-13 11:00:14     INFO: Begin processing circuit LANLB1
+2024-10-13 11:00:14     INFO: Success! Circuit LANLB1
+2024-10-13 11:00:14     INFO: Time used:  : 0 s 
+
+2024-10-13 11:00:14     INFO: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+2024-10-13 11:00:14     INFO: Begin processing circuit LANLN1
+2024-10-13 11:00:14     INFO: Success! Circuit LANLN1
+2024-10-13 11:00:14     INFO: Time used:  : 0 s 
+
+2024-10-13 11:00:14     INFO: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+2024-10-13 11:00:14     INFO: Begin processing circuit LANLQ1
+2024-10-13 11:00:15     INFO: Success! Circuit LANLQ1
+2024-10-13 11:00:15     INFO: Time used:  : 0 s 
+
+2024-10-13 11:00:15     INFO: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+2024-10-13 11:00:15     INFO: Begin processing circuit DFNFB1
+2024-10-13 11:00:16     INFO: Success! Circuit DFNFB1
+2024-10-13 11:00:16     INFO: Time used:  : 0 s 
+
+2024-10-13 11:00:16     INFO: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+2024-10-13 11:00:16     INFO: Begin processing circuit DFNRB1
+2024-10-13 11:00:16     INFO: Success! Circuit DFNRB1
+2024-10-13 11:00:16     INFO: Time used:  : 0 s 
+
+2024-10-13 11:00:16     INFO: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+2024-10-13 11:00:16     INFO: Begin processing circuit DFNRN1
+2024-10-13 11:00:17     INFO: Success! Circuit DFNRN1
+2024-10-13 11:00:17     INFO: Time used:  : 0 s 
+
+2024-10-13 11:00:17     INFO: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+2024-10-13 11:00:17     INFO: Begin processing circuit DFNRQ1
+2024-10-13 11:00:17     INFO: Success! Circuit DFNRQ1
+2024-10-13 11:00:17     INFO: Time used:  : 0 s 
+
+2024-10-13 11:00:17     INFO: Write GDS: output/test\Jul_18_c153\top.gds

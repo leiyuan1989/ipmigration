@@ -1,0 +1,1 @@
+{"cell_name": "I2NAND4HSV0.json", "nmos_loc": {"0": "MM6/VSS/A1/A1N", "1": "MM3/NET031/B2/VSS", "2": "MM2/NET039/B1/NET031", "3": "MMN1/NET18/A2N/NET039", "4": "MM1/ZN/A1N/NET18", "5": "none", "6": "MM9/A2N/A2/VSS"}, "pmos_loc": {"0": "MM7/VDD/A1/A1N", "1": "MM4/ZN/B2/VDD", "2": "MM5/VDD/B1/ZN", "3": "MM0/ZN/A2N/VDD", "4": "MMP1/VDD/A1N/ZN", "5": "none", "6": "MM8/A2N/A2/VDD"}}

@@ -1,0 +1,12 @@
+parameter,value
+cell_height           ,1800
+v_pin_grid            ,200
+h_pin_grid            ,200
+mos_length_P  ,60
+mos_length_N,60
+power_rail_width  ,280
+cell_offset_x,50
+np_ext_border,90
+nw_ext_np,70
+clock_positive,CK
+clock_negative,CKN

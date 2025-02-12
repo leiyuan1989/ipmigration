@@ -1,0 +1,828 @@
+
+************************************************
+.SUBCKT NOR2 A B VDD VSS OUT
+pmos_1 VDD  A  net1 VDD pmos l=1 w=1 n=1
+nmos_1 VSS  A  OUT  VSS nmos l=1 w=1 n=1
+pmos_2 net1 B  OUT  VDD pmos l=1 w=1 n=1
+nmos_2 OUT  B  VSS  VSS nmos l=1 w=1 n=1   
+.ends NOR2
+
+************************************************
+.SUBCKT NAND2 A B VDD VSS OUT
+pmos_1 OUT  A  VDD VDD pmos l=1 w=1 n=1
+nmos_1 VSS  A  net1  VSS nmos l=1 w=1 n=1
+pmos_2 VDD  B  OUT  VDD pmos l=1 w=1 n=1
+nmos_2 net1 B  OUT  VSS nmos l=1 w=1 n=1   
+.ends NAND2
+
+************************************************
+
+************************************************
+
+************************************************
+.SUBCKT INV IN VDD VSS OUT
+pmos_1 VDD  IN  OUT VDD pmos l=1 w=1 n=1
+nmos_1 VSS  IN  OUT VSS nmos l=1 w=1 n=1 
+.ends INV
+
+************************************************
+.SUBCKT LA_0 IN1 IN2 D cn c VDD VSS
+pmos_1 IN1 c  pm   VDD pmos l=1 w=1 n=1
+nmos_1 IN2 cn pm   VSS nmos l=1 w=1 n=1
+pmos_2 pm  cn net1 VDD pmos l=1 w=1 n=1
+nmos_2 pm  c  net2 VSS nmos l=1 w=1 n=1
+pmos_3 net1 m VDD  VDD pmos l=1 w=1 n=1
+nmos_3 net2 m VSS  VSS nmos l=1 w=1 n=1
+.ends LA_0
+
+
+.SUBCKT LA_1 IN D cn c VDD VSS
+pmos_1 IN c  pm   VDD pmos l=1 w=1 n=1
+nmos_1 IN cn pm   VSS nmos l=1 w=1 n=1
+pmos_2 pm  cn net1 VDD pmos l=1 w=1 n=1
+nmos_2 pm  c  net2 VSS nmos l=1 w=1 n=1
+pmos_3 net1 m VDD  VDD pmos l=1 w=1 n=1
+nmos_3 net2 m VSS  VSS nmos l=1 w=1 n=1
+.ends LA_1
+
+
+*0 searched
+.SUBCKT LA_2 IN D cn c VDD VSS
+pmos_0 VDD  IN  net3   VDD pmos l=1 w=1 n=1
+nmos_0 VDD  IN  net4   VSS nmos l=1 w=1 n=1
+pmos_1 net3 c  pm   VDD pmos l=1 w=1 n=1
+nmos_1 net4 cn pm   VSS nmos l=1 w=1 n=1
+pmos_2 pm  cn net1 VDD pmos l=1 w=1 n=1
+nmos_2 pm  c  net2 VSS nmos l=1 w=1 n=1
+pmos_3 net1 m VDD  VDD pmos l=1 w=1 n=1
+nmos_3 net2 m VSS  VSS nmos l=1 w=1 n=1
+.ends LA_2
+
+
+.SUBCKT LA_3 IN D cn c VDD VSS
+*mM31 pm   D  IN1 VDD pmos l=1 w=1 n=1
+*mM25 pm   D  IN2 VSS nmos l=1 w=1 n=1
+pmos_0 IN1  c   VDD  VDD pmos l=1 w=1 n=1
+nmos_0 IN2  cn  VSS  VSS nmosl=1 w=1 n=1
+
+pmos_1 net3 cn  VDD  VDD pmos l=1 w=1 n=1
+pmos_2 pm   m   net3 VDD pmos l=1 w=1 n=1
+nmos_1 pm   m   net4 VSS nmos l=1 w=1 n=1
+nmos_2 net4 c VSS  VSS nmos l=1 w=1 n=1
+.ends LA_3
+
+
+************************************************
+.SUBCKT LA_SR1 D cn c IN1 IN2 SN RN VDD VSS
+pmos_1 nsn  SN  VDD  VDD pmos l=1 w=1 n=1
+nmos_1 nsn  SN  VSS  VSS nmos l=1 w=1 n=1
+  
+pmos_3 IN1 nsn net3 VDD pmos l=1 w=1 n=1
+nmos_3 IN2 RN  net4 VSS nmos l=1 w=1 n=1
+pmos_4 net3 cn  pm   VDD pmos l=1 w=1 n=1
+nmos_4 net4 c   pm   VSS nmos l=1 w=1 n=1      
+pmos_5 pm   c   net5 VDD pmos l=1 w=1 n=1 
+nmos_5 pm   cn  net6 VSS nmos l=1 w=1 n=1
+pmos_6 net5 nsn net7 VDD pmos l=1 w=1 n=1 
+nmos_6 net6 RN  net8 VSS nmos l=1 w=1 n=1
+pmos_7 net7 m   VDD  VDD pmos l=1 w=1 n=1 
+nmos_7 net8 m   VSS  VSS nmos l=1 w=1 n=1
+
+pmos_8_0 VDD  RN  net9 VDD pmos l=1 w=1 n=1
+pmos_8_1 net9 nsn pm   VDD pmos l=1 w=1 n=1 
+nmos_8   VSS  nsn pm   VSS nmos l=1 w=1 n=1
+pmos_10  VDD  pm   m   VDD pmos l=1 w=1 n=1 
+nmos_10  VSS  pm   m   VSS nmos l=1 w=1 n=1
+.ends LA_SR1
+
+
+************************************************
+.SUBCKT LA_SR2 D SN RN cn c VDD VSS
+pmos_1 nsn  SN  VDD  VDD pmos l=1 w=1 n=1
+nmos_1 nsn  SN  VSS  VSS nmos l=1 w=1 n=1
+
+pmos_2 VDD  nsn IN1 VDD pmos l=1 w=1 n=1
+nmos_2 VSS  nsn pm   VSS nmos l=1 w=1 n=1   
+pmos_3 IN1 RN  pm   VDD pmos l=1 w=1 n=1
+nmos_3 IN2 RN  VSS  VSS nmos l=1 w=1 n=1
+
+pmos_5 net3 cn  pm   VDD pmos l=1 w=1 n=1 
+nmos_5 net3 c   pm   VSS nmos l=1 w=1 n=1
+pmos_6 pm   c   net4 VDD pmos l=1 w=1 n=1 
+nmos_6 pm   cn  net5 VSS nmos l=1 w=1 n=1
+
+pmos_7 net4 m   IN1  VDD pmos l=1 w=1 n=1 
+nmos_7 net5 m   IN2  VSS nmos l=1 w=1 n=1
+
+pmos_8 VDD  pm  m   VDD pmos l=1 w=1 n=1
+nmos_8 VSS  pm  m   VSS nmos l=1 w=1 n=1
+.ends LA_SR2
+
+
+************************************************
+.SUBCKT LA_SR3 D SN RN cn c VDD VSS
+
+mM6 m SN VDD VDD pmos mr=1 l=500n w=1.74u nf=1
+mM22 net10 rnb VDD VDD pmos mr=1 l=500n w=1.74u nf=1
+mPM3 m pm net10 VDD pmos mr=1 l=500n w=1.74u nf=1
+
+mNM3 m pm net6 VSS nmos mr=1 l=600n w=1.21u nf=1
+mM21 m rnb net6 VSS nmos mr=1 l=600n w=1.21u nf=1
+mM7 net6 SN VSS VSS nmos mr=1 l=600n w=1.21u nf=1
+
+
+mM35 rnb RN VDD VDD pmos mr=1 l=500n w=1.74u nf=1
+mM34 rnb RN VSS VSS nmos mr=1 l=600n w=1.21u nf=1
+
+.ends LA_SR3
+
+************************************************
+*c153 s65 jump RN in layout
+.SUBCKT LA_R1 D RN cn c VDD VSS
+pmos_2 	 IN1 cn pm    VDD pmos l=1 w=1 n=1
+nmos_1_2 IN2 RN net3  VSS nmos l=1 w=1 n=1
+nmos_2   net3 c  pm    VSS nmos l=1 w=1 n=1   
+pmos_3   pm   c  net4  VDD pmos l=1 w=1 n=1
+nmos_3   pm   cn net5  VSS nmos l=1 w=1 n=1
+pmos_4   net4 m  VDD   VDD pmos l=1 w=1 n=1
+nmos_4_1 net5 RN net6  VSS nmos l=1 w=1 n=1     
+nmos_4_2 net6 m  VSS   VSS nmos l=1 w=1 n=1 
+pmos_5   VDD  RN pm    VDD pmos l=1 w=1 n=1 
+pmos_6   m    pm VDD   VDD pmos l=1 w=1 n=1 
+nmos_6   m    pm VSS   VSS nmos l=1 w=1 n=1
+.ends LA_R1
+
+.SUBCKT LA_R2 D RN cn c VDD VSS
+pmos_2 	 IN1 cn pm    VDD pmos l=1 w=1 n=1
+nmos_2   IN2 c  pm    VSS nmos l=1 w=1 n=1   
+pmos_3   pm   c  net4  VDD pmos l=1 w=1 n=1
+nmos_3   pm   cn net5  VSS nmos l=1 w=1 n=1
+pmos_4   net4 m  VDD   VDD pmos l=1 w=1 n=1
+nmos_4_1 net5 m  net6  VSS nmos l=1 w=1 n=1 
+pmos_6   m    pm VDD   VDD pmos l=1 w=1 n=1 
+nmos_6   m    pm VSS   VSS nmos l=1 w=1 n=1
+    
+nmos_4_2 net6 RN VSS   VSS nmos l=1 w=1 n=1 
+pmos_5   VDD  RN pm    VDD pmos l=1 w=1 n=1 
+.ends LA_R2
+
+
+************************************************
+*c153 s65  15 devices
+.SUBCKT LA_S1 D SN cn c VDD VSS
+pmos_1   nsn  SN  VDD   VDD pmos l=1 w=1 n=1 
+nmos_1   nsn  SN  VSS   VSS nmos l=1 w=1 n=1
+
+pmos_2_2 IN1 nsn net2  VDD pmos l=1 w=1 n=1
+pmos_3 	 net2 cn  pm    VDD pmos l=1 w=1 n=1
+nmos_3   IN2 c   pm    VSS nmos l=1 w=1 n=1   
+pmos_4   pm   c   net5  VDD pmos l=1 w=1 n=1
+nmos_4   pm   cn  net6  VSS nmos l=1 w=1 n=1
+pmos_5_1 net5 nsn net4   VDD pmos l=1 w=1 n=1
+pmos_5_2 net4 m  VDD   VDD pmos l=1 w=1 n=1    
+nmos_5   net6 m  VSS   VSS nmos l=1 w=1 n=1 
+nmos_6   VSS  nsn  pm   VSS nmos l=1 w=1 n=1
+pmos_7   m    pm VDD   VDD pmos l=1 w=1 n=1 
+nmos_7   m    pm VSS   VSS nmos l=1 w=1 n=1
+.ends LA_S1
+
+****************************************************
+
+.SUBCKT LA_S2 D SN cn c VDD VSS
+M16 nsn SN VDD VDD pmos  l=0.13u w=0.26u m=1
+M11 nsn SN VSS VSS nmos  l=0.13u w=0.18u m=1
+
+M8  IN1 c  pm VSS nmos  l=0.13u w=0.28u m=1
+M18 IN1 cn pm VDD pmos  l=0.13u w=0.28u m=1
+
+M13 m pm VDD VDD pmos  l=0.13u w=0.26u m=1
+M2 m pm VSS VSS nmos  l=0.13u w=0.18u m=1
+
+M19 N_17 nsn VDD VDD pmos  l=0.13u w=0.17u m=1
+M20 N_17 m N_16 VDD pmos  l=0.13u w=0.17u m=1
+M21 N_16 c pm VDD pmos  l=0.13u w=0.17u m=1
+M5 N_62 cn pm VSS nmos  l=0.13u w=0.17u m=1
+M7 N_62 m VSS VSS nmos  l=0.13u w=0.17u m=1
+M10 VSS nsn pm VSS nmos  l=0.13u w=0.18u m=1
+.ends LA_S1
+
+****************************************************
+
+
+* Top of hierarchy  cell=dfbfb1 c153
+.subckt DF_FSR1 VDD VSS RN SN D c cn m nrn
+
+M23 IN1 cn pm VDD pmos  l=0.42u w=0.52u m=1
+M3  IN2 c pm VSS nmos  l=0.5u w=0.5u m=1
+
+M24 N_15 c pm VDD pmos  l=0.42u w=0.5u m=1
+M4 N_27 cn pm VSS nmos  l=0.5u w=0.5u m=1
+M25 N_15 m VDD VDD pmos  l=0.42u w=0.5u m=1
+M5 N_27 m VSS VSS nmos  l=0.5u w=0.5u m=1
+
+M27 N_16 pm VDD VDD pmos  l=0.42u w=0.52u m=1
+M28 N_16 nrn m VDD pmos  l=0.42u w=0.52u m=1
+M29 m SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 N_23 pm m VSS nmos  l=0.5u w=0.5u m=1
+M8 N_23 nrn m VSS nmos  l=0.5u w=0.5u m=1
+M9 N_23 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+
+M38 nrn RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M18 nrn RN VSS VSS nmos  l=0.5u w=0.5u m=1
+.ends DF_FSR1
+
+****************************************************
+* Top of hierarchy  cell=dfbfb1 c153
+
+.subckt DF_BSR1 VDD VSS nrn SN m 
+M30 N_17 m VDD VDD pmos  l=0.42u w=0.52u m=1
+M31 bm c N_17 VDD pmos  l=0.42u w=0.52u m=1
+M10 N_28 m VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 bm cn N_28 VSS nmos  l=0.5u w=0.5u m=1
+
+M32 N_18 cn bm VDD pmos  l=0.42u w=0.5u m=1
+M33 N_18 s VDD VDD pmos  l=0.42u w=0.5u m=1
+M12 N_29 c bm VSS nmos  l=0.5u w=0.5u m=1
+M13 N_29 s VSS VSS nmos  l=0.5u w=0.5u m=1
+
+M34 s SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M35 N_19 nrn s VDD pmos  l=0.42u w=0.52u m=1
+M36 N_19 bm VDD VDD pmos  l=0.42u w=0.52u m=1
+
+M14 N_21 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 s nrn N_21 VSS nmos  l=0.5u w=0.5u m=1
+M16 N_21 bm s VSS nmos  l=0.5u w=0.5u m=1
+
+
+M39 OUT s VDD VDD pmos  l=0.42u w=0.52u m=1
+M19 OUT s VSS VSS nmos  l=0.5u w=0.5u m=1
+
+.ends DF_BSR1
+
+****************************************************
+* C110 Top of hierarchy  cell=dfbfb0 c110
+.subckt DF_FSR2 VSS Q QN VDD RN SN D CKN
+M20 IN1 cn pm VDD pmos  l=0.13u w=0.38u m=1
+M6  IN2 c  pm VSS nmos  l=0.13u w=0.26u m=1
+
+M21 N_89 m VDD VDD pmos  l=0.13u w=0.17u m=1
+M22 pm c N_89 VDD pmos  l=0.13u w=0.17u m=1
+M4 pm cn N_21 VSS nmos  l=0.13u w=0.17u m=1
+M5 N_21 m VSS VSS nmos  l=0.13u w=0.17u m=1
+
+M29 nrn RN VDD VDD pmos  l=0.13u w=0.26u m=1
+M13 nrn RN VSS VSS nmos  l=0.13u w=0.18u m=1
+
+M25 m pm nrnp VDD pmos  l=0.13u w=0.45u m=1
+M10 sng pm m VSS nmos  l=0.13u w=0.28u m=1
+M27 nrnp nrn VDD VDD pmos  l=0.13u w=0.595u m=1
+M12 sng SN VSS VSS nmos  l=0.13u w=0.36u m=1
+.ends DF_FSR2
+
+****************************************************
+
+* C110 Top of hierarchy  cell=dfbfb0 c110
+.subckt DF_BSR2 VSS Q QN VDD nrn SN D CKN
+M24 bm c m VDD pmos  l=0.13u w=0.46u m=1
+M7 bm cn m VSS nmos  l=0.13u w=0.28u m=1
+
+M32 s bm VDD VDD pmos  l=0.13u w=0.26u m=1
+M16 s bm VSS VSS nmos  l=0.13u w=0.18u m=1
+
+M23 bm cn N_32 VDD pmos  l=0.13u w=0.17u m=1
+M8 bm c N_23 VSS nmos  l=0.13u w=0.17u m=1
+M26 nrnp s N_32 VDD pmos  l=0.13u w=0.17u m=1
+M9 N_23 s sng VSS nmos  l=0.13u w=0.17u m=1
+
+M28 VDD SN bm VDD pmos  l=0.13u w=0.28u m=1
+M11 bm nrn sng VSS nmos  l=0.13u w=0.2u m=1
+.ends DF_BSR2
+
+****************************************************
+*from s110 DFFSRX1MTR share NSN NRN for front and back
+.subckt DF_FSR3 VSS Q QN VDD nrn SN D CKN
+
+mX_g3_MXPOEN pm c IN1 VDD pmos l=1.3e-07 w=2.3e-07
+mX_g3_MXNOE pm cn IN2 VSS nmos l=1.3e-07 w=1.8e-07
+
+mXI4_MXPA1 XI4_p1 m VDD VDD pmos l=1.3e-07 w=2.3e-07
+mXI4_MXNA1 XI4_n1 m VSS VSS nmos l=1.3e-07 w=1.8e-07
+mXI4_MXPOEN pm cn XI4_p1 VDD pmos l=1.3e-07 w=2.3e-07
+mXI4_MXNOE pm c XI4_n1 VSS nmos l=1.3e-07 w=1.8e-07
+
+mX_g5_MXPA1 nrn RN VDD VDD pmos l=1.3e-07 w=2.3e-07
+mX_g5_MXNA1 nrn RN VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+MXP2 nrnp nrn VDD VDD pmos l=1.3e-07 w=4.9e-07
+MXP6 m pm nrnp VDD pmos l=1.3e-07 w=3.6e-07
+MXN0 m pm sng VSS nmos l=1.3e-07 w=3e-07
+MXN2 m nrn sng VSS nmos l=1.3e-07 w=1.9e-07
+
+MXP1 m SN VDD VDD pmos l=1.3e-07 w=2.3e-07
+MXN6 sng SN VSS VSS nmos l=1.3e-07 w=4e-07
+.ends DF_FSR3
+****************************************************
+
+.subckt DF_BSR3 VSS Q QN VDD RN SN D 
+mM33 m clkn bm VDD pmos mr=1 l=500n w=1.03u nf=1
+mM32 m clkp bm VSS nmos mr=1 l=600n w=1.21u nf=1
+
+mM16 bm clkp net5 VDD pmos mr=1 l=500n w=220n nf=1
+mM17 bm clkn net5 VSS nmos mr=1 l=600n w=220n nf=1
+
+mPM9 s bm VDD VDD pmos mr=1 l=500n w=1.74u nf=1
+mNM9 s bm VSS VSS nmos mr=1 l=600n w=780n nf=1
+
+mM41 net3 rnb VDD VDD pmos mr=1 l=500n w=220n nf=1
+mM43 net5 s net3 VDD pmos mr=1 l=500n w=220n nf=1
+mM40 net5 SN VDD VDD pmos mr=1 l=500n w=220n nf=1
+
+mM42 net5 s net4 VSS nmos mr=1 l=600n w=220n nf=1
+mM39 net5 rnb net4 VSS nmos mr=1 l=600n w=220n nf=1
+mM38 net4 SN VSS VSS nmos mr=1 l=600n w=220n nf=1
+.ends DF_BSR3
+
+****************************************************
+
+*from s110 DFFNSRH: a negative edge-triggered, 
+*static D-type flip-flop with asynchronous active-low reset (RN) and set (SN), 
+*and set dominating reset, and fast clock-to-Q path.
+*left for layout information
+
+.SUBCKT DF_FSR4 nmin SN RN cn c VDD VSS m 
+MXP12 pm SN VDD VDD pmos l=1.3e-07 w=2.3e-07
+MXN12 VSS SN net68 VSS nmos l=1.3e-07 w=4.3e-07
+
+MXP9 net118 c VDD VDD pmos l=1.3e-07 w=3.3e-07
+MXP14 pm nmin net118 VDD pmos l=1.3e-07 w=3.3e-07
+MXN0 pm nmin net72 VSS nmos l=1.3e-07 w=4.3e-07
+MXN11 net68 cn net72 VSS nmos l=1.3e-07 w=4.3e-07
+
+mXI19_MXPA1 XI19_p1 m VDD VDD pmos l=1.3e-07 w=2.2e-07
+mXI19_MXPOEN pm cn XI19_p1 VDD pmos l=1.3e-07 w=2.2e-07
+mXI19_MXNOE pm c XI19_n1 VSS nmos l=1.3e-07 w=1.8e-07
+mXI19_MXNA1 XI19_n1 m VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+MXP11 m pm VDD VDD pmos l=1.3e-07 w=4.8e-07
+MXN4 m pm net80 VSS nmos l=1.3e-07 w=4.5e-07
+MXN13 VSS RN net80 VSS nmos l=1.3e-07 w=4.5e-07
+
+MXP1 net142 nmset VDD VDD pmos l=1.3e-07 w=2.3e-07
+MXP15 m RN net142 VDD pmos l=1.3e-07 w=2.3e-07
+MXN6 m nmset VSS VSS nmos l=1.3e-07 w=1.8e-07
+.ends DF_FSR4
+****************************************************
+
+
+.subckt DF_BSR4 VSS Q QN VDD RN SN D 
+M30 pm cn sout VDD pmos  l=0.13u w=0.5u m=1
+M10 pm c sout VSS nmos  l=0.13u w=0.18u m=1
+
+M29 N_29 m VDD VDD pmos  l=0.13u w=0.17u m=1
+M7 N_112 m VSS VSS nmos  l=0.13u w=0.17u m=1
+M9 N_112 cn pm VSS nmos  l=0.13u w=0.17u m=1
+M32 N_29 c pm VDD pmos  l=0.13u w=0.17u m=1
+
+M38 nrnp nrn VDD VDD pmos  l=0.13u w=0.315u m=1
+M33 m pm nrnp VDD pmos  l=0.13u w=0.3u m=1
+M12 sng pm m VSS nmos  l=0.13u w=0.14u m=1
+M20 sng SN VSS VSS nmos  l=0.13u w=0.19u m=1
+.ends DF_BSR4
+
+****************************************************
+* c110 Top of hierarchy  cell=dfcfb0
+.subckt DF_FR1 VDD Q QN VSS RN D CKN
+
+M21 IN1 cn pm  VDD pmos  l=0.13u w=0.4u m=1
+M3  IN2 c  pm  VSS nmos  l=0.13u w=0.26u m=1
+
+M18 N_20 c pm VDD pmos  l=0.13u w=0.17u m=1
+M19 N_20 m VDD VDD pmos  l=0.13u w=0.17u m=1
+M4 N_30 m VSS VSS nmos  l=0.13u w=0.17u m=1
+M6 N_30 cn pm VSS nmos  l=0.13u w=0.17u m=1
+
+M27 nrn RN VDD VDD pmos  l=0.13u w=0.26u m=1
+M14 nrn RN VSS VSS nmos  l=0.13u w=0.17u m=1
+
+M25 nrnp nrn VDD VDD pmos  l=0.13u w=0.59u m=1
+M23 m pm nrnp VDD pmos  l=0.13u w=0.45u m=1
+M7 m pm VSS VSS nmos  l=0.13u w=0.24u m=1
+
+.ends DF_FR1
+
+
+****************************************************
+* c110 Top of hierarchy  cell=dfcfb0
+.subckt DF_BR1 VDD Q QN VSS RN D CKN
+M22 bm c m VDD pmos  l=0.13u w=0.44u m=1
+M9  bm cn m VSS nmos  l=0.13u w=0.23u m=1
+
+M8 VSS nrn bm VSS nmos  l=0.13u w=0.18u m=1
+
+M30 s bm VDD VDD pmos  l=0.13u w=0.26u m=1
+M13 s bm VSS VSS nmos  l=0.13u w=0.18u m=1
+
+M26 N_21 s nrnp VDD pmos  l=0.13u w=0.17u m=1
+M24 N_21 cn bm VDD pmos  l=0.13u w=0.17u m=1
+M10 N_31 c bm VSS nmos  l=0.13u w=0.17u m=1
+M11 VSS s N_31 VSS nmos  l=0.13u w=0.17u m=1
+.ends DF_BR1
+
+
+****************************************************
+* c110 Top of hierarchy  cell=dfcrq0
+.subckt DF_FR2 VSS Q D VDD RN CK
+
+M22 N_32 IN VDD VDD pmos  l=0.13u w=0.28u m=1
+M24 pm c N_32 VDD pmos  l=0.13u w=0.28u m=1
+M5 pm cn N_16 VSS nmos  l=0.13u w=0.17u m=1
+M10 N_16 IN VSS VSS nmos  l=0.13u w=0.17u m=1
+
+M18 N_33 cn pm VDD pmos  l=0.13u w=0.17u m=1
+M19 N_33 m VDD VDD pmos  l=0.13u w=0.17u m=1
+M7 N_17 m VSS VSS nmos  l=0.13u w=0.17u m=1
+M11 N_17 c pm VSS nmos  l=0.13u w=0.17u m=1
+
+M20 m pm VDD VDD pmos  l=0.13u w=0.31u m=1
+M23 VDD RN m VDD pmos  l=0.13u w=0.31u m=1
+M8 m pm N_18 VSS nmos  l=0.13u w=0.28u m=1
+M12 N_18 RN VSS VSS nmos  l=0.13u w=0.28u m=1
+
+.ends DF_FR2
+
+* also s65 EDRNHSV1, Enable D Flip-Flop with Async Reset
+.subckt DF_BR2 VSS Q D VDD RN CK
+M27 bm cn m VDD pmos  l=0.13u w=0.28u m=1
+M15 m c bm VSS nmos  l=0.13u w=0.28u m=1
+
+M29 bm RN VDD VDD pmos  l=0.13u w=0.28u m=1
+
+M26 s bm VDD VDD pmos  l=0.13u w=0.17u m=1
+M2 s bm VSS VSS nmos  l=0.13u w=0.17u m=1
+
+M30 N_34 s VDD VDD pmos  l=0.13u w=0.28u m=1
+M28 N_34 c bm VDD pmos  l=0.13u w=0.28u m=1
+M6 N_19 cn bm VSS nmos  l=0.13u w=0.17u m=1
+M14 N_19 s N_15 VSS nmos  l=0.13u w=0.17u m=1
+M13 N_15 RN VSS VSS nmos  l=0.13u w=0.17u m=1
+
+.ends DF_BR2
+
+****************************************************
+
+.subckt DF_BR3 VSS Q D VDD RN CK
+M32 m pm VDD VDD pmos  l=0.13u w=0.19u m=1
+M12 rng pm m VSS nmos  l=0.13u w=0.3u m=1
+M16 VSS RN rng VSS nmos  l=0.13u w=0.46u m=1
+
+M34 bm cn m VDD pmos  l=0.13u w=0.35u m=1
+M13 bm c m VSS nmos  l=0.13u w=0.29u m=1
+
+M31 s bm VDD VDD pmos  l=0.13u w=0.17u m=1
+M18 s bm VSS VSS nmos  l=0.13u w=0.17u m=1
+
+M37 VDD RN bm VDD pmos  l=0.13u w=0.21u m=1
+
+M35 N_45 c bm VDD pmos  l=0.13u w=0.17u m=1
+M36 N_45 s VDD VDD pmos  l=0.13u w=0.17u m=1
+
+M14 N_23 cn bm VSS nmos  l=0.13u w=0.17u m=1
+M15 N_23 s rng VSS nmos  l=0.13u w=0.17u m=1
+
+.ends DF_BR3
+
+****************************************************
+
+* s65 EDRNHSV1, Enable D Flip-Flop with Async Reset
+.subckt DF_BR4 VSS Q D VDD RN CK
+MM36 net_0211 m VDD VDD pmos W=320.00n L=60.00n
+MM35 bm cn net_0211 VDD pmos W=320.00n L=60.00n
+MM33 bm c net_0136 VSS nmos W=300.00n L=60.00n
+MM34 net_0136 m VSS VSS nmos W=300.00n L=60.00n
+
+MM26 VDD s net109 VDD pmos W=300.00n L=60.00n
+MM23 net_0138 s net48 VSS nmos W=300.00n L=60.00n
+MM25 net109 c bm VDD pmos W=300.00n L=60.00n
+MM24 net48 cn bm VSS nmos W=300.00n L=60.00n
+MM44 VSS RDN net_0138 VSS nmos W=300.00n L=60.00n
+
+
+MM18 s bm VDD VDD pmos W=420.00n L=60.00n
+MM17 s bm VSS VSS nmos W=280.00n L=60.00n
+MM43 VDD RDN bm VDD pmos W=300.00n L=60.00n
+.ends DF_BR4
+
+
+****************************************************
+
+*from s110 DFFTRX1MTR 
+*The DFFTR cell is a positive edge-triggered, static D-type flip-flop with synchronous active-low reset (RN).
+
+.SUBCKT DF_BR5 m cn c VDD VSS s
+mXI58_MXPOEN bm cn m VDD pmos l=1.3e-07 w=4.8e-07
+mXI58_MXNOE bm c m VSS nmos l=1.3e-07 w=4e-07
+
+MXP16 bm nmset net154 VDD pmos l=1.3e-07 w=2.3e-07
+MXP4 net154 RN VDD VDD pmos l=1.3e-07 w=2.3e-07
+MXN10 bm nmset VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+MXP18 bm c net110 VDD pmos l=1.3e-07 w=2.3e-07
+MXP17 net110 nmset net114 VDD pmos l=1.3e-07 w=2.3e-07
+MXP6 VDD s net114 VDD pmos l=1.3e-07 w=2.3e-07
+
+MXN7 bm cn net91 VSS nmos l=1.3e-07 w=1.8e-07
+MXN14 net91 RN net88 VSS nmos l=1.3e-07 w=1.8e-07
+MXN15 VSS s net88 VSS nmos l=1.3e-07 w=1.8e-07     
+.ends DF_BR5
+
+****************************************************
+*from s110 DFFRQX1MTR; the front part is LATCH3_R
+.SUBCKT DF_BR6 m cn c VDD VSS s
+mXI37_MXPOEN bm cn m VDD pmos l=1.3e-07 w=2.3e-07
+mXI37_MXNOE bm c m VSS nmos l=1.3e-07 w=1.8e-07
+
+mXI0_MXPA1 s bm VDD VDD pmos l=1.3e-07 w=2.3e-07
+mXI0_MXNA1 s bm XI0_n1 VSS nmos l=1.3e-07 w=1.8e-07
+mXI0_MXNA2 XI0_n1 RN VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+mXI0_MXPA2 s RN VDD VDD pmos l=1.3e-07 w=2.3e-07
+
+mXI4_MXPA1 XI4_p1 s VDD VDD pmos l=1.3e-07 w=2.3e-07
+mXI4_MXPOEN bm c XI4_p1 VDD pmos l=1.3e-07 w=2.3e-07
+mXI4_MXNOE bm cn XI4_n1 VSS nmos l=1.3e-07 w=2.3e-07
+mXI4_MXNA1 XI4_n1 s VSS VSS nmos l=1.3e-07 w=2.3e-07    
+.ends DF_BR6
+
+****************************************************
+
+*from s110 DFFRHQX1MTR; the front part is LATCH4_R 
+.SUBCKT DF_BR7  Q VDD VDD VSS VSS CK D RN
+
+mXI58_MXPOEN bm cn m VDD pmos l=1.3e-07 w=7.3e-07
+mXI58_MXNOE bm c m VSS nmos l=1.3e-07 w=3.7e-07
+
+MXP15 VDD s net120 VDD pmos l=1.3e-07 w=2.3e-07
+MXN14 VSS s net82 VSS nmos l=1.3e-07 w=1.5e-07
+
+MXP16 bm c net120 VDD pmos l=1.3e-07 w=2.3e-07
+MXN7 bm cn net85 VSS nmos l=1.3e-07 w=1.5e-07
+
+MXN13 net85 RN net82 VSS nmos l=1.3e-07 w=1.5e-07
+MXP17 VDD RN bm VDD pmos l=1.3e-07 w=2.3e-07
+
+.ends DF_BR7
+
+****************************************************
+
+*c110 Top of hierarchy  cell=dfpfb0
+.subckt DF_FS1 VDD Q QN VSS SN D CKN
+
+M20 IN1 cn pm VDD pmos  l=0.13u w=0.38u m=1
+M3  IN2 c  pm VSS nmos  l=0.13u w=0.26u m=1
+
+M18 N_18 m VDD VDD pmos  l=0.13u w=0.17u m=1
+M17 N_18 c pm VDD pmos  l=0.13u w=0.17u m=1
+M5 N_30 cn pm VSS nmos  l=0.13u w=0.17u m=1
+M4 VSS m N_30 VSS nmos  l=0.13u w=0.17u m=1
+
+M21 m pm VDD VDD pmos  l=0.13u w=0.39u m=1
+M9 m pm sng VSS nmos  l=0.13u w=0.31u m=1
+M13 sng SN VSS VSS nmos  l=0.13u w=0.37u m=1
+
+.ends DF_FS1
+
+
+****************************************************
+.subckt DF_BS1 VDD Q QN VSS SN D CKN
+M24 bm c m VDD pmos  l=0.13u w=0.42u m=1
+M10 bm cn m VSS nmos  l=0.13u w=0.28u m=1
+
+M28 s bm VDD VDD pmos  l=0.13u w=0.26u m=1
+M8 s bm VSS VSS nmos  l=0.13u w=0.18u m=1
+
+M25 bm SN VDD VDD pmos  l=0.13u w=0.28u m=1
+
+M22 bm cn N_19 VDD pmos  l=0.13u w=0.17u m=1
+M23 N_19 s VDD VDD pmos  l=0.13u w=0.17u m=1
+M11 N_31 s sng VSS nmos  l=0.13u w=0.17u m=1
+M12 bm c N_31 VSS nmos  l=0.13u w=0.17u m=1
+.ends DF_BS1
+
+
+****************************************************
+
+.subckt DF_BS2 VDD Q QN VSS SN D CKN
+M26 nsn SN VDD VDD pmos  l=0.13u w=0.26u m=1
+M15 VSS SN nsn VSS nmos  l=0.13u w=0.17u m=1
+
+M25 nsnp nsn VDD VDD pmos  l=0.13u w=0.57u m=1
+M20 m pm nsnp VDD pmos  l=0.13u w=0.21u m=1
+M10 m pm VSS VSS nmos  l=0.13u w=0.23u m=1
+
+M22 bm cn m VDD pmos  l=0.13u w=0.42u m=1
+M8 bm c m VSS nmos  l=0.13u w=0.22u m=1
+
+
+M17 s bm VDD VDD pmos  l=0.13u w=0.17u m=1
+M2 s bm VSS VSS nmos  l=0.13u w=0.17u m=1
+M24 nsnp s N_22 VDD pmos  l=0.13u w=0.17u m=1
+M23 N_22 c bm VDD pmos  l=0.13u w=0.17u m=1
+M12 bm cn N_76 VSS nmos  l=0.13u w=0.17u m=1
+M13 N_76 s VSS VSS nmos  l=0.13u w=0.17u m=1
+M14 bm nsn VSS VSS nmos  l=0.13u w=0.18u m=1
+.ends DF_BS2
+
+
+
+*same with DF_BS2
+*.subckt DF_BR3 VSS Q D VDD RN CK
+*M22 nrn RN VDD VDD pmos  l=0.13u w=0.26u m=1
+*M3  nrn RN VSS VSS nmos  l=0.13u w=0.17u m=1
+
+*M38 nrnp nrn VDD VDD pmos  l=0.13u w=0.59u m=1
+*M31 m pm nrnp VDD pmos  l=0.13u w=0.39u m=1
+*M19 m pm VSS VSS nmos  l=0.13u w=0.23u m=1
+
+*M30 bm c m VDD pmos  l=0.13u w=0.44u m=1
+*M12 bm cn m VSS nmos  l=0.13u w=0.23u m=1
+
+*M32 bm cn N_25 VDD pmos  l=0.13u w=0.17u m=1
+*M33 N_25 s nrnp VDD pmos  l=0.13u w=0.17u m=1
+*M11 N_39 c bm VSS nmos  l=0.13u w=0.16u m=1
+*M14 VSS s N_39 VSS nmos  l=0.13u w=0.16u m=1
+
+*M21 s bm VDD VDD pmos  l=0.13u w=0.26u m=1
+*M2  s bm VSS VSS nmos  l=0.13u w=0.18u m=1
+
+*M13 VSS nrn bm VSS nmos  l=0.13u w=0.17u m=1
+*.ends DF_BR3
+
+****************************************************
+
+*from s110 DFFSHQX1MTR; the front part is LATCH4_R 
+.SUBCKT DF_BS3  Q VDD VDD VSS VSS CK D SN
+
+mXI53_MXPOEN bm cn m VDD pmos l=1.3e-07 w=6.9e-07
+mXI53_MXNOE bm c m VSS nmos l=1.3e-07 w=3.8e-07
+
+MXP10 VDD s net76 VDD pmos l=1.3e-07 w=2.3e-07
+MXN10 VSS s net101 VSS nmos l=1.3e-07 w=1.8e-07
+
+MXP11 net73 nmset_ net76 VDD pmos l=1.3e-07 w=2.3e-07
+MXN6 bm nmset_ VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+MXP12 bm c net73 VDD pmos l=1.3e-07 w=2.3e-07
+MXN9 bm cn net101 VSS nmos l=1.3e-07 w=1.8e-07
+
+mX_g2_MXPA1 s bm VDD VDD pmos l=1.3e-07 w=2.3e-07
+mX_g2_MXNA1 s bm VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+.ends DF_BS3
+
+
+****************************************************
+
+
+.SUBCKT DF_B1 D SN cn c VDD VSS
+mPM12 m clkn bm VDD pmos mr=1 l=500n w=1.68u nf=1
+mNM12 m clkp bm VSS nmos mr=1 l=600n w=1.21u nf=1
+
+mM17 net14 clkp VDD VDD pmos mr=1 l=500n w=300n nf=1
+mM19 bm s net14 VDD pmos mr=1 l=500n w=300n nf=1
+mM18 bm s net15 VSS nmos mr=1 l=600n w=220n nf=1
+mM16 net15 clkn VSS VSS nmos mr=1 l=600n w=220n nf=1
+
+mPM1 s bm VDD VDD pmos mr=1 l=500n w=1.74u nf=1
+mNM1 s bm VSS VSS nmos mr=1 l=600n w=780n nf=1
+.ends DF_B1
+****************************************************
+
+*high speed dff back v1 from DFFHQNX1MTR s110 
+.SUBCKT DF_B2 m cn c  VDD VSS s
+pmos_1 m  cn bm  VDD pmos l=1 w=1 n=1
+nmos_1 m  c  bm  VSS nmos l=1 w=1 n=1
+pmos_2 VDD   s  net1 VDD pmos l=1 w=1 n=1
+nmos_2 VSS   s  net2 VSS nmos l=1 w=1 n=1   
+pmos_3 net1  c  bm   VDD pmos l=1 w=1 n=1
+nmos_3 net2  cn bm   VSS nmos l=1 w=1 n=1
+pmos_4 s    bm  VDD VDD pmos l=1 w=1 n=1
+nmos_4 s    bm  VSS VSS nmos l=1 w=1 n=1      
+.ends DF_B2
+****************************************************
+****************************************************
+.SUBCKT LATCH_P1 D m cn c VDD VSS
+pmos_1 VDD  D  net1 VDD pmos l=1 w=1 n=1
+nmos_1 VSS  D  net2 VSS nmos l=1 w=1 n=1
+pmos_2 net1 cn out  VDD pmos l=1 w=1 n=1
+nmos_2 net2 c  out  VSS nmos l=1 w=1 n=1   
+pmos_3 out  c  net3 VDD pmos l=1 w=1 n=1
+nmos_3 out  cn net4 VSS nmos l=1 w=1 n=1
+pmos_4 net3 m  VDD  VDD pmos l=1 w=1 n=1
+nmos_4 net4 m  VSS  VSS nmos l=1 w=1 n=1 
+.ends LATCH_P1
+****************************************************
+.SUBCKT LATCH1 D cn c VDD VSS
+pmos_1 VDD  D  net1 VDD pmos l=1 w=1 n=1
+nmos_1 VSS  D  net2 VSS nmos l=1 w=1 n=1
+pmos_2 net1 cn out  VDD pmos l=1 w=1 n=1
+nmos_2 net2 c  out  VSS nmos l=1 w=1 n=1   
+pmos_3 out  c  net3 VDD pmos l=1 w=1 n=1
+nmos_3 out  cn net4 VSS nmos l=1 w=1 n=1
+pmos_4 net3 m  VDD  VDD pmos l=1 w=1 n=1
+nmos_4 net4 m  VSS  VSS nmos l=1 w=1 n=1      
+pmos_5 VDD  out m   VDD pmos l=1 w=1 n=1 
+nmos_5 VSS  out m   VSS nmos l=1 w=1 n=1
+.ends LATCH1
+****************************************************
+.SUBCKT LATCH2 D cn c VDD VSS
+pmos_1 VDD  cn  net1 VDD pmos l=1 w=1 n=1
+nmos_1 VSS  c  net2 VSS nmos l=1 w=1 n=1
+pmos_2 net1 D  out  VDD pmos l=1 w=1 n=1
+nmos_2 net2 D  out  VSS nmos l=1 w=1 n=1   
+pmos_3 out  c  net3 VDD pmos l=1 w=1 n=1
+nmos_3 out  cn net4 VSS nmos l=1 w=1 n=1
+pmos_4 net3 m  VDD  VDD pmos l=1 w=1 n=1
+nmos_4 net4 m  VSS  VSS nmos l=1 w=1 n=1      
+pmos_5 VDD  out m   VDD pmos l=1 w=1 n=1 
+nmos_5 VSS  out m   VSS nmos l=1 w=1 n=1
+.ends LATCH2
+****************************************************
+* c153 Top of hierarchy  cell=dfbrq1
+.SUBCKT LATCH_SR1 D SN RN cn c VDD VSS
+M35 N_13 m VDD VDD pmos  l=0.42u w=0.5u m=1
+M36 N_12 c pm VDD pmos  l=0.42u w=0.52u m=1
+M37 N_13 cn pm VDD pmos  l=0.42u w=0.5u m=1
+M38 N_12 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M15 N_29 m VSS VSS nmos  l=0.5u w=0.5u m=1
+M16 N_29 c pm VSS nmos  l=0.5u w=0.5u m=1
+M17 pm cn N_28 VSS nmos  l=0.5u w=0.5u m=1
+M18 N_28 D VSS VSS nmos  l=0.5u w=0.5u m=1
+
+M32 m SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M33 N_14 nrn m VDD pmos  l=0.42u w=0.52u m=1
+M34 N_14 pm VDD VDD pmos  l=0.42u w=0.52u m=1
+M12 N_21 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_21 nrn m VSS nmos  l=0.5u w=0.5u m=1
+M14 N_21 pm m VSS nmos  l=0.5u w=0.5u m=1
+.ends LATCH_SR1
+****************************************************
+*from s110 DFFRHQX1MTR front   (mos5,6) part is a nand2
+.SUBCKT LATCH_R1 D RN cn c VDD VSS
+pmos_1 VDD  c    net1 VDD pmos l=1 w=1 n=1
+nmos_1 VSS  cn   net2 VSS nmos l=1 w=1 n=1
+pmos_2 net1 nmin pm   VDD pmos l=1 w=1 n=1
+nmos_2 net2 nmin pm   VSS nmos l=1 w=1 n=1   
+pmos_3 pm   cn   net3 VDD pmos l=1 w=1 n=1
+nmos_3 pm   c    net4 VSS nmos l=1 w=1 n=1
+pmos_4 net3 m    VDD  VDD pmos l=1 w=1 n=1
+nmos_4 net4 m    VSS  VSS nmos l=1 w=1 n=1  
+    
+pmos_5 VDD  RN  m   VDD pmos l=1 w=1 n=1 
+nmos_5 VSS  RN  net5   VSS nmos l=1 w=1 n=1
+pmos_6 m    pm  VDD   VDD pmos l=1 w=1 n=1 
+nmos_6 net5 pm  m   VSS nmos l=1 w=1 n=1
+.ends LATCH_R1
+****************************************************
+*from c153 dfcfb1 front   (mos5,6) part is a nand2
+.SUBCKT LATCH_R2 D RN cn c VDD VSS
+M21 N_21 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M22 N_22 c pm VDD pmos  l=0.42u w=0.5u m=1
+M23 N_21 cn pm VDD pmos  l=0.42u w=0.52u m=1
+M24 N_22 m VDD VDD pmos  l=0.42u w=0.5u m=1
+M3 N_14 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_14 c pm VSS nmos  l=0.5u w=0.5u m=1
+M5 N_15 cn pm VSS nmos  l=0.5u w=0.5u m=1
+M6 N_15 m VSS VSS nmos  l=0.5u w=0.5u m=1
+
+M25 N_23 pm VDD VDD pmos  l=0.42u w=0.52u m=1
+M26 N_23 nrn m VDD pmos  l=0.42u w=0.52u m=1
+M7 m pm VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 m nrn VSS VSS nmos  l=0.5u w=0.5u m=1
+.ends LATCH_R2
+
+****************************************************
+*s110 DFFSHQX1MTR front part
+.SUBCKT LATCH_S1 D SN cn c VDD VSS
+mX_g5_MXPA1 nmset_ SN VDD VDD pmos l=1.3e-07 w=2.3e-07
+mX_g5_MXNA1 nmset_ SN VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+MXP4 pm SN VDD VDD pmos l=1.3e-07 w=2.3e-07
+MXN8 VSS SN net92 VSS nmos l=1.3e-07 w=4.5e-07
+
+MXP1 net091 c VDD VDD pmos l=1.3e-07 w=3.7e-07
+MXN7 net92 cn net89 VSS nmos l=1.3e-07 w=4.5e-07
+
+MXP8 pm nmin net091 VDD pmos l=1.3e-07 w=3.7e-07
+MXN3 pm nmin net89 VSS nmos l=1.3e-07 w=4.5e-07
+
+mX_g7_MXPA1 m pm VDD VDD pmos l=1.3e-07 w=6.9e-07
+mX_g7_MXNA1 m pm VSS VSS nmos l=1.3e-07 w=4.3e-07
+
+mXI6_MXPA1 XI6_p1 m VDD VDD pmos l=1.3e-07 w=2.3e-07
+mXI6_MXNA1 XI6_n1 m VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+mXI6_MXPOEN pm cn XI6_p1 VDD pmos l=1.3e-07 w=2.3e-07
+mXI6_MXNOE pm c XI6_n1 VSS nmos l=1.3e-07 w=1.8e-07
+.ends LATCH_S1
+****************************************************
+

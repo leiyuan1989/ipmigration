@@ -1,0 +1,2897 @@
+*The INV cell provides the logical inversion of a single input (A). 
+.subckt INV_V1 A VDD VSS Y
+mp_1_0 VDD A Y VDD pmos  l=0.42u w=0.76u m=1
+mn_1_0 VSS A Y VSS nmos  l=0.5u w=0.58u m=1
+.ends INV
+
+*The BUF cell provides the logical buffer of a single input (A).
+.subckt BUFF_V1 A VDD VSS Y  
+mp_1_0 net1 A VDD VDD pmos  l=0.42u w=0.52u m=1
+mp_2_0 VDD net1 Y VDD pmos  l=0.42u w=0.76u m=1
+mn_1_0 net1 A VSS VSS nmos  l=0.5u  w=0.5u  m=1
+mn_2_0 VSS net1 Y VSS nmos  l=0.5u  w=0.58u m=1
+.ends BUFF
+
+*The NAND2 cell provides the logical NAND of two inputs (A, B).
+.subckt NAND02 A B VDD VSS Y
+mp_1_0 VDD  A   Y    VDD pmos  l=0.42u w=0.76u m=1
+mp_2_0 Y    B   VDD  VDD pmos  l=0.42u w=0.76u m=1
+mn_1_0 VSS  A   net1 VSS nmos  l=0.5u w=0.58u m=1
+mn_2_0 net1 B   Y    VSS nmos  l=0.5u w=0.58u m=1
+.ends NAND02
+
+
+*The AND2 cell provides the logical AND of two inputs (A, B).
+.subckt AND02 A B VDD VSS Y
+mp_1_0 VDD  A    net1 VDD pmos  l=0.42u w=0.52u m=1
+mp_2_0 net1 B    VDD  VDD pmos  l=0.42u w=0.52u m=1
+mp_3_0 VDD  net1 Y    VDD pmos  l=0.42u w=0.76u m=1
+mn_1_0 net1 A    net2 VSS nmos  l=0.5u w=0.58u m=1
+mn_2_0 net2 B    VSS  VSS nmos  l=0.5u w=0.58u m=1
+mn_3_0 VSS  net1 Y    VSS nmos  l=0.5u w=0.58u m=1
+.ends AND02
+
+
+
+.subckt AND03 C B A Y VSS VDD
+M1 N_9 A N_2 VSS nmos  l=0.5u w=0.58u m=1
+M2 N_10 B N_9 VSS nmos  l=0.5u w=0.58u m=1
+M3 N_10 C VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 Y N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_2 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M6 N_2 B VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 N_2 C VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 Y N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends AND03
+
+.subckt AND04  VSS Y VDD D C B A
+M1 N_6 A N_4 VSS nmos  l=0.5u w=0.58u m=1
+M2 N_7 B N_6 VSS nmos  l=0.5u w=0.58u m=1
+M3 N_8 C N_7 VSS nmos  l=0.5u w=0.58u m=1
+M4 N_8 D VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 Y N_4 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_4 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 N_4 B VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 N_4 C VDD VDD pmos  l=0.42u w=0.52u m=1
+M9 N_4 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 Y N_4 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends AND04 
+
+.subckt NAND03 A B C VDD VSS Y
+M1 N_9 C VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_9 B N_8 VSS nmos  l=0.5u w=0.58u m=1
+M3 Y A N_8 VSS nmos  l=0.5u w=0.58u m=1
+M4 Y C VDD VDD pmos  l=0.42u w=0.76u m=1
+M5 Y B VDD VDD pmos  l=0.42u w=0.76u m=1
+M6 Y A VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends NAND03
+
+.subckt NAND04 VSS Y VDD A B C D
+M1 N_6 D VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_7 C N_6 VSS nmos  l=0.5u w=0.58u m=1
+M3 N_7 B N_5 VSS nmos  l=0.5u w=0.58u m=1
+M4 Y A N_5 VSS nmos  l=0.5u w=0.58u m=1
+M5 Y D VDD VDD pmos  l=0.42u w=0.76u m=1
+M6 Y C VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 Y B VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 Y A VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends NAND04
+
+.subckt AND12  B AN VSS VDD Y
+M1 N_4 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_14 N_4 N_2 VSS nmos  l=0.5u w=0.5u m=1
+M3 N_14 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 Y N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_4 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+M6 N_2 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 N_2 B VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 Y N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends AND12 
+
+.subckt AND13  C B AN VDD VSS Y
+M1 Y N_6 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_4 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_11 N_4 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_11 B N_10 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_10 C VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 Y N_6 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_4 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 N_6 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M9 N_6 B VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 N_6 C VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends AND13 
+
+.subckt AND23  C BN AN VSS VDD Y
+M1 N_5 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_4 BN VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_11 N_5 N_2 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_12 N_4 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_12 C VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 Y N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M7 N_5 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 N_4 BN VDD VDD pmos  l=0.42u w=0.52u m=1
+M9 N_2 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 N_2 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M11 N_2 C VDD VDD pmos  l=0.42u w=0.52u m=1
+M12 Y N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends AND23 
+
+
+
+.subckt NAND12 B AN Y VDD VSS
+M1 Y N_4 N_12 VSS nmos  l=0.5u w=0.58u m=1
+M2 N_4 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_12 B VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 Y N_4 VDD VDD pmos  l=0.42u w=0.76u m=1
+M5 N_4 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+M6 Y B VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends NAND12
+
+.subckt NAND13 C AN B Y VDD VSS
+M1 Y N_5 N_9 VSS nmos  l=0.5u w=0.58u m=1
+M2 N_10 B N_9 VSS nmos  l=0.5u w=0.58u m=1
+M3 N_5 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_10 C VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 Y N_5 VDD VDD pmos  l=0.42u w=0.76u m=1
+M6 Y B VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_5 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 Y C VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends NAND13
+
+.subckt NAND14 VSS Y VDD B C D AN
+M1 N_8 B N_6 VSS nmos  l=0.5u w=0.58u m=1
+M2 N_8 C N_7 VSS nmos  l=0.5u w=0.58u m=1
+M3 N_7 D VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_4 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 Y N_4 N_6 VSS nmos  l=0.5u w=0.58u m=1
+M6 Y B VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 Y C VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 Y D VDD VDD pmos  l=0.42u w=0.76u m=1
+M9 N_4 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 Y N_4 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends NAND14
+
+.subckt NAND23 AN C BN VSS Y VDD
+M1 N_4 BN VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 Y N_5 N_11 VSS nmos  l=0.5u w=0.58u m=1
+M3 N_11 N_4 N_10 VSS nmos  l=0.5u w=0.58u m=1
+M4 N_10 C VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_5 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_4 BN VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 Y N_5 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 Y N_4 VDD VDD pmos  l=0.42u w=0.76u m=1
+M9 Y C VDD VDD pmos  l=0.42u w=0.76u m=1
+M10 N_5 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends NAND23
+
+.subckt NAND24 VSS Y VDD D AN C BN
+M1 N_3 BN VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 Y N_4 N_9 VSS nmos  l=0.5u w=0.58u m=1
+M3 N_9 N_3 N_8 VSS nmos  l=0.5u w=0.58u m=1
+M4 N_8 C N_7 VSS nmos  l=0.5u w=0.58u m=1
+M5 N_7 D VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_4 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_3 BN VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 Y N_4 VDD VDD pmos  l=0.42u w=0.76u m=1
+M9 Y N_3 VDD VDD pmos  l=0.42u w=0.76u m=1
+M10 Y C VDD VDD pmos  l=0.42u w=0.76u m=1
+M11 Y D VDD VDD pmos  l=0.42u w=0.76u m=1
+M12 N_4 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends NAND24
+
+.subckt NOR02 VSS Y VDD B A
+M1 Y A VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 Y B VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_7 A VDD VDD pmos  l=0.42u w=0.76u m=1
+M4 Y B N_7 VDD pmos  l=0.42u w=0.76u m=1
+.ends NOR02
+
+.subckt NOR03 A B C VSS VDD Y
+M1 Y C VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 Y B VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 Y A VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 Y C N_11 VDD pmos  l=0.42u w=0.76u m=1
+M5 N_12 B N_11 VDD pmos  l=0.42u w=0.76u m=1
+M6 N_12 A VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends NOR03
+
+.subckt NOR04 A B C D VSS VDD Y
+M1 Y D VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 Y C VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 Y B VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 Y A VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 Y D N_12 VDD pmos  l=0.42u w=0.76u m=1
+M6 N_14 C N_12 VDD pmos  l=0.42u w=0.76u m=1
+M7 N_14 B N_13 VDD pmos  l=0.42u w=0.76u m=1
+M8 N_13 A VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends NOR04
+
+.subckt NOR12 B AN VSS VDD Y
+M1 N_2 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 Y B VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 Y N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_2 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+M5 Y B N_12 VDD pmos  l=0.42u w=0.76u m=1
+M6 N_12 N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends NOR12
+
+.subckt NOR13 C B AN VSS VDD Y
+M1 N_4 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 Y N_4 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 Y B VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 Y C VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_4 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+M6 N_10 N_4 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_10 B N_9 VDD pmos  l=0.42u w=0.76u m=1
+M8 Y C N_9 VDD pmos  l=0.42u w=0.76u m=1
+.ends NOR13
+
+.subckt NOR14 D C B AN VSS VDD Y
+M1 N_5 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 Y N_5 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 Y B VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 Y C VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 Y D VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_5 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 N_11 N_5 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_12 B N_11 VDD pmos  l=0.42u w=0.76u m=1
+M9 N_12 C N_10 VDD pmos  l=0.42u w=0.76u m=1
+M10 Y D N_10 VDD pmos  l=0.42u w=0.76u m=1
+.ends NOR14
+
+.subckt NOR23 C AN BN VSS VDD Y
+M1 N_3 BN VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_4 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 Y N_4 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 Y N_3 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 Y C VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_3 BN VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 N_4 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 N_11 N_4 VDD VDD pmos  l=0.42u w=0.76u m=1
+M9 N_11 N_3 N_10 VDD pmos  l=0.42u w=0.76u m=1
+M10 Y C N_10 VDD pmos  l=0.42u w=0.76u m=1
+.ends NOR23
+
+.subckt NOR24 D C AN BN Y VDD VSS
+M1 N_4 BN VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_5 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 Y N_5 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 Y N_4 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 Y C VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 Y D VSS VSS nmos  l=0.5u w=0.58u m=1
+M7 N_4 BN VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 N_5 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+M9 N_12 N_5 VDD VDD pmos  l=0.42u w=0.76u m=1
+M10 N_13 N_4 N_12 VDD pmos  l=0.42u w=0.76u m=1
+M11 N_13 C N_11 VDD pmos  l=0.42u w=0.76u m=1
+M12 Y D N_11 VDD pmos  l=0.42u w=0.76u m=1
+.ends NOR24
+
+.subckt OR02 A B VDD VSS Y
+M1 N_2 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_2 A VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 Y N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_12 B N_2 VDD pmos  l=0.42u w=0.52u m=1
+M5 N_12 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M6 Y N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends OR02
+
+.subckt OR03 B A C VSS VDD Y
+M1 N_3 C VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_3 A VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 Y N_3 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_3 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_13 C N_3 VDD pmos  l=0.42u w=0.52u m=1
+M6 N_14 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 Y N_3 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_14 B N_13 VDD pmos  l=0.42u w=0.52u m=1
+.ends OR03
+
+.subckt OR04 D A C B VDD Y VSS
+M1 N_2 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_2 C VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_2 A VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_2 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 Y N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_16 B N_15 VDD pmos  l=0.42u w=0.52u m=1
+M7 N_15 C N_14 VDD pmos  l=0.42u w=0.52u m=1
+M8 N_16 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M9 N_14 D N_2 VDD pmos  l=0.42u w=0.52u m=1
+M10 Y N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends OR04
+
+.subckt OR12 AN B Y VDD VSS
+M1 N_4 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 Y N_4 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_2 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_4 N_2 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_14 B N_4 VDD pmos  l=0.42u w=0.52u m=1
+M6 Y N_4 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_2 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 N_14 N_2 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends OR12
+
+.subckt OR13 AN C B VSS VDD Y
+M1 N_5 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 Y N_5 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_5 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_5 C VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_6 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_15 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 Y N_5 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_16 B N_15 VDD pmos  l=0.42u w=0.52u m=1
+M9 N_5 C N_16 VDD pmos  l=0.42u w=0.52u m=1
+M10 N_6 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends OR13
+
+.subckt OR23 AN C BN Y VDD VSS
+M1 N_5 BN VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_2 C VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_2 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_2 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_4 AN VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 Y N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M7 N_5 BN VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 N_2 C N_18 VDD pmos  l=0.42u w=0.52u m=1
+M9 N_18 N_5 N_17 VDD pmos  l=0.42u w=0.52u m=1
+M10 N_17 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M11 N_4 AN VDD VDD pmos  l=0.42u w=0.52u m=1
+M12 Y N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends OR23
+
+.subckt XNOR02 VDD Y VSS A B
+M1 Y N_6 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_8 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_8 N_5 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_6 A N_4 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_5 A VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_4 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 Y N_6 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_8 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M9 N_8 A N_6 VDD pmos  l=0.42u w=0.52u m=1
+M10 N_5 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M11 N_4 N_5 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M12 N_4 B VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends XNOR02
+
+.subckt XNOR03 VDD Y VSS C A B
+M1 N_12 N_11 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M2 N_9 C N_12 VSS nmos  l=0.5u w=0.5u m=1
+M3 N_11 C VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_4 B N_6 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_5 B N_9 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_10 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_4 N_10 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_6 N_10 N_5 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 Y N_12 VSS VSS nmos  l=0.5u w=0.58u m=1
+M11 N_4 A VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_11 C VDD VDD pmos  l=0.42u w=0.52u m=1
+M13 N_9 B N_4 VDD pmos  l=0.42u w=0.52u m=1
+M14 N_6 B N_5 VDD pmos  l=0.42u w=0.52u m=1
+M15 N_10 B VDD VDD pmos  l=0.42u w=0.52u m=1
+M16 N_9 N_10 N_5 VDD pmos  l=0.42u w=0.52u m=1
+M17 N_4 N_10 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M18 N_5 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M19 Y N_12 VDD VDD pmos  l=0.42u w=0.76u m=1
+M20 N_4 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M21 N_6 C N_12 VDD pmos  l=0.42u w=0.52u m=1
+M22 N_9 N_11 N_12 VDD pmos  l=0.42u w=0.52u m=1
+.ends XNOR03
+
+.subckt XOR02 VDD Y VSS B A
+M1 N_5 A VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_4 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 Y N_6 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_8 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_8 A N_6 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_6 N_5 N_4 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_4 A N_6 VDD pmos  l=0.42u w=0.52u m=1
+M8 N_5 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M9 N_4 B VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 Y N_6 VDD VDD pmos  l=0.42u w=0.76u m=1
+M11 N_8 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M12 N_8 N_5 N_6 VDD pmos  l=0.42u w=0.52u m=1
+.ends XOR02
+
+.subckt XOR03 VDD Y VSS C A B
+M1 N_9 N_11 N_12 VSS nmos  l=0.5u w=0.5u m=1
+M2 N_12 C N_6 VSS nmos  l=0.5u w=0.5u m=1
+M3 N_4 B N_6 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_5 B N_9 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_10 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_4 N_10 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_6 N_10 N_5 VSS nmos  l=0.5u w=0.5u m=1
+M8 Y N_12 VSS VSS nmos  l=0.5u w=0.58u m=1
+M9 N_4 A VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_11 C VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_9 B N_4 VDD pmos  l=0.42u w=0.5u m=1
+M13 N_6 B N_5 VDD pmos  l=0.42u w=0.5u m=1
+M14 N_10 B VDD VDD pmos  l=0.42u w=0.5u m=1
+M15 N_9 N_10 N_5 VDD pmos  l=0.42u w=0.5u m=1
+M16 N_4 N_10 N_6 VDD pmos  l=0.42u w=0.5u m=1
+M17 Y N_12 VDD VDD pmos  l=0.42u w=0.76u m=1
+M18 N_4 A VDD VDD pmos  l=0.42u w=0.5u m=1
+M19 N_5 N_4 VDD VDD pmos  l=0.42u w=0.5u m=1
+M20 N_11 C VDD VDD pmos  l=0.42u w=0.5u m=1
+M21 N_6 N_11 N_12 VDD pmos  l=0.42u w=0.5u m=1
+M22 N_9 C N_12 VDD pmos  l=0.42u w=0.5u m=1
+.ends XOR03
+
+
+
+
+
+.subckt BUFT OE A VSS Y VDD
+M1 Y N_5 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_5 A VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_5 N_3 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_5 OE VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_3 OE VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 Y N_6 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_6 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 N_6 N_3 VDD VDD pmos  l=0.42u w=0.52u m=1
+M9 N_3 OE VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 N_6 OE N_5 VDD pmos  l=0.42u w=0.52u m=1
+.ends BUFT
+
+.subckt BUFTL A OE VSS VDD Y
+M1 Y N_5 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_2 OE VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_5 OE N_6 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_5 A VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_5 N_2 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 Y N_6 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_6 OE VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 N_2 OE VDD VDD pmos  l=0.42u w=0.52u m=1
+M9 N_6 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 N_6 N_2 N_5 VDD pmos  l=0.42u w=0.52u m=1
+.ends BUFTL
+
+.subckt INVT A OE VDD VSS Y
+M1 N_2 OE VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_9 A VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 Y N_2 N_9 VSS nmos  l=0.5u w=0.58u m=1
+M4 N_2 OE VDD VDD pmos  l=0.42u w=0.52u m=1
+M5 N_14 A VDD VDD pmos  l=0.42u w=0.76u m=1
+M6 Y OE N_14 VDD pmos  l=0.42u w=0.76u m=1
+.ends INVT
+
+.subckt INVTL OE A VSS VDD Y
+M1 N_5 OE VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_9 A VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 Y OE N_9 VSS nmos  l=0.5u w=0.58u m=1
+M4 N_5 OE VDD VDD pmos  l=0.42u w=0.52u m=1
+M5 N_14 A VDD VDD pmos  l=0.42u w=0.76u m=1
+M6 Y N_5 N_14 VDD pmos  l=0.42u w=0.76u m=1
+.ends INVTL
+
+.subckt DELAY A VSS VDD Y
+M1 N_4 A VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_3 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_2 N_3 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 Y N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_4 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M6 N_3 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 N_2 N_3 VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 Y N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends DELAY
+
+.subckt AOI21 A0 A1 B0 VSS Y VDD
+M1 Y B0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_9 A1 Y VSS nmos  l=0.5u w=0.58u m=1
+M3 N_9 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 Y B0 N_7 VDD pmos  l=0.42u w=0.76u m=1
+M5 N_7 A1 VDD VDD pmos  l=0.42u w=0.76u m=1
+M6 N_7 A0 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends AOI21
+
+.subckt AOI22 B0 B1 A1 A0 Y VDD VSS
+M1 N_11 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 Y A1 N_11 VSS nmos  l=0.5u w=0.58u m=1
+M3 Y B1 N_10 VSS nmos  l=0.5u w=0.58u m=1
+M4 N_10 B0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_6 A0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M6 N_6 A1 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_6 B1 Y VDD pmos  l=0.42u w=0.76u m=1
+M8 N_6 B0 Y VDD pmos  l=0.42u w=0.76u m=1
+.ends AOI22
+
+.subckt AOI31 B0 A2 A1 A0 VSS VDD Y
+M1 N_10 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_11 A1 N_10 VSS nmos  l=0.5u w=0.58u m=1
+M3 N_11 A2 Y VSS nmos  l=0.5u w=0.58u m=1
+M4 Y B0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_9 A0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M6 N_9 A1 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_9 A2 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 Y B0 N_9 VDD pmos  l=0.42u w=0.76u m=1
+.ends AOI31
+
+.subckt AOI32 VSS Y VDD B0 B1 A2 A1 A0
+M1 N_6 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_7 A1 N_6 VSS nmos  l=0.5u w=0.58u m=1
+M3 Y A2 N_7 VSS nmos  l=0.5u w=0.58u m=1
+M4 Y B1 N_5 VSS nmos  l=0.5u w=0.58u m=1
+M5 N_5 B0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_9 A0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_9 A1 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_9 A2 VDD VDD pmos  l=0.42u w=0.76u m=1
+M9 N_9 B1 Y VDD pmos  l=0.42u w=0.76u m=1
+M10 N_9 B0 Y VDD pmos  l=0.42u w=0.76u m=1
+.ends AOI32
+
+.subckt AOI33 VSS Y VDD B0 B1 B2 A2 A1 A0
+M1 N_6 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_7 A1 N_6 VSS nmos  l=0.5u w=0.58u m=1
+M3 Y A2 N_7 VSS nmos  l=0.5u w=0.58u m=1
+M4 N_8 B2 Y VSS nmos  l=0.5u w=0.58u m=1
+M5 N_8 B1 N_5 VSS nmos  l=0.5u w=0.58u m=1
+M6 N_5 B0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M7 N_11 A0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_11 A1 VDD VDD pmos  l=0.42u w=0.76u m=1
+M9 N_11 A2 VDD VDD pmos  l=0.42u w=0.76u m=1
+M10 Y B2 N_11 VDD pmos  l=0.42u w=0.76u m=1
+M11 Y B1 N_11 VDD pmos  l=0.42u w=0.76u m=1
+M12 Y B0 N_11 VDD pmos  l=0.42u w=0.76u m=1
+.ends AOI33
+
+.subckt AOI211 A0 A1 B0 C0 Y VDD VSS
+M1 Y C0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 Y B0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 Y A1 N_10 VSS nmos  l=0.5u w=0.58u m=1
+M4 N_10 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 Y C0 N_16 VDD pmos  l=0.42u w=0.76u m=1
+M6 N_6 B0 N_16 VDD pmos  l=0.42u w=0.76u m=1
+M7 N_6 A1 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_6 A0 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends AOI211
+
+.subckt AOI221 B0 A0 A1 B1 C0 Y VDD VSS
+M1 Y C0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 Y B1 N_12 VSS nmos  l=0.5u w=0.58u m=1
+M3 N_13 A1 Y VSS nmos  l=0.5u w=0.58u m=1
+M4 N_13 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_12 B0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 Y C0 N_8 VDD pmos  l=0.42u w=0.76u m=1
+M7 N_7 B1 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_7 A1 N_8 VDD pmos  l=0.42u w=0.76u m=1
+M9 N_7 A0 N_8 VDD pmos  l=0.42u w=0.76u m=1
+M10 N_7 B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends AOI221
+
+.subckt AOIM21 B0 A1N A0N VSS VDD Y
+M1 N_3 A0N VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_3 A1N VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 Y N_3 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 Y B0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_14 A0N VDD VDD pmos  l=0.42u w=0.52u m=1
+M6 N_3 A1N N_14 VDD pmos  l=0.42u w=0.52u m=1
+M7 N_13 N_3 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 Y B0 N_13 VDD pmos  l=0.42u w=0.76u m=1
+.ends AOIM21
+
+.subckt AOIM22 B0 B1 A1N A0N VDD Y VSS
+M1 N_2 A0N VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_2 A1N VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_11 B1 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_11 B0 Y VSS nmos  l=0.5u w=0.58u m=1
+M5 Y N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_18 A0N VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 N_2 A1N N_18 VDD pmos  l=0.42u w=0.52u m=1
+M8 N_10 B1 VDD VDD pmos  l=0.42u w=0.76u m=1
+M9 N_10 B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M10 Y N_2 N_10 VDD pmos  l=0.42u w=0.76u m=1
+.ends AOIM22
+
+.subckt AOIM31 B0 A2N A1N A0N VSS VDD Y
+M1 N_3 A0N VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_3 A1N VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_3 A2N VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 Y N_3 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 Y B0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_15 A0N VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 N_16 A1N N_15 VDD pmos  l=0.42u w=0.52u m=1
+M8 N_3 A2N N_16 VDD pmos  l=0.42u w=0.52u m=1
+M9 N_14 N_3 VDD VDD pmos  l=0.42u w=0.76u m=1
+M10 Y B0 N_14 VDD pmos  l=0.42u w=0.76u m=1
+.ends AOIM31
+
+.subckt AOR21 B0 A1 A0 VSS VDD Y
+M1 N_10 A0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_3 A1 N_10 VSS nmos  l=0.5u w=0.5u m=1
+M3 Y N_3 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_3 B0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_9 A0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M6 N_9 A1 VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 Y N_3 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_3 B0 N_9 VDD pmos  l=0.42u w=0.52u m=1
+.ends AOR21
+
+.subckt AOR211 C0 B0 A0 A1 VDD Y VSS
+M1 N_11 A1 N_2 VSS nmos  l=0.5u w=0.5u m=1
+M2 N_11 A0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_2 B0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_2 C0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 Y N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_9 A1 VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 N_9 A0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 N_18 B0 N_9 VDD pmos  l=0.42u w=0.52u m=1
+M9 N_2 C0 N_18 VDD pmos  l=0.42u w=0.52u m=1
+M10 Y N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends AOR211
+
+.subckt AOR22 A0 A1 B1 B0 VSS VDD Y
+M1 Y N_6 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_12 B0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_12 B1 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_6 A1 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_11 A0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 Y N_6 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_8 B0 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M8 N_6 B1 N_8 VDD pmos  l=0.42u w=0.52u m=1
+M9 N_8 A1 VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 N_8 A0 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends AOR22
+
+.subckt AOR221 VSS Y VDD C0 A0 A1 B1 B0
+M1 Y N_4 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_8 B0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_8 B1 N_4 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_4 A1 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_7 A0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_4 C0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_14 A1 N_12 VDD pmos  l=0.42u w=0.52u m=1
+M8 N_12 A0 N_14 VDD pmos  l=0.42u w=0.52u m=1
+M9 N_12 C0 N_4 VDD pmos  l=0.42u w=0.52u m=1
+M10 Y N_4 VDD VDD pmos  l=0.42u w=0.76u m=1
+M11 N_14 B0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M12 N_14 B1 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends AOR221
+
+.subckt AOR31 B0 A2 A1 A0 VSS Y VDD
+M1 N_11 A0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_12 A1 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M3 N_2 A2 N_12 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_2 B0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 Y N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_10 A0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 N_10 A1 VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 N_10 A2 VDD VDD pmos  l=0.42u w=0.52u m=1
+M9 N_2 B0 N_10 VDD pmos  l=0.42u w=0.52u m=1
+M10 Y N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends AOR31
+
+.subckt AOR311 VSS Y VDD A2 A0 A1 B0 C0
+M1 N_7 A1 N_4 VSS nmos  l=0.5u w=0.5u m=1
+M2 N_4 B0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_4 C0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_8 A2 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_8 A0 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M6 Y N_4 VSS VSS nmos  l=0.5u w=0.58u m=1
+M7 N_10 A1 VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 N_10 B0 N_15 VDD pmos  l=0.42u w=0.52u m=1
+M9 N_15 C0 N_4 VDD pmos  l=0.42u w=0.52u m=1
+M10 N_10 A2 VDD VDD pmos  l=0.42u w=0.52u m=1
+M11 N_10 A0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M12 Y N_4 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends AOR311
+
+.subckt OAI21 A0 A1 B0 Y VDD VSS
+M1 N_5 B0 Y VSS nmos  l=0.5u w=0.58u m=1
+M2 N_5 A1 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_5 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 Y B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M5 N_9 A1 Y VDD pmos  l=0.42u w=0.76u m=1
+M6 N_9 A0 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends OAI21
+
+.subckt OAI22 A1 A0 B0 B1 VDD Y VSS
+M1 Y B1 N_7 VSS nmos  l=0.5u w=0.58u m=1
+M2 N_7 B0 Y VSS nmos  l=0.5u w=0.58u m=1
+M3 N_7 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_7 A1 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_11 B1 Y VDD pmos  l=0.42u w=0.76u m=1
+M6 N_11 B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_10 A0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 Y A1 N_10 VDD pmos  l=0.42u w=0.76u m=1
+.ends OAI22
+
+.subckt OAI31 A2 A0 A1 B0 Y VDD VSS
+M1 Y B0 N_7 VSS nmos  l=0.5u w=0.58u m=1
+M2 N_7 A1 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_7 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_7 A2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 Y B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M6 N_11 A1 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_11 A0 N_10 VDD pmos  l=0.42u w=0.76u m=1
+M8 N_10 A2 Y VDD pmos  l=0.42u w=0.76u m=1
+.ends OAI31
+
+.subckt OAI32 A2 B1 B0 A0 A1 VSS VDD Y
+M1 N_9 A1 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_9 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_9 B0 Y VSS nmos  l=0.5u w=0.58u m=1
+M4 N_9 B1 Y VSS nmos  l=0.5u w=0.58u m=1
+M5 N_9 A2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_13 A1 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_13 A0 N_12 VDD pmos  l=0.42u w=0.76u m=1
+M8 N_11 B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M9 Y B1 N_11 VDD pmos  l=0.42u w=0.76u m=1
+M10 N_12 A2 Y VDD pmos  l=0.42u w=0.76u m=1
+.ends OAI32
+
+.subckt OAI33 VDD Y VSS B2 B1 B0 A1 A0 A2
+M1 Y B0 N_12 VSS nmos  l=0.5u w=0.58u m=1
+M2 N_12 A1 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_12 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_12 A2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 Y B2 N_12 VSS nmos  l=0.5u w=0.58u m=1
+M6 Y B1 N_12 VSS nmos  l=0.5u w=0.58u m=1
+M7 N_9 B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_8 A1 VDD VDD pmos  l=0.42u w=0.76u m=1
+M9 N_8 A0 N_7 VDD pmos  l=0.42u w=0.76u m=1
+M10 N_7 A2 Y VDD pmos  l=0.42u w=0.76u m=1
+M11 Y B2 N_6 VDD pmos  l=0.42u w=0.76u m=1
+M12 N_9 B1 N_6 VDD pmos  l=0.42u w=0.76u m=1
+.ends OAI33
+
+.subckt OAI211 C0 B0 A1 A0 VSS VDD Y
+M1 N_9 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_9 A1 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_9 B0 N_16 VSS nmos  l=0.5u w=0.58u m=1
+M4 Y C0 N_16 VSS nmos  l=0.5u w=0.58u m=1
+M5 N_10 A0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M6 Y A1 N_10 VDD pmos  l=0.42u w=0.76u m=1
+M7 Y B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 Y C0 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends OAI211
+
+.subckt OAI221 C0 B1 A1 A0 B0 Y VDD VSS
+M1 N_7 B0 N_8 VSS nmos  l=0.5u w=0.58u m=1
+M2 N_8 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_8 A1 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_8 B1 N_7 VSS nmos  l=0.5u w=0.58u m=1
+M5 Y C0 N_7 VSS nmos  l=0.5u w=0.58u m=1
+M6 N_13 B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_12 A0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 Y C0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M9 Y A1 N_12 VDD pmos  l=0.42u w=0.76u m=1
+M10 N_13 B1 Y VDD pmos  l=0.42u w=0.76u m=1
+.ends OAI221
+
+.subckt OAI222 C1 C0 B1 A1 A0 B0 VSS VDD Y
+M1 N_13 B0 N_10 VSS nmos  l=0.5u w=0.58u m=1
+M2 N_13 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_13 A1 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_10 B1 N_13 VSS nmos  l=0.5u w=0.58u m=1
+M5 N_10 C0 Y VSS nmos  l=0.5u w=0.58u m=1
+M6 Y C1 N_10 VSS nmos  l=0.5u w=0.58u m=1
+M7 N_12 B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_21 A0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M9 Y A1 N_21 VDD pmos  l=0.42u w=0.76u m=1
+M10 Y B1 N_12 VDD pmos  l=0.42u w=0.76u m=1
+M11 Y C0 N_20 VDD pmos  l=0.42u w=0.76u m=1
+M12 N_20 C1 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends OAI222
+
+.subckt OAI311 C0 A2 A1 A0 B0 VDD Y VSS
+M1 N_9 B0 N_18 VSS nmos  l=0.5u w=0.58u m=1
+M2 N_9 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_9 A1 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_9 A2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 Y C0 N_18 VSS nmos  l=0.5u w=0.58u m=1
+M6 Y B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_12 A0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_12 A1 N_11 VDD pmos  l=0.42u w=0.76u m=1
+M9 N_11 A2 Y VDD pmos  l=0.42u w=0.76u m=1
+M10 VDD C0 Y VDD pmos  l=0.42u w=0.76u m=1
+.ends OAI311
+
+.subckt OAI321 A2 A1 A0 B0 B1 C0 VSS Y VDD
+M1 Y C0 N_11 VSS nmos  l=0.5u w=0.58u m=1
+M2 N_11 B1 N_10 VSS nmos  l=0.5u w=0.58u m=1
+M3 N_10 B0 N_11 VSS nmos  l=0.5u w=0.58u m=1
+M4 N_10 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_10 A1 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_10 A2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M7 Y C0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_15 B1 Y VDD pmos  l=0.42u w=0.76u m=1
+M9 N_15 B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M10 N_14 A0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M11 N_14 A1 N_13 VDD pmos  l=0.42u w=0.76u m=1
+M12 N_13 A2 Y VDD pmos  l=0.42u w=0.76u m=1
+.ends OAI321
+
+.subckt OAI322 Y VDD VSS B0 A0 A1 A2 B1 C0 C1
+M1 N_14 B0 N_12 VSS nmos  l=0.5u w=0.58u m=1
+M2 Y C1 N_12 VSS nmos  l=0.5u w=0.58u m=1
+M3 N_12 C0 Y VSS nmos  l=0.5u w=0.58u m=1
+M4 N_14 B1 N_12 VSS nmos  l=0.5u w=0.58u m=1
+M5 N_14 A2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_14 A1 VSS VSS nmos  l=0.5u w=0.58u m=1
+M7 N_14 A0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M8 N_9 C1 VDD VDD pmos  l=0.42u w=0.76u m=1
+M9 N_9 C0 Y VDD pmos  l=0.42u w=0.76u m=1
+M10 N_3 B1 Y VDD pmos  l=0.42u w=0.76u m=1
+M11 N_10 A2 Y VDD pmos  l=0.42u w=0.76u m=1
+M12 N_11 A1 N_10 VDD pmos  l=0.42u w=0.76u m=1
+M13 N_11 A0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M14 N_3 B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends OAI322
+
+.subckt OAIM21 B0 A1N A0N VDD VSS Y
+M1 N_10 A0N N_3 VSS nmos  l=0.5u w=0.5u m=1
+M2 N_10 A1N VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 Y N_3 N_9 VSS nmos  l=0.5u w=0.58u m=1
+M4 N_9 B0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_3 A0N VDD VDD pmos  l=0.42u w=0.52u m=1
+M6 N_3 A1N VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 Y N_3 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 Y B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends OAIM21
+
+.subckt OAIM22 B1 B0 A0N A1N Y VDD VSS
+M1 N_11 A1N VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_4 A0N N_11 VSS nmos  l=0.5u w=0.5u m=1
+M3 N_7 N_4 Y VSS nmos  l=0.5u w=0.58u m=1
+M4 N_7 B0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_7 B1 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_4 A1N VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 N_4 A0N VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 Y N_4 VDD VDD pmos  l=0.42u w=0.76u m=1
+M9 N_18 B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M10 N_18 B1 Y VDD pmos  l=0.42u w=0.76u m=1
+.ends OAIM22
+
+.subckt OAIM211 VSS Y VDD C0 B0 A0N A1N
+M1 N_7 A1N N_4 VSS nmos  l=0.5u w=0.5u m=1
+M2 N_7 A0N VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_8 N_4 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_8 B0 N_6 VSS nmos  l=0.5u w=0.58u m=1
+M5 Y C0 N_6 VSS nmos  l=0.5u w=0.58u m=1
+M6 N_4 A1N VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 N_4 A0N VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 Y N_4 VDD VDD pmos  l=0.42u w=0.76u m=1
+M9 Y B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M10 Y C0 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends OAIM211
+
+.subckt OAIM2M11 C0 A0N B0N A1N VDD VSS Y
+M1 N_11 N_6 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_12 A1N VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_6 B0N VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_6 A0N N_12 VSS nmos  l=0.5u w=0.5u m=1
+M5 Y C0 N_11 VSS nmos  l=0.5u w=0.58u m=1
+M6 Y N_6 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_7 A1N VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 N_6 B0N N_7 VDD pmos  l=0.42u w=0.52u m=1
+M9 N_7 A0N VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 Y C0 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends OAIM2M11
+
+.subckt OAIM31 VSS Y VDD A1N A2N A0N B0
+M1 Y N_4 N_6 VSS nmos  l=0.5u w=0.58u m=1
+M2 N_6 B0 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_8 A2N VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_8 A1N N_7 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_7 A0N N_4 VSS nmos  l=0.5u w=0.5u m=1
+M6 Y N_4 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 Y B0 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_4 A2N VDD VDD pmos  l=0.42u w=0.52u m=1
+M9 N_4 A1N VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 N_4 A0N VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends OAIM31
+
+.subckt ORA211 A1 B0 C0 A0 VSS VDD Y
+M1 N_10 A0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 Y N_5 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_5 C0 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_11 B0 N_10 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_10 A1 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_17 A0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M7 Y N_5 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_5 C0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M9 N_5 B0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 N_5 A1 N_17 VDD pmos  l=0.42u w=0.52u m=1
+.ends ORA211
+
+.subckt ORA21 B0 A1 A0 VSS VDD Y
+M1 N_9 A0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_9 A1 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_2 B0 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M4 Y N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_14 A0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M6 N_2 A1 N_14 VDD pmos  l=0.42u w=0.52u m=1
+M7 N_2 B0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 Y N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends ORA21
+
+.subckt ORA31 A0 A2 B0 A1 VSS VDD Y
+M1 Y N_6 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_10 A1 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_6 B0 N_10 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_10 A2 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_10 A0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 Y N_6 VDD VDD pmos  l=0.42u w=0.76u m=1
+M7 N_15 A1 VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 N_6 B0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M9 N_6 A2 N_16 VDD pmos  l=0.42u w=0.52u m=1
+M10 N_16 A0 N_15 VDD pmos  l=0.42u w=0.52u m=1
+.ends ORA31
+
+.subckt ORA311 C0 B0 A2 A1 A0 Y VDD VSS
+M1 Y N_7 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_8 A0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_8 A1 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_8 A2 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_8 B0 N_12 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_12 C0 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M7 Y N_7 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_19 A0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M9 N_19 A1 N_18 VDD pmos  l=0.42u w=0.52u m=1
+M10 N_18 A2 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M11 N_7 B0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M12 N_7 C0 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends ORA311
+
+.subckt ADD VDD S CO VSS A B CI
+M1 N_4 N_15 N_2 VSS nmos  l=0.5u w=0.5u m=1
+M2 N_3 CI N_2 VSS nmos  l=0.5u w=0.5u m=1
+M3 N_9 A VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_9 N_7 N_4 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_7 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_7 N_9 N_4 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_14 N_4 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_15 N_3 N_14 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_8 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_15 CI VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 CO N_14 VSS VSS nmos  l=0.5u w=0.58u m=1
+M12 N_9 N_8 N_3 VSS nmos  l=0.5u w=0.5u m=1
+M13 S N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M14 N_8 N_9 N_3 VSS nmos  l=0.5u w=0.5u m=1
+M15 N_3 N_15 N_2 VDD pmos  l=0.42u w=0.52u m=1
+M16 N_4 CI N_2 VDD pmos  l=0.42u w=0.52u m=1
+M17 N_9 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M18 N_3 N_7 N_9 VDD pmos  l=0.42u w=0.52u m=1
+M19 N_7 B VDD VDD pmos  l=0.42u w=0.52u m=1
+M20 N_7 N_9 N_3 VDD pmos  l=0.42u w=0.52u m=1
+M21 N_14 N_3 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M22 N_15 N_4 N_14 VDD pmos  l=0.42u w=0.52u m=1
+M23 N_8 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M24 N_15 CI VDD VDD pmos  l=0.42u w=0.52u m=1
+M25 CO N_14 VDD VDD pmos  l=0.42u w=0.76u m=1
+M26 N_4 N_8 N_9 VDD pmos  l=0.42u w=0.52u m=1
+M27 S N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+M28 N_4 N_9 N_8 VDD pmos  l=0.42u w=0.52u m=1
+.ends ADD
+
+.subckt ADDH VDD CO S VSS A B
+M1 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 S N_7 N_4 VSS nmos  l=0.5u w=0.58u m=1
+M3 VSS A N_5 VSS nmos  l=0.5u w=0.5u m=1
+M4 S B N_5 VSS nmos  l=0.5u w=0.58u m=1
+M5 N_7 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_21 A N_8 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_21 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 CO N_8 VSS VSS nmos  l=0.5u w=0.58u m=1
+M9 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 S N_7 N_5 VDD pmos  l=0.42u w=0.76u m=1
+M11 N_5 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M12 S B N_4 VDD pmos  l=0.42u w=0.76u m=1
+M13 N_7 B VDD VDD pmos  l=0.42u w=0.52u m=1
+M14 N_8 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M15 N_8 B VDD VDD pmos  l=0.42u w=0.52u m=1
+M16 CO N_8 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends ADDH
+
+.subckt MX02 VSS Y VDD S0 B A
+M1 Y N_6 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_7 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_5 A VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_6 N_3 N_5 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_7 S0 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_3 S0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 Y N_6 VDD VDD pmos  l=0.42u w=0.76u m=1
+M8 N_7 B VDD VDD pmos  l=0.42u w=0.52u m=1
+M9 N_5 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 N_6 S0 N_5 VDD pmos  l=0.42u w=0.52u m=1
+M11 N_7 N_3 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M12 N_3 S0 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends MX02
+
+.subckt MXI02 VSS Y VDD A B S0
+M1 N_5 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 Y N_3 N_4 VSS nmos  l=0.5u w=0.58u m=1
+M3 Y S0 N_5 VSS nmos  l=0.5u w=0.58u m=1
+M4 N_3 S0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_4 A VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 Y N_3 N_5 VDD pmos  l=0.42u w=0.76u m=1
+M7 N_5 B VDD VDD pmos  l=0.42u w=0.52u m=1
+M8 Y S0 N_4 VDD pmos  l=0.42u w=0.76u m=1
+M9 N_3 S0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 N_4 A VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends MXI02
+
+.subckt MX04 VSS Y VDD S1 A B S0 D C
+M1 N_3 N_14 N_2 VSS nmos  l=0.5u w=0.5u m=1
+M2 N_4 S1 N_2 VSS nmos  l=0.5u w=0.5u m=1
+M3 N_7 C VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_4 N_10 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M5 Y N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_8 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_11 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_13 N_10 N_3 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_13 A VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_14 S1 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_4 S0 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M12 N_10 S0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_3 S0 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_4 N_14 N_2 VDD pmos  l=0.42u w=0.5u m=1
+M15 N_2 S1 N_3 VDD pmos  l=0.42u w=0.5u m=1
+M16 N_7 C VDD VDD pmos  l=0.42u w=0.52u m=1
+M17 N_8 N_10 N_4 VDD pmos  l=0.42u w=0.5u m=1
+M18 N_8 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M19 Y N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+M20 N_11 B VDD VDD pmos  l=0.42u w=0.52u m=1
+M21 N_3 N_10 N_11 VDD pmos  l=0.42u w=0.5u m=1
+M22 N_13 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 N_14 S1 VDD VDD pmos  l=0.42u w=0.52u m=1
+M24 N_4 S0 N_7 VDD pmos  l=0.42u w=0.5u m=1
+M25 N_10 S0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M26 N_3 S0 N_13 VDD pmos  l=0.42u w=0.5u m=1
+.ends MX04
+
+.subckt MXI04 VDD Y VSS C D S0 B A S1
+M1 N_11 N_15 N_14 VSS nmos  l=0.5u w=0.5u m=1
+M2 N_12 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_11 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_9 A VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_9 N_7 N_10 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_4 S0 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_10 S0 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_7 S0 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_14 S1 N_12 VSS nmos  l=0.5u w=0.5u m=1
+M10 N_15 S1 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_8 B VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_6 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_4 N_7 N_5 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_5 C VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 Y N_14 VSS VSS nmos  l=0.5u w=0.58u m=1
+M16 N_14 N_15 N_12 VDD pmos  l=0.42u w=0.52u m=1
+M17 N_12 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M18 N_11 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M19 N_9 A VDD VDD pmos  l=0.42u w=0.52u m=1
+M20 N_5 S0 N_4 VDD pmos  l=0.42u w=0.52u m=1
+M21 N_7 S0 VDD VDD pmos  l=0.42u w=0.52u m=1
+M22 N_10 S0 N_9 VDD pmos  l=0.42u w=0.52u m=1
+M23 N_10 N_7 N_8 VDD pmos  l=0.42u w=0.52u m=1
+M24 N_14 S1 N_11 VDD pmos  l=0.42u w=0.52u m=1
+M25 N_15 S1 VDD VDD pmos  l=0.42u w=0.52u m=1
+M26 N_8 B VDD VDD pmos  l=0.42u w=0.52u m=1
+M27 N_6 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M28 N_6 N_7 N_4 VDD pmos  l=0.42u w=0.52u m=1
+M29 N_5 C VDD VDD pmos  l=0.42u w=0.52u m=1
+M30 Y N_14 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends MXI04
+
+***completed***
+*an active-high D-type transparent latch. When the enable (G) is high, data is transferred to the outputs (Q, QN).
+.subckt LANHB1 D G VDD VSS QN Q 
+mp_1_0  cn    G    VDD  VDD pmos l=1.3e-07 w=2.8e-07
+mn_1_0  cn    G    VSS  VSS nmos l=1.3e-07 w=2.3e-07
+mp_2_0  VDD   cn   c    VDD pmos l=1.3e-07 w=2.3e-07
+mn_2_0  VSS   cn   c    VSS nmos l=1.3e-07 w=1.8e-07
+mp_4_0  VDD   D    net1 VDD pmos l=1.3e-07 w=6.5e-07
+mn_4_0  VSS   D    net2 VSS nmos l=1.3e-07 w=5.3e-07
+mp_5_0  net1  cn   net3 VDD pmos l=1.3e-07 w=6.5e-07
+mn_5_0  net2  c    net3 VSS nmos l=1.3e-07 w=5.3e-07
+mp_6_0  net3  c    net4 VDD pmos l=1.3e-07 w=2.3e-07
+mn_6_0  net3  cn   net5 VSS nmos l=1.3e-07 w=1.5e-07
+mp_7_0  net4  m    VDD  VDD pmos l=1.3e-07 w=2.3e-07
+mn_7_0  net5  m    VSS  VSS nmos l=1.3e-07 w=1.5e-07
+mp_8_0  VDD   net3 m    VDD pmos l=1.3e-07 w=2.3e-07
+mn_8_0  VSS   net3 m    VSS nmos l=1.3e-07 w=1.8e-07
+mp_10_0 Q     net3 VDD  VDD pmos l=1.3e-07 w=6.2e-07
+mn_10_0 Q     net3 VSS  VSS nmos l=1.3e-07 w=3.6e-07
+mp_11_0 VDD   m    QN   VDD pmos l=1.3e-07 w=6.2e-07
+mn_11_0 VSS   m    QN   VSS nmos l=1.3e-07 w=3.6e-07
+.ends LANHB1
+
+***completed***
+*an active-high D-type transparent latch When the enable (G) is high, data is transferred to the output (QN)
+.subckt LANHN1 D G VDD VSS QN
+mp_1_0  cn   G   VDD  VDD pmos  l=0.42u w=0.52u m=1
+mn_1_0  cn   G   VSS  VSS nmos  l=0.5u w=0.5u m=1
+mp_2_0  VDD  cn  c    VDD pmos  l=0.42u w=0.52u m=1
+mn_2_0  VSS  cn  c    VSS nmos  l=0.5u w=0.5u m=1
+mp_4_0  VDD  D   net1 VDD pmos  l=0.42u w=0.52u m=1
+mn_4_0  VSS  D   net2 VSS nmos  l=0.5u w=0.5u m=1
+mp_5_0  net1 cn  net3 VDD pmos  l=0.42u w=0.52u m=1
+mn_5_0  net2 c   net3 VSS nmos  l=0.5u w=0.5u m=1
+mp_6_0  net3 c   net4 VDD pmos  l=0.42u w=0.52u m=1
+mn_6_0  net3 cn  net5 VSS nmos  l=0.5u w=0.5u m=1
+mp_7_0  net4 m   VDD  VDD pmos  l=0.42u w=0.52u m=1
+mn_7_0  net5 m   VSS  VSS nmos  l=0.5u w=0.5u m=1
+mp_8_0  VDD  net3 m   VDD pmos  l=0.42u w=0.52u m=1
+mn_8_0  VSS  net3 m   VSS nmos  l=0.5u w=0.5u m=1
+mp_10_0 VDD  m    QN   VDD pmos l=0.42u w=0.76u m=1
+mn_10_0 VSS  m    QN   VSS nmos  l=0.5u w=0.58u m=1
+.ends LANHN1
+
+***completed***
+*an active-high D-type transparent latch When the enable (G) is high, data is transferred to the output (Q)
+.subckt LANHQ1 D G VDD VSS Q
+mp_1_0  cn   G   VDD  VDD pmos  l=0.42u w=0.52u m=1
+mn_1_0  cn   G   VSS  VSS nmos  l=0.5u w=0.5u m=1
+mp_2_0  VDD  cn  c    VDD pmos  l=0.42u w=0.52u m=1
+mn_2_0  VSS  cn  c    VSS nmos  l=0.5u w=0.5u m=1
+mp_4_0  VDD  D   net1 VDD pmos  l=0.42u w=0.52u m=1
+mn_4_0  VSS  D   net2 VSS nmos  l=0.5u w=0.5u m=1
+mp_5_0  net1 cn  net3 VDD pmos  l=0.42u w=0.52u m=1
+mn_5_0  net2 c   net3 VSS nmos  l=0.5u w=0.5u m=1
+mp_6_0  net3 c   net4 VDD pmos  l=0.42u w=0.52u m=1
+mn_6_0  net3 cn  net5 VSS nmos  l=0.5u w=0.5u m=1
+mp_7_0  net4 m   VDD  VDD pmos  l=0.42u w=0.52u m=1
+mn_7_0  net5 m   VSS  VSS nmos  l=0.5u w=0.5u m=1
+mp_8_0  VDD  net3 m   VDD pmos  l=0.42u w=0.52u m=1
+mn_8_0  VSS  net3 m   VSS nmos l=0.5u w=0.5u m=1
+mp_10_0 VDD  net3  Q  VDD pmos l=0.42u w=0.76u m=1
+mn_10_0 VSS  net3  Q  VSS nmos l=0.5u w=0.58u m=1
+.ends LANHQ1
+
+
+*an active-high D-type transparent latch When the enable (G) is high, data is transferred to the output (QN) by the enable pin (OE)
+.subckt LANHT1  OE D G VDD VSS Q
+M12 N_4 G VDD VDD pmos  l=0.42u w=0.52u m=1
+M2 N_4 G VSS VSS nmos  l=0.5u w=0.5u m=1
+
+M11 N_5 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M1 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+
+
+M13 N_25 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M14 N_6 N_4 N_25 VDD pmos  l=0.42u w=0.52u m=1
+M15 N_8 N_6 VDD VDD pmos  l=0.42u w=0.76u m=1
+M16 N_7 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M17 N_26 N_5 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M18 N_26 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M19 Q N_3 N_8 VDD pmos  l=0.42u w=0.76u m=1
+M20 N_3 OE VDD VDD pmos  l=0.42u w=0.52u m=1
+
+
+M2 N_4 G VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_11 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_7 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_8 N_6 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_12 N_4 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_11 N_5 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_12 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 Q OE N_8 VSS nmos  l=0.5u w=0.58u m=1
+M10 N_3 OE VSS VSS nmos  l=0.5u w=0.5u m=1
+
+.ends LANHT1
+
+
+
+.subckt LANLB VSS QN Q VDD D GN
+M1 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_4 GN VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_10 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 QN N_7 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_7 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 Q N_6 VSS VSS nmos  l=0.5u w=0.58u m=1
+M7 N_11 N_5 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_10 N_4 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_11 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_5 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M11 N_4 GN VDD VDD pmos  l=0.42u w=0.52u m=1
+M12 N_22 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M13 N_6 N_5 N_22 VDD pmos  l=0.42u w=0.52u m=1
+M14 QN N_7 VDD VDD pmos  l=0.42u w=0.76u m=1
+M15 Q N_6 VDD VDD pmos  l=0.42u w=0.76u m=1
+M16 N_7 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M17 N_23 N_4 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M18 N_23 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends LANLB
+
+
+
+
+
+.subckt LANLN D GN VSS QN VDD
+M1 N_4 N_3 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_3 GN VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_14 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 QN N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_2 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_15 N_4 N_5 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_14 N_3 N_5 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_15 N_2 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_4 N_3 VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 N_3 GN VDD VDD pmos  l=0.42u w=0.52u m=1
+M11 N_23 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M12 N_5 N_4 N_23 VDD pmos  l=0.42u w=0.52u m=1
+M13 QN N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+M14 N_2 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M15 N_24 N_3 N_5 VDD pmos  l=0.42u w=0.52u m=1
+M16 N_24 N_2 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends LANLN
+
+.subckt LANLQ D GN VSS Q VDD
+M1 N_4 N_3 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_3 GN VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_13 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_2 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 Q N_5 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_14 N_4 N_5 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_13 N_3 N_5 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_14 N_2 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_4 N_3 VDD VDD pmos  l=0.42u w=0.52u m=1
+M10 N_3 GN VDD VDD pmos  l=0.42u w=0.52u m=1
+M11 N_22 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M12 N_5 N_4 N_22 VDD pmos  l=0.42u w=0.52u m=1
+M13 N_2 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M14 Q N_5 VDD VDD pmos  l=0.42u w=0.76u m=1
+M15 N_23 N_3 N_5 VDD pmos  l=0.42u w=0.52u m=1
+M16 N_23 N_2 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends LANLQ
+
+.subckt LACHB RN D G VSS QN Q VDD
+M1 N_5 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_7 G VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_18 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_19 RN N_18 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_19 N_5 N_3 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_21 RN N_20 VSS nmos  l=0.5u w=0.5u m=1
+M7 QN N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M8 N_2 N_3 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 Q N_3 VSS VSS nmos  l=0.5u w=0.58u m=1
+M10 N_20 N_7 N_3 VSS nmos  l=0.5u w=0.5u m=1
+M11 N_21 N_2 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_5 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M13 N_7 G VDD VDD pmos  l=0.42u w=0.52u m=1
+M14 N_31 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M15 N_3 N_7 N_31 VDD pmos  l=0.42u w=0.52u m=1
+M16 N_3 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M17 N_32 N_5 N_3 VDD pmos  l=0.42u w=0.52u m=1
+M18 QN N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+M19 Q N_3 VDD VDD pmos  l=0.42u w=0.76u m=1
+M20 N_2 N_3 VDD VDD pmos  l=0.42u w=0.52u m=1
+M21 N_32 N_2 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends LACHB
+
+*solve this problem
+.subckt lachb0 VSS QN Q VDD RN D G
+M1 N_4 G VSS VSS nmos  l=0.13u w=0.17u m=1
+M2 VSS N_4 N_2 VSS nmos  l=0.13u w=0.17u m=1
+M3 N_7 N_2 N_5 VSS nmos  l=0.13u w=0.18u m=1
+M4 N_15 D N_7 VSS nmos  l=0.13u w=0.18u m=1
+M5 N_15 RN VSS VSS nmos  l=0.13u w=0.18u m=1
+M6 N_16 RN VSS VSS nmos  l=0.13u w=0.17u m=1
+M7 N_14 N_4 N_5 VSS nmos  l=0.13u w=0.17u m=1
+M8 N_16 N_13 N_14 VSS nmos  l=0.13u w=0.17u m=1
+M9 QN N_13 VSS VSS nmos  l=0.13u w=0.26u m=1
+M10 Q N_5 VSS VSS nmos  l=0.13u w=0.26u m=1
+M11 N_13 N_5 VSS VSS nmos  l=0.13u w=0.18u m=1
+M12 N_4 G VDD VDD pmos  l=0.13u w=0.42u m=1
+M13 N_2 N_4 VDD VDD pmos  l=0.13u w=0.42u m=1
+M14 N_7 D VDD VDD pmos  l=0.13u w=0.37u m=1
+M15 N_5 RN VDD VDD pmos  l=0.13u w=0.22u m=1
+M16 N_25 N_2 N_5 VDD pmos  l=0.13u w=0.17u m=1
+M17 N_7 N_4 N_5 VDD pmos  l=0.13u w=0.28u m=1
+M18 N_25 N_13 VDD VDD pmos  l=0.13u w=0.17u m=1
+M19 QN N_13 VDD VDD pmos  l=0.13u w=0.4u m=1
+M20 Q N_5 VDD VDD pmos  l=0.13u w=0.4u m=1
+M21 N_13 N_5 VDD VDD pmos  l=0.13u w=0.26u m=1
+.ends lachb0
+
+
+.subckt LACHQ RN D G VDD VSS Q
+M1 N_3 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_6 G VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_16 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_17 RN N_16 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_2 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 Q N_4 VSS VSS nmos  l=0.5u w=0.58u m=1
+M7 N_17 N_3 N_4 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_19 RN N_18 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_18 N_6 N_4 VSS nmos  l=0.5u w=0.5u m=1
+M10 N_19 N_2 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_3 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M12 N_6 G VDD VDD pmos  l=0.42u w=0.52u m=1
+M13 N_28 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M14 N_4 N_6 N_28 VDD pmos  l=0.42u w=0.52u m=1
+M15 N_4 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M16 Q N_4 VDD VDD pmos  l=0.42u w=0.76u m=1
+M17 N_2 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M18 N_29 N_3 N_4 VDD pmos  l=0.42u w=0.52u m=1
+M19 N_29 N_2 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends LACHQ
+
+.subckt LACLB RN D GN VSS QN Q VDD
+M1 N_7 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_5 GN VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_18 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_19 RN N_18 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_19 N_5 N_3 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_21 RN N_20 VSS nmos  l=0.5u w=0.5u m=1
+M7 QN N_2 VSS VSS nmos  l=0.5u w=0.58u m=1
+M8 N_2 N_3 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 Q N_3 VSS VSS nmos  l=0.5u w=0.58u m=1
+M10 N_20 N_7 N_3 VSS nmos  l=0.5u w=0.5u m=1
+M11 N_21 N_2 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_7 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M13 N_5 GN VDD VDD pmos  l=0.42u w=0.52u m=1
+M14 N_31 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M15 N_3 N_7 N_31 VDD pmos  l=0.42u w=0.52u m=1
+M16 N_3 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M17 N_32 N_5 N_3 VDD pmos  l=0.42u w=0.52u m=1
+M18 QN N_2 VDD VDD pmos  l=0.42u w=0.76u m=1
+M19 Q N_3 VDD VDD pmos  l=0.42u w=0.76u m=1
+M20 N_2 N_3 VDD VDD pmos  l=0.42u w=0.52u m=1
+M21 N_32 N_2 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends LACLB
+
+
+*solve problem
+.subckt laclb0 VSS QN Q VDD RN D GN
+M1 N_4 GN VSS VSS nmos  l=0.13u w=0.17u m=1
+M2 VSS N_4 N_2 VSS nmos  l=0.13u w=0.17u m=1
+M3 N_7 N_4 N_5 VSS nmos  l=0.13u w=0.17u m=1
+M4 N_15 D N_7 VSS nmos  l=0.13u w=0.26u m=1
+M5 N_15 RN VSS VSS nmos  l=0.13u w=0.26u m=1
+M6 N_16 RN VSS VSS nmos  l=0.13u w=0.17u m=1
+M7 N_14 N_2 N_5 VSS nmos  l=0.13u w=0.17u m=1
+M8 N_16 N_13 N_14 VSS nmos  l=0.13u w=0.17u m=1
+M9 QN N_13 VSS VSS nmos  l=0.13u w=0.26u m=1
+M10 Q N_5 VSS VSS nmos  l=0.13u w=0.26u m=1
+M11 N_13 N_5 VSS VSS nmos  l=0.13u w=0.18u m=1
+M12 Q N_5 VDD VDD pmos  l=0.13u w=0.4u m=1
+M13 N_13 N_5 VDD VDD pmos  l=0.13u w=0.26u m=1
+M14 N_4 GN VDD VDD pmos  l=0.13u w=0.42u m=1
+M15 N_2 N_4 VDD VDD pmos  l=0.13u w=0.42u m=1
+M16 N_7 D VDD VDD pmos  l=0.13u w=0.38u m=1
+M17 N_26 N_4 N_5 VDD pmos  l=0.13u w=0.17u m=1
+M18 N_5 RN VDD VDD pmos  l=0.13u w=0.26u m=1
+M19 N_7 N_2 N_5 VDD pmos  l=0.13u w=0.17u m=1
+M20 N_26 N_13 VDD VDD pmos  l=0.13u w=0.17u m=1
+M21 QN N_13 VDD VDD pmos  l=0.13u w=0.4u m=1
+.ends laclb0
+
+
+
+.subckt LACLQ GN D RN VDD Q VSS
+M1 N_6 N_8 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 Q N_8 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_19 RN N_18 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_18 N_3 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_16 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_17 RN N_16 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_19 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_2 GN VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_3 N_2 VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_17 N_2 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M11 N_8 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M12 Q N_8 VDD VDD pmos  l=0.42u w=0.76u m=1
+M13 N_6 N_8 VDD VDD pmos  l=0.42u w=0.52u m=1
+M14 N_28 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M15 N_29 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M16 N_2 GN VDD VDD pmos  l=0.42u w=0.52u m=1
+M17 N_3 N_2 VDD VDD pmos  l=0.42u w=0.52u m=1
+M18 N_8 N_3 N_28 VDD pmos  l=0.42u w=0.52u m=1
+M19 N_29 N_2 N_8 VDD pmos  l=0.42u w=0.52u m=1
+.ends LACLQ
+
+.subckt LAPHB VSS QN Q VDD D SN G
+M1 N_7 N_5 N_12 VSS nmos  l=0.5u w=0.5u m=1
+M2 N_6 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_4 G VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_12 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_7 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_13 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 QN N_9 VSS VSS nmos  l=0.5u w=0.58u m=1
+M9 Q N_7 VSS VSS nmos  l=0.5u w=0.58u m=1
+M10 N_9 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_13 N_4 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M12 N_29 N_6 N_28 VDD pmos  l=0.42u w=0.52u m=1
+M13 N_28 N_5 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M14 N_6 SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M15 N_5 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M16 N_4 G VDD VDD pmos  l=0.42u w=0.52u m=1
+M17 N_26 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M18 N_7 N_4 N_27 VDD pmos  l=0.42u w=0.52u m=1
+M19 N_27 N_6 N_26 VDD pmos  l=0.42u w=0.52u m=1
+M20 N_29 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M21 QN N_9 VDD VDD pmos  l=0.42u w=0.76u m=1
+M22 N_9 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 Q N_7 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends LAPHB
+
+.subckt LAPLB VSS QN Q VDD D SN GN
+M1 N_7 N_4 N_12 VSS nmos  l=0.5u w=0.5u m=1
+M2 N_6 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_4 GN VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_12 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_7 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_13 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 QN N_9 VSS VSS nmos  l=0.5u w=0.58u m=1
+M9 Q N_7 VSS VSS nmos  l=0.5u w=0.58u m=1
+M10 N_9 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_13 N_5 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M12 N_29 N_6 N_28 VDD pmos  l=0.42u w=0.52u m=1
+M13 N_28 N_4 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M14 N_6 SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M15 N_5 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M16 N_4 GN VDD VDD pmos  l=0.42u w=0.52u m=1
+M17 N_26 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M18 N_7 N_5 N_27 VDD pmos  l=0.42u w=0.52u m=1
+M19 N_27 N_6 N_26 VDD pmos  l=0.42u w=0.52u m=1
+M20 N_29 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M21 QN N_9 VDD VDD pmos  l=0.42u w=0.76u m=1
+M22 N_9 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 Q N_7 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends LAPLB
+
+.subckt LABHB VDD QN Q VSS RN D SN G
+M1 N_6 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_4 G VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_22 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_22 RN N_21 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_24 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_7 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_7 N_5 N_21 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_24 RN N_23 VSS nmos  l=0.5u w=0.5u m=1
+M10 QN N_9 VSS VSS nmos  l=0.5u w=0.58u m=1
+M11 Q N_7 VSS VSS nmos  l=0.5u w=0.58u m=1
+M12 N_9 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_23 N_4 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_15 N_6 N_14 VDD pmos  l=0.42u w=0.52u m=1
+M15 N_6 SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M16 N_5 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M17 N_4 G VDD VDD pmos  l=0.42u w=0.52u m=1
+M18 N_12 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M19 N_7 N_4 N_13 VDD pmos  l=0.42u w=0.52u m=1
+M20 N_13 N_6 N_12 VDD pmos  l=0.42u w=0.52u m=1
+M21 N_16 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M22 N_15 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 N_7 N_6 N_16 VDD pmos  l=0.42u w=0.52u m=1
+M24 N_14 N_5 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M25 QN N_9 VDD VDD pmos  l=0.42u w=0.76u m=1
+M26 Q N_7 VDD VDD pmos  l=0.42u w=0.76u m=1
+M27 N_9 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends LABHB
+
+.subckt LABLB VDD QN Q VSS RN D SN GN
+M1 N_6 SN VSS VSS nmos  l=0.5u w=0.6u m=1
+M2 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_4 GN VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_22 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_22 RN N_21 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_24 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_7 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_7 N_4 N_21 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_24 RN N_23 VSS nmos  l=0.5u w=0.5u m=1
+M10 QN N_9 VSS VSS nmos  l=0.5u w=0.58u m=1
+M11 Q N_7 VSS VSS nmos  l=0.5u w=0.58u m=1
+M12 N_9 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_23 N_5 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_15 N_6 N_14 VDD pmos  l=0.42u w=0.52u m=1
+M15 N_6 SN VDD VDD pmos  l=0.42u w=0.62u m=1
+M16 N_5 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M17 N_4 GN VDD VDD pmos  l=0.42u w=0.52u m=1
+M18 N_12 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M19 N_7 N_5 N_13 VDD pmos  l=0.42u w=0.52u m=1
+M20 N_13 N_6 N_12 VDD pmos  l=0.42u w=0.52u m=1
+M21 N_16 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M22 N_15 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 N_7 N_6 N_16 VDD pmos  l=0.42u w=0.52u m=1
+M24 N_14 N_4 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M25 QN N_9 VDD VDD pmos  l=0.42u w=0.76u m=1
+M26 Q N_7 VDD VDD pmos  l=0.42u w=0.76u m=1
+M27 N_9 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends LABLB
+
+.subckt TLATNCAD VDD ECK VSS CK E
+M1 N_4 N_3 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_21 E VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_21 N_3 N_5 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_22 N_4 N_5 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_22 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 ECK N_5 VSS VSS nmos  l=0.5u w=0.58u m=1
+M7 N_6 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_3 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 ECK N_3 VSS VSS nmos  l=0.5u w=0.58u m=1
+M10 N_4 N_3 VDD VDD pmos  l=0.42u w=0.52u m=1
+M11 N_9 E VDD VDD pmos  l=0.42u w=0.52u m=1
+M12 N_10 N_3 N_5 VDD pmos  l=0.42u w=0.5u m=1
+M13 N_9 N_4 N_5 VDD pmos  l=0.42u w=0.52u m=1
+M14 N_10 N_6 VDD VDD pmos  l=0.42u w=0.5u m=1
+M15 N_11 N_5 ECK VDD pmos  l=0.42u w=0.76u m=1
+M16 N_6 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M17 N_3 CK VDD VDD pmos  l=0.42u w=0.52u m=1
+M18 N_11 N_3 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends TLATNCAD
+
+.subckt TLATNTSCAD VDD ECK VSS CK SE E
+M1 N_4 E VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_4 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_6 N_3 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_27 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_27 N_3 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_28 N_6 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_28 N_8 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 ECK N_7 VSS VSS nmos  l=0.5u w=0.58u m=1
+M10 N_8 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 ECK N_3 VSS VSS nmos  l=0.5u w=0.58u m=1
+M12 N_3 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_11 E N_4 VDD pmos  l=0.42u w=0.52u m=1
+M14 N_11 SE VDD VDD pmos  l=0.42u w=0.52u m=1
+M15 N_5 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M16 N_6 N_3 VDD VDD pmos  l=0.42u w=0.52u m=1
+M17 N_12 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M18 N_13 N_3 N_7 VDD pmos  l=0.42u w=0.5u m=1
+M19 N_12 N_6 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M20 N_13 N_8 VDD VDD pmos  l=0.42u w=0.5u m=1
+M21 N_14 N_7 ECK VDD pmos  l=0.42u w=0.76u m=1
+M22 N_8 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 N_14 N_3 VDD VDD pmos  l=0.42u w=0.76u m=1
+M24 N_3 CK VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends TLATNTSCAD
+
+.subckt DFNRB VDD QN Q VSS CK D
+M1 QN N_10 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 Q N_8 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_10 N_8 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_32 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_32 N_4 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_31 N_5 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_31 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_7 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_30 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_30 N_5 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M11 N_6 N_4 N_29 VSS nmos  l=0.5u w=0.5u m=1
+M12 N_29 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M14 N_4 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 QN N_10 VDD VDD pmos  l=0.42u w=0.76u m=1
+M16 Q N_8 VDD VDD pmos  l=0.42u w=0.76u m=1
+M17 N_10 N_8 VDD VDD pmos  l=0.42u w=0.52u m=1
+M18 VDD N_10 N_16 VDD pmos  l=0.42u w=0.5u m=1
+M19 N_15 N_4 N_8 VDD pmos  l=0.42u w=0.52u m=1
+M20 N_16 N_5 N_8 VDD pmos  l=0.42u w=0.5u m=1
+M21 N_15 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M22 N_7 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 N_14 N_7 VDD VDD pmos  l=0.42u w=0.5u m=1
+M24 N_14 N_4 N_6 VDD pmos  l=0.42u w=0.5u m=1
+M25 N_13 N_5 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M26 N_13 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M27 N_5 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M28 N_4 CK VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends DFNRB
+
+.subckt DFNRQ VDD Q VSS CK D
+M1 Q N_8 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_9 N_8 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_29 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_28 N_5 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_28 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_7 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_27 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_27 N_5 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_6 N_4 N_26 VSS nmos  l=0.5u w=0.5u m=1
+M10 N_26 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_29 N_4 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M12 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_4 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M14 Q N_8 VDD VDD pmos  l=0.42u w=0.76u m=1
+M15 N_9 N_8 VDD VDD pmos  l=0.42u w=0.52u m=1
+M16 N_14 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M17 N_14 N_5 N_8 VDD pmos  l=0.42u w=0.5u m=1
+M18 N_13 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M19 N_7 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M20 N_12 N_7 VDD VDD pmos  l=0.42u w=0.5u m=1
+M21 N_12 N_4 N_6 VDD pmos  l=0.42u w=0.5u m=1
+M22 N_11 N_5 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M23 N_11 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M24 N_13 N_4 N_8 VDD pmos  l=0.42u w=0.52u m=1
+M25 N_5 N_4 VDD VDD pmos  l=0.42u w=0.5u m=1
+M26 N_4 CK VDD VDD pmos  l=0.42u w=0.5u m=1
+.ends DFNRQ
+
+.subckt DFNRN VDD QN VSS CK D
+M1 QN N_9 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_9 N_8 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_29 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_28 N_5 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_28 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_7 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_27 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_27 N_5 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_6 N_4 N_26 VSS nmos  l=0.5u w=0.5u m=1
+M10 N_26 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_29 N_4 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M12 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_4 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M14 QN N_9 VDD VDD pmos  l=0.42u w=0.76u m=1
+M15 N_9 N_8 VDD VDD pmos  l=0.42u w=0.52u m=1
+M16 N_14 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M17 N_14 N_5 N_8 VDD pmos  l=0.42u w=0.5u m=1
+M18 N_13 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M19 N_7 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M20 N_12 N_7 VDD VDD pmos  l=0.42u w=0.5u m=1
+M21 N_12 N_4 N_6 VDD pmos  l=0.42u w=0.5u m=1
+M22 N_11 N_5 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M23 N_11 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M24 N_13 N_4 N_8 VDD pmos  l=0.42u w=0.52u m=1
+M25 N_5 N_4 VDD VDD pmos  l=0.42u w=0.5u m=1
+M26 N_4 CK VDD VDD pmos  l=0.42u w=0.5u m=1
+.ends DFNRN
+
+.subckt DFNFB VDD QN Q VSS D CKN
+M1 QN N_9 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 Q N_8 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_9 N_8 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_31 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_30 N_4 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_30 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_7 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_29 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_29 N_4 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M10 N_6 N_5 N_28 VSS nmos  l=0.5u w=0.5u m=1
+M11 N_28 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_31 N_5 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M13 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M14 N_4 CKN VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 QN N_9 VDD VDD pmos  l=0.42u w=0.76u m=1
+M16 Q N_8 VDD VDD pmos  l=0.42u w=0.76u m=1
+M17 N_9 N_8 VDD VDD pmos  l=0.42u w=0.52u m=1
+M18 N_15 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M19 N_15 N_4 N_8 VDD pmos  l=0.42u w=0.5u m=1
+M20 N_14 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M21 N_7 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M22 N_13 N_7 VDD VDD pmos  l=0.42u w=0.5u m=1
+M23 N_13 N_5 N_6 VDD pmos  l=0.42u w=0.5u m=1
+M24 N_12 N_4 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M25 N_12 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M26 N_14 N_5 N_8 VDD pmos  l=0.42u w=0.52u m=1
+M27 N_5 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M28 N_4 CKN VDD VDD pmos  l=0.42u w=0.5u m=1
+.ends DFNFB
+
+.subckt DFCRB VDD QN Q VSS CK D RN
+M1 QN N_9 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 Q N_11 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_11 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_10 RN VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_9 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_9 N_8 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_26 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_26 N_5 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_8 N_4 N_25 VSS nmos  l=0.5u w=0.5u m=1
+M10 N_25 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_7 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_7 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_24 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M14 N_24 N_4 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M15 N_23 N_5 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M16 N_23 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M17 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M18 N_5 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M19 QN N_9 VDD VDD pmos  l=0.42u w=0.76u m=1
+M20 Q N_11 VDD VDD pmos  l=0.42u w=0.76u m=1
+M21 N_11 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M22 N_10 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 N_19 N_10 N_9 VDD pmos  l=0.42u w=0.52u m=1
+M24 N_19 N_8 VDD VDD pmos  l=0.42u w=0.52u m=1
+M25 N_18 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M26 N_18 N_4 N_8 VDD pmos  l=0.42u w=0.5u m=1
+M27 N_17 N_5 N_8 VDD pmos  l=0.42u w=0.52u m=1
+M28 N_17 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M29 N_16 N_10 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M30 N_16 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M31 N_15 N_7 VDD VDD pmos  l=0.42u w=0.5u m=1
+M32 N_14 N_4 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M33 N_15 N_5 N_6 VDD pmos  l=0.42u w=0.5u m=1
+M34 N_14 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M35 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M36 N_5 CK VDD VDD pmos  l=0.42u w=0.5u m=1
+.ends DFCRB
+
+.subckt DFCRQ VDD Q VSS CK D RN
+M1 N_3 RN VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 Q N_8 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 Q N_3 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_9 N_3 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_9 N_8 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_35 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_35 N_5 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_8 N_4 N_34 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_34 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_7 N_3 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_7 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_33 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_33 N_4 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_32 N_5 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M15 N_32 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M16 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M17 N_5 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M18 N_3 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M19 N_18 N_8 VDD VDD pmos  l=0.42u w=0.76u m=1
+M20 N_17 N_3 N_9 VDD pmos  l=0.42u w=0.52u m=1
+M21 N_18 N_3 Q VDD pmos  l=0.42u w=0.76u m=1
+M22 N_17 N_8 VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 N_16 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M24 N_16 N_4 N_8 VDD pmos  l=0.42u w=0.5u m=1
+M25 N_15 N_5 N_8 VDD pmos  l=0.42u w=0.52u m=1
+M26 N_15 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M27 N_14 N_3 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M28 N_14 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M29 N_13 N_7 VDD VDD pmos  l=0.42u w=0.5u m=1
+M30 N_12 N_4 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M31 N_13 N_5 N_6 VDD pmos  l=0.42u w=0.5u m=1
+M32 N_12 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M33 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M34 N_5 CK VDD VDD pmos  l=0.42u w=0.5u m=1
+.ends DFCRQ
+
+.subckt DFCRN VDD QN VSS CK D RN
+M1 QN N_9 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_10 RN VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_9 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_9 N_8 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_34 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_34 N_5 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_8 N_4 N_33 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_33 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_7 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_7 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_32 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_32 N_4 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M13 N_31 N_5 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_31 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M16 N_5 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M17 QN N_9 VDD VDD pmos  l=0.42u w=0.76u m=1
+M18 N_10 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M19 N_17 N_10 N_9 VDD pmos  l=0.42u w=0.52u m=1
+M20 N_17 N_8 VDD VDD pmos  l=0.42u w=0.52u m=1
+M21 N_16 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M22 N_16 N_4 N_8 VDD pmos  l=0.42u w=0.5u m=1
+M23 N_15 N_5 N_8 VDD pmos  l=0.42u w=0.52u m=1
+M24 N_15 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M25 N_14 N_10 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M26 N_14 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M27 N_13 N_7 VDD VDD pmos  l=0.42u w=0.5u m=1
+M28 N_12 N_4 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M29 N_13 N_5 N_6 VDD pmos  l=0.42u w=0.5u m=1
+M30 N_12 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M31 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M32 N_5 CK VDD VDD pmos  l=0.42u w=0.5u m=1
+.ends DFCRN
+
+.subckt DFCFB VSS QN Q VDD RN D CKN
+M1 N_4 CKN VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_14 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_14 N_5 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_15 N_4 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_15 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_7 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_7 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_16 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_8 N_4 N_16 VSS nmos  l=0.5u w=0.5u m=1
+M11 N_17 N_5 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M12 N_17 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_9 N_8 VSS VSS nmos  l=0.5u w=0.5u m=1
+M14 N_9 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 N_10 RN VSS VSS nmos  l=0.5u w=0.5u m=1
+M16 N_11 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M17 Q N_11 VSS VSS nmos  l=0.5u w=0.58u m=1
+M18 QN N_9 VSS VSS nmos  l=0.5u w=0.58u m=1
+M19 N_4 CKN VDD VDD pmos  l=0.42u w=0.5u m=1
+M20 N_5 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M21 N_21 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M22 N_22 N_5 N_6 VDD pmos  l=0.42u w=0.5u m=1
+M23 N_21 N_4 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M24 N_22 N_7 VDD VDD pmos  l=0.42u w=0.5u m=1
+M25 N_23 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M26 N_23 N_10 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M27 N_24 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M28 N_24 N_5 N_8 VDD pmos  l=0.42u w=0.52u m=1
+M29 N_25 N_4 N_8 VDD pmos  l=0.42u w=0.5u m=1
+M30 N_25 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M31 N_26 N_8 VDD VDD pmos  l=0.42u w=0.52u m=1
+M32 N_26 N_10 N_9 VDD pmos  l=0.42u w=0.52u m=1
+M33 N_10 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M34 N_11 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M35 Q N_11 VDD VDD pmos  l=0.42u w=0.76u m=1
+M36 QN N_9 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends DFCFB
+
+.subckt DFCFQ VSS Q VDD CKN D RN
+M1 N_9 N_8 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_16 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 Q N_11 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_10 RN VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_9 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_11 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_16 N_5 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_8 N_4 N_15 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_15 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_7 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_7 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_14 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_14 N_4 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_13 N_5 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M15 N_13 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M16 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M17 N_4 CKN VSS VSS nmos  l=0.5u w=0.5u m=1
+M18 N_25 N_8 VDD VDD pmos  l=0.42u w=0.52u m=1
+M19 N_24 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M20 Q N_11 VDD VDD pmos  l=0.42u w=0.76u m=1
+M21 N_24 N_4 N_8 VDD pmos  l=0.42u w=0.5u m=1
+M22 N_10 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 N_25 N_10 N_9 VDD pmos  l=0.42u w=0.52u m=1
+M24 N_11 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M25 N_23 N_5 N_8 VDD pmos  l=0.42u w=0.52u m=1
+M26 N_23 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M27 N_22 N_10 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M28 N_22 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M29 N_21 N_7 VDD VDD pmos  l=0.42u w=0.5u m=1
+M30 N_20 N_4 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M31 N_21 N_5 N_6 VDD pmos  l=0.42u w=0.5u m=1
+M32 N_20 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M33 N_5 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M34 N_4 CKN VDD VDD pmos  l=0.42u w=0.5u m=1
+.ends DFCFQ
+
+.subckt DFPRB VDD Q QN VSS SN D CK
+M1 N_4 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_33 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_33 N_12 N_5 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_34 N_4 N_5 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_34 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 Q N_10 VSS VSS nmos  l=0.5u w=0.58u m=1
+M7 QN N_8 VSS VSS nmos  l=0.5u w=0.58u m=1
+M8 N_10 N_8 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_35 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_35 SN N_6 VSS nmos  l=0.5u w=0.5u m=1
+M11 N_38 N_7 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M12 N_36 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_7 N_4 N_36 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_37 N_12 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M15 N_37 N_8 VSS VSS nmos  l=0.5u w=0.5u m=1
+M16 N_38 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M17 N_12 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M18 N_4 N_12 VDD VDD pmos  l=0.42u w=0.5u m=1
+M19 N_14 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M20 N_15 N_12 N_5 VDD pmos  l=0.42u w=0.5u m=1
+M21 N_14 N_4 N_5 VDD pmos  l=0.42u w=0.52u m=1
+M22 N_15 N_6 VDD VDD pmos  l=0.42u w=0.5u m=1
+M23 Q N_10 VDD VDD pmos  l=0.42u w=0.76u m=1
+M24 QN N_8 VDD VDD pmos  l=0.42u w=0.76u m=1
+M25 N_10 N_8 VDD VDD pmos  l=0.42u w=0.52u m=1
+M26 N_6 N_5 VDD VDD pmos  l=0.42u w=0.5u m=1
+M27 N_6 SN VDD VDD pmos  l=0.42u w=0.5u m=1
+M28 N_8 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M29 N_16 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M30 N_16 N_12 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M31 N_17 N_4 N_7 VDD pmos  l=0.42u w=0.5u m=1
+M32 N_17 N_8 VDD VDD pmos  l=0.42u w=0.5u m=1
+M33 N_8 SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M34 N_12 CK VDD VDD pmos  l=0.42u w=0.5u m=1
+.ends DFPRB
+
+.subckt DFPRQ VDD Q VSS CK D SN
+M1 Q N_8 N_27 VSS nmos  l=0.5u w=0.58u m=1
+M2 N_27 SN VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_33 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_9 N_8 N_33 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_32 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_32 N_5 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_8 N_4 N_31 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_31 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_30 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_30 N_6 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M11 N_29 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_29 N_4 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M13 N_28 N_5 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_28 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M16 N_5 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M17 Q N_8 VDD VDD pmos  l=0.42u w=0.76u m=1
+M18 Q SN VDD VDD pmos  l=0.42u w=0.76u m=1
+M19 N_9 SN VDD VDD pmos  l=0.42u w=0.5u m=1
+M20 N_9 N_8 VDD VDD pmos  l=0.42u w=0.5u m=1
+M21 N_14 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M22 N_14 N_4 N_8 VDD pmos  l=0.42u w=0.5u m=1
+M23 N_13 N_5 N_8 VDD pmos  l=0.42u w=0.52u m=1
+M24 N_13 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M25 N_7 SN VDD VDD pmos  l=0.42u w=0.5u m=1
+M26 N_7 N_6 VDD VDD pmos  l=0.42u w=0.5u m=1
+M27 N_12 N_7 VDD VDD pmos  l=0.42u w=0.5u m=1
+M28 N_11 N_4 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M29 N_12 N_5 N_6 VDD pmos  l=0.42u w=0.5u m=1
+M30 N_11 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M31 N_4 N_5 VDD VDD pmos  l=0.42u w=0.5u m=1
+M32 N_5 CK VDD VDD pmos  l=0.42u w=0.5u m=1
+.ends DFPRQ
+
+.subckt DFPFB VDD Q QN VSS CKN D SN
+M1 Q N_11 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 QN N_9 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_11 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_36 N_8 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_36 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_35 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_35 N_5 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_8 N_4 N_34 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_34 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_33 SN N_7 VSS nmos  l=0.5u w=0.5u m=1
+M11 N_33 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_32 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_32 N_4 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_31 N_5 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M15 N_31 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M16 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M17 N_4 CKN VSS VSS nmos  l=0.5u w=0.5u m=1
+M18 Q N_11 VDD VDD pmos  l=0.42u w=0.76u m=1
+M19 QN N_9 VDD VDD pmos  l=0.42u w=0.76u m=1
+M20 N_11 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M21 N_9 N_8 VDD VDD pmos  l=0.42u w=0.52u m=1
+M22 N_9 SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 N_16 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M24 N_16 N_4 N_8 VDD pmos  l=0.42u w=0.5u m=1
+M25 N_15 N_5 N_8 VDD pmos  l=0.42u w=0.52u m=1
+M26 N_15 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M27 N_7 SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M28 N_7 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M29 N_14 N_7 VDD VDD pmos  l=0.42u w=0.5u m=1
+M30 N_13 N_4 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M31 N_14 N_5 N_6 VDD pmos  l=0.42u w=0.5u m=1
+M32 N_13 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M33 N_5 N_4 VDD VDD pmos  l=0.42u w=0.5u m=1
+M34 N_4 CKN VDD VDD pmos  l=0.42u w=0.5u m=1
+.ends DFPFB
+
+.subckt DFBRB VDD QN Q VSS RN SN CK D
+M1 N_4 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_26 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_5 N_6 N_26 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_27 N_4 N_5 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_27 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_6 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_23 N_5 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_23 N_10 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_23 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_28 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_29 N_6 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M12 N_8 N_4 N_28 VSS nmos  l=0.5u w=0.5u m=1
+M13 QN N_9 VSS VSS nmos  l=0.5u w=0.58u m=1
+M14 N_29 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 N_21 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M16 N_9 N_10 N_21 VSS nmos  l=0.5u w=0.5u m=1
+M17 N_21 N_8 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M18 N_10 RN VSS VSS nmos  l=0.5u w=0.5u m=1
+M19 N_11 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M20 Q N_11 VSS VSS nmos  l=0.5u w=0.58u m=1
+M21 N_4 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M22 N_14 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 N_15 N_6 N_5 VDD pmos  l=0.42u w=0.5u m=1
+M24 N_14 N_4 N_5 VDD pmos  l=0.42u w=0.52u m=1
+M25 N_15 N_7 VDD VDD pmos  l=0.42u w=0.5u m=1
+M26 N_6 CK VDD VDD pmos  l=0.42u w=0.5u m=1
+M27 N_16 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M28 N_16 N_10 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M29 N_7 SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M30 N_17 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M31 N_8 N_6 N_17 VDD pmos  l=0.42u w=0.52u m=1
+M32 N_18 N_4 N_8 VDD pmos  l=0.42u w=0.5u m=1
+M33 QN N_9 VDD VDD pmos  l=0.42u w=0.76u m=1
+M34 N_18 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M35 N_9 SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M36 N_19 N_10 N_9 VDD pmos  l=0.42u w=0.52u m=1
+M37 N_19 N_8 VDD VDD pmos  l=0.42u w=0.52u m=1
+M38 N_10 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M39 N_11 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M40 Q N_11 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends DFBRB
+
+.subckt DFBRQ VDD Q VSS RN D SN CK
+M1 N_3 RN VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_26 SN VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_26 N_3 Q VSS nmos  l=0.5u w=0.58u m=1
+M4 N_26 N_8 Q VSS nmos  l=0.5u w=0.58u m=1
+M5 N_25 N_8 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_9 N_3 N_25 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_25 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_31 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_8 N_5 N_30 VSS nmos  l=0.5u w=0.5u m=1
+M10 N_31 N_4 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M11 N_30 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_21 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_21 N_3 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_21 N_6 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M15 N_29 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M16 N_29 N_5 N_6 VSS nmos  l=0.5u w=0.5u m=1
+M17 N_6 N_4 N_28 VSS nmos  l=0.5u w=0.5u m=1
+M18 N_28 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M19 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M20 N_4 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M21 N_3 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M22 Q SN VDD VDD pmos  l=0.42u w=0.76u m=1
+M23 Q N_3 N_18 VDD pmos  l=0.42u w=0.76u m=1
+M24 N_17 N_8 VDD VDD pmos  l=0.42u w=0.5u m=1
+M25 N_18 N_8 VDD VDD pmos  l=0.42u w=0.76u m=1
+M26 N_17 N_3 N_9 VDD pmos  l=0.42u w=0.5u m=1
+M27 N_9 SN VDD VDD pmos  l=0.42u w=0.5u m=1
+M28 N_16 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M29 N_16 N_5 N_8 VDD pmos  l=0.42u w=0.5u m=1
+M30 N_15 N_4 N_8 VDD pmos  l=0.42u w=0.52u m=1
+M31 N_15 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M32 N_7 SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M33 N_14 N_3 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M34 N_14 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M35 N_13 N_7 VDD VDD pmos  l=0.42u w=0.5u m=1
+M36 N_12 N_5 N_6 VDD pmos  l=0.42u w=0.52u m=1
+M37 N_13 N_4 N_6 VDD pmos  l=0.42u w=0.5u m=1
+M38 N_12 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M39 N_5 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M40 N_4 CK VDD VDD pmos  l=0.42u w=0.5u m=1
+.ends DFBRQ
+
+.subckt DFBFB VDD QN Q VSS RN SN CKN D
+M1 N_4 N_6 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_26 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_26 N_4 N_5 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_27 N_6 N_5 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_27 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_6 CKN VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_23 N_5 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_23 N_10 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_23 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_28 N_7 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_8 N_6 N_28 VSS nmos  l=0.5u w=0.5u m=1
+M12 N_29 N_4 N_8 VSS nmos  l=0.5u w=0.5u m=1
+M13 N_29 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M14 N_21 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 N_9 N_10 N_21 VSS nmos  l=0.5u w=0.5u m=1
+M16 N_21 N_8 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M17 QN N_9 VSS VSS nmos  l=0.5u w=0.58u m=1
+M18 N_10 RN VSS VSS nmos  l=0.5u w=0.5u m=1
+M19 N_11 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M20 Q N_11 VSS VSS nmos  l=0.5u w=0.58u m=1
+M21 N_4 N_6 VDD VDD pmos  l=0.42u w=0.52u m=1
+M22 N_14 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 N_14 N_6 N_5 VDD pmos  l=0.42u w=0.52u m=1
+M24 N_15 N_4 N_5 VDD pmos  l=0.42u w=0.5u m=1
+M25 N_15 N_7 VDD VDD pmos  l=0.42u w=0.5u m=1
+M26 N_6 CKN VDD VDD pmos  l=0.42u w=0.5u m=1
+M27 N_16 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M28 N_16 N_10 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M29 N_7 SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M30 N_17 N_7 VDD VDD pmos  l=0.42u w=0.52u m=1
+M31 N_8 N_4 N_17 VDD pmos  l=0.42u w=0.52u m=1
+M32 N_18 N_6 N_8 VDD pmos  l=0.42u w=0.5u m=1
+M33 N_18 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M34 N_9 SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M35 N_19 N_10 N_9 VDD pmos  l=0.42u w=0.52u m=1
+M36 N_19 N_8 VDD VDD pmos  l=0.42u w=0.52u m=1
+M37 QN N_9 VDD VDD pmos  l=0.42u w=0.76u m=1
+M38 N_10 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M39 N_11 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M40 Q N_11 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends DFBFB
+
+.subckt SDNRB VSS QN Q VDD SI SE D CK
+M1 N_12 N_11 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 Q N_11 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 QN N_12 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_19 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_19 N_5 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_11 N_4 N_18 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_18 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_5 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_10 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_17 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_17 N_4 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M13 N_6 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M14 N_15 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 N_7 N_6 N_15 VSS nmos  l=0.5u w=0.5u m=1
+M16 N_16 SI N_7 VSS nmos  l=0.5u w=0.5u m=1
+M17 N_16 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M18 N_9 N_5 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M19 N_12 N_11 VDD VDD pmos  l=0.42u w=0.52u m=1
+M20 Q N_11 VDD VDD pmos  l=0.42u w=0.76u m=1
+M21 QN N_12 VDD VDD pmos  l=0.42u w=0.76u m=1
+M22 N_42 N_12 VDD VDD pmos  l=0.42u w=0.5u m=1
+M23 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M24 N_42 N_4 N_11 VDD pmos  l=0.42u w=0.5u m=1
+M25 N_41 N_5 N_11 VDD pmos  l=0.42u w=0.52u m=1
+M26 N_41 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M27 N_5 CK VDD VDD pmos  l=0.42u w=0.52u m=1
+M28 N_10 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M29 N_40 N_10 VDD VDD pmos  l=0.42u w=0.5u m=1
+M30 N_6 SE VDD VDD pmos  l=0.42u w=0.52u m=1
+M31 N_38 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M32 N_21 SE N_38 VDD pmos  l=0.42u w=0.52u m=1
+M33 N_39 N_6 N_21 VDD pmos  l=0.42u w=0.52u m=1
+M34 N_39 SI VDD VDD pmos  l=0.42u w=0.52u m=1
+M35 N_9 N_4 N_21 VDD pmos  l=0.42u w=0.52u m=1
+M36 N_40 N_5 N_9 VDD pmos  l=0.42u w=0.5u m=1
+.ends SDNRB
+
+.subckt SDNRQ VSS Q VDD CK D SE SI
+M1 N_11 N_4 N_17 VSS nmos  l=0.5u w=0.5u m=1
+M2 N_17 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_10 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_18 N_5 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_16 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_16 N_4 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_9 N_5 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_18 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_15 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_15 SI N_7 VSS nmos  l=0.5u w=0.5u m=1
+M11 N_12 N_11 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 Q N_11 VSS VSS nmos  l=0.5u w=0.58u m=1
+M13 N_7 N_6 N_14 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_14 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 N_6 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M16 N_5 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M17 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M18 N_40 N_4 N_11 VDD pmos  l=0.42u w=0.5u m=1
+M19 N_39 N_5 N_11 VDD pmos  l=0.42u w=0.52u m=1
+M20 N_39 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M21 N_10 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M22 N_38 N_10 VDD VDD pmos  l=0.42u w=0.5u m=1
+M23 N_38 N_5 N_9 VDD pmos  l=0.42u w=0.5u m=1
+M24 N_40 N_12 VDD VDD pmos  l=0.42u w=0.5u m=1
+M25 N_9 N_4 N_22 VDD pmos  l=0.42u w=0.52u m=1
+M26 N_37 SI VDD VDD pmos  l=0.42u w=0.52u m=1
+M27 N_12 N_11 VDD VDD pmos  l=0.42u w=0.52u m=1
+M28 Q N_11 VDD VDD pmos  l=0.42u w=0.76u m=1
+M29 N_37 N_6 N_22 VDD pmos  l=0.42u w=0.52u m=1
+M30 N_22 SE N_36 VDD pmos  l=0.42u w=0.52u m=1
+M31 N_36 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M32 N_6 SE VDD VDD pmos  l=0.42u w=0.52u m=1
+M33 N_5 CK VDD VDD pmos  l=0.42u w=0.52u m=1
+M34 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends SDNRQ
+
+.subckt SDNRN VSS QN VDD SI SE D CK
+M1 N_12 N_11 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 QN N_12 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_18 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_18 N_5 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_11 N_4 N_17 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_17 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_5 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_10 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_16 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_16 N_4 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M12 N_6 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_14 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M14 N_7 N_6 N_14 VSS nmos  l=0.5u w=0.5u m=1
+M15 N_15 SI N_7 VSS nmos  l=0.5u w=0.5u m=1
+M16 N_15 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M17 N_9 N_5 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M18 N_12 N_11 VDD VDD pmos  l=0.42u w=0.52u m=1
+M19 QN N_12 VDD VDD pmos  l=0.42u w=0.76u m=1
+M20 N_40 N_12 VDD VDD pmos  l=0.42u w=0.5u m=1
+M21 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M22 N_40 N_4 N_11 VDD pmos  l=0.42u w=0.5u m=1
+M23 N_39 N_5 N_11 VDD pmos  l=0.42u w=0.52u m=1
+M24 N_39 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M25 N_5 CK VDD VDD pmos  l=0.42u w=0.52u m=1
+M26 N_10 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M27 N_38 N_10 VDD VDD pmos  l=0.42u w=0.5u m=1
+M28 N_6 SE VDD VDD pmos  l=0.42u w=0.52u m=1
+M29 N_36 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M30 N_20 SE N_36 VDD pmos  l=0.42u w=0.52u m=1
+M31 N_37 N_6 N_20 VDD pmos  l=0.42u w=0.52u m=1
+M32 N_37 SI VDD VDD pmos  l=0.42u w=0.52u m=1
+M33 N_9 N_4 N_20 VDD pmos  l=0.42u w=0.52u m=1
+M34 N_38 N_5 N_9 VDD pmos  l=0.42u w=0.5u m=1
+.ends SDNRN
+
+.subckt SDNFB VSS QN Q VDD SI SE D CKN
+M1 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_5 CKN VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_6 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_15 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_7 N_6 N_15 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_16 SI N_7 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_16 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_9 N_4 N_7 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_17 N_5 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M10 N_17 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_10 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_18 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_11 N_5 N_18 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_19 N_4 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M15 N_19 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M16 N_12 N_11 VSS VSS nmos  l=0.5u w=0.5u m=1
+M17 Q N_11 VSS VSS nmos  l=0.5u w=0.58u m=1
+M18 QN N_12 VSS VSS nmos  l=0.5u w=0.58u m=1
+M19 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M20 N_5 CKN VDD VDD pmos  l=0.42u w=0.52u m=1
+M21 N_6 SE VDD VDD pmos  l=0.42u w=0.52u m=1
+M22 N_38 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 N_21 SE N_38 VDD pmos  l=0.42u w=0.52u m=1
+M24 N_39 N_6 N_21 VDD pmos  l=0.42u w=0.52u m=1
+M25 N_39 SI VDD VDD pmos  l=0.42u w=0.52u m=1
+M26 N_9 N_5 N_21 VDD pmos  l=0.42u w=0.52u m=1
+M27 N_40 N_4 N_9 VDD pmos  l=0.42u w=0.5u m=1
+M28 N_40 N_10 VDD VDD pmos  l=0.42u w=0.5u m=1
+M29 N_10 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M30 N_41 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M31 N_41 N_4 N_11 VDD pmos  l=0.42u w=0.52u m=1
+M32 N_42 N_5 N_11 VDD pmos  l=0.42u w=0.5u m=1
+M33 N_42 N_12 VDD VDD pmos  l=0.42u w=0.5u m=1
+M34 N_12 N_11 VDD VDD pmos  l=0.42u w=0.52u m=1
+M35 Q N_11 VDD VDD pmos  l=0.42u w=0.76u m=1
+M36 QN N_12 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends SDNFB
+
+.subckt SDCRB VDD Q QN VSS RN SI SE D CK
+M1 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_5 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 Q N_14 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 N_14 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 QN N_12 VSS VSS nmos  l=0.5u w=0.58u m=1
+M6 N_6 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_13 RN VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_12 N_13 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_12 N_11 VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_46 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_50 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_50 N_5 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M13 N_11 N_4 N_49 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_26 N_6 N_46 VSS nmos  l=0.5u w=0.5u m=1
+M15 N_47 SI N_26 VSS nmos  l=0.5u w=0.5u m=1
+M16 N_47 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M17 N_9 N_5 N_26 VSS nmos  l=0.5u w=0.5u m=1
+M18 N_48 N_4 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M19 N_48 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M20 N_10 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M21 N_10 N_13 VSS VSS nmos  l=0.5u w=0.5u m=1
+M22 N_49 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M23 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M24 N_5 CK VDD VDD pmos  l=0.42u w=0.52u m=1
+M25 Q N_14 VDD VDD pmos  l=0.42u w=0.76u m=1
+M26 QN N_12 VDD VDD pmos  l=0.42u w=0.76u m=1
+M27 N_14 N_12 VDD VDD pmos  l=0.42u w=0.52u m=1
+M28 N_6 SE VDD VDD pmos  l=0.42u w=0.52u m=1
+M29 N_13 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M30 N_12 N_13 N_23 VDD pmos  l=0.42u w=0.52u m=1
+M31 N_23 N_11 VDD VDD pmos  l=0.42u w=0.52u m=1
+M32 N_17 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M33 N_22 N_12 VDD VDD pmos  l=0.42u w=0.5u m=1
+M34 N_22 N_4 N_11 VDD pmos  l=0.42u w=0.5u m=1
+M35 N_7 SE N_17 VDD pmos  l=0.42u w=0.52u m=1
+M36 N_18 N_6 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M37 N_18 SI VDD VDD pmos  l=0.42u w=0.52u m=1
+M38 N_9 N_4 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M39 N_19 N_5 N_9 VDD pmos  l=0.42u w=0.5u m=1
+M40 N_19 N_10 VDD VDD pmos  l=0.42u w=0.5u m=1
+M41 N_20 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M42 N_10 N_13 N_20 VDD pmos  l=0.42u w=0.52u m=1
+M43 N_21 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M44 N_21 N_5 N_11 VDD pmos  l=0.42u w=0.52u m=1
+.ends SDCRB
+
+.subckt SDCRQ VDD Q VSS RN SI SE D CK
+M1 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_5 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 Q N_12 VSS VSS nmos  l=0.5u w=0.58u m=1
+M4 Q N_11 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_13 N_11 VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_6 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_12 RN VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_47 N_13 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_43 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_47 N_5 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M11 N_11 N_4 N_46 VSS nmos  l=0.5u w=0.5u m=1
+M12 N_25 N_6 N_43 VSS nmos  l=0.5u w=0.5u m=1
+M13 N_44 SI N_25 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_44 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 N_9 N_5 N_25 VSS nmos  l=0.5u w=0.5u m=1
+M16 N_45 N_4 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M17 N_45 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M18 N_10 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M19 N_10 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M20 N_46 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M21 N_13 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M22 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 N_5 CK VDD VDD pmos  l=0.42u w=0.52u m=1
+M24 Q N_12 N_15 VDD pmos  l=0.42u w=0.76u m=1
+M25 N_15 N_11 VDD VDD pmos  l=0.42u w=0.76u m=1
+M26 N_22 N_11 VDD VDD pmos  l=0.42u w=0.52u m=1
+M27 N_6 SE VDD VDD pmos  l=0.42u w=0.52u m=1
+M28 N_12 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M29 N_21 N_13 VDD VDD pmos  l=0.42u w=0.5u m=1
+M30 N_16 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M31 N_21 N_4 N_11 VDD pmos  l=0.42u w=0.5u m=1
+M32 N_20 N_5 N_11 VDD pmos  l=0.42u w=0.52u m=1
+M33 N_7 SE N_16 VDD pmos  l=0.42u w=0.52u m=1
+M34 N_17 N_6 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M35 N_17 SI VDD VDD pmos  l=0.42u w=0.52u m=1
+M36 N_9 N_4 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M37 N_18 N_5 N_9 VDD pmos  l=0.42u w=0.5u m=1
+M38 N_18 N_10 VDD VDD pmos  l=0.42u w=0.5u m=1
+M39 N_19 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M40 N_10 N_12 N_19 VDD pmos  l=0.42u w=0.52u m=1
+M41 N_20 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M42 N_22 N_12 N_13 VDD pmos  l=0.42u w=0.52u m=1
+.ends SDCRQ
+
+.subckt SDCRN VDD QN VSS RN SI SE D CK
+M1 QN N_12 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_5 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_6 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_42 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_46 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_46 N_5 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_11 N_4 N_45 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_13 RN VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_12 N_13 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_12 N_11 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_24 N_6 N_42 VSS nmos  l=0.5u w=0.5u m=1
+M13 N_43 SI N_24 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_43 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 N_9 N_5 N_24 VSS nmos  l=0.5u w=0.5u m=1
+M16 N_44 N_4 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M17 N_44 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M18 N_10 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M19 N_10 N_13 VSS VSS nmos  l=0.5u w=0.5u m=1
+M20 N_45 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M21 QN N_12 VDD VDD pmos  l=0.42u w=0.76u m=1
+M22 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 N_5 CK VDD VDD pmos  l=0.42u w=0.52u m=1
+M24 N_6 SE VDD VDD pmos  l=0.42u w=0.52u m=1
+M25 N_15 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M26 N_20 N_12 VDD VDD pmos  l=0.42u w=0.5u m=1
+M27 N_20 N_4 N_11 VDD pmos  l=0.42u w=0.5u m=1
+M28 N_7 SE N_15 VDD pmos  l=0.42u w=0.52u m=1
+M29 N_13 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M30 N_12 N_13 N_21 VDD pmos  l=0.42u w=0.52u m=1
+M31 N_21 N_11 VDD VDD pmos  l=0.42u w=0.52u m=1
+M32 N_16 N_6 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M33 N_16 SI VDD VDD pmos  l=0.42u w=0.52u m=1
+M34 N_9 N_4 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M35 N_17 N_5 N_9 VDD pmos  l=0.42u w=0.5u m=1
+M36 N_17 N_10 VDD VDD pmos  l=0.42u w=0.5u m=1
+M37 N_18 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M38 N_10 N_13 N_18 VDD pmos  l=0.42u w=0.52u m=1
+M39 N_19 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M40 N_19 N_5 N_11 VDD pmos  l=0.42u w=0.52u m=1
+.ends SDCRN
+
+.subckt SDCFB VDD Q QN VSS RN SI SE D CKN
+M1 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_5 CKN VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_6 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_46 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_26 N_6 N_46 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_47 SI N_26 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_47 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_9 N_4 N_26 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_48 N_5 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M10 N_48 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_10 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_10 N_13 VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_49 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M14 N_11 N_5 N_49 VSS nmos  l=0.5u w=0.5u m=1
+M15 N_50 N_4 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M16 N_50 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M17 N_12 N_11 VSS VSS nmos  l=0.5u w=0.5u m=1
+M18 N_12 N_13 VSS VSS nmos  l=0.5u w=0.5u m=1
+M19 N_14 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M20 QN N_12 VSS VSS nmos  l=0.5u w=0.58u m=1
+M21 N_13 RN VSS VSS nmos  l=0.5u w=0.5u m=1
+M22 Q N_14 VSS VSS nmos  l=0.5u w=0.58u m=1
+M23 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M24 N_5 CKN VDD VDD pmos  l=0.42u w=0.52u m=1
+M25 N_6 SE VDD VDD pmos  l=0.42u w=0.52u m=1
+M26 N_17 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M27 N_7 SE N_17 VDD pmos  l=0.42u w=0.52u m=1
+M28 N_18 N_6 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M29 N_18 SI VDD VDD pmos  l=0.42u w=0.52u m=1
+M30 N_9 N_5 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M31 N_19 N_4 N_9 VDD pmos  l=0.42u w=0.5u m=1
+M32 N_19 N_10 VDD VDD pmos  l=0.42u w=0.5u m=1
+M33 N_20 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M34 N_10 N_13 N_20 VDD pmos  l=0.42u w=0.52u m=1
+M35 N_21 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M36 N_21 N_4 N_11 VDD pmos  l=0.42u w=0.52u m=1
+M37 N_22 N_5 N_11 VDD pmos  l=0.42u w=0.5u m=1
+M38 N_22 N_12 VDD VDD pmos  l=0.42u w=0.5u m=1
+M39 N_23 N_11 VDD VDD pmos  l=0.42u w=0.52u m=1
+M40 N_12 N_13 N_23 VDD pmos  l=0.42u w=0.52u m=1
+M41 QN N_12 VDD VDD pmos  l=0.42u w=0.76u m=1
+M42 N_14 N_12 VDD VDD pmos  l=0.42u w=0.5u m=1
+M43 N_13 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M44 Q N_14 VDD VDD pmos  l=0.42u w=0.76u m=1
+.ends SDCFB
+
+.subckt SDCFQ VDD Q VSS CKN D SE SI RN
+M1 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_5 CKN VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_11 N_5 N_47 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_48 N_4 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_6 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_48 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_12 N_11 VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_12 N_13 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_44 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_13 RN VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_14 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 Q N_14 VSS VSS nmos  l=0.5u w=0.58u m=1
+M13 N_27 N_6 N_44 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_45 SI N_27 VSS nmos  l=0.5u w=0.5u m=1
+M15 N_45 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M16 N_9 N_4 N_27 VSS nmos  l=0.5u w=0.5u m=1
+M17 N_46 N_5 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M18 N_46 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M19 N_10 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M20 N_10 N_13 VSS VSS nmos  l=0.5u w=0.5u m=1
+M21 N_47 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M22 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+M23 N_5 CKN VDD VDD pmos  l=0.42u w=0.52u m=1
+M24 N_21 N_5 N_11 VDD pmos  l=0.42u w=0.5u m=1
+M25 N_6 SE VDD VDD pmos  l=0.42u w=0.52u m=1
+M26 N_21 N_12 VDD VDD pmos  l=0.42u w=0.5u m=1
+M27 N_22 N_11 VDD VDD pmos  l=0.42u w=0.52u m=1
+M28 N_12 N_13 N_22 VDD pmos  l=0.42u w=0.52u m=1
+M29 N_16 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M30 N_13 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M31 N_14 N_12 VDD VDD pmos  l=0.42u w=0.52u m=1
+M32 Q N_14 VDD VDD pmos  l=0.42u w=0.76u m=1
+M33 N_7 SE N_16 VDD pmos  l=0.42u w=0.52u m=1
+M34 N_17 N_6 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M35 N_17 SI VDD VDD pmos  l=0.42u w=0.52u m=1
+M36 N_9 N_5 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M37 N_18 N_4 N_9 VDD pmos  l=0.42u w=0.5u m=1
+M38 N_18 N_10 VDD VDD pmos  l=0.42u w=0.5u m=1
+M39 N_19 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M40 N_10 N_13 N_19 VDD pmos  l=0.42u w=0.52u m=1
+M41 N_20 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M42 N_20 N_4 N_11 VDD pmos  l=0.42u w=0.52u m=1
+.ends SDCFQ
+
+.subckt SDPRB VDD Q QN VSS CK D SE SI SN
+M1 Q N_13 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 N_45 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_10 SN N_44 VSS nmos  l=0.5u w=0.5u m=1
+M4 N_12 N_11 N_47 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_47 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_44 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_43 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_46 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_11 N_4 N_45 VSS nmos  l=0.5u w=0.5u m=1
+M10 N_43 N_4 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M11 N_9 N_5 N_25 VSS nmos  l=0.5u w=0.5u m=1
+M12 QN N_12 VSS VSS nmos  l=0.5u w=0.58u m=1
+M13 N_13 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M14 N_46 N_5 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M15 N_42 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M16 N_42 SI N_25 VSS nmos  l=0.5u w=0.5u m=1
+M17 N_25 N_6 N_41 VSS nmos  l=0.5u w=0.5u m=1
+M18 N_41 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M19 N_6 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M20 N_5 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M21 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M22 Q N_13 VDD VDD pmos  l=0.42u w=0.76u m=1
+M23 N_19 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M24 N_10 SN VDD VDD pmos  l=0.42u w=0.5u m=1
+M25 N_12 N_11 VDD VDD pmos  l=0.42u w=0.5u m=1
+M26 N_12 SN VDD VDD pmos  l=0.42u w=0.5u m=1
+M27 N_19 N_5 N_11 VDD pmos  l=0.42u w=0.52u m=1
+M28 N_10 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M29 N_18 N_10 VDD VDD pmos  l=0.42u w=0.5u m=1
+M30 N_20 N_12 VDD VDD pmos  l=0.42u w=0.5u m=1
+M31 N_20 N_4 N_11 VDD pmos  l=0.42u w=0.5u m=1
+M32 N_18 N_5 N_9 VDD pmos  l=0.42u w=0.5u m=1
+M33 N_13 N_12 VDD VDD pmos  l=0.42u w=0.52u m=1
+M34 QN N_12 VDD VDD pmos  l=0.42u w=0.76u m=1
+M35 N_9 N_4 N_7 VDD pmos  l=0.42u w=0.5u m=1
+M36 N_17 SI VDD VDD pmos  l=0.42u w=0.5u m=1
+M37 N_17 N_6 N_7 VDD pmos  l=0.42u w=0.5u m=1
+M38 N_7 SE N_16 VDD pmos  l=0.42u w=0.5u m=1
+M39 N_16 D VDD VDD pmos  l=0.42u w=0.5u m=1
+M40 N_6 SE VDD VDD pmos  l=0.42u w=0.52u m=1
+M41 N_5 CK VDD VDD pmos  l=0.42u w=0.52u m=1
+M42 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends SDPRB
+
+.subckt SDPRQ VDD Q VSS CK D SN SE SI
+M1 N_43 N_5 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M2 N_43 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_42 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_44 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_41 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_11 N_4 N_42 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_41 N_9 N_10 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_12 N_11 N_44 VSS nmos  l=0.5u w=0.5u m=1
+M9 Q N_11 N_37 VSS nmos  l=0.5u w=0.58u m=1
+M10 N_40 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_40 N_4 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M12 N_9 N_5 N_24 VSS nmos  l=0.5u w=0.5u m=1
+M13 N_37 SN VSS VSS nmos  l=0.5u w=0.58u m=1
+M14 N_39 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 N_39 SI N_24 VSS nmos  l=0.5u w=0.5u m=1
+M16 N_24 N_6 N_38 VSS nmos  l=0.5u w=0.5u m=1
+M17 N_38 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M18 N_6 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M19 N_5 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M20 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M21 N_18 N_12 VDD VDD pmos  l=0.42u w=0.5u m=1
+M22 N_17 N_5 N_11 VDD pmos  l=0.42u w=0.52u m=1
+M23 N_17 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M24 N_12 SN VDD VDD pmos  l=0.42u w=0.5u m=1
+M25 N_10 SN VDD VDD pmos  l=0.42u w=0.5u m=1
+M26 N_18 N_4 N_11 VDD pmos  l=0.42u w=0.5u m=1
+M27 N_10 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M28 Q N_11 VDD VDD pmos  l=0.42u w=0.76u m=1
+M29 N_12 N_11 VDD VDD pmos  l=0.42u w=0.5u m=1
+M30 N_16 N_10 VDD VDD pmos  l=0.42u w=0.5u m=1
+M31 N_16 N_5 N_9 VDD pmos  l=0.42u w=0.5u m=1
+M32 Q SN VDD VDD pmos  l=0.42u w=0.76u m=1
+M33 N_9 N_4 N_7 VDD pmos  l=0.42u w=0.5u m=1
+M34 N_15 SI VDD VDD pmos  l=0.42u w=0.5u m=1
+M35 N_15 N_6 N_7 VDD pmos  l=0.42u w=0.5u m=1
+M36 N_7 SE N_14 VDD pmos  l=0.42u w=0.5u m=1
+M37 N_14 D VDD VDD pmos  l=0.42u w=0.5u m=1
+M38 N_6 SE VDD VDD pmos  l=0.42u w=0.52u m=1
+M39 N_5 CK VDD VDD pmos  l=0.42u w=0.52u m=1
+M40 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends SDPRQ
+
+.subckt SDPFB VDD Q QN VSS CKN D SE SI SN
+M1 Q N_13 VSS VSS nmos  l=0.5u w=0.58u m=1
+M2 QN N_12 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_13 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_12 N_11 N_47 VSS nmos  l=0.5u w=0.5u m=1
+M5 N_47 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_46 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_46 N_4 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M8 N_11 N_5 N_45 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_45 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M10 N_10 SN N_44 VSS nmos  l=0.5u w=0.5u m=1
+M11 N_44 N_9 VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_43 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M13 N_43 N_5 N_9 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_9 N_4 N_25 VSS nmos  l=0.5u w=0.5u m=1
+M15 N_42 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M16 N_42 SI N_25 VSS nmos  l=0.5u w=0.5u m=1
+M17 N_25 N_6 N_41 VSS nmos  l=0.5u w=0.5u m=1
+M18 N_41 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M19 N_6 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M20 N_5 CKN VSS VSS nmos  l=0.5u w=0.5u m=1
+M21 N_4 N_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+M22 Q N_13 VDD VDD pmos  l=0.42u w=0.76u m=1
+M23 N_13 N_12 VDD VDD pmos  l=0.42u w=0.52u m=1
+M24 QN N_12 VDD VDD pmos  l=0.42u w=0.76u m=1
+M25 N_12 N_11 VDD VDD pmos  l=0.42u w=0.5u m=1
+M26 N_12 SN VDD VDD pmos  l=0.42u w=0.5u m=1
+M27 N_20 N_12 VDD VDD pmos  l=0.42u w=0.5u m=1
+M28 N_20 N_5 N_11 VDD pmos  l=0.42u w=0.5u m=1
+M29 N_19 N_4 N_11 VDD pmos  l=0.42u w=0.52u m=1
+M30 N_19 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M31 N_10 SN VDD VDD pmos  l=0.42u w=0.5u m=1
+M32 N_10 N_9 VDD VDD pmos  l=0.42u w=0.5u m=1
+M33 N_18 N_10 VDD VDD pmos  l=0.42u w=0.5u m=1
+M34 N_18 N_4 N_9 VDD pmos  l=0.42u w=0.5u m=1
+M35 N_9 N_5 N_7 VDD pmos  l=0.42u w=0.5u m=1
+M36 N_17 SI VDD VDD pmos  l=0.42u w=0.5u m=1
+M37 N_17 N_6 N_7 VDD pmos  l=0.42u w=0.5u m=1
+M38 N_7 SE N_16 VDD pmos  l=0.42u w=0.5u m=1
+M39 N_16 D VDD VDD pmos  l=0.42u w=0.5u m=1
+M40 N_6 SE VDD VDD pmos  l=0.42u w=0.52u m=1
+M41 N_5 CKN VDD VDD pmos  l=0.42u w=0.52u m=1
+M42 N_4 N_5 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends SDPFB
+
+.subckt SDBRB1 RN SN SI SE D CK VDD VSS Q QN
+mp_1_0 cn   CK   VDD  VDD pmos  l=0.42u w=0.52u m=1
+mn_1_0 cn   CK   VSS  VSS nmos  l=0.5u w=0.5u m=1
+mp_2_0 c    cn   VDD  VDD pmos  l=0.42u w=0.52u m=1
+mn_2_0 c    cn   VSS  VSS nmos  l=0.5u w=0.5u m=1
+mp_4_0 sen  SE   VDD  VDD pmos  l=0.42u w=0.52u m=1
+mn_4_0 sen  SE   VSS  VSS nmos  l=0.5u w=0.5u m=1
+mp_5_0 VDD  D    N_17 VDD pmos  l=0.42u w=0.52u m=1
+mn_5_0 VSS  D    N_53 VSS nmos  l=0.5u w=0.5u m=1
+mp_6_0 N_17 SE   K_1_1  VDD pmos  l=0.42u w=0.52u m=1
+mn_6_0 N_53 sen  K_1_2  VSS nmos  l=0.5u w=0.5u m=1
+mp_7_0 K_1_1  sen  N_18 VDD pmos  l=0.42u w=0.52u m=1
+mn_7_0 K_1_2  SI   N_54 VSS nmos  l=0.5u w=0.5u m=1
+mp_8_0 N_18 SI   VDD  VDD pmos  l=0.42u w=0.52u m=1
+mn_8_0 N_54 SE   VSS  VSS nmos  l=0.5u w=0.5u m=1
+mp_10_0 K_1_1  c   K_2  VDD pmos  l=0.42u w=0.52u m=1
+mn_10_0 K_1_2  cn  K_2  VSS nmos  l=0.5u w=0.5u m=1
+mp_11_0 K_2  cn  N_19 VDD pmos  l=0.42u w=0.5u m=1
+mn_11_0 K_2  c   N_55 VSS nmos  l=0.5u w=0.5u m=1
+mp_12_0 N_19 K_3 VDD  VDD pmos  l=0.42u w=0.5u m=1
+mn_12_0 N_55 K_3 VSS VSS nmos  l=0.5u w=0.5u m=1
+mp_14_0 VDD  K_2 N_20  VDD pmos  l=0.42u w=0.52u m=1
+mn_14_0 N_27 K_2 K_3 VSS nmos  l=0.5u w=0.5u m=1
+mp_15_0 N_20 rnn K_3 VDD pmos  l=0.42u w=0.52u m=1
+mn_15_0 K_3  rnn N_27  VSS nmos  l=0.5u w=0.5u m=1
+mp_16_0 K_3  SN  VDD VDD pmos  l=0.42u w=0.52u m=1
+mn_16_0 N_27 SN  VSS VSS nmos  l=0.5u w=0.5u m=1
+mp_17_0 VDD  K_3 N_21 VDD pmos  l=0.42u w=0.52u m=1
+mn_17_0 VSS  K_3 N_56 VSS nmos  l=0.5u w=0.5u m=1
+mp_18_0 N_21 cn  K_4  VDD pmos  l=0.42u w=0.52u m=1
+mn_18_0 N_56 c   K_4  VSS nmos  l=0.5u w=0.5u m=1
+mp_19_0 K_4  c   N_22 VDD pmos  l=0.42u w=0.5u m=1
+mn_19_0 K_4  cn  N_57 VSS nmos  l=0.5u w=0.5u m=1
+mp_20_0 N_22 K_5 VDD VDD pmos  l=0.42u w=0.5u m=1
+mn_20_0 N_57 K_5 VSS VSS nmos  l=0.5u w=0.5u m=1
+mp_22_0 VDD  K_4  N_23 VDD pmos  l=0.42u w=0.52u m=1
+mn_22_0 N_25 K_4  K_5  VSS nmos  l=0.5u w=0.5u m=1
+mp_23_0 N_23 rnn  K_5  VDD pmos  l=0.42u w=0.52u m=1
+mn_23_0 K_5  rnn  N_25 VSS nmos  l=0.5u w=0.5u m=1
+mp_24_0 K_5 SN VDD VDD pmos  l=0.42u w=0.52u m=1
+mn_24_0 N_25 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+mp_26_0 rnn RN VDD VDD pmos  l=0.42u w=0.52u m=1
+mn_26_0 rnn RN VSS VSS nmos  l=0.5u w=0.5u m=1
+mp_27_0 VDD K_5  N_14 VDD pmos  l=0.42u w=0.52u m=1
+mn_27_0 VSS K_5  N_14 VSS nmos  l=0.5u w=0.5u m=1
+mp_29_0 QN K_5 VDD VDD pmos  l=0.42u w=0.76u m=1
+mn_29_0 QN K_5 VSS VSS nmos  l=0.5u w=0.58u m=1
+mp_30_0 VDD N_14 Q VDD pmos  l=0.42u w=0.76u m=1
+mn_30_0 VSS N_14 Q VSS nmos  l=0.5u w=0.58u m=1
+.ends SDBRB1
+
+
+.subckt SDBRB2 SN RN  CK SI D SE VDD VSS Q QN 
+mp_1_0 cn   CK   VDD VDD pmos  l=0.13u w=0.46u m=1
+mn_1_0 cn   CK   VSS VSS nmos  l=0.13u w=0.18u m=1
+mp_2_0 VDD  cn   c   VDD pmos  l=0.13u w=0.42u m=1
+mn_2_0 VSS  cn   c   VSS nmos  l=0.13u w=0.17u m=1
+mp_4_0 sen  SE   VDD VDD pmos  l=0.13u w=0.26u m=1
+mn_4_0 sen  SE   VSS VSS nmos  l=0.13u w=0.18u m=1
+mp_5_0 VDD  D    N_25  VDD pmos  l=0.13u w=0.28u m=1
+mn_5_0 VSS  D    N_106 VSS nmos  l=0.13u w=0.18u m=1
+mn_6_0 N_25  SE  K_1  VDD pmos  l=0.13u w=0.28u m=1
+mn_6_0 N_106 sen K_1  VSS nmos  l=0.13u w=0.18u m=1
+mn_7_0 K_1  sen N_26  VDD pmos  l=0.13u w=0.28u m=1
+mn_7_0 K_1  SE  N_107 VSS nmos  l=0.13u w=0.18u m= 1
+mp_8_0 N_26  SI VDD VDD pmos  l=0.13u w=0.28u m=1
+mn_8_0 N_107 SI VSS VSS nmos  l=0.13u w=0.18u m=1
+mp_10_0 K_1   c   K_2   VDD pmos  l=0.13u w=0.28u m=1
+mn_10_0 K_1   cn  K_2   VSS nmos  l=0.13u w=0.18u m=1
+mp_11_0 K_2   cn  N_27  VDD pmos  l=0.13u w=0.17u m=1
+mn_11_0 K_2   c   N_108 VSS nmos  l=0.13u w=0.17u m=1
+mp_12_0 N_27  K_3 VDD   VDD pmos  l=0.13u w=0.17u m=1
+mn_12_0 N_108 K_3 VSS   VSS nmos  l=0.13u w=0.17u m=1
+
+M35 N_14 cn K_3 VDD pmos  l=0.13u w=0.46u m=1
+M15 N_14 c  K_3 VSS nmos  l=0.13u w=0.28u m=1
+
+mp_14_0 K_3  K_2  N_11  VDD pmos  l=0.13u w=0.47u m=1
+mn_14_0 K_3  K_2  N_34  VSS nmos  l=0.13u w=0.28u m=1
+mp_15_0 N_11 rnn  VDD   VDD pmos  l=0.13u w=0.47u m=1
+mn_15_0 N_34 rnn  N_14  VSS nmos  l=0.13u w=0.2u m=1
+
+mp_17_0 N_14 SN   VDD   VDD pmos  l=0.13u w=0.28u m=1
+mn_17_0 N_34 SN   VSS   VSS nmos  l=0.13u w=0.28u m=1
+
+
+
+
+
+M33 N_14 c N_28 VDD pmos  l=0.13u w=0.17u m=1
+M34 N_28 N_24 N_11 VDD pmos  l=0.13u w=0.17u m=1
+
+
+M37 rnn RN VDD VDD pmos  l=0.13u w=0.26u m=1
+
+M39 Q N_24 VDD VDD pmos  l=0.13u w=0.4u m=1
+M40 QN N_14 VDD VDD pmos  l=0.13u w=0.4u m=1
+M41 N_24 N_14 VDD VDD pmos  l=0.13u w=0.26u m=1
+
+
+M11 QN N_14 VSS VSS nmos  l=0.13u w=0.26u m=1
+M12 N_24 N_14 VSS VSS nmos  l=0.13u w=0.18u m=1
+
+
+M15 N_14 c K_3 VSS nmos  l=0.13u w=0.28u m=1
+M16 N_109 cn N_14 VSS nmos  l=0.13u w=0.17u m=1
+
+M18 N_109 N_24 N_34 VSS nmos  l=0.13u w=0.17u m=1
+M19 rnn RN VSS VSS nmos  l=0.13u w=0.18u m=1
+
+M21 Q N_24 VSS VSS nmos  l=0.13u w=0.26u m=1
+.ends SDBRB2
+
+
+
+
+.SUBCKT SDBRB3 CK D RN SE SI SN VDD VSS Q QN 
+mX_g14_MXPA1 cn CK VDD VDD pmos l=1.3e-07 w=6.2e-07
+mX_g14_MXNA1 cn CK VSS VSS nmos l=1.3e-07 w=2.2e-07
+mX_g10_MXPA1 c cn VDD VDD pmos l=1.3e-07 w=5e-07
+mX_g10_MXNA1 c cn VSS VSS nmos l=1.3e-07 w=1.8e-07
+mXI3_MXPA1 XI3_p1 D VDD VDD pmos l=1.3e-07 w=3e-07
+mXI3_MXNA1 XI3_n1 D VSS VSS nmos l=1.3e-07 w=1.8e-07
+mXI3_MXPOEN nmrs SE XI3_p1 VDD pmos l=1.3e-07 w=3e-07
+mXI3_MXNOE nmrs nmse XI3_n1 VSS nmos l=1.3e-07 w=1.8e-07
+mX_g9_MXPA1 nmse SE VDD VDD pmos l=1.3e-07 w=2.3e-07
+mX_g9_MXNA1 nmse SE VSS VSS nmos l=1.3e-07 w=1.8e-07
+mXI0_MXPA1 XI0_p1 SI VDD VDD pmos l=1.3e-07 w=2.3e-07
+mXI0_MXNA1 XI0_n1 SI VSS VSS nmos l=1.3e-07 w=1.8e-07
+mXI0_MXPOEN nmrs nmse XI0_p1 VDD pmos l=1.3e-07 w=2.3e-07
+mXI0_MXNOE nmrs SE XI0_n1 VSS nmos l=1.3e-07 w=1.8e-07
+mXI69_MXPOEN pm c nmrs VDD pmos l=1.3e-07 w=2.3e-07
+mXI69_MXNOE pm cn nmrs VSS nmos l=1.3e-07 w=1.8e-07
+mXI8_MXPA1 XI8_p1 m VDD VDD pmos l=1.3e-07 w=2.3e-07
+mXI8_MXPOEN pm cn XI8_p1 VDD pmos l=1.3e-07 w=2.3e-07
+mXI8_MXNOE pm c XI8_n1 VSS nmos l=1.3e-07 w=1.8e-07
+mXI8_MXNA1 XI8_n1 m VSS VSS nmos l=1.3e-07 w=1.8e-07
+mX_g5_MXPA1 NRN RN VDD VDD pmos l=1.3e-07 w=2.3e-07
+mX_g5_MXNA1 NRN RN VSS VSS nmos l=1.3e-07 w=1.8e-07
+MX_t10 brn NRN VDD VDD pmos l=1.3e-07 w=4.9e-07
+MX_t11 m pm brn VDD pmos l=1.3e-07 w=3.6e-07
+MX_t12 m SN VDD VDD pmos l=1.3e-07 w=2.3e-07
+MX_t13 m pm NSN VSS nmos l=1.3e-07 w=3e-07
+MX_t14 NSN SN VSS VSS nmos l=1.3e-07 w=4e-07
+MX_t15 NSN NRN m VSS nmos l=1.3e-07 w=1.9e-07
+mXI60_MXPOEN bm cn m VDD pmos l=1.3e-07 w=2.4e-07
+mXI60_MXNOE bm c m VSS nmos l=1.3e-07 w=1.9e-07
+MX_t16 bm SN VDD VDD pmos l=1.3e-07 w=2.3e-07
+MXN5 bm NRN NSN VSS nmos l=1.3e-07 w=1.9e-07
+MXP5 brn s net105 VDD pmos l=1.3e-07 w=2.3e-07
+MXP6 bm c net105 VDD pmos l=1.3e-07 w=2.3e-07
+MXN6 NSN s net75 VSS nmos l=1.3e-07 w=1.8e-07
+MX_t20 bm cn net75 VSS nmos l=1.3e-07 w=1.8e-07
+mX_g2_MXPA1 s bm VDD VDD pmos l=1.3e-07 w=2.3e-07
+mX_g2_MXNA1 s bm VSS VSS nmos l=1.3e-07 w=1.8e-07
+mX_g1_MXPA1 QN bm VDD VDD pmos l=1.3e-07 w=6.2e-07
+mX_g1_MXNA1 QN bm VSS VSS nmos l=1.3e-07 w=3.6e-07
+mX_g3_MXPA1 Q s VDD VDD pmos l=1.3e-07 w=6.2e-07
+mX_g3_MXNA1 Q s VSS VSS nmos l=1.3e-07 w=3.6e-07
+.ends SDBRB3
+
+
+.subckt SDBRQ VDD Q VSS RN SN SI SE D CK
+M1 N_4 CK VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M3 N_6 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 N_35 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M5 N_35 N_6 N_30 VSS nmos  l=0.5u w=0.5u m=1
+M6 N_36 SI N_30 VSS nmos  l=0.5u w=0.5u m=1
+M7 N_36 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_9 N_4 N_30 VSS nmos  l=0.5u w=0.5u m=1
+M9 N_9 N_5 N_37 VSS nmos  l=0.5u w=0.5u m=1
+M10 N_37 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M11 N_28 N_9 N_10 VSS nmos  l=0.5u w=0.5u m=1
+M12 N_28 N_3 N_10 VSS nmos  l=0.5u w=0.5u m=1
+M13 N_28 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M14 N_38 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 N_11 N_5 N_38 VSS nmos  l=0.5u w=0.5u m=1
+M16 Q N_11 N_24 VSS nmos  l=0.5u w=0.58u m=1
+M17 N_24 N_3 Q VSS nmos  l=0.5u w=0.58u m=1
+M18 N_24 SN VSS VSS nmos  l=0.5u w=0.58u m=1
+M19 N_3 RN VSS VSS nmos  l=0.5u w=0.5u m=1
+M20 N_39 N_4 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M21 N_39 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M22 N_12 N_3 N_26 VSS nmos  l=0.5u w=0.5u m=1
+M23 N_26 N_11 N_12 VSS nmos  l=0.5u w=0.5u m=1
+M24 N_26 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M25 N_4 CK VDD VDD pmos  l=0.42u w=0.52u m=1
+M26 N_5 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M27 N_6 SE VDD VDD pmos  l=0.42u w=0.52u m=1
+M28 N_15 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M29 N_7 SE N_15 VDD pmos  l=0.42u w=0.52u m=1
+M30 N_16 N_6 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M31 N_16 SI VDD VDD pmos  l=0.42u w=0.52u m=1
+M32 N_9 N_5 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M33 N_17 N_4 N_9 VDD pmos  l=0.42u w=0.5u m=1
+M34 N_17 N_10 VDD VDD pmos  l=0.42u w=0.5u m=1
+M35 N_18 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M36 N_18 N_3 N_10 VDD pmos  l=0.42u w=0.52u m=1
+M37 N_10 SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M38 N_19 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M39 N_19 N_4 N_11 VDD pmos  l=0.42u w=0.52u m=1
+M40 N_20 N_5 N_11 VDD pmos  l=0.42u w=0.5u m=1
+M41 N_22 N_11 VDD VDD pmos  l=0.42u w=0.76u m=1
+M42 Q N_3 N_22 VDD pmos  l=0.42u w=0.76u m=1
+M43 Q SN VDD VDD pmos  l=0.42u w=0.76u m=1
+M44 N_3 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M45 N_20 N_12 VDD VDD pmos  l=0.42u w=0.5u m=1
+M46 N_21 N_3 N_12 VDD pmos  l=0.42u w=0.5u m=1
+M47 N_21 N_11 VDD VDD pmos  l=0.42u w=0.5u m=1
+M48 N_12 SN VDD VDD pmos  l=0.42u w=0.5u m=1
+.ends SDBRQ
+
+.subckt SDBFB VDD Q QN VSS RN SN SI SE D CKN
+M1 N_13 RN VSS VSS nmos  l=0.5u w=0.5u m=1
+M2 Q N_14 VSS VSS nmos  l=0.5u w=0.58u m=1
+M3 N_14 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M4 QN N_12 VSS VSS nmos  l=0.5u w=0.58u m=1
+M5 N_4 CKN VSS VSS nmos  l=0.5u w=0.5u m=1
+M6 N_5 N_4 VSS VSS nmos  l=0.5u w=0.5u m=1
+M7 N_6 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M8 N_53 D VSS VSS nmos  l=0.5u w=0.5u m=1
+M9 N_53 N_6 N_29 VSS nmos  l=0.5u w=0.5u m=1
+M10 N_54 SI N_29 VSS nmos  l=0.5u w=0.5u m=1
+M11 N_54 SE VSS VSS nmos  l=0.5u w=0.5u m=1
+M12 N_9 N_5 N_29 VSS nmos  l=0.5u w=0.5u m=1
+M13 N_9 N_4 N_55 VSS nmos  l=0.5u w=0.5u m=1
+M14 N_55 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M15 N_27 N_9 N_10 VSS nmos  l=0.5u w=0.5u m=1
+M16 N_27 N_13 N_10 VSS nmos  l=0.5u w=0.5u m=1
+M17 N_27 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M18 N_56 N_10 VSS VSS nmos  l=0.5u w=0.5u m=1
+M19 N_11 N_4 N_56 VSS nmos  l=0.5u w=0.5u m=1
+M20 N_57 N_5 N_11 VSS nmos  l=0.5u w=0.5u m=1
+M21 N_57 N_12 VSS VSS nmos  l=0.5u w=0.5u m=1
+M22 N_25 SN VSS VSS nmos  l=0.5u w=0.5u m=1
+M23 N_12 N_13 N_25 VSS nmos  l=0.5u w=0.5u m=1
+M24 N_25 N_11 N_12 VSS nmos  l=0.5u w=0.5u m=1
+M25 N_13 RN VDD VDD pmos  l=0.42u w=0.52u m=1
+M26 Q N_14 VDD VDD pmos  l=0.42u w=0.76u m=1
+M27 QN N_12 VDD VDD pmos  l=0.42u w=0.76u m=1
+M28 N_14 N_12 VDD VDD pmos  l=0.42u w=0.52u m=1
+M29 N_4 CKN VDD VDD pmos  l=0.42u w=0.52u m=1
+M30 N_5 N_4 VDD VDD pmos  l=0.42u w=0.52u m=1
+M31 N_6 SE VDD VDD pmos  l=0.42u w=0.52u m=1
+M32 N_17 D VDD VDD pmos  l=0.42u w=0.52u m=1
+M33 N_7 SE N_17 VDD pmos  l=0.42u w=0.52u m=1
+M34 N_18 N_6 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M35 N_18 SI VDD VDD pmos  l=0.42u w=0.52u m=1
+M36 N_9 N_4 N_7 VDD pmos  l=0.42u w=0.52u m=1
+M37 N_19 N_5 N_9 VDD pmos  l=0.42u w=0.52u m=1
+M38 N_19 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M39 N_20 N_9 VDD VDD pmos  l=0.42u w=0.52u m=1
+M40 N_20 N_13 N_10 VDD pmos  l=0.42u w=0.52u m=1
+M41 N_10 SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M42 N_21 N_10 VDD VDD pmos  l=0.42u w=0.52u m=1
+M43 N_21 N_5 N_11 VDD pmos  l=0.42u w=0.52u m=1
+M44 N_22 N_4 N_11 VDD pmos  l=0.42u w=0.5u m=1
+M45 N_22 N_12 VDD VDD pmos  l=0.42u w=0.5u m=1
+M46 N_12 SN VDD VDD pmos  l=0.42u w=0.52u m=1
+M47 N_23 N_13 N_12 VDD pmos  l=0.42u w=0.52u m=1
+M48 N_23 N_11 VDD VDD pmos  l=0.42u w=0.52u m=1
+.ends SDBFB
+
+
+
+
+
+
+
+.SUBCKT LATCH_V2 Q QN VDD VDD VSS VSS D G
+mp_1_0  VDD   G   cn   VDD pmos l=1.3e-07 w=2.8e-07
+mn_1_0  VSS   G   cn   VSS nmos l=1.3e-07 w=2.3e-07
+mp_3_0  c     cn   VDD  VDD pmos l=1.3e-07 w=2.3e-07
+mn_3_0  c     cn   VSS  VSS nmos l=1.3e-07 w=1.8e-07
+mp_4_0  VDD   D    net1 VDD pmos l=1.3e-07 w=6.5e-07
+mn_4_0  VSS   D    net2 VSS nmos l=1.3e-07 w=5.3e-07
+mp_5_0  net1  cn   net3 VDD pmos l=1.3e-07 w=6.5e-07
+mn_5_0  net2  c    net3 VSS nmos l=1.3e-07 w=5.3e-07
+mp_6_0  net3  c    net4 VDD pmos l=1.3e-07 w=2.3e-07
+mn_6_0  net3  cn   net5 VSS nmos l=1.3e-07 w=1.5e-07
+mp_7_0  net4  m    VDD  VDD pmos l=1.3e-07 w=2.3e-07
+mn_7_0  net5  m    VSS  VSS nmos l=1.3e-07 w=1.5e-07
+mp_8_0  VDD   net3 m    VDD pmos l=1.3e-07 w=2.3e-07
+mn_8_0  VSS   net3 m    VSS nmos l=1.3e-07 w=1.8e-07
+mp_10_0 Q     net3 VDD  VDD pmos l=1.3e-07 w=6.2e-07
+mn_10_0 Q     net3 VSS  VSS nmos l=1.3e-07 w=3.6e-07
+mp_11_0 VDD   m    QN   VDD pmos l=1.3e-07 w=6.2e-07
+mn_11_0 VSS   m    QN   VSS nmos l=1.3e-07 w=3.6e-07
+.ends LATCH_V1
+
+
+
+

@@ -1,0 +1,255 @@
+*clk
+.SUBCKT CLK1 CK VDD VSS C CN 
+PM1 CN   CK  VDD VDD pmos l=1 w=1 n=1 ro=2 co=1
+PM2 VDD  CN  C   VDD pmos l=1 w=1 n=1 ro=2 co=2
+NM1 CN   CK  VSS VSS nmos l=1 w=1 n=1 ro=5 co=1
+NM2 VSS  CN  C   VSS nmos l=1 w=1 n=1 ro=5 co=2  
+.ends CLK1
+
+
+.SUBCKT CLK2 CK VDD VSS C CN
+PM1 nck   CK  VDD VDD pmos l=1 w=1 n=1 ro=1 co=1
+NM1 nck   CK  VSS VSS nmos l=1 w=1 n=1 ro=1 co=1
+PM2 VDD  nck  C   VDD pmos l=1 w=1 n=1 ro=1 co=2
+NM2 VSS  nck  C   VSS nmos l=1 w=1 n=1 ro=1 co=2  
+PM3 VDD  CK  net1 VDD pmos l=1 w=1 n=1 ro=1 co=3
+NM3 VSS  CK  CN   VSS nmos l=1 w=1 n=1 ro=1 co=3
+PM4 net1 C   CN   VDD pmos l=1 w=1 n=1 ro=1 co=4
+.ends CLK2
+
+
+******************INV************************
+
+.SUBCKT INV IN1 VDD VSS OUT1
+PM1 VDD  IN1  OUT1 VDD pmos l=1 w=1 n=1 ro=5 co=1
+NM1 VSS  IN1  OUT1 VSS nmos l=1 w=1 n=1 ro=2 co=1
+.ends INV
+******************Logic ************************
+
+.SUBCKT LOGIC_AND2 IN1 IN2 VDD VSS OUT1
+pmos_1 VDD  IN1  net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+nmos_1 net1 IN1  net2 VSS nmos l=1 w=1 n=1 ro=1 co=1
+pmos_2 net1 IN2  VDD  VDD pmos l=1 w=1 n=1 ro=1 co=2
+nmos_2 net2 IN2  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=2
+pmos_3 VDD  net1  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=3
+nmos_3 VSS  net1  OUT1  VSS nmos l=1 w=1 n=1 ro=1 co=3
+.ends LOGIC_AND2
+
+.SUBCKT LOGIC_OR2 IN1 IN2 VDD VSS OUT1
+pmos_1 net1  IN1  net2 VDD pmos l=1 w=1 n=1 ro=1 co=1
+nmos_1 VSS   IN1  net1 VSS nmos l=1 w=1 n=1 ro=1 co=1
+pmos_2 net2  IN2  VDD  VDD pmos l=1 w=1 n=1 ro=1 co=2
+nmos_2 net1  IN2  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=2
+pmos_3 VDD  net1  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=3
+nmos_3 VSS  net1  OUT1  VSS nmos l=1 w=1 n=1 ro=1 co=3
+.ends LOGIC_OR2
+
+.SUBCKT LOGIC_NAND2 IN1 IN2 VDD VSS OUT1
+pmos_1 OUT1 IN1  VDD VDD pmos l=1 w=1 n=1 ro=1 co=1
+nmos_1 VSS  IN1  net1  VSS nmos l=1 w=1 n=1 ro=1 co=1
+pmos_2 VDD  IN2  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=2
+nmos_2 net1 IN2  OUT1  VSS nmos l=1 w=1 n=1 ro=1 co=2  
+.ends LOGIC_NAND2
+
+.SUBCKT LOGIC_NOR2 IN1 IN2 VDD VSS OUT1
+PM1 VDD  IN1  net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+NM1 VSS  IN1  OUT1  VSS nmos l=1 w=1 n=1 ro=1 co=1
+PM2 net1 IN2  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=2
+NM2 OUT1 IN2  VSS  VSS nmos l=1 w=1 n=1  ro=1 co=2
+.ends LOGIC_NOR2
+
+
+******************CROSS without D********************************
+.SUBCKT CROSS_NOD_1_1 IN1 A B OUT1 OUT2 VDD VSS 
+PMA IN1  A   PM   VDD pmos  l=1 w=1 n=1 ro=1 co=1
+PMB PM   B   OUT1 VDD pmos  l=1 w=1 n=1 ro=1 co=2
+NMB IN1  B   PM   VSS nmos  l=1 w=1 n=1 ro=1 co=1
+NMA PM   A   OUT2 VSS nmos  l=1 w=1 n=1 ro=1 co=2
+.ends CROSS_NOD_1_1
+
+.SUBCKT CROSS_NOD_1_2 IN1 IN2 A B OUT1 OUT2 VDD VSS 
+PMA IN1  A   PM   VDD pmos  l=1 w=1 n=1 ro=1 co=1
+PMB PM   B   OUT1 VDD pmos  l=1 w=1 n=1 ro=1 co=2
+NMB IN2  B   PM   VSS nmos  l=1 w=1 n=1 ro=1 co=1
+NMA PM   A   OUT2 VSS nmos  l=1 w=1 n=1 ro=1 co=2
+.ends CROSS_NOD_1_2
+
+
+.SUBCKT CROSS_NOD_2 IN1 IN2 IN3 CN C VDD VSS
+PMA IN1  A    VDD   VDD pmos l=1 w=1 n=1 ro=5 co=1
+PMB VDD  B    NET1  VDD pmos l=1 w=1 n=1 ro=5 co=2
+PM1 NET1 M    PM    VDD pmos l=1 w=1 n=1 ro=5 co=3
+
+NMB IN2  B    VSS   VSS nmos l=1 w=1 n=1 ro=2 co=1
+NMA VSS  A    NET2  VSS nmos l=1 w=1 n=1 ro=2 co=2
+NM1 NET2 M    PM    VSS nmos l=1 w=1 n=1 ro=2 co=3
+
+.ends CROSS_NOD_2
+
+
+
+.SUBCKT CROSS_NOD_3 IN1 IN2 PM CN C VDD VSS
+PMA IN1   A    VDD  VDD pmos l=1 w=1 n=1 ro=5 co=1
+PM2 VDD   M    NET3 VDD pmos l=1 w=1 n=1 ro=5 co=2
+PMB NET3  B    PM   VDD pmos l=1 w=1 n=1 ro=5 co=3
+
+NMB IN2   B    VSS   VSS nmos l=1 w=1 n=1 ro=2 co=1
+NM2 VSS   M    NET4  VSS nmos l=1 w=1 n=1 ro=2 co=2
+NMA NET4  A    PM    VSS nmos l=1 w=1 n=1 ro=2 co=3
+.ends CROSS_NOD_3
+
+
+*Patch
+.SUBCKT CROSS_NOD_P1 IN1 RN SN C CN VDD VSS M 
+PM1 PM   SN   VDD   VDD pmos  l=1 w=1 n=1 ro=1 co=1
+PMA VDD  A    NET1  VDD pmos  l=1 w=1 n=1 ro=1 co=2
+PM3 NET1 IN1  PM    VDD pmos  l=1 w=1 n=1 ro=1 co=3
+PMB PM   B    NET4  VDD pmos  l=1 w=1 n=1 ro=1 co=4
+PM5 NET4 M    VDD   VDD pmos  l=1 w=1 n=1 ro=1 co=5
+
+NM1 VSS  SN   SNG   VSS nmos  l=1 w=1 n=1 ro=1 co=1
+NMB SNG  B    NET2  VSS nmos  l=1 w=1 n=1 ro=1 co=2
+NM3 NET2 IN1  PM    VSS nmos  l=1 w=1 n=1 ro=1 co=3
+NMA PM   A    NET3  VSS nmos  l=1 w=1 n=1 ro=1 co=4
+NM5 NET3 M    VSS   VSS nmos  l=1 w=1 n=1 ro=1 co=5
+.ends CROSS_NOD_P1
+
+
+
+
+
+
+
+******************backtrack********************************
+.SUBCKT BACKTRACK_1  IN1 IN2 IN3 VDD VSS OUT1
+PM1 VDD  IN1  NET3 VDD pmos  l=1 w=1 n=1 ro=1 co=1
+PM2 NET3 IN2  OUT1 VDD pmos  l=1 w=1 n=1 ro=1 co=2
+PM3 OUT1 IN3  VDD  VDD pmos  l=1 w=1 n=1 ro=1 co=3
+
+NM1 NET4 IN1  OUT1 VSS nmos  l=1 w=1 n=1 ro=1 co=1
+NM2 OUT1 IN2  NET4 VSS nmos  l=1 w=1 n=1 ro=1 co=2
+NM3 NET4 IN3  VSS  VSS nmos  l=1 w=1 n=1 ro=1 co=3
+.ends BACKTRACK_1
+
+.SUBCKT BACKTRACK_2  IN1 IN2 IN3 VDD VSS OUT1
+PM1 VDD  IN2 NET1 VDD pmos  l=1 w=1 n=1 ro=1 co=1
+PM2 NET1 IN1 OUT1 VDD pmos  l=1 w=1 n=1 ro=1 co=2
+NM1 VSS  IN3 NET2 VSS nmos  l=1 w=1 n=1 ro=1 co=2
+NM2 NET2 IN1 OUT1 VSS nmos  l=1 w=1 n=1 ro=1 co=1
+.ends BACKTRACK_2
+
+.SUBCKT BACKTRACK_3  IN1 IN2 VDD VSS OUT1
+PM1 VDD  IN2 NET1 VDD pmos  l=1 w=1 n=1 ro=1 co=1
+PM2 NET1 IN1 OUT1 VDD pmos  l=1 w=1 n=1 ro=1 co=2
+NM2 OUT1 IN1 VSS  VSS nmos  l=1 w=1 n=1 ro=1 co=2
+.ends BACKTRACK_3
+
+.SUBCKT BACKTRACK_4  IN1 IN2 VDD VSS OUT1
+PM1 VDD  IN1 OUT1 VDD pmos  l=1 w=1 n=1 ro=1 co=1
+NM1 OUT1 IN1 NET1 VSS nmos  l=1 w=1 n=1 ro=1 co=2
+NM2 NET1 IN2 VSS  VSS nmos  l=1 w=1 n=1 ro=1 co=2
+.ends BACKTRACK_4
+
+
+
+
+******************pull********************************
+
+
+.SUBCKT PULL_1  IN1 IN2 VDD VSS OUT1
+PM1 VDD  IN1  NET1 VDD pmos l=1 w=1 n=1 ro=5 co=1
+PM2 NET1 IN2  PM   VDD pmos l=1 w=1 n=1 ro=5 co=2
+NM1 VSS  IN2  PM   VSS nmos l=1 w=1 n=1 ro=2 co=2
+.ends PULL_1
+
+
+*.SUBCKT PULL_2  IN1 IN2 VDD VSS OUT1
+*PM1 VDD  IN1  NET1 VDD pmos l=1 w=1 n=1 ro=5 co=1
+*PM2 NET1 IN2  PM   VDD pmos l=1 w=1 n=1 ro=5 co=2
+*.ends PULL_2
+
+*.SUBCKT PULL_3  IN1 IN2 VDD VSS OUT1
+*PM1 VDD  IN1  PM   VDD pmos l=1 w=1 n=1 ro=5 co=1
+*NM1 VSS  IN2  PM   VSS nmos l=1 w=1 n=1 ro=2 co=1
+*.ends PULL_3
+
+*.SUBCKT PULL_4  IN1 IN2 VDD VSS OUT1
+*PM1 VDD  IN1  PM   VDD pmos l=1 w=1 n=1 ro=5 co=1
+*.ends PULL_4
+
+*.SUBCKT PULL_5  IN1 IN2 VDD VSS OUT1
+*NM1 VSS  IN1  PM   VSS nmos l=1 w=1 n=1 ro=2 co=1
+*.ends PULL_5
+
+
+******************D and E************************
+.SUBCKT INPUT_ED1 Q VDD VDD VSS VSS CK D E
+*D is N_D here
+
+PM1 N_D  N_E OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
+NM1 N_D  E   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=2
+PM2 OUT1 E   net1 VDD pmos l=1 w=1 n=1 ro=1 co=3
+NM2 OUT1 N_E net2 VSS nmos l=1 w=1 n=1 ro=1 co=3
+PM3 net1 s   VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
+NM3 net2 s   VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
+
+
+.ends INPUT_ED_1
+
+.SUBCKT INPUT_ED2_1 D E s VDD VSS OUT1 OUT2 
+PM1 VDD   N_E net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+PM2 net1  D   OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
+PM3 OUT1  s   net2 VDD pmos l=1 w=1 n=1 ro=1 co=3
+PM4 net2  E   VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
+
+NM1 VSS   E   net3 VSS nmos l=1 w=1 n=1 ro=1 co=1
+NM2 net3  D   OUT2 VSS nmos l=1 w=1 n=1 ro=1 co=2
+NM3 OUT2  s   net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
+NM4 net4  N_E VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
+.ends INPUT_ED2_1
+
+.SUBCKT INPUT_ED2_2  VDD  VSS  D E s OUT1
+PM1 VDD   N_E net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+PM2 net1  D   OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
+PM3 OUT1  s   net2 VDD pmos l=1 w=1 n=1 ro=1 co=3
+PM4 net2  E   VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
+
+NM1 VSS   E   net3 VSS nmos l=1 w=1 n=1 ro=1 co=1
+NM2 net3  D   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=2
+NM3 OUT1  s   net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
+NM4 net4  N_E VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
+.ends INPUT_ED2_2
+
+.SUBCKT INPUT_ED3_1  VDD  VSS  D E OUT1
+PM1 VDD   D   net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+PM2 net1  N_E OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
+PM3 OUT1  E   net2 VDD pmos l=1 w=1 n=1 ro=1 co=3
+PM4 net2  s   VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
+
+NM1 VSS   D   net3 VSS nmos l=1 w=1 n=1 ro=1 co=1
+NM2 net3  E   OUT2 VSS nmos l=1 w=1 n=1 ro=1 co=2
+NM3 OUT2  N_E net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
+NM4 net4  s   VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
+.ends INPUT_ED3_1
+
+.SUBCKT INPUT_ED3_2  VDD  VSS  D E OUT1
+PM1 VDD   D   net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+PM2 net1  N_E OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
+PM3 OUT1  E   net2 VDD pmos l=1 w=1 n=1 ro=1 co=3
+PM4 net2  s   VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
+
+NM1 VSS   D   net3 VSS nmos l=1 w=1 n=1 ro=1 co=1
+NM2 net3  E   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=2
+NM3 OUT1  N_E net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
+NM4 net4  s   VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
+.ends INPUT_ED3_2
+
+******************D0 and D1 or S0************************
+
+*multiple inputs s65  DXHSV1
+.SUBCKT INPUT_MD1 D0 D1 S0 VDD VSS OUT1
+PM1 N_D0 N_S0 OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+NM1 N_D0 S0   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=1
+PM2 OUT1 S0   N_D1 VDD pmos l=1 w=1 n=1 ro=1 co=2
+NM2 OUT1 N_S0 N_D1 VSS nmos l=1 w=1 n=1 ro=1 co=2
+.ends INPUT_MDR1  

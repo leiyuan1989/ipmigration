@@ -1,0 +1,47 @@
+INHSV0 	 #2 Inverter
+INHSV4	 #2 Inverter
+INHSV16	 #2 Inverter
+INHSV64	 #2 Inverter 
+BUFHSV0  #4 Non-Inverting Buffer
+BUFHSV16 #4 Non-Inverting Buffer
+BUFHSV48 #4 Non-Inverting Buffer
+NAND2HSV0  #4 2-Input NAND
+NAND2HSV4  #4 2-Input NAND
+NAND2HSV24 #4 2-Input NAND
+NOR2HSV0   #4 2-Input NOR
+NOR2HSV4   #4 2-Input NOR
+NOR2HSV24  #4 2-Input NOR
+AND2HSV0   #6 2-Input AND
+AND2HSV16  #6 2-Input AND
+AND2HSV64  #6 2-Input AND
+NAND3HSV0  #6 3-Input NAND
+NAND3HSV16 #6 3-Input NAND
+NAND3HSV24 #6 3-Input NAND
+NAND4HSV0  #8 4-Input NAND
+NAND4HSV16 #8 4-Input NAND
+NAND4HSV24 #8 4-Input NAND
+AND3HSV0   #8 3-Input AND
+AND3HSV8   #8 3-Input AND
+AND3HSV16  #8 3-Input AND
+OA22HSV0   #10 2-2 OA with Simple Gates
+OA22HSV2   #10 2-2 OA with Simple Gates
+OA22HSV4   #10 2-2 OA with Simple Gates
+AND4HSV0   #10 4-Input AND
+AND4HSV4   #10 4-Input AND
+AND4HSV8   #10 4-Input AND
+CKMUX2HSV0 #12 2-to-1 Multiplexer
+CKMUX2HSV1 #12 2-to-1 Multiplexer
+I2NAND4HSV0 #12 4-Input NAND with 2 Inverted Inputs
+I2NAND4HSV1 #12 4-Input NAND with 2 Inverted Inputs
+OA222HSV0   #14 2-2-2 OA
+OA222HSV1   #14 2-2-2 OA
+OA33HSV0    #14 3-3 OA
+OA33HSV1    #14 3-3 OA
+ADH1HSV1    #16 1-Bit Half Adder
+ADH1HSV2    #16 1-Bit Half Adder
+LAHHSV1 	#18 High Enable Latch 
+LAHHSV2 	#18 High Enable Latch
+MUX3NHSV0   #24 3-to-1 Inverting Multiplexer
+MUX3NHSV1   #24 3-to-1 Inverting Multiplexer
+DHSV1       #28 D Flip-Flop
+DHSV2       #28 D Flip-Flop

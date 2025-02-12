@@ -1,0 +1,1130 @@
+
+
+.SUBCKT TLATNCAX12MTR ECK VDD VNW VPW VSS CK E
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g6_MXNA1_2 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=6.4e-07
+mXI14_MXNOE_2 nmin c XI14_n1__2 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNA1_2 XI14_n1__2 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNA1_3 XI14_n1__3 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE_3 nmin c XI14_n1__3 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE_4 nmin c XI14_n1__4 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNA1_4 XI14_n1__4 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNA1_5 XI14_n1__5 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE_5 nmin c XI14_n1__5 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE nmin c XI14_n1 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNA1 XI14_n1 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI13_MXNA1 XI13_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mXI13_MXNOE nmin cn XI13_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m nmin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI1_MXNA1 ECK nmin VSS VPW n12 l=1.3e-07 w=2.9e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=2.9e-07
+mXI1_MXNA2_2 ECK c VSS VPW n12 l=1.3e-07 w=3e-07
+mXI1_MXNA1_2 ECK nmin VSS VPW n12 l=1.3e-07 w=3e-07
+mXI1_MXNA1_3 ECK nmin VSS VPW n12 l=1.3e-07 w=3e-07
+mXI1_MXNA2_3 ECK c VSS VPW n12 l=1.3e-07 w=3e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g6_MXPA1_2 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g6_MXPA1_3 c CK VDD VNW p12 l=1.3e-07 w=7.9e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=7.9e-07
+mXI14_MXPOEN_2 nmin cn XI14_p1__2 VNW p12 l=1.3e-07 w=7.2e-07
+mXI14_MXPA1_2 XI14_p1__2 E VDD VNW p12 l=1.3e-07 w=7.2e-07
+mXI14_MXPA1_3 XI14_p1__3 E VDD VNW p12 l=1.3e-07 w=7.2e-07
+mXI14_MXPOEN_3 nmin cn XI14_p1__3 VNW p12 l=1.3e-07 w=7.2e-07
+mXI14_MXPOEN_4 nmin cn XI14_p1__4 VNW p12 l=1.3e-07 w=7.2e-07
+mXI14_MXPA1_4 XI14_p1__4 E VDD VNW p12 l=1.3e-07 w=7.2e-07
+mXI14_MXPA1_5 XI14_p1__5 E VDD VNW p12 l=1.3e-07 w=6.7e-07
+mXI14_MXPOEN_5 nmin cn XI14_p1__5 VNW p12 l=1.3e-07 w=6.7e-07
+mXI14_MXPOEN nmin cn XI14_p1 VNW p12 l=1.3e-07 w=6.7e-07
+mXI14_MXPA1 XI14_p1 E VDD VNW p12 l=1.3e-07 w=6.7e-07
+mXI13_MXPOEN nmin c XI13_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI13_MXPA1 XI13_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g2_MXPA1 m nmin VDD VNW p12 l=1.3e-07 w=3e-07
+mXI1_MXPA2_2 XI1_p1__2 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_2 ECK nmin XI1_p1__2 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_3 ECK nmin XI1_p1__3 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_3 XI1_p1__3 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_4 XI1_p1__4 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_4 ECK nmin XI1_p1__4 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_5 ECK nmin XI1_p1__5 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_5 XI1_p1__5 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_6 XI1_p1__6 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_6 ECK nmin XI1_p1__6 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1 ECK nmin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNCAX16MTR ECK VDD VNW VPW VSS CK E
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g6_MXNA1_2 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=6.4e-07
+mXI14_MXNOE_2 nmin c XI14_n1__2 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNA1_2 XI14_n1__2 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNA1_3 XI14_n1__3 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE_3 nmin c XI14_n1__3 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE_4 nmin c XI14_n1__4 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNA1_4 XI14_n1__4 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNA1_5 XI14_n1__5 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE_5 nmin c XI14_n1__5 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE nmin c XI14_n1 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNA1 XI14_n1 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI13_MXNA1 XI13_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mXI13_MXNOE nmin cn XI13_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m nmin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI1_MXNA1 ECK nmin VSS VPW n12 l=1.3e-07 w=3.9e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=3.9e-07
+mXI1_MXNA2_2 ECK c VSS VPW n12 l=1.3e-07 w=3.3e-07
+mXI1_MXNA1_2 ECK nmin VSS VPW n12 l=1.3e-07 w=3.3e-07
+mXI1_MXNA1_3 ECK nmin VSS VPW n12 l=1.3e-07 w=3.3e-07
+mXI1_MXNA2_3 ECK c VSS VPW n12 l=1.3e-07 w=3.3e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g6_MXPA1_2 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g6_MXPA1_3 c CK VDD VNW p12 l=1.3e-07 w=8.1e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=7.9e-07
+mXI14_MXPOEN_2 nmin cn XI14_p1__2 VNW p12 l=1.3e-07 w=7.2e-07
+mXI14_MXPA1_2 XI14_p1__2 E VDD VNW p12 l=1.3e-07 w=7.2e-07
+mXI14_MXPA1_3 XI14_p1__3 E VDD VNW p12 l=1.3e-07 w=7.2e-07
+mXI14_MXPOEN_3 nmin cn XI14_p1__3 VNW p12 l=1.3e-07 w=7.2e-07
+mXI14_MXPOEN_4 nmin cn XI14_p1__4 VNW p12 l=1.3e-07 w=7.2e-07
+mXI14_MXPA1_4 XI14_p1__4 E VDD VNW p12 l=1.3e-07 w=7.2e-07
+mXI14_MXPA1_5 XI14_p1__5 E VDD VNW p12 l=1.3e-07 w=6.7e-07
+mXI14_MXPOEN_5 nmin cn XI14_p1__5 VNW p12 l=1.3e-07 w=6.7e-07
+mXI14_MXPOEN nmin cn XI14_p1 VNW p12 l=1.3e-07 w=6.7e-07
+mXI14_MXPA1 XI14_p1 E VDD VNW p12 l=1.3e-07 w=6.7e-07
+mXI13_MXPOEN nmin c XI13_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI13_MXPA1 XI13_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g2_MXPA1 m nmin VDD VNW p12 l=1.3e-07 w=3e-07
+mXI1_MXPA2_2 XI1_p1__2 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_2 ECK nmin XI1_p1__2 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_3 ECK nmin XI1_p1__3 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_3 XI1_p1__3 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_4 XI1_p1__4 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_4 ECK nmin XI1_p1__4 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_5 ECK nmin XI1_p1__5 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_5 XI1_p1__5 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_6 XI1_p1__6 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_6 ECK nmin XI1_p1__6 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_7 ECK nmin XI1_p1__7 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_7 XI1_p1__7 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_8 XI1_p1__8 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_8 ECK nmin XI1_p1__8 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1 ECK nmin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNCAX20MTR ECK VDD VNW VPW VSS CK E
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g6_MXNA1_2 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g6_MXNA1_3 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g6_MXNA1_4 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g6_MXNA1_5 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=7.1e-07
+mXI14_MXNOE_2 nmin c XI14_n1__2 VPW n12 l=1.3e-07 w=4.4e-07
+mXI14_MXNA1_2 XI14_n1__2 E VSS VPW n12 l=1.3e-07 w=4.4e-07
+mXI14_MXNA1_3 XI14_n1__3 E VSS VPW n12 l=1.3e-07 w=4.4e-07
+mXI14_MXNOE_3 nmin c XI14_n1__3 VPW n12 l=1.3e-07 w=4.4e-07
+mXI14_MXNOE_4 nmin c XI14_n1__4 VPW n12 l=1.3e-07 w=4.4e-07
+mXI14_MXNA1_4 XI14_n1__4 E VSS VPW n12 l=1.3e-07 w=4.4e-07
+mXI14_MXNA1_5 XI14_n1__5 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE_5 nmin c XI14_n1__5 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE_6 nmin c XI14_n1__6 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNA1_6 XI14_n1__6 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNA1_7 XI14_n1__7 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE_7 nmin c XI14_n1__7 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE nmin c XI14_n1 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNA1 XI14_n1 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI13_MXNA1 XI13_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mXI13_MXNOE nmin cn XI13_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m nmin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI1_MXNA1 ECK nmin VSS VPW n12 l=1.3e-07 w=4.1e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=4.1e-07
+mXI1_MXNA2_2 ECK c VSS VPW n12 l=1.3e-07 w=3.3e-07
+mXI1_MXNA1_2 ECK nmin VSS VPW n12 l=1.3e-07 w=3.3e-07
+mXI1_MXNA1_3 ECK nmin VSS VPW n12 l=1.3e-07 w=3.3e-07
+mXI1_MXNA2_3 ECK c VSS VPW n12 l=1.3e-07 w=3.3e-07
+mXI1_MXNA2_4 ECK c VSS VPW n12 l=1.3e-07 w=3.3e-07
+mXI1_MXNA1_4 ECK nmin VSS VPW n12 l=1.3e-07 w=3.3e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g6_MXPA1_2 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g6_MXPA1_3 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g6_MXPA1_4 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g6_MXPA1_5 c CK VDD VNW p12 l=1.3e-07 w=8.1e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=8.1e-07
+mXI14_MXPOEN_2 nmin cn XI14_p1__2 VNW p12 l=1.3e-07 w=5.6e-07
+mXI14_MXPA1_2 XI14_p1__2 E VDD VNW p12 l=1.3e-07 w=5.6e-07
+mXI14_MXPA1_3 XI14_p1__3 E VDD VNW p12 l=1.3e-07 w=5.6e-07
+mXI14_MXPOEN_3 nmin cn XI14_p1__3 VNW p12 l=1.3e-07 w=5.6e-07
+mXI14_MXPOEN_4 nmin cn XI14_p1__4 VNW p12 l=1.3e-07 w=5.6e-07
+mXI14_MXPA1_4 XI14_p1__4 E VDD VNW p12 l=1.3e-07 w=5.6e-07
+mXI14_MXPA1_5 XI14_p1__5 E VDD VNW p12 l=1.3e-07 w=7.1e-07
+mXI14_MXPOEN_5 nmin cn XI14_p1__5 VNW p12 l=1.3e-07 w=7.1e-07
+mXI14_MXPOEN_6 nmin cn XI14_p1__6 VNW p12 l=1.3e-07 w=7.1e-07
+mXI14_MXPA1_6 XI14_p1__6 E VDD VNW p12 l=1.3e-07 w=7.1e-07
+mXI14_MXPA1_7 XI14_p1__7 E VDD VNW p12 l=1.3e-07 w=6.8e-07
+mXI14_MXPOEN_7 nmin cn XI14_p1__7 VNW p12 l=1.3e-07 w=6.8e-07
+mXI14_MXPOEN nmin cn XI14_p1 VNW p12 l=1.3e-07 w=6.8e-07
+mXI14_MXPA1 XI14_p1 E VDD VNW p12 l=1.3e-07 w=6.8e-07
+mXI13_MXPOEN nmin c XI13_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI13_MXPA1 XI13_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g2_MXPA1 m nmin VDD VNW p12 l=1.3e-07 w=3e-07
+mXI1_MXPA2_2 XI1_p1__2 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_2 ECK nmin XI1_p1__2 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_3 ECK nmin XI1_p1__3 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_3 XI1_p1__3 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_4 XI1_p1__4 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_4 ECK nmin XI1_p1__4 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_5 ECK nmin XI1_p1__5 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_5 XI1_p1__5 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_6 XI1_p1__6 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_6 ECK nmin XI1_p1__6 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_7 ECK nmin XI1_p1__7 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_7 XI1_p1__7 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_8 XI1_p1__8 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_8 ECK nmin XI1_p1__8 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_9 ECK nmin XI1_p1__9 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_9 XI1_p1__9 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_10 XI1_p1__10 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_10 ECK nmin XI1_p1__10 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1 ECK nmin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNCAX2MTR ECK VDD VNW VPW VSS CK E
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=4.7e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI14_MXNA1 XI14_n1 E VSS VPW n12 l=1.3e-07 w=5.9e-07
+mXI14_MXNOE nmin c XI14_n1 VPW n12 l=1.3e-07 w=5.9e-07
+mXI13_MXNOE nmin cn XI13_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI13_MXNA1 XI13_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m nmin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=2.1e-07
+mXI1_MXNA1 ECK nmin VSS VPW n12 l=1.3e-07 w=2.1e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=5.9e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI14_MXPA1 XI14_p1 E VDD VNW p12 l=1.3e-07 w=7.4e-07
+mXI14_MXPOEN nmin cn XI14_p1 VNW p12 l=1.3e-07 w=7.4e-07
+mXI13_MXPOEN nmin c XI13_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI13_MXPA1 XI13_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g2_MXPA1 m nmin VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1 ECK nmin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNCAX3MTR ECK VDD VNW VPW VSS CK E
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=6.4e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=2.1e-07
+mXI14_MXNA1 XI14_n1 E VSS VPW n12 l=1.3e-07 w=5.8e-07
+mXI14_MXNOE nmin c XI14_n1 VPW n12 l=1.3e-07 w=5.8e-07
+mXI13_MXNOE nmin cn XI13_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI13_MXNA1 XI13_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m nmin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI1_MXNA1 ECK nmin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=7.8e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=2.6e-07
+mXI14_MXPA1 XI14_p1 E VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI14_MXPOEN nmin cn XI14_p1 VNW p12 l=1.3e-07 w=8.7e-07
+mXI13_MXPOEN nmin c XI13_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI13_MXPA1 XI13_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g2_MXPA1 m nmin VDD VNW p12 l=1.3e-07 w=3e-07
+mXI1_MXPA2_2 XI1_p1__2 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_2 ECK nmin XI1_p1__2 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1 ECK nmin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNCAX4MTR ECK VDD VNW VPW VSS CK E
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=3e-07
+mXI14_MXNA1_2 XI14_n1__2 E VSS VPW n12 l=1.3e-07 w=4.3e-07
+mXI14_MXNOE_2 nmin c XI14_n1__2 VPW n12 l=1.3e-07 w=4.3e-07
+mXI14_MXNOE nmin c XI14_n1 VPW n12 l=1.3e-07 w=4.3e-07
+mXI14_MXNA1 XI14_n1 E VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g2_MXNA1 m nmin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI13_MXNA1 XI13_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mXI13_MXNOE nmin cn XI13_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=4.2e-07
+mXI1_MXNA1 ECK nmin VSS VPW n12 l=1.3e-07 w=4.2e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=3.2e-07
+mXI14_MXPA1_2 XI14_p1__2 E VDD VNW p12 l=1.3e-07 w=5.9e-07
+mXI14_MXPOEN_2 nmin cn XI14_p1__2 VNW p12 l=1.3e-07 w=5.9e-07
+mXI14_MXPOEN nmin cn XI14_p1 VNW p12 l=1.3e-07 w=5.9e-07
+mXI14_MXPA1 XI14_p1 E VDD VNW p12 l=1.3e-07 w=5.9e-07
+mX_g2_MXPA1 m nmin VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI13_MXPA1 XI13_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI13_MXPOEN nmin c XI13_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI1_MXPA2_2 XI1_p1__2 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_2 ECK nmin XI1_p1__2 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1 ECK nmin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNCAX6MTR ECK VDD VNW VPW VSS CK E
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=7e-07
+mX_g6_MXNA1_2 c CK VSS VPW n12 l=1.3e-07 w=4.9e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=2.6e-07
+mXI14_MXNA1_2 XI14_n1__2 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE_2 nmin c XI14_n1__2 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE nmin c XI14_n1 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNA1 XI14_n1 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI13_MXNA1 XI13_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mXI13_MXNOE nmin cn XI13_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m nmin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI1_MXNA1 ECK nmin VSS VPW n12 l=1.3e-07 w=5.6e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=5.6e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=6.7e-07
+mX_g6_MXPA1_2 c CK VDD VNW p12 l=1.3e-07 w=6.7e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=3.2e-07
+mXI14_MXPA1_2 XI14_p1__2 E VDD VNW p12 l=1.3e-07 w=6.5e-07
+mXI14_MXPOEN_2 nmin cn XI14_p1__2 VNW p12 l=1.3e-07 w=6.5e-07
+mXI14_MXPOEN nmin cn XI14_p1 VNW p12 l=1.3e-07 w=6.5e-07
+mXI14_MXPA1 XI14_p1 E VDD VNW p12 l=1.3e-07 w=6.5e-07
+mXI13_MXPOEN nmin c XI13_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI13_MXPA1 XI13_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g2_MXPA1 m nmin VDD VNW p12 l=1.3e-07 w=3e-07
+mXI1_MXPA2_2 XI1_p1__2 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_2 ECK nmin XI1_p1__2 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_3 ECK nmin XI1_p1__3 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_3 XI1_p1__3 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1 ECK nmin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNCAX8MTR ECK VDD VNW VPW VSS CK E
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g6_MXNA1_2 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=2.6e-07
+mXI14_MXNA1_2 XI14_n1__2 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE_2 nmin c XI14_n1__2 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNOE nmin c XI14_n1 VPW n12 l=1.3e-07 w=5.1e-07
+mXI14_MXNA1 XI14_n1 E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mXI13_MXNA1 XI13_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mXI13_MXNOE nmin cn XI13_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m nmin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI1_MXNA1 ECK nmin VSS VPW n12 l=1.3e-07 w=3.1e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=3.1e-07
+mXI1_MXNA2_2 ECK c VSS VPW n12 l=1.3e-07 w=3.3e-07
+mXI1_MXNA1_2 ECK nmin VSS VPW n12 l=1.3e-07 w=3.3e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g6_MXPA1_2 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=3.2e-07
+mXI14_MXPA1_2 XI14_p1__2 E VDD VNW p12 l=1.3e-07 w=6.5e-07
+mXI14_MXPOEN_2 nmin cn XI14_p1__2 VNW p12 l=1.3e-07 w=6.5e-07
+mXI14_MXPOEN nmin cn XI14_p1 VNW p12 l=1.3e-07 w=6.5e-07
+mXI14_MXPA1 XI14_p1 E VDD VNW p12 l=1.3e-07 w=6.5e-07
+mXI13_MXPOEN nmin c XI13_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI13_MXPA1 XI13_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g2_MXPA1 m nmin VDD VNW p12 l=1.3e-07 w=3e-07
+mXI1_MXPA2_2 XI1_p1__2 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_2 ECK nmin XI1_p1__2 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_3 ECK nmin XI1_p1__3 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_3 XI1_p1__3 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_4 XI1_p1__4 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_4 ECK nmin XI1_p1__4 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1 ECK nmin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNSRX1MTR Q QN VDD VNW VPW VSS D GN RN SN
+mX_g3_MXNA1 nms SN VSS VPW n12 l=1.3e-07 w=4e-07
+MX_t6 pm nms VSS VPW n12 l=1.3e-07 w=3.7e-07
+MXN7 net048 D VSS VPW n12 l=1.3e-07 w=5.3e-07
+MXN6 net052 RN net048 VPW n12 l=1.3e-07 w=5.3e-07
+MX_t13 pm c net052 VPW n12 l=1.3e-07 w=5.3e-07
+MX_t2 pm cn net98 VPW n12 l=1.3e-07 w=2.8e-07
+MXN8 net98 RN net101 VPW n12 l=1.3e-07 w=2.8e-07
+MXN9 VSS m net101 VPW n12 l=1.3e-07 w=2.8e-07
+mX_g4_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=1.8e-07
+mX_g5_MXNA1 c GN VSS VPW n12 l=1.3e-07 w=2.6e-07
+mX_g2_MXNA1 m pm VSS VPW n12 l=1.3e-07 w=3.6e-07
+mXI47_MXNA1 Q pm VSS VPW n12 l=1.3e-07 w=3.6e-07
+mXI46_MXNA1 QN m VSS VPW n12 l=1.3e-07 w=3.6e-07
+mX_g3_MXPA1 nms SN VDD VNW p12 l=1.3e-07 w=4.9e-07
+MXP11 pm nms net61 VNW p12 l=1.3e-07 w=6.3e-07
+MX_t14 net61 RN VDD VNW p12 l=1.3e-07 w=6.3e-07
+MX_t9 net083 D VDD VNW p12 l=1.3e-07 w=6.4e-07
+MXP9 net075 nms net083 VNW p12 l=1.3e-07 w=6.4e-07
+MXP10 pm cn net075 VNW p12 l=1.3e-07 w=6.4e-07
+MXP13 pm c net70 VNW p12 l=1.3e-07 w=3.2e-07
+MXP12 net70 nms net67 VNW p12 l=1.3e-07 w=3.2e-07
+MX_t5 VDD m net67 VNW p12 l=1.3e-07 w=3.2e-07
+mX_g4_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g5_MXPA1 c GN VDD VNW p12 l=1.3e-07 w=3.2e-07
+mX_g2_MXPA1 m pm VDD VNW p12 l=1.3e-07 w=6.2e-07
+mXI47_MXPA1 Q pm VDD VNW p12 l=1.3e-07 w=6.2e-07
+mXI46_MXPA1 QN m VDD VNW p12 l=1.3e-07 w=6.2e-07
+.ends
+
+
+.SUBCKT TLATNSRX2MTR Q QN VDD VNW VPW VSS D GN RN SN
+mX_g3_MXNA1 nms SN VSS VPW n12 l=1.3e-07 w=6.2e-07
+MX_t6 pm nms VSS VPW n12 l=1.3e-07 w=6.1e-07
+MXN7_2 net048__2 D VSS VPW n12 l=1.3e-07 w=5.3e-07
+MXN6_2 net052__2 RN net048__2 VPW n12 l=1.3e-07 w=5.3e-07
+MX_t13_2 pm c net052__2 VPW n12 l=1.3e-07 w=5e-07
+MX_t13 pm c net052 VPW n12 l=1.3e-07 w=4.1e-07
+MXN6 net052 RN net048 VPW n12 l=1.3e-07 w=2.6e-07
+MXN7 net048 D VSS VPW n12 l=1.3e-07 w=3.7e-07
+MX_t2 pm cn net98 VPW n12 l=1.3e-07 w=2.8e-07
+MXN8 net98 RN net101 VPW n12 l=1.3e-07 w=2.8e-07
+MXN9 VSS m net101 VPW n12 l=1.3e-07 w=2.8e-07
+mX_g4_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=2.7e-07
+mX_g5_MXNA1 c GN VSS VPW n12 l=1.3e-07 w=3.8e-07
+mX_g2_MXNA1 m pm VSS VPW n12 l=1.3e-07 w=7.1e-07
+mXI48_MXNA1 Q pm VSS VPW n12 l=1.3e-07 w=7.1e-07
+mXI46_MXNA1 QN m VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g3_MXPA1 nms SN VDD VNW p12 l=1.3e-07 w=7.5e-07
+MXP18 pm nms net61 VNW p12 l=1.3e-07 w=8.8e-07
+MX_t14 net61 RN VDD VNW p12 l=1.3e-07 w=8.8e-07
+MX_t9_2 net083__2 D VDD VNW p12 l=1.3e-07 w=6.4e-07
+MXP16_2 net075__2 nms net083__2 VNW p12 l=1.3e-07 w=6.4e-07
+MXP17_2 pm cn net075__2 VNW p12 l=1.3e-07 w=6.4e-07
+MXP17 pm cn net075 VNW p12 l=1.3e-07 w=6.4e-07
+MXP16 net075 nms net083 VNW p12 l=1.3e-07 w=6.1e-07
+MX_t9 net083 D VDD VNW p12 l=1.3e-07 w=6.4e-07
+MXP13 pm c net70 VNW p12 l=1.3e-07 w=3.2e-07
+MXP12 net70 nms net67 VNW p12 l=1.3e-07 w=3.2e-07
+MX_t5 VDD m net67 VNW p12 l=1.3e-07 w=3.2e-07
+mX_g4_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=3.2e-07
+mX_g5_MXPA1 c GN VDD VNW p12 l=1.3e-07 w=4.6e-07
+mX_g2_MXPA1 m pm VDD VNW p12 l=1.3e-07 w=8.4e-07
+mXI48_MXPA1 Q pm VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI46_MXPA1 QN m VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNSRX4MTR Q QN VDD VNW VPW VSS D GN RN SN
+mX_g3_MXNA1 nms SN VSS VPW n12 l=1.3e-07 w=5.9e-07
+mX_g3_MXNA1_2 nms SN VSS VPW n12 l=1.3e-07 w=5.8e-07
+MX_t6 pm nms VSS VPW n12 l=1.3e-07 w=6.1e-07
+MX_t6_2 pm nms VSS VPW n12 l=1.3e-07 w=6.1e-07
+MXN7_2 net048__2 D VSS VPW n12 l=1.3e-07 w=5.1e-07
+MXN6_2 net052__2 RN net048__2 VPW n12 l=1.3e-07 w=5.1e-07
+MX_t13_2 pm c net052__2 VPW n12 l=1.3e-07 w=5e-07
+MX_t13 pm c net052 VPW n12 l=1.3e-07 w=4.1e-07
+MXN6 net052 RN net048 VPW n12 l=1.3e-07 w=2.6e-07
+MXN7 net048 D VSS VPW n12 l=1.3e-07 w=3.9e-07
+MX_t2 pm cn net98 VPW n12 l=1.3e-07 w=2.8e-07
+MXN8 net98 RN net101 VPW n12 l=1.3e-07 w=2.8e-07
+MXN9 VSS m net101 VPW n12 l=1.3e-07 w=2.8e-07
+mX_g4_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=4.5e-07
+mX_g5_MXNA1 c GN VSS VPW n12 l=1.3e-07 w=6.7e-07
+mX_g2_MXNA1 m pm VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g2_MXNA1_2 m pm VSS VPW n12 l=1.3e-07 w=7.1e-07
+mXI50_MXNA1 Q pm VSS VPW n12 l=1.3e-07 w=7.1e-07
+mXI50_MXNA1_2 Q pm VSS VPW n12 l=1.3e-07 w=7.1e-07
+mXI49_MXNA1 QN m VSS VPW n12 l=1.3e-07 w=7.1e-07
+mXI49_MXNA1_2 QN m VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g3_MXPA1 nms SN VDD VNW p12 l=1.3e-07 w=7.1e-07
+mX_g3_MXPA1_2 nms SN VDD VNW p12 l=1.3e-07 w=7.2e-07
+MXP18 pm nms net61 VNW p12 l=1.3e-07 w=8.8e-07
+MX_t14 net61 RN VDD VNW p12 l=1.3e-07 w=8.8e-07
+MX_t9_2 net083__2 D VDD VNW p12 l=1.3e-07 w=6.4e-07
+MXP16_2 net075__2 nms net083__2 VNW p12 l=1.3e-07 w=6.4e-07
+MXP17_2 pm cn net075__2 VNW p12 l=1.3e-07 w=6.4e-07
+MXP17 pm cn net075 VNW p12 l=1.3e-07 w=6.4e-07
+MXP16 net075 nms net083 VNW p12 l=1.3e-07 w=6.1e-07
+MX_t9 net083 D VDD VNW p12 l=1.3e-07 w=6.4e-07
+MXP13 pm c net70 VNW p12 l=1.3e-07 w=3.2e-07
+MXP12 net70 nms net67 VNW p12 l=1.3e-07 w=3.2e-07
+MX_t5 VDD m net67 VNW p12 l=1.3e-07 w=3.2e-07
+mX_g4_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=5.8e-07
+mX_g5_MXPA1 c GN VDD VNW p12 l=1.3e-07 w=8.2e-07
+mX_g2_MXPA1 m pm VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g2_MXPA1_2 m pm VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI50_MXPA1 Q pm VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI50_MXPA1_2 Q pm VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI49_MXPA1 QN m VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI49_MXPA1_2 QN m VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNTSCAX12MTR ECK VDD VNW VPW VSS CK E SE
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=5.6e-07
+mX_g6_MXNA1_2 c CK VSS VPW n12 l=1.3e-07 w=5.6e-07
+mX_g6_MXNA1_3 c CK VSS VPW n12 l=1.3e-07 w=6.4e-07
+mX_g6_MXNA1_4 c CK VSS VPW n12 l=1.3e-07 w=6.4e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=6.4e-07
+mX_g8_MXNA1 nmsetin E VSS VPW n12 l=1.3e-07 w=5.1e-07
+mX_g8_MXNA2 nmsetin SE VSS VPW n12 l=1.3e-07 w=5.1e-07
+mX_g7_MXNA1 setin nmsetin VSS VPW n12 l=1.3e-07 w=6.1e-07
+mX_g7_MXNA1_2 setin nmsetin VSS VPW n12 l=1.3e-07 w=6.1e-07
+mX_g3_MXNA1_2 X_g3_n1__2 setin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNOE_2 csetin c X_g3_n1__2 VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNOE_3 csetin c X_g3_n1__3 VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNA1_3 X_g3_n1__3 setin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNA1_4 X_g3_n1__4 setin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNOE_4 csetin c X_g3_n1__4 VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNOE_5 csetin c X_g3_n1__5 VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNA1_5 X_g3_n1__5 setin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNA1_6 X_g3_n1__6 setin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNOE_6 csetin c X_g3_n1__6 VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNOE csetin c X_g3_n1 VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNA1 X_g3_n1 setin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g2_MXNA1 m csetin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI7_MXNA1 XI7_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mXI7_MXNOE csetin cn XI7_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=4.2e-07
+mXI1_MXNA1 ECK csetin VSS VPW n12 l=1.3e-07 w=4.2e-07
+mXI1_MXNA2_2 ECK c VSS VPW n12 l=1.3e-07 w=4.5e-07
+mXI1_MXNA1_2 ECK csetin VSS VPW n12 l=1.3e-07 w=4.5e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=7e-07
+mX_g6_MXPA1_2 c CK VDD VNW p12 l=1.3e-07 w=7e-07
+mX_g6_MXPA1_3 c CK VDD VNW p12 l=1.3e-07 w=7e-07
+mX_g6_MXPA1_4 c CK VDD VNW p12 l=1.3e-07 w=7e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=7.9e-07
+mX_g8_MXPA1 nmsetin E X_g8_p1 VNW p12 l=1.3e-07 w=8.7e-07
+mX_g8_MXPA2 X_g8_p1 SE VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g7_MXPA1 setin nmsetin VDD VNW p12 l=1.3e-07 w=7.4e-07
+mX_g7_MXPA1_2 setin nmsetin VDD VNW p12 l=1.3e-07 w=7.4e-07
+mX_g3_MXPA1_2 X_g3_p1__2 setin VDD VNW p12 l=1.3e-07 w=5.8e-07
+mX_g3_MXPOEN_2 csetin cn X_g3_p1__2 VNW p12 l=1.3e-07 w=5.8e-07
+mX_g3_MXPOEN_3 csetin cn X_g3_p1__3 VNW p12 l=1.3e-07 w=5.8e-07
+mX_g3_MXPA1_3 X_g3_p1__3 setin VDD VNW p12 l=1.3e-07 w=5.8e-07
+mX_g3_MXPA1_4 X_g3_p1__4 setin VDD VNW p12 l=1.3e-07 w=5.8e-07
+mX_g3_MXPOEN_4 csetin cn X_g3_p1__4 VNW p12 l=1.3e-07 w=5.8e-07
+mX_g3_MXPOEN_5 csetin cn X_g3_p1__5 VNW p12 l=1.3e-07 w=5.8e-07
+mX_g3_MXPA1_5 X_g3_p1__5 setin VDD VNW p12 l=1.3e-07 w=5.8e-07
+mX_g3_MXPA1_6 X_g3_p1__6 setin VDD VNW p12 l=1.3e-07 w=5.8e-07
+mX_g3_MXPOEN_6 csetin cn X_g3_p1__6 VNW p12 l=1.3e-07 w=5.8e-07
+mX_g3_MXPOEN csetin cn X_g3_p1 VNW p12 l=1.3e-07 w=5.8e-07
+mX_g3_MXPA1 X_g3_p1 setin VDD VNW p12 l=1.3e-07 w=5.8e-07
+mX_g2_MXPA1 m csetin VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI7_MXPA1 XI7_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI7_MXPOEN csetin c XI7_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI1_MXPA2_2 XI1_p1__2 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_2 ECK csetin XI1_p1__2 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_3 ECK csetin XI1_p1__3 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_3 XI1_p1__3 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_4 XI1_p1__4 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_4 ECK csetin XI1_p1__4 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_5 ECK csetin XI1_p1__5 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_5 XI1_p1__5 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1 ECK csetin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNTSCAX16MTR ECK VDD VNW VPW VSS CK E SE
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=6e-07
+mX_g6_MXNA1_2 c CK VSS VPW n12 l=1.3e-07 w=6e-07
+mX_g6_MXNA1_3 c CK VSS VPW n12 l=1.3e-07 w=6e-07
+mX_g6_MXNA1_4 c CK VSS VPW n12 l=1.3e-07 w=6e-07
+mX_g6_MXNA1_5 c CK VSS VPW n12 l=1.3e-07 w=6e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=4.2e-07
+mX_g5_MXNA1_2 cn c VSS VPW n12 l=1.3e-07 w=4.2e-07
+mX_g8_MXNA2 nmsetin SE VSS VPW n12 l=1.3e-07 w=3.4e-07
+mX_g8_MXNA1 nmsetin E VSS VPW n12 l=1.3e-07 w=3.4e-07
+mX_g8_MXNA1_2 nmsetin E VSS VPW n12 l=1.3e-07 w=3.4e-07
+mX_g8_MXNA2_2 nmsetin SE VSS VPW n12 l=1.3e-07 w=3.4e-07
+mX_g7_MXNA1 setin nmsetin VSS VPW n12 l=1.3e-07 w=5.3e-07
+mX_g7_MXNA1_2 setin nmsetin VSS VPW n12 l=1.3e-07 w=5.3e-07
+mX_g7_MXNA1_3 setin nmsetin VSS VPW n12 l=1.3e-07 w=5.4e-07
+mX_g3_MXNA1_2 X_g3_n1__2 setin VSS VPW n12 l=1.3e-07 w=4.95e-07
+mX_g3_MXNOE_2 csetin c X_g3_n1__2 VPW n12 l=1.3e-07 w=4.95e-07
+mX_g3_MXNOE_3 csetin c X_g3_n1__3 VPW n12 l=1.3e-07 w=4.95e-07
+mX_g3_MXNA1_3 X_g3_n1__3 setin VSS VPW n12 l=1.3e-07 w=4.95e-07
+mX_g3_MXNA1_4 X_g3_n1__4 setin VSS VPW n12 l=1.3e-07 w=4.85e-07
+mX_g3_MXNOE_4 csetin c X_g3_n1__4 VPW n12 l=1.3e-07 w=4.85e-07
+mX_g3_MXNOE_5 csetin c X_g3_n1__5 VPW n12 l=1.3e-07 w=4.85e-07
+mX_g3_MXNA1_5 X_g3_n1__5 setin VSS VPW n12 l=1.3e-07 w=4.85e-07
+mX_g3_MXNA1_6 X_g3_n1__6 setin VSS VPW n12 l=1.3e-07 w=4.85e-07
+mX_g3_MXNOE_6 csetin c X_g3_n1__6 VPW n12 l=1.3e-07 w=4.85e-07
+mX_g3_MXNOE_7 csetin c X_g3_n1__7 VPW n12 l=1.3e-07 w=4.85e-07
+mX_g3_MXNA1_7 X_g3_n1__7 setin VSS VPW n12 l=1.3e-07 w=4.85e-07
+mX_g3_MXNA1_8 X_g3_n1__8 setin VSS VPW n12 l=1.3e-07 w=4.85e-07
+mX_g3_MXNOE_8 csetin c X_g3_n1__8 VPW n12 l=1.3e-07 w=4.85e-07
+mX_g3_MXNOE csetin c X_g3_n1 VPW n12 l=1.3e-07 w=4.85e-07
+mX_g3_MXNA1 X_g3_n1 setin VSS VPW n12 l=1.3e-07 w=4.85e-07
+mX_g2_MXNA1 m csetin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI7_MXNA1 XI7_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mXI7_MXNOE csetin cn XI7_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=5e-07
+mXI1_MXNA1 ECK csetin VSS VPW n12 l=1.3e-07 w=3e-07
+mXI1_MXNA1_2 ECK csetin VSS VPW n12 l=1.3e-07 w=3e-07
+mXI1_MXNA2_2 ECK c VSS VPW n12 l=1.3e-07 w=3e-07
+mXI1_MXNA2_3 ECK c VSS VPW n12 l=1.3e-07 w=3e-07
+mXI1_MXNA1_3 ECK csetin VSS VPW n12 l=1.3e-07 w=3e-07
+mXI1_MXNA1_4 ECK csetin VSS VPW n12 l=1.3e-07 w=2e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=7.4e-07
+mX_g6_MXPA1_2 c CK VDD VNW p12 l=1.3e-07 w=7.4e-07
+mX_g6_MXPA1_3 c CK VDD VNW p12 l=1.3e-07 w=7.4e-07
+mX_g6_MXPA1_4 c CK VDD VNW p12 l=1.3e-07 w=7.4e-07
+mX_g6_MXPA1_5 c CK VDD VNW p12 l=1.3e-07 w=7e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=5.1e-07
+mX_g5_MXPA1_2 cn c VDD VNW p12 l=1.3e-07 w=5.1e-07
+mX_g8_MXPA2_2 X_g8_p1__2 SE VDD VNW p12 l=1.3e-07 w=5.7e-07
+mX_g8_MXPA1_2 nmsetin E X_g8_p1__2 VNW p12 l=1.3e-07 w=5.7e-07
+mX_g8_MXPA1 nmsetin E X_g8_p1 VNW p12 l=1.3e-07 w=5.7e-07
+mX_g8_MXPA2 X_g8_p1 SE VDD VNW p12 l=1.3e-07 w=5.7e-07
+mX_g7_MXPA1 setin nmsetin VDD VNW p12 l=1.3e-07 w=6.5e-07
+mX_g7_MXPA1_2 setin nmsetin VDD VNW p12 l=1.3e-07 w=6.5e-07
+mX_g7_MXPA1_3 setin nmsetin VDD VNW p12 l=1.3e-07 w=6.5e-07
+mX_g3_MXPA1_2 X_g3_p1__2 setin VDD VNW p12 l=1.3e-07 w=4.65e-07
+mX_g3_MXPOEN_2 csetin cn X_g3_p1__2 VNW p12 l=1.3e-07 w=4.65e-07
+mX_g3_MXPOEN_3 csetin cn X_g3_p1__3 VNW p12 l=1.3e-07 w=4.65e-07
+mX_g3_MXPA1_3 X_g3_p1__3 setin VDD VNW p12 l=1.3e-07 w=4.65e-07
+mX_g3_MXPA1_4 X_g3_p1__4 setin VDD VNW p12 l=1.3e-07 w=4.95e-07
+mX_g3_MXPOEN_4 csetin cn X_g3_p1__4 VNW p12 l=1.3e-07 w=4.95e-07
+mX_g3_MXPOEN_5 csetin cn X_g3_p1__5 VNW p12 l=1.3e-07 w=4.95e-07
+mX_g3_MXPA1_5 X_g3_p1__5 setin VDD VNW p12 l=1.3e-07 w=4.95e-07
+mX_g3_MXPA1_6 X_g3_p1__6 setin VDD VNW p12 l=1.3e-07 w=4.95e-07
+mX_g3_MXPOEN_6 csetin cn X_g3_p1__6 VNW p12 l=1.3e-07 w=4.95e-07
+mX_g3_MXPOEN_7 csetin cn X_g3_p1__7 VNW p12 l=1.3e-07 w=4.95e-07
+mX_g3_MXPA1_7 X_g3_p1__7 setin VDD VNW p12 l=1.3e-07 w=4.95e-07
+mX_g3_MXPA1_8 X_g3_p1__8 setin VDD VNW p12 l=1.3e-07 w=4.95e-07
+mX_g3_MXPOEN_8 csetin cn X_g3_p1__8 VNW p12 l=1.3e-07 w=4.95e-07
+mX_g3_MXPOEN csetin cn X_g3_p1 VNW p12 l=1.3e-07 w=4.95e-07
+mX_g3_MXPA1 X_g3_p1 setin VDD VNW p12 l=1.3e-07 w=4.95e-07
+mX_g2_MXPA1 m csetin VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI7_MXPA1 XI7_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI7_MXPOEN csetin c XI7_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI1_MXPA2_2 XI1_p1__2 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_2 ECK csetin XI1_p1__2 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_3 ECK csetin XI1_p1__3 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_3 XI1_p1__3 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_4 XI1_p1__4 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_4 ECK csetin XI1_p1__4 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_5 ECK csetin XI1_p1__5 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_5 XI1_p1__5 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_6 XI1_p1__6 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_6 ECK csetin XI1_p1__6 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_7 ECK csetin XI1_p1__7 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_7 XI1_p1__7 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1 ECK csetin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNTSCAX20MTR ECK VDD VNW VPW VSS CK E SE
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g6_MXNA1_2 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g6_MXNA1_3 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g6_MXNA1_4 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g6_MXNA1_5 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=5.1e-07
+mX_g5_MXNA1_2 cn c VSS VPW n12 l=1.3e-07 w=5.1e-07
+mX_g8_MXNA2 nmsetin SE VSS VPW n12 l=1.3e-07 w=4.2e-07
+mX_g8_MXNA1 nmsetin E VSS VPW n12 l=1.3e-07 w=4.2e-07
+mX_g8_MXNA1_2 nmsetin E VSS VPW n12 l=1.3e-07 w=4.2e-07
+mX_g8_MXNA2_2 nmsetin SE VSS VPW n12 l=1.3e-07 w=4.2e-07
+mX_g7_MXNA1 setin nmsetin VSS VPW n12 l=1.3e-07 w=6.6e-07
+mX_g7_MXNA1_2 setin nmsetin VSS VPW n12 l=1.3e-07 w=6.6e-07
+mX_g7_MXNA1_3 setin nmsetin VSS VPW n12 l=1.3e-07 w=6.6e-07
+mX_g3_MXNOE_2 csetin c X_g3_n1__2 VPW n12 l=1.3e-07 w=7.2e-07
+mX_g3_MXNA1_2 X_g3_n1__2 setin VSS VPW n12 l=1.3e-07 w=7.2e-07
+mX_g3_MXNA1_3 X_g3_n1__3 setin VSS VPW n12 l=1.3e-07 w=4.5e-07
+mX_g3_MXNOE_3 csetin c X_g3_n1__3 VPW n12 l=1.3e-07 w=4.5e-07
+mX_g3_MXNOE_4 csetin c X_g3_n1__4 VPW n12 l=1.3e-07 w=4.5e-07
+mX_g3_MXNA1_4 X_g3_n1__4 setin VSS VPW n12 l=1.3e-07 w=4.5e-07
+mX_g3_MXNA1_5 X_g3_n1__5 setin VSS VPW n12 l=1.3e-07 w=4.5e-07
+mX_g3_MXNOE_5 csetin c X_g3_n1__5 VPW n12 l=1.3e-07 w=4.5e-07
+mX_g3_MXNOE_6 csetin c X_g3_n1__6 VPW n12 l=1.3e-07 w=4.5e-07
+mX_g3_MXNA1_6 X_g3_n1__6 setin VSS VPW n12 l=1.3e-07 w=4.5e-07
+mX_g3_MXNA1_7 X_g3_n1__7 setin VSS VPW n12 l=1.3e-07 w=4.4e-07
+mX_g3_MXNOE_7 csetin c X_g3_n1__7 VPW n12 l=1.3e-07 w=4.4e-07
+mX_g3_MXNOE_8 csetin c X_g3_n1__8 VPW n12 l=1.3e-07 w=4.4e-07
+mX_g3_MXNA1_8 X_g3_n1__8 setin VSS VPW n12 l=1.3e-07 w=4.4e-07
+mX_g3_MXNA1_9 X_g3_n1__9 setin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNOE_9 csetin c X_g3_n1__9 VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNOE csetin c X_g3_n1 VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNA1 X_g3_n1 setin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mXI7_MXNA1 XI7_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mXI7_MXNOE csetin cn XI7_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m csetin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI1_MXNA1 ECK csetin VSS VPW n12 l=1.3e-07 w=4.8e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=4.8e-07
+mXI1_MXNA2_2 ECK c VSS VPW n12 l=1.3e-07 w=4.8e-07
+mXI1_MXNA1_2 ECK csetin VSS VPW n12 l=1.3e-07 w=4.8e-07
+mXI1_MXNA2_3 ECK c VSS VPW n12 l=1.3e-07 w=4.8e-07
+mXI1_MXNA1_3 ECK csetin VSS VPW n12 l=1.3e-07 w=4.8e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g6_MXPA1_2 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g6_MXPA1_3 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g6_MXPA1_4 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g6_MXPA1_5 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=6.2e-07
+mX_g5_MXPA1_2 cn c VDD VNW p12 l=1.3e-07 w=6.2e-07
+mX_g8_MXPA2_2 X_g8_p1__2 SE VDD VNW p12 l=1.3e-07 w=5.7e-07
+mX_g8_MXPA1_2 nmsetin E X_g8_p1__2 VNW p12 l=1.3e-07 w=5.7e-07
+mX_g8_MXPA1 nmsetin E X_g8_p1 VNW p12 l=1.3e-07 w=5.7e-07
+mX_g8_MXPA2 X_g8_p1 SE VDD VNW p12 l=1.3e-07 w=5.7e-07
+mX_g7_MXPA1 setin nmsetin VDD VNW p12 l=1.3e-07 w=8.1e-07
+mX_g7_MXPA1_2 setin nmsetin VDD VNW p12 l=1.3e-07 w=8.1e-07
+mX_g7_MXPA1_3 setin nmsetin VDD VNW p12 l=1.3e-07 w=8e-07
+mX_g3_MXPOEN_2 csetin cn X_g3_p1__2 VNW p12 l=1.3e-07 w=8e-07
+mX_g3_MXPA1_2 X_g3_p1__2 setin VDD VNW p12 l=1.3e-07 w=8e-07
+mX_g3_MXPA1_3 X_g3_p1__3 setin VDD VNW p12 l=1.3e-07 w=5.6e-07
+mX_g3_MXPOEN_3 csetin cn X_g3_p1__3 VNW p12 l=1.3e-07 w=5.6e-07
+mX_g3_MXPOEN_4 csetin cn X_g3_p1__4 VNW p12 l=1.3e-07 w=5.6e-07
+mX_g3_MXPA1_4 X_g3_p1__4 setin VDD VNW p12 l=1.3e-07 w=5.6e-07
+mX_g3_MXPA1_5 X_g3_p1__5 setin VDD VNW p12 l=1.3e-07 w=5.6e-07
+mX_g3_MXPOEN_5 csetin cn X_g3_p1__5 VNW p12 l=1.3e-07 w=5.6e-07
+mX_g3_MXPOEN_6 csetin cn X_g3_p1__6 VNW p12 l=1.3e-07 w=5.6e-07
+mX_g3_MXPA1_6 X_g3_p1__6 setin VDD VNW p12 l=1.3e-07 w=5.6e-07
+mX_g3_MXPA1_7 X_g3_p1__7 setin VDD VNW p12 l=1.3e-07 w=5.6e-07
+mX_g3_MXPOEN_7 csetin cn X_g3_p1__7 VNW p12 l=1.3e-07 w=5.6e-07
+mX_g3_MXPOEN_8 csetin cn X_g3_p1__8 VNW p12 l=1.3e-07 w=5.6e-07
+mX_g3_MXPA1_8 X_g3_p1__8 setin VDD VNW p12 l=1.3e-07 w=5.6e-07
+mX_g3_MXPA1_9 X_g3_p1__9 setin VDD VNW p12 l=1.3e-07 w=5.6e-07
+mX_g3_MXPOEN_9 csetin cn X_g3_p1__9 VNW p12 l=1.3e-07 w=5.6e-07
+mX_g3_MXPOEN csetin cn X_g3_p1 VNW p12 l=1.3e-07 w=5.6e-07
+mX_g3_MXPA1 X_g3_p1 setin VDD VNW p12 l=1.3e-07 w=5.6e-07
+mXI7_MXPA1 XI7_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI7_MXPOEN csetin c XI7_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mX_g2_MXPA1 m csetin VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI1_MXPA1_2 ECK csetin XI1_p1__2 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_2 XI1_p1__2 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_3 XI1_p1__3 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_3 ECK csetin XI1_p1__3 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_4 ECK csetin XI1_p1__4 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_4 XI1_p1__4 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_5 XI1_p1__5 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_5 ECK csetin XI1_p1__5 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_6 ECK csetin XI1_p1__6 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_6 XI1_p1__6 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_7 XI1_p1__7 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_7 ECK csetin XI1_p1__7 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_8 ECK csetin XI1_p1__8 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_8 XI1_p1__8 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2_9 XI1_p1__9 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_9 ECK csetin XI1_p1__9 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1 ECK csetin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNTSCAX2MTR ECK VDD VNW VPW VSS CK E SE
+mX_g8_MXNA2 nmsetin SE VSS VPW n12 l=1.3e-07 w=1.8e-07
+mX_g8_MXNA1 nmsetin E VSS VPW n12 l=1.3e-07 w=1.8e-07
+mX_g7_MXNA1 setin nmsetin VSS VPW n12 l=1.3e-07 w=2.6e-07
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=4.8e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=1.8e-07
+mX_g3_MXNA1 X_g3_n1 setin VSS VPW n12 l=1.3e-07 w=6.1e-07
+mX_g3_MXNOE csetin c X_g3_n1 VPW n12 l=1.3e-07 w=6.1e-07
+mXI7_MXNOE csetin cn XI7_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI7_MXNA1 XI7_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m csetin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=2.2e-07
+mXI1_MXNA1 ECK csetin VSS VPW n12 l=1.3e-07 w=2.2e-07
+mX_g8_MXPA2 X_g8_p1 SE VDD VNW p12 l=1.3e-07 w=3e-07
+mX_g8_MXPA1 nmsetin E X_g8_p1 VNW p12 l=1.3e-07 w=3e-07
+mX_g7_MXPA1 setin nmsetin VDD VNW p12 l=1.3e-07 w=3.1e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=5.9e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g3_MXPA1 X_g3_p1 setin VDD VNW p12 l=1.3e-07 w=7.4e-07
+mX_g3_MXPOEN csetin cn X_g3_p1 VNW p12 l=1.3e-07 w=7.4e-07
+mXI7_MXPOEN csetin c XI7_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI7_MXPA1 XI7_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g2_MXPA1 m csetin VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1 ECK csetin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNTSCAX3MTR ECK VDD VNW VPW VSS CK E SE
+mX_g8_MXNA2 nmsetin SE VSS VPW n12 l=1.3e-07 w=1.8e-07
+mX_g8_MXNA1 nmsetin E VSS VPW n12 l=1.3e-07 w=1.8e-07
+mX_g7_MXNA1 setin nmsetin VSS VPW n12 l=1.3e-07 w=3.5e-07
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=6.4e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=2.1e-07
+mX_g3_MXNA1 X_g3_n1 setin VSS VPW n12 l=1.3e-07 w=5.8e-07
+mX_g3_MXNOE csetin c X_g3_n1 VPW n12 l=1.3e-07 w=5.8e-07
+mXI7_MXNOE csetin cn XI7_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI7_MXNA1 XI7_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m csetin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI1_MXNA1 ECK csetin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g8_MXPA2 X_g8_p1 SE VDD VNW p12 l=1.3e-07 w=3e-07
+mX_g8_MXPA1 nmsetin E X_g8_p1 VNW p12 l=1.3e-07 w=3e-07
+mX_g7_MXPA1 setin nmsetin VDD VNW p12 l=1.3e-07 w=4.3e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=7.8e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=2.6e-07
+mX_g3_MXPA1 X_g3_p1 setin VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g3_MXPOEN csetin cn X_g3_p1 VNW p12 l=1.3e-07 w=8.7e-07
+mXI7_MXPOEN csetin c XI7_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI7_MXPA1 XI7_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g2_MXPA1 m csetin VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI1_MXPA2_2 XI1_p1__2 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_2 ECK csetin XI1_p1__2 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1 ECK csetin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNTSCAX4MTR ECK VDD VNW VPW VSS CK E SE
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=4.1e-07
+mX_g6_MXNA1_2 c CK VSS VPW n12 l=1.3e-07 w=4.1e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=3e-07
+mX_g8_MXNA1 nmsetin E VSS VPW n12 l=1.3e-07 w=3e-07
+mX_g8_MXNA2 nmsetin SE VSS VPW n12 l=1.3e-07 w=3e-07
+mX_g7_MXNA1 setin nmsetin VSS VPW n12 l=1.3e-07 w=4.5e-07
+mX_g3_MXNA1_2 X_g3_n1__2 setin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNOE_2 csetin c X_g3_n1__2 VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNOE csetin c X_g3_n1 VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNA1 X_g3_n1 setin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g2_MXNA1 m csetin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI7_MXNA1 XI7_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mXI7_MXNOE csetin cn XI7_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=4.5e-07
+mXI1_MXNA1 ECK csetin VSS VPW n12 l=1.3e-07 w=4.5e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=5.1e-07
+mX_g6_MXPA1_2 c CK VDD VNW p12 l=1.3e-07 w=5.1e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=3.2e-07
+mX_g8_MXPA1 nmsetin E X_g8_p1 VNW p12 l=1.3e-07 w=3.2e-07
+mX_g8_MXPA2 X_g8_p1 SE VDD VNW p12 l=1.3e-07 w=3.2e-07
+mX_g7_MXPA1 setin nmsetin VDD VNW p12 l=1.3e-07 w=5.5e-07
+mX_g3_MXPA1_2 X_g3_p1__2 setin VDD VNW p12 l=1.3e-07 w=5.9e-07
+mX_g3_MXPOEN_2 csetin cn X_g3_p1__2 VNW p12 l=1.3e-07 w=5.9e-07
+mX_g3_MXPOEN csetin cn X_g3_p1 VNW p12 l=1.3e-07 w=5.9e-07
+mX_g3_MXPA1 X_g3_p1 setin VDD VNW p12 l=1.3e-07 w=5.9e-07
+mX_g2_MXPA1 m csetin VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI7_MXPA1 XI7_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI7_MXPOEN csetin c XI7_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI1_MXPA2_2 XI1_p1__2 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_2 ECK csetin XI1_p1__2 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1 ECK csetin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNTSCAX6MTR ECK VDD VNW VPW VSS CK E SE
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=6e-07
+mX_g6_MXNA1_2 c CK VSS VPW n12 l=1.3e-07 w=6e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=3.6e-07
+mX_g8_MXNA1 nmsetin E VSS VPW n12 l=1.3e-07 w=3e-07
+mX_g8_MXNA2 nmsetin SE VSS VPW n12 l=1.3e-07 w=3e-07
+mX_g7_MXNA1 setin nmsetin VSS VPW n12 l=1.3e-07 w=6.4e-07
+mX_g3_MXNOE_2 csetin c X_g3_n1__2 VPW n12 l=1.3e-07 w=5.2e-07
+mX_g3_MXNA1_2 X_g3_n1__2 setin VSS VPW n12 l=1.3e-07 w=5.2e-07
+mX_g3_MXNA1_3 X_g3_n1__3 setin VSS VPW n12 l=1.3e-07 w=5.2e-07
+mX_g3_MXNOE_3 csetin c X_g3_n1__3 VPW n12 l=1.3e-07 w=5.2e-07
+mX_g3_MXNOE csetin c X_g3_n1 VPW n12 l=1.3e-07 w=5.2e-07
+mX_g3_MXNA1 X_g3_n1 setin VSS VPW n12 l=1.3e-07 w=5.2e-07
+mX_g2_MXNA1 m csetin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI7_MXNA1 XI7_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mXI7_MXNOE csetin cn XI7_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=3e-07
+mXI1_MXNA1 ECK csetin VSS VPW n12 l=1.3e-07 w=3e-07
+mXI1_MXNA2_2 ECK c VSS VPW n12 l=1.3e-07 w=3e-07
+mXI1_MXNA1_2 ECK csetin VSS VPW n12 l=1.3e-07 w=3e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=7.3e-07
+mX_g6_MXPA1_2 c CK VDD VNW p12 l=1.3e-07 w=7.3e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=4.4e-07
+mX_g8_MXPA1 nmsetin E X_g8_p1 VNW p12 l=1.3e-07 w=4.6e-07
+mX_g8_MXPA2 X_g8_p1 SE VDD VNW p12 l=1.3e-07 w=4.6e-07
+mX_g7_MXPA1 setin nmsetin VDD VNW p12 l=1.3e-07 w=7.8e-07
+mX_g3_MXPOEN_2 csetin cn X_g3_p1__2 VNW p12 l=1.3e-07 w=5.3e-07
+mX_g3_MXPA1_2 X_g3_p1__2 setin VDD VNW p12 l=1.3e-07 w=5.3e-07
+mX_g3_MXPA1_3 X_g3_p1__3 setin VDD VNW p12 l=1.3e-07 w=5.3e-07
+mX_g3_MXPOEN_3 csetin cn X_g3_p1__3 VNW p12 l=1.3e-07 w=5.3e-07
+mX_g3_MXPOEN csetin cn X_g3_p1 VNW p12 l=1.3e-07 w=5.3e-07
+mX_g3_MXPA1 X_g3_p1 setin VDD VNW p12 l=1.3e-07 w=5.3e-07
+mX_g2_MXPA1 m csetin VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI7_MXPA1 XI7_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI7_MXPOEN csetin c XI7_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI1_MXPA2_2 XI1_p1__2 c VDD VNW p12 l=1.3e-07 w=8.9e-07
+mXI1_MXPA1_2 ECK csetin XI1_p1__2 VNW p12 l=1.3e-07 w=8.9e-07
+mXI1_MXPA1_3 ECK csetin XI1_p1__3 VNW p12 l=1.3e-07 w=8.8e-07
+mXI1_MXPA2_3 XI1_p1__3 c VDD VNW p12 l=1.3e-07 w=8.8e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1 ECK csetin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNTSCAX8MTR ECK VDD VNW VPW VSS CK E SE
+mX_g6_MXNA1 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g6_MXNA1_2 c CK VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g5_MXNA1 cn c VSS VPW n12 l=1.3e-07 w=4.5e-07
+mX_g8_MXNA1 nmsetin E VSS VPW n12 l=1.3e-07 w=3.5e-07
+mX_g8_MXNA2 nmsetin SE VSS VPW n12 l=1.3e-07 w=3.5e-07
+mX_g7_MXNA1 setin nmsetin VSS VPW n12 l=1.3e-07 w=4.2e-07
+mX_g7_MXNA1_2 setin nmsetin VSS VPW n12 l=1.3e-07 w=4.2e-07
+mX_g3_MXNA1_2 X_g3_n1__2 setin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNOE_2 csetin c X_g3_n1__2 VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNOE_3 csetin c X_g3_n1__3 VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNA1_3 X_g3_n1__3 setin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNA1_4 X_g3_n1__4 setin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNOE_4 csetin c X_g3_n1__4 VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNOE csetin c X_g3_n1 VPW n12 l=1.3e-07 w=4.3e-07
+mX_g3_MXNA1 X_g3_n1 setin VSS VPW n12 l=1.3e-07 w=4.3e-07
+mX_g2_MXNA1 m csetin VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI7_MXNA1 XI7_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mXI7_MXNOE csetin cn XI7_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI1_MXNA2 ECK c VSS VPW n12 l=1.3e-07 w=3.5e-07
+mXI1_MXNA1 ECK csetin VSS VPW n12 l=1.3e-07 w=3.5e-07
+mXI1_MXNA1_2 ECK csetin VSS VPW n12 l=1.3e-07 w=3.5e-07
+mXI1_MXNA2_2 ECK c VSS VPW n12 l=1.3e-07 w=3.5e-07
+mX_g6_MXPA1 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g6_MXPA1_2 c CK VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g5_MXPA1 cn c VDD VNW p12 l=1.3e-07 w=5.5e-07
+mX_g8_MXPA1 nmsetin E X_g8_p1 VNW p12 l=1.3e-07 w=5.9e-07
+mX_g8_MXPA2 X_g8_p1 SE VDD VNW p12 l=1.3e-07 w=5.9e-07
+mX_g7_MXPA1 setin nmsetin VDD VNW p12 l=1.3e-07 w=5.1e-07
+mX_g7_MXPA1_2 setin nmsetin VDD VNW p12 l=1.3e-07 w=5.1e-07
+mX_g3_MXPA1_2 X_g3_p1__2 setin VDD VNW p12 l=1.3e-07 w=5.9e-07
+mX_g3_MXPOEN_2 csetin cn X_g3_p1__2 VNW p12 l=1.3e-07 w=5.9e-07
+mX_g3_MXPOEN_3 csetin cn X_g3_p1__3 VNW p12 l=1.3e-07 w=5.9e-07
+mX_g3_MXPA1_3 X_g3_p1__3 setin VDD VNW p12 l=1.3e-07 w=5.9e-07
+mX_g3_MXPA1_4 X_g3_p1__4 setin VDD VNW p12 l=1.3e-07 w=5.9e-07
+mX_g3_MXPOEN_4 csetin cn X_g3_p1__4 VNW p12 l=1.3e-07 w=5.9e-07
+mX_g3_MXPOEN csetin cn X_g3_p1 VNW p12 l=1.3e-07 w=5.9e-07
+mX_g3_MXPA1 X_g3_p1 setin VDD VNW p12 l=1.3e-07 w=5.9e-07
+mX_g2_MXPA1 m csetin VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI7_MXPA1 XI7_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI7_MXPOEN csetin c XI7_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI1_MXPA2_2 XI1_p1__2 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_2 ECK csetin XI1_p1__2 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA1_3 ECK csetin XI1_p1__3 VNW p12 l=1.3e-07 w=9e-07
+mXI1_MXPA2_3 XI1_p1__3 c VDD VNW p12 l=1.3e-07 w=9e-07
+mXI1_MXPA2_4 XI1_p1__4 c VDD VNW p12 l=1.3e-07 w=8.8e-07
+mXI1_MXPA1_4 ECK csetin XI1_p1__4 VNW p12 l=1.3e-07 w=8.8e-07
+mXI1_MXPA1 ECK csetin XI1_p1 VNW p12 l=1.3e-07 w=8.7e-07
+mXI1_MXPA2 XI1_p1 c VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNX1MTR Q QN VDD VNW VPW VSS D GN
+mX_g5_MXNA1 cn GN VSS VPW n12 l=1.3e-07 w=2.6e-07
+mX_g4_MXNA1 c cn VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI1_MXNA1 XI1_n1 D VSS VPW n12 l=1.3e-07 w=5.3e-07
+mXI1_MXNOE pm cn XI1_n1 VPW n12 l=1.3e-07 w=5.3e-07
+mXI0_MXNOE pm c XI0_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI0_MXNA1 XI0_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m pm VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI21_MXNA1 Q pm VSS VPW n12 l=1.3e-07 w=3.6e-07
+mX_g1_MXNA1 QN m VSS VPW n12 l=1.3e-07 w=3.6e-07
+mX_g5_MXPA1 cn GN VDD VNW p12 l=1.3e-07 w=3.1e-07
+mX_g4_MXPA1 c cn VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI1_MXPA1 XI1_p1 D VDD VNW p12 l=1.3e-07 w=6.5e-07
+mXI1_MXPOEN pm c XI1_p1 VNW p12 l=1.3e-07 w=6.5e-07
+mXI0_MXPOEN pm cn XI0_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI0_MXPA1 XI0_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g2_MXPA1 m pm VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI21_MXPA1 Q pm VDD VNW p12 l=1.3e-07 w=6.2e-07
+mX_g1_MXPA1 QN m VDD VNW p12 l=1.3e-07 w=6.2e-07
+.ends
+
+
+.SUBCKT TLATNX2MTR Q QN VDD VNW VPW VSS D GN
+mX_g5_MXNA1 cn GN VSS VPW n12 l=1.3e-07 w=3.1e-07
+mX_g4_MXNA1 c cn VSS VPW n12 l=1.3e-07 w=2.2e-07
+mXI1_MXNA1 XI1_n1 D VSS VPW n12 l=1.3e-07 w=7.1e-07
+mXI1_MXNOE pm cn XI1_n1 VPW n12 l=1.3e-07 w=7.1e-07
+mXI0_MXNOE pm c XI0_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI0_MXNA1 XI0_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m pm VSS VPW n12 l=1.3e-07 w=2.6e-07
+mXI22_MXNA1 Q pm VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g1_MXNA1 QN m VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g5_MXPA1 cn GN VDD VNW p12 l=1.3e-07 w=3.8e-07
+mX_g4_MXPA1 c cn VDD VNW p12 l=1.3e-07 w=2.7e-07
+mXI1_MXPA1 XI1_p1 D VDD VNW p12 l=1.3e-07 w=7e-07
+mXI1_MXPOEN pm c XI1_p1 VNW p12 l=1.3e-07 w=7e-07
+mXI0_MXPOEN pm cn XI0_p1 VNW p12 l=1.3e-07 w=1.5e-07
+mXI0_MXPA1 XI0_p1 m VDD VNW p12 l=1.3e-07 w=1.5e-07
+mX_g2_MXPA1 m pm VDD VNW p12 l=1.3e-07 w=3.2e-07
+mXI22_MXPA1 Q pm VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g1_MXPA1 QN m VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATNX4MTR Q QN VDD VNW VPW VSS D GN
+mX_g5_MXNA1 cn GN VSS VPW n12 l=1.3e-07 w=5.8e-07
+mX_g4_MXNA1 c cn VSS VPW n12 l=1.3e-07 w=4.1e-07
+mXI1_MXNA1 XI1_n1 D VSS VPW n12 l=1.3e-07 w=7.1e-07
+mXI1_MXNOE pm cn XI1_n1 VPW n12 l=1.3e-07 w=7.1e-07
+mXI0_MXNOE pm c XI0_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI0_MXNA1 XI0_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m pm VSS VPW n12 l=1.3e-07 w=4.8e-07
+mXI24_MXNA1 Q pm VSS VPW n12 l=1.3e-07 w=7.1e-07
+mXI24_MXNA1_2 Q pm VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g1_MXNA1 QN m VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g1_MXNA1_2 QN m VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g5_MXPA1 cn GN VDD VNW p12 l=1.3e-07 w=7.1e-07
+mX_g4_MXPA1 c cn VDD VNW p12 l=1.3e-07 w=5e-07
+mXI1_MXPA1 XI1_p1 D VDD VNW p12 l=1.3e-07 w=6.9e-07
+mXI1_MXPOEN pm c XI1_p1 VNW p12 l=1.3e-07 w=6.9e-07
+mXI0_MXPOEN pm cn XI0_p1 VNW p12 l=1.3e-07 w=1.5e-07
+mXI0_MXPA1 XI0_p1 m VDD VNW p12 l=1.3e-07 w=1.5e-07
+mX_g2_MXPA1 m pm VDD VNW p12 l=1.3e-07 w=5.9e-07
+mXI24_MXPA1 Q pm VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI24_MXPA1_2 Q pm VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g1_MXPA1 QN m VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g1_MXPA1_2 QN m VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATSRX1MTR Q QN VDD VNW VPW VSS D G RN SN
+mX_g3_MXNA1 nms SN VSS VPW n12 l=1.3e-07 w=3.1e-07
+MX_t6 pm nms VSS VPW n12 l=1.3e-07 w=2.8e-07
+MXN1 net84 D VSS VPW n12 l=1.3e-07 w=3.9e-07
+MXN0 net80 RN net84 VPW n12 l=1.3e-07 w=3.9e-07
+MX_t13 pm c net80 VPW n12 l=1.3e-07 w=3.9e-07
+MX_t2 pm cn net100 VPW n12 l=1.3e-07 w=2.6e-07
+MXN2 net100 RN net105 VPW n12 l=1.3e-07 w=2.6e-07
+MXN3 VSS m net105 VPW n12 l=1.3e-07 w=2.6e-07
+mX_g5_MXNA1 cn G VSS VPW n12 l=1.3e-07 w=3e-07
+mX_g4_MXNA1 c cn VSS VPW n12 l=1.3e-07 w=1.8e-07
+mX_g2_MXNA1 m pm VSS VPW n12 l=1.3e-07 w=3e-07
+mX_g0_MXNA1 Q pm VSS VPW n12 l=1.3e-07 w=3.6e-07
+mX_g1_MXNA1 QN m VSS VPW n12 l=1.3e-07 w=3.6e-07
+mX_g3_MXPA1 nms SN VDD VNW p12 l=1.3e-07 w=3.8e-07
+MXP1 pm cn net47 VNW p12 l=1.3e-07 w=5.2e-07
+MXP0 net47 nms net55 VNW p12 l=1.3e-07 w=5.2e-07
+MX_t9 net55 D VDD VNW p12 l=1.3e-07 w=5.2e-07
+MX_t14 net63 RN VDD VNW p12 l=1.3e-07 w=4.7e-07
+MXP2 pm nms net63 VNW p12 l=1.3e-07 w=4.7e-07
+MXP4 pm c net71 VNW p12 l=1.3e-07 w=3.2e-07
+MXP3 net71 nms net67 VNW p12 l=1.3e-07 w=3.2e-07
+MX_t5 VDD m net67 VNW p12 l=1.3e-07 w=3.2e-07
+mX_g5_MXPA1 cn G VDD VNW p12 l=1.3e-07 w=3.1e-07
+mX_g4_MXPA1 c cn VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g2_MXPA1 m pm VDD VNW p12 l=1.3e-07 w=3e-07
+mX_g0_MXPA1 Q pm VDD VNW p12 l=1.3e-07 w=6.2e-07
+mX_g1_MXPA1 QN m VDD VNW p12 l=1.3e-07 w=6.2e-07
+.ends
+
+
+.SUBCKT TLATSRX2MTR Q QN VDD VNW VPW VSS D G RN SN
+mX_g3_MXNA1 nms SN VSS VPW n12 l=1.3e-07 w=4.5e-07
+MX_t6 pm nms VSS VPW n12 l=1.3e-07 w=4e-07
+MXN5 net84 D VSS VPW n12 l=1.3e-07 w=4.1e-07
+MXN4 net80 RN net84 VPW n12 l=1.3e-07 w=4.1e-07
+MX_t13 pm c net80 VPW n12 l=1.3e-07 w=4.1e-07
+MX_t2 pm cn net100 VPW n12 l=1.3e-07 w=2.6e-07
+MXN2 net100 RN net105 VPW n12 l=1.3e-07 w=2.6e-07
+MXN3 VSS m net105 VPW n12 l=1.3e-07 w=2.6e-07
+mX_g5_MXNA1 cn G VSS VPW n12 l=1.3e-07 w=3e-07
+mX_g4_MXNA1 c cn VSS VPW n12 l=1.3e-07 w=2e-07
+mX_g2_MXNA1 m pm VSS VPW n12 l=1.3e-07 w=3e-07
+mXI46_MXNA1 Q pm VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g1_MXNA1 QN m VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g3_MXPA1 nms SN VDD VNW p12 l=1.3e-07 w=5.5e-07
+MXP1 pm cn net47 VNW p12 l=1.3e-07 w=5.7e-07
+MXP5 net47 nms net55 VNW p12 l=1.3e-07 w=8.6e-07
+MX_t9 net55 D VDD VNW p12 l=1.3e-07 w=8.6e-07
+MX_t14 net63 RN VDD VNW p12 l=1.3e-07 w=7.3e-07
+MXP6 pm nms net63 VNW p12 l=1.3e-07 w=7.3e-07
+MXP8 pm c net71 VNW p12 l=1.3e-07 w=3e-07
+MXP7 net71 nms net67 VNW p12 l=1.3e-07 w=3e-07
+MX_t5 VDD m net67 VNW p12 l=1.3e-07 w=3e-07
+mX_g5_MXPA1 cn G VDD VNW p12 l=1.3e-07 w=3.6e-07
+mX_g4_MXPA1 c cn VDD VNW p12 l=1.3e-07 w=2.5e-07
+mX_g2_MXPA1 m pm VDD VNW p12 l=1.3e-07 w=3.7e-07
+mXI46_MXPA1 Q pm VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g1_MXPA1 QN m VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATSRX4MTR Q QN VDD VNW VPW VSS D G RN SN
+mX_g3_MXNA1 nms SN VSS VPW n12 l=1.3e-07 w=6.3e-07
+MX_t6 pm nms VSS VPW n12 l=1.3e-07 w=4e-07
+MXN5 net84 D VSS VPW n12 l=1.3e-07 w=4.1e-07
+MXN4 net80 RN net84 VPW n12 l=1.3e-07 w=4.1e-07
+MX_t13 pm c net80 VPW n12 l=1.3e-07 w=4.1e-07
+MX_t2 pm cn net100 VPW n12 l=1.3e-07 w=2.6e-07
+MXN2 net100 RN net105 VPW n12 l=1.3e-07 w=2.6e-07
+MXN3 VSS m net105 VPW n12 l=1.3e-07 w=2.6e-07
+mX_g5_MXNA1 cn G VSS VPW n12 l=1.3e-07 w=4.8e-07
+mX_g4_MXNA1 c cn VSS VPW n12 l=1.3e-07 w=3.4e-07
+mX_g2_MXNA1 m pm VSS VPW n12 l=1.3e-07 w=5.2e-07
+mXI46_MXNA1 Q pm VSS VPW n12 l=1.3e-07 w=7.1e-07
+mXI46_MXNA1_2 Q pm VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g1_MXNA1 QN m VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g1_MXNA1_2 QN m VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g3_MXPA1 nms SN VDD VNW p12 l=1.3e-07 w=6.3e-07
+MXP1 pm cn net47 VNW p12 l=1.3e-07 w=5.7e-07
+MXP5 net47 nms net55 VNW p12 l=1.3e-07 w=8.6e-07
+MX_t9 net55 D VDD VNW p12 l=1.3e-07 w=8.6e-07
+MX_t14 net63 RN VDD VNW p12 l=1.3e-07 w=7.3e-07
+MXP6 pm nms net63 VNW p12 l=1.3e-07 w=7.3e-07
+MXP8 pm c net71 VNW p12 l=1.3e-07 w=3e-07
+MXP7 net71 nms net67 VNW p12 l=1.3e-07 w=3e-07
+MX_t5 VDD m net67 VNW p12 l=1.3e-07 w=3e-07
+mX_g5_MXPA1 cn G VDD VNW p12 l=1.3e-07 w=5.9e-07
+mX_g4_MXPA1 c cn VDD VNW p12 l=1.3e-07 w=4.2e-07
+mX_g2_MXPA1 m pm VDD VNW p12 l=1.3e-07 w=6.3e-07
+mXI46_MXPA1 Q pm VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI46_MXPA1_2 Q pm VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g1_MXPA1 QN m VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g1_MXPA1_2 QN m VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATX1MTR Q QN VDD VNW VPW VSS D G
+mX_g6_MXNA1 cn G VSS VPW n12 l=1.3e-07 w=2.3e-07
+mX_g5_MXNA1 c cn VSS VPW n12 l=1.3e-07 w=1.8e-07
+mX_g3_MXNA1 X_g3_n1 D VSS VPW n12 l=1.3e-07 w=5.3e-07
+mX_g3_MXNOE net52 c X_g3_n1 VPW n12 l=1.3e-07 w=5.3e-07
+mXI5_MXNOE net52 cn XI5_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI5_MXNA1 XI5_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m net52 VSS VPW n12 l=1.3e-07 w=1.8e-07
+mXI25_MXNA1 Q net52 VSS VPW n12 l=1.3e-07 w=3.6e-07
+mX_g1_MXNA1 QN m VSS VPW n12 l=1.3e-07 w=3.6e-07
+mX_g6_MXPA1 cn G VDD VNW p12 l=1.3e-07 w=2.8e-07
+mX_g5_MXPA1 c cn VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g3_MXPA1 X_g3_p1 D VDD VNW p12 l=1.3e-07 w=6.5e-07
+mX_g3_MXPOEN net52 cn X_g3_p1 VNW p12 l=1.3e-07 w=6.5e-07
+mXI5_MXPOEN net52 c XI5_p1 VNW p12 l=1.3e-07 w=2.3e-07
+mXI5_MXPA1 XI5_p1 m VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g2_MXPA1 m net52 VDD VNW p12 l=1.3e-07 w=2.3e-07
+mXI25_MXPA1 Q net52 VDD VNW p12 l=1.3e-07 w=6.2e-07
+mX_g1_MXPA1 QN m VDD VNW p12 l=1.3e-07 w=6.2e-07
+.ends
+
+
+.SUBCKT TLATX2MTR Q QN VDD VNW VPW VSS D G
+mX_g6_MXNA1 cn G VSS VPW n12 l=1.3e-07 w=3e-07
+mX_g5_MXNA1 c cn VSS VPW n12 l=1.3e-07 w=1.9e-07
+mX_g3_MXNA1 X_g3_n1 D VSS VPW n12 l=1.3e-07 w=6.5e-07
+mX_g3_MXNOE net52 c X_g3_n1 VPW n12 l=1.3e-07 w=6.5e-07
+mXI5_MXNOE net52 cn XI5_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI5_MXNA1 XI5_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m net52 VSS VPW n12 l=1.3e-07 w=2.6e-07
+mXI25_MXNA1 Q net52 VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g1_MXNA1 QN m VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g6_MXPA1 cn G VDD VNW p12 l=1.3e-07 w=3.7e-07
+mX_g5_MXPA1 c cn VDD VNW p12 l=1.3e-07 w=2.3e-07
+mX_g3_MXPA1 X_g3_p1 D VDD VNW p12 l=1.3e-07 w=8e-07
+mX_g3_MXPOEN net52 cn X_g3_p1 VNW p12 l=1.3e-07 w=8e-07
+mXI5_MXPOEN net52 c XI5_p1 VNW p12 l=1.3e-07 w=1.5e-07
+mXI5_MXPA1 XI5_p1 m VDD VNW p12 l=1.3e-07 w=1.5e-07
+mX_g2_MXPA1 m net52 VDD VNW p12 l=1.3e-07 w=3.2e-07
+mXI25_MXPA1 Q net52 VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g1_MXPA1 QN m VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends
+
+
+.SUBCKT TLATX4MTR Q QN VDD VNW VPW VSS D G
+mX_g6_MXNA1 cn G VSS VPW n12 l=1.3e-07 w=5.8e-07
+mX_g5_MXNA1 c cn VSS VPW n12 l=1.3e-07 w=4.1e-07
+mX_g3_MXNA1 X_g3_n1 D VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g3_MXNOE net52 c X_g3_n1 VPW n12 l=1.3e-07 w=7.1e-07
+mXI5_MXNOE net52 cn XI5_n1 VPW n12 l=1.3e-07 w=1.5e-07
+mXI5_MXNA1 XI5_n1 m VSS VPW n12 l=1.3e-07 w=1.5e-07
+mX_g2_MXNA1 m net52 VSS VPW n12 l=1.3e-07 w=4.8e-07
+mXI26_MXNA1 Q net52 VSS VPW n12 l=1.3e-07 w=7.1e-07
+mXI26_MXNA1_2 Q net52 VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g1_MXNA1 QN m VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g1_MXNA1_2 QN m VSS VPW n12 l=1.3e-07 w=7.1e-07
+mX_g6_MXPA1 cn G VDD VNW p12 l=1.3e-07 w=7.1e-07
+mX_g5_MXPA1 c cn VDD VNW p12 l=1.3e-07 w=5e-07
+mX_g3_MXPA1 X_g3_p1 D VDD VNW p12 l=1.3e-07 w=6.9e-07
+mX_g3_MXPOEN net52 cn X_g3_p1 VNW p12 l=1.3e-07 w=6.9e-07
+mXI5_MXPOEN net52 c XI5_p1 VNW p12 l=1.3e-07 w=1.5e-07
+mXI5_MXPA1 XI5_p1 m VDD VNW p12 l=1.3e-07 w=1.5e-07
+mX_g2_MXPA1 m net52 VDD VNW p12 l=1.3e-07 w=5.9e-07
+mXI26_MXPA1 Q net52 VDD VNW p12 l=1.3e-07 w=8.7e-07
+mXI26_MXPA1_2 Q net52 VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g1_MXPA1 QN m VDD VNW p12 l=1.3e-07 w=8.7e-07
+mX_g1_MXPA1_2 QN m VDD VNW p12 l=1.3e-07 w=8.7e-07
+.ends

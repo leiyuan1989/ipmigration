@@ -1,0 +1,1 @@
+{"cell_name": "AND3HSV16.json", "nmos_loc": {"0": "MM0/VSS/NET25/Z", "1": "MM6/NET5/A3/VSS", "2": "MM4/NET9/A2/NET5", "3": "MM5/NET25/A1/NET9"}, "pmos_loc": {"0": "MM1/VDD/NET25/Z", "1": "MM7/NET25/A3/VDD", "2": "MM9/VDD/A2/NET25", "3": "MM8/NET25/A1/VDD"}}

@@ -1,0 +1,10 @@
+cell_height           1260
+gate_length           40
+v_pin_grid            140
+h_pin_grid            140
+power_rail_width      170               		    
+transistor_offset_x   50
+wire_width_m1_v       70
+wire_width_m1_h       70
+np_ext_border         90
+nw_ext_np	            70	

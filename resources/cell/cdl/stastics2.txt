@@ -1,0 +1,3005 @@
+##### Cell Type: _latch #####  
+----- Match Tech: c153 -----  
+LABHB1          : 
+c153  : LABHB1         LABHB2         
+c110  : 
+s65   : LAHRSNHSV1     LAHRSNHSV2     LAHRSNHSV4     
+s110  : TLATSRX1MTR    TLATSRX2MTR    TLATSRX4MTR    
+LABHB2          : 
+c153  : LABHB1         LABHB2         
+c110  : 
+s65   : LAHRSNHSV1     LAHRSNHSV2     LAHRSNHSV4     
+s110  : TLATSRX1MTR    TLATSRX2MTR    TLATSRX4MTR    
+LABLB1          : 
+c153  : LABLB1         LABLB2         
+c110  : 
+s65   : LALRSNHSV1     LALRSNHSV2     LALRSNHSV4     
+s110  : TLATNSRX1MTR   
+LABLB2          : 
+c153  : LABLB1         LABLB2         
+c110  : 
+s65   : LALRSNHSV1     LALRSNHSV2     LALRSNHSV4     
+s110  : TLATNSRX1MTR   
+LACHB1          : 
+c153  : LACHB1         LACHB2         
+c110  : 
+s65   : LAHRNHSV1      LAHRNHSV2      LAHRNHSV4      
+s110  : 
+LACHB2          : 
+c153  : LACHB1         LACHB2         
+c110  : 
+s65   : LAHRNHSV1      LAHRNHSV2      LAHRNHSV4      
+s110  : 
+LACHQ1          : 
+c153  : LACHQ1         LACHQ2         
+c110  : 
+s65   : 
+s110  : 
+LACHQ2          : 
+c153  : LACHQ1         LACHQ2         
+c110  : 
+s65   : 
+s110  : 
+LACLB1          : 
+c153  : LACLB1         LACLB2         
+c110  : 
+s65   : LALRNHSV1      LALRNHSV2      LALRNHSV4      
+s110  : 
+LACLB2          : 
+c153  : LACLB1         LACLB2         
+c110  : 
+s65   : LALRNHSV1      LALRNHSV2      LALRNHSV4      
+s110  : 
+LACLQ1          : 
+c153  : LACLQ1         LACLQ2         
+c110  : 
+s65   : 
+s110  : 
+LACLQ2          : 
+c153  : LACLQ1         LACLQ2         
+c110  : 
+s65   : 
+s110  : 
+LANHB1          : 
+c153  : LANHB1         LANHB2         
+c110  : LANHB0         LANHB1         
+s65   : LAHHSV1        LAHHSV2        LAHHSV4        
+s110  : TLATX1MTR      TLATX2MTR      TLATX4MTR      
+LANHB2          : 
+c153  : LANHB1         LANHB2         
+c110  : LANHB0         LANHB1         
+s65   : LAHHSV1        LAHHSV2        LAHHSV4        
+s110  : TLATX1MTR      TLATX2MTR      TLATX4MTR      
+LANHN1          : 
+c153  : LANHN1         LANHN2         
+c110  : 
+s65   : 
+s110  : 
+LANHN2          : 
+c153  : LANHN1         LANHN2         
+c110  : 
+s65   : 
+s110  : 
+LANHQ1          : 
+c153  : LANHQ1         LANHQ2         
+c110  : 
+s65   : 
+s110  : 
+LANHQ2          : 
+c153  : LANHQ1         LANHQ2         
+c110  : 
+s65   : 
+s110  : 
+LANHT1          : 
+c153  : LANHT1         LANHT2         
+c110  : 
+s65   : 
+s110  : 
+LANHT2          : 
+c153  : LANHT1         LANHT2         
+c110  : 
+s65   : 
+s110  : 
+LANLB1          : 
+c153  : LANLB1         LANLB2         
+c110  : LANLB0         LANLB1         
+s65   : LALHSV1        LALHSV2        LALHSV4        
+s110  : TLATNX1MTR     TLATNX2MTR     TLATNX4MTR     
+LANLB2          : 
+c153  : LANLB1         LANLB2         
+c110  : LANLB0         LANLB1         
+s65   : LALHSV1        LALHSV2        LALHSV4        
+s110  : TLATNX1MTR     TLATNX2MTR     TLATNX4MTR     
+LANLN1          : 
+c153  : LANLN1         LANLN2         
+c110  : 
+s65   : 
+s110  : 
+LANLN2          : 
+c153  : LANLN1         LANLN2         
+c110  : 
+s65   : 
+s110  : 
+LANLQ1          : 
+c153  : LANLQ1         LANLQ2         
+c110  : 
+s65   : 
+s110  : 
+LANLQ2          : 
+c153  : LANLQ1         LANLQ2         
+c110  : 
+s65   : 
+s110  : 
+LAPHB1          : 
+c153  : LAPHB1         LAPHB2         
+c110  : 
+s65   : LAHSNHSV1      LAHSNHSV2      LAHSNHSV4      
+s110  : 
+LAPHB2          : 
+c153  : LAPHB1         LAPHB2         
+c110  : 
+s65   : LAHSNHSV1      LAHSNHSV2      LAHSNHSV4      
+s110  : 
+LAPLB1          : 
+c153  : LAPLB1         LAPLB2         
+c110  : 
+s65   : LALSNHSV1      LALSNHSV2      LALSNHSV4      
+s110  : 
+LAPLB2          : 
+c153  : LAPLB1         LAPLB2         
+c110  : 
+s65   : LALSNHSV1      LALSNHSV2      LALSNHSV4      
+s110  : 
+TLATNCAD1       : 
+c153  : TLATNCAD1      TLATNCAD2      TLATNCAD4      
+c110  : 
+s65   : 
+s110  : TLATNCAX2MTR   
+TLATNCAD2       : 
+c153  : TLATNCAD1      TLATNCAD2      TLATNCAD4      
+c110  : 
+s65   : 
+s110  : TLATNCAX2MTR   
+TLATNCAD4       : 
+c153  : TLATNCAD1      TLATNCAD2      TLATNCAD4      
+c110  : 
+s65   : 
+s110  : TLATNCAX2MTR   
+TLATNTSCAD1     : 
+c153  : TLATNTSCAD1    TLATNTSCAD2    TLATNTSCAD4    
+c110  : 
+s65   : 
+s110  : TLATNTSCAX2MTR 
+TLATNTSCAD2     : 
+c153  : TLATNTSCAD1    TLATNTSCAD2    TLATNTSCAD4    
+c110  : 
+s65   : 
+s110  : TLATNTSCAX2MTR 
+TLATNTSCAD4     : 
+c153  : TLATNTSCAD1    TLATNTSCAD2    TLATNTSCAD4    
+c110  : 
+s65   : 
+s110  : TLATNTSCAX2MTR 
+----- Match Tech: c110 -----  
+LABHB0          : 
+c153  : 
+c110  : LABHB0         
+s65   : 
+s110  : 
+LABHB1          : 
+c153  : 
+c110  : LABHB1         
+s65   : 
+s110  : 
+LABHB2          : 
+c153  : 
+c110  : LABHB2         
+s65   : 
+s110  : 
+LABHB3          : 
+c153  : 
+c110  : LABHB3         
+s65   : 
+s110  : 
+LABLB0          : 
+c153  : 
+c110  : LABLB0         LABLB1         
+s65   : 
+s110  : 
+LABLB1          : 
+c153  : 
+c110  : LABLB0         LABLB1         
+s65   : 
+s110  : 
+LABLB2          : 
+c153  : 
+c110  : LABLB2         LABLB3         
+s65   : 
+s110  : 
+LABLB3          : 
+c153  : 
+c110  : LABLB2         LABLB3         
+s65   : 
+s110  : 
+LACHB0          : 
+c153  : 
+c110  : LACHB0         LACHB1         LACHB2         
+s65   : 
+s110  : 
+LACHB1          : 
+c153  : 
+c110  : LACHB0         LACHB1         LACHB2         
+s65   : 
+s110  : 
+LACHB2          : 
+c153  : 
+c110  : LACHB0         LACHB1         LACHB2         
+s65   : 
+s110  : 
+LACHB3          : 
+c153  : 
+c110  : LACHB3         
+s65   : 
+s110  : 
+LACLB0          : 
+c153  : 
+c110  : LACLB0         LACLB1         LACLB2         
+s65   : 
+s110  : 
+LACLB1          : 
+c153  : 
+c110  : LACLB0         LACLB1         LACLB2         
+s65   : 
+s110  : 
+LACLB2          : 
+c153  : 
+c110  : LACLB0         LACLB1         LACLB2         
+s65   : 
+s110  : 
+LACLB3          : 
+c153  : 
+c110  : LACLB3         
+s65   : 
+s110  : 
+LANHB0          : 
+c153  : LANHB1         LANHB2         
+c110  : LANHB0         LANHB1         
+s65   : LAHHSV1        LAHHSV2        LAHHSV4        
+s110  : TLATX1MTR      TLATX2MTR      TLATX4MTR      
+LANHB1          : 
+c153  : LANHB1         LANHB2         
+c110  : LANHB0         LANHB1         
+s65   : LAHHSV1        LAHHSV2        LAHHSV4        
+s110  : TLATX1MTR      TLATX2MTR      TLATX4MTR      
+LANHB2          : 
+c153  : 
+c110  : LANHB2         
+s65   : 
+s110  : 
+LANHB3          : 
+c153  : 
+c110  : LANHB3         
+s65   : 
+s110  : 
+LANLB0          : 
+c153  : LANLB1         LANLB2         
+c110  : LANLB0         LANLB1         
+s65   : LALHSV1        LALHSV2        LALHSV4        
+s110  : TLATNX1MTR     TLATNX2MTR     TLATNX4MTR     
+LANLB1          : 
+c153  : LANLB1         LANLB2         
+c110  : LANLB0         LANLB1         
+s65   : LALHSV1        LALHSV2        LALHSV4        
+s110  : TLATNX1MTR     TLATNX2MTR     TLATNX4MTR     
+LANLB2          : 
+c153  : 
+c110  : LANLB2         
+s65   : 
+s110  : 
+LANLB3          : 
+c153  : 
+c110  : LANLB3         
+s65   : 
+s110  : 
+LAPHB0          : 
+c153  : 
+c110  : LAPHB0         LAPHB1         
+s65   : 
+s110  : 
+LAPHB1          : 
+c153  : 
+c110  : LAPHB0         LAPHB1         
+s65   : 
+s110  : 
+LAPHB2          : 
+c153  : 
+c110  : LAPHB2         
+s65   : 
+s110  : 
+LAPHB3          : 
+c153  : 
+c110  : LAPHB3         
+s65   : 
+s110  : 
+LAPLB0          : 
+c153  : 
+c110  : LAPLB0         
+s65   : 
+s110  : 
+LAPLB1          : 
+c153  : 
+c110  : LAPLB1         LAPLB2         
+s65   : 
+s110  : 
+LAPLB2          : 
+c153  : 
+c110  : LAPLB1         LAPLB2         
+s65   : 
+s110  : 
+LAPLB3          : 
+c153  : 
+c110  : LAPLB3         
+s65   : 
+s110  : 
+TLATNCAD0       : 
+c153  : 
+c110  : TLATNCAD0      TLATNCAD1      TLATNCAD2      
+s65   : 
+s110  : 
+TLATNCAD1       : 
+c153  : 
+c110  : TLATNCAD0      TLATNCAD1      TLATNCAD2      
+s65   : 
+s110  : 
+TLATNCAD2       : 
+c153  : 
+c110  : TLATNCAD0      TLATNCAD1      TLATNCAD2      
+s65   : 
+s110  : 
+TLATNCAD4       : 
+c153  : 
+c110  : TLATNCAD4      
+s65   : 
+s110  : 
+TLATNFCAD0      : 
+c153  : 
+c110  : TLATNFCAD0     TLATNFCAD1     
+s65   : 
+s110  : 
+TLATNFCAD1      : 
+c153  : 
+c110  : TLATNFCAD0     TLATNFCAD1     
+s65   : 
+s110  : 
+TLATNFCAD2      : 
+c153  : 
+c110  : TLATNFCAD2     
+s65   : 
+s110  : 
+TLATNFCAD4      : 
+c153  : 
+c110  : TLATNFCAD4     
+s65   : 
+s110  : 
+TLATNFTSCAD0    : 
+c153  : 
+c110  : TLATNFTSCAD0   TLATNFTSCAD1   
+s65   : 
+s110  : 
+TLATNFTSCAD1    : 
+c153  : 
+c110  : TLATNFTSCAD0   TLATNFTSCAD1   
+s65   : 
+s110  : 
+TLATNFTSCAD2    : 
+c153  : 
+c110  : TLATNFTSCAD2   
+s65   : 
+s110  : 
+TLATNFTSCAD4    : 
+c153  : 
+c110  : TLATNFTSCAD4   
+s65   : 
+s110  : 
+TLATNTSCAD0     : 
+c153  : 
+c110  : TLATNTSCAD0    
+s65   : 
+s110  : 
+TLATNTSCAD1     : 
+c153  : 
+c110  : TLATNTSCAD1    TLATNTSCAD2    
+s65   : 
+s110  : 
+TLATNTSCAD2     : 
+c153  : 
+c110  : TLATNTSCAD1    TLATNTSCAD2    
+s65   : 
+s110  : 
+TLATNTSCAD4     : 
+c153  : 
+c110  : TLATNTSCAD4    
+s65   : 
+s110  : 
+----- Match Tech: s65 -----  
+CLKLAHAQHSV1    : 
+c153  : 
+c110  : 
+s65   : CLKLAHAQHSV1   CLKLAHAQHSV2   CLKLAHAQHSV4   CLKLAHAQHSV8   
+s110  : 
+CLKLAHAQHSV2    : 
+c153  : 
+c110  : 
+s65   : CLKLAHAQHSV1   CLKLAHAQHSV2   CLKLAHAQHSV4   CLKLAHAQHSV8   
+s110  : 
+CLKLAHAQHSV4    : 
+c153  : 
+c110  : 
+s65   : CLKLAHAQHSV1   CLKLAHAQHSV2   CLKLAHAQHSV4   CLKLAHAQHSV8   
+s110  : 
+CLKLAHAQHSV8    : 
+c153  : 
+c110  : 
+s65   : CLKLAHAQHSV1   CLKLAHAQHSV2   CLKLAHAQHSV4   CLKLAHAQHSV8   
+s110  : 
+CLKLAHQHSV1     : 
+c153  : 
+c110  : 
+s65   : CLKLAHQHSV1    CLKLAHQHSV2    CLKLAHQHSV4    CLKLAHQHSV8    
+s110  : 
+CLKLAHQHSV2     : 
+c153  : 
+c110  : 
+s65   : CLKLAHQHSV1    CLKLAHQHSV2    CLKLAHQHSV4    CLKLAHQHSV8    
+s110  : 
+CLKLAHQHSV4     : 
+c153  : 
+c110  : 
+s65   : CLKLAHQHSV1    CLKLAHQHSV2    CLKLAHQHSV4    CLKLAHQHSV8    
+s110  : 
+CLKLAHQHSV8     : 
+c153  : 
+c110  : 
+s65   : CLKLAHQHSV1    CLKLAHQHSV2    CLKLAHQHSV4    CLKLAHQHSV8    
+s110  : 
+CLKLANAQHSV1    : 
+c153  : 
+c110  : 
+s65   : CLKLANAQHSV1   CLKLANAQHSV2   CLKLANAQHSV4   CLKLANAQHSV8   
+s110  : 
+CLKLANAQHSV2    : 
+c153  : 
+c110  : 
+s65   : CLKLANAQHSV1   CLKLANAQHSV2   CLKLANAQHSV4   CLKLANAQHSV8   
+s110  : 
+CLKLANAQHSV4    : 
+c153  : 
+c110  : 
+s65   : CLKLANAQHSV1   CLKLANAQHSV2   CLKLANAQHSV4   CLKLANAQHSV8   
+s110  : 
+CLKLANAQHSV8    : 
+c153  : 
+c110  : 
+s65   : CLKLANAQHSV1   CLKLANAQHSV2   CLKLANAQHSV4   CLKLANAQHSV8   
+s110  : 
+CLKLANQHSV1     : 
+c153  : 
+c110  : 
+s65   : CLKLANQHSV1    CLKLANQHSV2    CLKLANQHSV3    CLKLANQHSV4    CLKLANQHSV6    CLKLANQHSV8    
+s110  : 
+CLKLANQHSV12    : 
+c153  : 
+c110  : 
+s65   : CLKLANQHSV12   CLKLANQHSV16   CLKLANQHSV20   CLKLANQHSV24   
+s110  : 
+CLKLANQHSV16    : 
+c153  : 
+c110  : 
+s65   : CLKLANQHSV12   CLKLANQHSV16   CLKLANQHSV20   CLKLANQHSV24   
+s110  : 
+CLKLANQHSV2     : 
+c153  : 
+c110  : 
+s65   : CLKLANQHSV1    CLKLANQHSV2    CLKLANQHSV3    CLKLANQHSV4    CLKLANQHSV6    CLKLANQHSV8    
+s110  : 
+CLKLANQHSV20    : 
+c153  : 
+c110  : 
+s65   : CLKLANQHSV12   CLKLANQHSV16   CLKLANQHSV20   CLKLANQHSV24   
+s110  : 
+CLKLANQHSV24    : 
+c153  : 
+c110  : 
+s65   : CLKLANQHSV12   CLKLANQHSV16   CLKLANQHSV20   CLKLANQHSV24   
+s110  : 
+CLKLANQHSV3     : 
+c153  : 
+c110  : 
+s65   : CLKLANQHSV1    CLKLANQHSV2    CLKLANQHSV3    CLKLANQHSV4    CLKLANQHSV6    CLKLANQHSV8    
+s110  : 
+CLKLANQHSV4     : 
+c153  : 
+c110  : 
+s65   : CLKLANQHSV1    CLKLANQHSV2    CLKLANQHSV3    CLKLANQHSV4    CLKLANQHSV6    CLKLANQHSV8    
+s110  : 
+CLKLANQHSV6     : 
+c153  : 
+c110  : 
+s65   : CLKLANQHSV1    CLKLANQHSV2    CLKLANQHSV3    CLKLANQHSV4    CLKLANQHSV6    CLKLANQHSV8    
+s110  : 
+CLKLANQHSV8     : 
+c153  : 
+c110  : 
+s65   : CLKLANQHSV1    CLKLANQHSV2    CLKLANQHSV3    CLKLANQHSV4    CLKLANQHSV6    CLKLANQHSV8    
+s110  : 
+LAHHSV1         : 
+c153  : LANHB1         LANHB2         
+c110  : LANHB0         LANHB1         
+s65   : LAHHSV1        LAHHSV2        LAHHSV4        
+s110  : TLATX1MTR      TLATX2MTR      TLATX4MTR      
+LAHHSV2         : 
+c153  : LANHB1         LANHB2         
+c110  : LANHB0         LANHB1         
+s65   : LAHHSV1        LAHHSV2        LAHHSV4        
+s110  : TLATX1MTR      TLATX2MTR      TLATX4MTR      
+LAHHSV4         : 
+c153  : LANHB1         LANHB2         
+c110  : LANHB0         LANHB1         
+s65   : LAHHSV1        LAHHSV2        LAHHSV4        
+s110  : TLATX1MTR      TLATX2MTR      TLATX4MTR      
+LAHRNHSV1       : 
+c153  : LACHB1         LACHB2         
+c110  : 
+s65   : LAHRNHSV1      LAHRNHSV2      LAHRNHSV4      
+s110  : 
+LAHRNHSV2       : 
+c153  : LACHB1         LACHB2         
+c110  : 
+s65   : LAHRNHSV1      LAHRNHSV2      LAHRNHSV4      
+s110  : 
+LAHRNHSV4       : 
+c153  : LACHB1         LACHB2         
+c110  : 
+s65   : LAHRNHSV1      LAHRNHSV2      LAHRNHSV4      
+s110  : 
+LAHRSNHSV1      : 
+c153  : LABHB1         LABHB2         
+c110  : 
+s65   : LAHRSNHSV1     LAHRSNHSV2     LAHRSNHSV4     
+s110  : TLATSRX1MTR    TLATSRX2MTR    TLATSRX4MTR    
+LAHRSNHSV2      : 
+c153  : LABHB1         LABHB2         
+c110  : 
+s65   : LAHRSNHSV1     LAHRSNHSV2     LAHRSNHSV4     
+s110  : TLATSRX1MTR    TLATSRX2MTR    TLATSRX4MTR    
+LAHRSNHSV4      : 
+c153  : LABHB1         LABHB2         
+c110  : 
+s65   : LAHRSNHSV1     LAHRSNHSV2     LAHRSNHSV4     
+s110  : TLATSRX1MTR    TLATSRX2MTR    TLATSRX4MTR    
+LAHSNHSV1       : 
+c153  : LAPHB1         LAPHB2         
+c110  : 
+s65   : LAHSNHSV1      LAHSNHSV2      LAHSNHSV4      
+s110  : 
+LAHSNHSV2       : 
+c153  : LAPHB1         LAPHB2         
+c110  : 
+s65   : LAHSNHSV1      LAHSNHSV2      LAHSNHSV4      
+s110  : 
+LAHSNHSV4       : 
+c153  : LAPHB1         LAPHB2         
+c110  : 
+s65   : LAHSNHSV1      LAHSNHSV2      LAHSNHSV4      
+s110  : 
+LALHSV1         : 
+c153  : LANLB1         LANLB2         
+c110  : LANLB0         LANLB1         
+s65   : LALHSV1        LALHSV2        LALHSV4        
+s110  : TLATNX1MTR     TLATNX2MTR     TLATNX4MTR     
+LALHSV2         : 
+c153  : LANLB1         LANLB2         
+c110  : LANLB0         LANLB1         
+s65   : LALHSV1        LALHSV2        LALHSV4        
+s110  : TLATNX1MTR     TLATNX2MTR     TLATNX4MTR     
+LALHSV4         : 
+c153  : LANLB1         LANLB2         
+c110  : LANLB0         LANLB1         
+s65   : LALHSV1        LALHSV2        LALHSV4        
+s110  : TLATNX1MTR     TLATNX2MTR     TLATNX4MTR     
+LALRNHSV1       : 
+c153  : LACLB1         LACLB2         
+c110  : 
+s65   : LALRNHSV1      LALRNHSV2      LALRNHSV4      
+s110  : 
+LALRNHSV2       : 
+c153  : LACLB1         LACLB2         
+c110  : 
+s65   : LALRNHSV1      LALRNHSV2      LALRNHSV4      
+s110  : 
+LALRNHSV4       : 
+c153  : LACLB1         LACLB2         
+c110  : 
+s65   : LALRNHSV1      LALRNHSV2      LALRNHSV4      
+s110  : 
+LALRSNHSV1      : 
+c153  : LABLB1         LABLB2         
+c110  : 
+s65   : LALRSNHSV1     LALRSNHSV2     LALRSNHSV4     
+s110  : TLATNSRX1MTR   
+LALRSNHSV2      : 
+c153  : LABLB1         LABLB2         
+c110  : 
+s65   : LALRSNHSV1     LALRSNHSV2     LALRSNHSV4     
+s110  : TLATNSRX1MTR   
+LALRSNHSV4      : 
+c153  : LABLB1         LABLB2         
+c110  : 
+s65   : LALRSNHSV1     LALRSNHSV2     LALRSNHSV4     
+s110  : TLATNSRX1MTR   
+LALSNHSV1       : 
+c153  : LAPLB1         LAPLB2         
+c110  : 
+s65   : LALSNHSV1      LALSNHSV2      LALSNHSV4      
+s110  : 
+LALSNHSV2       : 
+c153  : LAPLB1         LAPLB2         
+c110  : 
+s65   : LALSNHSV1      LALSNHSV2      LALSNHSV4      
+s110  : 
+LALSNHSV4       : 
+c153  : LAPLB1         LAPLB2         
+c110  : 
+s65   : LALSNHSV1      LALSNHSV2      LALSNHSV4      
+s110  : 
+----- Match Tech: s110 -----  
+TLATNCAX12MTR   : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNCAX12MTR  
+TLATNCAX16MTR   : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNCAX16MTR  
+TLATNCAX20MTR   : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNCAX20MTR  
+TLATNCAX2MTR    : 
+c153  : TLATNCAD1      TLATNCAD2      TLATNCAD4      
+c110  : 
+s65   : 
+s110  : TLATNCAX2MTR   
+TLATNCAX3MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNCAX3MTR   
+TLATNCAX4MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNCAX4MTR   
+TLATNCAX6MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNCAX6MTR   
+TLATNCAX8MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNCAX8MTR   
+TLATNSRX1MTR    : 
+c153  : LABLB1         LABLB2         
+c110  : 
+s65   : LALRSNHSV1     LALRSNHSV2     LALRSNHSV4     
+s110  : TLATNSRX1MTR   
+TLATNSRX2MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNSRX2MTR   
+TLATNSRX4MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNSRX4MTR   
+TLATNTSCAX12MTR : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNTSCAX12MTR
+TLATNTSCAX16MTR : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNTSCAX16MTR
+TLATNTSCAX20MTR : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNTSCAX20MTR
+TLATNTSCAX2MTR  : 
+c153  : TLATNTSCAD1    TLATNTSCAD2    TLATNTSCAD4    
+c110  : 
+s65   : 
+s110  : TLATNTSCAX2MTR 
+TLATNTSCAX3MTR  : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNTSCAX3MTR 
+TLATNTSCAX4MTR  : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNTSCAX4MTR 
+TLATNTSCAX6MTR  : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNTSCAX6MTR 
+TLATNTSCAX8MTR  : 
+c153  : 
+c110  : 
+s65   : 
+s110  : TLATNTSCAX8MTR 
+TLATNX1MTR      : 
+c153  : LANLB1         LANLB2         
+c110  : LANLB0         LANLB1         
+s65   : LALHSV1        LALHSV2        LALHSV4        
+s110  : TLATNX1MTR     TLATNX2MTR     TLATNX4MTR     
+TLATNX2MTR      : 
+c153  : LANLB1         LANLB2         
+c110  : LANLB0         LANLB1         
+s65   : LALHSV1        LALHSV2        LALHSV4        
+s110  : TLATNX1MTR     TLATNX2MTR     TLATNX4MTR     
+TLATNX4MTR      : 
+c153  : LANLB1         LANLB2         
+c110  : LANLB0         LANLB1         
+s65   : LALHSV1        LALHSV2        LALHSV4        
+s110  : TLATNX1MTR     TLATNX2MTR     TLATNX4MTR     
+TLATSRX1MTR     : 
+c153  : LABHB1         LABHB2         
+c110  : 
+s65   : LAHRSNHSV1     LAHRSNHSV2     LAHRSNHSV4     
+s110  : TLATSRX1MTR    TLATSRX2MTR    TLATSRX4MTR    
+TLATSRX2MTR     : 
+c153  : LABHB1         LABHB2         
+c110  : 
+s65   : LAHRSNHSV1     LAHRSNHSV2     LAHRSNHSV4     
+s110  : TLATSRX1MTR    TLATSRX2MTR    TLATSRX4MTR    
+TLATSRX4MTR     : 
+c153  : LABHB1         LABHB2         
+c110  : 
+s65   : LAHRSNHSV1     LAHRSNHSV2     LAHRSNHSV4     
+s110  : TLATSRX1MTR    TLATSRX2MTR    TLATSRX4MTR    
+TLATX1MTR       : 
+c153  : LANHB1         LANHB2         
+c110  : LANHB0         LANHB1         
+s65   : LAHHSV1        LAHHSV2        LAHHSV4        
+s110  : TLATX1MTR      TLATX2MTR      TLATX4MTR      
+TLATX2MTR       : 
+c153  : LANHB1         LANHB2         
+c110  : LANHB0         LANHB1         
+s65   : LAHHSV1        LAHHSV2        LAHHSV4        
+s110  : TLATX1MTR      TLATX2MTR      TLATX4MTR      
+TLATX4MTR       : 
+c153  : LANHB1         LANHB2         
+c110  : LANHB0         LANHB1         
+s65   : LAHHSV1        LAHHSV2        LAHHSV4        
+s110  : TLATX1MTR      TLATX2MTR      TLATX4MTR      
+##### Cell Type: _dff #####  
+----- Match Tech: c153 -----  
+DFBFB1          : 
+c153  : DFBFB1         DFBFB2         
+c110  : 
+s65   : 
+s110  : 
+DFBFB2          : 
+c153  : DFBFB1         DFBFB2         
+c110  : 
+s65   : 
+s110  : 
+DFBRB1          : 
+c153  : DFBRB1         DFBRB2         
+c110  : 
+s65   : 
+s110  : 
+DFBRB2          : 
+c153  : DFBRB1         DFBRB2         
+c110  : 
+s65   : 
+s110  : 
+DFBRQ1          : 
+c153  : DFBRQ1         DFBRQ2         
+c110  : 
+s65   : 
+s110  : 
+DFBRQ2          : 
+c153  : DFBRQ1         DFBRQ2         
+c110  : 
+s65   : 
+s110  : 
+DFCFB1          : 
+c153  : DFCFB1         DFCFB2         
+c110  : 
+s65   : 
+s110  : 
+DFCFB2          : 
+c153  : DFCFB1         DFCFB2         
+c110  : 
+s65   : 
+s110  : 
+DFCFQ1          : 
+c153  : DFCFQ1         DFCFQ2         
+c110  : 
+s65   : 
+s110  : 
+DFCFQ2          : 
+c153  : DFCFQ1         DFCFQ2         
+c110  : 
+s65   : 
+s110  : 
+DFCRB1          : 
+c153  : DFCRB1         DFCRB2         
+c110  : 
+s65   : 
+s110  : 
+DFCRB2          : 
+c153  : DFCRB1         DFCRB2         
+c110  : 
+s65   : 
+s110  : 
+DFCRN1          : 
+c153  : DFCRN1         DFCRN2         
+c110  : 
+s65   : 
+s110  : 
+DFCRN2          : 
+c153  : DFCRN1         DFCRN2         
+c110  : 
+s65   : 
+s110  : 
+DFCRQ1          : 
+c153  : DFCRQ1         DFCRQ2         
+c110  : 
+s65   : 
+s110  : 
+DFCRQ2          : 
+c153  : DFCRQ1         DFCRQ2         
+c110  : 
+s65   : 
+s110  : 
+DFNFB1          : 
+c153  : DFNFB1         DFNFB2         
+c110  : DFNFB0         DFNFB1         DFNFB2         
+s65   : NDHSV1         NDHSV2         NDHSV4         
+s110  : 
+DFNFB2          : 
+c153  : DFNFB1         DFNFB2         
+c110  : DFNFB0         DFNFB1         DFNFB2         
+s65   : NDHSV1         NDHSV2         NDHSV4         
+s110  : 
+DFNRB1          : 
+c153  : DFNRB1         DFNRB2         
+c110  : DFNRB0         DFNRB1         DFNRB2         
+s65   : DHSV1          DHSV2          DHSV4          
+s110  : DFFX1MTR       DFFX2MTR       DFFX4MTR       
+DFNRB2          : 
+c153  : DFNRB1         DFNRB2         
+c110  : DFNRB0         DFNRB1         DFNRB2         
+s65   : DHSV1          DHSV2          DHSV4          
+s110  : DFFX1MTR       DFFX2MTR       DFFX4MTR       
+DFNRN1          : 
+c153  : DFNRN1         DFNRN2         
+c110  : 
+s65   : 
+s110  : DFFQNX1MTR     DFFQNX2MTR     DFFQNX4MTR     
+DFNRN2          : 
+c153  : DFNRN1         DFNRN2         
+c110  : 
+s65   : 
+s110  : DFFQNX1MTR     DFFQNX2MTR     DFFQNX4MTR     
+DFNRQ1          : 
+c153  : DFNRQ1         DFNRQ2         
+c110  : DFNRQ0         DFNRQ1         
+s65   : DQHSV1         DQHSV2         DQHSV4         
+s110  : DFFQX1MTR      DFFQX2MTR      DFFQX4MTR      
+DFNRQ2          : 
+c153  : DFNRQ1         DFNRQ2         
+c110  : DFNRQ0         DFNRQ1         
+s65   : DQHSV1         DQHSV2         DQHSV4         
+s110  : DFFQX1MTR      DFFQX2MTR      DFFQX4MTR      
+DFPFB1          : 
+c153  : DFPFB1         DFPFB2         
+c110  : 
+s65   : 
+s110  : 
+DFPFB2          : 
+c153  : DFPFB1         DFPFB2         
+c110  : 
+s65   : 
+s110  : 
+DFPRB1          : 
+c153  : DFPRB1         DFPRB2         
+c110  : 
+s65   : 
+s110  : 
+DFPRB2          : 
+c153  : DFPRB1         DFPRB2         
+c110  : 
+s65   : 
+s110  : 
+DFPRQ1          : 
+c153  : DFPRQ1         DFPRQ2         
+c110  : 
+s65   : 
+s110  : 
+DFPRQ2          : 
+c153  : DFPRQ1         DFPRQ2         
+c110  : 
+s65   : 
+s110  : 
+----- Match Tech: c110 -----  
+DENRQ0          : 
+c153  : 
+c110  : DENRQ0         DENRQ2         
+s65   : 
+s110  : 
+DENRQ1          : 
+c153  : 
+c110  : DENRQ1         
+s65   : 
+s110  : 
+DENRQ2          : 
+c153  : 
+c110  : DENRQ0         DENRQ2         
+s65   : 
+s110  : 
+DFANRQ0         : 
+c153  : 
+c110  : DFANRQ0        DFANRQ1        DFSCRQ0        DFSCRQ1        
+s65   : 
+s110  : 
+DFANRQ1         : 
+c153  : 
+c110  : DFANRQ0        DFANRQ1        DFSCRQ0        DFSCRQ1        
+s65   : 
+s110  : 
+DFANRQ2         : 
+c153  : 
+c110  : DFANRQ2        DFSCRQ2        
+s65   : 
+s110  : 
+DFBFB0          : 
+c153  : 
+c110  : DFBFB0         DFBFB1         
+s65   : 
+s110  : 
+DFBFB1          : 
+c153  : 
+c110  : DFBFB0         DFBFB1         
+s65   : 
+s110  : 
+DFBFB2          : 
+c153  : 
+c110  : DFBFB2         
+s65   : 
+s110  : 
+DFBRB0          : 
+c153  : 
+c110  : DFBRB0         DFBRB2         DFBRBM         
+s65   : 
+s110  : 
+DFBRB1          : 
+c153  : 
+c110  : DFBRB1         
+s65   : 
+s110  : 
+DFBRB2          : 
+c153  : 
+c110  : DFBRB0         DFBRB2         DFBRBM         
+s65   : 
+s110  : 
+DFBRBM          : 
+c153  : 
+c110  : DFBRB0         DFBRB2         DFBRBM         
+s65   : 
+s110  : 
+DFBRQ0          : 
+c153  : 
+c110  : DFBRQ0         
+s65   : 
+s110  : 
+DFBRQ1          : 
+c153  : 
+c110  : DFBRQ1         
+s65   : 
+s110  : 
+DFBRQ2          : 
+c153  : 
+c110  : DFBRQ2         
+s65   : 
+s110  : 
+DFCFB0          : 
+c153  : 
+c110  : DFCFB0         
+s65   : 
+s110  : 
+DFCFB1          : 
+c153  : 
+c110  : DFCFB1         
+s65   : 
+s110  : 
+DFCFB2          : 
+c153  : 
+c110  : DFCFB2         
+s65   : 
+s110  : 
+DFCRB0          : 
+c153  : 
+c110  : DFCRB0         DFCRBM         
+s65   : 
+s110  : 
+DFCRB1          : 
+c153  : 
+c110  : DFCRB1         
+s65   : 
+s110  : 
+DFCRB2          : 
+c153  : 
+c110  : DFCRB2         
+s65   : 
+s110  : 
+DFCRBM          : 
+c153  : 
+c110  : DFCRB0         DFCRBM         
+s65   : 
+s110  : 
+DFCRQ0          : 
+c153  : 
+c110  : DFCRQ0         DFCRQM         
+s65   : 
+s110  : 
+DFCRQ1          : 
+c153  : 
+c110  : DFCRQ1         
+s65   : 
+s110  : 
+DFCRQ2          : 
+c153  : 
+c110  : DFCRQ2         
+s65   : 
+s110  : 
+DFCRQ3          : 
+c153  : 
+c110  : DFCRQ3         
+s65   : 
+s110  : 
+DFCRQM          : 
+c153  : 
+c110  : DFCRQ0         DFCRQM         
+s65   : 
+s110  : 
+DFNFB0          : 
+c153  : DFNFB1         DFNFB2         
+c110  : DFNFB0         DFNFB1         DFNFB2         
+s65   : NDHSV1         NDHSV2         NDHSV4         
+s110  : 
+DFNFB1          : 
+c153  : DFNFB1         DFNFB2         
+c110  : DFNFB0         DFNFB1         DFNFB2         
+s65   : NDHSV1         NDHSV2         NDHSV4         
+s110  : 
+DFNFB2          : 
+c153  : DFNFB1         DFNFB2         
+c110  : DFNFB0         DFNFB1         DFNFB2         
+s65   : NDHSV1         NDHSV2         NDHSV4         
+s110  : 
+DFNFQ0          : 
+c153  : 
+c110  : DFNFQ0         DFNFQ1         DFNFQ2         
+s65   : 
+s110  : 
+DFNFQ1          : 
+c153  : 
+c110  : DFNFQ0         DFNFQ1         DFNFQ2         
+s65   : 
+s110  : 
+DFNFQ2          : 
+c153  : 
+c110  : DFNFQ0         DFNFQ1         DFNFQ2         
+s65   : 
+s110  : 
+DFNRB0          : 
+c153  : DFNRB1         DFNRB2         
+c110  : DFNRB0         DFNRB1         DFNRB2         
+s65   : DHSV1          DHSV2          DHSV4          
+s110  : DFFX1MTR       DFFX2MTR       DFFX4MTR       
+DFNRB1          : 
+c153  : DFNRB1         DFNRB2         
+c110  : DFNRB0         DFNRB1         DFNRB2         
+s65   : DHSV1          DHSV2          DHSV4          
+s110  : DFFX1MTR       DFFX2MTR       DFFX4MTR       
+DFNRB2          : 
+c153  : DFNRB1         DFNRB2         
+c110  : DFNRB0         DFNRB1         DFNRB2         
+s65   : DHSV1          DHSV2          DHSV4          
+s110  : DFFX1MTR       DFFX2MTR       DFFX4MTR       
+DFNRQ0          : 
+c153  : DFNRQ1         DFNRQ2         
+c110  : DFNRQ0         DFNRQ1         
+s65   : DQHSV1         DQHSV2         DQHSV4         
+s110  : DFFQX1MTR      DFFQX2MTR      DFFQX4MTR      
+DFNRQ1          : 
+c153  : DFNRQ1         DFNRQ2         
+c110  : DFNRQ0         DFNRQ1         
+s65   : DQHSV1         DQHSV2         DQHSV4         
+s110  : DFFQX1MTR      DFFQX2MTR      DFFQX4MTR      
+DFNRQ2          : 
+c153  : 
+c110  : DFNRQ2         
+s65   : 
+s110  : 
+DFPFB0          : 
+c153  : 
+c110  : DFPFB0         DFPFB1         DFPFB2         
+s65   : 
+s110  : 
+DFPFB1          : 
+c153  : 
+c110  : DFPFB0         DFPFB1         DFPFB2         
+s65   : 
+s110  : 
+DFPFB2          : 
+c153  : 
+c110  : DFPFB0         DFPFB1         DFPFB2         
+s65   : 
+s110  : 
+DFPRB0          : 
+c153  : 
+c110  : DFPRB0         
+s65   : 
+s110  : 
+DFPRB1          : 
+c153  : 
+c110  : DFPRB1         
+s65   : 
+s110  : 
+DFPRB2          : 
+c153  : 
+c110  : DFPRB2         
+s65   : 
+s110  : 
+DFPRQ0          : 
+c153  : 
+c110  : DFPRQ0         DFPRQ1         DFPRQM         
+s65   : 
+s110  : 
+DFPRQ1          : 
+c153  : 
+c110  : DFPRQ0         DFPRQ1         DFPRQM         
+s65   : 
+s110  : 
+DFPRQ2          : 
+c153  : 
+c110  : DFPRQ2         
+s65   : 
+s110  : 
+DFPRQM          : 
+c153  : 
+c110  : DFPRQ0         DFPRQ1         DFPRQM         
+s65   : 
+s110  : 
+DFSCRQ0         : 
+c153  : 
+c110  : DFANRQ0        DFANRQ1        DFSCRQ0        DFSCRQ1        
+s65   : 
+s110  : 
+DFSCRQ1         : 
+c153  : 
+c110  : DFANRQ0        DFANRQ1        DFSCRQ0        DFSCRQ1        
+s65   : 
+s110  : 
+DFSCRQ2         : 
+c153  : 
+c110  : DFANRQ2        DFSCRQ2        
+s65   : 
+s110  : 
+----- Match Tech: s65 -----  
+DGRNHSV1        : 
+c153  : 
+c110  : 
+s65   : DGRNHSV1       DGRNHSV2       DGRNHSV4       
+s110  : DFFTRX1MTR     DFFTRX2MTR     
+DGRNHSV2        : 
+c153  : 
+c110  : 
+s65   : DGRNHSV1       DGRNHSV2       DGRNHSV4       
+s110  : DFFTRX1MTR     DFFTRX2MTR     
+DGRNHSV4        : 
+c153  : 
+c110  : 
+s65   : DGRNHSV1       DGRNHSV2       DGRNHSV4       
+s110  : DFFTRX1MTR     DFFTRX2MTR     
+DGRNQHSV1       : 
+c153  : 
+c110  : 
+s65   : DGRNQHSV1      DGRNQHSV2      DGRNQHSV4      
+s110  : 
+DGRNQHSV2       : 
+c153  : 
+c110  : 
+s65   : DGRNQHSV1      DGRNQHSV2      DGRNQHSV4      
+s110  : 
+DGRNQHSV4       : 
+c153  : 
+c110  : 
+s65   : DGRNQHSV1      DGRNQHSV2      DGRNQHSV4      
+s110  : 
+DGRSNHSV1       : 
+c153  : 
+c110  : 
+s65   : DGRSNHSV1      DGRSNHSV2      DGRSNHSV4      
+s110  : 
+DGRSNHSV2       : 
+c153  : 
+c110  : 
+s65   : DGRSNHSV1      DGRSNHSV2      DGRSNHSV4      
+s110  : 
+DGRSNHSV4       : 
+c153  : 
+c110  : 
+s65   : DGRSNHSV1      DGRSNHSV2      DGRSNHSV4      
+s110  : 
+DGSNHSV1        : 
+c153  : 
+c110  : 
+s65   : DGSNHSV1       DGSNHSV2       DGSNHSV4       
+s110  : 
+DGSNHSV2        : 
+c153  : 
+c110  : 
+s65   : DGSNHSV1       DGSNHSV2       DGSNHSV4       
+s110  : 
+DGSNHSV4        : 
+c153  : 
+c110  : 
+s65   : DGSNHSV1       DGSNHSV2       DGSNHSV4       
+s110  : 
+DHSV1           : 
+c153  : DFNRB1         DFNRB2         
+c110  : DFNRB0         DFNRB1         DFNRB2         
+s65   : DHSV1          DHSV2          DHSV4          
+s110  : DFFX1MTR       DFFX2MTR       DFFX4MTR       
+DHSV2           : 
+c153  : DFNRB1         DFNRB2         
+c110  : DFNRB0         DFNRB1         DFNRB2         
+s65   : DHSV1          DHSV2          DHSV4          
+s110  : DFFX1MTR       DFFX2MTR       DFFX4MTR       
+DHSV4           : 
+c153  : DFNRB1         DFNRB2         
+c110  : DFNRB0         DFNRB1         DFNRB2         
+s65   : DHSV1          DHSV2          DHSV4          
+s110  : DFFX1MTR       DFFX2MTR       DFFX4MTR       
+DQHSV1          : 
+c153  : DFNRQ1         DFNRQ2         
+c110  : DFNRQ0         DFNRQ1         
+s65   : DQHSV1         DQHSV2         DQHSV4         
+s110  : DFFQX1MTR      DFFQX2MTR      DFFQX4MTR      
+DQHSV2          : 
+c153  : DFNRQ1         DFNRQ2         
+c110  : DFNRQ0         DFNRQ1         
+s65   : DQHSV1         DQHSV2         DQHSV4         
+s110  : DFFQX1MTR      DFFQX2MTR      DFFQX4MTR      
+DQHSV4          : 
+c153  : DFNRQ1         DFNRQ2         
+c110  : DFNRQ0         DFNRQ1         
+s65   : DQHSV1         DQHSV2         DQHSV4         
+s110  : DFFQX1MTR      DFFQX2MTR      DFFQX4MTR      
+DRNHSV1         : 
+c153  : 
+c110  : 
+s65   : DRNHSV1        DRNHSV2        DRNHSV4        
+s110  : DFFRX1MTR      DFFRX2MTR      DFFRX4MTR      
+DRNHSV2         : 
+c153  : 
+c110  : 
+s65   : DRNHSV1        DRNHSV2        DRNHSV4        
+s110  : DFFRX1MTR      DFFRX2MTR      DFFRX4MTR      
+DRNHSV4         : 
+c153  : 
+c110  : 
+s65   : DRNHSV1        DRNHSV2        DRNHSV4        
+s110  : DFFRX1MTR      DFFRX2MTR      DFFRX4MTR      
+DRNQHSV1        : 
+c153  : 
+c110  : 
+s65   : DRNQHSV1       DRNQHSV2       DRNQHSV4       
+s110  : DFFRQX1MTR     DFFRQX2MTR     DFFRQX4MTR     
+DRNQHSV2        : 
+c153  : 
+c110  : 
+s65   : DRNQHSV1       DRNQHSV2       DRNQHSV4       
+s110  : DFFRQX1MTR     DFFRQX2MTR     DFFRQX4MTR     
+DRNQHSV4        : 
+c153  : 
+c110  : 
+s65   : DRNQHSV1       DRNQHSV2       DRNQHSV4       
+s110  : DFFRQX1MTR     DFFRQX2MTR     DFFRQX4MTR     
+DRSNHSV1        : 
+c153  : 
+c110  : 
+s65   : DRSNHSV1       DRSNHSV2       DRSNHSV4       
+s110  : DFFSRX1MTR     DFFSRX2MTR     DFFSRX4MTR     
+DRSNHSV2        : 
+c153  : 
+c110  : 
+s65   : DRSNHSV1       DRSNHSV2       DRSNHSV4       
+s110  : DFFSRX1MTR     DFFSRX2MTR     DFFSRX4MTR     
+DRSNHSV4        : 
+c153  : 
+c110  : 
+s65   : DRSNHSV1       DRSNHSV2       DRSNHSV4       
+s110  : DFFSRX1MTR     DFFSRX2MTR     DFFSRX4MTR     
+DSNHSV1         : 
+c153  : 
+c110  : 
+s65   : DSNHSV1        DSNHSV2        DSNHSV4        
+s110  : DFFSX1MTR      DFFSX4MTR      
+DSNHSV2         : 
+c153  : 
+c110  : 
+s65   : DSNHSV1        DSNHSV2        DSNHSV4        
+s110  : DFFSX1MTR      DFFSX4MTR      
+DSNHSV4         : 
+c153  : 
+c110  : 
+s65   : DSNHSV1        DSNHSV2        DSNHSV4        
+s110  : DFFSX1MTR      DFFSX4MTR      
+DXHSV1          : 
+c153  : 
+c110  : 
+s65   : DXHSV1         DXHSV2         DXHSV4         
+s110  : 
+DXHSV2          : 
+c153  : 
+c110  : 
+s65   : DXHSV1         DXHSV2         DXHSV4         
+s110  : 
+DXHSV4          : 
+c153  : 
+c110  : 
+s65   : DXHSV1         DXHSV2         DXHSV4         
+s110  : 
+EDGRNHSV1       : 
+c153  : 
+c110  : 
+s65   : EDGRNHSV1      EDGRNHSV2      EDGRNHSV4      
+s110  : 
+EDGRNHSV2       : 
+c153  : 
+c110  : 
+s65   : EDGRNHSV1      EDGRNHSV2      EDGRNHSV4      
+s110  : 
+EDGRNHSV4       : 
+c153  : 
+c110  : 
+s65   : EDGRNHSV1      EDGRNHSV2      EDGRNHSV4      
+s110  : 
+EDGRNQHSV1      : 
+c153  : 
+c110  : 
+s65   : EDGRNQHSV1     EDGRNQHSV2     EDGRNQHSV4     
+s110  : 
+EDGRNQHSV2      : 
+c153  : 
+c110  : 
+s65   : EDGRNQHSV1     EDGRNQHSV2     EDGRNQHSV4     
+s110  : 
+EDGRNQHSV4      : 
+c153  : 
+c110  : 
+s65   : EDGRNQHSV1     EDGRNQHSV2     EDGRNQHSV4     
+s110  : 
+EDHSV1          : 
+c153  : 
+c110  : 
+s65   : EDHSV1         EDHSV2         EDHSV4         
+s110  : 
+EDHSV2          : 
+c153  : 
+c110  : 
+s65   : EDHSV1         EDHSV2         EDHSV4         
+s110  : 
+EDHSV4          : 
+c153  : 
+c110  : 
+s65   : EDHSV1         EDHSV2         EDHSV4         
+s110  : 
+EDQHSV1         : 
+c153  : 
+c110  : 
+s65   : EDQHSV1        EDQHSV2        EDQHSV4        
+s110  : 
+EDQHSV2         : 
+c153  : 
+c110  : 
+s65   : EDQHSV1        EDQHSV2        EDQHSV4        
+s110  : 
+EDQHSV4         : 
+c153  : 
+c110  : 
+s65   : EDQHSV1        EDQHSV2        EDQHSV4        
+s110  : 
+EDRNHSV1        : 
+c153  : 
+c110  : 
+s65   : EDRNHSV1       EDRNHSV2       EDRNHSV4       
+s110  : 
+EDRNHSV2        : 
+c153  : 
+c110  : 
+s65   : EDRNHSV1       EDRNHSV2       EDRNHSV4       
+s110  : 
+EDRNHSV4        : 
+c153  : 
+c110  : 
+s65   : EDRNHSV1       EDRNHSV2       EDRNHSV4       
+s110  : 
+EDRNQHSV1       : 
+c153  : 
+c110  : 
+s65   : EDRNQHSV1      EDRNQHSV2      EDRNQHSV4      
+s110  : 
+EDRNQHSV2       : 
+c153  : 
+c110  : 
+s65   : EDRNQHSV1      EDRNQHSV2      EDRNQHSV4      
+s110  : 
+EDRNQHSV4       : 
+c153  : 
+c110  : 
+s65   : EDRNQHSV1      EDRNQHSV2      EDRNQHSV4      
+s110  : 
+NDHSV1          : 
+c153  : DFNFB1         DFNFB2         
+c110  : DFNFB0         DFNFB1         DFNFB2         
+s65   : NDHSV1         NDHSV2         NDHSV4         
+s110  : 
+NDHSV2          : 
+c153  : DFNFB1         DFNFB2         
+c110  : DFNFB0         DFNFB1         DFNFB2         
+s65   : NDHSV1         NDHSV2         NDHSV4         
+s110  : 
+NDHSV4          : 
+c153  : DFNFB1         DFNFB2         
+c110  : DFNFB0         DFNFB1         DFNFB2         
+s65   : NDHSV1         NDHSV2         NDHSV4         
+s110  : 
+NDRNHSV1        : 
+c153  : 
+c110  : 
+s65   : NDRNHSV1       NDRNHSV2       NDRNHSV4       
+s110  : 
+NDRNHSV2        : 
+c153  : 
+c110  : 
+s65   : NDRNHSV1       NDRNHSV2       NDRNHSV4       
+s110  : 
+NDRNHSV4        : 
+c153  : 
+c110  : 
+s65   : NDRNHSV1       NDRNHSV2       NDRNHSV4       
+s110  : 
+NDRSNHSV1       : 
+c153  : 
+c110  : 
+s65   : NDRSNHSV1      NDRSNHSV2      NDRSNHSV4      
+s110  : 
+NDRSNHSV2       : 
+c153  : 
+c110  : 
+s65   : NDRSNHSV1      NDRSNHSV2      NDRSNHSV4      
+s110  : 
+NDRSNHSV4       : 
+c153  : 
+c110  : 
+s65   : NDRSNHSV1      NDRSNHSV2      NDRSNHSV4      
+s110  : 
+NDSNHSV1        : 
+c153  : 
+c110  : 
+s65   : NDSNHSV1       NDSNHSV2       NDSNHSV4       
+s110  : 
+NDSNHSV2        : 
+c153  : 
+c110  : 
+s65   : NDSNHSV1       NDSNHSV2       NDSNHSV4       
+s110  : 
+NDSNHSV4        : 
+c153  : 
+c110  : 
+s65   : NDSNHSV1       NDSNHSV2       NDSNHSV4       
+s110  : 
+----- Match Tech: s110 -----  
+DFFHQNX1MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFHQNX1MTR    DFFHQNX2MTR    DFFHQNX4MTR    DFFHQNX8MTR    
+DFFHQNX2MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFHQNX1MTR    DFFHQNX2MTR    DFFHQNX4MTR    DFFHQNX8MTR    
+DFFHQNX4MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFHQNX1MTR    DFFHQNX2MTR    DFFHQNX4MTR    DFFHQNX8MTR    
+DFFHQNX8MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFHQNX1MTR    DFFHQNX2MTR    DFFHQNX4MTR    DFFHQNX8MTR    
+DFFHQX1MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFHQX1MTR     DFFHQX2MTR     DFFHQX4MTR     
+DFFHQX2MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFHQX1MTR     DFFHQX2MTR     DFFHQX4MTR     
+DFFHQX4MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFHQX1MTR     DFFHQX2MTR     DFFHQX4MTR     
+DFFHQX8MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFHQX8MTR     
+DFFHX1MTR       : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFHX1MTR      
+DFFHX2MTR       : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFHX2MTR      
+DFFHX4MTR       : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFHX4MTR      DFFHX8MTR      
+DFFHX8MTR       : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFHX4MTR      DFFHX8MTR      
+DFFNHX1MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFNHX1MTR     DFFNHX2MTR     
+DFFNHX2MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFNHX1MTR     DFFNHX2MTR     
+DFFNHX4MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFNHX4MTR     
+DFFNHX8MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFNHX8MTR     
+DFFNSRHX1MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFNSRHX1MTR   DFFNSRHX2MTR   DFFNSRHX4MTR   DFFNSRHX8MTR   
+DFFNSRHX2MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFNSRHX1MTR   DFFNSRHX2MTR   DFFNSRHX4MTR   DFFNSRHX8MTR   
+DFFNSRHX4MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFNSRHX1MTR   DFFNSRHX2MTR   DFFNSRHX4MTR   DFFNSRHX8MTR   
+DFFNSRHX8MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFNSRHX1MTR   DFFNSRHX2MTR   DFFNSRHX4MTR   DFFNSRHX8MTR   
+DFFQNX1MTR      : 
+c153  : DFNRN1         DFNRN2         
+c110  : 
+s65   : 
+s110  : DFFQNX1MTR     DFFQNX2MTR     DFFQNX4MTR     
+DFFQNX2MTR      : 
+c153  : DFNRN1         DFNRN2         
+c110  : 
+s65   : 
+s110  : DFFQNX1MTR     DFFQNX2MTR     DFFQNX4MTR     
+DFFQNX4MTR      : 
+c153  : DFNRN1         DFNRN2         
+c110  : 
+s65   : 
+s110  : DFFQNX1MTR     DFFQNX2MTR     DFFQNX4MTR     
+DFFQX1MTR       : 
+c153  : DFNRQ1         DFNRQ2         
+c110  : DFNRQ0         DFNRQ1         
+s65   : DQHSV1         DQHSV2         DQHSV4         
+s110  : DFFQX1MTR      DFFQX2MTR      DFFQX4MTR      
+DFFQX2MTR       : 
+c153  : DFNRQ1         DFNRQ2         
+c110  : DFNRQ0         DFNRQ1         
+s65   : DQHSV1         DQHSV2         DQHSV4         
+s110  : DFFQX1MTR      DFFQX2MTR      DFFQX4MTR      
+DFFQX4MTR       : 
+c153  : DFNRQ1         DFNRQ2         
+c110  : DFNRQ0         DFNRQ1         
+s65   : DQHSV1         DQHSV2         DQHSV4         
+s110  : DFFQX1MTR      DFFQX2MTR      DFFQX4MTR      
+DFFRHQX1MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFRHQX1MTR    
+DFFRHQX2MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFRHQX2MTR    
+DFFRHQX4MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFRHQX4MTR    DFFRHQX8MTR    
+DFFRHQX8MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFRHQX4MTR    DFFRHQX8MTR    
+DFFRQX1MTR      : 
+c153  : 
+c110  : 
+s65   : DRNQHSV1       DRNQHSV2       DRNQHSV4       
+s110  : DFFRQX1MTR     DFFRQX2MTR     DFFRQX4MTR     
+DFFRQX2MTR      : 
+c153  : 
+c110  : 
+s65   : DRNQHSV1       DRNQHSV2       DRNQHSV4       
+s110  : DFFRQX1MTR     DFFRQX2MTR     DFFRQX4MTR     
+DFFRQX4MTR      : 
+c153  : 
+c110  : 
+s65   : DRNQHSV1       DRNQHSV2       DRNQHSV4       
+s110  : DFFRQX1MTR     DFFRQX2MTR     DFFRQX4MTR     
+DFFRX1MTR       : 
+c153  : 
+c110  : 
+s65   : DRNHSV1        DRNHSV2        DRNHSV4        
+s110  : DFFRX1MTR      DFFRX2MTR      DFFRX4MTR      
+DFFRX2MTR       : 
+c153  : 
+c110  : 
+s65   : DRNHSV1        DRNHSV2        DRNHSV4        
+s110  : DFFRX1MTR      DFFRX2MTR      DFFRX4MTR      
+DFFRX4MTR       : 
+c153  : 
+c110  : 
+s65   : DRNHSV1        DRNHSV2        DRNHSV4        
+s110  : DFFRX1MTR      DFFRX2MTR      DFFRX4MTR      
+DFFSHQX1MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFSHQX1MTR    DFFSHQX2MTR    DFFSHQX4MTR    DFFSHQX8MTR    
+DFFSHQX2MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFSHQX1MTR    DFFSHQX2MTR    DFFSHQX4MTR    DFFSHQX8MTR    
+DFFSHQX4MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFSHQX1MTR    DFFSHQX2MTR    DFFSHQX4MTR    DFFSHQX8MTR    
+DFFSHQX8MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFSHQX1MTR    DFFSHQX2MTR    DFFSHQX4MTR    DFFSHQX8MTR    
+DFFSQX1MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFSQX1MTR     DFFSQX2MTR     DFFSQX4MTR     
+DFFSQX2MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFSQX1MTR     DFFSQX2MTR     DFFSQX4MTR     
+DFFSQX4MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFSQX1MTR     DFFSQX2MTR     DFFSQX4MTR     
+DFFSRHQX1MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFSRHQX1MTR   DFFSRHQX2MTR   DFFSRHQX4MTR   DFFSRHQX8MTR   
+DFFSRHQX2MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFSRHQX1MTR   DFFSRHQX2MTR   DFFSRHQX4MTR   DFFSRHQX8MTR   
+DFFSRHQX4MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFSRHQX1MTR   DFFSRHQX2MTR   DFFSRHQX4MTR   DFFSRHQX8MTR   
+DFFSRHQX8MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFSRHQX1MTR   DFFSRHQX2MTR   DFFSRHQX4MTR   DFFSRHQX8MTR   
+DFFSRX1MTR      : 
+c153  : 
+c110  : 
+s65   : DRSNHSV1       DRSNHSV2       DRSNHSV4       
+s110  : DFFSRX1MTR     DFFSRX2MTR     DFFSRX4MTR     
+DFFSRX2MTR      : 
+c153  : 
+c110  : 
+s65   : DRSNHSV1       DRSNHSV2       DRSNHSV4       
+s110  : DFFSRX1MTR     DFFSRX2MTR     DFFSRX4MTR     
+DFFSRX4MTR      : 
+c153  : 
+c110  : 
+s65   : DRSNHSV1       DRSNHSV2       DRSNHSV4       
+s110  : DFFSRX1MTR     DFFSRX2MTR     DFFSRX4MTR     
+DFFSX1MTR       : 
+c153  : 
+c110  : 
+s65   : DSNHSV1        DSNHSV2        DSNHSV4        
+s110  : DFFSX1MTR      DFFSX4MTR      
+DFFSX2MTR       : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFSX2MTR      
+DFFSX4MTR       : 
+c153  : 
+c110  : 
+s65   : DSNHSV1        DSNHSV2        DSNHSV4        
+s110  : DFFSX1MTR      DFFSX4MTR      
+DFFTRX1MTR      : 
+c153  : 
+c110  : 
+s65   : DGRNHSV1       DGRNHSV2       DGRNHSV4       
+s110  : DFFTRX1MTR     DFFTRX2MTR     
+DFFTRX2MTR      : 
+c153  : 
+c110  : 
+s65   : DGRNHSV1       DGRNHSV2       DGRNHSV4       
+s110  : DFFTRX1MTR     DFFTRX2MTR     
+DFFTRX4MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : DFFTRX4MTR     
+DFFX1MTR        : 
+c153  : DFNRB1         DFNRB2         
+c110  : DFNRB0         DFNRB1         DFNRB2         
+s65   : DHSV1          DHSV2          DHSV4          
+s110  : DFFX1MTR       DFFX2MTR       DFFX4MTR       
+DFFX2MTR        : 
+c153  : DFNRB1         DFNRB2         
+c110  : DFNRB0         DFNRB1         DFNRB2         
+s65   : DHSV1          DHSV2          DHSV4          
+s110  : DFFX1MTR       DFFX2MTR       DFFX4MTR       
+DFFX4MTR        : 
+c153  : DFNRB1         DFNRB2         
+c110  : DFNRB0         DFNRB1         DFNRB2         
+s65   : DHSV1          DHSV2          DHSV4          
+s110  : DFFX1MTR       DFFX2MTR       DFFX4MTR       
+EDFFHQX1MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : EDFFHQX1MTR    EDFFHQX2MTR    EDFFHQX4MTR    EDFFHQX8MTR    
+EDFFHQX2MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : EDFFHQX1MTR    EDFFHQX2MTR    EDFFHQX4MTR    EDFFHQX8MTR    
+EDFFHQX4MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : EDFFHQX1MTR    EDFFHQX2MTR    EDFFHQX4MTR    EDFFHQX8MTR    
+EDFFHQX8MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : EDFFHQX1MTR    EDFFHQX2MTR    EDFFHQX4MTR    EDFFHQX8MTR    
+EDFFTRX1MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : EDFFTRX1MTR    EDFFTRX2MTR    EDFFTRX4MTR    
+EDFFTRX2MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : EDFFTRX1MTR    EDFFTRX2MTR    EDFFTRX4MTR    
+EDFFTRX4MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : EDFFTRX1MTR    EDFFTRX2MTR    EDFFTRX4MTR    
+EDFFX1MTR       : 
+c153  : 
+c110  : 
+s65   : 
+s110  : EDFFX1MTR      EDFFX2MTR      EDFFX4MTR      
+EDFFX2MTR       : 
+c153  : 
+c110  : 
+s65   : 
+s110  : EDFFX1MTR      EDFFX2MTR      EDFFX4MTR      
+EDFFX4MTR       : 
+c153  : 
+c110  : 
+s65   : 
+s110  : EDFFX1MTR      EDFFX2MTR      EDFFX4MTR      
+MDFFHQX1MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : MDFFHQX1MTR    MDFFHQX2MTR    MDFFHQX4MTR    MDFFHQX8MTR    
+MDFFHQX2MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : MDFFHQX1MTR    MDFFHQX2MTR    MDFFHQX4MTR    MDFFHQX8MTR    
+MDFFHQX4MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : MDFFHQX1MTR    MDFFHQX2MTR    MDFFHQX4MTR    MDFFHQX8MTR    
+MDFFHQX8MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : MDFFHQX1MTR    MDFFHQX2MTR    MDFFHQX4MTR    MDFFHQX8MTR    
+##### Cell Type: _sdff #####  
+----- Match Tech: c153 -----  
+SDBFB1          : 
+c153  : SDBFB1         SDBFB2         
+c110  : 
+s65   : 
+s110  : 
+SDBFB2          : 
+c153  : SDBFB1         SDBFB2         
+c110  : 
+s65   : 
+s110  : 
+SDBRB1          : 
+c153  : SDBRB1         SDBRB2         
+c110  : 
+s65   : 
+s110  : 
+SDBRB2          : 
+c153  : SDBRB1         SDBRB2         
+c110  : 
+s65   : 
+s110  : 
+SDBRQ1          : 
+c153  : SDBRQ1         SDBRQ2         
+c110  : 
+s65   : 
+s110  : 
+SDBRQ2          : 
+c153  : SDBRQ1         SDBRQ2         
+c110  : 
+s65   : 
+s110  : 
+SDCFB1          : 
+c153  : SDCFB1         SDCFB2         
+c110  : 
+s65   : 
+s110  : 
+SDCFB2          : 
+c153  : SDCFB1         SDCFB2         
+c110  : 
+s65   : 
+s110  : 
+SDCFQ1          : 
+c153  : SDCFQ1         SDCFQ2         
+c110  : 
+s65   : 
+s110  : 
+SDCFQ2          : 
+c153  : SDCFQ1         SDCFQ2         
+c110  : 
+s65   : 
+s110  : 
+SDCRB1          : 
+c153  : SDCRB1         SDCRB2         
+c110  : 
+s65   : 
+s110  : 
+SDCRB2          : 
+c153  : SDCRB1         SDCRB2         
+c110  : 
+s65   : 
+s110  : 
+SDCRN1          : 
+c153  : SDCRN1         SDCRN2         
+c110  : 
+s65   : 
+s110  : 
+SDCRN2          : 
+c153  : SDCRN1         SDCRN2         
+c110  : 
+s65   : 
+s110  : 
+SDCRQ1          : 
+c153  : SDCRQ1         SDCRQ2         
+c110  : 
+s65   : 
+s110  : 
+SDCRQ2          : 
+c153  : SDCRQ1         SDCRQ2         
+c110  : 
+s65   : 
+s110  : 
+SDNFB1          : 
+c153  : SDNFB1         SDNFB2         
+c110  : 
+s65   : 
+s110  : 
+SDNFB2          : 
+c153  : SDNFB1         SDNFB2         
+c110  : 
+s65   : 
+s110  : 
+SDNRB1          : 
+c153  : SDNRB1         SDNRB2         
+c110  : 
+s65   : 
+s110  : 
+SDNRB2          : 
+c153  : SDNRB1         SDNRB2         
+c110  : 
+s65   : 
+s110  : 
+SDNRN1          : 
+c153  : SDNRN1         SDNRN2         
+c110  : 
+s65   : 
+s110  : 
+SDNRN2          : 
+c153  : SDNRN1         SDNRN2         
+c110  : 
+s65   : 
+s110  : 
+SDNRQ1          : 
+c153  : SDNRQ1         SDNRQ2         
+c110  : 
+s65   : 
+s110  : 
+SDNRQ2          : 
+c153  : SDNRQ1         SDNRQ2         
+c110  : 
+s65   : 
+s110  : 
+SDPFB1          : 
+c153  : SDPFB1         SDPFB2         
+c110  : 
+s65   : 
+s110  : 
+SDPFB2          : 
+c153  : SDPFB1         SDPFB2         
+c110  : 
+s65   : 
+s110  : 
+SDPRB1          : 
+c153  : SDPRB1         SDPRB2         
+c110  : 
+s65   : 
+s110  : 
+SDPRB2          : 
+c153  : SDPRB1         SDPRB2         
+c110  : 
+s65   : 
+s110  : 
+SDPRQ1          : 
+c153  : SDPRQ1         SDPRQ2         
+c110  : 
+s65   : 
+s110  : 
+SDPRQ2          : 
+c153  : SDPRQ1         SDPRQ2         
+c110  : 
+s65   : 
+s110  : 
+----- Match Tech: c110 -----  
+SDANRQ0         : 
+c153  : 
+c110  : SDANRQ0        SDANRQ1        SDANRQ2        SDSCRQ0        SDSCRQ1        
+s65   : 
+s110  : 
+SDANRQ1         : 
+c153  : 
+c110  : SDANRQ0        SDANRQ1        SDANRQ2        SDSCRQ0        SDSCRQ1        
+s65   : 
+s110  : 
+SDANRQ2         : 
+c153  : 
+c110  : SDANRQ0        SDANRQ1        SDANRQ2        SDSCRQ0        SDSCRQ1        
+s65   : 
+s110  : 
+SDBFB0          : 
+c153  : 
+c110  : SDBFB0         
+s65   : 
+s110  : 
+SDBFB1          : 
+c153  : 
+c110  : SDBFB1         
+s65   : 
+s110  : 
+SDBFB2          : 
+c153  : 
+c110  : SDBFB2         
+s65   : 
+s110  : 
+SDBRB0          : 
+c153  : 
+c110  : SDBRB0         SDBRBM         
+s65   : 
+s110  : 
+SDBRB1          : 
+c153  : 
+c110  : SDBRB1         
+s65   : 
+s110  : 
+SDBRB2          : 
+c153  : 
+c110  : SDBRB2         
+s65   : 
+s110  : 
+SDBRBM          : 
+c153  : 
+c110  : SDBRB0         SDBRBM         
+s65   : 
+s110  : 
+SDBRQ0          : 
+c153  : 
+c110  : SDBRQ0         
+s65   : 
+s110  : 
+SDBRQ1          : 
+c153  : 
+c110  : SDBRQ1         
+s65   : 
+s110  : 
+SDBRQ2          : 
+c153  : 
+c110  : SDBRQ2         
+s65   : 
+s110  : 
+SDCFB0          : 
+c153  : 
+c110  : SDCFB0         SDCFB1         
+s65   : 
+s110  : 
+SDCFB1          : 
+c153  : 
+c110  : SDCFB0         SDCFB1         
+s65   : 
+s110  : 
+SDCFB2          : 
+c153  : 
+c110  : SDCFB2         
+s65   : 
+s110  : 
+SDCRB0          : 
+c153  : 
+c110  : SDCRB0         
+s65   : 
+s110  : 
+SDCRB1          : 
+c153  : 
+c110  : SDCRB1         SDCRBM         
+s65   : 
+s110  : 
+SDCRB2          : 
+c153  : 
+c110  : SDCRB2         
+s65   : 
+s110  : 
+SDCRBM          : 
+c153  : 
+c110  : SDCRB1         SDCRBM         
+s65   : 
+s110  : 
+SDCRQ0          : 
+c153  : 
+c110  : SDCRQ0         SDCRQ1         
+s65   : 
+s110  : 
+SDCRQ1          : 
+c153  : 
+c110  : SDCRQ0         SDCRQ1         
+s65   : 
+s110  : 
+SDCRQ2          : 
+c153  : 
+c110  : SDCRQ2         SDCRQM         
+s65   : 
+s110  : 
+SDCRQM          : 
+c153  : 
+c110  : SDCRQ2         SDCRQM         
+s65   : 
+s110  : 
+SDMNRQ0         : 
+c153  : 
+c110  : SDMNRQ0        SDMNRQ1        
+s65   : 
+s110  : 
+SDMNRQ1         : 
+c153  : 
+c110  : SDMNRQ0        SDMNRQ1        
+s65   : 
+s110  : 
+SDMNRQ2         : 
+c153  : 
+c110  : SDMNRQ2        
+s65   : 
+s110  : 
+SDNFB0          : 
+c153  : 
+c110  : SDNFB0         SDNFB1         
+s65   : 
+s110  : 
+SDNFB1          : 
+c153  : 
+c110  : SDNFB0         SDNFB1         
+s65   : 
+s110  : 
+SDNFB2          : 
+c153  : 
+c110  : SDNFB2         
+s65   : 
+s110  : 
+SDNFQ0          : 
+c153  : 
+c110  : SDNFQ0         SDNFQ1         
+s65   : 
+s110  : 
+SDNFQ1          : 
+c153  : 
+c110  : SDNFQ0         SDNFQ1         
+s65   : 
+s110  : 
+SDNFQ2          : 
+c153  : 
+c110  : SDNFQ2         
+s65   : 
+s110  : 
+SDNRB0          : 
+c153  : 
+c110  : SDNRB0         SDNRB1         
+s65   : 
+s110  : 
+SDNRB1          : 
+c153  : 
+c110  : SDNRB0         SDNRB1         
+s65   : 
+s110  : 
+SDNRB2          : 
+c153  : 
+c110  : SDNRB2         
+s65   : 
+s110  : 
+SDNRQ0          : 
+c153  : 
+c110  : SDNRQ0         SDNRQ1         
+s65   : 
+s110  : 
+SDNRQ1          : 
+c153  : 
+c110  : SDNRQ0         SDNRQ1         
+s65   : 
+s110  : 
+SDNRQ2          : 
+c153  : 
+c110  : SDNRQ2         
+s65   : 
+s110  : 
+SDPFB0          : 
+c153  : 
+c110  : SDPFB0         SDPFB1         
+s65   : 
+s110  : 
+SDPFB1          : 
+c153  : 
+c110  : SDPFB0         SDPFB1         
+s65   : 
+s110  : 
+SDPFB2          : 
+c153  : 
+c110  : SDPFB2         
+s65   : 
+s110  : 
+SDPRB0          : 
+c153  : 
+c110  : SDPRB0         SDPRB2         
+s65   : 
+s110  : 
+SDPRB1          : 
+c153  : 
+c110  : SDPRB1         
+s65   : 
+s110  : 
+SDPRB2          : 
+c153  : 
+c110  : SDPRB0         SDPRB2         
+s65   : 
+s110  : 
+SDPRQ0          : 
+c153  : 
+c110  : SDPRQ0         SDPRQ1         SDPRQM         
+s65   : 
+s110  : 
+SDPRQ1          : 
+c153  : 
+c110  : SDPRQ0         SDPRQ1         SDPRQM         
+s65   : 
+s110  : 
+SDPRQ2          : 
+c153  : 
+c110  : SDPRQ2         
+s65   : 
+s110  : 
+SDPRQM          : 
+c153  : 
+c110  : SDPRQ0         SDPRQ1         SDPRQM         
+s65   : 
+s110  : 
+SDSCRQ0         : 
+c153  : 
+c110  : SDANRQ0        SDANRQ1        SDANRQ2        SDSCRQ0        SDSCRQ1        
+s65   : 
+s110  : 
+SDSCRQ1         : 
+c153  : 
+c110  : SDANRQ0        SDANRQ1        SDANRQ2        SDSCRQ0        SDSCRQ1        
+s65   : 
+s110  : 
+SDSCRQ2         : 
+c153  : 
+c110  : SDSCRQ2        
+s65   : 
+s110  : 
+SENRQ0          : 
+c153  : 
+c110  : SENRQ0         
+s65   : 
+s110  : 
+SENRQ1          : 
+c153  : 
+c110  : SENRQ1         
+s65   : 
+s110  : 
+SENRQ2          : 
+c153  : 
+c110  : SENRQ2         
+s65   : 
+s110  : 
+----- Match Tech: s65 -----  
+SDGRNHSV1       : 
+c153  : 
+c110  : 
+s65   : SDGRNHSV1      SDGRNHSV2      SDGRNHSV4      
+s110  : SDFFTRX1MTR    
+SDGRNHSV2       : 
+c153  : 
+c110  : 
+s65   : SDGRNHSV1      SDGRNHSV2      SDGRNHSV4      
+s110  : SDFFTRX1MTR    
+SDGRNHSV4       : 
+c153  : 
+c110  : 
+s65   : SDGRNHSV1      SDGRNHSV2      SDGRNHSV4      
+s110  : SDFFTRX1MTR    
+SDGRNQHSV1      : 
+c153  : 
+c110  : 
+s65   : SDGRNQHSV1     SDGRNQHSV2     SDGRNQHSV4     
+s110  : 
+SDGRNQHSV2      : 
+c153  : 
+c110  : 
+s65   : SDGRNQHSV1     SDGRNQHSV2     SDGRNQHSV4     
+s110  : 
+SDGRNQHSV4      : 
+c153  : 
+c110  : 
+s65   : SDGRNQHSV1     SDGRNQHSV2     SDGRNQHSV4     
+s110  : 
+SDGRSNHSV1      : 
+c153  : 
+c110  : 
+s65   : SDGRSNHSV1     SDGRSNHSV2     SDGRSNHSV4     
+s110  : 
+SDGRSNHSV2      : 
+c153  : 
+c110  : 
+s65   : SDGRSNHSV1     SDGRSNHSV2     SDGRSNHSV4     
+s110  : 
+SDGRSNHSV4      : 
+c153  : 
+c110  : 
+s65   : SDGRSNHSV1     SDGRSNHSV2     SDGRSNHSV4     
+s110  : 
+SDGSNHSV1       : 
+c153  : 
+c110  : 
+s65   : SDGSNHSV1      SDGSNHSV2      SDGSNHSV4      
+s110  : 
+SDGSNHSV2       : 
+c153  : 
+c110  : 
+s65   : SDGSNHSV1      SDGSNHSV2      SDGSNHSV4      
+s110  : 
+SDGSNHSV4       : 
+c153  : 
+c110  : 
+s65   : SDGSNHSV1      SDGSNHSV2      SDGSNHSV4      
+s110  : 
+SDHSV1          : 
+c153  : 
+c110  : 
+s65   : SDHSV1         SDHSV2         SDHSV4         
+s110  : SDFFX1MTR      SDFFX2MTR      SDFFX4MTR      
+SDHSV2          : 
+c153  : 
+c110  : 
+s65   : SDHSV1         SDHSV2         SDHSV4         
+s110  : SDFFX1MTR      SDFFX2MTR      SDFFX4MTR      
+SDHSV4          : 
+c153  : 
+c110  : 
+s65   : SDHSV1         SDHSV2         SDHSV4         
+s110  : SDFFX1MTR      SDFFX2MTR      SDFFX4MTR      
+SDQHSV1         : 
+c153  : 
+c110  : 
+s65   : SDQHSV1        SDQHSV2        SDQHSV4        
+s110  : SDFFQX1MTR     SDFFQX2MTR     SDFFQX4MTR     
+SDQHSV2         : 
+c153  : 
+c110  : 
+s65   : SDQHSV1        SDQHSV2        SDQHSV4        
+s110  : SDFFQX1MTR     SDFFQX2MTR     SDFFQX4MTR     
+SDQHSV4         : 
+c153  : 
+c110  : 
+s65   : SDQHSV1        SDQHSV2        SDQHSV4        
+s110  : SDFFQX1MTR     SDFFQX2MTR     SDFFQX4MTR     
+SDRNHSV1        : 
+c153  : 
+c110  : 
+s65   : SDRNHSV1       SDRNHSV2       SDRNHSV4       
+s110  : SDFFRX1MTR     SDFFRX2MTR     SDFFRX4MTR     
+SDRNHSV2        : 
+c153  : 
+c110  : 
+s65   : SDRNHSV1       SDRNHSV2       SDRNHSV4       
+s110  : SDFFRX1MTR     SDFFRX2MTR     SDFFRX4MTR     
+SDRNHSV4        : 
+c153  : 
+c110  : 
+s65   : SDRNHSV1       SDRNHSV2       SDRNHSV4       
+s110  : SDFFRX1MTR     SDFFRX2MTR     SDFFRX4MTR     
+SDRNQHSV1       : 
+c153  : 
+c110  : 
+s65   : SDRNQHSV1      SDRNQHSV2      SDRNQHSV4      
+s110  : SDFFRQX1MTR    SDFFRQX2MTR    SDFFRQX4MTR    
+SDRNQHSV2       : 
+c153  : 
+c110  : 
+s65   : SDRNQHSV1      SDRNQHSV2      SDRNQHSV4      
+s110  : SDFFRQX1MTR    SDFFRQX2MTR    SDFFRQX4MTR    
+SDRNQHSV4       : 
+c153  : 
+c110  : 
+s65   : SDRNQHSV1      SDRNQHSV2      SDRNQHSV4      
+s110  : SDFFRQX1MTR    SDFFRQX2MTR    SDFFRQX4MTR    
+SDRSNHSV1       : 
+c153  : 
+c110  : 
+s65   : SDRSNHSV1      SDRSNHSV2      SDRSNHSV4      
+s110  : SDFFSRX1MTR    SDFFSRX2MTR    SDFFSRX4MTR    
+SDRSNHSV2       : 
+c153  : 
+c110  : 
+s65   : SDRSNHSV1      SDRSNHSV2      SDRSNHSV4      
+s110  : SDFFSRX1MTR    SDFFSRX2MTR    SDFFSRX4MTR    
+SDRSNHSV4       : 
+c153  : 
+c110  : 
+s65   : SDRSNHSV1      SDRSNHSV2      SDRSNHSV4      
+s110  : SDFFSRX1MTR    SDFFSRX2MTR    SDFFSRX4MTR    
+SDSNHSV1        : 
+c153  : 
+c110  : 
+s65   : SDSNHSV1       SDSNHSV2       SDSNHSV4       
+s110  : 
+SDSNHSV2        : 
+c153  : 
+c110  : 
+s65   : SDSNHSV1       SDSNHSV2       SDSNHSV4       
+s110  : 
+SDSNHSV4        : 
+c153  : 
+c110  : 
+s65   : SDSNHSV1       SDSNHSV2       SDSNHSV4       
+s110  : 
+SDXHSV1         : 
+c153  : 
+c110  : 
+s65   : SDXHSV1        SDXHSV2        SDXHSV4        
+s110  : 
+SDXHSV2         : 
+c153  : 
+c110  : 
+s65   : SDXHSV1        SDXHSV2        SDXHSV4        
+s110  : 
+SDXHSV4         : 
+c153  : 
+c110  : 
+s65   : SDXHSV1        SDXHSV2        SDXHSV4        
+s110  : 
+SEDGRNHSV1      : 
+c153  : 
+c110  : 
+s65   : SEDGRNHSV1     SEDGRNHSV2     SEDGRNHSV4     
+s110  : 
+SEDGRNHSV2      : 
+c153  : 
+c110  : 
+s65   : SEDGRNHSV1     SEDGRNHSV2     SEDGRNHSV4     
+s110  : 
+SEDGRNHSV4      : 
+c153  : 
+c110  : 
+s65   : SEDGRNHSV1     SEDGRNHSV2     SEDGRNHSV4     
+s110  : 
+SEDGRNQHSV1     : 
+c153  : 
+c110  : 
+s65   : SEDGRNQHSV1    SEDGRNQHSV2    SEDGRNQHSV4    
+s110  : 
+SEDGRNQHSV2     : 
+c153  : 
+c110  : 
+s65   : SEDGRNQHSV1    SEDGRNQHSV2    SEDGRNQHSV4    
+s110  : 
+SEDGRNQHSV4     : 
+c153  : 
+c110  : 
+s65   : SEDGRNQHSV1    SEDGRNQHSV2    SEDGRNQHSV4    
+s110  : 
+SEDHSV1         : 
+c153  : 
+c110  : 
+s65   : SEDHSV1        SEDHSV2        SEDHSV4        
+s110  : SEDFFX1MTR     SEDFFX2MTR     
+SEDHSV2         : 
+c153  : 
+c110  : 
+s65   : SEDHSV1        SEDHSV2        SEDHSV4        
+s110  : SEDFFX1MTR     SEDFFX2MTR     
+SEDHSV4         : 
+c153  : 
+c110  : 
+s65   : SEDHSV1        SEDHSV2        SEDHSV4        
+s110  : SEDFFX1MTR     SEDFFX2MTR     
+SEDQHSV1        : 
+c153  : 
+c110  : 
+s65   : SEDQHSV1       SEDQHSV2       SEDQHSV4       
+s110  : 
+SEDQHSV2        : 
+c153  : 
+c110  : 
+s65   : SEDQHSV1       SEDQHSV2       SEDQHSV4       
+s110  : 
+SEDQHSV4        : 
+c153  : 
+c110  : 
+s65   : SEDQHSV1       SEDQHSV2       SEDQHSV4       
+s110  : 
+SEDRNHSV1       : 
+c153  : 
+c110  : 
+s65   : SEDRNHSV1      SEDRNHSV2      SEDRNHSV4      
+s110  : 
+SEDRNHSV2       : 
+c153  : 
+c110  : 
+s65   : SEDRNHSV1      SEDRNHSV2      SEDRNHSV4      
+s110  : 
+SEDRNHSV4       : 
+c153  : 
+c110  : 
+s65   : SEDRNHSV1      SEDRNHSV2      SEDRNHSV4      
+s110  : 
+SEDRNQHSV1      : 
+c153  : 
+c110  : 
+s65   : SEDRNQHSV1     SEDRNQHSV2     SEDRNQHSV4     
+s110  : 
+SEDRNQHSV2      : 
+c153  : 
+c110  : 
+s65   : SEDRNQHSV1     SEDRNQHSV2     SEDRNQHSV4     
+s110  : 
+SEDRNQHSV4      : 
+c153  : 
+c110  : 
+s65   : SEDRNQHSV1     SEDRNQHSV2     SEDRNQHSV4     
+s110  : 
+SNDHSV1         : 
+c153  : 
+c110  : 
+s65   : SNDHSV1        SNDHSV2        SNDHSV4        
+s110  : 
+SNDHSV2         : 
+c153  : 
+c110  : 
+s65   : SNDHSV1        SNDHSV2        SNDHSV4        
+s110  : 
+SNDHSV4         : 
+c153  : 
+c110  : 
+s65   : SNDHSV1        SNDHSV2        SNDHSV4        
+s110  : 
+SNDRNHSV1       : 
+c153  : 
+c110  : 
+s65   : SNDRNHSV1      SNDRNHSV2      SNDRNHSV4      
+s110  : 
+SNDRNHSV2       : 
+c153  : 
+c110  : 
+s65   : SNDRNHSV1      SNDRNHSV2      SNDRNHSV4      
+s110  : 
+SNDRNHSV4       : 
+c153  : 
+c110  : 
+s65   : SNDRNHSV1      SNDRNHSV2      SNDRNHSV4      
+s110  : 
+SNDRSNHSV1      : 
+c153  : 
+c110  : 
+s65   : SNDRSNHSV1     SNDRSNHSV2     SNDRSNHSV4     
+s110  : 
+SNDRSNHSV2      : 
+c153  : 
+c110  : 
+s65   : SNDRSNHSV1     SNDRSNHSV2     SNDRSNHSV4     
+s110  : 
+SNDRSNHSV4      : 
+c153  : 
+c110  : 
+s65   : SNDRSNHSV1     SNDRSNHSV2     SNDRSNHSV4     
+s110  : 
+SNDSNHSV1       : 
+c153  : 
+c110  : 
+s65   : SNDSNHSV1      SNDSNHSV2      SNDSNHSV4      
+s110  : 
+SNDSNHSV2       : 
+c153  : 
+c110  : 
+s65   : SNDSNHSV1      SNDSNHSV2      SNDSNHSV4      
+s110  : 
+SNDSNHSV4       : 
+c153  : 
+c110  : 
+s65   : SNDSNHSV1      SNDSNHSV2      SNDSNHSV4      
+s110  : 
+----- Match Tech: s110 -----  
+SDFFHQNX1MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFHQNX1MTR   SDFFHQNX2MTR   SDFFHQNX4MTR   
+SDFFHQNX2MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFHQNX1MTR   SDFFHQNX2MTR   SDFFHQNX4MTR   
+SDFFHQNX4MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFHQNX1MTR   SDFFHQNX2MTR   SDFFHQNX4MTR   
+SDFFHQNX8MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFHQNX8MTR   
+SDFFHQX1MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFHQX1MTR    SDFFHQX2MTR    SDFFHQX4MTR    SDFFHQX8MTR    
+SDFFHQX2MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFHQX1MTR    SDFFHQX2MTR    SDFFHQX4MTR    SDFFHQX8MTR    
+SDFFHQX4MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFHQX1MTR    SDFFHQX2MTR    SDFFHQX4MTR    SDFFHQX8MTR    
+SDFFHQX8MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFHQX1MTR    SDFFHQX2MTR    SDFFHQX4MTR    SDFFHQX8MTR    
+SDFFHX1MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFHX1MTR     
+SDFFHX2MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFHX2MTR     
+SDFFHX4MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFHX4MTR     SDFFHX8MTR     
+SDFFHX8MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFHX4MTR     SDFFHX8MTR     
+SDFFNHX1MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFNHX1MTR    SDFFNHX2MTR    
+SDFFNHX2MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFNHX1MTR    SDFFNHX2MTR    
+SDFFNHX4MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFNHX4MTR    
+SDFFNHX8MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFNHX8MTR    
+SDFFNSRHX1MTR   : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFNSRHX1MTR  SDFFNSRHX2MTR  SDFFNSRHX4MTR  SDFFNSRHX8MTR  
+SDFFNSRHX2MTR   : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFNSRHX1MTR  SDFFNSRHX2MTR  SDFFNSRHX4MTR  SDFFNSRHX8MTR  
+SDFFNSRHX4MTR   : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFNSRHX1MTR  SDFFNSRHX2MTR  SDFFNSRHX4MTR  SDFFNSRHX8MTR  
+SDFFNSRHX8MTR   : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFNSRHX1MTR  SDFFNSRHX2MTR  SDFFNSRHX4MTR  SDFFNSRHX8MTR  
+SDFFQNX1MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFQNX1MTR    SDFFQNX2MTR    SDFFQNX4MTR    
+SDFFQNX2MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFQNX1MTR    SDFFQNX2MTR    SDFFQNX4MTR    
+SDFFQNX4MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFQNX1MTR    SDFFQNX2MTR    SDFFQNX4MTR    
+SDFFQX1MTR      : 
+c153  : 
+c110  : 
+s65   : SDQHSV1        SDQHSV2        SDQHSV4        
+s110  : SDFFQX1MTR     SDFFQX2MTR     SDFFQX4MTR     
+SDFFQX2MTR      : 
+c153  : 
+c110  : 
+s65   : SDQHSV1        SDQHSV2        SDQHSV4        
+s110  : SDFFQX1MTR     SDFFQX2MTR     SDFFQX4MTR     
+SDFFQX4MTR      : 
+c153  : 
+c110  : 
+s65   : SDQHSV1        SDQHSV2        SDQHSV4        
+s110  : SDFFQX1MTR     SDFFQX2MTR     SDFFQX4MTR     
+SDFFRHQX1MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFRHQX1MTR   
+SDFFRHQX2MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFRHQX2MTR   SDFFRHQX4MTR   SDFFRHQX8MTR   
+SDFFRHQX4MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFRHQX2MTR   SDFFRHQX4MTR   SDFFRHQX8MTR   
+SDFFRHQX8MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFRHQX2MTR   SDFFRHQX4MTR   SDFFRHQX8MTR   
+SDFFRQX1MTR     : 
+c153  : 
+c110  : 
+s65   : SDRNQHSV1      SDRNQHSV2      SDRNQHSV4      
+s110  : SDFFRQX1MTR    SDFFRQX2MTR    SDFFRQX4MTR    
+SDFFRQX2MTR     : 
+c153  : 
+c110  : 
+s65   : SDRNQHSV1      SDRNQHSV2      SDRNQHSV4      
+s110  : SDFFRQX1MTR    SDFFRQX2MTR    SDFFRQX4MTR    
+SDFFRQX4MTR     : 
+c153  : 
+c110  : 
+s65   : SDRNQHSV1      SDRNQHSV2      SDRNQHSV4      
+s110  : SDFFRQX1MTR    SDFFRQX2MTR    SDFFRQX4MTR    
+SDFFRX1MTR      : 
+c153  : 
+c110  : 
+s65   : SDRNHSV1       SDRNHSV2       SDRNHSV4       
+s110  : SDFFRX1MTR     SDFFRX2MTR     SDFFRX4MTR     
+SDFFRX2MTR      : 
+c153  : 
+c110  : 
+s65   : SDRNHSV1       SDRNHSV2       SDRNHSV4       
+s110  : SDFFRX1MTR     SDFFRX2MTR     SDFFRX4MTR     
+SDFFRX4MTR      : 
+c153  : 
+c110  : 
+s65   : SDRNHSV1       SDRNHSV2       SDRNHSV4       
+s110  : SDFFRX1MTR     SDFFRX2MTR     SDFFRX4MTR     
+SDFFSHQX1MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFSHQX1MTR   SDFFSHQX2MTR   
+SDFFSHQX2MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFSHQX1MTR   SDFFSHQX2MTR   
+SDFFSHQX4MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFSHQX4MTR   SDFFSHQX8MTR   
+SDFFSHQX8MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFSHQX4MTR   SDFFSHQX8MTR   
+SDFFSQX1MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFSQX1MTR    SDFFSQX2MTR    SDFFSQX4MTR    
+SDFFSQX2MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFSQX1MTR    SDFFSQX2MTR    SDFFSQX4MTR    
+SDFFSQX4MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFSQX1MTR    SDFFSQX2MTR    SDFFSQX4MTR    
+SDFFSRHQX1MTR   : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFSRHQX1MTR  SDFFSRHQX2MTR  
+SDFFSRHQX2MTR   : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFSRHQX1MTR  SDFFSRHQX2MTR  
+SDFFSRHQX4MTR   : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFSRHQX4MTR  SDFFSRHQX8MTR  
+SDFFSRHQX8MTR   : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFSRHQX4MTR  SDFFSRHQX8MTR  
+SDFFSRX1MTR     : 
+c153  : 
+c110  : 
+s65   : SDRSNHSV1      SDRSNHSV2      SDRSNHSV4      
+s110  : SDFFSRX1MTR    SDFFSRX2MTR    SDFFSRX4MTR    
+SDFFSRX2MTR     : 
+c153  : 
+c110  : 
+s65   : SDRSNHSV1      SDRSNHSV2      SDRSNHSV4      
+s110  : SDFFSRX1MTR    SDFFSRX2MTR    SDFFSRX4MTR    
+SDFFSRX4MTR     : 
+c153  : 
+c110  : 
+s65   : SDRSNHSV1      SDRSNHSV2      SDRSNHSV4      
+s110  : SDFFSRX1MTR    SDFFSRX2MTR    SDFFSRX4MTR    
+SDFFSX1MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFSX1MTR     SDFFSX4MTR     
+SDFFSX2MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFSX2MTR     
+SDFFSX4MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFSX1MTR     SDFFSX4MTR     
+SDFFTRX1MTR     : 
+c153  : 
+c110  : 
+s65   : SDGRNHSV1      SDGRNHSV2      SDGRNHSV4      
+s110  : SDFFTRX1MTR    
+SDFFTRX2MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFTRX2MTR    
+SDFFTRX4MTR     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SDFFTRX4MTR    
+SDFFX1MTR       : 
+c153  : 
+c110  : 
+s65   : SDHSV1         SDHSV2         SDHSV4         
+s110  : SDFFX1MTR      SDFFX2MTR      SDFFX4MTR      
+SDFFX2MTR       : 
+c153  : 
+c110  : 
+s65   : SDHSV1         SDHSV2         SDHSV4         
+s110  : SDFFX1MTR      SDFFX2MTR      SDFFX4MTR      
+SDFFX4MTR       : 
+c153  : 
+c110  : 
+s65   : SDHSV1         SDHSV2         SDHSV4         
+s110  : SDFFX1MTR      SDFFX2MTR      SDFFX4MTR      
+SEDFFHQX1MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SEDFFHQX1MTR   SEDFFHQX2MTR   SEDFFHQX4MTR   SEDFFHQX8MTR   
+SEDFFHQX2MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SEDFFHQX1MTR   SEDFFHQX2MTR   SEDFFHQX4MTR   SEDFFHQX8MTR   
+SEDFFHQX4MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SEDFFHQX1MTR   SEDFFHQX2MTR   SEDFFHQX4MTR   SEDFFHQX8MTR   
+SEDFFHQX8MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SEDFFHQX1MTR   SEDFFHQX2MTR   SEDFFHQX4MTR   SEDFFHQX8MTR   
+SEDFFTRX1MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SEDFFTRX1MTR   SEDFFTRX2MTR   SEDFFTRX4MTR   
+SEDFFTRX2MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SEDFFTRX1MTR   SEDFFTRX2MTR   SEDFFTRX4MTR   
+SEDFFTRX4MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SEDFFTRX1MTR   SEDFFTRX2MTR   SEDFFTRX4MTR   
+SEDFFX1MTR      : 
+c153  : 
+c110  : 
+s65   : SEDHSV1        SEDHSV2        SEDHSV4        
+s110  : SEDFFX1MTR     SEDFFX2MTR     
+SEDFFX2MTR      : 
+c153  : 
+c110  : 
+s65   : SEDHSV1        SEDHSV2        SEDHSV4        
+s110  : SEDFFX1MTR     SEDFFX2MTR     
+SEDFFX4MTR      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SEDFFX4MTR     
+SMDFFHQX1MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SMDFFHQX1MTR   SMDFFHQX2MTR   SMDFFHQX4MTR   SMDFFHQX8MTR   
+SMDFFHQX2MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SMDFFHQX1MTR   SMDFFHQX2MTR   SMDFFHQX4MTR   SMDFFHQX8MTR   
+SMDFFHQX4MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SMDFFHQX1MTR   SMDFFHQX2MTR   SMDFFHQX4MTR   SMDFFHQX8MTR   
+SMDFFHQX8MTR    : 
+c153  : 
+c110  : 
+s65   : 
+s110  : SMDFFHQX1MTR   SMDFFHQX2MTR   SMDFFHQX4MTR   SMDFFHQX8MTR   

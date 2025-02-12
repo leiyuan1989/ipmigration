@@ -1,0 +1,711 @@
+##### Cell Type: _latch #####  
+Tech c153: total: 36  match: 34  unmatch: 2 
+Tech c110: total: 48  match: 10  unmatch: 38 
+Tech s65: total: 46  match: 24  unmatch: 22 
+Tech s110: total: 28  match: 12  unmatch: 16 
+LANHB1         : 
+c153  : LANHB1         LANHB2         
+c110  : LANHB0         LANHB1         
+s65   : LAHHSV1        LAHHSV2        LAHHSV4        
+s110  : TLATX1MTR      TLATX2MTR      TLATX4MTR      
+LANHN1         : 
+c153  : LANHN1         LANHN2         
+c110  : 
+s65   : 
+s110  : 
+LANHQ1         : 
+c153  : LANHQ1         LANHQ2         
+c110  : 
+s65   : 
+s110  : 
+LANHT1         : 
+c153  : 
+c110  : 
+s65   : 
+s110  : 
+LANLB          : 
+c153  : LANLB1         LANLB2         
+c110  : LANLB0         LANLB1         
+s65   : LALHSV1        LALHSV2        LALHSV4        
+s110  : TLATNX1MTR     TLATNX2MTR     TLATNX4MTR     
+LANLN          : 
+c153  : LANLN1         LANLN2         
+c110  : 
+s65   : 
+s110  : 
+LANLQ          : 
+c153  : LANLQ1         LANLQ2         
+c110  : 
+s65   : 
+s110  : 
+LACHB          : 
+c153  : LACHB1         LACHB2         
+c110  : 
+s65   : LAHRNHSV1      LAHRNHSV2      LAHRNHSV4      
+s110  : 
+LACHQ          : 
+c153  : LACHQ1         LACHQ2         
+c110  : 
+s65   : 
+s110  : 
+LACLB          : 
+c153  : LACLB1         LACLB2         
+c110  : 
+s65   : LALRNHSV1      LALRNHSV2      LALRNHSV4      
+s110  : 
+LACLQ          : 
+c153  : LACLQ1         LACLQ2         
+c110  : 
+s65   : 
+s110  : 
+LAPHB          : 
+c153  : LAPHB1         LAPHB2         
+c110  : 
+s65   : LAHSNHSV1      LAHSNHSV2      LAHSNHSV4      
+s110  : 
+LAPLB          : 
+c153  : LAPLB1         LAPLB2         
+c110  : 
+s65   : LALSNHSV1      LALSNHSV2      LALSNHSV4      
+s110  : 
+LABHB          : 
+c153  : LABHB1         LABHB2         
+c110  : 
+s65   : LAHRSNHSV1     LAHRSNHSV2     LAHRSNHSV4     
+s110  : TLATSRX1MTR    TLATSRX2MTR    TLATSRX4MTR    
+LABLB          : 
+c153  : LABLB1         LABLB2         
+c110  : 
+s65   : LALRSNHSV1     LALRSNHSV2     LALRSNHSV4     
+s110  : TLATNSRX1MTR   
+TLATNCAD       : 
+c153  : TLATNCAD1      TLATNCAD2      TLATNCAD4      
+c110  : 
+s65   : 
+s110  : TLATNCAX2MTR   
+TLATNTSCAD     : 
+c153  : TLATNTSCAD1    TLATNTSCAD2    TLATNTSCAD4    
+c110  : 
+s65   : 
+s110  : TLATNTSCAX2MTR 
+TLATNFCAD      : 
+c153  : 
+c110  : 
+s65   : 
+s110  : 
+TLATNFTSCA     : 
+c153  : 
+c110  : 
+s65   : 
+s110  : 
+Unmatch cells: 
+c153           : 
+LANHT1 : 
+LANHT2 : 
+c110           : 
+TLATNCAD0 : 
+TLATNCAD1 : 
+TLATNCAD2 : 
+TLATNFCAD0 : 
+TLATNFCAD1 : 
+TLATNFTSCAD0 : 
+TLATNFTSCAD1 : 
+TLATNTSCAD0 : 
+LANHB2 : 
+TLATNCAD4 : 
+TLATNFCAD2 : 
+TLATNTSCAD1 : 
+TLATNTSCAD2 : 
+LAPHB0 : 
+LAPHB1 : 
+LAPLB0 : 
+TLATNFTSCAD2 : 
+LABHB0 : 
+LABLB0 : 
+LABLB1 : 
+LANLB2 : 
+LABHB1 : 
+LABLB2 : 
+LABLB3 : 
+LACLB3 : 
+LAPHB2 : 
+LAPLB1 : 
+LAPLB2 : 
+TLATNFCAD4 : 
+TLATNTSCAD4 : 
+LACHB3 : 
+LANHB3 : 
+LANLB3 : 
+LABHB2 : 
+LAPHB3 : 
+LAPLB3 : 
+TLATNFTSCAD4 : 
+LABHB3 : 
+s65            : 
+CLKLAHQHSV1 : 
+CLKLAHQHSV2 : 
+CLKLAHQHSV4 : 
+CLKLAHQHSV8 : 
+CLKLANAQHSV1 : 
+CLKLANAQHSV2 : 
+CLKLANAQHSV4 : 
+CLKLANAQHSV8 : 
+CLKLANQHSV1 : 
+CLKLANQHSV2 : 
+CLKLANQHSV3 : 
+CLKLANQHSV4 : 
+CLKLANQHSV6 : 
+CLKLANQHSV8 : 
+CLKLAHAQHSV1 : 
+CLKLAHAQHSV2 : 
+CLKLAHAQHSV4 : 
+CLKLAHAQHSV8 : 
+CLKLANQHSV12 : 
+CLKLANQHSV16 : 
+CLKLANQHSV20 : 
+CLKLANQHSV24 : 
+s110           : 
+TLATNCAX3MTR : 
+TLATNCAX4MTR : 
+TLATNTSCAX3MTR : 
+TLATNCAX6MTR : 
+TLATNCAX8MTR : 
+TLATNTSCAX4MTR : 
+TLATNSRX2MTR : 
+TLATNSRX4MTR : 
+TLATNTSCAX6MTR : 
+TLATNTSCAX8MTR : 
+TLATNCAX12MTR : 
+TLATNCAX16MTR : 
+TLATNTSCAX12MTR : 
+TLATNCAX20MTR : 
+TLATNTSCAX16MTR : 
+TLATNTSCAX20MTR : 
+##### Cell Type: _dff #####  
+Tech c153: total: 30  match: 30  unmatch: 0 
+Tech c110: total: 53  match: 8  unmatch: 45 
+Tech s65: total: 63  match: 9  unmatch: 54 
+Tech s110: total: 73  match: 9  unmatch: 64 
+DFNRB          : 
+c153  : DFNRB1         DFNRB2         
+c110  : DFNRB0         DFNRB1         DFNRB2         
+s65   : DHSV1          DHSV2          DHSV4          
+s110  : DFFX1MTR       DFFX2MTR       DFFX4MTR       
+DFNRQ          : 
+c153  : DFNRQ1         DFNRQ2         
+c110  : DFNRQ0         DFNRQ1         
+s65   : DQHSV1         DQHSV2         DQHSV4         
+s110  : DFFQX1MTR      DFFQX2MTR      DFFQX4MTR      
+DFNRN          : 
+c153  : DFNRN1         DFNRN2         
+c110  : 
+s65   : 
+s110  : DFFQNX1MTR     DFFQNX2MTR     DFFQNX4MTR     
+DFNFB          : 
+c153  : DFNFB1         DFNFB2         
+c110  : DFNFB0         DFNFB1         DFNFB2         
+s65   : NDHSV1         NDHSV2         NDHSV4         
+s110  : 
+DFCRB          : 
+c153  : DFCRB1         DFCRB2         
+c110  : 
+s65   : 
+s110  : 
+DFCRQ          : 
+c153  : DFCRQ1         DFCRQ2         
+c110  : 
+s65   : 
+s110  : 
+DFCRN          : 
+c153  : DFCRN1         DFCRN2         
+c110  : 
+s65   : 
+s110  : 
+DFCFB          : 
+c153  : DFCFB1         DFCFB2         
+c110  : 
+s65   : 
+s110  : 
+DFCFQ          : 
+c153  : DFCFQ1         DFCFQ2         
+c110  : 
+s65   : 
+s110  : 
+DFPRB          : 
+c153  : DFPRB1         DFPRB2         
+c110  : 
+s65   : 
+s110  : 
+DFPRQ          : 
+c153  : DFPRQ1         DFPRQ2         
+c110  : 
+s65   : 
+s110  : 
+DFPFB          : 
+c153  : DFPFB1         DFPFB2         
+c110  : 
+s65   : 
+s110  : 
+DFBRB          : 
+c153  : DFBRB1         DFBRB2         
+c110  : 
+s65   : 
+s110  : 
+DFBRQ          : 
+c153  : DFBRQ1         DFBRQ2         
+c110  : 
+s65   : 
+s110  : 
+DFBFB          : 
+c153  : DFBFB1         DFBFB2         
+c110  : 
+s65   : 
+s110  : 
+Unmatch cells: 
+c153           : 
+c110           : 
+DFNFQ0 : 
+DFNFQ1 : 
+DFNFQ2 : 
+DFNRQ2 : 
+DFANRQ0 : 
+DFANRQ1 : 
+DFCRQ3 : 
+DFPFB0 : 
+DFPFB1 : 
+DFPFB2 : 
+DFPRB1 : 
+DFSCRQ0 : 
+DFSCRQ1 : 
+DFANRQ2 : 
+DFSCRQ2 : 
+DFBRQ0 : 
+DFCFB0 : 
+DFCRB0 : 
+DFCRBM : 
+DFCRQ0 : 
+DFCRQM : 
+DFPRB0 : 
+DFPRB2 : 
+DFPRQ0 : 
+DFPRQ1 : 
+DFPRQM : 
+DFBRQ1 : 
+DFCFB1 : 
+DFCRB1 : 
+DFCRQ1 : 
+DFPRQ2 : 
+DFBFB0 : 
+DFBFB1 : 
+DFBRB0 : 
+DFBRB2 : 
+DFBRBM : 
+DFCFB2 : 
+DFBRB1 : 
+DFCRQ2 : 
+DENRQ0 : 
+DENRQ2 : 
+DFBRQ2 : 
+DFCRB2 : 
+DENRQ1 : 
+DFBFB2 : 
+s65            : 
+DGRNQHSV1 : 
+DGRNQHSV2 : 
+DGRNQHSV4 : 
+DGRNHSV1 : 
+DGRNHSV2 : 
+DGRNHSV4 : 
+DRNQHSV1 : 
+DRNQHSV2 : 
+DRNQHSV4 : 
+DSNHSV1 : 
+DSNHSV2 : 
+DSNHSV4 : 
+NDSNHSV1 : 
+NDSNHSV2 : 
+NDSNHSV4 : 
+DGSNHSV1 : 
+DGSNHSV2 : 
+DGSNHSV4 : 
+DRNHSV1 : 
+DRNHSV2 : 
+DRNHSV4 : 
+NDRNHSV1 : 
+NDRNHSV2 : 
+NDRNHSV4 : 
+DGRSNHSV1 : 
+DGRSNHSV2 : 
+DGRSNHSV4 : 
+DRSNHSV1 : 
+DRSNHSV2 : 
+DRSNHSV4 : 
+EDQHSV1 : 
+EDQHSV2 : 
+EDQHSV4 : 
+NDRSNHSV1 : 
+NDRSNHSV2 : 
+NDRSNHSV4 : 
+DXHSV1 : 
+DXHSV2 : 
+DXHSV4 : 
+EDGRNQHSV1 : 
+EDGRNQHSV2 : 
+EDGRNQHSV4 : 
+EDHSV1 : 
+EDHSV2 : 
+EDHSV4 : 
+EDGRNHSV1 : 
+EDGRNHSV2 : 
+EDGRNHSV4 : 
+EDRNQHSV1 : 
+EDRNQHSV2 : 
+EDRNQHSV4 : 
+EDRNHSV1 : 
+EDRNHSV2 : 
+EDRNHSV4 : 
+s110           : 
+DFFSQX1MTR : 
+DFFSQX2MTR : 
+DFFSQX4MTR : 
+DFFTRX1MTR : 
+DFFTRX2MTR : 
+DFFHQNX1MTR : 
+DFFHQNX2MTR : 
+DFFHQNX4MTR : 
+DFFHQNX8MTR : 
+DFFHQX1MTR : 
+DFFHQX2MTR : 
+DFFHQX4MTR : 
+DFFRQX1MTR : 
+DFFRQX2MTR : 
+DFFRQX4MTR : 
+DFFSX1MTR : 
+DFFSX4MTR : 
+DFFSX2MTR : 
+DFFTRX4MTR : 
+DFFHQX8MTR : 
+DFFHX1MTR : 
+DFFNHX1MTR : 
+DFFNHX2MTR : 
+DFFRX1MTR : 
+DFFRX2MTR : 
+DFFRX4MTR : 
+DFFHX4MTR : 
+DFFHX8MTR : 
+DFFNHX4MTR : 
+DFFHX2MTR : 
+DFFNHX8MTR : 
+DFFRHQX1MTR : 
+DFFRHQX2MTR : 
+DFFSRX1MTR : 
+DFFSRX2MTR : 
+DFFSRX4MTR : 
+DFFRHQX4MTR : 
+DFFRHQX8MTR : 
+DFFSHQX1MTR : 
+DFFSHQX2MTR : 
+DFFSHQX4MTR : 
+DFFSHQX8MTR : 
+EDFFX1MTR : 
+EDFFX2MTR : 
+EDFFX4MTR : 
+EDFFHQX1MTR : 
+EDFFHQX2MTR : 
+EDFFHQX4MTR : 
+EDFFHQX8MTR : 
+MDFFHQX1MTR : 
+MDFFHQX2MTR : 
+MDFFHQX4MTR : 
+MDFFHQX8MTR : 
+EDFFTRX1MTR : 
+EDFFTRX2MTR : 
+EDFFTRX4MTR : 
+DFFSRHQX1MTR : 
+DFFSRHQX2MTR : 
+DFFSRHQX4MTR : 
+DFFSRHQX8MTR : 
+DFFNSRHX1MTR : 
+DFFNSRHX2MTR : 
+DFFNSRHX4MTR : 
+DFFNSRHX8MTR : 
+##### Cell Type: _sdff #####  
+Tech c153: total: 30  match: 30  unmatch: 0 
+Tech c110: total: 55  match: 0  unmatch: 55 
+Tech s65: total: 63  match: 3  unmatch: 60 
+Tech s110: total: 73  match: 3  unmatch: 70 
+SDNRB          : 
+c153  : SDNRB1         SDNRB2         
+c110  : 
+s65   : 
+s110  : 
+SDNRQ          : 
+c153  : SDNRQ1         SDNRQ2         
+c110  : 
+s65   : 
+s110  : 
+SDNRN          : 
+c153  : SDNRN1         SDNRN2         
+c110  : 
+s65   : 
+s110  : 
+SDNFB          : 
+c153  : SDNFB1         SDNFB2         
+c110  : 
+s65   : 
+s110  : 
+SDCRB          : 
+c153  : SDCRB1         SDCRB2         
+c110  : 
+s65   : 
+s110  : 
+SDCRQ          : 
+c153  : SDCRQ1         SDCRQ2         
+c110  : 
+s65   : 
+s110  : 
+SDCRN          : 
+c153  : SDCRN1         SDCRN2         
+c110  : 
+s65   : 
+s110  : 
+SDCFB          : 
+c153  : SDCFB1         SDCFB2         
+c110  : 
+s65   : 
+s110  : 
+SDCFQ          : 
+c153  : SDCFQ1         SDCFQ2         
+c110  : 
+s65   : 
+s110  : 
+SDPRB          : 
+c153  : SDPRB1         SDPRB2         
+c110  : 
+s65   : 
+s110  : 
+SDPRQ          : 
+c153  : SDPRQ1         SDPRQ2         
+c110  : 
+s65   : 
+s110  : 
+SDPFB          : 
+c153  : SDPFB1         SDPFB2         
+c110  : 
+s65   : 
+s110  : 
+SDBRB1         : 
+c153  : SDBRB1         SDBRB2         
+c110  : 
+s65   : 
+s110  : 
+SDBRB2         : 
+c153  : 
+c110  : 
+s65   : 
+s110  : 
+SDBRB3         : 
+c153  : 
+c110  : 
+s65   : SDRSNHSV1      SDRSNHSV2      SDRSNHSV4      
+s110  : SDFFSRX1MTR    SDFFSRX2MTR    SDFFSRX4MTR    
+SDBRQ          : 
+c153  : SDBRQ1         SDBRQ2         
+c110  : 
+s65   : 
+s110  : 
+SDBFB          : 
+c153  : SDBFB1         SDBFB2         
+c110  : 
+s65   : 
+s110  : 
+Unmatch cells: 
+c153           : 
+c110           : 
+SDNFQ0 : 
+SDNFQ1 : 
+SDNRQ0 : 
+SDNRQ1 : 
+SDANRQ0 : 
+SDANRQ1 : 
+SDANRQ2 : 
+SDCRQ2 : 
+SDCRQM : 
+SDNFB0 : 
+SDNFB1 : 
+SDNRB0 : 
+SDNRB1 : 
+SDPFB0 : 
+SDPFB1 : 
+SDSCRQ0 : 
+SDSCRQ1 : 
+SDCRQ0 : 
+SDCRQ1 : 
+SDSCRQ2 : 
+SDBRQ1 : 
+SDCFB0 : 
+SDCFB1 : 
+SDCRB1 : 
+SDCRBM : 
+SDNFQ2 : 
+SDPRB0 : 
+SDPRB2 : 
+SDPRQ0 : 
+SDPRQ1 : 
+SDPRQM : 
+SDBRQ0 : 
+SDCFB2 : 
+SDCRB0 : 
+SDNRQ2 : 
+SDPFB2 : 
+SDPRB1 : 
+SDPRQ2 : 
+SDBRB0 : 
+SDBRBM : 
+SDCRB2 : 
+SDNFB2 : 
+SDBFB1 : 
+SDNRB2 : 
+SDBFB0 : 
+SDBRB1 : 
+SDBRQ2 : 
+SDMNRQ0 : 
+SDMNRQ1 : 
+SENRQ0 : 
+SDBFB2 : 
+SDMNRQ2 : 
+SENRQ1 : 
+SENRQ2 : 
+SDBRB2 : 
+s65            : 
+SDQHSV1 : 
+SDQHSV2 : 
+SDQHSV4 : 
+SDGRNQHSV1 : 
+SDGRNQHSV2 : 
+SDGRNQHSV4 : 
+SDHSV1 : 
+SDHSV2 : 
+SDHSV4 : 
+SNDHSV1 : 
+SNDHSV2 : 
+SNDHSV4 : 
+SDGRNHSV1 : 
+SDGRNHSV2 : 
+SDGRNHSV4 : 
+SDRNQHSV1 : 
+SDRNQHSV2 : 
+SDRNQHSV4 : 
+SDSNHSV1 : 
+SDSNHSV2 : 
+SDSNHSV4 : 
+SNDSNHSV1 : 
+SNDSNHSV2 : 
+SNDSNHSV4 : 
+SDGSNHSV1 : 
+SDGSNHSV2 : 
+SDGSNHSV4 : 
+SDRNHSV1 : 
+SDRNHSV2 : 
+SDRNHSV4 : 
+SNDRNHSV1 : 
+SNDRNHSV2 : 
+SNDRNHSV4 : 
+SEDQHSV1 : 
+SEDQHSV2 : 
+SEDQHSV4 : 
+SNDRSNHSV1 : 
+SNDRSNHSV2 : 
+SNDRSNHSV4 : 
+SEDHSV1 : 
+SEDHSV2 : 
+SEDHSV4 : 
+SDGRSNHSV1 : 
+SDGRSNHSV2 : 
+SDGRSNHSV4 : 
+SEDGRNQHSV1 : 
+SEDGRNQHSV2 : 
+SEDGRNQHSV4 : 
+SDXHSV1 : 
+SDXHSV2 : 
+SDXHSV4 : 
+SEDGRNHSV1 : 
+SEDGRNHSV2 : 
+SEDGRNHSV4 : 
+SEDRNQHSV1 : 
+SEDRNQHSV2 : 
+SEDRNQHSV4 : 
+SEDRNHSV1 : 
+SEDRNHSV2 : 
+SEDRNHSV4 : 
+s110           : 
+SDFFQNX1MTR : 
+SDFFQNX2MTR : 
+SDFFQNX4MTR : 
+SDFFQX1MTR : 
+SDFFQX2MTR : 
+SDFFQX4MTR : 
+SDFFSQX1MTR : 
+SDFFSQX2MTR : 
+SDFFSQX4MTR : 
+SDFFX1MTR : 
+SDFFX2MTR : 
+SDFFX4MTR : 
+SDFFHQNX1MTR : 
+SDFFHQNX2MTR : 
+SDFFHQNX4MTR : 
+SDFFHQX1MTR : 
+SDFFHQX2MTR : 
+SDFFHQX4MTR : 
+SDFFHQX8MTR : 
+SDFFRQX1MTR : 
+SDFFRQX2MTR : 
+SDFFRQX4MTR : 
+SDFFSX1MTR : 
+SDFFSX4MTR : 
+SDFFTRX1MTR : 
+SDFFSX2MTR : 
+SDFFTRX2MTR : 
+SDFFNHX1MTR : 
+SDFFNHX2MTR : 
+SDFFRX1MTR : 
+SDFFRX2MTR : 
+SDFFRX4MTR : 
+SDFFTRX4MTR : 
+SDFFHQNX8MTR : 
+SDFFHX1MTR : 
+SDFFHX4MTR : 
+SDFFHX8MTR : 
+SDFFNHX4MTR : 
+SDFFHX2MTR : 
+SDFFRHQX1MTR : 
+SDFFNHX8MTR : 
+SDFFRHQX2MTR : 
+SDFFRHQX4MTR : 
+SDFFRHQX8MTR : 
+SDFFSHQX1MTR : 
+SDFFSHQX2MTR : 
+SDFFSHQX4MTR : 
+SDFFSHQX8MTR : 
+SEDFFX1MTR : 
+SEDFFX2MTR : 
+SEDFFX4MTR : 
+SDFFSRHQX1MTR : 
+SDFFSRHQX2MTR : 
+SDFFSRHQX4MTR : 
+SDFFSRHQX8MTR : 
+SDFFNSRHX1MTR : 
+SDFFNSRHX2MTR : 
+SDFFNSRHX4MTR : 
+SDFFNSRHX8MTR : 
+SEDFFHQX1MTR : 
+SEDFFHQX2MTR : 
+SEDFFHQX4MTR : 
+SEDFFHQX8MTR : 
+SMDFFHQX1MTR : 
+SMDFFHQX2MTR : 
+SMDFFHQX4MTR : 
+SMDFFHQX8MTR : 
+SEDFFTRX1MTR : 
+SEDFFTRX2MTR : 
+SEDFFTRX4MTR : 

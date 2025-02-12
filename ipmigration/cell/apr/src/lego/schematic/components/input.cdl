@@ -1,0 +1,700 @@
+
+.SUBCKT INPUT_D0 D NSN VDD VSS OUT1
+pmos_1_1 VDD  NSN net1  VDD pmos l=1 w=1 n=1
+pmos_1_2 net1 D  OUT1  VDD pmos l=1 w=1 n=1
+pmos_1_1 VDD  NSN net2  VDD pmos l=1 w=1 n=1
+pmos_1_2 net2 D  OUT1  VDD pmos l=1 w=1 n=1
+nmos_1   VSS  D  OUT1  VSS nmos l=1 w=1 n=1
+.ends INPUT_D0
+
+*ready
+.SUBCKT INPUT_D1 D VDD VSS OUT1,OUT2
+pmos_1 VDD  D  OUT1 VDD pmos l=1 w=1 n=1 ro=5 co=1
+nmos_1 VSS  D  OUT2 VSS nmos l=1 w=1 n=1 ro=2 co=1
+.ends INPUT_D1
+
+.SUBCKT INPUT_D2 D VDD VSS OUT1,OUT2
+pmos_1 OUT3  D  OUT1 VDD pmos l=1 w=1 n=1 ro=5 co=1
+nmos_1 OUT3  D  OUT2 VSS nmos l=1 w=1 n=1 ro=2 co=1
+.ends INPUT_D2
+
+
+
+.SUBCKT INPUT_D3 D NSN VDD VSS OUT1
+pmos_1_1 VDD  NSN nsnp  VDD pmos l=1 w=1 n=1
+pmos_1_2 nsnp D  OUT1  VDD pmos l=1 w=1 n=1
+nmos_1   VSS  D  OUT1  VSS nmos l=1 w=1 n=1
+.ends INPUT_D3
+
+.SUBCKT INPUT_D4 D VDD VSS OUT1
+pmos_1 VDD  D  OUT1 VDD pmos l=1 w=1 n=1
+nmos_1 VSS  D  OUT1 VSS nmos l=1 w=1 n=1 
+.ends INPUT_D4
+
+.SUBCKT INPUT_DR1 D RN VDD VSS OUT1 OUT2
+pmos_1 OUT1 D  VDD  VDD pmos l=1 w=1 n=1
+pmos_2 VDD  RN OUT1 VDD pmos l=1 w=1 n=1
+nmos_1 net1 D  OUT2 VSS nmos l=1 w=1 n=1 
+nmos_2 VSS  RN net1 VSS nmos l=1 w=1 n=1 
+.ends INPUT_DR1
+
+.SUBCKT INPUT_DR1_2 D RN VDD VSS OUT1 OUT2
+pmos_1 OUT1 D  VDD  VDD pmos l=1 w=1 n=1
+pmos_2 VDD  RN OUT1 VDD pmos l=1 w=1 n=1
+nmos_1 net1 RN  OUT1 VSS nmos l=1 w=1 n=1 
+nmos_2 VSS  D  net1 VSS nmos l=1 w=1 n=1 
+.ends INPUT_DR1_2
+
+.SUBCKT INPUT_DR2 D RN VDD VSS OUT1
+pmos_1   VDD  D  OUT1  VDD pmos l=1 w=1 n=1
+nmos_1_1 VSS  RN rng  VSS nmos l=1 w=1 n=1
+nmos_1_2 rng  D  OUT1  VSS nmos l=1 w=1 n=1
+.ends INPUT_DR2
+
+
+.SUBCKT INPUT_DR3 D RN VDD VSS OUT1 OUT2
+pmos_1   VDD  D  OUT1  VDD pmos l=1 w=1 n=1
+nmos_1_1 VSS  RN rng  VSS nmos l=1 w=1 n=1
+nmos_1_2 rng  D  OUT2  VSS nmos l=1 w=1 n=1
+.ends INPUT_DR3
+
+.subckt INPUT_DS1 D SN VDD VSS OUT1 OUT2
+pmos_1 nsn SN VDD VDD pmos W=300.00n L=60.00n
+nmos_1 nsn SN VSS VSS nmos W=200.00n L=60.00n
+
+pmos_2 nsnp nsn VDD VDD pmos W=440.00n L=60.00n
+nmos_2 OUT1 D nsnp VDD pmos W=440.00n L=60.00n
+
+pmos_3 OUT2 D VSS VSS nmos W=250.00n L=60.00n
+nmos_3 OUT2 nsn VSS VSS nmos W=200.00n L=60.00n
+.ends INPUT_DS1
+
+
+*INPUT_DS3 + INV
+.subckt INPUT_DS2 D SN VDD VSS OUT1 
+pmos_1 net1 SE VDD VDD pmos W=440.00n L=60.00n
+nmos_1 net2 D net1 VDD pmos W=440.00n L=60.00n
+
+pmos_2 net2 D VSS VSS nmos W=250.00n L=60.00n
+nmos_2 net2 SE VSS VSS nmos W=200.00n L=60.00n
+
+pmos_3 OUT1 net2 VDD VDD pmos W=250.00n L=60.00n
+nmos_3 OUT1 net2 VSS VSS nmos W=200.00n L=60.00n
+
+.ends INPUT_DS2
+
+
+.subckt INPUT_DS3 D SN VDD VSS OUT1 
+pmos_1 net1 SE VDD VDD pmos W=440.00n L=60.00n
+nmos_1 OUT1 D net1 VDD pmos W=440.00n L=60.00n
+
+pmos_2 OUT1 D VSS VSS nmos W=250.00n L=60.00n
+nmos_2 OUT1 SE VSS VSS nmos W=200.00n L=60.00n
+.ends INPUT_DS3
+
+
+
+
+.SUBCKT INPUT_DSR1 D RN SN VDD VSS OUT1 OUT2
+pmos_1 nsn SN VDD VDD pmos W=450.00n L=60.00n
+nmos_1 nsn SN VSS VSS nmos W=300.00n L=60.00n
+
+pmos_2 nsnp nsn VDD VDD pmos W=380.00n L=60.00n
+pmos_3 OUT1 D nsnp VDD pmos W=380.00n L=60.00n
+pmos_4 OUT1 RN VDD VDD pmos W=300.00n L=60.00n
+
+nmos_2 OUT2 D rng VSS nmos W=250.00n L=60.00n
+nmos_3 OUT2 nsn rng VSS nmos W=250.00n L=60.00n
+nmos_4 rng RN VSS VSS nmos W=250.00n L=60.00n
+.ends INPUT_DSR1
+
+
+******************D and E************************
+.SUBCKT INPUT_ED1 Q VDD VDD VSS VSS CK D E
+pmos_1 ne  E VDD VDD pmos l=1.3e-07 w=2.3e-07
+nmos_1 ne  E VSS VSS nmos l=1.3e-07 w=1.8e-07
+pmos_2 VDD D nd VDD pmos l=1.3e-07 w=6.3e-07
+nmos_2 VSS D nd VSS nmos l=1.3e-07 w=3e-07
+
+pmos_3 nd ne OUT1 VDD pmos l=1.3e-07 w=3e-07
+nmos_3 nd E  OUT1 SS nmos l=1.3e-07 w=3e-07
+pmos_4 VDD s net1 VDD pmos l=1.3e-07 w=2.3e-07
+nmos_4 VSS s net2 VSS nmos l=1.3e-07 w=1.8e-07
+pmos_5 OUT1 E  net1 VDD pmos l=1.3e-07 w=2.3e-07
+nmos_5 OUT1 ne net2 VSS nmos l=1.3e-07 w=1.8e-07
+.ends INPUT_ED1
+
+
+
+*from s110 EDFFX1MTR
+.SUBCKT INPUT_ED2 D E s VDD VSS OUT1 OUT2 
+pmos_1 ne E VDD VDD pmos l=1.3e-07 w=2.3e-07
+nmos_1 ne E VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+pmos_2 VDD   ne net1 VDD pmos l=1.3e-07 w=3.8e-07
+pmos_3 net1  D  OUT1 VDD pmos l=1.3e-07 w=3.8e-07
+pmos_4 OUT1  s  net2 VDD pmos l=1.3e-07 w=3.8e-07
+pmos_5 net2  E  VDD  VDD pmos l=1.3e-07 w=3.8e-07
+
+nmos_2 VSS   E  net3 VSS nmos l=1.3e-07 w=1.8e-07
+nmos_3 net3  D  OUT2 VSS nmos l=1.3e-07 w=1.8e-07
+nmos_4 OUT2  s  net4 VSS nmos l=1.3e-07 w=1.8e-07
+nmos_5 net4  ne VSS VSS nmos l=1.3e-07 w=1.8e-07
+.ends INPUT_ED2
+
+
+
+*c110 denrq0
+.SUBCKT INPUT_ED3  VDD  VSS  D E OUT1
+pmos_1 ne E VDD VDD pmos l=1.3e-07 w=2.3e-07
+nmos_1 ne E VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+pmos_2 net1  D  VDD  VDD pmos  l=0.13u w=0.28u m=1
+pmos_3 OUT1  ne net1 VDD pmos  l=0.13u w=0.28u m=1
+pmos_4 OUT1  E  net2 VDD pmos  l=0.13u w=0.28u m=1
+pmos_5 net2  s  VDD  VDD pmos  l=0.13u w=0.28u m=1
+
+nmos_2 net3  D  VSS  VSS nmos  l=0.13u w=0.18u m=1
+nmos_3 OUT1  E  net3 VSS nmos  l=0.13u w=0.18u m=1
+nmos_4 OUT1  ne net4 VSS nmos  l=0.13u w=0.18u m=1
+nmos_5 net4  s  VSS  VSS nmos  l=0.13u w=0.18u m=1
+.ends INPUT_ED3
+
+
+*one OUT1 compare to INPUT_ED2
+.SUBCKT INPUT_ED4  VDD  VSS  D E s OUT1
+pmos_1 ne E VDD VDD pmos W=300.00n L=60.00n
+nmos_1 ne E VSS VSS nmos W=200.00n L=60.00n
+
+pmos_2 VDD   ne net1 VDD pmos W=440.00n L=60.00n
+pmos_3 net1  D  OUT1  VDD pmos W=440.00n L=60.00n
+pmos_4 OUT1  s  net2 VDD pmos W=440.00n L=60.00n
+pmos_5 net2  E  VDD  VDD pmos W=440.00n L=60.00n
+
+nmos_2 VSS   E  net3 VSS nmos W=290.00n L=60.00n
+nmos_3 net3  D  OUT1  VSS nmos W=290.00n L=60.00n
+nmos_4 OUT1  s  net4 VSS nmos W=290.00n L=60.00n
+nmos_5 net4  ne VSS  VSS nmos W=290.00n L=60.00n
+.ends INPUT_ED4
+
+
+
+*enable dff with RN the front part, from s110 EDFFTR 
+.SUBCKT INPUT_EDR1 D E RN VDD VSS OUT1 OUT2
+pmos_1 ne E VDD VDD pmos l=1.3e-07 w=2.3e-07
+nmos_1 ne E VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+pmos_2 VDD  ne net1 VDD pmos l=1.3e-07 w=2.3e-07
+pmos_3 net1 D  OUT1 VDD pmos l=1.3e-07 w=2.3e-07
+pmos_4 OUT1 s  net2 VDD pmos l=1.3e-07 w=2.3e-07
+pmos_5 net2 E  VDD  VDD pmos l=1.3e-07 w=2.3e-07
+pmos_6 VDD  RN OUT1 VDD pmos l=1.3e-07 w=2.3e-07
+
+nmos_2 rng  E  net3 VSS nmos l=1.3e-07 w=1.8e-07
+nmos_3 net3 D  OUT2 VSS nmos l=1.3e-07 w=1.8e-07
+nmos_4 OUT2 s  net4 VSS nmos l=1.3e-07 w=1.8e-07
+nmos_5 net4 ne rng  VSS nmos l=1.3e-07 w=1.8e-07
+nmos_6 rng  RN VSS  VSS nmos l=1.3e-07 w=1.7e-07
+.ends INPUT_EDR1
+
+
+*Enable D Flip-Flop with Sync Clear s65 EDGRNHSV1
+*compare with EDR1, it is one OUT1 here 
+.SUBCKT INPUT_EDR2  VDD  VSS  D E OUT1
+pmos_1 ne E VDD VDD pmos l=1.3e-07 w=2.3e-07
+nmos_1 ne E VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+pmos_2 VDD  ne net1 VDD pmos l=1.3e-07 w=2.3e-07
+pmos_3 net1 D  OUT1 VDD pmos l=1.3e-07 w=2.3e-07
+pmos_4 OUT1 s  net2 VDD pmos l=1.3e-07 w=2.3e-07
+pmos_5 net2 E  VDD  VDD pmos l=1.3e-07 w=2.3e-07
+pmos_6 VDD  RN OUT1 VDD pmos l=1.3e-07 w=2.3e-07
+
+nmos_2 rng  E  net3 VSS nmos l=1.3e-07 w=1.8e-07
+nmos_3 net3 D  OUT1 VSS nmos l=1.3e-07 w=1.8e-07
+nmos_4 OUT1 s  net4 VSS nmos l=1.3e-07 w=1.8e-07
+nmos_5 net4 ne rng  VSS nmos l=1.3e-07 w=1.8e-07
+nmos_6 rng  RN VSS  VSS nmos l=1.3e-07 w=1.7e-07
+
+.ends INPUT_EDR2
+
+
+
+.SUBCKT INPUT_EDR3 D E VDD VSS OUT1
+pmos_1 ne E VDD VDD pmos mr=1 l=500n w=1.74u nf=1
+nmos_1 ne E VSS VSS nmos mr=1 l=600n w=1.21u nf=1
+
+pmos_2 net164 D VDD VDD pmos mr=1 l=500n w=1.74u nf=1
+pmos_3 net164 E VDD VDD pmos mr=1 l=500n w=1.74u nf=1
+pmos_4 net1 ne net164 VDD pmos mr=1 l=500n w=1.74u nf=1
+pmos_5 net1 s net164 VDD pmos mr=1 l=500n w=1.74u nf=1
+
+nmos_2 net1 D net12 VSS nmos mr=1 l=600n w=1.21u nf=1
+nmos_3 net12 E VSS VSS nmos mr=1 l=600n w=1.21u nf=1
+nmos_4 net13 s VSS VSS nmos mr=1 l=600n w=1.21u nf=1
+nmos_5 net1 ne net13 VSS nmos mr=1 l=600n w=1.21u nf=1
+
+pmos_6 net10 net1 VDD VDD pmos mr=1 l=500n w=1.74u nf=1
+nmos_6 net10 net1 VSS VSS nmos mr=1 l=600n w=1.21u nf=1
+
+pmos_7 OUT1 net10 VDD VDD pmos mr=1 l=500n w=1.74u nf=1
+nmos_7 OUT1 net10 rng VSS nmos mr=1 l=600n w=1.21u nf=1
+pmos_8 OUT1 RN VDD VDD pmos mr=1 l=500n w=1.74u nf=1
+nmos_8 rng RN VSS VSS nmos mr=1 l=600n w=1.21u nf=1
+.ends INPUT_EDR3
+
+
+.SUBCKT INPUT_EDR4  VDD  VSS  D E OUT1
+pmos_1 ne E VDD VDD pmos W=360.00n L=60.00n
+nmos_1 ne E VSS VSS nmos W=240.00n L=60.00n
+
+pmos_2 VDD  ne net1 VDD pmos W=440.00n L=60.00n
+pmos_3 net1 D  OUT1  VDD pmos W=440.00n L=60.00n
+pmos_4 OUT1  s  net2 VDD pmos W=440.00n L=60.00n
+pmos_5 net2 E  VDD VDD pmos W=440.00n L=60.00n
+
+nmos_2 rng   E  net3 VSS nmos W=420.00n L=60.00n
+nmos_3 net3  D  OUT1 VSS nmos W=420.00n L=60.00n
+nmos_4 OUT1  s  net4 VSS nmos W=420.00n L=60.00n
+nmos_5 net4  ne rng  VSS nmos W=420.00n L=60.00n
+nmos_6 rng RN VSS VSS nmos W=420.00n L=60.00n
+
+.ends INPUT_EDR4
+
+
+******************D0 and D1************************
+
+.SUBCKT NAND2 A B VDD VSS OUT1
+pmos_1 OUT1  A  VDD VDD pmos l=1 w=1 n=1
+nmos_1 VSS   A  net1  VSS nmos l=1 w=1 n=1
+pmos_2 VDD   B  OUT1  VDD pmos l=1 w=1 n=1
+nmos_2 net1  B  OUT1  VSS nmos l=1 w=1 n=1   
+.ends NAND2
+
+******************D0 and D1 and S0************************
+*multiple inputs s65  DXHSV1
+.SUBCKT INPUT_MDR1 D0 D1 S0 VDD VSS OUT1
+
+pmos_1 nd1 D1 VDD VDD pmos W=440.00n L=60.00n
+pmos_2 nd0 D0 VDD VDD pmos W=440.00n L=60.00n
+nmos_2 nd0 D0 VSS VSS nmos W=350.00n L=60.00n
+nmos_1 nd1 D1 VSS VSS nmos W=350.00n L=60.00n
+
+pmos_3 ns0 S0 VDD VDD pmos W=300.00n L=60.00n
+nmos_3 ns0 S0 VSS VSS nmos W=240.00n L=60.00n
+
+pmos_4 nd0 ns0 OUT1 VDD pmos W=300.00n L=60.00n
+nmos_4 nd0 S0 OUT1 VSS nmos W=240.00n L=60.00n
+
+pmos_5 nd1 S0  OUT1 VDD pmos W=300.00n L=60.00n
+nmos_5 nd1 ns0 OUT1 VSS nmos W=240.00n L=60.00n
+
+.ends INPUT_MDR1
+
+
+
+******************D and SE and SI************************
+*1
+
+.SUBCKT INPUT_SD1 SE SI D VDD VSS OUT1 OUT2
+pmos_1 nse  SE VDD  VDD pmos  l=0.42u w=0.52u m=1
+nmos_1 nse  SE VSS  VSS nmos  l=0.5u w=0.5u m=1
+
+pmos_2 VDD  SI  net1 VDD pmos  l=0.42u w=0.52u m=1
+pmos_3 net1 nse OUT1 VDD pmos  l=0.42u w=0.52u m=1
+pmos_4 OUT1 SE  net2 VDD pmos  l=0.42u w=0.52u m=1
+pmos_5 VDD  D   net2 VDD pmos  l=0.42u w=0.52u m=1
+
+nmos_2 VSS  SE  net4 VSS nmos  l=0.5u w=0.5u m=1
+nmos_3 net4 SI  OUT2 VSS nmos  l=0.5u w=0.5u m=1
+nmos_4 OUT2 nse net3 VSS nmos  l=0.5u w=0.5u m=1
+nmos_5 net3 D   VSS VSS nmos  l=0.5u w=0.5u m=1
+
+.ends INPUT_SD1
+
+
+
+*same with EDFF_F3
+.SUBCKT INPUT_SD2 SE SI D VDD VSS OUT1
+pmos_1 nse SE VDD VDD pmos l=0.13u w=0.28u m=1
+nmos_1 nse SE VSS VSS nmos l=0.13u w=0.18u m=1
+
+pmos_2 VDD  D   net1 VDD pmos  l=0.13u w=0.37u m=1
+pmos_3 net1 SE  OUT1  VDD pmos  l=0.13u w=0.37u m=1
+pmos_5 OUT1  nse net3 VDD pmos  l=0.13u w=0.28u m=1
+pmos_4 net3 SI  VDD  VDD pmos  l=0.13u w=0.28u m=1
+
+nmos_2 VSS  D   net2 VSS nmos  l=0.13u w=0.26u m=1
+nmos_3 net2 nse OUT1  VSS nmos  l=0.13u w=0.26u m=1
+nmos_4 OUT1  SE  net4 VSS nmos  l=0.13u w=0.18u m=1
+nmos_5 net4 SI  VSS  VSS nmos  l=0.13u w=0.18u m=1
+
+.ends INPUT_SD2
+
+
+
+.SUBCKT INPUT_SD3 SE SI D VDD VSS OUT1 OUT2
+pmos_1 nse SE VDD VDD pmos W=300.00n L=60.00n
+nmos_1 nse SE VSS VSS nmos W=200.00n L=60.00n
+
+pmos_2 VDD  SI  net1 VDD pmos W=300.00n L=60.00n
+pmos_3 net1 nse OUT1 VDD pmos W=300.00n L=60.00n
+pmos_4 OUT1 D   net2 VDD pmos W=450.00n L=60.00n
+pmos_5 net2 SE  VDD VDD pmos W=450.00n L=60.00n
+
+nmos_2 VSS  SI  net3 VSS nmos W=200.00n L=60.00n
+nmos_3 net3 SE  OUT2 VSS nmos W=200.00n L=60.00n
+nmos_4 OUT2 D   net4 VSS nmos W=300.00n L=60.00n
+nmos_5 net4 nse VSS  VSS nmos W=300.00n L=60.00n
+.ends INPUT_SD3
+
+
+
+
+.SUBCKT INPUT_SD4 SE SI RN D VDD VSS OUT1 
+M24 nse SE VDD VDD pmos  l=0.13u w=0.28u m=1
+M8 VSS SE nse VSS nmos  l=0.13u w=0.18u m=1
+
+M22 N_38 SI VDD VDD pmos  l=0.13u w=0.37u m=1
+M21 N_38 nse OUT1 VDD pmos  l=0.13u w=0.37u m=1
+
+M5 N_19 SE OUT1 VSS nmos  l=0.13u w=0.24u m=1
+M7 N_19 SI VSS VSS nmos  l=0.13u w=0.24u m=1
+
+M19 VDD D N_8 VDD pmos  l=0.13u w=0.35u m=1
+M20 N_8 RN VDD VDD pmos  l=0.13u w=0.35u m=1
+
+M4 N_8 RN N_18 VSS nmos  l=0.13u w=0.26u m=1
+M3 N_18 D VSS VSS nmos  l=0.13u w=0.26u m=1
+
+M23 OUT1 SE N_8 VDD pmos  l=0.13u w=0.42u m=1
+M6 OUT1 nse N_8 VSS nmos  l=0.13u w=0.28u m=1
+.ends INPUT_SD4
+
+.SUBCKT INPUT_SD5 SE SI D VDD VSS OUT1 
+pmos_1 nse SE VDD VDD pmos l=1.3e-07 w=2.3e-07
+nmos_1 nse SE VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+pmos_2 nd D VDD VDD pmos l=1.3e-07 w=2.3e-07
+nmos_2 nd D VSS VSS nmos l=1.3e-07 w=1.8e-07
+pmos_3 OUT1  SE   nd VDD pmos l=1.3e-07 w=2.3e-07
+nmos_3 OUT1  nse nd VSS nmos l=1.3e-07 w=1.8e-07
+
+pmos_4 VDD  SI   net1 VDD pmos l=1.3e-07 w=2.3e-07
+pmos_5 net1 nse OUT1 VDD pmos l=1.3e-07 w=2.3e-07
+
+nmos_4 net2 SI VSS VSS nmos l=1.3e-07 w=1.8e-07
+nmos_5 OUT1 SE net2 VSS nmos l=1.3e-07 w=1.8e-07
+
+.ends INPUT_SD5
+
+*nearly same with above  SI SE sort different
+.SUBCKT INPUT_SD6 SE SI D VDD VSS OUT1 
+pmos_1 nse SE VDD VDD pmos l=1.3e-07 w=2.3e-07
+nmos_1 nse SE VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+pmos_2 nd   D   VDD  VDD pmos l=1.3e-07 w=2.3e-07
+nmos_2 nd   D   VSS  VSS nmos l=1.3e-07 w=1.8e-07
+pmos_3 OUT1  SE  nd   VDD pmos l=1.3e-07 w=2.3e-07
+nmos_3 OUT1  nse nd   VSS nmos l=1.3e-07 w=1.8e-07
+
+pmos_4 VDD  nse net1 VDD pmos l=1.3e-07 w=2.3e-07
+pmos_5 net1 SI  OUT1  VDD pmos l=1.3e-07 w=2.3e-07
+
+nmos_4 net2 SE  VSS  VSS nmos l=1.3e-07 w=1.8e-07
+nmos_5 OUT1  SI  net2 VSS nmos l=1.3e-07 w=1.8e-07
+
+.ends INPUT_SD6
+
+
+.SUBCKT INPUT_SD7 SE SI D VDD VSS OUT1 
+pmos_1 nse SE VDD VDD pmos W=300.00n L=60.00n
+nmos_1 nse SE VSS VSS nmos W=200.00n L=60.00n
+
+pmos_2 VDD  nse net1 VDD pmos W=650.00n L=60.00n
+pmos_3 net1 SI OUT1 VDD pmos W=650.00n L=60.00n
+pmos_4 OUT1 D  net2 VDD pmos W=650.00n L=60.00n
+pmos_5 net2 SE VDD VDD pmos W=650.00n L=60.00n
+
+nmos_2 VSS  nse net3 VSS nmos W=250.00n L=60.00n
+nmos_3 net3 D   OUT2 VSS nmos W=250.00n L=60.00n
+nmos_4 OUT2 SI  net4 VSS nmos W=250.00n L=60.00n
+nmos_5 net4 SE  VSS VSS nmos W=250.00n L=60.00n
+.ends INPUT_SD7
+
+.SUBCKT INPUT_SD8 SE SI D VDD VSS OUT1 OUT2
+pmos_1 SEN SE VDD VDD pmos mr=1 l=500n w=1.68u nf=1
+nmos_1 SEN SE VSS VSS nmos mr=1 l=600n w=1.15u nf=1
+
+mM10 net14 D VDD VDD pmos mr=1 l=500n w=1.74u nf=1
+mM11 OUT1 SE net14 VDD pmos mr=1 l=500n w=1.68u nf=1
+mM9  OUT1 SEN net11 VDD pmos mr=1 l=500n w=1.31u nf=1
+mM8  net11 SI VDD VDD pmos mr=1 l=500n w=1.31u nf=1
+
+
+mM15 net13 D VSS VSS nmos mr=1 l=600n w=1.21u nf=1
+mM16 net9 SEN net13 VSS nmos mr=1 l=600n w=1.21u nf=1
+mM0 net9 SE net7 VSS nmos mr=1 l=600n w=1.15u nf=1
+mM14 net7 SI VSS VSS nmos mr=1 l=600n w=780n nf=1
+.ends INPUT_SD8
+
+
+
+
+.SUBCKT INPUT_SDR1 SE SI D RN VDD VSS OUT1 
+pmos_1 nse SE VDD VDD pmos l=1.3e-07 w=2.3e-07
+nmos_1 nse SE VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+pmos_2 VDD  D   net1 VDD pmos l=1.3e-07 w=3e-07
+pmos_3 net1 SE  OUT1  VDD pmos l=1.3e-07 w=3e-07
+pmos_4 OUT1  nse net2 VDD pmos l=1.3e-07 w=2.3e-07
+pmos_5 net2 SI  VDD  VDD pmos l=1.3e-07 w=2.3e-07
+
+nmos_2 rng  D   net3 VSS nmos l=1.3e-07 w=2.4e-07
+nmos_3 net3 nse OUT1  VSS nmos l=1.3e-07 w=2.4e-07
+nmos_4 OUT1  SE  net4 VSS nmos l=1.3e-07 w=1.8e-07
+nmos_5 net4 SI  rng  VSS nmos l=1.3e-07 w=1.8e-07
+nmos_6 rng  RN  VSS  VSS nmos l=1.3e-07 w=4e-07
+.ends INPUT_SDR1
+
+.SUBCKT INPUT_SDR2 SE SI D RN VDD VSS OUT1 
+pmos_1 nse SE VDD VDD pmos l=1.3e-07 w=2.3e-07
+nmos_1 nse SE VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+
+pmos_2 VDD  D   net1 VDD pmos l=1.3e-07 w=3e-07
+pmos_3 net1 SE  OUT1 VDD pmos l=1.3e-07 w=3e-07
+pmos_4 OUT1  nse net2 VDD pmos l=1.3e-07 w=2.3e-07
+pmos_5 net2 SI  VDD VDD pmos l=1.3e-07 w=2.3e-07
+
+nmos_2 net4 RN VSS VSS nmos l=1.3e-07 w=2.4e-07
+nmos_3 net5 D net4 VSS nmos l=1.3e-07 w=2.4e-07
+nmos_4 OUT1 nse net5 VSS nmos l=1.3e-07 w=2.4e-07
+nmos_5 OUT1 SE net6 VSS nmos l=1.3e-07 w=1.8e-07
+nmos_6 net6 SI VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+pmos_6 VDD SE net3 VDD pmos l=1.3e-07 w=2.3e-07
+pmos_7 OUT1 RN net3 VDD pmos l=1.3e-07 w=2.3e-07
+.ends INPUT_SDR2
+
+
+.SUBCKT INPUT_SDR3 SE SI D RN VDD VSS OUT1 
+mX_g9_MXPA1 nmse SE VDD VDD pmos l=1.3e-07 w=2.3e-07
+mX_g9_MXNA1 nmse SE VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+MX_t5 net96 D VDD VDD pmos l=1.3e-07 w=3e-07
+MXP7 OUT1 SE net96 VDD pmos l=1.3e-07 w=3e-07
+MXP6 OUT1 nmse net114 VDD pmos l=1.3e-07 w=2.3e-07
+MX_t1 net114 SI VDD VDD pmos l=1.3e-07 w=2.3e-07
+
+MXP8 net105 SE VDD VDD pmos l=1.3e-07 w=2.3e-07
+MXP9 OUT1 RN net105 VDD pmos l=1.3e-07 w=2.3e-07
+
+MXN6 net074 RN VSS VSS nmos l=1.3e-07 w=2.4e-07
+MXN5 net181 D net074 VSS nmos l=1.3e-07 w=2.4e-07
+MX_t7 OUT1 nmse net181 VSS nmos l=1.3e-07 w=2.4e-07
+MX_t3 OUT1 SE net193 VSS nmos l=1.3e-07 w=1.8e-07
+MXN4 net193 SI VSS VSS nmos l=1.3e-07 w=1.8e-07
+.ends INPUT_SDR3
+
+
+
+******************D and E and SE and SI************************
+
+.SUBCKT INPUT_SDE1 SE SI D RN VDD VSS OUT1 
+MM61 nse SE VDD VDD pmos W=300.00n L=60.00n
+MM60 nse SE VSS VSS nmos W=200.00n L=60.00n
+MM32 en E VDD VDD pmos W=300.00n L=60.00n
+MM31 en E VSS VSS nmos W=200.00n L=60.00n
+
+MM53 sep SE VDD VDD pmos W=500.00n L=60.00n
+MM58 nseg nse VSS VSS nmos W=420.00n L=60.00n
+
+MM8 net128 en sep VDD pmos W=500.00n L=60.00n
+MM10 OUT1 D net128 VDD pmos W=500.00n L=60.00n
+MM37 OUT1 s net_0228 VDD pmos W=500.00n L=60.00n
+MM38 net_0228 E sep VDD pmos W=500.00n L=60.00n
+
+MM9 OUT2 D net69 VSS nmos W=420.00n L=60.00n
+MM7 net69 E nseg VSS nmos W=420.00n L=60.00n
+MM40 OUT2 s net_0149 VSS nmos W=420.00n L=60.00n
+MM41 net_0149 en nseg VSS nmos W=420.00n L=60.00n
+
+MM50 net_0247 SI VDD VDD pmos W=300.00n L=60.00n
+MM51 OUT1 nse net_0247 VDD pmos W=300.00n L=60.00n
+MM46 net_0152 SI VSS VSS nmos W=200.00n L=60.00n
+MM45 OUT2 SE net_0152 VSS nmos W=200.00n L=60.00n
+.ends INPUT_SDE1
+
+
+
+.SUBCKT INPUT_SDE2 SE SI D RN VDD VSS OUT1 
+mX_g9_MXPA1 nse SE VDD VDD pmos l=1.3e-07 w=2.3e-07
+mX_g9_MXNA1 nse SE VSS VSS nmos l=1.3e-07 w=1.8e-07
+mX_g13_MXPA1 nd D VDD VDD pmos l=1.3e-07 w=6.4e-07
+mX_g13_MXNA1 nd D VSS VSS nmos l=1.3e-07 w=2.3e-07
+
+
+mXI0_MXPA1 se2 E VDD VDD pmos l=1.3e-07 w=2.3e-07
+mXI0_MXPA2 se2 nse VDD VDD pmos l=1.3e-07 w=2.3e-07
+mXI0_MXNA1 se2 E XI0_n1 VSS nmos l=1.3e-07 w=1.8e-07
+mXI0_MXNA2 XI0_n1 nse VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+mX_g8_MXPA1 nmse2 se2 VDD VDD pmos l=1.3e-07 w=2.3e-07
+mX_g8_MXNA1 nmse2 se2 VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+mXI65_MXPOEN OUT1 se2 nd VDD pmos l=1.3e-07 w=3e-07
+mXI65_MXNOE OUT1 nmse2 nd VSS nmos l=1.3e-07 w=2.3e-07
+
+mXI16_MXPA1 XI16_p1 SI VDD VDD pmos l=1.3e-07 w=2.3e-07
+mXI16_MXPOEN OUT1 nse XI16_p1 VDD pmos l=1.3e-07 w=2.3e-07
+mXI16_MXNA1 XI16_n1 SI VSS VSS nmos l=1.3e-07 w=1.8e-07
+mXI16_MXNOE OUT1 SE XI16_n1 VSS nmos l=1.3e-07 w=1.8e-07
+
+mX_g6_MXPA1 en2 nmen2 VDD VDD pmos l=1.3e-07 w=2.3e-07
+mX_g6_MXNA1 en2 nmen2 VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+
+mXI7_MXPA2 XI7_p1 SE VDD VDD pmos l=1.3e-07 w=3.6e-07
+mXI7_MXPA1 nmen2 E XI7_p1 VDD pmos l=1.3e-07 w=3.6e-07
+mXI7_MXNA2 nmen2 SE VSS VSS nmos l=1.3e-07 w=1.8e-07
+mXI7_MXNA1 nmen2 E VSS VSS nmos l=1.3e-07 w=1.8e-07
+
+mXI8_MXPA1 XI8_p1 s VDD VDD pmos l=1.3e-07 w=2.3e-07
+mXI8_MXPOEN OUT1 en2 XI8_p1 VDD pmos l=1.3e-07 w=2.3e-07
+mXI8_MXNOE OUT1 nmen2 XI8_n1 VSS nmos l=1.3e-07 w=1.8e-07
+mXI8_MXNA1 XI8_n1 s VSS VSS nmos l=1.3e-07 w=1.8e-07
+.ends INPUT_SDE2
+
+.SUBCKT INPUT_SDE3 SE SI D RN VDD VSS OUT1
+M44 VDD SE nse VDD pmos  l=0.13u w=0.28u m=1
+M12 VSS SE nse VSS nmos  l=0.13u w=0.18u m=1
+
+M39 VDD E ne VDD pmos  l=0.13u w=0.26u m=1
+M7  VSS E ne VSS nmos  l=0.13u w=0.18u m=1
+
+M40 N_46 D VDD VDD pmos  l=0.13u w=0.28u m=1
+M41 N_13 ne N_46 VDD pmos  l=0.13u w=0.28u m=1
+M9 N_23 E N_13 VSS nmos  l=0.13u w=0.18u m=1
+M8 N_23 D VSS VSS nmos  l=0.13u w=0.18u m=1
+
+M31 VDD SI N_43 VDD pmos  l=0.13u w=0.37u m=1
+M30 N_43 nse OUT1 VDD pmos  l=0.13u w=0.37u m=1
+M13 N_25 SE OUT1 VSS nmos  l=0.13u w=0.24u m=1
+M15 N_25 SI VSS VSS nmos  l=0.13u w=0.24u m=1
+
+M29 N_13 SE  OUT1 VDD pmos  l=0.13u w=0.42u m=1
+M14 N_13 nse OUT1 VSS nmos  l=0.13u w=0.28u m=1
+
+M42 N_47 E N_13 VDD pmos  l=0.13u w=0.28u m=1
+M10 N_24 ne N_13 VSS nmos  l=0.13u w=0.18u m=1
+
+M43 N_47 s VDD VDD pmos  l=0.13u w=0.28u m=1
+M11 N_24 s VSS VSS nmos  l=0.13u w=0.18u m=1
+.ends INPUT_SDE3
+
+
+.SUBCKT INPUT_SDER1 SE SI D RN E VDD VSS OUT1 
+MM31 en E VSS VSS nmos W=200.00n L=60.00n
+MM32 en E VDD VDD pmos W=300.00n L=60.00n
+
+MM61 nse SE VDD VDD pmos W=300.00n L=60.00n
+MM60 nse SE VSS VSS nmos W=200.00n L=60.00n
+
+MM53 net0267 E VDD VDD pmos W=500.00n L=60.00n
+MM38 net_0228 s net0267 VDD pmos W=500.00n L=60.00n
+MM37 OUT1 SE net_0228 VDD pmos W=500.00n L=60.00n
+
+MM40 OUT1 nse net_0149 VSS nmos W=430.00n L=60.00n
+MM41 net_0149 s net_0164 VSS nmos W=430.00n L=60.00n
+MM58 net_0164 en rng VSS nmos W=430.00n L=60.00n
+MM42 rng RN VSS VSS nmos W=430.00n L=60.00n
+
+MM50 net_0247 SI VDD VDD pmos W=300.00n L=60.00n
+MM51 OUT1 nse net_0247 VDD pmos W=300.00n L=60.00n
+MM45 OUT1 SE net_0152 VSS nmos W=200.00n L=60.00n
+MM46 net_0152 SI VSS VSS nmos W=200.00n L=60.00n
+
+MM57 net0279 en VDD VDD pmos W=500.00n L=60.00n
+MM8 net128 D net0279 VDD pmos W=500.00n L=60.00n
+MM10 OUT1 SE net128 VDD pmos W=500.00n L=60.00n
+MM9 OUT1 nse net69 VSS nmos W=430.00n L=60.00n
+MM7 net69 D net0172 VSS nmos W=430.00n L=60.00n
+MM59 net0172 E rng VSS nmos W=430.00n L=60.00n
+
+MM54 net0255 SE VDD VDD pmos W=200.00n L=60.00n
+MM39 OUT1 RN net0255 VDD pmos W=200.00n L=60.00n
+
+.ends INPUT_SDER1
+
+
+
+.SUBCKT INPUT_SDER2 SE SI D RN E VDD VSS OUT1 
+pmos_1 en E VDD VDD pmos W=300.00n L=60.00n
+nmos_1 en E VSS VSS nmos W=200.00n L=60.00n
+pmos_2 nse SE VDD VDD pmos W=300.00n L=60.00n
+nmos_2 nse SE VSS VSS nmos W=200.00n L=60.00n
+
+pmos_3 sep SE VDD VDD pmos W=355.00n L=60.00n
+nmos_3 nseg nse rng VSS nmos W=275.00n L=60.00n
+nmos_4 rng RN VSS VSS nmos W=310.00n L=60.00n
+
+MM8 net128 en sep VDD pmos W=390.00n L=60.00n
+MM10 OUT1 D net128 VDD pmos W=390.00n L=60.00n
+MM9 OUT2 D net69 VSS nmos W=310.00n L=60.00n
+MM7 net69 E nseg VSS nmos W=310.00n L=60.00n
+
+MM50 net_0247 nse VDD VDD pmos W=300.00n L=60.00n
+MM51 OUT1 SI net_0247 VDD pmos W=300.00n L=60.00n
+MM45 OUT2 SI net_0152 VSS nmos W=250.00n L=60.00n
+MM46 net_0152 SE rng VSS nmos W=250.00n L=60.00n
+
+MM38 net_0228 E sep VDD pmos W=390.00n L=60.00n
+MM37 OUT1 s net_0228 VDD pmos W=390.00n L=60.00n
+MM40 OUT2 s net_0149 VSS nmos W=310.00n L=60.00n
+MM41 net_0149 en nseg VSS nmos W=310.00n L=60.00n
+
+.ends INPUT_SDER2
+
+
+.SUBCKT INPUT_SDERS1 SE SI D RN SN E VDD VSS OUT1 
+
+pmos_1 nsn SN VDD VDD pmos mr=1 l=500n w=1.31u nf=1
+nmos_1 nsn SN VSS VSS nmos mr=1 l=600n w=1.21u nf=1
+pmos_2 nsnp nsn VDD VDD pmos mr=1 l=500n w=1.31u nf=1
+nmos_2 net060 RN nsnp VDD pmos mr=1 l=500n w=1.31u nf=1
+mM4 net060 nsn VSS VSS nmos mr=1 l=600n w=1.21u nf=1
+
+mM15 nse SE VDD VDD pmos mr=1 l=500n w=1.31u nf=1
+mM14 nse SE VSS VSS nmos mr=1 l=600n w=1.15u nf=1
+mM9 ne E VDD VDD pmos mr=1 l=500n w=1.74u nf=1
+mM8 ne E VSS VSS nmos mr=1 l=600n w=1.21u nf=1
+
+mM65 net048 ne nsnp VDD pmos mr=1 l=500n w=1.74u nf=1
+mM54 net060 D net048 VDD pmos mr=1 l=500n w=1.74u nf=1
+
+mM61 net060 RN net017 VSS nmos mr=1 l=600n w=1.21u nf=1
+mM0 net017 E net049 VSS nmos mr=1 l=600n w=1.21u nf=1
+mM3 net049 D VSS VSS nmos mr=1 l=600n w=1.21u nf=1
+
+
+mM60 net046 E nsnp VDD pmos mr=1 l=500n w=1.31u nf=1
+mM66 net060 Q net046 VDD pmos mr=1 l=500n w=1.68u nf=1
+mM50 net047 ne VSS VSS nmos mr=1 l=600n w=1.21u nf=1
+mM49 net017 Q net047 VSS nmos mr=1 l=600n w=1.21u nf=1
+
+
+mM62 net058 SI VDD VDD pmos mr=1 l=500n w=1.31u nf=1
+mM58 OUT1 nse net058 VDD pmos mr=1 l=500n w=1.25u nf=1
+mM12 OUT1 SE net059 VSS nmos mr=1 l=600n w=1.15u nf=1
+mM11 net059 SI VSS VSS nmos mr=1 l=600n w=780n nf=1
+
+mM63 net060 SE OUT1 VDD pmos mr=1 l=500n w=1.31u nf=1
+mM48 net060 nse OUT1 VSS nmos mr=1 l=600n w=1.21u nf=1
+.ends INPUT_SDERS1
+
+
+******************D0 D1 and SE SI************************
+
+******************D0 D1 S0 and SE SI************************
+

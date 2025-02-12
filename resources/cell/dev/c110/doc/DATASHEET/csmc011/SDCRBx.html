@@ -1,0 +1,5718 @@
+<HTML><BODY TEXT="#000000"  LINK="#0000FF" VLINK="#0000FF" ALINK="#00FFFF"><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=5 WIDTH=100%>
+<TR align=center><th align=left><H1><font size=+3>SDCRBx</font></H1></th>
+<TR align=center><th align=left></th><th align=right><h5><em><A>csmc011 Cell Library: Process , Voltage 1.50, Temp 25.00 </A></em></h5></th></TR>
+</TABLE>
+<HR>
+<BR>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=100%>
+<TR ALIGN=LEFT VALIGN=TOP><TH><FONT SIZE=+2><B>Truth Table</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4>
+<TR valign=middle><TH colspan=5><font size=3>INPUT</font></TH>
+<TH colspan=2><font size=3>OUTPUT</font></TH>
+<TR><Th>CK</Th><Th>D</Th><Th>RN</Th><Th>SE</Th><Th>SI</Th><Th>Q</Th><Th>QN</Th></TR>
+<TR><Th><font size=2>R</font></Th><Th><font size=2>0</font></Th><Th><font size=2>1</font></Th><Th><font size=2>0</font></Th><Th><font size=2>x</font></Th><Th><font size=2>0</font></Th><Th><font size=2>1</font></Th></TR>
+<TR><Th><font size=2>R</font></Th><Th><font size=2>x</font></Th><Th><font size=2>1</font></Th><Th><font size=2>1</font></Th><Th><font size=2>0</font></Th><Th><font size=2>0</font></Th><Th><font size=2>1</font></Th></TR>
+<TR><Th><font size=2>R</font></Th><Th><font size=2>x</font></Th><Th><font size=2>1</font></Th><Th><font size=2>1</font></Th><Th><font size=2>1</font></Th><Th><font size=2>1</font></Th><Th><font size=2>0</font></Th></TR>
+<TR><Th><font size=2>R</font></Th><Th><font size=2>1</font></Th><Th><font size=2>1</font></Th><Th><font size=2>0</font></Th><Th><font size=2>x</font></Th><Th><font size=2>1</font></Th><Th><font size=2>0</font></Th></TR>
+<TR><Th><font size=2>x</font></Th><Th><font size=2>x</font></Th><Th><font size=2>0</font></Th><Th><font size=2>x</font></Th><Th><font size=2>x</font></Th><Th><font size=2>0</font></Th><Th><font size=2>1</font></Th></TR>
+<TR><Th><font size=2>x</font></Th><Th><font size=2>x</font></Th><Th><font size=2>1</font></Th><Th><font size=2>x</font></Th><Th><font size=2>x</font></Th><Th><font size=2>IQ</font></Th><Th><font size=2>IQN</font></Th></TR>
+</TABLE>
+</TR></TABLE>
+<BR>
+<FONT SIZE=+2><B>Footprint</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=60%>
+<TR valign=middle><TH>Cell Name</TH><TH>Area</TH></TR>
+<TR><TH><FONT>sdcrb0</FONT></TH>
+<TD align=center>8.50000</TD></TR>
+<TR><TH><FONT>sdcrb1</FONT></TH>
+<TD align=center>8.50000</TD></TR>
+<TR><TH><FONT>sdcrb2</FONT></TH>
+<TD align=center>9.00000</TD></TR>
+<TR><TH><FONT>sdcrbm</FONT></TH>
+<TD align=center>8.50000</TD></TR>
+</TABLE>
+<BR>
+<BR>
+<FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH>
+<TH colspan=5>Pin Cap(pf) </TH>
+<TH colspan=2>Max Cap(pf) </TH>
+</TR>
+<TR>
+<TH>CK</TH>
+<TH>D</TH>
+<TH>RN</TH>
+<TH>SE</TH>
+<TH>SI</TH>
+<TH>Q</TH>
+<TH>QN</TH>
+</TR>
+<TR><Th><font>sdcrb0</font></Th>
+<TD align=center>0.00186</TD>
+<TD align=center>0.00127</TD>
+<TD align=center>0.00135</TD>
+<TD align=center>0.00318</TD>
+<TD align=center>0.00139</TD>
+<TD align=center>0.05708</TD>
+<TD align=center>0.05569</TD>
+</TR>
+<TR><Th><font>sdcrb1</font></Th>
+<TD align=center>0.00195</TD>
+<TD align=center>0.00149</TD>
+<TD align=center>0.00146</TD>
+<TD align=center>0.00334</TD>
+<TD align=center>0.00159</TD>
+<TD align=center>0.09810</TD>
+<TD align=center>0.09581</TD>
+</TR>
+<TR><Th><font>sdcrb2</font></Th>
+<TD align=center>0.00206</TD>
+<TD align=center>0.00147</TD>
+<TD align=center>0.00409</TD>
+<TD align=center>0.00336</TD>
+<TD align=center>0.00159</TD>
+<TD align=center>0.18100</TD>
+<TD align=center>0.18172</TD>
+</TR>
+<TR><Th><font>sdcrbm</font></Th>
+<TD align=center>0.00195</TD>
+<TD align=center>0.00149</TD>
+<TD align=center>0.00132</TD>
+<TD align=center>0.00341</TD>
+<TD align=center>0.00159</TD>
+<TD align=center>0.07783</TD>
+<TD align=center>0.07697</TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT SIZE=+2><B>Leakage Information</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH colspan=3>Leakage(pW)</TH>
+</TR><TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
+<TR><Th><font>sdcrb0</font></Th>
+<TD align=center>68.70200</TD>
+<TD align=center>76.91900</TD>
+<TD align=center>76.91900</TD>
+<TR><Th><font>sdcrb1</font></Th>
+<TD align=center>70.59650</TD>
+<TD align=center>78.37310</TD>
+<TD align=center>78.37310</TD>
+<TR><Th><font>sdcrb2</font></Th>
+<TD align=center>71.91120</TD>
+<TD align=center>95.13360</TD>
+<TD align=center>95.13360</TD>
+<TR><Th><font>sdcrbm</font></Th>
+<TD align=center>70.50640</TD>
+<TD align=center>78.24800</TD>
+<TD align=center>78.24800</TD>
+</TABLE>
+<BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Delay Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH>
+<TH rowspan=2>When</TH>
+<TH colspan=9>Delay(ns)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Max</TH>
+</TR>
+<BR>
+<TR><TH rowspan=1>sdcrb0</TH>
+<Th><font>CK->Q (RR)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.60946</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.76600</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.83031</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb1</TH>
+<Th><font>CK->Q (RR)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.57291</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.72505</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.79411</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb2</TH>
+<Th><font>CK->Q (RR)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.38732</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.59463</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.68369</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrbm</TH>
+<Th><font>CK->Q (RR)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.58495</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.73955</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.80381</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH>
+<TH rowspan=2>When</TH>
+<TH colspan=9>Delay(ns)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Max</TH>
+</TR>
+<BR>
+<TR><TH rowspan=17>sdcrb0</TH>
+<Th><font>CK->Q (RF)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.57759</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.72009</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.54398</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.56538</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.70519</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.50498</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.56538</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.70519</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.50501</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.56538</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.70519</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.50501</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.56538</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.70519</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.50501</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.56538</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.70519</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.50501</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.56538</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.70519</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.50501</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.56538</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.70519</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.50501</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.56538</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.70519</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.50496</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.50587</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.64495</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.44634</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.50313</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.64210</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.44201</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.50587</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.64486</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.44634</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.50587</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.64486</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.44634</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.50587</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.64495</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.44634</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.50313</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.64210</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.44201</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.50313</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.64210</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.44201</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.50313</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.64210</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>1.44201</B></TD>
+</TR>
+<TR><TH rowspan=17>sdcrb1</TH>
+<Th><font>CK->Q (RF)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.51217</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.65921</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.53391</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.48938</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.63512</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.49370</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.48938</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.63512</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.49372</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.48938</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.63512</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.49372</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.48938</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.63512</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.49370</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.48938</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.63512</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.49372</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.48938</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.63512</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.49370</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.48938</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.63512</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.49370</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.48938</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.63512</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.49370</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.43431</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.57846</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.43627</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.43324</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.57744</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.43357</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.43431</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.57846</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.43627</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.43431</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.57846</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.43627</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.43431</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.57846</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.43627</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.43324</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.57744</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.43357</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.43324</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.57744</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.43357</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.43324</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.57744</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>1.43357</B></TD>
+</TR>
+<TR><TH rowspan=17>sdcrb2</TH>
+<Th><font>CK->Q (RF)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.37520</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.57534</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.40782</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.15182</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.29976</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.09935</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.15182</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.29976</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.09935</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.15182</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.29976</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.09935</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.15182</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.29976</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.09935</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.15182</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.29976</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.09935</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.15182</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.29976</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.09935</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.15182</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.29976</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.09935</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.15182</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.29976</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.09935</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.17024</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.32981</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.16285</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.17220</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.33176</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.16666</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.17024</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.32981</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.16285</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.17024</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.32981</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.16285</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.17024</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.32981</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.16285</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.17220</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.33176</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.16666</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.17220</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.33176</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.16666</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.17220</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.33176</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>1.16666</B></TD>
+</TR>
+<TR><TH rowspan=17>sdcrbm</TH>
+<Th><font>CK->Q (RF)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.52797</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.67329</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.51486</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.54455</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.68668</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.51290</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.54456</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.68668</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.51290</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.54455</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.68668</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.51290</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.54455</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.68668</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.51290</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.54455</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.68668</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.51290</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.54456</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.68668</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.51290</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.54456</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.68668</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.51290</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.54456</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.68668</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.51290</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.47969</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.62055</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.44660</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.47717</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.61823</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.44253</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.47969</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.62055</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.44660</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.47969</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.62055</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.44660</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.47969</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.62055</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.44660</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.47717</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.61823</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.44253</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.47717</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.61823</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.44253</B></TD>
+</TR>
+<TR>
+<Th><font>RN->Q (FF)</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.47717</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.61823</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>1.44253</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to QN rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH>
+<TH rowspan=2>When</TH>
+<TH colspan=9>Delay(ns)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Max</TH>
+</TR>
+<BR>
+<TR><TH rowspan=17>sdcrb0</TH>
+<Th><font>CK->QN (RR)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.38286</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.56180</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.63753</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.34547</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.54384</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.60396</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.34547</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.54384</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.60396</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.34547</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.54384</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.60396</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.34547</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.54384</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.60396</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.34547</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.54384</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.60396</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.34547</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.54384</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.60396</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.34547</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.54384</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.60396</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.34547</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.54384</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.60396</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31469</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.48530</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.53353</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31333</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.48235</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.52927</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31469</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.48530</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.53353</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31469</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.48530</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.53353</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31469</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.48530</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.53353</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31333</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.48235</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.52927</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31333</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.48235</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.52927</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31333</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.48235</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.52927</B></TD>
+</TR>
+<TR><TH rowspan=17>sdcrb1</TH>
+<Th><font>CK->QN (RR)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.35405</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.53479</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.61054</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30851</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.50952</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.57839</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30851</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.50952</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.57839</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30851</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.50952</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.57839</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30851</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.50952</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.57839</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30851</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.50952</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.57839</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30851</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.50952</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.57839</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30851</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.50952</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.57839</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30851</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.50952</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.57839</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.28235</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.45293</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.50818</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.28215</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.45159</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.50565</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.28235</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.45293</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.50818</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.28235</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.45293</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.50818</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.28235</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.45293</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.50818</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.28215</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.45159</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.50565</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.28215</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.45159</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.50565</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.28215</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.45159</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.50565</B></TD>
+</TR>
+<TR><TH rowspan=17>sdcrb2</TH>
+<Th><font>CK->QN (RR)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.57245</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.72368</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.77899</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.27998</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.44063</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.51555</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.27997</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.44063</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.51555</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.27998</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.44063</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.51555</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.27998</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.44063</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.51555</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.27998</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.44063</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.51555</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.27997</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.44063</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.51555</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.27997</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.44063</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.51555</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.27997</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.44063</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.51555</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31324</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.47191</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.57503</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31546</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.47387</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.57828</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31324</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.47191</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.57503</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31324</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.47191</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.57503</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31324</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.47191</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.57503</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31546</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.47387</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.57828</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31546</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.47387</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.57828</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.31546</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.47387</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.57828</B></TD>
+</TR>
+<TR><TH rowspan=17>sdcrbm</TH>
+<Th><font>CK->QN (RR)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.35324</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.52954</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.60263</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.33620</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.53984</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.61103</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.33620</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.53984</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.61103</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.33620</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.53984</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.61103</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.33620</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.53984</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.61103</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.33620</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.53984</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.61103</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.33620</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.53984</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.61103</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.33620</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.53984</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.61103</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.33620</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.53984</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.61103</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30533</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.47570</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.53184</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30407</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.47321</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.52796</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30533</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.47570</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.53184</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30533</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.47570</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.53184</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30533</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.47570</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.53184</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30407</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.47321</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.52796</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30407</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.47321</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.52796</B></TD>
+</TR>
+<TR>
+<Th><font>RN->QN (FR)</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.30407</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.47321</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.52796</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to QN falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH>
+<TH rowspan=2>When</TH>
+<TH colspan=9>Delay(ns)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Max</TH>
+</TR>
+<BR>
+<TR><TH rowspan=1>sdcrb0</TH>
+<Th><font>CK->QN (RF)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.41472</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.60896</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>1.49575</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb1</TH>
+<Th><font>CK->QN (RF)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.40200</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.60837</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>1.51287</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb2</TH>
+<Th><font>CK->QN (RF)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.56949</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.70743</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>1.49498</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrbm</TH>
+<Th><font>CK->QN (RF)</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.40327</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.60767</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>1.51582</B></TD>
+</TR>
+</TABLE>
+<BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Constraint Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Min Pulse Width (ns) for CK:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=1>Cell Name</TH><TH>High</TH><TH>Low</TH></TR>
+<BR>
+<TR><TH rowspan=1>sdcrb0</TH>
+<TD align=center>    1.8384</TD>
+<TD align=center>    1.8384</TD>
+</TR>
+<TR><TH rowspan=1>sdcrb1</TH>
+<TD align=center>    1.8384</TD>
+<TD align=center>    1.8384</TD>
+</TR>
+<TR><TH rowspan=1>sdcrb2</TH>
+<TD align=center>    1.8384</TD>
+<TD align=center>    1.8384</TD>
+</TR>
+<TR><TH rowspan=1>sdcrbm</TH>
+<TD align=center>    1.8384</TD>
+<TD align=center>    1.8384</TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH>
+<TH colspan=9>Constraint(ns)</TH></TR>
+<TR>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Min</TH>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Mid</TH>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Max</TH>
+</TR>
+<BR>
+<TR><TH rowspan=2>sdcrb0</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.22643</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.24789</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.38403</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.47095</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.45355</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.57460</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrb1</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.20235</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.22745</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.36335</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.45647</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.43630</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.55810</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrb2</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.22219</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.20045</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.16458</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.45096</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.41479</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.36010</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrbm</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.22401</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.24533</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.38496</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.49688</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.46915</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.58324</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH>
+<TH colspan=9>Constraint(ns)</TH></TR>
+<TR>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Min</TH>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Mid</TH>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Max</TH>
+</TR>
+<BR>
+<TR><TH rowspan=2>sdcrb0</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.44710</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.41766</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.42850</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.66600</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.63427</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.62936</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrb1</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.38467</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.35985</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.36699</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.60786</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.57423</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.57286</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrb2</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.30802</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.32021</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.41914</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.54292</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.52243</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.60841</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrbm</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.36230</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.33890</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.34793</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.58443</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.55239</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.54858</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for RN rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH>
+<TH colspan=9>Constraint(ns)</TH></TR>
+<TR>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Min</TH>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Mid</TH>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Max</TH>
+</TR>
+<BR>
+<TR><TH rowspan=2>sdcrb0</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.36395</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.38919</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.53089</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.24880</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.23244</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.18757</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrb1</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.37990</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.40280</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.53867</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.26697</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.25239</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.21517</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrb2</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.21731</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.25227</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.31364</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.04229</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.01039</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.04156</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrbm</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.37941</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.40351</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.54546</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.29822</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.28094</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.23651</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Min Pulse Width (ns) for RN:</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=1>Cell Name</TH><TH>High</TH><TH>Low</TH></TR>
+<BR>
+<TR><TH rowspan=1>sdcrb0</TH>
+<TD align=center>     -    </TD>
+<TD align=center>    1.8384</TD>
+</TR>
+<TR><TH rowspan=1>sdcrb1</TH>
+<TD align=center>     -    </TD>
+<TD align=center>    1.8384</TD>
+</TR>
+<TR><TH rowspan=1>sdcrb2</TH>
+<TD align=center>     -    </TD>
+<TD align=center>    1.8384</TD>
+</TR>
+<TR><TH rowspan=1>sdcrbm</TH>
+<TD align=center>     -    </TD>
+<TD align=center>    1.8384</TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for SE rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH>
+<TH colspan=9>Constraint(ns)</TH></TR>
+<TR>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Min</TH>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Mid</TH>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Max</TH>
+</TR>
+<BR>
+<TR><TH rowspan=2>sdcrb0</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.19846</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.23329</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.38411</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.70657</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.68832</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.60088</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrb1</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.17093</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.20640</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.34967</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.66285</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.64459</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.56870</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrb2</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.19489</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.18039</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.12094</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.60346</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.59442</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.64185</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrbm</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.19321</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.22393</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.33865</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.63409</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.61679</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.56986</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for SE falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH>
+<TH colspan=9>Constraint(ns)</TH></TR>
+<TR>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Min</TH>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Mid</TH>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Max</TH>
+</TR>
+<BR>
+<TR><TH rowspan=2>sdcrb0</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.33721</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.37065</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.43719</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.62303</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.58759</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.67611</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrb1</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.32484</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.31593</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.37706</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.57768</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.57043</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.68535</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrb2</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.26521</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.27403</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.33405</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.57918</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.55454</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.58445</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrbm</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.31893</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.29332</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.35970</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.60444</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.59083</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.68489</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for SI rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH>
+<TH colspan=9>Constraint(ns)</TH></TR>
+<TR>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Min</TH>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Mid</TH>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Max</TH>
+</TR>
+<BR>
+<TR><TH rowspan=2>sdcrb0</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.22531</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.24524</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.37617</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.46753</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.44870</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.56999</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrb1</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.19815</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.22227</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.35504</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.45039</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.42968</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.54925</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrb2</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.22427</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.19783</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.15544</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.44691</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.41192</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.35186</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrbm</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.22035</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.24026</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.37626</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.49055</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.46504</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.57238</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Constraints(ns) for SI falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Check</TH><TH rowspan=2>Ref Pin(trans)</TH>
+<TH colspan=9>Constraint(ns)</TH></TR>
+<TR>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Min</TH>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Mid</TH>
+<TH>Input Slew(ns)</TH><TH>Ref Slew(ns)</TH><TH>Max</TH>
+</TR>
+<BR>
+<TR><TH rowspan=2>sdcrb0</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.45057</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.42176</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.42668</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.67318</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.63649</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.62818</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrb1</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.39837</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.36736</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.37743</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.62142</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.58520</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.58254</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrb2</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.32412</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.33189</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.42991</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.55699</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.53314</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.62037</B></TD>
+</TR>
+<TR><TH rowspan=2>sdcrbm</TH>
+<Th><font>hold</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>-0.37430</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>-0.34488</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>-0.35692</B></TD>
+</TR>
+<TR>
+<Th><font>setup</font></Th>
+<Th><font>CK (R)</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.59783</B></TD>
+<TD align=center>0.37875</TD>
+<TD align=center>0.37875</TD>
+<TD align=center><B>0.56111</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.55627</B></TD>
+</TR>
+</TABLE>
+<BR>
+<!--NewPage-->
+<BR>
+<FONT SIZE=+2><B>Power Information</B></FONT>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH>
+<TH rowspan=2>When</TH>
+<TH colspan=9>Power(pJ)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Max</TH>
+<TR><TH rowspan=1>sdcrb0</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01339</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01342</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01342</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb1</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01479</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.01492</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.01499</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb2</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01983</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.02012</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.02055</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrbm</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01400</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01407</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01411</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH>
+<TH rowspan=2>When</TH>
+<TH colspan=9>Power(pJ)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Max</TH>
+<TR><TH rowspan=17>sdcrb0</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01359</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01361</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01376</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01733</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01740</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01744</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01717</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01724</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01728</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01733</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01740</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01744</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01733</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01740</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01744</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01733</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01740</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01744</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01717</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01724</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01728</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01717</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01724</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01728</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01717</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01724</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01728</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01184</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01191</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01200</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01170</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01178</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01182</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01184</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01191</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01200</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01184</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01191</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01200</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01184</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01191</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01200</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01170</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01178</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01182</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01170</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01178</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01182</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01170</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00773</TD>
+<TD align=center><B>0.01178</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05708</TD>
+<TD align=center><B>0.01182</B></TD>
+</TR>
+<TR><TH rowspan=17>sdcrb1</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01522</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.01534</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.01552</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02041</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.02061</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.02066</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02022</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.02042</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.02047</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02041</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.02061</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.02066</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02041</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.02061</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.02066</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02041</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.02061</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.02066</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02022</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.02042</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.02047</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02022</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.02042</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.02047</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02022</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.02042</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.02047</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01374</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.01392</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.01404</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01362</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.01381</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.01389</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01374</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.01392</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.01404</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01374</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.01392</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.01404</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01374</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.01392</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.01404</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01362</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.01381</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.01389</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01362</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.01381</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.01389</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01362</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01265</TD>
+<TD align=center><B>0.01381</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09810</TD>
+<TD align=center><B>0.01389</B></TD>
+</TR>
+<TR><TH rowspan=17>sdcrb2</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01894</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.01925</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.01949</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.02200</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.02200</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.02200</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.02200</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.02200</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.02200</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.02200</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.02200</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01837</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.01873</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.01877</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01610</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.01663</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.01664</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01837</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.01873</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.01877</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01837</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.01873</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.01877</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01837</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.01873</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.01877</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01610</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.01663</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.01664</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01610</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.01663</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.01664</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01610</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02260</TD>
+<TD align=center><B>0.01663</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18099</TD>
+<TD align=center><B>0.01664</B></TD>
+</TR>
+<TR><TH rowspan=17>sdcrbm</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01437</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01443</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01459</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01894</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01907</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01914</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01873</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01887</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01893</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01894</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01907</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01914</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01894</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01907</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01914</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01894</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01907</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01914</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01873</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01887</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01893</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01873</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01887</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01893</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01873</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01887</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01893</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01273</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01285</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01245</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01268</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01273</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01285</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01273</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01285</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01273</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01285</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01245</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01268</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01245</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01268</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01245</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01022</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07783</TD>
+<TD align=center><B>0.01268</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to QN rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH>
+<TH rowspan=2>When</TH>
+<TH colspan=9>Power(pJ)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Max</TH>
+<TR><TH rowspan=17>sdcrb0</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01359</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01360</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01375</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01733</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01740</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01745</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01717</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01724</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01729</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01733</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01740</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01745</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01733</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01740</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01745</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01733</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01740</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01745</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01717</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01724</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01729</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01717</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01724</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01729</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01717</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01724</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01729</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01184</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01191</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01202</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01170</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01178</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01185</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01184</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01191</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01202</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01184</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01191</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01202</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01184</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01191</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01202</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01170</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01178</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01185</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01170</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01178</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01185</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01170</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01178</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01185</B></TD>
+</TR>
+<TR><TH rowspan=17>sdcrb1</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01522</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.01534</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.01554</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02041</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.02060</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.02067</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02022</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.02041</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.02048</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02041</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.02060</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.02067</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02041</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.02060</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.02067</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02041</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.02060</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.02067</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02022</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.02041</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.02048</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02022</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.02041</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.02048</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02022</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.02041</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.02048</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01374</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.01392</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.01405</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01362</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.01381</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.01389</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01374</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.01392</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.01405</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01374</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.01392</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.01405</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01374</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.01392</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.01405</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01362</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.01381</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.01389</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01362</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.01381</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.01389</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01362</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.01381</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.01389</B></TD>
+</TR>
+<TR><TH rowspan=17>sdcrb2</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01894</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.01927</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.01952</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.02204</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.02204</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.02204</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.02204</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.02204</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.02204</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.02204</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.02180</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.02222</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.02204</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01838</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.01874</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.01882</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01611</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.01663</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.01670</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01838</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.01874</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.01882</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01838</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.01874</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.01882</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01838</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.01874</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.01882</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01611</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.01663</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.01670</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01611</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.01663</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.01670</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01611</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.01663</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.01670</B></TD>
+</TR>
+<TR><TH rowspan=17>sdcrbm</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01437</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01443</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01461</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01894</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01907</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01914</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01874</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01887</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01894</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01894</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01907</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01914</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01894</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01907</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01914</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01894</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01907</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01914</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01874</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01887</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01894</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01874</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01887</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01894</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01874</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01887</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01894</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01273</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01286</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01245</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01268</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01273</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01286</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01273</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01286</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01273</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01286</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01245</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01268</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01245</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01268</B></TD>
+</TR>
+<TR>
+<Th><font>RN</font></Th>
+<Th><font>!CK&!D&!SE&!SI</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01245</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01260</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01268</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to QN falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH>
+<TH rowspan=2>When</TH>
+<TH colspan=9>Power(pJ)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Load(pf)</TH><TH>Max</TH>
+<TR><TH rowspan=1>sdcrb0</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01338</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.00756</TD>
+<TD align=center><B>0.01342</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.05569</TD>
+<TD align=center><B>0.01344</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb1</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01479</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01238</TD>
+<TD align=center><B>0.01492</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.09581</TD>
+<TD align=center><B>0.01498</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb2</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01982</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.02269</TD>
+<TD align=center><B>0.02012</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.18172</TD>
+<TD align=center><B>0.02053</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrbm</TH>
+<Th><font>CK</font></Th>
+<Th><font>-</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center>0.00100</TD>
+<TD align=center><B>0.01400</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center>0.01012</TD>
+<TD align=center><B>0.01406</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center>0.07697</TD>
+<TD align=center><B>0.01411</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Passive power(pJ) for CK rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH>
+<TH rowspan=2>When</TH>
+<TH colspan=6>Power(pJ)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Max</TH>
+<TR><TH rowspan=6>sdcrb0</TH>
+<Th><font>SE&SI&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01085</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01054</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01030</B></TD>
+</TR>
+<TR>
+<Th><font>SE&SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02129</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02096</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01813</B></TD>
+</TR>
+<TR>
+<Th><font>SE&!SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01072</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01039</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01014</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01085</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01053</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01029</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02128</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02096</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01813</B></TD>
+</TR>
+<TR>
+<Th><font>!D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01071</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01039</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01013</B></TD>
+</TR>
+<TR><TH rowspan=6>sdcrb1</TH>
+<Th><font>SE&SI&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01060</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01025</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01001</B></TD>
+</TR>
+<TR>
+<Th><font>SE&SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02375</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02339</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01953</B></TD>
+</TR>
+<TR>
+<Th><font>SE&!SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01075</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01040</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01015</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01059</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01024</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01000</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02376</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02340</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01953</B></TD>
+</TR>
+<TR>
+<Th><font>!D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01074</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01040</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01015</B></TD>
+</TR>
+<TR><TH rowspan=6>sdcrb2</TH>
+<Th><font>SE&SI&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01168</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01128</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01096</B></TD>
+</TR>
+<TR>
+<Th><font>SE&SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01911</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01870</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01831</B></TD>
+</TR>
+<TR>
+<Th><font>SE&!SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01235</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01196</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01164</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01168</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01128</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01096</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01911</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01870</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01831</B></TD>
+</TR>
+<TR>
+<Th><font>!D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01235</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01196</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01163</B></TD>
+</TR>
+<TR><TH rowspan=6>sdcrbm</TH>
+<Th><font>SE&SI&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01090</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01054</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01029</B></TD>
+</TR>
+<TR>
+<Th><font>SE&SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02321</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02286</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01906</B></TD>
+</TR>
+<TR>
+<Th><font>SE&!SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01079</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01043</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01017</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01089</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01054</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01029</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02320</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02285</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01905</B></TD>
+</TR>
+<TR>
+<Th><font>!D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01078</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01042</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01016</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Passive power(pJ) for CK falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH>
+<TH rowspan=2>When</TH>
+<TH colspan=6>Power(pJ)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Max</TH>
+<TR><TH rowspan=8>sdcrb0</TH>
+<Th><font>SE&SI&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01350</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01322</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01302</B></TD>
+</TR>
+<TR>
+<Th><font>SE&SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02152</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02121</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02073</B></TD>
+</TR>
+<TR>
+<Th><font>SE&!SI&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02567</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02536</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02171</B></TD>
+</TR>
+<TR>
+<Th><font>SE&!SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01381</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01352</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01321</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01351</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01322</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01303</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02152</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02122</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02072</B></TD>
+</TR>
+<TR>
+<Th><font>!D&!SE&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02567</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02537</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02178</B></TD>
+</TR>
+<TR>
+<Th><font>!D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01382</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01352</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01323</B></TD>
+</TR>
+<TR><TH rowspan=8>sdcrb1</TH>
+<Th><font>SE&SI&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01374</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01343</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01324</B></TD>
+</TR>
+<TR>
+<Th><font>SE&SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02416</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02383</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02331</B></TD>
+</TR>
+<TR>
+<Th><font>SE&!SI&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02735</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02701</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02412</B></TD>
+</TR>
+<TR>
+<Th><font>SE&!SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01361</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01329</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01305</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01375</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01344</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01325</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02417</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02383</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02329</B></TD>
+</TR>
+<TR>
+<Th><font>!D&!SE&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02735</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02702</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02430</B></TD>
+</TR>
+<TR>
+<Th><font>!D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01361</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01330</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01306</B></TD>
+</TR>
+<TR><TH rowspan=8>sdcrb2</TH>
+<Th><font>SE&SI&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01536</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01500</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01476</B></TD>
+</TR>
+<TR>
+<Th><font>SE&SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02885</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02849</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02635</B></TD>
+</TR>
+<TR>
+<Th><font>SE&!SI&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02530</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02493</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02443</B></TD>
+</TR>
+<TR>
+<Th><font>SE&!SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01489</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01455</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01426</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01536</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01500</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01476</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02885</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02848</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02635</B></TD>
+</TR>
+<TR>
+<Th><font>!D&!SE&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02530</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02493</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02443</B></TD>
+</TR>
+<TR>
+<Th><font>!D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01490</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01455</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01426</B></TD>
+</TR>
+<TR><TH rowspan=8>sdcrbm</TH>
+<Th><font>SE&SI&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01366</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01334</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01315</B></TD>
+</TR>
+<TR>
+<Th><font>SE&SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02385</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02351</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02286</B></TD>
+</TR>
+<TR>
+<Th><font>SE&!SI&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02735</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02702</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02445</B></TD>
+</TR>
+<TR>
+<Th><font>SE&!SI&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01403</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01371</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01344</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01366</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01335</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01316</B></TD>
+</TR>
+<TR>
+<Th><font>D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02385</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02352</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02284</B></TD>
+</TR>
+<TR>
+<Th><font>!D&!SE&Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02735</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02702</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02461</B></TD>
+</TR>
+<TR>
+<Th><font>!D&!SE&!Q</font></Th>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01404</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01372</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01345</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Passive power(pJ) for D rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH>
+<TH colspan=6>Power(pJ)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Max</TH>
+<TR><TH rowspan=1>sdcrb0</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01226</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01217</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01192</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb1</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01437</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01425</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01394</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb2</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01750</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01735</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01707</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrbm</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01426</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01414</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01374</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Passive power(pJ) for D falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH>
+<TH colspan=6>Power(pJ)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Max</TH>
+<TR><TH rowspan=1>sdcrb0</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01628</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01619</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01083</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb1</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01889</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01880</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01499</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb2</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01750</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01739</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01719</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrbm</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01873</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01864</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01544</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Passive power(pJ) for RN rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH>
+<TH colspan=6>Power(pJ)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Max</TH>
+<TR><TH rowspan=1>sdcrb0</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.00707</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.00687</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.00681</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb1</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.00950</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.00928</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.00920</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb2</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.00435</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.00402</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.00389</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrbm</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.00884</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.00864</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.00856</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Passive power(pJ) for RN falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH>
+<TH colspan=6>Power(pJ)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Max</TH>
+<TR><TH rowspan=1>sdcrb0</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.00483</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.00458</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.00459</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb1</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.00531</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.00503</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.00497</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb2</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.00849</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.00815</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.00816</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrbm</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.00485</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.00460</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.00456</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Passive power(pJ) for SE rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH>
+<TH colspan=6>Power(pJ)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Max</TH>
+<TR><TH rowspan=1>sdcrb0</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01630</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01605</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01081</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb1</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01886</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01862</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01413</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb2</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01753</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01731</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01668</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrbm</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01869</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01841</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01466</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Passive power(pJ) for SE falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH>
+<TH colspan=6>Power(pJ)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Max</TH>
+<TR><TH rowspan=1>sdcrb0</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02027</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01976</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01382</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb1</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02269</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02216</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01762</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb2</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02526</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02499</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.02307</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrbm</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.02268</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.02214</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01821</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Passive power(pJ) for SI rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH>
+<TH colspan=6>Power(pJ)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Max</TH>
+<TR><TH rowspan=1>sdcrb0</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01172</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01160</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01133</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb1</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01368</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01352</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01319</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb2</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01681</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01662</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01627</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrbm</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01357</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01341</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01300</B></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Passive power(pJ) for SI falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH>
+<TH colspan=6>Power(pJ)</TH></TR>
+<TR>
+<TH>Slew(ns)</TH><TH>Min</TH>
+<TH>Slew(ns)</TH><TH>Mid</TH>
+<TH>Slew(ns)</TH><TH>Max</TH>
+<TR><TH rowspan=1>sdcrb0</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01704</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01692</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01133</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb1</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01984</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01969</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01530</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrb2</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01849</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01829</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01802</B></TD>
+</TR>
+<TR><TH rowspan=1>sdcrbm</TH>
+<TD align=center>0.00500</TD>
+<TD align=center><B>0.01968</B></TD>
+<TD align=center>0.18440</TD>
+<TD align=center><B>0.01953</B></TD>
+<TD align=center>1.50000</TD>
+<TD align=center><B>0.01582</B></TD>
+</TR>
+</TABLE>
+<BR>
+<DIV class=NOPRINT>
+<HR>
+<TABLE BORDER=0 WIDTH=100%>
+<TR>
+<TD ALIGN=LEFT><TABLE BORDER=5><TD><em><A hREF="SDCFBx.html">Prev (SDCFBx)</A></em></TD></TABLE>
+<TD ALIGN=RIGHT><TABLE BORDER=5><TD><em><A hREF="SDCRQx.html">Next (SDCRQx)</A></em></TD></TABLE>
+</TR></TABLE>
+</DIV>
+</BODY>
+</HTML>

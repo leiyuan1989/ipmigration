@@ -1,0 +1,10 @@
+parameter,value
+cell_height           ,2856
+v_pin_grid            ,476
+h_pin_grid            ,476
+mos_length_P  ,420
+mos_length_N,500
+power_rail_width  ,520
+cell_offset_x,120
+np_ext_border,90
+nw_ext_np,70

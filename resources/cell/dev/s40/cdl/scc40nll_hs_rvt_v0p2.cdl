@@ -1,0 +1,3946 @@
+*
+.GLOBAL VDD VSS
+*SCALE METER
+.OPTION SCALE 1e-9
+****Sub-Circuit for AD1HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AD1HSV1 A B CI CO S VDD VSS
+XX14 m CI net098 VPW n11ll_ckt w=210.00n l=40.00n
+XX18 S net098 VSS VPW n11ll_ckt w=190.00n l=40.00n
+XX20 bn B VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX27 net0175 CI net0171 VPW n11ll_ckt w=310.00n l=40.00n
+XX28 net0171 m VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX12 m net43 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX22 cn CI VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX29 net0167 B VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX30 net0175 A net0167 VPW n11ll_ckt w=310.00n l=40.00n
+XX32 CO net0175 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX3 net0217 bn net43 VPW n11ll_ckt w=210.00n l=40.00n
+XX9 net0147 B net43 VPW n11ll_ckt w=210.00n l=40.00n
+XX7 net0217 A VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX16 net43 cn net098 VPW n11ll_ckt w=210.00n l=40.00n
+XX6 net0147 net0217 VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX13 m cn net098 VNW p11ll_ckt w=310.00n l=40.00n
+XX17 S net098 VDD VNW p11ll_ckt w=315.00n l=40.00n
+XX11 m net43 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX25 net0175 A net0106 VNW p11ll_ckt w=455.00n l=40.00n
+XX21 cn CI VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX19 bn B VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX8 net0147 bn net43 VNW p11ll_ckt w=310.00n l=40.00n
+XX26 net0175 B net0106 VNW p11ll_ckt w=455.00n l=40.00n
+XX24 net0106 m VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX23 net0106 CI VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX2 net0217 B net43 VNW p11ll_ckt w=310.00n l=40.00n
+XX31 CO net0175 VDD VNW p11ll_ckt w=315.00n l=40.00n
+XX4 net0147 net0217 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX5 net0217 A VDD VNW p11ll_ckt w=400.00n l=40.00n
+XX15 net43 CI net098 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS AD1HSV1
+****Sub-Circuit for ADH1HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT ADH1HSV1 A B CO S VDD VSS
+XX18 S net098 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX20 bn B VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX33 net0106 B net0171 VPW n11ll_ckt w=310.00n l=40.00n
+XX28 net0171 A VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX32 CO net0106 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX3 net0217 bn net098 VPW n11ll_ckt w=210.00n l=40.00n
+XX9 net0147 B net098 VPW n11ll_ckt w=210.00n l=40.00n
+XX7 net0217 A VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX6 net0147 net0217 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX17 S net098 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX19 bn B VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX8 net0147 bn net098 VNW p11ll_ckt w=310.00n l=40.00n
+XX24 net0106 B VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX23 net0106 A VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX2 net0217 B net098 VNW p11ll_ckt w=310.00n l=40.00n
+XX31 CO net0106 VDD VNW p11ll_ckt w=315.00n l=40.00n
+XX4 net0147 net0217 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net0217 A VDD VNW p11ll_ckt w=420.00n l=40.00n
+.ENDS ADH1HSV1
+****Sub-Circuit for AND2HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AND2HSV1 A1 A2 Z VDD VSS
+XX1 net11 A1 net18 VPW n11ll_ckt w=140.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS AND2HSV1
+****Sub-Circuit for AND2HSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AND2HSV2 A1 A2 Z VDD VSS
+XX1 net11 A1 net18 VPW n11ll_ckt w=140.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS AND2HSV2
+****Sub-Circuit for AND2HSV4, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AND2HSV4 A1 A2 Z VDD VSS
+XX1 net11 A1 net18 VPW n11ll_ckt w=140.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=620.00n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=910.00n l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS AND2HSV4
+****Sub-Circuit for AND2HSV8, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AND2HSV8 A1 A2 Z VDD VSS
+XX1 net11 A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=1.24u l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS AND2HSV8
+****Sub-Circuit for AND3HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AND3HSV1 A1 A2 A3 Z VDD VSS
+XX1 net11 A1 net18 VPW n11ll_ckt w=260.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX4 net_043 A3 VSS VPW n11ll_ckt w=260.00n l=40.00n
+XXN1 net18 A2 net_043 VPW n11ll_ckt w=260.00n l=40.00n
+XX5 net11 A3 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS AND3HSV1
+****Sub-Circuit for AND3HSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AND3HSV2 A1 A2 A3 Z VDD VSS
+XX1 net11 A1 net18 VPW n11ll_ckt w=260.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX4 net_043 A3 VSS VPW n11ll_ckt w=260.00n l=40.00n
+XXN1 net18 A2 net_043 VPW n11ll_ckt w=260.00n l=40.00n
+XX5 net11 A3 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS AND3HSV2
+****Sub-Circuit for AND3HSV4, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AND3HSV4 A1 A2 A3 Z VDD VSS
+XX1 net11 A1 net18 VPW n11ll_ckt w=260.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=620.00n l=40.00n
+XX4 net_043 A3 VSS VPW n11ll_ckt w=260.00n l=40.00n
+XXN1 net18 A2 net_043 VPW n11ll_ckt w=260.00n l=40.00n
+XX5 net11 A3 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=910.00n l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS AND3HSV4
+****Sub-Circuit for AND3HSV8, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AND3HSV8 A1 A2 A3 Z VDD VSS
+XX1 net11 A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=1.24u l=40.00n
+XX4 net_043 A3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 A2 net_043 VPW n11ll_ckt w=310.00n l=40.00n
+XX5 net11 A3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS AND3HSV8
+****Sub-Circuit for AND4HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AND4HSV1 A1 A2 A3 A4 Z VDD VSS
+XX6 net_042 A4 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 net11 A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX4 net_054 A3 net_042 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 A2 net_054 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net11 A4 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX5 net11 A3 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS AND4HSV1
+****Sub-Circuit for AND4HSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AND4HSV2 A1 A2 A3 A4 Z VDD VSS
+XX6 net_042 A4 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 net11 A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX4 net_054 A3 net_042 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 A2 net_054 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net11 A4 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX5 net11 A3 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS AND4HSV2
+****Sub-Circuit for AND4HSV4, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AND4HSV4 A1 A2 A3 A4 Z VDD VSS
+XX6 net_042 A4 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 net11 A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=620.00n l=40.00n
+XX4 net_054 A3 net_042 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 A2 net_054 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net11 A4 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX5 net11 A3 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=910.00n l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS AND4HSV4
+****Sub-Circuit for AND4HSV8, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AND4HSV8 A1 A2 A3 A4 Z VDD VSS
+XX6 net_042 A4 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 net11 A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=1.24u l=40.00n
+XX4 net_054 A3 net_042 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 A2 net_054 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net11 A4 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 net11 A3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS AND4HSV8
+****Sub-Circuit for AOI211HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI211HSV1 A1 A2 B C ZN VDD VSS
+XX6 ZN B VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX1 ZN A1 net4 VPW n11ll_ckt w=210.00n l=40.00n
+XX4 ZN C VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 net4 A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX7 net3 A1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net3 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 net2 B net3 VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN C net2 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS AOI211HSV1
+****Sub-Circuit for AOI211HSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI211HSV2 A1 A2 B C ZN VDD VSS
+XX6 ZN B VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN A1 net4 VPW n11ll_ckt w=310.00n l=40.00n
+XX4 ZN C VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net4 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net3 A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 net3 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net2 B net3 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN C net2 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS AOI211HSV2
+****Sub-Circuit for AOI21HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI21HSV1 A1 A2 B ZN VDD VSS
+XX6 ZN B VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX1 ZN A1 net4 VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 net4 A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX7 net3 A1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net3 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 ZN B net3 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS AOI21HSV1
+****Sub-Circuit for AOI21HSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI21HSV2 A1 A2 B ZN VDD VSS
+XX6 ZN B VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN A1 net4 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net4 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net3 A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 net3 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 ZN B net3 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS AOI21HSV2
+****Sub-Circuit for AOI221HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI221HSV1 A1 A2 B1 B2 C ZN VDD VSS
+XX6 ZN C VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX9 N3 B2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX1 ZN A1 N14 VPW n11ll_ckt w=210.00n l=40.00n
+XX4 ZN B1 N3 VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 N14 A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX8 N9 B1 N11 VNW p11ll_ckt w=310.00n l=40.00n
+XX7 N11 A1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 N11 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 N9 B2 N11 VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN C N9 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS AOI221HSV1
+****Sub-Circuit for AOI221HSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI221HSV2 A1 A2 B1 B2 C ZN VDD VSS
+XX6 ZN C VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX9 N3 B2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN A1 N14 VPW n11ll_ckt w=310.00n l=40.00n
+XX4 ZN B1 N3 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 N14 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX8 N9 B1 N11 VNW p11ll_ckt w=455.00n l=40.00n
+XX7 N11 A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 N11 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 N9 B2 N11 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN C N9 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS AOI221HSV2
+****Sub-Circuit for AOI222HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI222HSV1 A1 A2 B1 B2 C1 C2 ZN VDD VSS
+XX6 ZN C1 net4 VPW n11ll_ckt w=210.00n l=40.00n
+XX10 net4 C2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX9 net5 B2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX1 ZN A1 net6 VPW n11ll_ckt w=210.00n l=40.00n
+XX4 ZN B1 net5 VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 net6 A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX8 net2 B2 net1 VNW p11ll_ckt w=310.0n l=40.00n
+XX11 ZN A2 net2 VNW p11ll_ckt w=310.0n l=40.00n
+XX7 net1 C1 VDD VNW p11ll_ckt w=310.0n l=40.00n
+XX5 net1 C2 VDD VNW p11ll_ckt w=310.0n l=40.00n
+XX0 net2 B1 net1 VNW p11ll_ckt w=310.0n l=40.00n
+XXP1 ZN A1 net2 VNW p11ll_ckt w=310.0n l=40.00n
+.ENDS AOI222HSV1
+****Sub-Circuit for AOI222HSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI222HSV2 A1 A2 B1 B2 C1 C2 ZN VDD VSS
+XX6 ZN C1 net4 VPW n11ll_ckt w=310.00n l=40.00n
+XX10 net4 C2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX9 net5 B2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN A1 net6 VPW n11ll_ckt w=310.00n l=40.00n
+XX4 ZN B1 net5 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net6 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX8 net2 B2 net1 VNW p11ll_ckt w=455.0n l=40.00n
+XX11 ZN A2 net2 VNW p11ll_ckt w=455.0n l=40.00n
+XX7 net1 C1 VDD VNW p11ll_ckt w=455.0n l=40.00n
+XX5 net1 C2 VDD VNW p11ll_ckt w=455.0n l=40.00n
+XX0 net2 B1 net1 VNW p11ll_ckt w=455.0n l=40.00n
+XXP1 ZN A1 net2 VNW p11ll_ckt w=455.0n l=40.00n
+.ENDS AOI222HSV2
+****Sub-Circuit for AOI22HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI22HSV1 A1 A2 B1 B2 ZN VDD VSS
+XX9 N64 B2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX1 ZN A1 N49 VPW n11ll_ckt w=210.00n l=40.00n
+XX4 ZN B1 N64 VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 N49 A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX8 ZN B2 N69 VNW p11ll_ckt w=310.00n l=40.00n
+XX7 N69 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 N69 A1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 ZN B1 N69 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS AOI22HSV1
+****Sub-Circuit for AOI22HSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI22HSV2 A1 A2 B1 B2 ZN VDD VSS
+XX9 N64 B2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN A1 N49 VPW n11ll_ckt w=310.00n l=40.00n
+XX4 ZN B1 N64 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 N49 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX8 ZN B2 N69 VNW p11ll_ckt w=455.00n l=40.00n
+XX7 N69 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 N69 A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 ZN B1 N69 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS AOI22HSV2
+****Sub-Circuit for AOI31HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI31HSV1 A1 A2 A3 B ZN VDD VSS
+XX6 ZN B VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX1 ZN A1 net3 VPW n11ll_ckt w=210.00n l=40.00n
+XX9 net4 A3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 net3 A2 net4 VPW n11ll_ckt w=210.00n l=40.00n
+XX8 net1 A3 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX7 net1 A1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net1 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 ZN B net1 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS AOI31HSV1
+****Sub-Circuit for AOI31HSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI31HSV2 A1 A2 A3 B ZN VDD VSS
+XX6 ZN B VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN A1 net3 VPW n11ll_ckt w=310.00n l=40.00n
+XX9 net4 A3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net3 A2 net4 VPW n11ll_ckt w=310.00n l=40.00n
+XX8 net1 A3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX7 net1 A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 net1 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 ZN B net1 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS AOI31HSV2
+****Sub-Circuit for AOI32HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI32HSV1 A1 A2 A3 B1 B2 ZN VDD VSS
+XX6 ZN B1 net5 VPW n11ll_ckt w=210.00n l=40.00n
+XX1 ZN A1 net3 VPW n11ll_ckt w=210.00n l=40.00n
+XX9 net4 A3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX11 net5 B2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 net3 A2 net4 VPW n11ll_ckt w=210.00n l=40.00n
+XX8 net1 A3 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX10 ZN B2 net1 VNW p11ll_ckt w=310.00n l=40.00n
+XX7 net1 A1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net1 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 ZN B1 net1 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS AOI32HSV1
+****Sub-Circuit for AOI32HSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI32HSV2 A1 A2 A3 B1 B2 ZN VDD VSS
+XX6 ZN B1 net5 VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN A1 net3 VPW n11ll_ckt w=310.00n l=40.00n
+XX9 net4 A3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX11 net5 B2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net3 A2 net4 VPW n11ll_ckt w=310.00n l=40.00n
+XX8 net1 A3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX10 ZN B2 net1 VNW p11ll_ckt w=455.00n l=40.00n
+XX7 net1 A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 net1 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 ZN B1 net1 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS AOI32HSV2
+****Sub-Circuit for AOI33HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI33HSV1 A1 A2 A3 B1 B2 B3 ZN VDD VSS
+XX12 net_69 B3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX6 ZN B1 net5 VPW n11ll_ckt w=210.00n l=40.00n
+XX1 ZN A1 net3 VPW n11ll_ckt w=210.00n l=40.00n
+XX9 net4 A3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX11 net5 B2 net_69 VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 net3 A2 net4 VPW n11ll_ckt w=210.00n l=40.00n
+XX8 net1 A3 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX10 ZN B2 net1 VNW p11ll_ckt w=310.00n l=40.00n
+XX7 net1 A1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net1 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX13 ZN B3 net1 VNW p11ll_ckt w=310.00n l=40.00n
+XX0 ZN B1 net1 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS AOI33HSV1
+****Sub-Circuit for AOI33HSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT AOI33HSV2 A1 A2 A3 B1 B2 B3 ZN VDD VSS
+XX12 net_69 B3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX6 ZN B1 net5 VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN A1 net3 VPW n11ll_ckt w=310.00n l=40.00n
+XX9 net4 A3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX11 net5 B2 net_69 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net3 A2 net4 VPW n11ll_ckt w=310.00n l=40.00n
+XX8 net1 A3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX10 ZN B2 net1 VNW p11ll_ckt w=455.00n l=40.00n
+XX7 net1 A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 net1 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX13 ZN B3 net1 VNW p11ll_ckt w=455.00n l=40.00n
+XX0 ZN B1 net1 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS AOI33HSV2
+****Sub-Circuit for BUFHSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT BUFHSV1 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS BUFHSV1
+****Sub-Circuit for BUFHSV12, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT BUFHSV12 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=1.86u l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=720.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=2.73u l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=1.08u l=40.00n
+.ENDS BUFHSV12
+****Sub-Circuit for BUFHSV16, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT BUFHSV16 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=2.48u l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=930.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=3.64u l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=1.365u l=40.00n
+.ENDS BUFHSV16
+****Sub-Circuit for BUFHSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT BUFHSV2 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS BUFHSV2
+****Sub-Circuit for BUFHSV20, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT BUFHSV20 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=3.1u l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=1.24u l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=4.55u l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=1.82u l=40.00n
+.ENDS BUFHSV20
+****Sub-Circuit for BUFHSV24, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT BUFHSV24 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=3.72u l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=1.55u l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=5.46u l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=2.275u l=40.00n
+.ENDS BUFHSV24
+****Sub-Circuit for BUFHSV3, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT BUFHSV3 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=460.00n l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=190.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=700.00n l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=280.00n l=40.00n
+.ENDS BUFHSV3
+****Sub-Circuit for BUFHSV4, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT BUFHSV4 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=620.00n l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=240.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=910.00n l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=370.00n l=40.00n
+.ENDS BUFHSV4
+****Sub-Circuit for BUFHSV6, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT BUFHSV6 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=930.00n l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=1.365u l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS BUFHSV6
+****Sub-Circuit for BUFHSV8, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT BUFHSV8 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=1.24u l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=480.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=740.00n l=40.00n
+.ENDS BUFHSV8
+****Sub-Circuit for CKMUX2HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CKMUX2HSV1 I0 I1 S Z VDD VSS
+XX47 net41 S net64 VPW n11ll_ckt w=270.00n l=40.00n
+XX51 Z net64 VSS VPW n11ll_ckt w=180.00n l=40.00n
+XX49 net39 I0 VSS VPW n11ll_ckt w=270.00n l=40.00n
+XX31 net41 I1 VSS VPW n11ll_ckt w=270.00n l=40.00n
+XX53 net43 S VSS VPW n11ll_ckt w=270.00n l=40.00n
+XX36 net39 net43 net64 VPW n11ll_ckt w=270.00n l=40.00n
+XX50 net39 I0 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX52 Z net64 VDD VNW p11ll_ckt w=315.00n l=40.00n
+XX48 net41 net43 net64 VNW p11ll_ckt w=310.00n l=40.00n
+XX32 net41 I1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX54 net43 S VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX39 net39 S net64 VNW p11ll_ckt w=300.00n l=40.00n
+.ENDS CKMUX2HSV1
+****Sub-Circuit for CKMUX2HSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CKMUX2HSV2 I0 I1 S Z VDD VSS
+XX47 net41 S net64 VPW n11ll_ckt w=270n l=40.00n
+XX51 Z net64 VSS VPW n11ll_ckt w=250.00n l=40.00n
+XX49 net39 I0 VSS VPW n11ll_ckt w=270.00n l=40.00n
+XX31 net41 I1 VSS VPW n11ll_ckt w=270.00n l=40.00n
+XX53 net43 S VSS VPW n11ll_ckt w=270.00n l=40.00n
+XX36 net39 net43 net64 VPW n11ll_ckt w=270.00n l=40.00n
+XX50 net39 I0 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX52 Z net64 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX48 net41 net43 net64 VNW p11ll_ckt w=310.00n l=40.00n
+XX32 net41 I1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX54 net43 S VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX39 net39 S net64 VNW p11ll_ckt w=300.00n l=40.00n
+.ENDS CKMUX2HSV2
+****Sub-Circuit for CLKAND2HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKAND2HSV1 A1 A2 Z VDD VSS
+XX1 net11 A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=180.00n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=315.00n l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS CLKAND2HSV1
+****Sub-Circuit for CLKAND2HSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKAND2HSV2 A1 A2 Z VDD VSS
+XX1 net11 A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=250.00n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS CLKAND2HSV2
+****Sub-Circuit for CLKAND2HSV4, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKAND2HSV4 A1 A2 Z VDD VSS
+XX1 net11 A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=620.00n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=1.365u l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS CLKAND2HSV4
+****Sub-Circuit for CLKAND2HSV8, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKAND2HSV8 A1 A2 Z VDD VSS
+XX1 net11 A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 Z net11 VSS VPW n11ll_ckt w=1.215u l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 Z net11 VDD VNW p11ll_ckt w=2.73u l=40.00n
+XX0 net11 A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net11 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS CLKAND2HSV8
+****Sub-Circuit for CLKBUFHSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKBUFHSV1 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=180.00n l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=315.00n l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS CLKBUFHSV1
+****Sub-Circuit for CLKBUFHSV12, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKBUFHSV12 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=1.35u l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=450.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=2.73u l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=910.00n l=40.00n
+.ENDS CLKBUFHSV12
+****Sub-Circuit for CLKBUFHSV16, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKBUFHSV16 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=1.8u l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=590.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=3.64u l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=1.2u l=40.00n
+.ENDS CLKBUFHSV16
+****Sub-Circuit for CLKBUFHSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKBUFHSV2 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=250.00n l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS CLKBUFHSV2
+****Sub-Circuit for CLKBUFHSV20, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKBUFHSV20 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=2.295u l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=765.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=4.55u l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=1.6u l=40.00n
+.ENDS CLKBUFHSV20
+****Sub-Circuit for CLKBUFHSV24, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKBUFHSV24 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=2.7u l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=900.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=5.46u l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=1.82u l=40.00n
+.ENDS CLKBUFHSV24
+****Sub-Circuit for CLKBUFHSV3, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKBUFHSV3 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=380.00n l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=190.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=700.00n l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=350.00n l=40.00n
+.ENDS CLKBUFHSV3
+****Sub-Circuit for CLKBUFHSV4, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKBUFHSV4 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=500.00n l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=260.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=910.00n l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=445.00n l=40.00n
+.ENDS CLKBUFHSV4
+****Sub-Circuit for CLKBUFHSV6, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKBUFHSV6 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=720.00n l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=240.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=1.365u l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS CLKBUFHSV6
+****Sub-Circuit for CLKBUFHSV8, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKBUFHSV8 I Z VDD VSS
+XX2 Z net7 VSS VPW n11ll_ckt w=930.00n l=40.00n
+XX0 net7 I VSS VPW n11ll_ckt w=300.00n l=40.00n
+XX3 Z net7 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XX1 net7 I VDD VNW p11ll_ckt w=610.00n l=40.00n
+.ENDS CLKBUFHSV8
+****Sub-Circuit for CLKLANQHSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKLANQHSV1 CK E Q TE VDD VSS
+XX6 net0112 TE VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX9 net0112 E VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX52 nt12 net076 VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX1 c cn VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX2 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Q net0106 VSS VPW n11ll_ckt w=200.00n l=40.00n
+XX36 net0128 c nt12 VPW n11ll_ckt w=150.00n l=40.00n
+XX7 net0106 c net068 VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net068 net076 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net076 net0128 VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX15 net0128 cn net0112 VPW n11ll_ckt w=225.00n l=40.00n
+XX17 net0128 c net170 VNW p11ll_ckt w=280.00n l=40.00n
+XX0 net076 net0128 VDD VNW p11ll_ckt w=280.00n l=40.00n
+XX53 nt11 net076 VDD VNW p11ll_ckt w=155.00n l=40.00n
+XX4 c cn VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 cn CK VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX21 Q net0106 VDD VNW p11ll_ckt w=320.00n l=40.00n
+XX39 net0128 cn nt11 VNW p11ll_ckt w=155.00n l=40.00n
+XX18 net0106 c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net0106 net076 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX8 net0171 TE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX10 net170 E net0171 VNW p11ll_ckt w=280.00n l=40.00n
+.ENDS CLKLANQHSV1
+****Sub-Circuit for CLKLANQHSV12, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKLANQHSV12 CK E Q TE VDD VSS
+XX6 net0112 TE VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX9 net0112 E VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX52 nt12 net076 VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX1 c cn VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX2 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Q net0106 VSS VPW n11ll_ckt w=1.86u l=40.00n
+XX36 net0128 c nt12 VPW n11ll_ckt w=150.00n l=40.00n
+XX7 net0106 c net068 VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net068 net076 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net076 net0128 VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX15 net0128 cn net0112 VPW n11ll_ckt w=225.00n l=40.00n
+XX17 net0128 c net170 VNW p11ll_ckt w=280.00n l=40.00n
+XX0 net076 net0128 VDD VNW p11ll_ckt w=280.00n l=40.00n
+XX53 nt11 net076 VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX4 c cn VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 cn CK VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX21 Q net0106 VDD VNW p11ll_ckt w=2.73u l=40.00n
+XX39 net0128 cn nt11 VNW p11ll_ckt w=150.00n l=40.00n
+XX18 net0106 c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net0106 net076 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX8 net0171 TE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX10 net170 E net0171 VNW p11ll_ckt w=280.00n l=40.00n
+.ENDS CLKLANQHSV12
+****Sub-Circuit for CLKLANQHSV16, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKLANQHSV16 CK E Q TE VDD VSS
+XX6 net0112 TE VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX9 net0112 E VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX52 nt12 net076 VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX1 c cn VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX2 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Q net0106 VSS VPW n11ll_ckt w=2.48u l=40.00n
+XX36 net0128 c nt12 VPW n11ll_ckt w=150.00n l=40.00n
+XX7 net0106 c net068 VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net068 net076 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net076 net0128 VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX15 net0128 cn net0112 VPW n11ll_ckt w=225.00n l=40.00n
+XX17 net0128 c net170 VNW p11ll_ckt w=280.00n l=40.00n
+XX0 net076 net0128 VDD VNW p11ll_ckt w=280.00n l=40.00n
+XX53 nt11 net076 VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX4 c cn VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 cn CK VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX21 Q net0106 VDD VNW p11ll_ckt w=3.64u l=40.00n
+XX39 net0128 cn nt11 VNW p11ll_ckt w=150.00n l=40.00n
+XX18 net0106 c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net0106 net076 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX8 net0171 TE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX10 net170 E net0171 VNW p11ll_ckt w=280.00n l=40.00n
+.ENDS CLKLANQHSV16
+****Sub-Circuit for CLKLANQHSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKLANQHSV2 CK E Q TE VDD VSS
+XX6 net0112 TE VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX9 net0112 E VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX52 nt12 net076 VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX1 c cn VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX2 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Q net0106 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX36 net0128 c nt12 VPW n11ll_ckt w=150.00n l=40.00n
+XX7 net0106 c net068 VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net068 net076 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net076 net0128 VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX15 net0128 cn net0112 VPW n11ll_ckt w=225.00n l=40.00n
+XX17 net0128 c net170 VNW p11ll_ckt w=280.00n l=40.00n
+XX0 net076 net0128 VDD VNW p11ll_ckt w=280.00n l=40.00n
+XX53 nt11 net076 VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX4 c cn VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 cn CK VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX21 Q net0106 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX39 net0128 cn nt11 VNW p11ll_ckt w=150.00n l=40.00n
+XX18 net0106 c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net0106 net076 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX8 net0171 TE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX10 net170 E net0171 VNW p11ll_ckt w=280.00n l=40.00n
+.ENDS CLKLANQHSV2
+****Sub-Circuit for CLKLANQHSV20, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKLANQHSV20 CK E Q TE VDD VSS
+XX6 net0112 TE VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX9 net0112 E VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX52 nt12 net076 VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX1 c cn VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX2 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Q net0106 VSS VPW n11ll_ckt w=3.1u l=40.00n
+XX36 net0128 c nt12 VPW n11ll_ckt w=150.00n l=40.00n
+XX7 net0106 c net068 VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net068 net076 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net076 net0128 VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX15 net0128 cn net0112 VPW n11ll_ckt w=225.00n l=40.00n
+XX17 net0128 c net170 VNW p11ll_ckt w=280.00n l=40.00n
+XX0 net076 net0128 VDD VNW p11ll_ckt w=280.00n l=40.00n
+XX53 nt11 net076 VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX4 c cn VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 cn CK VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX21 Q net0106 VDD VNW p11ll_ckt w=4.55u l=40.00n
+XX39 net0128 cn nt11 VNW p11ll_ckt w=150.00n l=40.00n
+XX18 net0106 c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net0106 net076 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX8 net0171 TE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX10 net170 E net0171 VNW p11ll_ckt w=280.00n l=40.00n
+.ENDS CLKLANQHSV20
+****Sub-Circuit for CLKLANQHSV24, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKLANQHSV24 CK E Q TE VDD VSS
+XX6 net0112 TE VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX9 net0112 E VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX52 nt12 net076 VSS VPW n11ll_ckt w=155.00n l=40.00n
+XX1 c cn VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX2 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Q net0106 VSS VPW n11ll_ckt w=3.72u l=40.00n
+XX36 net0128 c nt12 VPW n11ll_ckt w=155.00n l=40.00n
+XX7 net0106 c net068 VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net068 net076 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net076 net0128 VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX15 net0128 cn net0112 VPW n11ll_ckt w=225.00n l=40.00n
+XX17 net0128 c net170 VNW p11ll_ckt w=280.00n l=40.00n
+XX0 net076 net0128 VDD VNW p11ll_ckt w=280.00n l=40.00n
+XX53 nt11 net076 VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX4 c cn VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 cn CK VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX21 Q net0106 VDD VNW p11ll_ckt w=5.46u l=40.00n
+XX39 net0128 cn nt11 VNW p11ll_ckt w=150.00n l=40.00n
+XX18 net0106 c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net0106 net076 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX8 net0171 TE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX10 net170 E net0171 VNW p11ll_ckt w=280.00n l=40.00n
+.ENDS CLKLANQHSV24
+****Sub-Circuit for CLKLANQHSV3, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKLANQHSV3 CK E Q TE VDD VSS
+XX6 net0112 TE VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX9 net0112 E VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX52 nt12 net076 VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX1 c cn VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX2 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Q net0106 VSS VPW n11ll_ckt w=440.00n l=40.00n
+XX36 net0128 c nt12 VPW n11ll_ckt w=150.00n l=40.00n
+XX7 net0106 c net068 VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net068 net076 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net076 net0128 VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX15 net0128 cn net0112 VPW n11ll_ckt w=225.00n l=40.00n
+XX17 net0128 c net170 VNW p11ll_ckt w=280.00n l=40.00n
+XX0 net076 net0128 VDD VNW p11ll_ckt w=280.00n l=40.00n
+XX53 nt11 net076 VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX4 c cn VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 cn CK VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX21 Q net0106 VDD VNW p11ll_ckt w=670.00n l=40.00n
+XX39 net0128 cn nt11 VNW p11ll_ckt w=150.00n l=40.00n
+XX18 net0106 c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net0106 net076 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX8 net0171 TE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX10 net170 E net0171 VNW p11ll_ckt w=280.00n l=40.00n
+.ENDS CLKLANQHSV3
+****Sub-Circuit for CLKLANQHSV4, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKLANQHSV4 CK E Q TE VDD VSS
+XX6 net0112 TE VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX9 net0112 E VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX52 nt12 net076 VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX1 c cn VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX2 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Q net0106 VSS VPW n11ll_ckt w=560.00n l=40.00n
+XX36 net0128 c nt12 VPW n11ll_ckt w=150.00n l=40.00n
+XX7 net0106 c net068 VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net068 net076 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net076 net0128 VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX15 net0128 cn net0112 VPW n11ll_ckt w=225.00n l=40.00n
+XX17 net0128 c net170 VNW p11ll_ckt w=280.00n l=40.00n
+XX0 net076 net0128 VDD VNW p11ll_ckt w=280.00n l=40.00n
+XX53 nt11 net076 VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX4 c cn VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 cn CK VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX21 Q net0106 VDD VNW p11ll_ckt w=910.00n l=40.00n
+XX39 net0128 cn nt11 VNW p11ll_ckt w=150.00n l=40.00n
+XX18 net0106 c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net0106 net076 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX8 net0171 TE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX10 net170 E net0171 VNW p11ll_ckt w=280.00n l=40.00n
+.ENDS CLKLANQHSV4
+****Sub-Circuit for CLKLANQHSV6, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKLANQHSV6 CK E Q TE VDD VSS
+XX6 net0112 TE VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX9 net0112 E VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX52 nt12 net076 VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX1 c cn VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX2 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Q net0106 VSS VPW n11ll_ckt w=795.00n l=40.00n
+XX36 net0128 c nt12 VPW n11ll_ckt w=150.00n l=40.00n
+XX7 net0106 c net068 VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net068 net076 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net076 net0128 VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX15 net0128 cn net0112 VPW n11ll_ckt w=225.00n l=40.00n
+XX17 net0128 c net170 VNW p11ll_ckt w=280.00n l=40.00n
+XX0 net076 net0128 VDD VNW p11ll_ckt w=280.00n l=40.00n
+XX53 nt11 net076 VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX4 c cn VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 cn CK VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX21 Q net0106 VDD VNW p11ll_ckt w=1.365u l=40.00n
+XX39 net0128 cn nt11 VNW p11ll_ckt w=150.00n l=40.00n
+XX18 net0106 c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net0106 net076 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX8 net0171 TE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX10 net170 E net0171 VNW p11ll_ckt w=280.00n l=40.00n
+.ENDS CLKLANQHSV6
+****Sub-Circuit for CLKLANQHSV8, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKLANQHSV8 CK E Q TE VDD VSS
+XX6 net0112 TE VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX9 net0112 E VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX52 nt12 net076 VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX1 c cn VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX2 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Q net0106 VSS VPW n11ll_ckt w=1.24u l=40.00n
+XX36 net0128 c nt12 VPW n11ll_ckt w=150.00n l=40.00n
+XX7 net0106 c net068 VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net068 net076 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net076 net0128 VSS VPW n11ll_ckt w=225.00n l=40.00n
+XX15 net0128 cn net0112 VPW n11ll_ckt w=225.00n l=40.00n
+XX17 net0128 c net170 VNW p11ll_ckt w=280.00n l=40.00n
+XX0 net076 net0128 VDD VNW p11ll_ckt w=280.00n l=40.00n
+XX53 nt11 net076 VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX4 c cn VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 cn CK VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX21 Q net0106 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XX39 net0128 cn nt11 VNW p11ll_ckt w=150.00n l=40.00n
+XX18 net0106 c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net0106 net076 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX8 net0171 TE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX10 net170 E net0171 VNW p11ll_ckt w=280.00n l=40.00n
+.ENDS CLKLANQHSV8
+****Sub-Circuit for CLKNAND2HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKNAND2HSV1 A1 A2 ZN VDD VSS
+XX1 ZN A1 net18 VPW n11ll_ckt w=280.00n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=315.00n l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=315.00n l=40.00n
+.ENDS CLKNAND2HSV1
+****Sub-Circuit for CLKNAND2HSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKNAND2HSV2 A1 A2 ZN VDD VSS
+XX1 ZN A1 net18 VPW n11ll_ckt w=330.00n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=330.00n l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS CLKNAND2HSV2
+****Sub-Circuit for CLKNAND2HSV3, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKNAND2HSV3 A1 A2 ZN VDD VSS
+XX1 ZN A1 net18 VPW n11ll_ckt w=440.00n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=440.00n l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=680.00n l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=680.00n l=40.00n
+.ENDS CLKNAND2HSV3
+****Sub-Circuit for CLKNAND2HSV4, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKNAND2HSV4 A1 A2 ZN VDD VSS
+XX1 ZN A1 net18 VPW n11ll_ckt w=600.00n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=600.00n l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=910.00n l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=910.00n l=40.00n
+.ENDS CLKNAND2HSV4
+****Sub-Circuit for CLKNAND2HSV8, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKNAND2HSV8 A1 A2 ZN VDD VSS
+XX1 ZN A1 net18 VPW n11ll_ckt w=1.2u l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=1.2u l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=1.82u l=40.00n
+.ENDS CLKNAND2HSV8
+****Sub-Circuit for CLKNHSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKNHSV1 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=180.00n l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=315.0n l=40.00n
+.ENDS CLKNHSV1
+****Sub-Circuit for CLKNHSV12, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKNHSV12 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=1.3u l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=2.73u l=40.00n
+.ENDS CLKNHSV12
+****Sub-Circuit for CLKNHSV16, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKNHSV16 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=1.86u l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=3.64u l=40.00n
+.ENDS CLKNHSV16
+****Sub-Circuit for CLKNHSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKNHSV2 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=250.00n l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=455.0n l=40.00n
+.ENDS CLKNHSV2
+****Sub-Circuit for CLKNHSV20, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKNHSV20 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=2.32u l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=4.55u l=40.00n
+.ENDS CLKNHSV20
+****Sub-Circuit for CLKNHSV24, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKNHSV24 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=2.695u l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=5.46u l=40.00n
+.ENDS CLKNHSV24
+****Sub-Circuit for CLKNHSV3, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKNHSV3 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=400.00n l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=700.0n l=40.00n
+.ENDS CLKNHSV3
+****Sub-Circuit for CLKNHSV4, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKNHSV4 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=490.00n l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=910.00n l=40.00n
+.ENDS CLKNHSV4
+****Sub-Circuit for CLKNHSV6, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKNHSV6 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=720.00n l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=1.365u l=40.00n
+.ENDS CLKNHSV6
+****Sub-Circuit for CLKNHSV8, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKNHSV8 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=915.00n l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=1.82u l=40.00n
+.ENDS CLKNHSV8
+****Sub-Circuit for CLKXOR2HSV1, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKXOR2HSV1 A1 A2 Z VDD VSS
+XX57 Z xna1a2 VSS VPW n11ll_ckt w=180.00n l=40.00n
+XX47 a2n a1n xna1a2 VPW n11ll_ckt w=280.00n l=40.00n
+XX49 a1n A1 VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX55 a2nn a2n VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX53 a2n A2 VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX36 a2nn A1 xna1a2 VPW n11ll_ckt w=280.00n l=40.00n
+XX50 a1n A1 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX58 Z xna1a2 VDD VNW p11ll_ckt w=315.00n l=40.00n
+XX48 a2n A1 xna1a2 VNW p11ll_ckt w=310.00n l=40.00n
+XX56 a2nn a2n VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX54 a2n A2 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX39 a2nn a1n xna1a2 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS CLKXOR2HSV1
+****Sub-Circuit for CLKXOR2HSV2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT CLKXOR2HSV2 A1 A2 Z VDD VSS
+XX57 Z xna1a2 VSS VPW n11ll_ckt w=250.00n l=40.00n
+XX47 a2n a1n xna1a2 VPW n11ll_ckt w=280.00n l=40.00n
+XX49 a1n A1 VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX55 a2nn a2n VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX53 a2n A2 VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX36 a2nn A1 xna1a2 VPW n11ll_ckt w=280.00n l=40.00n
+XX50 a1n A1 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX58 Z xna1a2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX48 a2n A1 xna1a2 VNW p11ll_ckt w=310.00n l=40.00n
+XX56 a2nn a2n VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX54 a2n A2 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX39 a2nn a1n xna1a2 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS CLKXOR2HSV2
+****Sub-Circuit for DELHS2, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT DELHS2 I Z VDD VSS
+XX9 net040 net026 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX4 net026 I VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX5 net050 net026 net040 VPW n11ll_ckt w=140.00n l=40.00n
+XX0 net13 net050 net048 VPW n11ll_ckt w=140.00n l=40.00n
+XX11 net048 net050 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX2 Z net13 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX8 net071 net026 VDD VNW p11ll_ckt w=210.0n l=40.00n
+XX6 net026 I VDD VNW p11ll_ckt w=210.0n l=40.00n
+XX7 net050 net026 net071 VNW p11ll_ckt w=210.0n l=40.00n
+XX1 net13 net050 net091 VNW p11ll_ckt w=210.0n l=40.00n
+XX10 net091 net050 VDD VNW p11ll_ckt w=210.0n l=40.00n
+XX3 Z net13 VDD VNW p11ll_ckt w=455.0n l=40.00n
+.ENDS DELHS2
+****Sub-Circuit for DHSV1, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT DHSV1 CK D Q QN VDD VSS
+XX8 net122 D VDD VNW p11ll_ckt w=235.00n l=40.00n
+XX1 net163 net171 VDD VNW p11ll_ckt w=400.00n l=40.00n
+XX43 Q s VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX2 net163 cn net210 VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net139 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net139 c net210 VNW p11ll_ckt w=120.00n l=40.00n
+XX20 QN net210 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX18 s net210 VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net127 cn net171 VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD net163 net127 VNW p11ll_ckt w=120.00n l=40.00n
+XX10 net171 c net122 VNW p11ll_ckt w=235.00n l=40.00n
+XX42 Q s VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX7 net167 D VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX0 net163 net171 VSS VPW n11ll_ckt w=270.00n l=40.00n
+XX3 net163 c net210 VPW n11ll_ckt w=200.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net194 cn net210 VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net194 VPW n11ll_ckt w=120.00n l=40.00n
+XX19 QN net210 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX17 s net210 VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX12 net178 c net171 VPW n11ll_ckt w=120.00n l=40.00n
+XX11 VSS net163 net178 VPW n11ll_ckt w=120.00n l=40.00n
+XX9 net171 cn net167 VPW n11ll_ckt w=220.00n l=40.00n
+.ENDS DHSV1
+****Sub-Circuit for DHSV2, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT DHSV2 CK D Q QN VDD VSS
+XX42 Q s VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net0217 c net43 VPW n11ll_ckt w=200.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net48 cn net43 VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net48 VPW n11ll_ckt w=120.00n l=40.00n
+XX19 QN net43 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX17 s net43 VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX12 net52 c net0204 VPW n11ll_ckt w=120.00n l=40.00n
+XX11 VSS net0217 net52 VPW n11ll_ckt w=120.00n l=40.00n
+XX9 net0204 cn net69 VPW n11ll_ckt w=220.00n l=40.00n
+XX7 net69 D VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX0 net0217 net0204 VSS VPW n11ll_ckt w=270.00n l=40.00n
+XX43 Q s VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX2 net0217 cn net43 VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net109 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net109 c net43 VNW p11ll_ckt w=120.00n l=40.00n
+XX20 QN net43 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX18 s net43 VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net117 cn net0204 VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD net0217 net117 VNW p11ll_ckt w=120.00n l=40.00n
+XX10 net0204 c net128 VNW p11ll_ckt w=235.00n l=40.00n
+XX8 net128 D VDD VNW p11ll_ckt w=235.00n l=40.00n
+XX1 net0217 net0204 VDD VNW p11ll_ckt w=400.00n l=40.00n
+.ENDS DHSV2
+****Sub-Circuit for DQHSV1, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT DQHSV1 CK D Q VDD VSS
+XX8 net111 D VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX1 net148 net156 VDD VNW p11ll_ckt w=400.00n l=40.00n
+XX43 Q s VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX2 net148 cn net191 VNW p11ll_ckt w=260.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=400.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net124 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net124 c net191 VNW p11ll_ckt w=120.00n l=40.00n
+XX18 s net191 VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net116 cn net156 VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD net148 net116 VNW p11ll_ckt w=120.00n l=40.00n
+XX5 net156 c net111 VNW p11ll_ckt w=250.00n l=40.00n
+XX42 Q s VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX7 net152 D VSS VPW n11ll_ckt w=240.00n l=40.00n
+XX0 net148 net156 VSS VPW n11ll_ckt w=250.00n l=40.00n
+XX3 net148 c net191 VPW n11ll_ckt w=200.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net175 cn net191 VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net175 VPW n11ll_ckt w=120.00n l=40.00n
+XX17 s net191 VSS VPW n11ll_ckt w=200.00n l=40.00n
+XX12 net163 c net156 VPW n11ll_ckt w=120.00n l=40.00n
+XX11 VSS net148 net163 VPW n11ll_ckt w=120.00n l=40.00n
+XX9 net156 cn net152 VPW n11ll_ckt w=240.00n l=40.00n
+.ENDS DQHSV1
+****Sub-Circuit for DQHSV2, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT DQHSV2 CK D Q VDD VSS
+XX42 Q s VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net0217 c net43 VPW n11ll_ckt w=200.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net48 cn net43 VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net48 VPW n11ll_ckt w=120.00n l=40.00n
+XX17 s net43 VSS VPW n11ll_ckt w=200.00n l=40.00n
+XX12 net52 c net0181 VPW n11ll_ckt w=120.00n l=40.00n
+XX11 VSS net0217 net52 VPW n11ll_ckt w=120.00n l=40.00n
+XX9 net0181 cn net69 VPW n11ll_ckt w=240.00n l=40.00n
+XX7 net69 D VSS VPW n11ll_ckt w=240.00n l=40.00n
+XX0 net0217 net0181 VSS VPW n11ll_ckt w=250.00n l=40.00n
+XX43 Q s VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX2 net0217 cn net43 VNW p11ll_ckt w=260.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=400.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net109 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net109 c net43 VNW p11ll_ckt w=120.00n l=40.00n
+XX18 s net43 VDD VNW p11ll_ckt w=390.00n l=40.00n
+XX14 net117 cn net0181 VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD net0217 net117 VNW p11ll_ckt w=120.00n l=40.00n
+XX5 net0181 c net128 VNW p11ll_ckt w=260.00n l=40.00n
+XX8 net128 D VDD VNW p11ll_ckt w=260.00n l=40.00n
+XX1 net0217 net0181 VDD VNW p11ll_ckt w=400.00n l=40.00n
+.ENDS DQHSV2
+****Sub-Circuit for DRNHSV1, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT DRNHSV1 CK D Q QN RDN VDD VSS
+XX21 net128 c net135 VNW p11ll_ckt w=210.00n l=40.00n
+XX8 net128 RDN VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX1 net184 net128 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX43 Q net144 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX4 net135 D VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX19 QN net231 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX2 net184 cn net231 VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD net144 net152 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net152 c net231 VNW p11ll_ckt w=120.00n l=40.00n
+XX15 net144 RDN VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX18 net144 net231 VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net140 cn net128 VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD net184 net140 VNW p11ll_ckt w=120.00n l=40.00n
+XX42 Q net144 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX7 net188 RDN VSS VPW n11ll_ckt w=250.00n l=40.00n
+XX0 net184 net128 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX20 QN net231 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX16 net144 RDN net208 VPW n11ll_ckt w=220.00n l=40.00n
+XX6 net128 cn net192 VPW n11ll_ckt w=250.00n l=40.00n
+XX3 net184 c net231 VPW n11ll_ckt w=200.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net215 cn net231 VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS net144 net215 VPW n11ll_ckt w=120.00n l=40.00n
+XX17 net208 net231 VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX10 VSS RDN net207 VPW n11ll_ckt w=150.00n l=40.00n
+XX12 net199 c net128 VPW n11ll_ckt w=150.00n l=40.00n
+XX11 net207 net184 net199 VPW n11ll_ckt w=150.00n l=40.00n
+XX9 net192 D net188 VPW n11ll_ckt w=250.00n l=40.00n
+.ENDS DRNHSV1
+****Sub-Circuit for DRNHSV2, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT DRNHSV2 CK D Q QN RDN VDD VSS
+XX42 Q net0117 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX20 QN net43 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net0117 RDN net0108 VPW n11ll_ckt w=220.00n l=40.00n
+XX6 net0177 cn net0181 VPW n11ll_ckt w=250.00n l=40.00n
+XX3 net0217 c net43 VPW n11ll_ckt w=200.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net48 cn net43 VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS net0117 net48 VPW n11ll_ckt w=120.00n l=40.00n
+XX17 net0108 net43 VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX10 VSS RDN net0161 VPW n11ll_ckt w=150.00n l=40.00n
+XX12 net52 c net0177 VPW n11ll_ckt w=150.00n l=40.00n
+XX11 net0161 net0217 net52 VPW n11ll_ckt w=150.00n l=40.00n
+XX9 net0181 D net69 VPW n11ll_ckt w=250.00n l=40.00n
+XX7 net69 RDN VSS VPW n11ll_ckt w=250.00n l=40.00n
+XX0 net0217 net0177 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX43 Q net0117 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 net128 D VDD VNW p11ll_ckt w=230.00n l=40.00n
+XX19 QN net43 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX2 net0217 cn net43 VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD net0117 net109 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net109 c net43 VNW p11ll_ckt w=120.00n l=40.00n
+XX15 net0117 RDN VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX18 net0117 net43 VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net117 cn net0177 VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD net0217 net117 VNW p11ll_ckt w=120.00n l=40.00n
+XX21 net0177 c net128 VNW p11ll_ckt w=230.00n l=40.00n
+XX8 net0177 RDN VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX1 net0217 net0177 VDD VNW p11ll_ckt w=420.00n l=40.00n
+.ENDS DRNHSV2
+****Sub-Circuit for DRNQHSV1, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT DRNQHSV1 CK D Q RDN VDD VSS
+XX19 net117 c net124 VNW p11ll_ckt w=210.00n l=40.00n
+XX8 net117 RDN VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX1 net169 net117 VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX43 Q net133 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX4 net124 D VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX2 net169 cn net216 VNW p11ll_ckt w=305.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD net133 net141 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net141 c net216 VNW p11ll_ckt w=120.00n l=40.00n
+XX15 net133 RDN VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX18 net133 net216 VDD VNW p11ll_ckt w=350.00n l=40.00n
+XX14 net129 cn net117 VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD net169 net129 VNW p11ll_ckt w=120.00n l=40.00n
+XX42 Q net133 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX7 net173 RDN VSS VPW n11ll_ckt w=250.00n l=40.00n
+XX0 net169 net117 VSS VPW n11ll_ckt w=265.00n l=40.00n
+XX16 net133 RDN net193 VPW n11ll_ckt w=270.00n l=40.00n
+XX6 net117 cn net177 VPW n11ll_ckt w=250.00n l=40.00n
+XX3 net169 c net216 VPW n11ll_ckt w=190.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net200 cn net216 VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS net133 net200 VPW n11ll_ckt w=120.00n l=40.00n
+XX17 net193 net216 VSS VPW n11ll_ckt w=270.00n l=40.00n
+XX10 VSS RDN net192 VPW n11ll_ckt w=150.00n l=40.00n
+XX12 net184 c net117 VPW n11ll_ckt w=150.00n l=40.00n
+XX11 net192 net169 net184 VPW n11ll_ckt w=150.00n l=40.00n
+XX9 net177 D net173 VPW n11ll_ckt w=250.00n l=40.00n
+.ENDS DRNQHSV1
+****Sub-Circuit for DRNQHSV2, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT DRNQHSV2 CK D Q RDN VDD VSS
+XX42 Q net0117 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net0117 RDN net0108 VPW n11ll_ckt w=270.00n l=40.00n
+XX6 net0177 cn net0181 VPW n11ll_ckt w=250.00n l=40.00n
+XX3 net0217 c net43 VPW n11ll_ckt w=190.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net48 cn net43 VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS net0117 net48 VPW n11ll_ckt w=120.00n l=40.00n
+XX17 net0108 net43 VSS VPW n11ll_ckt w=270.00n l=40.00n
+XX10 VSS RDN net0161 VPW n11ll_ckt w=150.00n l=40.00n
+XX12 net52 c net0177 VPW n11ll_ckt w=150.00n l=40.00n
+XX11 net0161 net0217 net52 VPW n11ll_ckt w=150.00n l=40.00n
+XX9 net0181 D net69 VPW n11ll_ckt w=250.00n l=40.00n
+XX7 net69 RDN VSS VPW n11ll_ckt w=250.00n l=40.00n
+XX0 net0217 net0177 VSS VPW n11ll_ckt w=265.00n l=40.00n
+XX43 Q net0117 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 net128 D VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX2 net0217 cn net43 VNW p11ll_ckt w=305.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD net0117 net109 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net109 c net43 VNW p11ll_ckt w=120.00n l=40.00n
+XX15 net0117 RDN VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX18 net0117 net43 VDD VNW p11ll_ckt w=350.00n l=40.00n
+XX14 net117 cn net0177 VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD net0217 net117 VNW p11ll_ckt w=120.00n l=40.00n
+XX19 net0177 c net128 VNW p11ll_ckt w=210.00n l=40.00n
+XX8 net0177 RDN VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX1 net0217 net0177 VDD VNW p11ll_ckt w=370.00n l=40.00n
+.ENDS DRNQHSV2
+****Sub-Circuit for DRSNHSV1, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT DRSNHSV1 CK D Q QN RDN SDN VDD VSS
+XX5 net147 c net154 VNW p11ll_ckt w=210.00n l=40.00n
+XX8 net147 RDN VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX32 net143 net147 VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX39 VDD SDN net258 VNW p11ll_ckt w=150.00n l=40.00n
+XX43 Q net263 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX4 net154 D VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX31 net143 SDN VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX19 QN net258 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX21 n RDN VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX40 net187 c net258 VNW p11ll_ckt w=150.00n l=40.00n
+XX2 net143 cn net258 VNW p11ll_ckt w=265.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD n net167 VNW p11ll_ckt w=150.00n l=40.00n
+XX25 net167 net263 net187 VNW p11ll_ckt w=150.00n l=40.00n
+XX41 net263 net258 VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net159 cn net147 VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD net143 net159 VNW p11ll_ckt w=120.00n l=40.00n
+XX44 net287 net263 net238 VPW n11ll_ckt w=150.00n l=40.00n
+XX9 net219 D net215 VPW n11ll_ckt w=170.00n l=40.00n
+XX45 net258 cn net287 VPW n11ll_ckt w=150.00n l=40.00n
+XX38 net238 SDN VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX7 net215 RDN VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX42 Q net263 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX20 QN net258 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX22 n RDN VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX47 net263 net258 VSS VPW n11ll_ckt w=315.00n l=40.00n
+XX6 net147 cn net219 VPW n11ll_ckt w=170.00n l=40.00n
+XX3 net143 c net258 VPW n11ll_ckt w=200.00n l=40.00n
+XX33 net143 SDN net247 VPW n11ll_ckt w=310.00n l=40.00n
+XX34 net247 net147 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=235.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX46 net258 n net238 VPW n11ll_ckt w=150.00n l=40.00n
+XX10 VSS RDN net234 VPW n11ll_ckt w=150.00n l=40.00n
+XX12 net226 c net147 VPW n11ll_ckt w=150.00n l=40.00n
+XX11 net234 net143 net226 VPW n11ll_ckt w=150.00n l=40.00n
+.ENDS DRSNHSV1
+****Sub-Circuit for DRSNHSV2, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT DRSNHSV2 CK D Q QN RDN SDN VDD VSS
+XX44 net0224 net0226 net0381 VPW n11ll_ckt w=150.00n l=40.00n
+XX45 net0320 cn net0224 VPW n11ll_ckt w=150.00n l=40.00n
+XX38 net0381 SDN VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX42 Q net0226 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX20 QN net0320 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX22 n RDN VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX47 net0226 net0320 VSS VPW n11ll_ckt w=315.00n l=40.00n
+XX6 net0177 cn net0181 VPW n11ll_ckt w=170.00n l=40.00n
+XX3 net0217 c net0320 VPW n11ll_ckt w=200.00n l=40.00n
+XX33 net0217 SDN net0211 VPW n11ll_ckt w=310.00n l=40.00n
+XX34 net0211 net0177 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=235.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX46 net0320 n net0381 VPW n11ll_ckt w=150.00n l=40.00n
+XX10 VSS RDN net0161 VPW n11ll_ckt w=150.00n l=40.00n
+XX12 net52 c net0177 VPW n11ll_ckt w=150.00n l=40.00n
+XX11 net0161 net0217 net52 VPW n11ll_ckt w=150.00n l=40.00n
+XX9 net0181 D net69 VPW n11ll_ckt w=170.00n l=40.00n
+XX7 net69 RDN VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX39 VDD SDN net0320 VNW p11ll_ckt w=150.00n l=40.00n
+XX43 Q net0226 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 net128 D VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX31 net0217 SDN VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX19 QN net0320 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX21 n RDN VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX40 net0305 c net0320 VNW p11ll_ckt w=150.00n l=40.00n
+XX2 net0217 cn net0320 VNW p11ll_ckt w=265.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD n net109 VNW p11ll_ckt w=150.00n l=40.00n
+XX25 net109 net0226 net0305 VNW p11ll_ckt w=150.00n l=40.00n
+XX41 net0226 net0320 VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net117 cn net0177 VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD net0217 net117 VNW p11ll_ckt w=120.00n l=40.00n
+XX5 net0177 c net128 VNW p11ll_ckt w=210.00n l=40.00n
+XX8 net0177 RDN VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX32 net0217 net0177 VDD VNW p11ll_ckt w=380.00n l=40.00n
+.ENDS DRSNHSV2
+****Sub-Circuit for DSNHSV1, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT DSNHSV1 CK D Q QN SDN VDD VSS
+XX13 VDD net122 net134 VNW p11ll_ckt w=120.00n l=40.00n
+XX5 net218 c net129 VNW p11ll_ckt w=210.00n l=40.00n
+XX45 net178 c net209 VNW p11ll_ckt w=130.00n l=40.00n
+XX32 net122 net218 VDD VNW p11ll_ckt w=280.00n l=40.00n
+XX43 Q net214 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX4 net129 D VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX31 net122 SDN VDD VNW p11ll_ckt w=355.00n l=40.00n
+XX19 QN net209 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX2 net122 cn net209 VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX44 VDD net214 net178 VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD SDN net209 VNW p11ll_ckt w=150.00n l=40.00n
+XX41 net214 net209 VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net134 cn net218 VNW p11ll_ckt w=120.00n l=40.00n
+XX11 VSS net122 net185 VPW n11ll_ckt w=120.00n l=40.00n
+XX49 net238 net214 net230 VPW n11ll_ckt w=150.00n l=40.00n
+XX50 net209 cn net238 VPW n11ll_ckt w=150.00n l=40.00n
+XX38 net230 SDN VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX42 Q net214 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX20 QN net209 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX51 net218 cn net210 VPW n11ll_ckt w=145.00n l=40.00n
+XX47 net214 net209 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX48 net210 D VSS VPW n11ll_ckt w=145.00n l=40.00n
+XX3 net122 c net209 VPW n11ll_ckt w=170.00n l=40.00n
+XX33 net122 SDN net198 VPW n11ll_ckt w=285.00n l=40.00n
+XX34 net198 net218 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX12 net185 c net218 VPW n11ll_ckt w=120.00n l=40.00n
+.ENDS DSNHSV1
+****Sub-Circuit for DSNHSV2, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT DSNHSV2 CK D Q QN SDN VDD VSS
+XX49 net0188 net0226 net0381 VPW n11ll_ckt w=150.00n l=40.00n
+XX50 net0320 cn net0188 VPW n11ll_ckt w=150.00n l=40.00n
+XX38 net0381 SDN VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX42 Q net0226 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX20 QN net0320 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX51 net69 cn net0187 VPW n11ll_ckt w=145.00n l=40.00n
+XX47 net0226 net0320 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX48 net0187 D VSS VPW n11ll_ckt w=145.00n l=40.00n
+XX3 net0217 c net0320 VPW n11ll_ckt w=170.00n l=40.00n
+XX33 net0217 SDN net0211 VPW n11ll_ckt w=285.00n l=40.00n
+XX34 net0211 net69 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX12 net52 c net69 VPW n11ll_ckt w=120.00n l=40.00n
+XX11 VSS net0217 net52 VPW n11ll_ckt w=120.00n l=40.00n
+XX45 net0128 c net0320 VNW p11ll_ckt w=130.00n l=40.00n
+XX43 Q net0226 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 net128 D VDD VNW p11ll_ckt w=220.00n l=40.00n
+XX31 net0217 SDN VDD VNW p11ll_ckt w=355.00n l=40.00n
+XX19 QN net0320 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX2 net0217 cn net0320 VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX44 VDD net0226 net0128 VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD SDN net0320 VNW p11ll_ckt w=150.00n l=40.00n
+XX41 net0226 net0320 VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net117 cn net69 VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD net0217 net117 VNW p11ll_ckt w=120.00n l=40.00n
+XX5 net69 c net128 VNW p11ll_ckt w=220.00n l=40.00n
+XX32 net0217 net69 VDD VNW p11ll_ckt w=290.00n l=40.00n
+.ENDS DSNHSV2
+****Sub-Circuit for DXHSV1, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT DXHSV1 CK DA DB Q QN SA VDD VSS
+XX8 net191 SA VDD VNW p11ll_ckt w=220.00n l=40.00n
+XX1 net200 net256 VDD VNW p11ll_ckt w=330.00n l=40.00n
+XX43 Q s VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX4 sn SA VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX21 net188 sn net191 VNW p11ll_ckt w=220.00n l=40.00n
+XX16 net188 DB net191 VNW p11ll_ckt w=220.00n l=40.00n
+XX2 net200 cn net255 VNW p11ll_ckt w=285.00n l=40.00n
+XX22 net256 c net188 VNW p11ll_ckt w=210.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net160 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net160 c net255 VNW p11ll_ckt w=120.00n l=40.00n
+XX20 QN net255 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX18 s net255 VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net148 cn net256 VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD net200 net148 VNW p11ll_ckt w=120.00n l=40.00n
+XX10 net191 DA VDD VNW p11ll_ckt w=220.00n l=40.00n
+XX42 Q s VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX7 net204 SA VSS VPW n11ll_ckt w=170.00n l=40.00n
+XX0 net200 net256 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX5 sn SA VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX31 net256 cn net216 VPW n11ll_ckt w=170.00n l=40.00n
+XX3 net200 c net255 VPW n11ll_ckt w=210.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net239 cn net255 VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net239 VPW n11ll_ckt w=120.00n l=40.00n
+XX19 QN net255 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX17 s net255 VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX12 net223 c net256 VPW n11ll_ckt w=120.00n l=40.00n
+XX11 VSS net200 net223 VPW n11ll_ckt w=120.00n l=40.00n
+XX9 net216 DA net204 VPW n11ll_ckt w=170.00n l=40.00n
+XX15 net212 DB VSS VPW n11ll_ckt w=170.00n l=40.00n
+XX6 net216 sn net212 VPW n11ll_ckt w=170.00n l=40.00n
+.ENDS DXHSV1
+****Sub-Circuit for DXHSV2, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT DXHSV2 CK DA DB Q QN SA VDD VSS
+XX42 Q s VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX5 sn SA VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX31 net0207 cn net0216 VPW n11ll_ckt w=170.00n l=40.00n
+XX3 net0260 c net43 VPW n11ll_ckt w=230.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net48 cn net43 VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net48 VPW n11ll_ckt w=120.00n l=40.00n
+XX19 QN net43 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX17 s net43 VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX12 net52 c net0207 VPW n11ll_ckt w=120.00n l=40.00n
+XX11 VSS net0260 net52 VPW n11ll_ckt w=120.00n l=40.00n
+XX9 net0216 DA net69 VPW n11ll_ckt w=170.00n l=40.00n
+XX15 net0296 DB VSS VPW n11ll_ckt w=170.00n l=40.00n
+XX6 net0216 sn net0296 VPW n11ll_ckt w=170.00n l=40.00n
+XX7 net69 SA VSS VPW n11ll_ckt w=170.00n l=40.00n
+XX0 net0260 net0207 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX43 Q s VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 sn SA VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX21 net0143 sn net128 VNW p11ll_ckt w=230.00n l=40.00n
+XX16 net0143 DB net128 VNW p11ll_ckt w=230.00n l=40.00n
+XX2 net0260 cn net43 VNW p11ll_ckt w=285.00n l=40.00n
+XX22 net0207 c net0143 VNW p11ll_ckt w=210.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net109 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net109 c net43 VNW p11ll_ckt w=120.00n l=40.00n
+XX20 QN net43 VDD VNW p11ll_ckt w=450.00n l=40.00n
+XX18 s net43 VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net117 cn net0207 VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD net0260 net117 VNW p11ll_ckt w=120.00n l=40.00n
+XX10 net128 DA VDD VNW p11ll_ckt w=230.00n l=40.00n
+XX8 net128 SA VDD VNW p11ll_ckt w=230.00n l=40.00n
+XX1 net0260 net0207 VDD VNW p11ll_ckt w=330.00n l=40.00n
+.ENDS DXHSV2
+****Sub-Circuit for FDCAPHS16, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT FDCAPHS16 VDD VSS
+XX1 VSS net3 net4 VPW n11ll_ckt w=300.0n l=40.00n m=11
+XX0 net3 net4 VDD VNW p11ll_ckt w=340.00n l=40n m=11
+.ENDS FDCAPHS16
+****Sub-Circuit for FDCAPHS32, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT FDCAPHS32 VDD VSS
+XX1 VSS net7 net8 VPW n11ll_ckt w=300.0n l=40.00n m=23
+XX0 net7 net8 VDD VNW p11ll_ckt w=340.00n l=40.00n m=23
+.ENDS FDCAPHS32
+****Sub-Circuit for FDCAPHS4, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT FDCAPHS4 VDD VSS
+XX1 VSS net7 net8 VPW n11ll_ckt w=285.000n l=80.00n
+XX0 net7 net8 VDD VNW p11ll_ckt w=350.00n l=80.00n
+.ENDS FDCAPHS4
+****Sub-Circuit for FDCAPHS64, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT FDCAPHS64 VDD VSS
+XX1 VSS net7 net8 VPW n11ll_ckt w=300.0n l=40.00n m=48
+XX0 net7 net8 VDD VNW p11ll_ckt w=340.00n l=40.00n m=48
+.ENDS FDCAPHS64
+****Sub-Circuit for FDCAPHS8, Wed Sep  5 13:54:26 CST 2012****
+.SUBCKT FDCAPHS8 VDD VSS
+XX1 VSS net7 net8 VPW n11ll_ckt w=300.0n l=40.00n m=5
+XX0 net7 net8 VDD VNW p11ll_ckt w=340.00n l=40.00n m=5
+.ENDS FDCAPHS8
+****Sub-Circuit for FILLTIEHS, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT FILLTIEHS VDD VSS
+.ENDS FILLTIEHS
+****Sub-Circuit for F_DIODEHS2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT F_DIODEHS2 A VDD VSS
+DD1 A VNW pdio11ll PJ=1.36u AREA=0.0756p 
+DD0 VPW A ndio11ll PJ=1.08u AREA=0.056p
+.ENDS F_DIODEHS2
+****Sub-Circuit for F_DIODEHS4, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT F_DIODEHS4 A VDD VSS
+DD1 A VNW pdio11ll PJ=2.68u AREA=0.1824p 
+DD0 VPW A ndio11ll PJ=2.12u AREA=0.1292p
+.ENDS F_DIODEHS4
+****Sub-Circuit for F_DIODEHS8, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT F_DIODEHS8 A VDD VSS
+DD1 A VNW pdio11ll PJ=6.48u AREA=0.4032p 
+DD0 VPW A ndio11ll PJ=5.08u AREA=0.2856p
+.ENDS F_DIODEHS8
+****Sub-Circuit for F_FILLHS1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT F_FILLHS1 VDD VSS
+.ENDS F_FILLHS1
+****Sub-Circuit for F_FILLHS16, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT F_FILLHS16 VDD VSS
+.ENDS F_FILLHS16
+****Sub-Circuit for F_FILLHS2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT F_FILLHS2 VDD VSS
+.ENDS F_FILLHS2
+****Sub-Circuit for F_FILLHS4, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT F_FILLHS4 VDD VSS
+.ENDS F_FILLHS4
+****Sub-Circuit for F_FILLHS8, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT F_FILLHS8 VDD VSS
+.ENDS F_FILLHS8
+****Sub-Circuit for I2NAND4HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT I2NAND4HSV1 A1 A2 B1 B2 ZN VDD VSS
+XX9 a2n A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX6 a1n A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 net031 B2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN a1n net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net039 B1 net031 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 a2n net039 VPW n11ll_ckt w=310.00n l=40.00n
+XX8 a2n A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX7 a1n A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX4 ZN B2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 ZN B1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 ZN a2n VDD VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN a1n VDD VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS I2NAND4HSV1
+****Sub-Circuit for I2NAND4HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT I2NAND4HSV2 A1 A2 B1 B2 ZN VDD VSS
+XX9 a2n A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX6 a1n A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 net031 B2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN a1n net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net039 B1 net031 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 a2n net039 VPW n11ll_ckt w=310.00n l=40.00n
+XX8 a2n A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX7 a1n A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX4 ZN B2 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX5 ZN B1 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX0 ZN a2n VDD VNW p11ll_ckt w=420.00n l=40.00n
+XXP1 ZN a1n VDD VNW p11ll_ckt w=420.00n l=40.00n
+.ENDS I2NAND4HSV2
+****Sub-Circuit for I2NOR4HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT I2NOR4HSV1 A1 A2 B1 B2 ZN VDD VSS
+XX9 a2n A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX6 a1n A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 ZN B2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX1 ZN a1n VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX2 ZN B1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 ZN a2n VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX8 a2n A2 VDD VNW p11ll_ckt w=210.0n l=40.00n
+XX7 a1n A1 VDD VNW p11ll_ckt w=210.0n l=40.00n
+XX4 net0139 B1 net0143 VNW p11ll_ckt w=455.0n l=40.00n
+XX5 ZN B2 net0139 VNW p11ll_ckt w=455.0n l=40.00n
+XX0 net0147 a1n VDD VNW p11ll_ckt w=455.0n l=40.00n
+XXP1 net0143 a2n net0147 VNW p11ll_ckt w=455.0n l=40.00n
+.ENDS I2NOR4HSV1
+****Sub-Circuit for I2NOR4HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT I2NOR4HSV2 A1 A2 B1 B2 ZN VDD VSS
+XX9 a2n A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX6 a1n A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 ZN B2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN a1n VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX2 ZN B1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 ZN a2n VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX8 a2n A2 VDD VNW p11ll_ckt w=210.0n l=40.00n
+XX7 a1n A1 VDD VNW p11ll_ckt w=210.0n l=40.00n
+XX4 net0139 B1 net0143 VNW p11ll_ckt w=455.0n l=40.00n
+XX5 ZN B2 net0139 VNW p11ll_ckt w=455.0n l=40.00n
+XX0 net0147 a1n VDD VNW p11ll_ckt w=455.0n l=40.00n
+XXP1 net0143 a2n net0147 VNW p11ll_ckt w=455.0n l=40.00n
+.ENDS I2NOR4HSV2
+****Sub-Circuit for IAO21HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT IAO21HSV1 A1 A2 B ZN VDD VSS
+XX3 net24 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX2 net24 A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX0 ZN B VSS VPW n11ll_ckt w=210.0n l=40.00n
+XXN1 ZN net24 VSS VPW n11ll_ckt w=210.0n l=40.00n
+XX4 net24 A1 net056 VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net056 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX1 ZN net24 net064 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net064 B VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS IAO21HSV1
+****Sub-Circuit for IAO21HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT IAO21HSV2 A1 A2 B ZN VDD VSS
+XX3 net24 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX2 net24 A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX0 ZN B VSS VPW n11ll_ckt w=310.0n l=40.00n
+XXN1 ZN net24 VSS VPW n11ll_ckt w=310.0n l=40.00n
+XX4 net24 A1 net056 VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net056 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX1 ZN net24 net064 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net064 B VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS IAO21HSV2
+****Sub-Circuit for IAO22HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT IAO22HSV1 A1 A2 B1 B2 ZN VDD VSS
+XX3 net24 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX2 net24 A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX0 ZN B1 net050 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net050 B2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 ZN net24 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX6 net061 B2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 net24 A1 net074 VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net074 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX1 ZN net24 net061 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net061 B1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS IAO22HSV1
+****Sub-Circuit for IAO22HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT IAO22HSV2 A1 A2 B1 B2 ZN VDD VSS
+XX3 net24 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX2 net24 A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX0 ZN B1 net050 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net050 B2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 ZN net24 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX6 net061 B2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 net24 A1 net074 VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net074 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX1 ZN net24 net061 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net061 B1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS IAO22HSV2
+****Sub-Circuit for INAND2HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INAND2HSV1 A1 B1 ZN VDD VSS
+XX3 net021 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX1 ZN net021 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 B1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX4 net021 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX0 ZN B1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN net021 VDD VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS INAND2HSV1
+****Sub-Circuit for INAND2HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INAND2HSV2 A1 B1 ZN VDD VSS
+XX3 net021 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX1 ZN net021 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 B1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX4 net021 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX0 ZN B1 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XXP1 ZN net021 VDD VNW p11ll_ckt w=430.00n l=40.00n
+.ENDS INAND2HSV2
+****Sub-Circuit for INAND3HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INAND3HSV1 A1 B1 B2 ZN VDD VSS
+XX5 net029 B2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net021 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX1 ZN net021 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 B1 net029 VPW n11ll_ckt w=310.00n l=40.00n
+XX6 ZN B2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX4 net021 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX0 ZN B1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN net021 VDD VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS INAND3HSV1
+****Sub-Circuit for INAND3HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INAND3HSV2 A1 B1 B2 ZN VDD VSS
+XX5 net029 B2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net021 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX1 ZN net021 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 B1 net029 VPW n11ll_ckt w=310.00n l=40.00n
+XX6 ZN B2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 net021 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX0 ZN B1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN net021 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS INAND3HSV2
+****Sub-Circuit for INAND4HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INAND4HSV1 A1 B1 B2 B3 ZN VDD VSS
+XX8 net040 B3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX5 net029 B2 net040 VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net021 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX1 ZN net021 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 B1 net029 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 ZN B3 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX6 ZN B2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX4 net021 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX0 ZN B1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN net021 VDD VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS INAND4HSV1
+****Sub-Circuit for INAND4HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INAND4HSV2 A1 B1 B2 B3 ZN VDD VSS
+XX8 net040 B3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX5 net029 B2 net040 VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net021 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX1 ZN net021 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 B1 net029 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 ZN B3 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX6 ZN B2 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX4 net021 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX0 ZN B1 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XXP1 ZN net021 VDD VNW p11ll_ckt w=420.00n l=40.00n
+.ENDS INAND4HSV2
+****Sub-Circuit for INHSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INHSV1 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=310.0n l=40.00n
+.ENDS INHSV1
+****Sub-Circuit for INHSV12, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INHSV12 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=1.4u l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=2.73u l=40.00n
+.ENDS INHSV12
+****Sub-Circuit for INHSV16, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INHSV16 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=2.48u l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=3.64u l=40.00n
+.ENDS INHSV16
+****Sub-Circuit for INHSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INHSV2 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=455.0n l=40.00n
+.ENDS INHSV2
+****Sub-Circuit for INHSV20, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INHSV20 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=3.1u l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=4.55u l=40.00n
+.ENDS INHSV20
+****Sub-Circuit for INHSV24, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INHSV24 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=3.72u l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=5.46u l=40.00n
+.ENDS INHSV24
+****Sub-Circuit for INHSV3, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INHSV3 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=460.00n l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=700.0n l=40.00n
+.ENDS INHSV3
+****Sub-Circuit for INHSV4, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INHSV4 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=620.00n l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=910.0n l=40.00n
+.ENDS INHSV4
+****Sub-Circuit for INHSV6, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INHSV6 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=930.00n l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=1.365u l=40.00n
+.ENDS INHSV6
+****Sub-Circuit for INHSV8, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INHSV8 I ZN VDD VSS
+XXN1 ZN I VSS VPW n11ll_ckt w=1.24u l=40.00n
+XXP1 ZN I VDD VNW p11ll_ckt w=1.82u l=40.00n
+.ENDS INHSV8
+****Sub-Circuit for INOR2HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INOR2HSV1 A1 B1 ZN VDD VSS
+XX2 net27 A1 VSS VPW n11ll_ckt w=140.0n l=40.00n
+XX0 ZN B1 VSS VPW n11ll_ckt w=285.0n l=40.00n
+XXN1 ZN net27 VSS VPW n11ll_ckt w=285.0n l=40.00n
+XX1 ZN net27 net42 VNW p11ll_ckt w=310.00n l=40.00n
+XX3 net27 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net42 B1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS INOR2HSV1
+****Sub-Circuit for INOR2HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INOR2HSV2 A1 B1 ZN VDD VSS
+XX2 net27 A1 VSS VPW n11ll_ckt w=140.0n l=40.00n
+XX0 ZN B1 VSS VPW n11ll_ckt w=285.0n l=40.00n
+XXN1 ZN net27 VSS VPW n11ll_ckt w=285.0n l=40.00n
+XX1 ZN net27 net42 VNW p11ll_ckt w=455.00n l=40.00n
+XX3 net27 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net42 B1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS INOR2HSV2
+****Sub-Circuit for INOR3HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INOR3HSV1 A1 B1 B2 ZN VDD VSS
+XX5 ZN net27 VSS VPW n11ll_ckt w=210.0n l=40.00n
+XX2 net27 A1 VSS VPW n11ll_ckt w=140.0n l=40.00n
+XX0 ZN B1 VSS VPW n11ll_ckt w=210.0n l=40.00n
+XXN1 ZN B2 VSS VPW n11ll_ckt w=210.0n l=40.00n
+XX4 net061 B2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 ZN net27 net42 VNW p11ll_ckt w=455.00n l=40.00n
+XX3 net27 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net42 B1 net061 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS INOR3HSV1
+****Sub-Circuit for INOR3HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INOR3HSV2 A1 B1 B2 ZN VDD VSS
+XX5 ZN net27 VSS VPW n11ll_ckt w=310.0n l=40.00n
+XX2 net27 A1 VSS VPW n11ll_ckt w=140.0n l=40.00n
+XX0 ZN B1 VSS VPW n11ll_ckt w=310.0n l=40.00n
+XXN1 ZN B2 VSS VPW n11ll_ckt w=310.0n l=40.00n
+XX4 net061 B2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 ZN net27 net42 VNW p11ll_ckt w=455.00n l=40.00n
+XX3 net27 A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 net42 B1 net061 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS INOR3HSV2
+****Sub-Circuit for INOR4HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INOR4HSV1 A1 B1 B2 B3 ZN VDD VSS
+XX7 ZN B3 VSS VPW n11ll_ckt w=210.0n l=40.00n
+XX5 ZN net27 VSS VPW n11ll_ckt w=210.0n l=40.00n
+XX2 net27 A1 VSS VPW n11ll_ckt w=140.0n l=40.00n
+XX0 ZN B1 VSS VPW n11ll_ckt w=210.0n l=40.00n
+XXN1 ZN B2 VSS VPW n11ll_ckt w=210.0n l=40.00n
+XX4 net061 B2 net070 VNW p11ll_ckt w=455.0n l=40.00n
+XX6 net070 B3 VDD VNW p11ll_ckt w=455.0n l=40.00n
+XX1 ZN net27 net42 VNW p11ll_ckt w=455.0n l=40.00n
+XX3 net27 A1 VDD VNW p11ll_ckt w=210.0n l=40.00n
+XXP1 net42 B1 net061 VNW p11ll_ckt w=455.0n l=40.00n
+.ENDS INOR4HSV1
+****Sub-Circuit for INOR4HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT INOR4HSV2 A1 B1 B2 B3 ZN VDD VSS
+XX7 ZN B3 VSS VPW n11ll_ckt w=310.0n l=40.00n
+XX5 ZN net27 VSS VPW n11ll_ckt w=310.0n l=40.00n
+XX2 net27 A1 VSS VPW n11ll_ckt w=140.0n l=40.00n
+XX0 ZN B1 VSS VPW n11ll_ckt w=310.0n l=40.00n
+XXN1 ZN B2 VSS VPW n11ll_ckt w=310.0n l=40.00n
+XX4 net061 B2 net070 VNW p11ll_ckt w=455.0n l=40.00n
+XX6 net070 B3 VDD VNW p11ll_ckt w=455.0n l=40.00n
+XX1 ZN net27 net42 VNW p11ll_ckt w=455.0n l=40.00n
+XX3 net27 A1 VDD VNW p11ll_ckt w=210.0n l=40.00n
+XXP1 net42 B1 net061 VNW p11ll_ckt w=455.0n l=40.00n
+.ENDS INOR4HSV2
+****Sub-Circuit for IOA21HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT IOA21HSV1 A1 A2 B ZN VDD VSS
+XX2 ZN net038 net030 VPW n11ll_ckt w=310n l=40.00n
+XX3 net030 B VSS VPW n11ll_ckt w=310n l=40.00n
+XX1 net038 A1 net18 VPW n11ll_ckt w=280n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=280n l=40.00n
+XX4 ZN B VDD VNW p11ll_ckt w=310n l=40.00n
+XX5 ZN net038 VDD VNW p11ll_ckt w=310n l=40.00n
+XX0 net038 A2 VDD VNW p11ll_ckt w=210n l=40.00n
+XXP1 net038 A1 VDD VNW p11ll_ckt w=210n l=40.00n
+.ENDS IOA21HSV1
+****Sub-Circuit for IOA21HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT IOA21HSV2 A1 A2 B ZN VDD VSS
+XX2 ZN net038 net030 VPW n11ll_ckt w=310n l=40.00n
+XX3 net030 B VSS VPW n11ll_ckt w=310n l=40.00n
+XX1 net038 A1 net18 VPW n11ll_ckt w=280n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=280n l=40.00n
+XX4 ZN B VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 ZN net038 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net038 A2 VDD VNW p11ll_ckt w=210n l=40.00n
+XXP1 net038 A1 VDD VNW p11ll_ckt w=210n l=40.00n
+.ENDS IOA21HSV2
+****Sub-Circuit for IOA22HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT IOA22HSV1 A1 A2 B1 B2 ZN VDD VSS
+XX6 net030 B2 VSS VPW n11ll_ckt w=310n l=40.00n
+XX2 ZN net038 net030 VPW n11ll_ckt w=310n l=40.00n
+XX3 net030 B1 VSS VPW n11ll_ckt w=310n l=40.00n
+XX1 net038 A1 net18 VPW n11ll_ckt w=280n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=280n l=40.00n
+XX4 ZN B1 net063 VNW p11ll_ckt w=430n l=40.00n
+XX5 ZN net038 VDD VNW p11ll_ckt w=310n l=40.00n
+XX7 net063 B2 VDD VNW p11ll_ckt w=430n l=40.00n
+XX0 net038 A2 VDD VNW p11ll_ckt w=210n l=40.00n
+XXP1 net038 A1 VDD VNW p11ll_ckt w=210n l=40.00n
+.ENDS IOA22HSV1
+****Sub-Circuit for IOA22HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT IOA22HSV2 A1 A2 B1 B2 ZN VDD VSS
+XX6 net030 B2 VSS VPW n11ll_ckt w=310n l=40.00n
+XX2 ZN net038 net030 VPW n11ll_ckt w=310n l=40.00n
+XX3 net030 B1 VSS VPW n11ll_ckt w=310n l=40.00n
+XX1 net038 A1 net18 VPW n11ll_ckt w=280n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=280n l=40.00n
+XX4 ZN B1 net063 VNW p11ll_ckt w=430n l=40.00n
+XX5 ZN net038 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX7 net063 B2 VDD VNW p11ll_ckt w=430n l=40.00n
+XX0 net038 A2 VDD VNW p11ll_ckt w=210n l=40.00n
+XXP1 net038 A1 VDD VNW p11ll_ckt w=210n l=40.00n
+.ENDS IOA22HSV2
+****Sub-Circuit for LALHSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT LALHSV1 D EN Q QN VDD VSS
+XX46 Q net0104 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX30 cn c VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX27 c EN VSS VPW n11ll_ckt w=140n l=40.00n
+XX19 QN net_0154 VSS VPW n11ll_ckt w=210n l=40.00n
+XX12 net52 cn net0104 VPW n11ll_ckt w=150.00n l=40.00n
+XX11 VSS net_0154 net52 VPW n11ll_ckt w=150.00n l=40.00n
+XX9 net0104 c net69 VPW n11ll_ckt w=190.00n l=40.00n
+XX7 net69 D VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX0 net_0154 net0104 VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX4 net128 D VDD VNW p11ll_ckt w=400n l=40.00n
+XX29 cn c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX28 c EN VDD VNW p11ll_ckt w=210n l=40.00n
+XX20 QN net_0154 VDD VNW p11ll_ckt w=310n l=40.00n
+XX47 Q net0104 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX14 net117 c net0104 VNW p11ll_ckt w=150.00n l=40.00n
+XX13 VDD net_0154 net117 VNW p11ll_ckt w=150.00n l=40.00n
+XX10 net0104 cn net128 VNW p11ll_ckt w=400n l=40.00n
+XX1 net_0154 net0104 VDD VNW p11ll_ckt w=370.00n l=40.00n
+.ENDS LALHSV1
+****Sub-Circuit for LALHSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT LALHSV2 D EN Q QN VDD VSS
+XX46 Q net0104 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX30 cn c VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX27 c EN VSS VPW n11ll_ckt w=140n l=40.00n
+XX19 QN net_0154 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX12 net52 cn net0104 VPW n11ll_ckt w=150.00n l=40.00n
+XX11 VSS net_0154 net52 VPW n11ll_ckt w=150.00n l=40.00n
+XX9 net0104 c net69 VPW n11ll_ckt w=190.00n l=40.00n
+XX7 net69 D VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX0 net_0154 net0104 VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX4 net128 D VDD VNW p11ll_ckt w=400n l=40.00n
+XX29 cn c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX28 c EN VDD VNW p11ll_ckt w=210n l=40.00n
+XX20 QN net_0154 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX47 Q net0104 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX14 net117 c net0104 VNW p11ll_ckt w=150.00n l=40.00n
+XX13 VDD net_0154 net117 VNW p11ll_ckt w=150.00n l=40.00n
+XX10 net0104 cn net128 VNW p11ll_ckt w=400n l=40.00n
+XX1 net_0154 net0104 VDD VNW p11ll_ckt w=370.00n l=40.00n
+.ENDS LALHSV2
+****Sub-Circuit for LALRNHSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT LALRNHSV1 D EN Q QN RDN VDD VSS
+XX46 Q pm VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX44 net_0104 RDN VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX42 VSS RDN net_0119 VPW n11ll_ckt w=150.00n l=40.00n
+XX30 cn c VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX27 c EN VSS VPW n11ll_ckt w=140n l=40.00n
+XX19 QN net_0154 VSS VPW n11ll_ckt w=210n l=40.00n
+XX12 net52 cn pm VPW n11ll_ckt w=150.00n l=40.00n
+XX11 net_0119 net_0154 net52 VPW n11ll_ckt w=150.00n l=40.00n
+XX9 pm c net69 VPW n11ll_ckt w=190.00n l=40.00n
+XX7 net69 D net_0104 VPW n11ll_ckt w=285.00n l=40.00n
+XX0 net_0154 pm VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX43 pm RDN VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX29 cn c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX28 c EN VDD VNW p11ll_ckt w=210n l=40.00n
+XX20 QN net_0154 VDD VNW p11ll_ckt w=310n l=40.00n
+XX47 Q pm VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX14 net117 c pm VNW p11ll_ckt w=150.00n l=40.00n
+XX13 VDD net_0154 net117 VNW p11ll_ckt w=150.00n l=40.00n
+XX10 pm cn net128 VNW p11ll_ckt w=400n l=40.00n
+XX8 net128 D VDD VNW p11ll_ckt w=400n l=40.00n
+XX1 net_0154 pm VDD VNW p11ll_ckt w=370.00n l=40.00n
+.ENDS LALRNHSV1
+****Sub-Circuit for LALRNHSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT LALRNHSV2 D EN Q QN RDN VDD VSS
+XX46 Q pm VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX44 net_0104 RDN VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX42 VSS RDN net_0119 VPW n11ll_ckt w=150.00n l=40.00n
+XX30 cn c VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX27 c EN VSS VPW n11ll_ckt w=140n l=40.00n
+XX19 QN net_0154 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX12 net52 cn pm VPW n11ll_ckt w=150.00n l=40.00n
+XX11 net_0119 net_0154 net52 VPW n11ll_ckt w=150.00n l=40.00n
+XX9 pm c net69 VPW n11ll_ckt w=190.00n l=40.00n
+XX7 net69 D net_0104 VPW n11ll_ckt w=285.00n l=40.00n
+XX0 net_0154 pm VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX43 pm RDN VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX29 cn c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX28 c EN VDD VNW p11ll_ckt w=210n l=40.00n
+XX20 QN net_0154 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX47 Q pm VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX14 net117 c pm VNW p11ll_ckt w=150.00n l=40.00n
+XX13 VDD net_0154 net117 VNW p11ll_ckt w=150.00n l=40.00n
+XX10 pm cn net128 VNW p11ll_ckt w=400n l=40.00n
+XX8 net128 D VDD VNW p11ll_ckt w=400n l=40.00n
+XX1 net_0154 pm VDD VNW p11ll_ckt w=370.00n l=40.00n
+.ENDS LALRNHSV2
+****Sub-Circuit for LALRSNHSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT LALRSNHSV1 D EN Q QN RDN SDN VDD VSS
+XX2 m SDN VSS VPW n11ll_ckt w=140n l=40.00n
+XX6 net0156 RDN VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX46 Q net0152 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX21 net0152 m VSS VPW n11ll_ckt w=170.00n l=40.00n
+XX42 VSS RDN net_0119 VPW n11ll_ckt w=150.00n l=40.00n
+XX30 cn c VSS VPW n11ll_ckt w=315.00n l=40.00n
+XX27 c EN VSS VPW n11ll_ckt w=140n l=40.00n
+XX19 QN net_0154 VSS VPW n11ll_ckt w=210n l=40.00n
+XX12 net52 cn net0152 VPW n11ll_ckt w=150.00n l=40.00n
+XX11 net_0119 net_0154 net52 VPW n11ll_ckt w=150.00n l=40.00n
+XX9 net0152 c net69 VPW n11ll_ckt w=190.00n l=40.00n
+XX7 net69 D net0156 VPW n11ll_ckt w=285.00n l=40.00n
+XX0 net_0154 net0152 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX3 m SDN VDD VNW p11ll_ckt w=210n l=40.00n
+XX18 net0152 RDN net0267 VNW p11ll_ckt w=205.00n l=40.00n
+XX4 net0267 m VDD VNW p11ll_ckt w=205.00n l=40.00n
+XX17 net0272 net_0154 net117 VNW p11ll_ckt w=150.00n l=40.00n
+XX16 net128 D net0251 VNW p11ll_ckt w=400n l=40.00n
+XX29 cn c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX28 c EN VDD VNW p11ll_ckt w=210n l=40.00n
+XX20 QN net_0154 VDD VNW p11ll_ckt w=310n l=40.00n
+XX47 Q net0152 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX14 net117 c net0152 VNW p11ll_ckt w=150.00n l=40.00n
+XX13 VDD m net0272 VNW p11ll_ckt w=150.00n l=40.00n
+XX10 net0152 cn net128 VNW p11ll_ckt w=400n l=40.00n
+XX8 net0251 m VDD VNW p11ll_ckt w=400n l=40.00n
+XX1 net_0154 net0152 VDD VNW p11ll_ckt w=370.00n l=40.00n
+.ENDS LALRSNHSV1
+****Sub-Circuit for LALRSNHSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT LALRSNHSV2 D EN Q QN RDN SDN VDD VSS
+XX2 m SDN VSS VPW n11ll_ckt w=140n l=40.00n
+XX6 net0156 RDN VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX46 Q net0152 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX21 net0152 m VSS VPW n11ll_ckt w=170.00n l=40.00n
+XX42 VSS RDN net_0119 VPW n11ll_ckt w=150.00n l=40.00n
+XX30 cn c VSS VPW n11ll_ckt w=315.00n l=40.00n
+XX27 c EN VSS VPW n11ll_ckt w=140n l=40.00n
+XX19 QN net_0154 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX12 net52 cn net0152 VPW n11ll_ckt w=150.00n l=40.00n
+XX11 net_0119 net_0154 net52 VPW n11ll_ckt w=150.00n l=40.00n
+XX9 net0152 c net69 VPW n11ll_ckt w=190.00n l=40.00n
+XX7 net69 D net0156 VPW n11ll_ckt w=285.00n l=40.00n
+XX0 net_0154 net0152 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX3 m SDN VDD VNW p11ll_ckt w=210n l=40.00n
+XX18 net0152 RDN net0267 VNW p11ll_ckt w=205.00n l=40.00n
+XX4 net0267 m VDD VNW p11ll_ckt w=205.00n l=40.00n
+XX17 net0272 net_0154 net117 VNW p11ll_ckt w=150.00n l=40.00n
+XX16 net128 D net0251 VNW p11ll_ckt w=400n l=40.00n
+XX29 cn c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX28 c EN VDD VNW p11ll_ckt w=210n l=40.00n
+XX20 QN net_0154 VDD VNW p11ll_ckt w=445.00n l=40.00n
+XX47 Q net0152 VDD VNW p11ll_ckt w=445.00n l=40.00n
+XX14 net117 c net0152 VNW p11ll_ckt w=150.00n l=40.00n
+XX13 VDD m net0272 VNW p11ll_ckt w=150.00n l=40.00n
+XX10 net0152 cn net128 VNW p11ll_ckt w=400n l=40.00n
+XX8 net0251 m VDD VNW p11ll_ckt w=400n l=40.00n
+XX1 net_0154 net0152 VDD VNW p11ll_ckt w=355.00n l=40.00n
+.ENDS LALRSNHSV2
+****Sub-Circuit for LALSNHSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT LALSNHSV1 D EN Q QN SDN VDD VSS
+XX2 rn SDN VSS VPW n11ll_ckt w=140n l=40.00n
+XX46 Q net0129 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX44 net0129 rn VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX30 cn c VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX27 c EN VSS VPW n11ll_ckt w=140n l=40.00n
+XX19 QN net_0154 VSS VPW n11ll_ckt w=210n l=40.00n
+XX12 net52 cn net0129 VPW n11ll_ckt w=150.00n l=40.00n
+XX11 VSS net_0154 net52 VPW n11ll_ckt w=150.00n l=40.00n
+XX9 net0129 c net69 VPW n11ll_ckt w=190.00n l=40.00n
+XX7 net69 D VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX0 net_0154 net0129 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX3 rn SDN VDD VNW p11ll_ckt w=210n l=40.00n
+XX4 net128 D net0143 VNW p11ll_ckt w=400n l=40.00n
+XX5 VDD rn net0189 VNW p11ll_ckt w=150.00n l=40.00n
+XX29 cn c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX28 c EN VDD VNW p11ll_ckt w=210n l=40.00n
+XX20 QN net_0154 VDD VNW p11ll_ckt w=310n l=40.00n
+XX47 Q net0129 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX14 net117 c net0129 VNW p11ll_ckt w=150.00n l=40.00n
+XX13 net0189 net_0154 net117 VNW p11ll_ckt w=150.00n l=40.00n
+XX10 net0129 cn net128 VNW p11ll_ckt w=400n l=40.00n
+XX8 net0143 rn VDD VNW p11ll_ckt w=400n l=40.00n
+XX1 net_0154 net0129 VDD VNW p11ll_ckt w=370.00n l=40.00n
+.ENDS LALSNHSV1
+****Sub-Circuit for LALSNHSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT LALSNHSV2 D EN Q QN SDN VDD VSS
+XX46 Q net0119 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net0119 rn VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX3 rn SDN VSS VPW n11ll_ckt w=140n l=40.00n
+XX30 cn c VSS VPW n11ll_ckt w=320.00n l=40.00n
+XX27 c EN VSS VPW n11ll_ckt w=140n l=40.00n
+XX19 QN net_0154 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX12 net52 cn net0119 VPW n11ll_ckt w=150.00n l=40.00n
+XX11 VSS net_0154 net52 VPW n11ll_ckt w=150.00n l=40.00n
+XX9 net0119 c net69 VPW n11ll_ckt w=190.00n l=40.00n
+XX7 net69 D VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX0 net_0154 net0119 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX4 rn SDN VDD VNW p11ll_ckt w=210n l=40.00n
+XX5 net0171 rn VDD VNW p11ll_ckt w=400n l=40.00n
+XX6 VDD rn net0144 VNW p11ll_ckt w=150.00n l=40.00n
+XX29 cn c VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX28 c EN VDD VNW p11ll_ckt w=210n l=40.00n
+XX20 QN net_0154 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX47 Q net0119 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX14 net117 c net0119 VNW p11ll_ckt w=150.00n l=40.00n
+XX13 net0144 net_0154 net117 VNW p11ll_ckt w=150.00n l=40.00n
+XX10 net0119 cn net128 VNW p11ll_ckt w=400n l=40.00n
+XX8 net128 D net0171 VNW p11ll_ckt w=400n l=40.00n
+XX1 net_0154 net0119 VDD VNW p11ll_ckt w=370.00n l=40.00n
+.ENDS LALSNHSV2
+****Sub-Circuit for MAOI222HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MAOI222HSV1 A B C ZN VDD VSS
+XX6 ZN B net4 VPW n11ll_ckt w=210.00n l=40.00n
+XX10 net4 C VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX9 net5 B VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX1 ZN C net6 VPW n11ll_ckt w=210.00n l=40.00n
+XX4 ZN A net5 VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 net6 A VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX8 net2 C net1 VNW p11ll_ckt w=310.00n l=40.00n
+XX11 ZN A net2 VNW p11ll_ckt w=310.00n l=40.00n
+XX7 net1 C VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net1 A VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 net2 B net1 VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN B net2 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS MAOI222HSV1
+****Sub-Circuit for MAOI222HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MAOI222HSV2 A B C ZN VDD VSS
+XX6 ZN B net4 VPW n11ll_ckt w=310.00n l=40.00n
+XX10 net4 C VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX9 net5 B VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN C net6 VPW n11ll_ckt w=310.00n l=40.00n
+XX4 ZN A net5 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net6 A VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX8 net2 C net1 VNW p11ll_ckt w=455.00n l=40.00n
+XX11 ZN A net2 VNW p11ll_ckt w=455.00n l=40.00n
+XX7 net1 C VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 net1 A VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net2 B net1 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN B net2 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS MAOI222HSV2
+****Sub-Circuit for MAOI22HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MAOI22HSV1 A1 A2 B1 B2 ZN VDD VSS
+XX2 net039 A1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 ZN A2 net039 VPW n11ll_ckt w=310.00n l=40.00n
+XX6 ZN net5 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX9 net5 B1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XXN1 net5 B2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX1 net063 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 ZN net5 net063 VNW p11ll_ckt w=455.00n l=40.00n
+XX7 net1 B2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net063 A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net5 B1 net1 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS MAOI22HSV1
+****Sub-Circuit for MAOI22HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MAOI22HSV2 A1 A2 B1 B2 ZN VDD VSS
+XX2 net039 A1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 ZN A2 net039 VPW n11ll_ckt w=310.00n l=40.00n
+XX6 ZN net5 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX9 net5 B1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XXN1 net5 B2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX1 net063 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 ZN net5 net063 VNW p11ll_ckt w=455.00n l=40.00n
+XX7 net1 B2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net063 A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net5 B1 net1 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS MAOI22HSV2
+****Sub-Circuit for MOAI22HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MOAI22HSV1 A1 A2 B1 B2 ZN VDD VSS
+XX2 net039 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX12 ZN net1 net039 VPW n11ll_ckt w=310.00n l=40.00n
+XX6 net039 A1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX10 net1 B1 net055 VPW n11ll_ckt w=280.00n l=40.00n
+XX9 net055 B2 VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX1 net063 A2 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX4 ZN A1 net063 VNW p11ll_ckt w=430.00n l=40.00n
+XX8 net1 B2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX11 ZN net1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX7 net1 B1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS MOAI22HSV1
+****Sub-Circuit for MOAI22HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MOAI22HSV2 A1 A2 B1 B2 ZN VDD VSS
+XX2 net039 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX12 ZN net1 net039 VPW n11ll_ckt w=310.00n l=40.00n
+XX6 net039 A1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX10 net1 B1 net055 VPW n11ll_ckt w=280.00n l=40.00n
+XX9 net055 B2 VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX1 net063 A2 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX4 ZN A1 net063 VNW p11ll_ckt w=430.00n l=40.00n
+XX8 net1 B2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX11 ZN net1 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX7 net1 B1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS MOAI22HSV2
+****Sub-Circuit for MUX2HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MUX2HSV1 I0 I1 S Z VDD VSS
+XX47 net41 S net64 VPW n11ll_ckt w=210.00n l=40.00n
+XX51 Z net64 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX49 net39 I0 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX31 net41 I1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX53 net43 S VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX36 net39 net43 net64 VPW n11ll_ckt w=210.00n l=40.00n
+XX50 net39 I0 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX52 Z net64 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX48 net41 net43 net64 VNW p11ll_ckt w=310.00n l=40.00n
+XX32 net41 I1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX54 net43 S VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX39 net39 S net64 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS MUX2HSV1
+****Sub-Circuit for MUX2HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MUX2HSV2 I0 I1 S Z VDD VSS
+XX47 net41 S net64 VPW n11ll_ckt w=210.00n l=40.00n
+XX51 Z net64 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX49 net39 I0 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX31 net41 I1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX53 net43 S VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX36 net39 net43 net64 VPW n11ll_ckt w=210.00n l=40.00n
+XX50 net39 I0 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX52 Z net64 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX48 net41 net43 net64 VNW p11ll_ckt w=310.00n l=40.00n
+XX32 net41 I1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX54 net43 S VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX39 net39 S net64 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS MUX2HSV2
+****Sub-Circuit for MUX2NHSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MUX2NHSV1 I0 I1 S ZN VDD VSS
+XX47 net41 S ZN VPW n11ll_ckt w=210.00n l=40.00n
+XX49 net39 I0 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX31 net41 I1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX53 net43 S VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX36 net39 net43 ZN VPW n11ll_ckt w=210.00n l=40.00n
+XX50 net39 I0 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX48 net41 net43 ZN VNW p11ll_ckt w=310.00n l=40.00n
+XX32 net41 I1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX54 net43 S VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX39 net39 S ZN VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS MUX2NHSV1
+****Sub-Circuit for MUX2NHSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MUX2NHSV2 I0 I1 S ZN VDD VSS
+XX47 net41 S ZN VPW n11ll_ckt w=310.00n l=40.00n
+XX49 net39 I0 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX31 net41 I1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX53 net43 S VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX36 net39 net43 ZN VPW n11ll_ckt w=310.00n l=40.00n
+XX50 net39 I0 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX48 net41 net43 ZN VNW p11ll_ckt w=365.00n l=40.00n
+XX32 net41 I1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX54 net43 S VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX39 net39 S ZN VNW p11ll_ckt w=365.00n l=40.00n
+.ENDS MUX2NHSV2
+****Sub-Circuit for MUX3HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MUX3HSV1 I0 I1 I2 S0 S1 Z VDD VSS
+XX3 net_0205 I0 net_57 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net_57 sn VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX24 Z net_0201 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX6 net_0205 I1 net_77 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net_77 S0 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net0116 S1 net_0189 VPW n11ll_ckt w=310.00n l=40.00n
+XX14 net0116 net_0205 net_0197 VPW n11ll_ckt w=310.00n l=40.00n
+XX17 net_0189 in VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX15 net_0197 s1n VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX12 s1n S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX26 net_0201 net0116 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX53 sn S0 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX22 in I2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX27 net_0201 net0116 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX23 in I2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX25 Z net_0201 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net_0205 S0 net_108 VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net_108 sn VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 net_108 I0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 net_0205 I1 net_108 VNW p11ll_ckt w=455.00n l=40.00n
+XX13 s1n S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX18 net0116 in net_0268 VNW p11ll_ckt w=455.00n l=40.00n
+XX54 sn S0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX21 net0116 S1 net_0268 VNW p11ll_ckt w=455.00n l=40.00n
+XX20 net_0268 s1n VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net_0268 net_0205 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS MUX3HSV1
+****Sub-Circuit for MUX3HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MUX3HSV2 I0 I1 I2 S0 S1 Z VDD VSS
+XX3 net_0205 I0 net_57 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net_57 sn VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX24 Z net_0201 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX6 net_0205 I1 net_77 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net_77 S0 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net0116 S1 net_0189 VPW n11ll_ckt w=310.00n l=40.00n
+XX14 net0116 net_0205 net_0197 VPW n11ll_ckt w=310.00n l=40.00n
+XX17 net_0189 in VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX15 net_0197 s1n VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX12 s1n S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX26 net_0201 net0116 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX53 sn S0 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX22 in I2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX27 net_0201 net0116 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX23 in I2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX25 Z net_0201 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 net_0205 S0 net_108 VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net_108 sn VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 net_108 I0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 net_0205 I1 net_108 VNW p11ll_ckt w=455.00n l=40.00n
+XX13 s1n S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX18 net0116 in net_0268 VNW p11ll_ckt w=455.00n l=40.00n
+XX54 sn S0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX21 net0116 S1 net_0268 VNW p11ll_ckt w=455.00n l=40.00n
+XX20 net_0268 s1n VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net_0268 net_0205 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS MUX3HSV2
+****Sub-Circuit for MUX3NHSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MUX3NHSV1 I0 I1 I2 S0 S1 ZN VDD VSS
+XX3 net_0205 I0 net_57 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net_57 sn VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX24 ZN net_0201 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX6 net_0205 I1 net_77 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net_77 S0 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net_0201 S1 net_0189 VPW n11ll_ckt w=310.00n l=40.00n
+XX14 net_0201 net_0205 net_0197 VPW n11ll_ckt w=310.00n l=40.00n
+XX17 net_0189 in VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX15 net_0197 s1n VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX12 s1n S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX53 sn S0 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX22 in I2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX23 in I2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX25 ZN net_0201 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net_0205 S0 net_108 VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net_108 sn VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 net_108 I0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 net_0205 I1 net_108 VNW p11ll_ckt w=455.00n l=40.00n
+XX13 s1n S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX18 net_0201 in net_0268 VNW p11ll_ckt w=455.00n l=40.00n
+XX54 sn S0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX21 net_0201 S1 net_0268 VNW p11ll_ckt w=455.00n l=40.00n
+XX20 net_0268 s1n VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net_0268 net_0205 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS MUX3NHSV1
+****Sub-Circuit for MUX3NHSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MUX3NHSV2 I0 I1 I2 S0 S1 ZN VDD VSS
+XX3 net_0205 I0 net_57 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net_57 sn VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX24 ZN net_0201 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX6 net_0205 I1 net_77 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net_77 S0 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX16 net_0201 S1 net_0189 VPW n11ll_ckt w=310.00n l=40.00n
+XX14 net_0201 net_0205 net_0197 VPW n11ll_ckt w=310.00n l=40.00n
+XX17 net_0189 in VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX15 net_0197 s1n VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX12 s1n S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX53 sn S0 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX22 in I2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX23 in I2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX25 ZN net_0201 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 net_0205 S0 net_108 VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net_108 sn VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 net_108 I0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 net_0205 I1 net_108 VNW p11ll_ckt w=455.00n l=40.00n
+XX13 s1n S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX18 net_0201 in net_0268 VNW p11ll_ckt w=455.00n l=40.00n
+XX54 sn S0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX21 net_0201 S1 net_0268 VNW p11ll_ckt w=455.00n l=40.00n
+XX20 net_0268 s1n VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net_0268 net_0205 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS MUX3NHSV2
+****Sub-Circuit for MUX4HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MUX4HSV1 I0 I1 I2 I3 S0 S1 Z VDD VSS
+XX28 net164 I3 net160 VPW n11ll_ckt w=310.00n l=40.00n
+XX29 net160 S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX30 net164 s1n net152 VPW n11ll_ckt w=310.00n l=40.00n
+XX31 net152 I1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net168 S0 net172 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net172 net164 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX6 net168 m net180 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net180 sn VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX16 m I0 net136 VPW n11ll_ckt w=310.00n l=40.00n
+XX14 m I2 net140 VPW n11ll_ckt w=310.00n l=40.00n
+XX17 net136 s1n VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX15 net140 S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX12 s1n S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX38 Z net148 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX36 net148 net168 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX53 sn S0 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX32 net164 I1 net235 VNW p11ll_ckt w=455.00n l=40.00n
+XX33 net235 I3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX34 net235 S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX35 net164 s1n net235 VNW p11ll_ckt w=455.00n l=40.00n
+XX5 net168 sn net239 VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net239 net164 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX37 net148 net168 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 net239 S0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 net168 m net239 VNW p11ll_ckt w=455.00n l=40.00n
+XX13 s1n S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX18 m s1n net199 VNW p11ll_ckt w=455.00n l=40.00n
+XX54 sn S0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX39 Z net148 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX21 m I0 net199 VNW p11ll_ckt w=455.00n l=40.00n
+XX20 net199 I2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net199 S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS MUX4HSV1
+****Sub-Circuit for MUX4HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MUX4HSV2 I0 I1 I2 I3 S0 S1 Z VDD VSS
+XX28 net164 I3 net160 VPW n11ll_ckt w=310.00n l=40.00n
+XX29 net160 S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX30 net164 s1n net152 VPW n11ll_ckt w=310.00n l=40.00n
+XX31 net152 I1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net168 S0 net172 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net172 net164 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX6 net168 m net180 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net180 sn VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX16 m I0 net136 VPW n11ll_ckt w=310.00n l=40.00n
+XX14 m I2 net140 VPW n11ll_ckt w=310.00n l=40.00n
+XX17 net136 s1n VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX15 net140 S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX12 s1n S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX38 Z net148 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX36 net148 net168 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX53 sn S0 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX32 net164 I1 net235 VNW p11ll_ckt w=455.00n l=40.00n
+XX33 net235 I3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX34 net235 S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX35 net164 s1n net235 VNW p11ll_ckt w=455.00n l=40.00n
+XX5 net168 sn net239 VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net239 net164 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX37 net148 net168 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 net239 S0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 net168 m net239 VNW p11ll_ckt w=455.00n l=40.00n
+XX13 s1n S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX18 m s1n net199 VNW p11ll_ckt w=455.00n l=40.00n
+XX54 sn S0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX39 Z net148 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX21 m I0 net199 VNW p11ll_ckt w=455.00n l=40.00n
+XX20 net199 I2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net199 S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS MUX4HSV2
+****Sub-Circuit for MUX4NHSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MUX4NHSV1 I0 I1 I2 I3 S0 S1 ZN VDD VSS
+XX28 net164 I3 net160 VPW n11ll_ckt w=310.00n l=40.00n
+XX29 net160 S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX30 net164 s1n net152 VPW n11ll_ckt w=310.00n l=40.00n
+XX31 net152 I1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net168 S0 net172 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net172 net164 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX6 net168 m net180 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net180 sn VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX16 m I0 net136 VPW n11ll_ckt w=290.00n l=40.00n
+XX14 m I2 net140 VPW n11ll_ckt w=310.00n l=40.00n
+XX17 net136 s1n VSS VPW n11ll_ckt w=290.00n l=40.00n
+XX15 net140 S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX12 s1n S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX38 ZN net168 VSS VPW n11ll_ckt w=215.00n l=40.00n
+XX53 sn S0 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX32 net164 I1 net235 VNW p11ll_ckt w=455.00n l=40.00n
+XX33 net235 I3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX34 net235 S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX35 net164 s1n net235 VNW p11ll_ckt w=455.00n l=40.00n
+XX5 net168 sn net239 VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net239 net164 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 net239 S0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 net168 m net239 VNW p11ll_ckt w=455.00n l=40.00n
+XX13 s1n S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX18 m s1n net199 VNW p11ll_ckt w=455.00n l=40.00n
+XX54 sn S0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX39 ZN net168 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX21 m I0 net199 VNW p11ll_ckt w=455.00n l=40.00n
+XX20 net199 I2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net199 S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS MUX4NHSV1
+****Sub-Circuit for MUX4NHSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT MUX4NHSV2 I0 I1 I2 I3 S0 S1 ZN VDD VSS
+XX28 net164 I3 net160 VPW n11ll_ckt w=310.00n l=40.00n
+XX29 net160 S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX30 net164 s1n net152 VPW n11ll_ckt w=310.00n l=40.00n
+XX31 net152 I1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net168 S0 net172 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net172 net164 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX6 net168 m net180 VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net180 sn VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX16 m I0 net136 VPW n11ll_ckt w=310.00n l=40.00n
+XX14 m I2 net140 VPW n11ll_ckt w=310.00n l=40.00n
+XX17 net136 s1n VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX15 net140 S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX12 s1n S1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX38 ZN net168 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX53 sn S0 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX32 net164 I1 net235 VNW p11ll_ckt w=455.00n l=40.00n
+XX33 net235 I3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX34 net235 S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX35 net164 s1n net235 VNW p11ll_ckt w=455.00n l=40.00n
+XX5 net168 sn net239 VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net239 net164 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 net239 S0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 net168 m net239 VNW p11ll_ckt w=455.00n l=40.00n
+XX13 s1n S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX18 m s1n net199 VNW p11ll_ckt w=455.00n l=40.00n
+XX54 sn S0 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX39 ZN net168 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX21 m I0 net199 VNW p11ll_ckt w=455.00n l=40.00n
+XX20 net199 I2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX19 net199 S1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS MUX4NHSV2
+****Sub-Circuit for NAND2HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NAND2HSV1 A1 A2 ZN VDD VSS
+XX1 ZN A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS NAND2HSV1
+****Sub-Circuit for NAND2HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NAND2HSV2 A1 A2 ZN VDD VSS
+XX1 ZN A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS NAND2HSV2
+****Sub-Circuit for NAND2HSV3, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NAND2HSV3 A1 A2 ZN VDD VSS
+XX1 ZN A1 net18 VPW n11ll_ckt w=460.00n l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=460.00n l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=680.00n l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=680.00n l=40.00n
+.ENDS NAND2HSV3
+****Sub-Circuit for NAND2HSV8, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NAND2HSV8 A1 A2 ZN VDD VSS
+XX1 ZN A1 net18 VPW n11ll_ckt w=1.24u l=40.00n
+XXN1 net18 A2 VSS VPW n11ll_ckt w=1.24u l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=1.82u l=40.00n
+.ENDS NAND2HSV8
+****Sub-Circuit for NAND3HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NAND3HSV1 A1 A2 A3 ZN VDD VSS
+XX1 ZN A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net022 A3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 A2 net022 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 ZN A3 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS NAND3HSV1
+****Sub-Circuit for NAND3HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NAND3HSV2 A1 A2 A3 ZN VDD VSS
+XX1 ZN A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net022 A3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 A2 net022 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 ZN A3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS NAND3HSV2
+****Sub-Circuit for NAND3HSV3, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NAND3HSV3 A1 A2 A3 ZN VDD VSS
+XX1 ZN A1 net18 VPW n11ll_ckt w=460.00n l=40.00n
+XX3 net022 A3 VSS VPW n11ll_ckt w=460.00n l=40.00n
+XXN1 net18 A2 net022 VPW n11ll_ckt w=460.00n l=40.00n
+XX2 ZN A3 VDD VNW p11ll_ckt w=680.00n l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=680.00n l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=680.00n l=40.00n
+.ENDS NAND3HSV3
+****Sub-Circuit for NAND3HSV8, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NAND3HSV8 A1 A2 A3 ZN VDD VSS
+XX1 ZN A1 net18 VPW n11ll_ckt w=1.24u l=40.00n
+XX3 net022 A3 VSS VPW n11ll_ckt w=1.24u l=40.00n
+XXN1 net18 A2 net022 VPW n11ll_ckt w=1.24u l=40.00n
+XX2 ZN A3 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=1.82u l=40.00n
+.ENDS NAND3HSV8
+****Sub-Circuit for NAND4HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NAND4HSV1 A1 A2 A3 A4 ZN VDD VSS
+XX4 net026 A4 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net022 A3 net026 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 A2 net022 VPW n11ll_ckt w=310.00n l=40.00n
+XX5 ZN A4 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX2 ZN A3 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS NAND4HSV1
+****Sub-Circuit for NAND4HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NAND4HSV2 A1 A2 A3 A4 ZN VDD VSS
+XX4 net026 A4 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net022 A3 net026 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 A2 net022 VPW n11ll_ckt w=310.00n l=40.00n
+XX5 ZN A4 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX2 ZN A3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS NAND4HSV2
+****Sub-Circuit for NAND4HSV3, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NAND4HSV3 A1 A2 A3 A4 ZN VDD VSS
+XX4 net026 A4 VSS VPW n11ll_ckt w=460.00n l=40.00n
+XX1 ZN A1 net18 VPW n11ll_ckt w=460.00n l=40.00n
+XX3 net022 A3 net026 VPW n11ll_ckt w=460.00n l=40.00n
+XXN1 net18 A2 net022 VPW n11ll_ckt w=460.00n l=40.00n
+XX5 ZN A4 VDD VNW p11ll_ckt w=680.00n l=40.00n
+XX2 ZN A3 VDD VNW p11ll_ckt w=680.00n l=40.00n
+XX0 ZN A2 VDD VNW p11ll_ckt w=680.00n l=40.00n
+XXP1 ZN A1 VDD VNW p11ll_ckt w=680.00n l=40.00n
+.ENDS NAND4HSV3
+****Sub-Circuit for NAND4HSV8, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NAND4HSV8 A1 A2 A3 A4 ZN VDD VSS
+XX8 ZN net036 VSS VPW n11ll_ckt w=1.24u l=40.00n
+XX7 net036 net060 VSS VPW n11ll_ckt w=620.00n l=40.00n
+XX4 net026 A4 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 net060 A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net022 A3 net026 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net18 A2 net022 VPW n11ll_ckt w=310.00n l=40.00n
+XX9 ZN net036 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XX5 net060 A4 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX2 net060 A3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX6 net036 net060 VDD VNW p11ll_ckt w=910.00n l=40.00n
+XX0 net060 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net060 A1 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS NAND4HSV8
+****Sub-Circuit for NOR2HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NOR2HSV1 A1 A2 ZN VDD VSS
+XX0 ZN A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 ZN A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX1 ZN A1 net34 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net34 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS NOR2HSV1
+****Sub-Circuit for NOR2HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NOR2HSV2 A1 A2 ZN VDD VSS
+XX0 ZN A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 ZN A1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN A1 net34 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net34 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS NOR2HSV2
+****Sub-Circuit for NOR2HSV3, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NOR2HSV3 A1 A2 ZN VDD VSS
+XX0 ZN A2 VSS VPW n11ll_ckt w=460.00n l=40.00n
+XXN1 ZN A1 VSS VPW n11ll_ckt w=460.00n l=40.00n
+XX1 ZN A1 net34 VNW p11ll_ckt w=700.00n l=40.00n
+XXP1 net34 A2 VDD VNW p11ll_ckt w=700.00n l=40.00n
+.ENDS NOR2HSV3
+****Sub-Circuit for NOR2HSV8, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NOR2HSV8 A1 A2 ZN VDD VSS
+XX0 ZN A2 VSS VPW n11ll_ckt w=1.2u l=40.00n
+XXN1 ZN A1 VSS VPW n11ll_ckt w=1.2u l=40.00n
+XX1 ZN A1 net34 VNW p11ll_ckt w=1.8u l=40.00n
+XXP1 net34 A2 VDD VNW p11ll_ckt w=1.8u l=40.00n
+.ENDS NOR2HSV8
+****Sub-Circuit for NOR3HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NOR3HSV1 A1 A2 A3 ZN VDD VSS
+XX3 ZN A3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX0 ZN A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 ZN A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX2 net47 A3 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX1 ZN A1 net43 VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 net43 A2 net47 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS NOR3HSV1
+****Sub-Circuit for NOR3HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NOR3HSV2 A1 A2 A3 ZN VDD VSS
+XX3 ZN A3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX0 ZN A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 ZN A1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net47 A3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 ZN A1 net43 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net43 A2 net47 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS NOR3HSV2
+****Sub-Circuit for NOR3HSV3, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NOR3HSV3 A1 A2 A3 ZN VDD VSS
+XX3 ZN A3 VSS VPW n11ll_ckt w=460.00n l=40.00n
+XX0 ZN A2 VSS VPW n11ll_ckt w=460.00n l=40.00n
+XXN1 ZN A1 VSS VPW n11ll_ckt w=460.00n l=40.00n
+XX2 net47 A3 VDD VNW p11ll_ckt w=680.00n l=40.00n
+XX1 ZN A1 net43 VNW p11ll_ckt w=680.00n l=40.00n
+XXP1 net43 A2 net47 VNW p11ll_ckt w=680.00n l=40.00n
+.ENDS NOR3HSV3
+****Sub-Circuit for NOR3HSV8, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NOR3HSV8 A1 A2 A3 ZN VDD VSS
+XX3 ZN A3 VSS VPW n11ll_ckt w=1.24u l=40.00n
+XX0 ZN A2 VSS VPW n11ll_ckt w=1.24u l=40.00n
+XXN1 ZN A1 VSS VPW n11ll_ckt w=1.24u l=40.00n
+XX2 net47 A3 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XX1 ZN A1 net43 VNW p11ll_ckt w=1.82u l=40.00n
+XXP1 net43 A2 net47 VNW p11ll_ckt w=1.82u l=40.00n
+.ENDS NOR3HSV8
+****Sub-Circuit for NOR4HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NOR4HSV1 A1 A2 A3 A4 ZN VDD VSS
+XX4 ZN A4 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX3 ZN A3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX0 ZN A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 ZN A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX5 net047 A4 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX2 net47 A3 net047 VNW p11ll_ckt w=455.00n l=40.00n
+XX1 ZN A1 net43 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net43 A2 net47 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS NOR4HSV1
+****Sub-Circuit for NOR4HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NOR4HSV2 A1 A2 A3 A4 ZN VDD VSS
+XX4 ZN A4 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 ZN A3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX0 ZN A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 ZN A1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX5 net047 A4 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX2 net47 A3 net047 VNW p11ll_ckt w=455.00n l=40.00n
+XX1 ZN A1 net43 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net43 A2 net47 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS NOR4HSV2
+****Sub-Circuit for NOR4HSV3, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NOR4HSV3 A1 A2 A3 A4 ZN VDD VSS
+XX4 ZN A4 VSS VPW n11ll_ckt w=460.00n l=40.00n
+XX3 ZN A3 VSS VPW n11ll_ckt w=460.00n l=40.00n
+XX0 ZN A2 VSS VPW n11ll_ckt w=460.00n l=40.00n
+XXN1 ZN A1 VSS VPW n11ll_ckt w=460.00n l=40.00n
+XX5 net047 A4 VDD VNW p11ll_ckt w=680.00n l=40.00n
+XX2 net47 A3 net047 VNW p11ll_ckt w=680.00n l=40.00n
+XX1 ZN A1 net43 VNW p11ll_ckt w=680.00n l=40.00n
+XXP1 net43 A2 net47 VNW p11ll_ckt w=680.00n l=40.00n
+.ENDS NOR4HSV3
+****Sub-Circuit for NOR4HSV8, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT NOR4HSV8 A1 A2 A3 A4 ZN VDD VSS
+XX7 net033 net049 VSS VPW n11ll_ckt w=620.00n l=40.00n
+XX8 ZN net033 VSS VPW n11ll_ckt w=1.24u l=40.00n
+XX4 net049 A4 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net049 A3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX0 net049 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net049 A1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX9 ZN net033 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XX5 net047 A4 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX2 net47 A3 net047 VNW p11ll_ckt w=455.00n l=40.00n
+XX1 net049 A1 net43 VNW p11ll_ckt w=455.00n l=40.00n
+XX6 net033 net049 VDD VNW p11ll_ckt w=910.00n l=40.00n
+XXP1 net43 A2 net47 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS NOR4HSV8
+****Sub-Circuit for OAI211HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT OAI211HSV1 A1 A2 B C ZN VDD VSS
+XX2 ZN B net030 VPW n11ll_ckt w=210.00n l=40.00n
+XX3 net030 C net027 VPW n11ll_ckt w=210.00n l=40.00n
+XX1 net027 A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 net027 A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX4 ZN B VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 ZN C VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 net067 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS OAI211HSV1
+****Sub-Circuit for OAI211HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT OAI211HSV2 A1 A2 B C ZN VDD VSS
+XX2 ZN B net030 VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net030 C net027 VPW n11ll_ckt w=310.00n l=40.00n
+XX1 net027 A1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net027 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX4 ZN B VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 ZN C VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net067 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS OAI211HSV2
+****Sub-Circuit for OAI21HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT OAI21HSV1 A1 A2 B ZN VDD VSS
+XX2 ZN B net029 VPW n11ll_ckt w=210.00n l=40.00n
+XX1 net029 A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 net029 A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX4 ZN B VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 net067 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS OAI21HSV1
+****Sub-Circuit for OAI21HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT OAI21HSV2 A1 A2 B ZN VDD VSS
+XX2 ZN B net029 VPW n11ll_ckt w=310.00n l=40.00n
+XX1 net029 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net029 A1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX4 ZN B VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net067 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS OAI21HSV2
+****Sub-Circuit for OAI221HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT OAI221HSV1 A1 A2 B1 B2 C ZN VDD VSS
+XX9 net18 B2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX2 net18 B1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX3 ZN C net045 VPW n11ll_ckt w=210.00n l=40.00n
+XX1 net045 A2 net18 VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 net045 A1 net18 VPW n11ll_ckt w=210.00n l=40.00n
+XX8 net071 B2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX4 ZN B1 net071 VNW p11ll_ckt w=310.00n l=40.00n
+XX5 ZN C VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 net067 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS OAI221HSV1
+****Sub-Circuit for OAI221HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT OAI221HSV2 A1 A2 B1 B2 C ZN VDD VSS
+XX9 net18 B2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net18 B1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 ZN C net045 VPW n11ll_ckt w=310.00n l=40.00n
+XX1 net045 A2 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net045 A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX8 net071 B2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 ZN B1 net071 VNW p11ll_ckt w=455.00n l=40.00n
+XX5 ZN C VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net067 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS OAI221HSV2
+****Sub-Circuit for OAI222HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT OAI222HSV1 A1 A2 B1 B2 C1 C2 ZN VDD VSS
+XX12 net030 B2 VSS VPW n11ll_ckt w=210n l=40.00n
+XX9 net18 A2 net030 VPW n11ll_ckt w=210n l=40.00n
+XX2 net18 A1 net030 VPW n11ll_ckt w=210n l=40.00n
+XX3 net030 B1 VSS VPW n11ll_ckt w=210n l=40.00n
+XX1 ZN C1 net18 VPW n11ll_ckt w=210n l=40.00n
+XXN1 ZN C2 net18 VPW n11ll_ckt w=210n l=40.00n
+XX8 net071 B2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX10 net073 C2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX11 ZN C1 net073 VNW p11ll_ckt w=310.00n l=40.00n
+XX4 ZN B1 net071 VNW p11ll_ckt w=310.00n l=40.00n
+XX0 net067 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS OAI222HSV1
+****Sub-Circuit for OAI222HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT OAI222HSV2 A1 A2 B1 B2 C1 C2 ZN VDD VSS
+XX12 net030 B2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX9 net18 A2 net030 VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net18 A1 net030 VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net030 B1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN C1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 ZN C2 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX8 net071 B2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX10 net073 C2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX11 ZN C1 net073 VNW p11ll_ckt w=455.00n l=40.00n
+XX4 ZN B1 net071 VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net067 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS OAI222HSV2
+****Sub-Circuit for OAI22HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT OAI22HSV1 A1 A2 B1 B2 ZN VDD VSS
+XX9 net18 B2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX2 net18 B1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX1 ZN A1 net18 VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 ZN A2 net18 VPW n11ll_ckt w=210.00n l=40.00n
+XX8 net071 B2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX4 ZN B1 net071 VNW p11ll_ckt w=310.00n l=40.00n
+XX0 net067 A2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS OAI22HSV1
+****Sub-Circuit for OAI22HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT OAI22HSV2 A1 A2 B1 B2 ZN VDD VSS
+XX9 net18 B2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net18 B1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN A1 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 ZN A2 net18 VPW n11ll_ckt w=310.00n l=40.00n
+XX8 net071 B2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 ZN B1 net071 VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net067 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS OAI22HSV2
+****Sub-Circuit for OAI31HSV1, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT OAI31HSV1 A1 A2 A3 B ZN VDD VSS
+XX2 ZN B net064 VPW n11ll_ckt w=210.00n l=40.00n
+XX9 net064 A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX1 net064 A3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 net064 A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX4 ZN B VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX8 net065 A3 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 net067 A2 net065 VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS OAI31HSV1
+****Sub-Circuit for OAI31HSV2, Wed Sep  5 13:54:27 CST 2012****
+.SUBCKT OAI31HSV2 A1 A2 A3 B ZN VDD VSS
+XX2 ZN B net064 VPW n11ll_ckt w=310.00n l=40.00n
+XX9 net064 A1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 net064 A3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net064 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX4 ZN B VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX8 net065 A3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net067 A2 net065 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS OAI31HSV2
+****Sub-Circuit for OAI32HSV1, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT OAI32HSV1 A1 A2 A3 B1 B2 ZN VDD VSS
+XX11 net041 B2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX2 net041 B1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX9 ZN A3 net041 VPW n11ll_ckt w=210.00n l=40.00n
+XX1 ZN A1 net041 VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 ZN A2 net041 VPW n11ll_ckt w=210.00n l=40.00n
+XX4 ZN B1 net071 VNW p11ll_ckt w=310.00n l=40.00n
+XX8 net065 A3 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX10 net071 B2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX0 net067 A2 net065 VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS OAI32HSV1
+****Sub-Circuit for OAI32HSV2, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT OAI32HSV2 A1 A2 A3 B1 B2 ZN VDD VSS
+XX11 net041 B2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net041 B1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX9 ZN A3 net041 VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN A1 net041 VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 ZN A2 net041 VPW n11ll_ckt w=310.00n l=40.00n
+XX4 ZN B1 net071 VNW p11ll_ckt w=455.00n l=40.00n
+XX8 net065 A3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX10 net071 B2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net067 A2 net065 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS OAI32HSV2
+****Sub-Circuit for OAI33HSV1, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT OAI33HSV1 A1 A2 A3 B1 B2 B3 ZN VDD VSS
+XX11 net041 A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX2 net041 A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX9 ZN B3 net041 VPW n11ll_ckt w=210.00n l=40.00n
+XX1 ZN B1 net041 VPW n11ll_ckt w=210.00n l=40.00n
+XX13 net041 A3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 ZN B2 net041 VPW n11ll_ckt w=210.00n l=40.00n
+XX12 net076 B3 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX4 ZN B1 net071 VNW p11ll_ckt w=310.00n l=40.00n
+XX8 net065 A3 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX10 net071 B2 net076 VNW p11ll_ckt w=310.00n l=40.00n
+XX0 net067 A2 net065 VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS OAI33HSV1
+****Sub-Circuit for OAI33HSV2, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT OAI33HSV2 A1 A2 A3 B1 B2 B3 ZN VDD VSS
+XX11 net041 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX2 net041 A1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX9 ZN B3 net041 VPW n11ll_ckt w=310.00n l=40.00n
+XX1 ZN B1 net041 VPW n11ll_ckt w=310.00n l=40.00n
+XX13 net041 A3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 ZN B2 net041 VPW n11ll_ckt w=310.00n l=40.00n
+XX12 net076 B3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX4 ZN B1 net071 VNW p11ll_ckt w=455.00n l=40.00n
+XX8 net065 A3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX10 net071 B2 net076 VNW p11ll_ckt w=455.00n l=40.00n
+XX0 net067 A2 net065 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 ZN A1 net067 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS OAI33HSV2
+****Sub-Circuit for OR2HSV1, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT OR2HSV1 A1 A2 Z VDD VSS
+XX0 net31 A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX2 Z net31 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 net31 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX1 net31 A1 net42 VNW p11ll_ckt w=210.00n l=40.00n
+XX4 Z net31 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XXP1 net42 A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS OR2HSV1
+****Sub-Circuit for OR2HSV2, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT OR2HSV2 A1 A2 Z VDD VSS
+XX0 net31 A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX2 Z net31 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net31 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX1 net31 A1 net42 VNW p11ll_ckt w=210.00n l=40.00n
+XX4 Z net31 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net42 A2 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS OR2HSV2
+****Sub-Circuit for OR2HSV8, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT OR2HSV8 A1 A2 Z VDD VSS
+XX0 net31 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX2 Z net31 VSS VPW n11ll_ckt w=1.24u l=40.00n
+XXN1 net31 A1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 net31 A1 net42 VNW p11ll_ckt w=455.00n l=40.00n
+XX4 Z net31 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XXP1 net42 A2 VDD VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS OR2HSV8
+****Sub-Circuit for OR3HSV1, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT OR3HSV1 A1 A2 A3 Z VDD VSS
+XX3 net31 A3 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX0 net31 A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX2 Z net31 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 net31 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX1 net31 A1 net42 VNW p11ll_ckt w=455.00n l=40.00n
+XX4 Z net31 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net054 A3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net42 A2 net054 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS OR3HSV1
+****Sub-Circuit for OR3HSV2, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT OR3HSV2 A1 A2 A3 Z VDD VSS
+XX3 net31 A3 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX0 net31 A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX2 Z net31 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net31 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX1 net31 A1 net42 VNW p11ll_ckt w=455.00n l=40.00n
+XX4 Z net31 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 net054 A3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net42 A2 net054 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS OR3HSV2
+****Sub-Circuit for OR3HSV8, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT OR3HSV8 A1 A2 A3 Z VDD VSS
+XX3 net31 A3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX0 net31 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX2 Z net31 VSS VPW n11ll_ckt w=1.24u l=40.00n
+XXN1 net31 A1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX1 net31 A1 net42 VNW p11ll_ckt w=455.00n l=40.00n
+XX4 Z net31 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XX5 net054 A3 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net42 A2 net054 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS OR3HSV8
+****Sub-Circuit for OR4HSV1, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT OR4HSV1 A1 A2 A3 A4 Z VDD VSS
+XX6 net31 A4 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 net31 A3 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX0 net31 A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX2 Z net31 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXN1 net31 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX7 net067 A4 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 net31 A1 net42 VNW p11ll_ckt w=455.00n l=40.00n
+XX4 Z net31 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net054 A3 net067 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net42 A2 net054 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS OR4HSV1
+****Sub-Circuit for OR4HSV2, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT OR4HSV2 A1 A2 A3 A4 Z VDD VSS
+XX6 net31 A4 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 net31 A3 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX0 net31 A2 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX2 Z net31 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XXN1 net31 A1 VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX7 net067 A4 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 net31 A1 net42 VNW p11ll_ckt w=455.00n l=40.00n
+XX4 Z net31 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX5 net054 A3 net067 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net42 A2 net054 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS OR4HSV2
+****Sub-Circuit for OR4HSV8, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT OR4HSV8 A1 A2 A3 A4 Z VDD VSS
+XX6 net31 A4 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX3 net31 A3 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX0 net31 A2 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX2 Z net31 VSS VPW n11ll_ckt w=1.24u l=40.00n
+XXN1 net31 A1 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX7 net067 A4 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX1 net31 A1 net42 VNW p11ll_ckt w=455.00n l=40.00n
+XX4 Z net31 VDD VNW p11ll_ckt w=1.82u l=40.00n
+XX5 net054 A3 net067 VNW p11ll_ckt w=455.00n l=40.00n
+XXP1 net42 A2 net054 VNW p11ll_ckt w=455.00n l=40.00n
+.ENDS OR4HSV8
+****Sub-Circuit for PULLHS0, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT PULLHS0 Z VDD VSS
+XXN1 Z net18 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XXP1 net18 net18 VDD VNW p11ll_ckt w=210.00n l=40.00n
+.ENDS PULLHS0
+****Sub-Circuit for PULLHS1, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT PULLHS1 Z VDD VSS
+XXN1 net14 net14 VSS VPW n11ll_ckt w=140.0n l=40.00n
+XXP1 Z net14 VDD VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS PULLHS1
+****Sub-Circuit for SDHSV1, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT SDHSV1 CK D Q QN SE SI VDD VSS
+XX13 VDD m net138 VNW p11ll_ckt w=120.00n l=40.00n
+XX1 m pm VDD VNW p11ll_ckt w=390.00n l=40.00n
+XX10 QN ps VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX8 net174 SEN net177 VNW p11ll_ckt w=140.00n l=40.00n
+XX44 net177 SI VDD VNW p11ll_ckt w=140.00n l=40.00n
+XX45 net177 SE VDD VNW p11ll_ckt w=320.00n l=40.00n
+XX47 SEN SE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX6 net174 D net177 VNW p11ll_ckt w=320.00n l=40.00n
+XX9 pm c net174 VNW p11ll_ckt w=320.00n l=40.00n
+XX4 m cn ps VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net150 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net150 c ps VNW p11ll_ckt w=120.00n l=40.00n
+XX20 Q s VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX18 s ps VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net138 cn pm VNW p11ll_ckt w=120.00n l=40.00n
+XX5 QN ps VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX7 net202 D VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX0 m pm VSS VPW n11ll_ckt w=300.00n l=40.00n
+XX41 net258 SI net254 VPW n11ll_ckt w=120.00n l=40.00n
+XX43 net254 SE VSS VPW n11ll_ckt w=120.00n l=40.00n
+XX2 pm cn net258 VPW n11ll_ckt w=140.00n l=40.00n
+XX46 SEN SE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 m c ps VPW n11ll_ckt w=210.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net229 cn ps VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net229 VPW n11ll_ckt w=120.00n l=40.00n
+XX19 Q s VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX17 s ps VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX12 net213 c pm VPW n11ll_ckt w=120.00n l=40.00n
+XX11 VSS m net213 VPW n11ll_ckt w=120.00n l=40.00n
+XX40 net258 SEN net202 VPW n11ll_ckt w=140.00n l=40.00n
+.ENDS SDHSV1
+****Sub-Circuit for SDHSV2, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT SDHSV2 CK D Q QN SE SI VDD VSS
+XX5 QN ps VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX41 net_0127 SI net_0123 VPW n11ll_ckt w=120.00n l=40.00n
+XX43 net_0123 SE VSS VPW n11ll_ckt w=120.00n l=40.00n
+XX2 pm cn net_0127 VPW n11ll_ckt w=140.00n l=40.00n
+XX46 SEN SE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 m c ps VPW n11ll_ckt w=210.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net48 cn ps VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net48 VPW n11ll_ckt w=120.00n l=40.00n
+XX19 Q s VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX17 s ps VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX12 net52 c pm VPW n11ll_ckt w=120.00n l=40.00n
+XX11 VSS m net52 VPW n11ll_ckt w=120.00n l=40.00n
+XX40 net_0127 SEN net69 VPW n11ll_ckt w=140.00n l=40.00n
+XX7 net69 D VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX0 m pm VSS VPW n11ll_ckt w=300.00n l=40.00n
+XX10 QN ps VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX8 net0226 SEN net_0202 VNW p11ll_ckt w=140.00n l=40.00n
+XX44 net_0202 SI VDD VNW p11ll_ckt w=140.00n l=40.00n
+XX45 net_0202 SE VDD VNW p11ll_ckt w=320.00n l=40.00n
+XX47 SEN SE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX6 net0226 D net_0202 VNW p11ll_ckt w=320.00n l=40.00n
+XX9 pm c net0226 VNW p11ll_ckt w=320.00n l=40.00n
+XX4 m cn ps VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net109 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net109 c ps VNW p11ll_ckt w=120.00n l=40.00n
+XX20 Q s VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX18 s ps VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net117 cn pm VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD m net117 VNW p11ll_ckt w=120.00n l=40.00n
+XX1 m pm VDD VNW p11ll_ckt w=390.00n l=40.00n
+.ENDS SDHSV2
+****Sub-Circuit for SDQHSV1, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT SDQHSV1 CK D Q SE SI VDD VSS
+XX13 VDD m net128 VNW p11ll_ckt w=120.00n l=40.00n
+XX1 m pm VDD VNW p11ll_ckt w=345.00n l=40.00n
+XX8 net164 SEN net167 VNW p11ll_ckt w=140.00n l=40.00n
+XX44 net167 SI VDD VNW p11ll_ckt w=140.00n l=40.00n
+XX45 net167 SE VDD VNW p11ll_ckt w=320.00n l=40.00n
+XX47 SEN SE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX6 net164 D net167 VNW p11ll_ckt w=320.00n l=40.00n
+XX9 pm c net164 VNW p11ll_ckt w=220.00n l=40.00n
+XX4 m cn ps VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net140 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net140 c ps VNW p11ll_ckt w=120.00n l=40.00n
+XX20 Q s VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX18 s ps VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net128 cn pm VNW p11ll_ckt w=120.00n l=40.00n
+XX7 net188 D VSS VPW n11ll_ckt w=160.00n l=40.00n
+XX41 net244 SI net240 VPW n11ll_ckt w=120.00n l=40.00n
+XX43 net240 SE VSS VPW n11ll_ckt w=120.00n l=40.00n
+XX0 m pm VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX2 pm cn net244 VPW n11ll_ckt w=140.00n l=40.00n
+XX46 SEN SE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 m c ps VPW n11ll_ckt w=180.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net215 cn ps VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net215 VPW n11ll_ckt w=120.00n l=40.00n
+XX19 Q s VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX17 s ps VSS VPW n11ll_ckt w=160.00n l=40.00n
+XX12 net199 c pm VPW n11ll_ckt w=120.00n l=40.00n
+XX11 VSS m net199 VPW n11ll_ckt w=120.00n l=40.00n
+XX40 net244 SEN net188 VPW n11ll_ckt w=160.00n l=40.00n
+.ENDS SDQHSV1
+****Sub-Circuit for SDQHSV2, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT SDQHSV2 CK D Q SE SI VDD VSS
+XX41 net_0127 SI net_0123 VPW n11ll_ckt w=120.00n l=40.00n
+XX43 net_0123 SE VSS VPW n11ll_ckt w=120.00n l=40.00n
+XX2 pm cn net_0127 VPW n11ll_ckt w=140.00n l=40.00n
+XX46 SEN SE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 m c ps VPW n11ll_ckt w=180.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net48 cn ps VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net48 VPW n11ll_ckt w=120.00n l=40.00n
+XX19 Q s VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX17 s ps VSS VPW n11ll_ckt w=160.00n l=40.00n
+XX12 net52 c pm VPW n11ll_ckt w=120.00n l=40.00n
+XX11 VSS m net52 VPW n11ll_ckt w=120.00n l=40.00n
+XX40 net_0127 SEN net69 VPW n11ll_ckt w=160.00n l=40.00n
+XX7 net69 D VSS VPW n11ll_ckt w=160.00n l=40.00n
+XX0 m pm VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX8 net0226 SEN net_0202 VNW p11ll_ckt w=140.00n l=40.00n
+XX44 net_0202 SI VDD VNW p11ll_ckt w=140.00n l=40.00n
+XX45 net_0202 SE VDD VNW p11ll_ckt w=320.00n l=40.00n
+XX47 SEN SE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX6 net0226 D net_0202 VNW p11ll_ckt w=320.00n l=40.00n
+XX9 pm c net0226 VNW p11ll_ckt w=220.00n l=40.00n
+XX4 m cn ps VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net109 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net109 c ps VNW p11ll_ckt w=120.00n l=40.00n
+XX20 Q s VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX18 s ps VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net117 cn pm VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD m net117 VNW p11ll_ckt w=120.00n l=40.00n
+XX1 m pm VDD VNW p11ll_ckt w=345.00n l=40.00n
+.ENDS SDQHSV2
+****Sub-Circuit for SDRNHSV1, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT SDRNHSV1 CK D Q QN RDN SE SI VDD VSS
+XX13 VDD m net152 VNW p11ll_ckt w=120.00n l=40.00n
+XX1 m pm VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX15 pm RDN VDD VNW p11ll_ckt w=190.00n l=40.00n
+XX32 QN ps VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX8 net192 SEN net195 VNW p11ll_ckt w=140.00n l=40.00n
+XX44 net195 SI VDD VNW p11ll_ckt w=140.00n l=40.00n
+XX45 net195 SE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX47 SEN SE VDD VNW p11ll_ckt w=190n l=40.00n
+XX6 net192 D net195 VNW p11ll_ckt w=240.00n l=40.00n
+XX9 pm c net192 VNW p11ll_ckt w=270.00n l=40.00n
+XX22 s RDN VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX4 m cn ps VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net164 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net164 c ps VNW p11ll_ckt w=120.00n l=40.00n
+XX20 Q s VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX18 s ps VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net152 cn pm VNW p11ll_ckt w=120.00n l=40.00n
+XX10 net283 RDN VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX7 net224 D net283 VPW n11ll_ckt w=140.00n l=40.00n
+XX31 QN ps VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX0 m pm VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX16 VSS RDN net291 VPW n11ll_ckt w=150.00n l=40.00n
+XX41 net284 SI net280 VPW n11ll_ckt w=120.00n l=40.00n
+XX43 net280 SE net283 VPW n11ll_ckt w=120.00n l=40.00n
+XX2 pm cn net284 VPW n11ll_ckt w=140.00n l=40.00n
+XX46 SEN SE VSS VPW n11ll_ckt w=140n l=40.00n
+XX3 m c ps VPW n11ll_ckt w=280.00n l=40.00n
+XX21 s RDN net240 VPW n11ll_ckt w=220.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net251 cn ps VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net251 VPW n11ll_ckt w=120.00n l=40.00n
+XX19 Q s VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX17 net240 ps VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX12 net235 c pm VPW n11ll_ckt w=150.00n l=40.00n
+XX11 net291 m net235 VPW n11ll_ckt w=150.00n l=40.00n
+XX40 net284 SEN net224 VPW n11ll_ckt w=140.00n l=40.00n
+.ENDS SDRNHSV1
+****Sub-Circuit for SDRNHSV2, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT SDRNHSV2 CK D Q QN RDN SE SI VDD VSS
+XX10 net0159 RDN VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX31 QN ps VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX16 VSS RDN net0133 VPW n11ll_ckt w=150.00n l=40.00n
+XX41 net_0127 SI net_0123 VPW n11ll_ckt w=120.00n l=40.00n
+XX43 net_0123 SE net0159 VPW n11ll_ckt w=120.00n l=40.00n
+XX2 pm cn net_0127 VPW n11ll_ckt w=140.00n l=40.00n
+XX46 SEN SE VSS VPW n11ll_ckt w=140n l=40.00n
+XX3 m c ps VPW n11ll_ckt w=280.00n l=40.00n
+XX21 s RDN net0190 VPW n11ll_ckt w=220.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net48 cn ps VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net48 VPW n11ll_ckt w=120.00n l=40.00n
+XX19 Q s VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX17 net0190 ps VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX12 net52 c pm VPW n11ll_ckt w=150.00n l=40.00n
+XX11 net0133 m net52 VPW n11ll_ckt w=150.00n l=40.00n
+XX40 net_0127 SEN net69 VPW n11ll_ckt w=140.00n l=40.00n
+XX7 net69 D net0159 VPW n11ll_ckt w=140.00n l=40.00n
+XX0 m pm VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX15 pm RDN VDD VNW p11ll_ckt w=190.00n l=40.00n
+XX32 QN ps VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX8 net0226 SEN net_0202 VNW p11ll_ckt w=140.00n l=40.00n
+XX44 net_0202 SI VDD VNW p11ll_ckt w=140.00n l=40.00n
+XX45 net_0202 SE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX47 SEN SE VDD VNW p11ll_ckt w=190n l=40.00n
+XX6 net0226 D net_0202 VNW p11ll_ckt w=240.00n l=40.00n
+XX9 pm c net0226 VNW p11ll_ckt w=270.00n l=40.00n
+XX22 s RDN VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX4 m cn ps VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net109 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net109 c ps VNW p11ll_ckt w=120.00n l=40.00n
+XX20 Q s VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX18 s ps VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net117 cn pm VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD m net117 VNW p11ll_ckt w=120.00n l=40.00n
+XX1 m pm VDD VNW p11ll_ckt w=420.00n l=40.00n
+.ENDS SDRNHSV2
+****Sub-Circuit for SDRNQHSV1, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT SDRNQHSV1 CK D Q RDN SE SI VDD VSS
+XX13 VDD m net140 VNW p11ll_ckt w=120.00n l=40.00n
+XX1 m pm VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX15 pm RDN VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX8 net180 SEN net183 VNW p11ll_ckt w=140.00n l=40.00n
+XX44 net183 SI VDD VNW p11ll_ckt w=140.00n l=40.00n
+XX45 net183 SE VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX47 SEN SE VDD VNW p11ll_ckt w=210n l=40.00n
+XX6 net180 D net183 VNW p11ll_ckt w=240.00n l=40.00n
+XX9 pm c net180 VNW p11ll_ckt w=240.00n l=40.00n
+XX22 s RDN VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX4 m cn ps VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net152 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net152 c ps VNW p11ll_ckt w=120.00n l=40.00n
+XX20 Q s VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX18 s ps VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net140 cn pm VNW p11ll_ckt w=120.00n l=40.00n
+XX7 net208 D net267 VPW n11ll_ckt w=160.00n l=40.00n
+XX10 net267 RDN VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX0 m pm VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX16 VSS RDN net275 VPW n11ll_ckt w=130.00n l=40.00n
+XX41 net268 SI net264 VPW n11ll_ckt w=120.00n l=40.00n
+XX43 net264 SE net267 VPW n11ll_ckt w=120.00n l=40.00n
+XX2 pm cn net268 VPW n11ll_ckt w=160.00n l=40.00n
+XX46 SEN SE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 m c ps VPW n11ll_ckt w=170.00n l=40.00n
+XX21 s RDN net224 VPW n11ll_ckt w=220.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net235 cn ps VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net235 VPW n11ll_ckt w=120.00n l=40.00n
+XX19 Q s VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX17 net224 ps VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX12 net219 c pm VPW n11ll_ckt w=130.00n l=40.00n
+XX11 net275 m net219 VPW n11ll_ckt w=130.00n l=40.00n
+XX40 net268 SEN net208 VPW n11ll_ckt w=160.00n l=40.00n
+.ENDS SDRNQHSV1
+****Sub-Circuit for SDRNQHSV2, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT SDRNQHSV2 CK D Q RDN SE SI VDD VSS
+XX10 net0160 RDN VSS VPW n11ll_ckt w=280.00n l=40.00n
+XX16 VSS RDN net0133 VPW n11ll_ckt w=130.00n l=40.00n
+XX41 net_0127 SI net_0123 VPW n11ll_ckt w=120.00n l=40.00n
+XX43 net_0123 SE net0160 VPW n11ll_ckt w=120.00n l=40.00n
+XX2 pm cn net_0127 VPW n11ll_ckt w=160.00n l=40.00n
+XX46 SEN SE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 m c ps VPW n11ll_ckt w=170.00n l=40.00n
+XX21 s RDN net0190 VPW n11ll_ckt w=220.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net48 cn ps VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net48 VPW n11ll_ckt w=120.00n l=40.00n
+XX19 Q s VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX17 net0190 ps VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX12 net52 c pm VPW n11ll_ckt w=130.00n l=40.00n
+XX11 net0133 m net52 VPW n11ll_ckt w=130.00n l=40.00n
+XX40 net_0127 SEN net69 VPW n11ll_ckt w=160.00n l=40.00n
+XX7 net69 D net0160 VPW n11ll_ckt w=160.00n l=40.00n
+XX0 m pm VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX15 pm RDN VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX8 net0226 SEN net_0202 VNW p11ll_ckt w=140.00n l=40.00n
+XX44 net_0202 SI VDD VNW p11ll_ckt w=140.00n l=40.00n
+XX45 net_0202 SE VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX47 SEN SE VDD VNW p11ll_ckt w=210n l=40.00n
+XX6 net0226 D net_0202 VNW p11ll_ckt w=250.00n l=40.00n
+XX9 pm c net0226 VNW p11ll_ckt w=240.00n l=40.00n
+XX22 s RDN VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX4 m cn ps VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net109 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net109 c ps VNW p11ll_ckt w=120.00n l=40.00n
+XX20 Q s VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX18 s ps VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net117 cn pm VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD m net117 VNW p11ll_ckt w=120.00n l=40.00n
+XX1 m pm VDD VNW p11ll_ckt w=420.00n l=40.00n
+.ENDS SDRNQHSV2
+****Sub-Circuit for SDRSNHSV1, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT SDRSNHSV1 CK D Q QN RDN SDN SE SI VDD VSS
+XX25 net169 cn net305 VNW p11ll_ckt w=120.00n l=40.00n
+XX20 Q net337 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX18 net161 net305 VDD VNW p11ll_ckt w=395.00n l=40.00n
+XX53 net337 net296 VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX55 QN net296 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX39 net237 net337 net229 VNW p11ll_ckt w=150.00n l=40.00n
+XX40 VDD rn net237 VNW p11ll_ckt w=150.00n l=40.00n
+XX42 net229 c net296 VNW p11ll_ckt w=150.00n l=40.00n
+XX54 VDD SDN net296 VNW p11ll_ckt w=150.00n l=40.00n
+XX8 net177 SEN net180 VNW p11ll_ckt w=215.00n l=40.00n
+XX44 net180 SI VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX45 net180 SE VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX47 SEN SE VDD VNW p11ll_ckt w=210n l=40.00n
+XX32 net161 SDN VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX9 net305 c net177 VNW p11ll_ckt w=210.00n l=40.00n
+XX21 rn RDN VDD VNW p11ll_ckt w=210n l=40.00n
+XX33 net161 cn net296 VNW p11ll_ckt w=265.00n l=40.00n
+XX58 VDD RDN net305 VNW p11ll_ckt w=150.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX31 net177 D net180 VNW p11ll_ckt w=250.00n l=40.00n
+XX26 VDD net161 net169 VNW p11ll_ckt w=120.00n l=40.00n
+XX34 net313 SEN net249 VPW n11ll_ckt w=180.00n l=40.00n
+XX35 net249 D net312 VPW n11ll_ckt w=180.00n l=40.00n
+XX52 net337 net296 VSS VPW n11ll_ckt w=315.00n l=40.00n
+XX56 QN net296 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX48 net296 cn net325 VPW n11ll_ckt w=150.00n l=40.00n
+XX49 net325 net337 net324 VPW n11ll_ckt w=150.00n l=40.00n
+XX50 net296 rn net324 VPW n11ll_ckt w=150.00n l=40.00n
+XX51 net324 SDN VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX41 net313 SI net309 VPW n11ll_ckt w=140.00n l=40.00n
+XX43 net309 SE net312 VPW n11ll_ckt w=140.00n l=40.00n
+XX2 net305 cn net313 VPW n11ll_ckt w=140.00n l=40.00n
+XX46 SEN SE VSS VPW n11ll_ckt w=140n l=40.00n
+XX16 rn RDN VSS VPW n11ll_ckt w=140n l=40.00n
+XX38 net161 c net296 VPW n11ll_ckt w=200.00n l=40.00n
+XX57 VSS RDN net292 VPW n11ll_ckt w=150.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=245.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net276 c net305 VPW n11ll_ckt w=150.00n l=40.00n
+XX23 net292 net161 net276 VPW n11ll_ckt w=150.00n l=40.00n
+XX19 Q net337 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX37 net161 SDN net261 VPW n11ll_ckt w=285.00n l=40.00n
+XX17 net261 net305 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX59 net312 RDN VSS VPW n11ll_ckt w=140.00n l=40.00n
+.ENDS SDRSNHSV1
+****Sub-Circuit for SDRSNHSV2, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT SDRSNHSV2 CK D Q QN RDN SDN SE SI VDD VSS
+XX52 net205 net236 VSS VPW n11ll_ckt w=315.00n l=40.00n
+XX56 QN net236 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX48 net236 cn net193 VPW n11ll_ckt w=150.00n l=40.00n
+XX49 net193 net205 net200 VPW n11ll_ckt w=150.00n l=40.00n
+XX50 net236 rn net200 VPW n11ll_ckt w=150.00n l=40.00n
+XX51 net200 SDN VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX41 net209 SI net213 VPW n11ll_ckt w=140.00n l=40.00n
+XX43 net213 SE net0186 VPW n11ll_ckt w=140.00n l=40.00n
+XX2 net0205 cn net209 VPW n11ll_ckt w=140.00n l=40.00n
+XX46 SEN SE VSS VPW n11ll_ckt w=140n l=40.00n
+XX16 rn RDN VSS VPW n11ll_ckt w=140n l=40.00n
+XX38 net361 c net236 VPW n11ll_ckt w=200.00n l=40.00n
+XX57 VSS RDN net0220 VPW n11ll_ckt w=150.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=245.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net252 c net0205 VPW n11ll_ckt w=150.00n l=40.00n
+XX23 net0220 net361 net252 VPW n11ll_ckt w=150.00n l=40.00n
+XX19 Q net205 VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX37 net361 SDN net257 VPW n11ll_ckt w=285.00n l=40.00n
+XX17 net257 net0205 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX59 net0186 RDN VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX34 net209 SEN net273 VPW n11ll_ckt w=180.00n l=40.00n
+XX35 net273 D net0186 VPW n11ll_ckt w=180.00n l=40.00n
+XX53 net205 net236 VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX55 QN net236 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX39 net289 net205 net297 VNW p11ll_ckt w=150.00n l=40.00n
+XX40 VDD rn net289 VNW p11ll_ckt w=150.00n l=40.00n
+XX42 net297 c net236 VNW p11ll_ckt w=150.00n l=40.00n
+XX54 VDD SDN net236 VNW p11ll_ckt w=150.00n l=40.00n
+XX8 net349 SEN net352 VNW p11ll_ckt w=215.00n l=40.00n
+XX44 net352 SI VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX45 net352 SE VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX47 SEN SE VDD VNW p11ll_ckt w=210n l=40.00n
+XX32 net361 SDN VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX9 net0205 c net349 VNW p11ll_ckt w=210.00n l=40.00n
+XX21 rn RDN VDD VNW p11ll_ckt w=210n l=40.00n
+XX33 net361 cn net236 VNW p11ll_ckt w=265.00n l=40.00n
+XX58 VDD RDN net0205 VNW p11ll_ckt w=150.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX31 net349 D net352 VNW p11ll_ckt w=250.00n l=40.00n
+XX26 VDD net361 net357 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net357 cn net0205 VNW p11ll_ckt w=120.00n l=40.00n
+XX20 Q net205 VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX18 net361 net0205 VDD VNW p11ll_ckt w=395.00n l=40.00n
+.ENDS SDRSNHSV2
+****Sub-Circuit for SDSNHSV1, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT SDSNHSV1 CK D Q QN SDN SE SI VDD VSS
+XX49 s ps VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX43 net174 SDN VDD VNW p11ll_ckt w=140.00n l=40.00n
+XX15 QN ps VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX33 net206 D net209 VNW p11ll_ckt w=265.00n l=40.00n
+XX8 net209 SE VDD VNW p11ll_ckt w=320.00n l=40.00n
+XX47 SEN SE VDD VNW p11ll_ckt w=210n l=40.00n
+XX6 net209 SI VDD VNW p11ll_ckt w=140.00n l=40.00n
+XX9 pm c net206 VNW p11ll_ckt w=270.00n l=40.00n
+XX50 VDD SDN ps VNW p11ll_ckt w=120.00n l=40.00n
+XX32 net206 SEN net209 VNW p11ll_ckt w=140.00n l=40.00n
+XX4 net174 cn ps VNW p11ll_ckt w=230.00n l=40.00n
+XX44 net174 pm VDD VNW p11ll_ckt w=280.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net158 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net158 c ps VNW p11ll_ckt w=120.00n l=40.00n
+XX20 Q s VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX14 net150 cn pm VNW p11ll_ckt w=150.00n l=40.00n
+XX13 VDD net174 net150 VNW p11ll_ckt w=150.00n l=40.00n
+XX34 net290 D VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX41 net218 pm VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX45 VSS SDN net289 VPW n11ll_ckt w=150.00n l=40.00n
+XX10 QN ps VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX2 pm cn net226 VPW n11ll_ckt w=150.00n l=40.00n
+XX46 SEN SE VSS VPW n11ll_ckt w=140n l=40.00n
+XX3 net174 c ps VPW n11ll_ckt w=185.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX38 net258 SE VSS VPW n11ll_ckt w=120.00n l=40.00n
+XX24 net253 cn ps VPW n11ll_ckt w=150.00n l=40.00n
+XX23 net289 s net253 VPW n11ll_ckt w=150.00n l=40.00n
+XX19 Q s VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX48 s ps VSS VPW n11ll_ckt w=315.00n l=40.00n
+XX12 net237 c pm VPW n11ll_ckt w=120.00n l=40.00n
+XX11 VSS net174 net237 VPW n11ll_ckt w=120.00n l=40.00n
+XX35 net226 SEN net290 VPW n11ll_ckt w=150.00n l=40.00n
+XX7 net226 SI net258 VPW n11ll_ckt w=120.00n l=40.00n
+XX42 net174 SDN net218 VPW n11ll_ckt w=285.00n l=40.00n
+.ENDS SDSNHSV1
+****Sub-Circuit for SDSNHSV2, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT SDSNHSV2 CK D Q QN SDN SE SI VDD VSS
+XX34 net0150 D VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX45 VSS SDN net0333 VPW n11ll_ckt w=150.00n l=40.00n
+XX10 QN ps VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX2 pm cn net_0127 VPW n11ll_ckt w=150.00n l=40.00n
+XX46 SEN SE VSS VPW n11ll_ckt w=140n l=40.00n
+XX3 net0266 c ps VPW n11ll_ckt w=185.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX38 net_0162 SE VSS VPW n11ll_ckt w=120.00n l=40.00n
+XX24 net48 cn ps VPW n11ll_ckt w=150.00n l=40.00n
+XX23 net0333 s net48 VPW n11ll_ckt w=150.00n l=40.00n
+XX19 Q s VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX48 s ps VSS VPW n11ll_ckt w=315.00n l=40.00n
+XX12 net52 c pm VPW n11ll_ckt w=150.00n l=40.00n
+XX11 VSS net0266 net52 VPW n11ll_ckt w=120.00n l=40.00n
+XX35 net_0127 SEN net0150 VPW n11ll_ckt w=150.00n l=40.00n
+XX7 net_0127 SI net_0162 VPW n11ll_ckt w=120.00n l=40.00n
+XX42 net0266 SDN net0206 VPW n11ll_ckt w=290.00n l=40.00n
+XX41 net0206 pm VSS VPW n11ll_ckt w=290.00n l=40.00n
+XX49 s ps VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX15 QN ps VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX33 net0224 D net0226 VNW p11ll_ckt w=270.00n l=40.00n
+XX8 net0226 SE VDD VNW p11ll_ckt w=320.00n l=40.00n
+XX47 SEN SE VDD VNW p11ll_ckt w=210n l=40.00n
+XX6 net0226 SI VDD VNW p11ll_ckt w=140.00n l=40.00n
+XX9 pm c net0224 VNW p11ll_ckt w=270.00n l=40.00n
+XX50 VDD SDN ps VNW p11ll_ckt w=120.00n l=40.00n
+XX32 net0224 SEN net0226 VNW p11ll_ckt w=140.00n l=40.00n
+XX4 net0266 cn ps VNW p11ll_ckt w=230.00n l=40.00n
+XX44 net0266 pm VDD VNW p11ll_ckt w=280.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net109 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net109 c ps VNW p11ll_ckt w=120.00n l=40.00n
+XX20 Q s VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX14 net117 cn pm VNW p11ll_ckt w=150.00n l=40.00n
+XX13 VDD net0266 net117 VNW p11ll_ckt w=150.00n l=40.00n
+XX43 net0266 SDN VDD VNW p11ll_ckt w=140.00n l=40.00n
+.ENDS SDSNHSV2
+****Sub-Circuit for SDXHSV1, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT SDXHSV1 CK DA DB Q QN SA SE SI VDD VSS
+XX13 VDD m net169 VNW p11ll_ckt w=120.00n l=40.00n
+XX1 m pm VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX10 QN ps VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX22 DA SAN net308 VNW p11ll_ckt w=210.00n l=40.00n
+XX16 SAN SA VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX8 net205 SEN net208 VNW p11ll_ckt w=150.00n l=40.00n
+XX32 DB SA net308 VNW p11ll_ckt w=210.00n l=40.00n
+XX44 net208 SI VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX45 net208 SE VDD VNW p11ll_ckt w=360.00n l=40.00n
+XX47 SEN SE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX6 net205 net308 net208 VNW p11ll_ckt w=340.00n l=40.00n
+XX9 pm c net205 VNW p11ll_ckt w=280.00n l=40.00n
+XX4 m cn ps VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net181 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net181 c ps VNW p11ll_ckt w=120.00n l=40.00n
+XX20 Q s VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX18 s ps VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net169 cn pm VNW p11ll_ckt w=120.00n l=40.00n
+XX5 QN ps VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX7 net245 net308 VSS VPW n11ll_ckt w=230.00n l=40.00n
+XX21 DA SA net308 VPW n11ll_ckt w=140.00n l=40.00n
+XX15 SAN SA VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX0 m pm VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX31 DB SAN net308 VPW n11ll_ckt w=140.00n l=40.00n
+XX41 net249 SI net297 VPW n11ll_ckt w=120.00n l=40.00n
+XX43 net297 SE VSS VPW n11ll_ckt w=120.00n l=40.00n
+XX2 pm cn net249 VPW n11ll_ckt w=230.00n l=40.00n
+XX46 SEN SE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 m c ps VPW n11ll_ckt w=190.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net272 cn ps VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net272 VPW n11ll_ckt w=120.00n l=40.00n
+XX19 Q s VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX17 s ps VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX12 net256 c pm VPW n11ll_ckt w=120.00n l=40.00n
+XX11 VSS m net256 VPW n11ll_ckt w=120.00n l=40.00n
+XX40 net249 SEN net245 VPW n11ll_ckt w=230.00n l=40.00n
+.ENDS SDXHSV1
+****Sub-Circuit for SDXHSV2, Tue Sep 11 10:23:07 CST 2012****
+.SUBCKT SDXHSV2 CK DA DB Q QN SA SE SI VDD VSS
+XX5 QN ps VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX21 DA SA net0333 VPW n11ll_ckt w=140.00n l=40.00n
+XX15 SAN SA VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX31 DB SAN net0333 VPW n11ll_ckt w=140.00n l=40.00n
+XX41 net_0127 SI net_0123 VPW n11ll_ckt w=120.00n l=40.00n
+XX43 net_0123 SE VSS VPW n11ll_ckt w=120.00n l=40.00n
+XX2 pm cn net_0127 VPW n11ll_ckt w=230.00n l=40.00n
+XX46 SEN SE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX3 m c ps VPW n11ll_ckt w=190.00n l=40.00n
+XX30 c cn VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 cn CK VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX24 net48 cn ps VPW n11ll_ckt w=120.00n l=40.00n
+XX23 VSS s net48 VPW n11ll_ckt w=120.00n l=40.00n
+XX19 Q s VSS VPW n11ll_ckt w=310.00n l=40.00n
+XX17 s ps VSS VPW n11ll_ckt w=220.00n l=40.00n
+XX12 net52 c pm VPW n11ll_ckt w=120.00n l=40.00n
+XX11 VSS m net52 VPW n11ll_ckt w=120.00n l=40.00n
+XX40 net_0127 SEN net69 VPW n11ll_ckt w=230.00n l=40.00n
+XX7 net69 net0333 VSS VPW n11ll_ckt w=230.00n l=40.00n
+XX0 m pm VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX10 QN ps VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX22 DA SAN net0333 VNW p11ll_ckt w=210.00n l=40.00n
+XX16 SAN SA VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX8 net0226 SEN net_0202 VNW p11ll_ckt w=150.00n l=40.00n
+XX32 DB SA net0333 VNW p11ll_ckt w=210.00n l=40.00n
+XX44 net_0202 SI VDD VNW p11ll_ckt w=150.00n l=40.00n
+XX45 net_0202 SE VDD VNW p11ll_ckt w=360.00n l=40.00n
+XX47 SEN SE VDD VNW p11ll_ckt w=210.00n l=40.00n
+XX6 net0226 net0333 net_0202 VNW p11ll_ckt w=340.00n l=40.00n
+XX9 pm c net0226 VNW p11ll_ckt w=280.00n l=40.00n
+XX4 m cn ps VNW p11ll_ckt w=285.00n l=40.00n
+XX29 c cn VDD VNW p11ll_ckt w=380.00n l=40.00n
+XX28 cn CK VDD VNW p11ll_ckt w=130.00n l=40.00n
+XX26 VDD s net109 VNW p11ll_ckt w=120.00n l=40.00n
+XX25 net109 c ps VNW p11ll_ckt w=120.00n l=40.00n
+XX20 Q s VDD VNW p11ll_ckt w=455.00n l=40.00n
+XX18 s ps VDD VNW p11ll_ckt w=370.00n l=40.00n
+XX14 net117 cn pm VNW p11ll_ckt w=120.00n l=40.00n
+XX13 VDD m net117 VNW p11ll_ckt w=120.00n l=40.00n
+XX1 m pm VDD VNW p11ll_ckt w=420.00n l=40.00n
+.ENDS SDXHSV2
+****Sub-Circuit for TBUFHSV1, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT TBUFHSV1 I OE Z VDD VSS
+XX43 net080 I VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX44 net080 oen VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 oen OE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Z net080 VSS VPW n11ll_ckt w=150.00n l=40.00n
+XX36 net080 OE net_0163 VPW n11ll_ckt w=140.00n l=40.00n
+XX45 net_0163 OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX46 net_0163 I VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX28 oen OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX21 Z net_0163 VDD VNW p11ll_ckt w=230.00n l=40.00n
+XX39 net080 oen net_0163 VNW p11ll_ckt w=200.00n l=40.00n
+.ENDS TBUFHSV1
+****Sub-Circuit for TBUFHSV12, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT TBUFHSV12 I OE Z VDD VSS
+XX43 net080 I VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX44 net080 oen VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 oen OE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Z net080 VSS VPW n11ll_ckt w=1.84u l=40.00n
+XX36 net080 OE net_0163 VPW n11ll_ckt w=140.00n l=40.00n
+XX45 net_0163 OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX46 net_0163 I VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX28 oen OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX21 Z net_0163 VDD VNW p11ll_ckt w=2.8u l=40.00n
+XX39 net080 oen net_0163 VNW p11ll_ckt w=200.00n l=40.00n
+.ENDS TBUFHSV12
+****Sub-Circuit for TBUFHSV16, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT TBUFHSV16 I OE Z VDD VSS
+XX43 net080 I VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX44 net080 oen VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 oen OE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Z net080 VSS VPW n11ll_ckt w=2.4u l=40.00n
+XX36 net080 OE net_0163 VPW n11ll_ckt w=140.00n l=40.00n
+XX45 net_0163 OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX46 net_0163 I VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX28 oen OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX21 Z net_0163 VDD VNW p11ll_ckt w=3.6u l=40.00n
+XX39 net080 oen net_0163 VNW p11ll_ckt w=200.00n l=40.00n
+.ENDS TBUFHSV16
+****Sub-Circuit for TBUFHSV2, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT TBUFHSV2 I OE Z VDD VSS
+XX43 net080 I VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX44 net080 oen VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 oen OE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Z net080 VSS VPW n11ll_ckt w=300.00n l=40.00n
+XX36 net080 OE net_0163 VPW n11ll_ckt w=140.00n l=40.00n
+XX45 net_0163 OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX46 net_0163 I VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX28 oen OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX21 Z net_0163 VDD VNW p11ll_ckt w=460.00n l=40.00n
+XX39 net080 oen net_0163 VNW p11ll_ckt w=200.00n l=40.00n
+.ENDS TBUFHSV2
+****Sub-Circuit for TBUFHSV20, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT TBUFHSV20 I OE Z VDD VSS
+XX43 net080 I VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX44 net080 oen VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 oen OE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Z net080 VSS VPW n11ll_ckt w=2.99u l=40.00n
+XX36 net080 OE net_0163 VPW n11ll_ckt w=140.00n l=40.00n
+XX45 net_0163 OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX46 net_0163 I VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX28 oen OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX21 Z net_0163 VDD VNW p11ll_ckt w=4.55u l=40.00n
+XX39 net080 oen net_0163 VNW p11ll_ckt w=200.00n l=40.00n
+.ENDS TBUFHSV20
+****Sub-Circuit for TBUFHSV24, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT TBUFHSV24 I OE Z VDD VSS
+XX43 net080 I VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX44 net080 oen VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 oen OE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Z net080 VSS VPW n11ll_ckt w=3.68u l=40.00n
+XX36 net080 OE net_0163 VPW n11ll_ckt w=140.00n l=40.00n
+XX45 net_0163 OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX46 net_0163 I VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX28 oen OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX21 Z net_0163 VDD VNW p11ll_ckt w=5.6u l=40.00n
+XX39 net080 oen net_0163 VNW p11ll_ckt w=200.00n l=40.00n
+.ENDS TBUFHSV24
+****Sub-Circuit for TBUFHSV3, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT TBUFHSV3 I OE Z VDD VSS
+XX43 net080 I VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX44 net080 oen VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 oen OE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Z net080 VSS VPW n11ll_ckt w=460.00n l=40.00n
+XX36 net080 OE net_0163 VPW n11ll_ckt w=140.00n l=40.00n
+XX45 net_0163 OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX46 net_0163 I VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX28 oen OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX21 Z net_0163 VDD VNW p11ll_ckt w=700.00n l=40.00n
+XX39 net080 oen net_0163 VNW p11ll_ckt w=200.00n l=40.00n
+.ENDS TBUFHSV3
+****Sub-Circuit for TBUFHSV6, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT TBUFHSV6 I OE Z VDD VSS
+XX43 net080 I VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX44 net080 oen VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 oen OE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Z net080 VSS VPW n11ll_ckt w=920.00n l=40.00n
+XX36 net080 OE net_0163 VPW n11ll_ckt w=140.00n l=40.00n
+XX45 net_0163 OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX46 net_0163 I VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX28 oen OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX21 Z net_0163 VDD VNW p11ll_ckt w=1.4u l=40.00n
+XX39 net080 oen net_0163 VNW p11ll_ckt w=200.00n l=40.00n
+.ENDS TBUFHSV6
+****Sub-Circuit for TBUFHSV8, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT TBUFHSV8 I OE Z VDD VSS
+XX43 net080 I VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX44 net080 oen VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX27 oen OE VSS VPW n11ll_ckt w=140.00n l=40.00n
+XX22 Z net080 VSS VPW n11ll_ckt w=1.2u l=40.00n
+XX36 net080 OE net_0163 VPW n11ll_ckt w=140.00n l=40.00n
+XX45 net_0163 OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX46 net_0163 I VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX28 oen OE VDD VNW p11ll_ckt w=200.00n l=40.00n
+XX21 Z net_0163 VDD VNW p11ll_ckt w=1.8u l=40.00n
+XX39 net080 oen net_0163 VNW p11ll_ckt w=200.00n l=40.00n
+.ENDS TBUFHSV8
+****Sub-Circuit for XNOR2HSV1, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT XNOR2HSV1 A1 A2 ZN VDD VSS
+XX57 ZN xna1a2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX47 a2n A1 xna1a2 VPW n11ll_ckt w=210.00n l=40.00n
+XX49 a1n A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX55 a2nn a2n VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX53 a2n A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX36 a2nn a1n xna1a2 VPW n11ll_ckt w=210.00n l=40.00n
+XX50 a1n A1 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX58 ZN xna1a2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX48 a2n a1n xna1a2 VNW p11ll_ckt w=310.00n l=40.00n
+XX56 a2nn a2n VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX54 a2n A2 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX39 a2nn A1 xna1a2 VNW p11ll_ckt w=300.00n l=40.00n
+.ENDS XNOR2HSV1
+****Sub-Circuit for XNOR2HSV2, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT XNOR2HSV2 A1 A2 ZN VDD VSS
+XX57 ZN xna1a2 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX47 a2n A1 xna1a2 VPW n11ll_ckt w=210.00n l=40.00n
+XX49 a1n A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX55 a2nn a2n VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX53 a2n A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX36 a2nn a1n xna1a2 VPW n11ll_ckt w=210.00n l=40.00n
+XX50 a1n A1 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX58 ZN xna1a2 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX48 a2n a1n xna1a2 VNW p11ll_ckt w=310.00n l=40.00n
+XX56 a2nn a2n VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX54 a2n A2 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX39 a2nn A1 xna1a2 VNW p11ll_ckt w=300.00n l=40.00n
+.ENDS XNOR2HSV2
+****Sub-Circuit for XNOR3HSV1, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT XNOR3HSV1 A1 A2 A3 ZN VDD VSS
+XX47 net080 a3n xa1a2a3 VPW n11ll_ckt w=210.00n l=40.00n
+XX0 net080 net0107 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX49 a1n A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX60 a1nn A2 net0107 VPW n11ll_ckt w=210.00n l=40.00n
+XX59 a1n a2n net0107 VPW n11ll_ckt w=210.00n l=40.00n
+XX67 ZN xa1a2a3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX57 a3n A3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX55 a1nn a1n VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX53 a2n A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX36 net0107 A3 xa1a2a3 VPW n11ll_ckt w=210.00n l=40.00n
+XX50 a1n A1 VDD VNW p11ll_ckt w=420.0n l=40.00n
+XX58 a3n A3 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX62 a1nn a2n net0107 VNW p11ll_ckt w=310.00n l=40.00n
+XX48 net080 A3 xa1a2a3 VNW p11ll_ckt w=310.00n l=40.00n
+XX61 a1n A2 net0107 VNW p11ll_ckt w=310.00n l=40.00n
+XX68 ZN xa1a2a3 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX56 a1nn a1n VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX54 a2n A2 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX1 net080 net0107 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX39 net0107 a3n xa1a2a3 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS XNOR3HSV1
+****Sub-Circuit for XNOR3HSV2, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT XNOR3HSV2 A1 A2 A3 ZN VDD VSS
+XX47 net080 a3n xa1a2a3 VPW n11ll_ckt w=210.00n l=40.00n
+XX0 net080 net0107 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX49 a1n A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX60 a1nn A2 net0107 VPW n11ll_ckt w=210.00n l=40.00n
+XX59 a1n a2n net0107 VPW n11ll_ckt w=210.00n l=40.00n
+XX67 ZN xa1a2a3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX57 a3n A3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX55 a1nn a1n VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX53 a2n A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX36 net0107 A3 xa1a2a3 VPW n11ll_ckt w=210.00n l=40.00n
+XX50 a1n A1 VDD VNW p11ll_ckt w=420.0n l=40.00n
+XX58 a3n A3 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX62 a1nn a2n net0107 VNW p11ll_ckt w=310.00n l=40.00n
+XX48 net080 A3 xa1a2a3 VNW p11ll_ckt w=310.00n l=40.00n
+XX61 a1n A2 net0107 VNW p11ll_ckt w=310.00n l=40.00n
+XX68 ZN xa1a2a3 VDD VNW p11ll_ckt w=405.00n l=40.00n
+XX56 a1nn a1n VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX54 a2n A2 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX1 net080 net0107 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX39 net0107 a3n xa1a2a3 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS XNOR3HSV2
+****Sub-Circuit for XNOR4HSV1, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT XNOR4HSV1 A1 A2 A3 A4 ZN VDD VSS
+XX4 net0155 net0208 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX10 m net098 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX17 a3n A3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX12 a4nn A3 net098 VPW n11ll_ckt w=210.00n l=40.00n
+XX13 a4n a3n net098 VPW n11ll_ckt w=210.00n l=40.00n
+XX20 a4n A4 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX0 a2nn a2n VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX18 a4nn a4n VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX23 net0148 net0155 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX6 n m VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX49 a1n A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX60 net0148 n net0109 VPW n11ll_ckt w=210.00n l=40.00n
+XX8 ZN net0109 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX59 net0155 m net0109 VPW n11ll_ckt w=210.00n l=40.00n
+XX65 a2nn A1 net0174 VPW n11ll_ckt w=215.00n l=40.00n
+XX66 a2n a1n net0174 VPW n11ll_ckt w=210.00n l=40.00n
+XX2 net0208 net0174 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX53 a2n A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX1 a2nn a2n VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX22 a4n A4 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX15 a4n A3 net098 VNW p11ll_ckt w=310.00n l=40.00n
+XX14 a4nn a3n net098 VNW p11ll_ckt w=310.00n l=40.00n
+XX19 a3n A3 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX7 n m VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX24 net0148 net0155 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX50 a1n A1 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX21 a4nn a4n VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX62 net0148 m net0109 VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net0155 net0208 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX61 net0155 n net0109 VNW p11ll_ckt w=310.00n l=40.00n
+XX63 a2nn a1n net0174 VNW p11ll_ckt w=310.00n l=40.00n
+XX64 a2n A1 net0174 VNW p11ll_ckt w=310.00n l=40.00n
+XX54 a2n A2 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX9 ZN net0109 VDD VNW p11ll_ckt w=315.00n l=40.00n
+XX3 net0208 net0174 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX11 m net098 VDD VNW p11ll_ckt w=430.00n l=40.00n
+.ENDS XNOR4HSV1
+****Sub-Circuit for XNOR4HSV2, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT XNOR4HSV2 A1 A2 A3 A4 ZN VDD VSS
+XX4 net0155 net0208 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX10 m net098 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX17 a3n A3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX12 a4nn A3 net098 VPW n11ll_ckt w=210.00n l=40.00n
+XX13 a4n a3n net098 VPW n11ll_ckt w=210.00n l=40.00n
+XX20 a4n A4 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX0 a2nn a2n VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX18 a4nn a4n VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX23 net0148 net0155 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX6 n m VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX49 a1n A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX60 net0148 n net0109 VPW n11ll_ckt w=210.00n l=40.00n
+XX8 ZN net0109 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX59 net0155 m net0109 VPW n11ll_ckt w=210.00n l=40.00n
+XX65 a2nn A1 net0174 VPW n11ll_ckt w=215.00n l=40.00n
+XX66 a2n a1n net0174 VPW n11ll_ckt w=210.00n l=40.00n
+XX2 net0208 net0174 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX53 a2n A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX1 a2nn a2n VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX22 a4n A4 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX15 a4n A3 net098 VNW p11ll_ckt w=310.00n l=40.00n
+XX14 a4nn a3n net098 VNW p11ll_ckt w=310.00n l=40.00n
+XX19 a3n A3 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX7 n m VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX24 net0148 net0155 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX50 a1n A1 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX21 a4nn a4n VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX62 net0148 m net0109 VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net0155 net0208 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX61 net0155 n net0109 VNW p11ll_ckt w=310.00n l=40.00n
+XX63 a2nn a1n net0174 VNW p11ll_ckt w=310.00n l=40.00n
+XX64 a2n A1 net0174 VNW p11ll_ckt w=310.00n l=40.00n
+XX54 a2n A2 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX9 ZN net0109 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX3 net0208 net0174 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX11 m net098 VDD VNW p11ll_ckt w=430.00n l=40.00n
+.ENDS XNOR4HSV2
+****Sub-Circuit for XOR2HSV1, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT XOR2HSV1 A1 A2 Z VDD VSS
+XX57 Z xna1a2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX47 a2n a1n xna1a2 VPW n11ll_ckt w=210.00n l=40.00n
+XX49 a1n A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX55 a2nn a2n VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX53 a2n A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX36 a2nn A1 xna1a2 VPW n11ll_ckt w=210.00n l=40.00n
+XX50 a1n A1 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX58 Z xna1a2 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX48 a2n A1 xna1a2 VNW p11ll_ckt w=300.00n l=40.00n
+XX56 a2nn a2n VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX54 a2n A2 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX39 a2nn a1n xna1a2 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS XOR2HSV1
+****Sub-Circuit for XOR2HSV2, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT XOR2HSV2 A1 A2 Z VDD VSS
+XX57 Z xna1a2 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX47 a2n a1n xna1a2 VPW n11ll_ckt w=210.00n l=40.00n
+XX49 a1n A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX55 a2nn a2n VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX53 a2n A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX36 a2nn A1 xna1a2 VPW n11ll_ckt w=210.00n l=40.00n
+XX50 a1n A1 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX58 Z xna1a2 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX48 a2n A1 xna1a2 VNW p11ll_ckt w=300.00n l=40.00n
+XX56 a2nn a2n VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX54 a2n A2 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX39 a2nn a1n xna1a2 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS XOR2HSV2
+****Sub-Circuit for XOR3HSV1, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT XOR3HSV1 A1 A2 A3 Z VDD VSS
+XX47 net080 A3 xa1a2a3 VPW n11ll_ckt w=210.00n l=40.00n
+XX0 net080 net0107 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX49 a1n A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX60 a1nn A2 net0107 VPW n11ll_ckt w=210.00n l=40.00n
+XX59 a1n a2n net0107 VPW n11ll_ckt w=210.00n l=40.00n
+XX67 Z xa1a2a3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX57 a3n A3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX55 a1nn a1n VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX53 a2n A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX36 net0107 a3n xa1a2a3 VPW n11ll_ckt w=210.00n l=40.00n
+XX50 a1n A1 VDD VNW p11ll_ckt w=420.0n l=40.00n
+XX58 a3n A3 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX62 a1nn a2n net0107 VNW p11ll_ckt w=310.00n l=40.00n
+XX48 net080 a3n xa1a2a3 VNW p11ll_ckt w=310.00n l=40.00n
+XX61 a1n A2 net0107 VNW p11ll_ckt w=310.00n l=40.00n
+XX68 Z xa1a2a3 VDD VNW p11ll_ckt w=315.00n l=40.00n
+XX56 a1nn a1n VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX54 a2n A2 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX1 net080 net0107 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX39 net0107 A3 xa1a2a3 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS XOR3HSV1
+****Sub-Circuit for XOR3HSV2, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT XOR3HSV2 A1 A2 A3 Z VDD VSS
+XX47 net080 A3 xa1a2a3 VPW n11ll_ckt w=210.00n l=40.00n
+XX0 net080 net0107 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX49 a1n A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX60 a1nn A2 net0107 VPW n11ll_ckt w=210.00n l=40.00n
+XX59 a1n a2n net0107 VPW n11ll_ckt w=210.00n l=40.00n
+XX67 Z xa1a2a3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX57 a3n A3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX55 a1nn a1n VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX53 a2n A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX36 net0107 a3n xa1a2a3 VPW n11ll_ckt w=210.00n l=40.00n
+XX50 a1n A1 VDD VNW p11ll_ckt w=420.0n l=40.00n
+XX58 a3n A3 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX62 a1nn a2n net0107 VNW p11ll_ckt w=310.00n l=40.00n
+XX48 net080 a3n xa1a2a3 VNW p11ll_ckt w=310.00n l=40.00n
+XX61 a1n A2 net0107 VNW p11ll_ckt w=310.00n l=40.00n
+XX68 Z xa1a2a3 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX56 a1nn a1n VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX54 a2n A2 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX1 net080 net0107 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX39 net0107 A3 xa1a2a3 VNW p11ll_ckt w=310.00n l=40.00n
+.ENDS XOR3HSV2
+****Sub-Circuit for XOR4HSV1, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT XOR4HSV1 A1 A2 A3 A4 Z VDD VSS
+XX4 net0155 net0208 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX10 m net098 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX17 a3n A3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX12 a4n a3n net098 VPW n11ll_ckt w=210.00n l=40.00n
+XX13 a4nn A3 net098 VPW n11ll_ckt w=210.00n l=40.00n
+XX20 a4n A4 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX0 a2nn a2n VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX18 a4nn a4n VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX23 net0148 net0155 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX6 n m VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX49 a1n A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX60 net0148 m net0109 VPW n11ll_ckt w=210.00n l=40.00n
+XX8 Z net0109 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX59 net0155 n net0109 VPW n11ll_ckt w=210.00n l=40.00n
+XX65 a2nn A1 net0174 VPW n11ll_ckt w=215.00n l=40.00n
+XX66 a2n a1n net0174 VPW n11ll_ckt w=210.00n l=40.00n
+XX2 net0208 net0174 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX53 a2n A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX1 a2nn a2n VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX22 a4n A4 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX15 a4nn a3n net098 VNW p11ll_ckt w=310.00n l=40.00n
+XX14 a4n A3 net098 VNW p11ll_ckt w=310.00n l=40.00n
+XX19 a3n A3 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX7 n m VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX24 net0148 net0155 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX50 a1n A1 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX21 a4nn a4n VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX62 net0148 n net0109 VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net0155 net0208 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX61 net0155 m net0109 VNW p11ll_ckt w=310.00n l=40.00n
+XX63 a2nn a1n net0174 VNW p11ll_ckt w=310.00n l=40.00n
+XX64 a2n A1 net0174 VNW p11ll_ckt w=310.00n l=40.00n
+XX54 a2n A2 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX9 Z net0109 VDD VNW p11ll_ckt w=315.00n l=40.00n
+XX3 net0208 net0174 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX11 m net098 VDD VNW p11ll_ckt w=430.00n l=40.00n
+.ENDS XOR4HSV1
+****Sub-Circuit for XOR4HSV2, Wed Sep  5 13:54:28 CST 2012****
+.SUBCKT XOR4HSV2 A1 A2 A3 A4 Z VDD VSS
+XX4 net0155 net0208 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX10 m net098 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX17 a3n A3 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX12 a4n a3n net098 VPW n11ll_ckt w=210.00n l=40.00n
+XX13 a4nn A3 net098 VPW n11ll_ckt w=210.00n l=40.00n
+XX20 a4n A4 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX0 a2nn a2n VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX18 a4nn a4n VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX23 net0148 net0155 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX6 n m VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX49 a1n A1 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX60 net0148 m net0109 VPW n11ll_ckt w=210.00n l=40.00n
+XX8 Z net0109 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX59 net0155 n net0109 VPW n11ll_ckt w=210.00n l=40.00n
+XX65 a2nn A1 net0174 VPW n11ll_ckt w=215.00n l=40.00n
+XX66 a2n a1n net0174 VPW n11ll_ckt w=210.00n l=40.00n
+XX2 net0208 net0174 VSS VPW n11ll_ckt w=285.00n l=40.00n
+XX53 a2n A2 VSS VPW n11ll_ckt w=210.00n l=40.00n
+XX1 a2nn a2n VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX22 a4n A4 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX15 a4nn a3n net098 VNW p11ll_ckt w=310.00n l=40.00n
+XX14 a4n A3 net098 VNW p11ll_ckt w=310.00n l=40.00n
+XX19 a3n A3 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX7 n m VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX24 net0148 net0155 VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX50 a1n A1 VDD VNW p11ll_ckt w=250.00n l=40.00n
+XX21 a4nn a4n VDD VNW p11ll_ckt w=310.00n l=40.00n
+XX62 net0148 n net0109 VNW p11ll_ckt w=310.00n l=40.00n
+XX5 net0155 net0208 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX61 net0155 m net0109 VNW p11ll_ckt w=310.00n l=40.00n
+XX63 a2nn a1n net0174 VNW p11ll_ckt w=310.00n l=40.00n
+XX64 a2n A1 net0174 VNW p11ll_ckt w=310.00n l=40.00n
+XX54 a2n A2 VDD VNW p11ll_ckt w=420.00n l=40.00n
+XX9 Z net0109 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX3 net0208 net0174 VDD VNW p11ll_ckt w=430.00n l=40.00n
+XX11 m net098 VDD VNW p11ll_ckt w=430.00n l=40.00n
+.ENDS XOR4HSV2

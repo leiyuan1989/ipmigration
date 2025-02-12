@@ -1,0 +1,223 @@
+********************
+TB
+@TB.a: Minimum NW width must be >=0.8um 
+@TB.b1.1: Min space between two NW with different potential must be >= 1.53 um 
+@TB.b.2: Min space between two NW with same potential must be >= 0.8 um 
+@TB.c: Min width of an NW region not connect to most positive power supply must be >=1.784 um 
+@TB.d: Min area of NW must be >=4.0 um2 
+@TB.e: TO is not allowed to placed, if the space between two NW less than 0.96um 
+********************
+TO
+@TO.a.1: Min active width for interconnect must be >=0.186um 
+@TO.b.1: Active width for NMOS must be >= 0.186 um 
+@TO.b.2: Active width for PMOS must be >= 0.186 um 
+@TO.c: Min spacing of TO must be >=0.238um 
+@TO.d: Min extension from NW edge to an NW pick-up must be >=0.102um 
+@TO.e.2: Min spacing of NW edge to an N+active outside NW( 5v ) must be >=0.45um 
+@TO.f.2: Min spacing of NW edge to an P+active inside NW( 5v ) must be >=0.45um 
+@TO.g: Min spacing of NW edge to an P+active( PW pick-up ) 
+@ outside NW must be >=0.102um 
+@TO.h.1: Min spacing of poly edge to the edeg of butted diffusion active must be >=0.272um 
+@TO.h.2: Min spacing of poly edge to the edeg of butted diffusion active must be >=0.272um 
+@TO.i: Min spacing of N+active to P+active for butted diffusion active must be >=0 
+@TO.j: One segment of the consecutive SN/SP edge of a butted 
+@ diffusion active should be longer than 0.326um 
+@TO.k: When NW and PW pick-up are put head-to-head across the boundary of the well, 
+@ the spacing of N-pick-up to P-pick-up should be 0.304um in order to meet the implant rules 
+@TO.l: Min active area of a stand-along region must be >=0.2um2 
+@TO.m: Min active area of butted diffusion must be >=0.13um2 
+@TO.n: Length and width should be less than 60um 
+@TO.note: active not doped is not allowed 
+@TO_res.a: Min width of active res must be >=1.0um 
+@TO_res.b: The separation from SAB to contact on TO must be >=0.15um 
+@TO_res.c: Min spacing of active resistor to unrelated SAB must be >=0.254um 
+@TO_res.d: Min spacing of active resistor to unrelated implant region must be >=0.22um 
+@TO_res.e: The overlap of SAB to active resistor must be >=0.186um 
+@TO_res.f: The extension of active resistor to contact must be >=0.07um 
+@TO_res.g: The extension of N+ or P+ diffusion to active resistor must be >=0.152um 
+@TO_res.h: Min spacing of active resistor to unrelated poly must be >=0.51um 
+@TODUM.m: Min local density of ( TO or DTO ) across full chip must be >=20%. 
+@ if the chip area >=62500um2 
+@TODUM.n: Max density of ( TO or DTO ) across full chip must be <=80%. 
+@ if the chip area >=62500um2 
+@TODUM.o: Min density of ( TO or DTO ) across full chip must be >=25%. 
+@TODUM.p: Max density of ( TO or DTO ) across full chip must be <=75%. 
+@TODUM.a: Min width of TODUM must be >=2.0um 
+@TODUM.b: Min space of TODUM must be >=1.2um 
+@TODUM.c: Min clearance from DTO to TO( overlap is not allowed ) must be >=1.2um 
+@TODUM.d: Min clearance from DTO to GT( overlap is not allowed ) must be >=1.2um 
+@TODUM.e: Min clearance from DTO to TB( overlap is not allowed ) must be >=0.6um 
+@TODUM.f: Min clearance from DTO to FU( metal fuse )( overlap is not allowed ) must be >=1.2um 
+@TODUM.g: Min clearance from DTO to NWBLK( overlap is not allowed ) must be >=1.2um 
+@TODUM.h: Min clearance from DTO to NODMF( overlap is not allowed ) must be >=0um 
+@TODUM.i: Min clearance from DTO to INDDMY( inductor )( overlap is not allowed ) must be >=1.2um 
+@TODUM.j: Min clearance from DTO to DUMBA( overlap is not allowed ) must be >=1.2um 
+@TODUM.k: Min extension of TB beyond DTO must be >=0.6um 
+@TODUM.l: Min extension of chip edge beyond DTO must be >=2.5um 
+@TODUM.q:TODUM only shape allowed are square or rectangular 
+********************
+GT
+@GT.a.1: Min width for interconnects must be >=0.18um 
+@GT.a.2: Min width for gate of HVNMOS( 5.0V ) must be >=0.5um 
+@GT.a.3: Min width for gate of HVPMOS( 5.0V ) must be >=0.42um 
+@GT.b.1: Min spacing between two GT region must be >=0.212um 
+@GT.b.2: Min spacing between two GT regions with contact on active area must be>=0.318um 
+@GT.b.3: Min spacing between two GT regions without contact on active area must be>=0.25um 
+@GT.c: Min extension of poly end cap must be >=0.186um 
+@GT.d: Min extension from active to GT must be >=0.27um 
+@GT.e: Min spacing of poly to active must be >=0.084um 
+@GT.f1: Max length of salicide poly on SAB between two contacts must <=50um when poly width is less than or equal to 0.24um 
+@GT.f2: Max length of salicide poly on SAB between one contact and poly line end must <=50um when poly width is less than or equal to 0.24um 
+@GT.g1: Min GT width for NMOS channel length which has 45 degree bent on TO must be >=0.54um 
+@GT.g2: Min GT width for PMOS channel length which has 45 degree bent on TO must be >=0.46um 
+@GT.g3: Min GT width for channel length which has 45 degree bent on field oxide must be >=0.26um 
+@GT.h:GT must enter the TO region perpendicularly( horizontal or vertical direction ). 
+@GT.i.1: 90 degree bend on active region is not allowed 
+@GT.i.2: 90 degree bend on active region is not allowed 
+@GT.k: Min space between poly interconnects with one or both poly width and length 
+@are greater than 0.28um and 0.5um respectively must be >=0.22um 
+@GT_res.a: Min width of poly res must be >=1.0um 
+@GT_res.b: The separation from SAB to contact on poly must be >=0.15um 
+@GT_res.c: Min spacing of poly resistor to unrelated SAB must be >=0.254um 
+@GT_res.d: Min spacing of poly resistor to unrelated implant region must be >=0.22um 
+@GT_res.e: The overlap of SAB to poly resistor must be >=0.186um 
+@GT_res.f: The extension of poly resistor to contact must be >=0.084um 
+@GT_res.g: The extension of N+ or P+ diffusion to poly resistor must be >=0.152um 
+@GT_res.h: Min spacing of poly or active resistor to unrelated poly must be >=0.51um 
+@GT_res.i: Min spacing of poly resistor to poly resistor must be >=0.34um 
+@GT_res.l: Poly resistor laid on ACT area is not recommended 
+@GTDUM.k: Minimum poly pattern density must be greater than 15%. 
+@ If not, please add the dummy pattern on the STI region. 
+@GTDUM.a: Min width of DGT must be >=0.6um 
+@GTDUM.b: Min space of DGT must be >=0.3um 
+@GTDUM.c: Min clearance from DGT to TO( overlap is not allowed ) must be >=1.2um 
+@GTDUM.d: Min clearance from DGT to GT( overlap is not allowed ) must be >=1.2um 
+@GTDUM.e: Min clearance from DGT to FU( overlap is not allowed ) must be >=1.2um 
+@GTDUM.f: Min clearance from DGT to NODMF( overlap is not allowed ) must be >=0um 
+@GTDUM.g: Min clearance from DGT to INDDMY( overlap is not allowed ) must be >=1.2um 
+@GTDUM.h: Min clearance from DGT to DTO( overlap is not allowed ) must be >=0.3um 
+@GTDUM.i: Min extension of chip edge beyond DGT must be >=2.5um 
+@GTDUM.j: Min clearance from DGT to DUMBP( overlap is not allowed ) must be >=1.2um 
+@GTDUM.m:GTDUM only shape allowed are square or rectangular 
+@GTDUM.n: Min area of DGT must be >=1.2um 
+********************
+SP
+@SP.a: Min width must be >=0.356 
+@SP.b: Min space of SP must be >=0.356 
+@SP.b1:Min SP space on STI <=0.42um must be merge 
+@SP.c: Min spacing of SP to a N+ active outside NW must be >=0.22 
+@SP.d: Min spacing of SP to a N+ pick-up active( non-butted active ) must be>=0.084um 
+@if the distance between N+active and NW>=0.43um 
+@SP.e: Min spacing of SP to a N+ pick-up active( non-butted active ) must be>=0.152um 
+@if the distance between N+active and NW<0.43um 
+@SP.f_1: Min overlap from SP edge to an active must be >=0.194um 
+@SP.f_2: Min overlap from SP edge to an active must be >=0.17um 
+@SP.g: Min extension of a SP region over P+active region must be >=0.152um 
+@SP.h: Min space of a SP edge to a N-channel poly gate must be >=0.238um 
+@SP.i: Min extension of a SP region to a P-channel poly gate must be >=0.4um 
+@SP.j: Min extension of a SP region beyond a P+ pick-up active must be >=0.02um 
+@ if the distance between P+active and NW >=0.43um 
+@SP.k: Min extension of a SP region beyond a P+ pick-up active must be >=0.152um 
+@ if the distance between P+active and NW <0.43um 
+@ 1. To obey this rule and "c" simultaneously, the minimum space 
+@ between N+ pick-up active and P+ active should be increased to 0.372um 
+@ 2. To obey this rule and "e" simultaneously, the minimum space 
+@ between N+ pick-up active and P+ active should be increased to 0.304um 
+@SP.l.1: Min extension of SP region beyond a resistor poly msut be >=0.152um 
+@SAB poly without SN or SP implant is not allowed. 
+@SP.m: Min space from a SP edge to a N-channel poly gate along the 
+@direction of poly gate must be >=0.254um. 
+@SP.n: Min extension of a SP region over P+active along the 
+@direction of poly gate must be >=0.296um. 
+@SP.s: Min SP area >=0.4um2 
+@SP.w: Min resist pattern area within PPLUS region must be >=0.64um2 
+********************
+SN
+@SN.a: Min SN width must be >=0.356 
+@SN.b: Min SN space must be >=0.356 
+@SN.b1:Min SN space on STI <=0.42um must be merge 
+@SN.c: Min spacing of SN to a P+ active inside NW must be >=0.22 
+@SN.d: Min spacing of SN to a P+ pick-up active( non-butted active ) must be>=0.084um 
+@if the distance between P+active and NW>=0.43um 
+@SN.e: Min spacing of SN to a P+ pick-up active( non-butted active ) must be>=0.152um 
+@if the distance between P+active and NW<0.43um 
+@SN.f_1: Min overlap from SN edge to an active must be >=0.194um 
+@SN.f_2: Min overlap from SN edge to an active must be >=0.17um 
+@SN.g: Min extension of a SN region over N+active region must be >=0.152um 
+@SN.h: Min space of a SN edge to a P-channel poly gate must be >=0.238um 
+@SN.i: Min extension of a SN region to a N-channel poly gate must be >=0.45um 
+@SN.j: Min extension of a SN region beyond a N+ pick-up active must be >=0.02um 
+@ if the distance between N+active and PW >=0.43um 
+@SN.k: Min extension of a SN region beyond a N+ pick-up active must be >=0.152um 
+@ if the distance between N+active and PW <0.43um 
+@ 1. To obey this rule and "c" simultaneously, the minimum space 
+@ between N+ pick-up active and P+ active should be increased to 0.372um 
+@ 2. To obey this rule and "e" simultaneously, the minimum space 
+@ between N+ pick-up active and P+ active should be increased to 0.304um 
+@SN.l.1: Min extension of SN region beyond a resistor poly msut be >=0.152um 
+@SAB poly without SN or SP implant is not allowed. 
+@SN.m: Min space from a SN region over P+active along the 
+@direction of poly gate must be >=0.31um. 
+@SN.n: Min extension of a SN region over N+active along the 
+@direction of poly gate must be >=0.296um. 
+@SN.s: Min SN area >=0.4um2 
+@SN_SP.t: SN is not allowed to overlap to SP. 
+@SN.w: Min resist pattern area within NPLUS region must be >=0.64um2 
+********************
+W1
+@W1.a: Min&Max Contact size must be == 0.186um 
+@W1.b: Min W1 to W1 space must be >= 0.212um 
+@W1.c: Min space when the row and column numbers are both greater than 3 in the contact array must be >= 0.238um 
+@W1.d: Min space of poly contact to active edge must be >= 0.144um 
+@W1.e: Min space of poly gate to contact on active must be >= 0.14um 
+@W1.f: Min enclosure of active beyond contact must be >= 0.07um 
+@W1.g: Min enclosure of poly beyond contact must be >= 0.07um 
+@W1.h: Min enclosure of P+active beyond contact must be >= 0.102um 
+@W1.i: Min enclosure of N+active beyond contact must be >= 0.102um 
+@W1.j: Contact on poly gate region is forbidden. 
+@W1.k: Contact on active is not allowed to locate on the boundary of SN and SP. 
+@W1.m: W1 without the cover of ( GATE or ACT ) is not allowed. 
+@W1.note:W1 on the body of any resistor is not allowed. 
+********************
+A1
+@A1.a: Min A1 width must be >=0.194um 
+@A1.b: Min A1 space must be >=0.194um 
+@A1.c: Min enclosure of A1 region over contact region must be >=0.004um 
+@A1.d: Min enclosure of A1 line end region beyond contact region must be >=0.05um 
+@( when contact at 90 degree corner,one side of metal enclosure must be considered as line end region ). 
+@A1.e: Minimum space between M1 lines with one or both metal line width 
+@ and length are greater than 10um is 0.476um 
+@ The minimum space must be maintained between a metal line and a 
+@ small piece of metal( <10 ) that is connected to the wide metal 
+@ within 1.0um range from the wide metal 
+@A1.g: Min A1 area must be >=0.2um2 
+@A1DUM.k: Min local density of ( Ax or DAx ) for A1-An( n<6 ) must be >=30% 
+@A1DUM.o: Max local density of ( Ax or DAx )must be <=80% 
+@A1DUM.p: Min metal local density within DAxBLK for( A1-An )( n<6 ) must be >=30% 
+@A1DUM.r: Max metal local density within DAxBLK must be <=80% 
+@A1DUM.m:Min density of ( An to AnDUM ) across full chip must be >=30% 
+@A1DUM.n:Max density of ( An to AnDUM ) across full chip must be <=70% 
+@A1DUM.a1: Min width of A1DUM must be >=0.4um 
+@A1DUM.b: Min space of A1DUM must be <=0.4um 
+@A1DUM.c: Min clearance from A1DUM to A1( Overlap is not allowed ) must be <=0.6um 
+@A1DUM.d: Min clearance from A1DUM to FU ( metal fuse )( Overlap is not allowed ) must be <=5.0um 
+@A1DUM.e: Min clearance from A1DUM to NODMF ( metal fuse )( Overlap is not allowed ) must be <=0um 
+@A1DUM.f: Min clearance from A1DUM to INDDMY ( inductor )( Overlap is not allowed ) must be <=18.0um 
+@A1DUM.g: Min clearance from A1DUM to CTDMY ( MIM Capacotor )( Overlap is not allowed ) must be <=1.5um 
+@A1DUM.h: Min extension of chip edge beyond A1DUM must be <=2.5um 
+@A1DUM.i1: Min area of A1DUM must be >=0.36um2 
+@A1DUM.i2: Max area of A1DUM must be <=80um2 
+@A1DUM.j: Min clearance from DAx to DAxBLK( Dummy metal block )( overlap is not allowed ) must be >=0.6 
+@A1DUM.s:A1DUM only shape allowed are square or rectangular 
+********************
+W2
+********************
+A2
+********************
+W3
+********************
+A3
+********************
+prBoundry
+********************
+text

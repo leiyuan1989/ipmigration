@@ -1,0 +1,13 @@
+.SUBCKT CLK_V1 VDD VSS G cn c
+mp_1_0  cn    G    VDD  VNW pmos l=1.3e-07 w=2.8e-07
+mn_1_0  cn    G    VSS  VPW nmos l=1.3e-07 w=2.3e-07
+mp_2_0  VDD   cn   c    VNW pmos l=1.3e-07 w=2.3e-07
+mn_2_0  VSS   cn   c    VPW nmos l=1.3e-07 w=1.8e-07
+.ends CLK_V1
+
+.SUBCKT OUT_V1 VDD VSS G cn c
+mp_1_0 Q     IN1 VDD  VNW pmos l=1.3e-07 w=6.2e-07
+mn_1_0 Q     IN1 VSS  VPW nmos l=1.3e-07 w=3.6e-07
+mp_2_0 VDD   IN2 QN   VNW pmos l=1.3e-07 w=6.2e-07
+mn_2_0 VSS   IN2 QN   VPW nmos l=1.3e-07 w=3.6e-07
+.ends OUT_V1

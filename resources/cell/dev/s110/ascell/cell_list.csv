@@ -1,0 +1,4 @@
+name,note
+TLATX1MTR,"The TLAT cell is an active-high D-type transparent latch. When the enable (G) is high, data is
+transferred to the outputs (Q, QN)."
+DFFX1MTR,"The DFF cell is a positive edge-triggered, static D-type flip-flop."

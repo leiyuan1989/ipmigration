@@ -1,0 +1,78 @@
+************************************************************************
+* auCdl Netlist:
+* 
+* Library Name:  prima_sc180bcd_5v_9t_sch
+* Top Cell Name: SEDFFSR_X4
+* View Name:     schematic
+* Netlisted on:  Apr 22 13:39:17 2024
+************************************************************************
+
+*.BIPOLAR
+*.RESI = 2000 
+*.RESVAL
+*.CAPVAL
+*.DIOPERI
+*.DIOAREA
+*.EQUATION
+*.SCALE METER
+*.MEGA
+.PARAM
+
+
+
+************************************************************************
+* Library Name: prima_sc180bcd_5v_9t_sch
+* Cell Name:    SEDFFSR_X4
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT SEDFFSR_X4 CLK D E Q RN SE SI SN VDD VNW VPW VSS
+*.PININFO CLK:I D:I E:I RN:I SE:I SI:I SN:I Q:O VDD:B VNW:B VPW:B VSS:B
+mM62 net058 SI VDD VNW pch5 mr=1 l=500n w=1.31u nf=1
+mPM9 net010 clkp net013 VNW pch5 mr=1 l=500n w=1.31u nf=1
+mM40 net15 clkp net25 VNW pch5 mr=1 l=500n w=220n nf=1
+mM33 net013 clkn net27 VNW pch5 mr=1 l=500n w=220n nf=1
+mM2 snb SN VDD VNW pch5 mr=1 l=500n w=1.31u nf=1
+mM15 seb SE VDD VNW pch5 mr=1 l=500n w=1.31u nf=1
+mM65 net048 eb net1 VNW pch5 mr=1 l=500n w=1.74u nf=1
+mM58 net010 seb net058 VNW pch5 mr=1 l=500n w=1.25u nf=1
+mM43 net12 net013 VDD VNW pch5 mr=1 l=500n w=1.31u nf=1
+mM31 clkn CLK VDD VNW pch5 mr=1 l=500n w=1.31u nf=1
+mM38 clkp clkn VDD VNW pch5 mr=1 l=500n w=1.31u nf=1
+mM60 net046 E net1 VNW pch5 mr=1 l=500n w=1.31u nf=1
+mM64 net060 RN net1 VNW pch5 mr=1 l=500n w=1.31u nf=1
+mPM1 net20 net15 VDD VNW pch5 mr=1 l=500n w=1.31u nf=1
+mM18 net1 snb VDD VNW pch5 mr=1 l=500n w=1.31u nf=1
+mM54 net060 D net048 VNW pch5 mr=1 l=500n w=1.74u nf=1
+mM9 eb E VDD VNW pch5 mr=1 l=500n w=1.74u nf=1
+mM63 net060 SE net010 VNW pch5 mr=1 l=500n w=1.31u nf=1
+mM66 net060 Q net046 VNW pch5 mr=1 l=500n w=1.68u nf=1
+mPM12 net12 clkn net15 VNW pch5 mr=1 l=500n w=1.31u nf=1
+mM41 net25 net20 VDD VNW pch5 mr=1 l=500n w=220n nf=1
+mM34 net27 net12 VDD VNW pch5 mr=1 l=500n w=220n nf=1
+mM45 Q net20 VDD VNW pch5 mr=1 l=500n w=6.96u nf=4
+mM36 net26 net20 VSS VPW nch5 mr=1 l=600n w=220n nf=1
+mNM9 net010 clkn net013 VPW nch5 mr=1 l=600n w=1.21u nf=1
+mM14 seb SE VSS VPW nch5 mr=1 l=600n w=1.15u nf=1
+mNM12 net12 clkp net15 VPW nch5 mr=1 l=600n w=1.15u nf=1
+mM61 net060 RN net017 VPW nch5 mr=1 l=600n w=1.21u nf=1
+mM48 net060 seb net010 VPW nch5 mr=1 l=600n w=1.21u nf=1
+mM37 net15 clkn net26 VPW nch5 mr=1 l=600n w=220n nf=1
+mM35 net013 clkp net28 VPW nch5 mr=1 l=600n w=220n nf=1
+mM42 net12 net013 VSS VPW nch5 mr=1 l=600n w=780n nf=1
+mM8 eb E VSS VPW nch5 mr=1 l=600n w=1.21u nf=1
+mM12 net010 SE net059 VPW nch5 mr=1 l=600n w=1.15u nf=1
+mM44 net20 net15 VSS VPW nch5 mr=1 l=600n w=860n nf=1
+mM49 net017 Q net047 VPW nch5 mr=1 l=600n w=1.21u nf=1
+mM3 net049 D VSS VPW nch5 mr=1 l=600n w=1.21u nf=1
+mM24 Q net20 VSS VPW nch5 mr=1 l=600n w=4.84u nf=4
+mM39 clkp clkn VSS VPW nch5 mr=1 l=600n w=780n nf=1
+mNM1 clkn CLK VSS VPW nch5 mr=1 l=600n w=780n nf=1
+mM1 snb SN VSS VPW nch5 mr=1 l=600n w=1.21u nf=1
+mM32 net28 net12 VSS VPW nch5 mr=1 l=600n w=220n nf=1
+mM4 net060 snb VSS VPW nch5 mr=1 l=600n w=1.21u nf=1
+mM50 net047 eb VSS VPW nch5 mr=1 l=600n w=1.21u nf=1
+mM0 net017 E net049 VPW nch5 mr=1 l=600n w=1.21u nf=1
+mM11 net059 SI VSS VPW nch5 mr=1 l=600n w=780n nf=1
+.ENDS
+

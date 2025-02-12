@@ -1,0 +1,13 @@
+#Layer Name     Layer Purpose  Layer Stream Number  Datatype Stream Number
+
+CT		drawing		9		0
+GT		drawing		4		0	
+L5V		drawing		98		0
+M1		drawing		10		0
+SN		drawing		7		0
+NW		drawing		2		0
+AA		drawing		3		0
+SP		drawing		8		0
+WAKU	drawing		111		0
+prBoundary	drawing	235		0
+text	drawing		230		0

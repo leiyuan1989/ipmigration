@@ -1,0 +1,51 @@
+
+
+
+
+.SUBCKT OUT_SR1 CK SN NRN VDD VSS OUT
+pmos_1 OUT SN VDD VDD pmos  l=1 w=1 n=1
+pmos_2 OUT NRN N_18 VDD pmos  l=1 w=1 n=1
+pmos_3 N_18 bm VDD VDD pmos  l=1 w=1 n=1
+nmos_1 N_26 SN VSS VSS nmos l=1 w=1 n=1
+nmos_2 N_26 NRN OUT VSS nmos l=1 w=1 n=1
+nmos_3 N_26 bm OUT VSS nmos  l=1 w=1 n=1
+.ends OUT_SR1
+
+.SUBCKT INV IN VDD VSS OUT
+pmos_1 VDD  IN  OUT VDD pmos l=1 w=1 n=1
+nmos_1 VSS  IN  OUT VSS nmos l=1 w=1 n=1 
+.ends INV
+
+.SUBCKT NOR2 A B VDD VSS OUT
+pmos_1 VDD  A  net1 VDD pmos l=1 w=1 n=1
+nmos_1 VSS  A  OUT  VSS nmos l=1 w=1 n=1
+pmos_2 net1 B  OUT  VDD pmos l=1 w=1 n=1
+nmos_2 OUT  B  VSS  VSS nmos l=1 w=1 n=1   
+.ends NOR2
+
+.SUBCKT NAND2 A B VDD VSS OUT
+pmos_1 OUT  A  VDD VDD pmos l=1 w=1 n=1
+nmos_1 VSS  A  net1  VSS nmos l=1 w=1 n=1
+pmos_2 VDD  B  OUT  VDD pmos l=1 w=1 n=1
+nmos_2 net1 B  OUT  VSS nmos l=1 w=1 n=1   
+.ends NAND2
+
+.SUBCKT AND2 A B VDD VSS OUT
+pmos_1 VDD  A  net1 VDD pmos l=1 w=1 n=1
+nmos_1 net1 A  net2 VSS nmos l=1 w=1 n=1
+pmos_2 net1 B  VDD  VDD pmos l=1 w=1 n=1
+nmos_2 net2 B  VSS  VSS nmos l=1 w=1 n=1
+pmos_3 VDD  net1  OUT  VDD pmos l=1 w=1 n=1
+nmos_3 VSS  net1  OUT  VSS nmos l=1 w=1 n=1
+.ends AND2
+
+.SUBCKT OR2 A B VDD VSS OUT
+pmos_1 net1  A  net2 VDD pmos l=1 w=1 n=1
+nmos_1 VSS   A  net1 VSS nmos l=1 w=1 n=1
+pmos_2 net2  B  VDD  VDD pmos l=1 w=1 n=1
+nmos_2 net1  B  VSS  VSS nmos l=1 w=1 n=1
+pmos_3 VDD  net1  OUT  VDD pmos l=1 w=1 n=1
+nmos_3 VSS  net1  OUT  VSS nmos l=1 w=1 n=1
+.ends OR2
+
+

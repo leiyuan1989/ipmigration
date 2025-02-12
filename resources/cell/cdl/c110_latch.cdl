@@ -1,0 +1,1945 @@
+* SPICE INPUT		Tue Jul 31 19:34:18 2018	labhb0
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=labhb0
+.subckt labhb0 GND QN Q D SN RN VDD G
+M1 N_4 G GND GND mn15  l=0.13u w=0.17u m=1
+M2 GND N_4 N_2 GND mn15  l=0.13u w=0.17u m=1
+M3 N_7 N_2 N_6 GND mn15  l=0.13u w=0.17u m=1
+M4 N_6 D N_5 GND mn15  l=0.13u w=0.18u m=1
+M5 N_5 RN GND GND mn15  l=0.13u w=0.34u m=1
+M6 N_18 N_4 N_7 GND mn15  l=0.13u w=0.17u m=1
+M7 N_7 N_8 GND GND mn15  l=0.13u w=0.18u m=1
+M8 GND SN N_8 GND mn15  l=0.13u w=0.18u m=1
+M9 N_18 N_17 N_5 GND mn15  l=0.13u w=0.17u m=1
+M10 QN N_17 GND GND mn15  l=0.13u w=0.26u m=1
+M11 Q N_7 GND GND mn15  l=0.13u w=0.26u m=1
+M12 N_17 N_7 GND GND mn15  l=0.13u w=0.18u m=1
+M13 N_4 G VDD VDD mp15  l=0.13u w=0.42u m=1
+M14 N_2 N_4 VDD VDD mp15  l=0.13u w=0.42u m=1
+M15 N_22 D N_6 VDD mp15  l=0.13u w=0.33u m=1
+M16 N_7 RN N_22 VDD mp15  l=0.13u w=0.3u m=1
+M17 N_7 N_2 N_67 VDD mp15  l=0.13u w=0.17u m=1
+M18 N_7 N_4 N_6 VDD mp15  l=0.13u w=0.42u m=1
+M19 N_67 N_17 N_22 VDD mp15  l=0.13u w=0.17u m=1
+M20 N_22 N_8 VDD VDD mp15  l=0.13u w=0.54u m=1
+M21 N_8 SN VDD VDD mp15  l=0.13u w=0.26u m=1
+M22 Q N_7 VDD VDD mp15  l=0.13u w=0.4u m=1
+M23 N_17 N_7 VDD VDD mp15  l=0.13u w=0.26u m=1
+M24 QN N_17 VDD VDD mp15  l=0.13u w=0.4u m=1
+.ends labhb0
+* SPICE INPUT		Tue Jul 31 19:34:32 2018	labhb1
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+*M6 N_10 RN GND GND mn15  l=0.13u w=0.14u m=1
+*M10 N_14 SN GND GND mn15  l=0.13u w=0.14u m=1
+*M24 N_14 SN VDD VDD mp15  l=0.13u w=0.195u m=1
+* Top of hierarchy  cell=labhb1
+.subckt labhb1 GND QN Q VDD SN RN D G
+M1 N_4 G GND GND mn15  l=0.13u w=0.2u m=1
+M2 GND N_4 N_2 GND mn15  l=0.13u w=0.2u m=1
+M3 N_8 N_2 N_7 GND mn15  l=0.13u w=0.46u m=1
+M4 N_10 D N_7 GND mn15  l=0.13u w=0.35u m=1
+M5 N_10 RN GND GND mn15  l=0.13u w=0.35u m=1
+M7 N_8 N_4 N_18 GND mn15  l=0.13u w=0.17u m=1
+M8 N_8 N_14 GND GND mn15  l=0.13u w=0.27u m=1
+M9 N_14 SN GND GND mn15  l=0.13u w=0.14u m=1 nf=2
+M11 QN N_17 GND GND mn15  l=0.13u w=0.43u m=1
+M12 N_18 N_17 N_10 GND mn15  l=0.13u w=0.17u m=1
+M13 Q N_8 GND GND mn15  l=0.13u w=0.46u m=1
+M14 N_17 N_8 GND GND mn15  l=0.13u w=0.28u m=1
+M15 N_4 G VDD VDD mp15  l=0.13u w=0.51u m=1
+M16 N_2 N_4 VDD VDD mp15  l=0.13u w=0.51u m=1
+M17 N_22 D N_7 VDD mp15  l=0.13u w=0.52u m=1
+M18 N_8 RN N_22 VDD mp15  l=0.13u w=0.39u m=1
+M19 N_8 N_2 N_71 VDD mp15  l=0.13u w=0.17u m=1
+M20 N_8 N_4 N_7 VDD mp15  l=0.13u w=0.65u m=1
+M21 N_71 N_17 N_22 VDD mp15  l=0.13u w=0.17u m=1
+M22 N_22 N_14 VDD VDD mp15  l=0.13u w=0.63u m=1
+M23 N_14 SN VDD VDD mp15  l=0.13u w=0.195u m=1 nf=2
+M25 QN N_17 VDD VDD mp15  l=0.13u w=0.69u m=1
+M26 Q N_8 VDD VDD mp15  l=0.13u w=0.69u m=1
+M27 N_17 N_8 VDD VDD mp15  l=0.13u w=0.36u m=1
+.ends labhb1
+* SPICE INPUT		Tue Jul 31 19:34:45 2018	labhb2
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=labhb2
+.subckt labhb2 GND QN Q VDD SN RN D G
+M1 N_4 G GND GND mn15  l=0.13u w=0.27u m=1
+M2 GND N_4 N_2 GND mn15  l=0.13u w=0.17u m=1
+M3 N_6 D N_5 GND mn15  l=0.13u w=0.225u m=1
+M4 N_5 D N_6 GND mn15  l=0.13u w=0.235u m=1
+M5 N_5 N_2 N_8 GND mn15  l=0.13u w=0.24u m=1
+M6 N_8 N_2 N_5 GND mn15  l=0.13u w=0.21u m=1
+M7 N_25 N_4 N_8 GND mn15  l=0.13u w=0.17u m=1
+M8 GND RN N_6 GND mn15  l=0.13u w=0.23u m=1
+M9 N_6 RN GND GND mn15  l=0.13u w=0.23u m=1
+M10 N_25 N_23 N_6 GND mn15  l=0.13u w=0.17u m=1
+M11 GND N_19 N_8 GND mn15  l=0.13u w=0.185u m=1
+M12 N_8 N_19 GND GND mn15  l=0.13u w=0.185u m=1
+M13 GND SN N_19 GND mn15  l=0.13u w=0.14u m=1
+M14 N_19 SN GND GND mn15  l=0.13u w=0.14u m=1
+M15 GND N_23 QN GND mn15  l=0.13u w=0.46u m=1
+M16 GND N_23 QN GND mn15  l=0.13u w=0.43u m=1
+M17 GND N_8 Q GND mn15  l=0.13u w=0.46u m=1
+M18 GND N_8 Q GND mn15  l=0.13u w=0.46u m=1
+M19 GND N_8 N_23 GND mn15  l=0.13u w=0.37u m=1
+M20 N_4 G VDD VDD mp15  l=0.13u w=0.67u m=1
+M21 N_2 N_4 VDD VDD mp15  l=0.13u w=0.42u m=1
+M22 N_5 N_4 N_8 VDD mp15  l=0.13u w=0.56u m=1
+M23 N_5 N_4 N_8 VDD mp15  l=0.13u w=0.56u m=1
+M24 N_5 D N_29 VDD mp15  l=0.13u w=0.29u m=1
+M25 N_5 D N_29 VDD mp15  l=0.13u w=0.29u m=1
+M26 N_5 D N_29 VDD mp15  l=0.13u w=0.29u m=1
+M27 N_5 D N_29 VDD mp15  l=0.13u w=0.29u m=1
+M28 N_98 N_2 N_8 VDD mp15  l=0.13u w=0.17u m=1
+M29 N_29 RN N_8 VDD mp15  l=0.13u w=0.54u m=1
+M30 N_98 N_23 N_29 VDD mp15  l=0.13u w=0.17u m=1
+M31 N_29 N_19 VDD VDD mp15  l=0.13u w=0.69u m=1
+M32 N_29 N_19 VDD VDD mp15  l=0.13u w=0.69u m=1
+M33 N_19 SN VDD VDD mp15  l=0.13u w=0.21u m=1
+M34 VDD SN N_19 VDD mp15  l=0.13u w=0.21u m=1
+M35 QN N_23 VDD VDD mp15  l=0.13u w=0.69u m=1
+M36 VDD N_23 QN VDD mp15  l=0.13u w=0.69u m=1
+M37 VDD N_8 Q VDD mp15  l=0.13u w=0.69u m=1
+M38 VDD N_8 Q VDD mp15  l=0.13u w=0.69u m=1
+M39 VDD N_8 N_23 VDD mp15  l=0.13u w=0.55u m=1
+.ends labhb2
+* SPICE INPUT		Tue Jul 31 19:34:58 2018	labhb3
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=labhb3
+.subckt labhb3 VDD QN Q GND SN RN D G
+M1 N_4 G GND GND mn15  l=0.13u w=0.23u m=1
+M2 GND N_4 N_3 GND mn15  l=0.13u w=0.17u m=1
+M3 N_5 N_3 N_6 GND mn15  l=0.13u w=0.24u m=1
+M4 N_5 N_3 N_6 GND mn15  l=0.13u w=0.24u m=1
+M5 N_6 N_3 N_5 GND mn15  l=0.13u w=0.24u m=1
+M6 N_34 D N_6 GND mn15  l=0.13u w=0.24u m=1
+M7 N_34 D N_6 GND mn15  l=0.13u w=0.24u m=1
+M8 N_6 D N_34 GND mn15  l=0.13u w=0.24u m=1
+M9 N_37 N_4 N_5 GND mn15  l=0.13u w=0.17u m=1
+M10 N_34 RN GND GND mn15  l=0.13u w=0.28u m=1
+M11 N_34 RN GND GND mn15  l=0.13u w=0.27u m=1
+M12 N_34 RN GND GND mn15  l=0.13u w=0.27u m=1
+M13 N_21 SN GND GND mn15  l=0.13u w=0.16u m=1
+M14 GND SN N_21 GND mn15  l=0.13u w=0.15u m=1
+M15 QN N_27 GND GND mn15  l=0.13u w=0.455u m=1
+M16 QN N_27 GND GND mn15  l=0.13u w=0.455u m=1
+M17 N_34 N_27 N_37 GND mn15  l=0.13u w=0.17u m=1
+M18 QN N_27 GND GND mn15  l=0.13u w=0.43u m=1
+M19 GND N_21 N_5 GND mn15  l=0.13u w=0.185u m=1
+M20 N_5 N_21 GND GND mn15  l=0.13u w=0.235u m=1
+M21 Q N_5 GND GND mn15  l=0.13u w=0.46u m=1
+M22 Q N_5 GND GND mn15  l=0.13u w=0.46u m=1
+M23 Q N_5 GND GND mn15  l=0.13u w=0.46u m=1
+M24 GND N_5 N_27 GND mn15  l=0.13u w=0.39u m=1
+M25 N_4 G VDD VDD mp15  l=0.13u w=0.55u m=1
+M26 N_3 N_4 VDD VDD mp15  l=0.13u w=0.42u m=1
+M27 N_6 N_4 N_5 VDD mp15  l=0.13u w=0.56u m=1
+M28 N_6 N_4 N_5 VDD mp15  l=0.13u w=0.56u m=1
+M29 N_6 D N_8 VDD mp15  l=0.13u w=0.29u m=1
+M30 N_6 D N_8 VDD mp15  l=0.13u w=0.29u m=1
+M31 N_6 D N_8 VDD mp15  l=0.13u w=0.29u m=1
+M32 N_6 D N_8 VDD mp15  l=0.13u w=0.29u m=1
+M33 N_5 N_3 N_29 VDD mp15  l=0.13u w=0.17u m=1
+M34 N_8 RN N_5 VDD mp15  l=0.13u w=0.58u m=1
+M35 N_21 SN VDD VDD mp15  l=0.13u w=0.23u m=1
+M36 VDD SN N_21 VDD mp15  l=0.13u w=0.23u m=1
+M37 QN N_27 VDD VDD mp15  l=0.13u w=0.69u m=1
+M38 QN N_27 VDD VDD mp15  l=0.13u w=0.69u m=1
+M39 QN N_27 VDD VDD mp15  l=0.13u w=0.69u m=1
+M40 N_29 N_27 N_8 VDD mp15  l=0.13u w=0.17u m=1
+M41 N_8 N_21 VDD VDD mp15  l=0.13u w=0.46u m=1
+M42 N_8 N_21 VDD VDD mp15  l=0.13u w=0.46u m=1
+M43 VDD N_21 N_8 VDD mp15  l=0.13u w=0.48u m=1
+M44 Q N_5 VDD VDD mp15  l=0.13u w=0.69u m=1
+M45 Q N_5 VDD VDD mp15  l=0.13u w=0.69u m=1
+M46 Q N_5 VDD VDD mp15  l=0.13u w=0.69u m=1
+M47 N_27 N_5 VDD VDD mp15  l=0.13u w=0.58u m=1
+.ends labhb3
+* SPICE INPUT		Tue Jul 31 19:35:11 2018	lablb0
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lablb0
+.subckt lablb0 GND Q QN SN D VDD RN GN
+M1 N_4 GN GND GND mn15  l=0.13u w=0.17u m=1
+M2 GND N_4 N_2 GND mn15  l=0.13u w=0.17u m=1
+M3 Q N_12 GND GND mn15  l=0.13u w=0.26u m=1
+M4 N_7 N_12 GND GND mn15  l=0.13u w=0.18u m=1
+M5 QN N_7 GND GND mn15  l=0.13u w=0.26u m=1
+M6 N_10 SN GND GND mn15  l=0.13u w=0.17u m=1
+M7 N_18 N_7 N_14 GND mn15  l=0.13u w=0.17u m=1
+M8 N_12 N_10 GND GND mn15  l=0.13u w=0.18u m=1
+M9 N_18 N_2 N_12 GND mn15  l=0.13u w=0.17u m=1
+M10 N_14 RN GND GND mn15  l=0.13u w=0.27u m=1
+M11 N_12 N_4 N_15 GND mn15  l=0.13u w=0.27u m=1
+M12 N_14 D N_15 GND mn15  l=0.13u w=0.27u m=1
+M13 N_4 GN VDD VDD mp15  l=0.13u w=0.42u m=1
+M14 VDD N_4 N_2 VDD mp15  l=0.13u w=0.42u m=1
+M15 Q N_12 VDD VDD mp15  l=0.13u w=0.4u m=1
+M16 N_7 N_12 VDD VDD mp15  l=0.13u w=0.26u m=1
+M17 QN N_7 VDD VDD mp15  l=0.13u w=0.4u m=1
+M18 N_10 SN VDD VDD mp15  l=0.13u w=0.26u m=1
+M19 N_20 N_10 VDD VDD mp15  l=0.13u w=0.42u m=1
+M20 N_20 D N_15 VDD mp15  l=0.13u w=0.42u m=1
+M21 N_68 N_7 N_20 VDD mp15  l=0.13u w=0.17u m=1
+M22 N_12 N_2 N_15 VDD mp15  l=0.13u w=0.4u m=1
+M23 N_12 N_4 N_68 VDD mp15  l=0.13u w=0.17u m=1
+M24 N_12 RN N_20 VDD mp15  l=0.13u w=0.3u m=1
+.ends lablb0
+* SPICE INPUT		Tue Jul 31 19:35:23 2018	lablb1
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lablb1
+*M19 N_7 N_2 N_5 VDD mp15  l=0.13u w=0.44u m=1
+
+.subckt lablb1 GND Q QN VDD GN D RN SN
+M1 N_4 GN GND GND mn15  l=0.13u w=0.17u m=1
+M2 GND N_4 N_2 GND mn15  l=0.13u w=0.17u m=1
+M3 N_7 N_4 N_5 GND mn15  l=0.13u w=0.37u m=1
+M4 N_6 D N_5 GND mn15  l=0.13u w=0.37u m=1
+M5 Q N_7 GND GND mn15  l=0.13u w=0.46u m=1
+M6 N_10 N_7 GND GND mn15  l=0.13u w=0.28u m=1
+M7 N_6 RN GND GND mn15  l=0.13u w=0.4u m=1
+M8 N_18 N_2 N_7 GND mn15  l=0.13u w=0.17u m=1
+M9 N_18 N_10 N_6 GND mn15  l=0.13u w=0.17u m=1
+M10 N_7 N_17 GND GND mn15  l=0.13u w=0.26u m=1
+M11 QN N_10 GND GND mn15  l=0.13u w=0.43u m=1
+M12 N_17 SN GND GND mn15  l=0.13u w=0.19u m=1
+M13 N_4 GN VDD VDD mp15  l=0.13u w=0.42u m=1
+M14 VDD N_4 N_2 VDD mp15  l=0.13u w=0.42u m=1
+M15 N_25 D N_5 VDD mp15  l=0.13u w=0.51u m=1
+M16 N_7 RN N_25 VDD mp15  l=0.13u w=0.37u m=1
+M17 N_7 N_4 N_69 VDD mp15  l=0.13u w=0.17u m=1
+M18 N_7 N_2 N_5 VDD mp15  l=0.13u w=0.44u m=1 nf=2
+M20 N_69 N_10 N_25 VDD mp15  l=0.13u w=0.17u m=1
+M21 N_25 N_17 VDD VDD mp15  l=0.13u w=0.62u m=1
+M22 QN N_10 VDD VDD mp15  l=0.13u w=0.69u m=1
+M23 N_17 SN VDD VDD mp15  l=0.13u w=0.3u m=1
+M24 Q N_7 VDD VDD mp15  l=0.13u w=0.69u m=1
+M25 N_10 N_7 VDD VDD mp15  l=0.13u w=0.36u m=1
+.ends lablb1
+* SPICE INPUT		Tue Jul 31 19:35:36 2018	lablb2
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lablb2
+.subckt lablb2 GND QN Q D VDD SN RN GN
+M1 N_4 GN GND GND mn15  l=0.13u w=0.22u m=1
+M2 GND N_4 N_2 GND mn15  l=0.13u w=0.22u m=1
+M3 N_7 RN GND GND mn15  l=0.13u w=0.36u m=1
+M4 N_7 RN GND GND mn15  l=0.13u w=0.36u m=1
+M5 N_23 N_2 N_5 GND mn15  l=0.13u w=0.17u m=1
+M6 N_7 N_21 N_23 GND mn15  l=0.13u w=0.17u m=1
+M7 N_7 D N_9 GND mn15  l=0.13u w=0.72u m=1
+M8 N_5 N_4 N_9 GND mn15  l=0.13u w=0.63u m=1
+M9 GND N_17 N_5 GND mn15  l=0.13u w=0.185u m=1
+M10 N_5 N_17 GND GND mn15  l=0.13u w=0.185u m=1
+M11 GND SN N_17 GND mn15  l=0.13u w=0.185u m=1
+M12 N_17 SN GND GND mn15  l=0.13u w=0.185u m=1
+M13 GND N_21 QN GND mn15  l=0.13u w=0.455u m=1
+M14 GND N_21 QN GND mn15  l=0.13u w=0.435u m=1
+M15 GND N_5 Q GND mn15  l=0.13u w=0.46u m=1
+M16 GND N_5 Q GND mn15  l=0.13u w=0.46u m=1
+M17 GND N_5 N_21 GND mn15  l=0.13u w=0.36u m=1
+M18 N_4 GN VDD VDD mp15  l=0.13u w=0.55u m=1
+M19 VDD N_4 N_2 VDD mp15  l=0.13u w=0.55u m=1
+M20 N_5 RN N_28 VDD mp15  l=0.13u w=0.27u m=1
+M21 N_5 RN N_28 VDD mp15  l=0.13u w=0.27u m=1
+M22 N_88 N_4 N_5 VDD mp15  l=0.13u w=0.17u m=1
+M23 N_28 N_21 N_88 VDD mp15  l=0.13u w=0.17u m=1
+M24 N_9 D N_28 VDD mp15  l=0.13u w=0.63u m=1
+M25 N_9 D N_28 VDD mp15  l=0.13u w=0.63u m=1
+M26 N_5 N_2 N_9 VDD mp15  l=0.13u w=1.25u m=1
+M27 N_28 N_17 VDD VDD mp15  l=0.13u w=0.63u m=1
+M28 VDD N_17 N_28 VDD mp15  l=0.13u w=0.63u m=1
+M29 N_17 SN VDD VDD mp15  l=0.13u w=0.55u m=1
+M30 VDD N_21 QN VDD mp15  l=0.13u w=0.69u m=1
+M31 QN N_21 VDD VDD mp15  l=0.13u w=0.69u m=1
+M32 VDD N_5 Q VDD mp15  l=0.13u w=0.69u m=1
+M33 VDD N_5 Q VDD mp15  l=0.13u w=0.69u m=1
+M34 N_21 N_5 VDD VDD mp15  l=0.13u w=0.52u m=1
+.ends lablb2
+* SPICE INPUT		Tue Jul 31 19:35:49 2018	lablb3
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lablb3
+.subckt lablb3 GND Q QN D VDD GN SN RN
+M1 Q N_14 GND GND mn15  l=0.13u w=0.46u m=1
+M2 Q N_14 GND GND mn15  l=0.13u w=0.46u m=1
+M3 Q N_14 GND GND mn15  l=0.13u w=0.46u m=1
+M4 GND N_14 N_5 GND mn15  l=0.13u w=0.285u m=1
+M5 N_5 N_14 GND GND mn15  l=0.13u w=0.285u m=1
+M6 N_10 GN GND GND mn15  l=0.13u w=0.27u m=1
+M7 N_9 N_10 GND GND mn15  l=0.13u w=0.27u m=1
+M8 QN N_5 GND GND mn15  l=0.13u w=0.455u m=1
+M9 QN N_5 GND GND mn15  l=0.13u w=0.455u m=1
+M10 QN N_5 GND GND mn15  l=0.13u w=0.43u m=1
+M11 GND SN N_16 GND mn15  l=0.13u w=0.185u m=1
+M12 N_16 SN GND GND mn15  l=0.13u w=0.185u m=1
+M13 GND N_16 N_14 GND mn15  l=0.13u w=0.23u m=1
+M14 N_14 N_16 GND GND mn15  l=0.13u w=0.23u m=1
+M15 N_14 N_10 N_19 GND mn15  l=0.13u w=0.74u m=1
+M16 N_20 D N_19 GND mn15  l=0.13u w=0.85u m=1
+M17 N_20 N_5 N_26 GND mn15  l=0.13u w=0.17u m=1
+M18 N_26 N_9 N_14 GND mn15  l=0.13u w=0.17u m=1
+M19 N_20 RN GND GND mn15  l=0.13u w=0.425u m=1
+M20 N_20 RN GND GND mn15  l=0.13u w=0.425u m=1
+M21 QN N_5 VDD VDD mp15  l=0.13u w=0.69u m=1
+M22 QN N_5 VDD VDD mp15  l=0.13u w=0.69u m=1
+M23 QN N_5 VDD VDD mp15  l=0.13u w=0.69u m=1
+M24 N_16 SN VDD VDD mp15  l=0.13u w=0.56u m=1
+M25 N_31 N_16 VDD VDD mp15  l=0.13u w=0.63u m=1
+M26 VDD N_16 N_31 VDD mp15  l=0.13u w=0.63u m=1
+M27 N_31 N_5 N_100 VDD mp15  l=0.13u w=0.17u m=1
+M28 N_14 RN N_31 VDD mp15  l=0.13u w=0.315u m=1
+M29 N_14 RN N_31 VDD mp15  l=0.13u w=0.315u m=1
+M30 N_100 N_10 N_14 VDD mp15  l=0.13u w=0.17u m=1
+M31 N_10 GN VDD VDD mp15  l=0.13u w=0.67u m=1
+M32 VDD N_10 N_9 VDD mp15  l=0.13u w=0.67u m=1
+M33 Q N_14 VDD VDD mp15  l=0.13u w=0.69u m=1
+M34 Q N_14 VDD VDD mp15  l=0.13u w=0.69u m=1
+M35 Q N_14 VDD VDD mp15  l=0.13u w=0.69u m=1
+M36 N_5 N_14 VDD VDD mp15  l=0.13u w=0.4u m=1
+M37 N_5 N_14 VDD VDD mp15  l=0.13u w=0.4u m=1
+M38 N_14 N_9 N_19 VDD mp15  l=0.13u w=1.34u m=1
+M39 N_19 D N_31 VDD mp15  l=0.13u w=0.67u m=1
+M40 N_19 D N_31 VDD mp15  l=0.13u w=0.67u m=1
+.ends lablb3
+* SPICE INPUT		Tue Jul 31 19:36:02 2018	lachb0
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lachb0
+.subckt lachb0 GND QN Q VDD RN D G
+M1 N_4 G GND GND mn15  l=0.13u w=0.17u m=1
+M2 GND N_4 N_2 GND mn15  l=0.13u w=0.17u m=1
+M3 N_7 N_2 N_5 GND mn15  l=0.13u w=0.18u m=1
+M4 N_15 D N_7 GND mn15  l=0.13u w=0.18u m=1
+M5 N_15 RN GND GND mn15  l=0.13u w=0.18u m=1
+M6 N_16 RN GND GND mn15  l=0.13u w=0.17u m=1
+M7 N_14 N_4 N_5 GND mn15  l=0.13u w=0.17u m=1
+M8 N_16 N_13 N_14 GND mn15  l=0.13u w=0.17u m=1
+M9 QN N_13 GND GND mn15  l=0.13u w=0.26u m=1
+M10 Q N_5 GND GND mn15  l=0.13u w=0.26u m=1
+M11 N_13 N_5 GND GND mn15  l=0.13u w=0.18u m=1
+M12 N_4 G VDD VDD mp15  l=0.13u w=0.42u m=1
+M13 N_2 N_4 VDD VDD mp15  l=0.13u w=0.42u m=1
+M14 N_7 D VDD VDD mp15  l=0.13u w=0.37u m=1
+M15 N_5 RN VDD VDD mp15  l=0.13u w=0.22u m=1
+M16 N_25 N_2 N_5 VDD mp15  l=0.13u w=0.17u m=1
+M17 N_7 N_4 N_5 VDD mp15  l=0.13u w=0.28u m=1
+M18 N_25 N_13 VDD VDD mp15  l=0.13u w=0.17u m=1
+M19 QN N_13 VDD VDD mp15  l=0.13u w=0.4u m=1
+M20 Q N_5 VDD VDD mp15  l=0.13u w=0.4u m=1
+M21 N_13 N_5 VDD VDD mp15  l=0.13u w=0.26u m=1
+.ends lachb0
+* SPICE INPUT		Tue Jul 31 19:36:15 2018	lachb1
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lachb1
+.subckt lachb1 GND Q QN VDD G RN D
+M1 N_4 G GND GND mn15  l=0.13u w=0.17u m=1
+M2 GND N_4 N_2 GND mn15  l=0.13u w=0.17u m=1
+M3 N_7 N_2 N_5 GND mn15  l=0.13u w=0.28u m=1
+M4 N_15 D N_7 GND mn15  l=0.13u w=0.37u m=1
+M5 N_15 RN GND GND mn15  l=0.13u w=0.37u m=1
+M6 N_16 RN GND GND mn15  l=0.13u w=0.17u m=1
+M7 N_14 N_4 N_5 GND mn15  l=0.13u w=0.17u m=1
+M8 N_16 N_11 N_14 GND mn15  l=0.13u w=0.17u m=1
+M9 Q N_5 GND GND mn15  l=0.13u w=0.46u m=1
+M10 N_11 N_5 GND GND mn15  l=0.13u w=0.28u m=1
+M11 QN N_11 GND GND mn15  l=0.13u w=0.46u m=1
+M12 N_4 G VDD VDD mp15  l=0.13u w=0.42u m=1
+M13 N_2 N_4 VDD VDD mp15  l=0.13u w=0.42u m=1
+M14 N_7 D VDD VDD mp15  l=0.13u w=0.47u m=1
+M15 N_5 RN VDD VDD mp15  l=0.13u w=0.37u m=1
+M16 N_26 N_2 N_5 VDD mp15  l=0.13u w=0.17u m=1
+M17 N_7 N_4 N_5 VDD mp15  l=0.13u w=0.42u m=1
+M18 N_26 N_11 VDD VDD mp15  l=0.13u w=0.17u m=1
+M19 QN N_11 VDD VDD mp15  l=0.13u w=0.69u m=1
+M20 Q N_5 VDD VDD mp15  l=0.13u w=0.69u m=1
+M21 N_11 N_5 VDD VDD mp15  l=0.13u w=0.37u m=1
+.ends lachb1
+* SPICE INPUT		Tue Jul 31 19:36:29 2018	lachb2
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lachb2
+.subckt lachb2 GND QN Q VDD RN D G
+M1 N_4 G GND GND mn15  l=0.13u w=0.17u m=1
+M2 GND N_4 N_2 GND mn15  l=0.13u w=0.17u m=1
+M3 N_6 N_2 N_5 GND mn15  l=0.13u w=0.225u m=1
+M4 N_5 N_2 N_6 GND mn15  l=0.13u w=0.225u m=1
+M5 N_17 D N_6 GND mn15  l=0.13u w=0.46u m=1
+M6 N_17 RN GND GND mn15  l=0.13u w=0.46u m=1
+M7 N_18 RN GND GND mn15  l=0.13u w=0.17u m=1
+M8 N_16 N_4 N_5 GND mn15  l=0.13u w=0.17u m=1
+M9 N_18 N_12 N_16 GND mn15  l=0.13u w=0.17u m=1
+M10 GND N_5 Q GND mn15  l=0.13u w=0.46u m=1
+M11 Q N_5 GND GND mn15  l=0.13u w=0.46u m=1
+M12 GND N_5 N_12 GND mn15  l=0.13u w=0.36u m=1
+M13 GND N_12 QN GND mn15  l=0.13u w=0.46u m=1
+M14 GND N_12 QN GND mn15  l=0.13u w=0.46u m=1
+M15 N_4 G VDD VDD mp15  l=0.13u w=0.42u m=1
+M16 N_2 N_4 VDD VDD mp15  l=0.13u w=0.42u m=1
+M17 N_6 N_4 N_5 VDD mp15  l=0.13u w=0.315u m=1
+M18 N_5 N_4 N_6 VDD mp15  l=0.13u w=0.315u m=1
+M19 N_6 D VDD VDD mp15  l=0.13u w=0.63u m=1
+M20 N_5 RN VDD VDD mp15  l=0.13u w=0.5u m=1
+M21 N_5 N_2 N_29 VDD mp15  l=0.13u w=0.17u m=1
+M22 N_29 N_12 VDD VDD mp15  l=0.13u w=0.17u m=1
+M23 Q N_5 VDD VDD mp15  l=0.13u w=0.69u m=1
+M24 Q N_5 VDD VDD mp15  l=0.13u w=0.69u m=1
+M25 N_12 N_5 VDD VDD mp15  l=0.13u w=0.52u m=1
+M26 VDD N_12 QN VDD mp15  l=0.13u w=0.69u m=1
+M27 VDD N_12 QN VDD mp15  l=0.13u w=0.69u m=1
+.ends lachb2
+* SPICE INPUT		Tue Jul 31 19:36:42 2018	lachb3
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lachb3
+.subckt lachb3 GND QN Q VDD RN D G
+M1 N_4 G GND GND mn15  l=0.13u w=0.17u m=1
+M2 GND N_4 N_2 GND mn15  l=0.13u w=0.17u m=1
+M3 N_23 D N_5 GND mn15  l=0.13u w=0.27u m=1
+M4 N_5 D N_22 GND mn15  l=0.13u w=0.27u m=1
+M5 N_21 D N_5 GND mn15  l=0.13u w=0.26u m=1
+M6 N_22 RN GND GND mn15  l=0.13u w=0.27u m=1
+M7 N_23 RN GND GND mn15  l=0.13u w=0.27u m=1
+M8 N_21 RN GND GND mn15  l=0.13u w=0.26u m=1
+M9 N_24 RN GND GND mn15  l=0.13u w=0.17u m=1
+M10 N_25 N_4 N_6 GND mn15  l=0.13u w=0.17u m=1
+M11 N_6 N_2 N_5 GND mn15  l=0.13u w=0.27u m=1
+M12 N_6 N_2 N_5 GND mn15  l=0.13u w=0.27u m=1
+M13 N_25 N_18 N_24 GND mn15  l=0.13u w=0.17u m=1
+M14 QN N_18 GND GND mn15  l=0.13u w=0.46u m=1
+M15 QN N_18 GND GND mn15  l=0.13u w=0.46u m=1
+M16 QN N_18 GND GND mn15  l=0.13u w=0.46u m=1
+M17 Q N_6 GND GND mn15  l=0.13u w=0.46u m=1
+M18 GND N_6 N_18 GND mn15  l=0.13u w=0.46u m=1
+M19 Q N_6 GND GND mn15  l=0.13u w=0.46u m=1
+M20 Q N_6 GND GND mn15  l=0.13u w=0.46u m=1
+M21 N_4 G VDD VDD mp15  l=0.13u w=0.42u m=1
+M22 N_2 N_4 VDD VDD mp15  l=0.13u w=0.42u m=1
+M23 N_5 D VDD VDD mp15  l=0.13u w=0.31u m=1
+M24 N_5 D VDD VDD mp15  l=0.13u w=0.31u m=1
+M25 VDD D N_5 VDD mp15  l=0.13u w=0.31u m=1
+M26 N_5 D VDD VDD mp15  l=0.13u w=0.31u m=1
+M27 N_6 RN VDD VDD mp15  l=0.13u w=0.31u m=1
+M28 VDD RN N_6 VDD mp15  l=0.13u w=0.31u m=1
+M29 N_6 N_4 N_5 VDD mp15  l=0.13u w=0.31u m=1
+M30 N_5 N_4 N_6 VDD mp15  l=0.13u w=0.32u m=1
+M31 N_97 N_2 N_6 VDD mp15  l=0.13u w=0.17u m=1
+M32 QN N_18 VDD VDD mp15  l=0.13u w=0.69u m=1
+M33 QN N_18 VDD VDD mp15  l=0.13u w=0.69u m=1
+M34 QN N_18 VDD VDD mp15  l=0.13u w=0.69u m=1
+M35 N_97 N_18 VDD VDD mp15  l=0.13u w=0.17u m=1
+M36 Q N_6 VDD VDD mp15  l=0.13u w=0.69u m=1
+M37 Q N_6 VDD VDD mp15  l=0.13u w=0.69u m=1
+M38 Q N_6 VDD VDD mp15  l=0.13u w=0.69u m=1
+M39 N_18 N_6 VDD VDD mp15  l=0.13u w=0.69u m=1
+.ends lachb3
+* SPICE INPUT		Tue Jul 31 19:36:56 2018	laclb0
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=laclb0
+.subckt laclb0 GND QN Q VDD RN D GN
+M1 N_4 GN GND GND mn15  l=0.13u w=0.17u m=1
+M2 GND N_4 N_2 GND mn15  l=0.13u w=0.17u m=1
+M3 N_7 N_4 N_5 GND mn15  l=0.13u w=0.17u m=1
+M4 N_15 D N_7 GND mn15  l=0.13u w=0.26u m=1
+M5 N_15 RN GND GND mn15  l=0.13u w=0.26u m=1
+M6 N_16 RN GND GND mn15  l=0.13u w=0.17u m=1
+M7 N_14 N_2 N_5 GND mn15  l=0.13u w=0.17u m=1
+M8 N_16 N_13 N_14 GND mn15  l=0.13u w=0.17u m=1
+M9 QN N_13 GND GND mn15  l=0.13u w=0.26u m=1
+M10 Q N_5 GND GND mn15  l=0.13u w=0.26u m=1
+M11 N_13 N_5 GND GND mn15  l=0.13u w=0.18u m=1
+M12 Q N_5 VDD VDD mp15  l=0.13u w=0.4u m=1
+M13 N_13 N_5 VDD VDD mp15  l=0.13u w=0.26u m=1
+M14 N_4 GN VDD VDD mp15  l=0.13u w=0.42u m=1
+M15 N_2 N_4 VDD VDD mp15  l=0.13u w=0.42u m=1
+M16 N_7 D VDD VDD mp15  l=0.13u w=0.38u m=1
+M17 N_26 N_4 N_5 VDD mp15  l=0.13u w=0.17u m=1
+M18 N_5 RN VDD VDD mp15  l=0.13u w=0.26u m=1
+M19 N_7 N_2 N_5 VDD mp15  l=0.13u w=0.17u m=1
+M20 N_26 N_13 VDD VDD mp15  l=0.13u w=0.17u m=1
+M21 QN N_13 VDD VDD mp15  l=0.13u w=0.4u m=1
+.ends laclb0
+* SPICE INPUT		Tue Jul 31 19:37:09 2018	laclb1
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=laclb1
+.subckt laclb1 GND QN Q RN D VDD GN
+M1 N_4 GN GND GND mn15  l=0.13u w=0.17u m=1
+M2 GND N_4 N_2 GND mn15  l=0.13u w=0.17u m=1
+M3 N_7 N_4 N_5 GND mn15  l=0.13u w=0.28u m=1
+M4 N_15 D N_7 GND mn15  l=0.13u w=0.37u m=1
+M5 N_15 RN GND GND mn15  l=0.13u w=0.37u m=1
+M6 N_16 RN GND GND mn15  l=0.13u w=0.17u m=1
+M7 N_14 N_2 N_5 GND mn15  l=0.13u w=0.17u m=1
+M8 N_16 N_13 N_14 GND mn15  l=0.13u w=0.17u m=1
+M9 QN N_13 GND GND mn15  l=0.13u w=0.46u m=1
+M10 Q N_5 GND GND mn15  l=0.13u w=0.46u m=1
+M11 N_13 N_5 GND GND mn15  l=0.13u w=0.28u m=1
+M12 N_4 GN VDD VDD mp15  l=0.13u w=0.42u m=1
+M13 N_2 N_4 VDD VDD mp15  l=0.13u w=0.42u m=1
+M14 VDD D N_7 VDD mp15  l=0.13u w=0.39u m=1
+M15 N_5 RN VDD VDD mp15  l=0.13u w=0.37u m=1
+M16 N_5 N_4 N_25 VDD mp15  l=0.13u w=0.17u m=1
+M17 N_5 N_2 N_7 VDD mp15  l=0.13u w=0.42u m=1
+M18 N_25 N_13 VDD VDD mp15  l=0.13u w=0.17u m=1
+M19 QN N_13 VDD VDD mp15  l=0.13u w=0.69u m=1
+M20 Q N_5 VDD VDD mp15  l=0.13u w=0.69u m=1
+M21 N_13 N_5 VDD VDD mp15  l=0.13u w=0.37u m=1
+.ends laclb1
+* SPICE INPUT		Tue Jul 31 19:37:23 2018	laclb2
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=laclb2
+.subckt laclb2 GND QN Q VDD RN D GN
+M1 N_4 GN GND GND mn15  l=0.13u w=0.2u m=1
+M2 GND N_4 N_2 GND mn15  l=0.13u w=0.17u m=1
+M3 N_5 N_4 N_6 GND mn15  l=0.13u w=0.41u m=1
+M4 N_16 D N_6 GND mn15  l=0.13u w=0.46u m=1
+M5 N_16 RN GND GND mn15  l=0.13u w=0.46u m=1
+M6 N_17 RN GND GND mn15  l=0.13u w=0.17u m=1
+M7 N_15 N_2 N_5 GND mn15  l=0.13u w=0.17u m=1
+M8 N_17 N_11 N_15 GND mn15  l=0.13u w=0.17u m=1
+M9 GND N_5 Q GND mn15  l=0.13u w=0.46u m=1
+M10 Q N_5 GND GND mn15  l=0.13u w=0.46u m=1
+M11 GND N_5 N_11 GND mn15  l=0.13u w=0.37u m=1
+M12 GND N_11 QN GND mn15  l=0.13u w=0.46u m=1
+M13 GND N_11 QN GND mn15  l=0.13u w=0.46u m=1
+M14 N_4 GN VDD VDD mp15  l=0.13u w=0.51u m=1
+M15 VDD N_4 N_2 VDD mp15  l=0.13u w=0.42u m=1
+M16 N_5 N_2 N_6 VDD mp15  l=0.13u w=0.59u m=1
+M17 VDD D N_6 VDD mp15  l=0.13u w=0.56u m=1
+M18 N_5 RN VDD VDD mp15  l=0.13u w=0.54u m=1
+M19 N_5 N_4 N_27 VDD mp15  l=0.13u w=0.17u m=1
+M20 N_27 N_11 VDD VDD mp15  l=0.13u w=0.17u m=1
+M21 Q N_5 VDD VDD mp15  l=0.13u w=0.69u m=1
+M22 Q N_5 VDD VDD mp15  l=0.13u w=0.69u m=1
+M23 N_11 N_5 VDD VDD mp15  l=0.13u w=0.55u m=1
+M24 VDD N_11 QN VDD mp15  l=0.13u w=0.69u m=1
+M25 VDD N_11 QN VDD mp15  l=0.13u w=0.69u m=1
+.ends laclb2
+* SPICE INPUT		Tue Jul 31 19:37:36 2018	laclb3
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=laclb3
+.subckt laclb3 GND QN Q VDD RN D GN
+M1 N_4 GN GND GND mn15  l=0.13u w=0.2u m=1
+M2 GND N_4 N_2 GND mn15  l=0.13u w=0.2u m=1
+M3 N_22 D N_5 GND mn15  l=0.13u w=0.49u m=1
+M4 N_5 D N_21 GND mn15  l=0.13u w=0.27u m=1
+M5 N_22 RN GND GND mn15  l=0.13u w=0.49u m=1
+M6 GND RN N_21 GND mn15  l=0.13u w=0.27u m=1
+M7 N_23 RN GND GND mn15  l=0.13u w=0.17u m=1
+M8 N_24 N_2 N_8 GND mn15  l=0.13u w=0.17u m=1
+M9 N_8 N_4 N_5 GND mn15  l=0.13u w=0.26u m=1
+M10 N_5 N_4 N_8 GND mn15  l=0.13u w=0.19u m=1
+M11 N_24 N_18 N_23 GND mn15  l=0.13u w=0.17u m=1
+M12 QN N_18 GND GND mn15  l=0.13u w=0.46u m=1
+M13 QN N_18 GND GND mn15  l=0.13u w=0.46u m=1
+M14 QN N_18 GND GND mn15  l=0.13u w=0.46u m=1
+M15 Q N_8 GND GND mn15  l=0.13u w=0.46u m=1
+M16 Q N_8 GND GND mn15  l=0.13u w=0.46u m=1
+M17 Q N_8 GND GND mn15  l=0.13u w=0.46u m=1
+M18 GND N_8 N_18 GND mn15  l=0.13u w=0.41u m=1
+M19 N_4 GN VDD VDD mp15  l=0.13u w=0.51u m=1
+M20 N_2 N_4 VDD VDD mp15  l=0.13u w=0.51u m=1
+M21 N_5 D VDD VDD mp15  l=0.13u w=0.23u m=1
+M22 VDD D N_5 VDD mp15  l=0.13u w=0.23u m=1
+M23 VDD D N_5 VDD mp15  l=0.13u w=0.24u m=1
+M24 N_8 RN VDD VDD mp15  l=0.13u w=0.31u m=1
+M25 VDD RN N_8 VDD mp15  l=0.13u w=0.31u m=1
+M26 N_5 N_2 N_8 VDD mp15  l=0.13u w=0.32u m=1
+M27 N_5 N_2 N_8 VDD mp15  l=0.13u w=0.32u m=1
+M28 N_91 N_4 N_8 VDD mp15  l=0.13u w=0.17u m=1
+M29 QN N_18 VDD VDD mp15  l=0.13u w=0.69u m=1
+M30 QN N_18 VDD VDD mp15  l=0.13u w=0.69u m=1
+M31 QN N_18 VDD VDD mp15  l=0.13u w=0.69u m=1
+M32 N_91 N_18 VDD VDD mp15  l=0.13u w=0.17u m=1
+M33 Q N_8 VDD VDD mp15  l=0.13u w=0.69u m=1
+M34 Q N_8 VDD VDD mp15  l=0.13u w=0.69u m=1
+M35 Q N_8 VDD VDD mp15  l=0.13u w=0.69u m=1
+M36 N_18 N_8 VDD VDD mp15  l=0.13u w=0.63u m=1
+.ends laclb3
+* SPICE INPUT		Tue Jul 31 19:37:49 2018	lanhb0
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lanhb0
+.subckt lanhb0 VDD QN Q G GND D
+M1 N_19 D GND GND mn15  l=0.13u w=0.18u m=1
+M2 N_19 N_5 N_6 GND mn15  l=0.13u w=0.18u m=1
+M3 N_20 N_10 N_6 GND mn15  l=0.13u w=0.17u m=1
+M4 GND N_10 N_5 GND mn15  l=0.13u w=0.17u m=1
+M5 QN N_9 GND GND mn15  l=0.13u w=0.26u m=1
+M6 N_20 N_9 GND GND mn15  l=0.13u w=0.17u m=1
+M7 Q N_6 GND GND mn15  l=0.13u w=0.26u m=1
+M8 N_9 N_6 GND GND mn15  l=0.13u w=0.18u m=1
+M9 GND G N_10 GND mn15  l=0.13u w=0.17u m=1
+M10 N_12 D VDD VDD mp15  l=0.13u w=0.33u m=1
+M11 N_13 N_5 N_6 VDD mp15  l=0.13u w=0.17u m=1
+M12 N_5 N_10 VDD VDD mp15  l=0.13u w=0.42u m=1
+M13 N_12 N_10 N_6 VDD mp15  l=0.13u w=0.33u m=1
+M14 N_13 N_9 VDD VDD mp15  l=0.13u w=0.17u m=1
+M15 QN N_9 VDD VDD mp15  l=0.13u w=0.4u m=1
+M16 Q N_6 VDD VDD mp15  l=0.13u w=0.4u m=1
+M17 N_9 N_6 VDD VDD mp15  l=0.13u w=0.26u m=1
+M18 VDD G N_10 VDD mp15  l=0.13u w=0.42u m=1
+.ends lanhb0
+* SPICE INPUT		Tue Jul 31 19:38:02 2018	lanhb1
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lanhb1
+.subckt lanhb1 GND QN Q VDD D G
+M1 GND G N_2 GND mn15  l=0.13u w=0.2u m=1
+M2 N_12 D GND GND mn15  l=0.13u w=0.28u m=1
+M3 N_12 N_6 N_8 GND mn15  l=0.13u w=0.28u m=1
+M4 GND N_2 N_6 GND mn15  l=0.13u w=0.2u m=1
+M5 N_13 N_2 N_8 GND mn15  l=0.13u w=0.17u m=1
+M6 QN N_11 GND GND mn15  l=0.13u w=0.46u m=1
+M7 N_13 N_11 GND GND mn15  l=0.13u w=0.17u m=1
+M8 Q N_8 GND GND mn15  l=0.13u w=0.46u m=1
+M9 N_11 N_8 GND GND mn15  l=0.13u w=0.28u m=1
+M10 VDD G N_2 VDD mp15  l=0.13u w=0.51u m=1
+M11 N_21 D VDD VDD mp15  l=0.13u w=0.42u m=1
+M12 N_22 N_6 N_8 VDD mp15  l=0.13u w=0.17u m=1
+M13 N_6 N_2 VDD VDD mp15  l=0.13u w=0.51u m=1
+M14 N_21 N_2 N_8 VDD mp15  l=0.13u w=0.42u m=1
+M15 QN N_11 VDD VDD mp15  l=0.13u w=0.69u m=1
+M16 N_22 N_11 VDD VDD mp15  l=0.13u w=0.17u m=1
+M17 Q N_8 VDD VDD mp15  l=0.13u w=0.69u m=1
+M18 N_11 N_8 VDD VDD mp15  l=0.13u w=0.41u m=1
+.ends lanhb1
+* SPICE INPUT		Tue Jul 31 19:38:14 2018	lanhb2
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lanhb2
+.subckt lanhb2 VDD QN Q G D GND
+M1 GND N_3 N_13 GND mn15  l=0.13u w=0.17u m=1
+M2 N_64 N_3 N_6 GND mn15  l=0.13u w=0.17u m=1
+M3 N_63 D GND GND mn15  l=0.13u w=0.27u m=1
+M4 N_63 N_13 N_6 GND mn15  l=0.13u w=0.27u m=1
+M5 N_6 N_13 N_62 GND mn15  l=0.13u w=0.27u m=1
+M6 N_62 D GND GND mn15  l=0.13u w=0.27u m=1
+M7 QN N_5 GND GND mn15  l=0.13u w=0.46u m=1
+M8 QN N_5 GND GND mn15  l=0.13u w=0.46u m=1
+M9 N_64 N_5 GND GND mn15  l=0.13u w=0.17u m=1
+M10 Q N_6 GND GND mn15  l=0.13u w=0.46u m=1
+M11 Q N_6 GND GND mn15  l=0.13u w=0.46u m=1
+M12 N_5 N_6 GND GND mn15  l=0.13u w=0.36u m=1
+M13 GND G N_3 GND mn15  l=0.13u w=0.2u m=1
+M14 N_3 G VDD VDD mp15  l=0.13u w=0.46u m=1
+M15 N_15 N_13 N_6 VDD mp15  l=0.13u w=0.17u m=1
+M16 QN N_5 VDD VDD mp15  l=0.13u w=0.69u m=1
+M17 QN N_5 VDD VDD mp15  l=0.13u w=0.69u m=1
+M18 N_15 N_5 VDD VDD mp15  l=0.13u w=0.17u m=1
+M19 Q N_6 VDD VDD mp15  l=0.13u w=0.69u m=1
+M20 Q N_6 VDD VDD mp15  l=0.13u w=0.69u m=1
+M21 N_5 N_6 VDD VDD mp15  l=0.13u w=0.52u m=1
+M22 N_13 N_3 VDD VDD mp15  l=0.13u w=0.42u m=1
+M23 N_6 N_3 N_17 VDD mp15  l=0.13u w=0.405u m=1
+M24 N_6 N_3 N_16 VDD mp15  l=0.13u w=0.405u m=1
+M25 N_16 D VDD VDD mp15  l=0.13u w=0.405u m=1
+M26 N_17 D VDD VDD mp15  l=0.13u w=0.405u m=1
+.ends lanhb2
+* SPICE INPUT		Tue Jul 31 19:38:28 2018	lanhb3
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lanhb3
+.subckt lanhb3 GND Q QN VDD D G
+M1 Q N_11 GND GND mn15  l=0.13u w=0.46u m=1
+M2 Q N_11 GND GND mn15  l=0.13u w=0.46u m=1
+M3 Q N_11 GND GND mn15  l=0.13u w=0.46u m=1
+M4 GND N_11 N_4 GND mn15  l=0.13u w=0.38u m=1
+M5 QN N_4 GND GND mn15  l=0.13u w=0.46u m=1
+M6 QN N_4 GND GND mn15  l=0.13u w=0.46u m=1
+M7 QN N_4 GND GND mn15  l=0.13u w=0.46u m=1
+M8 GND N_4 N_21 GND mn15  l=0.13u w=0.17u m=1
+M9 GND N_16 N_9 GND mn15  l=0.13u w=0.17u m=1
+M10 N_18 D GND GND mn15  l=0.13u w=0.28u m=1
+M11 N_19 D GND GND mn15  l=0.13u w=0.28u m=1
+M12 N_20 D GND GND mn15  l=0.13u w=0.26u m=1
+M13 N_21 N_16 N_11 GND mn15  l=0.13u w=0.17u m=1
+M14 N_20 N_9 N_11 GND mn15  l=0.13u w=0.26u m=1
+M15 N_11 N_9 N_18 GND mn15  l=0.13u w=0.28u m=1
+M16 N_19 N_9 N_11 GND mn15  l=0.13u w=0.28u m=1
+M17 GND G N_16 GND mn15  l=0.13u w=0.22u m=1
+M18 N_16 G VDD VDD mp15  l=0.13u w=0.55u m=1
+M19 Q N_11 VDD VDD mp15  l=0.13u w=0.69u m=1
+M20 Q N_11 VDD VDD mp15  l=0.13u w=0.69u m=1
+M21 Q N_11 VDD VDD mp15  l=0.13u w=0.69u m=1
+M22 N_4 N_11 VDD VDD mp15  l=0.13u w=0.57u m=1
+M23 QN N_4 VDD VDD mp15  l=0.13u w=0.69u m=1
+M24 QN N_4 VDD VDD mp15  l=0.13u w=0.69u m=1
+M25 QN N_4 VDD VDD mp15  l=0.13u w=0.69u m=1
+M26 N_37 N_4 VDD VDD mp15  l=0.13u w=0.17u m=1
+M27 N_36 N_16 N_11 VDD mp15  l=0.13u w=0.41u m=1
+M28 N_35 N_16 N_11 VDD mp15  l=0.13u w=0.42u m=1
+M29 N_11 N_16 N_34 VDD mp15  l=0.13u w=0.42u m=1
+M30 VDD N_16 N_9 VDD mp15  l=0.13u w=0.42u m=1
+M31 N_34 D VDD VDD mp15  l=0.13u w=0.42u m=1
+M32 N_35 D VDD VDD mp15  l=0.13u w=0.42u m=1
+M33 N_36 D VDD VDD mp15  l=0.13u w=0.41u m=1
+M34 N_37 N_9 N_11 VDD mp15  l=0.13u w=0.17u m=1
+.ends lanhb3
+* SPICE INPUT		Tue Jul 31 19:38:41 2018	lanlb0
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lanlb0
+.subckt lanlb0 VDD QN Q GN D GND
+M1 GND N_11 N_5 GND mn15  l=0.13u w=0.17u m=1
+M2 N_19 D GND GND mn15  l=0.13u w=0.18u m=1
+M3 N_19 N_11 N_6 GND mn15  l=0.13u w=0.18u m=1
+M4 N_20 N_5 N_6 GND mn15  l=0.13u w=0.17u m=1
+M5 QN N_9 GND GND mn15  l=0.13u w=0.26u m=1
+M6 N_20 N_9 GND GND mn15  l=0.13u w=0.17u m=1
+M7 Q N_6 GND GND mn15  l=0.13u w=0.26u m=1
+M8 N_9 N_6 GND GND mn15  l=0.13u w=0.18u m=1
+M9 GND GN N_11 GND mn15  l=0.13u w=0.17u m=1
+M10 N_5 N_11 VDD VDD mp15  l=0.13u w=0.42u m=1
+M11 N_12 D VDD VDD mp15  l=0.13u w=0.37u m=1
+M12 N_12 N_5 N_6 VDD mp15  l=0.13u w=0.37u m=1
+M13 N_13 N_11 N_6 VDD mp15  l=0.13u w=0.17u m=1
+M14 QN N_9 VDD VDD mp15  l=0.13u w=0.4u m=1
+M15 N_13 N_9 VDD VDD mp15  l=0.13u w=0.17u m=1
+M16 Q N_6 VDD VDD mp15  l=0.13u w=0.4u m=1
+M17 N_9 N_6 VDD VDD mp15  l=0.13u w=0.26u m=1
+M18 N_11 GN VDD VDD mp15  l=0.13u w=0.42u m=1
+.ends lanlb0
+* SPICE INPUT		Tue Jul 31 19:38:54 2018	lanlb1
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lanlb1
+.subckt lanlb1 GND Q QN VDD GN D
+M1 Q N_11 GND GND mn15  l=0.13u w=0.46u m=1
+M2 N_4 N_11 GND GND mn15  l=0.13u w=0.27u m=1
+M3 GND GN N_5 GND mn15  l=0.13u w=0.17u m=1
+M4 GND N_5 N_9 GND mn15  l=0.13u w=0.17u m=1
+M5 N_12 D GND GND mn15  l=0.13u w=0.38u m=1
+M6 N_12 N_5 N_11 GND mn15  l=0.13u w=0.38u m=1
+M7 QN N_4 GND GND mn15  l=0.13u w=0.46u m=1
+M8 N_13 N_4 GND GND mn15  l=0.13u w=0.17u m=1
+M9 N_13 N_9 N_11 GND mn15  l=0.13u w=0.17u m=1
+M10 N_5 GN VDD VDD mp15  l=0.13u w=0.44u m=1
+M11 VDD N_5 N_9 VDD mp15  l=0.13u w=0.42u m=1
+M12 N_21 D VDD VDD mp15  l=0.13u w=0.57u m=1
+M13 QN N_4 VDD VDD mp15  l=0.13u w=0.69u m=1
+M14 N_22 N_4 VDD VDD mp15  l=0.13u w=0.17u m=1
+M15 N_22 N_5 N_11 VDD mp15  l=0.13u w=0.17u m=1
+M16 N_21 N_9 N_11 VDD mp15  l=0.13u w=0.57u m=1
+M17 Q N_11 VDD VDD mp15  l=0.13u w=0.69u m=1
+M18 N_4 N_11 VDD VDD mp15  l=0.13u w=0.35u m=1
+.ends lanlb1
+* SPICE INPUT		Tue Jul 31 19:39:07 2018	lanlb2
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lanlb2
+.subckt lanlb2 GND QN Q VDD D GN
+M1 N_3 GN GND GND mn15  l=0.13u w=0.27u m=1
+M2 GND N_13 QN GND mn15  l=0.13u w=0.46u m=1
+M3 GND N_13 QN GND mn15  l=0.13u w=0.46u m=1
+M4 N_17 N_13 GND GND mn15  l=0.13u w=0.17u m=1
+M5 N_15 D GND GND mn15  l=0.13u w=0.33u m=1
+M6 N_16 N_3 N_8 GND mn15  l=0.13u w=0.36u m=1
+M7 N_8 N_3 N_15 GND mn15  l=0.13u w=0.33u m=1
+M8 GND N_3 N_6 GND mn15  l=0.13u w=0.17u m=1
+M9 N_16 D GND GND mn15  l=0.13u w=0.36u m=1
+M10 N_17 N_6 N_8 GND mn15  l=0.13u w=0.17u m=1
+M11 GND N_8 Q GND mn15  l=0.13u w=0.455u m=1
+M12 GND N_8 Q GND mn15  l=0.13u w=0.455u m=1
+M13 GND N_8 N_13 GND mn15  l=0.13u w=0.37u m=1
+M14 N_3 GN VDD VDD mp15  l=0.13u w=0.67u m=1
+M15 VDD N_13 QN VDD mp15  l=0.13u w=0.69u m=1
+M16 QN N_13 VDD VDD mp15  l=0.13u w=0.69u m=1
+M17 N_73 N_13 VDD VDD mp15  l=0.13u w=0.17u m=1
+M18 N_70 D VDD VDD mp15  l=0.13u w=0.355u m=1
+M19 N_71 N_6 N_8 VDD mp15  l=0.13u w=0.355u m=1
+M20 N_8 N_6 N_70 VDD mp15  l=0.13u w=0.355u m=1
+M21 N_6 N_3 VDD VDD mp15  l=0.13u w=0.42u m=1
+M22 N_72 D VDD VDD mp15  l=0.13u w=0.36u m=1
+M23 VDD D N_71 VDD mp15  l=0.13u w=0.355u m=1
+M24 N_8 N_6 N_72 VDD mp15  l=0.13u w=0.36u m=1
+M25 N_73 N_3 N_8 VDD mp15  l=0.13u w=0.17u m=1
+M26 VDD N_8 Q VDD mp15  l=0.13u w=0.69u m=1
+M27 VDD N_8 Q VDD mp15  l=0.13u w=0.69u m=1
+M28 N_13 N_8 VDD VDD mp15  l=0.13u w=0.55u m=1
+.ends lanlb2
+* SPICE INPUT		Tue Jul 31 19:39:20 2018	lanlb3
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=lanlb3
+.subckt lanlb3 GND QN Q VDD GN D
+M1 N_3 GN GND GND mn15  l=0.13u w=0.27u m=1
+M2 N_18 D GND GND mn15  l=0.13u w=0.31u m=1
+M3 N_19 N_3 N_8 GND mn15  l=0.13u w=0.31u m=1
+M4 N_8 N_3 N_18 GND mn15  l=0.13u w=0.31u m=1
+M5 GND N_3 N_6 GND mn15  l=0.13u w=0.2u m=1
+M6 N_19 D GND GND mn15  l=0.13u w=0.31u m=1
+M7 N_20 D GND GND mn15  l=0.13u w=0.28u m=1
+M8 QN N_15 GND GND mn15  l=0.13u w=0.46u m=1
+M9 QN N_15 GND GND mn15  l=0.13u w=0.46u m=1
+M10 QN N_15 GND GND mn15  l=0.13u w=0.46u m=1
+M11 GND N_15 N_21 GND mn15  l=0.13u w=0.17u m=1
+M12 N_8 N_3 N_20 GND mn15  l=0.13u w=0.28u m=1
+M13 N_21 N_6 N_8 GND mn15  l=0.13u w=0.17u m=1
+M14 Q N_8 GND GND mn15  l=0.13u w=0.46u m=1
+M15 Q N_8 GND GND mn15  l=0.13u w=0.46u m=1
+M16 Q N_8 GND GND mn15  l=0.13u w=0.46u m=1
+M17 GND N_8 N_15 GND mn15  l=0.13u w=0.45u m=1
+M18 N_3 GN VDD VDD mp15  l=0.13u w=0.67u m=1
+M19 N_83 D VDD VDD mp15  l=0.13u w=0.37u m=1
+M20 N_84 N_6 N_8 VDD mp15  l=0.13u w=0.37u m=1
+M21 N_8 N_6 N_83 VDD mp15  l=0.13u w=0.37u m=1
+M22 N_6 N_3 VDD VDD mp15  l=0.13u w=0.51u m=1
+M23 N_85 D VDD VDD mp15  l=0.13u w=0.6u m=1
+M24 N_84 D VDD VDD mp15  l=0.13u w=0.37u m=1
+M25 QN N_15 VDD VDD mp15  l=0.13u w=0.69u m=1
+M26 QN N_15 VDD VDD mp15  l=0.13u w=0.69u m=1
+M27 QN N_15 VDD VDD mp15  l=0.13u w=0.69u m=1
+M28 N_86 N_15 VDD VDD mp15  l=0.13u w=0.17u m=1
+M29 N_85 N_6 N_8 VDD mp15  l=0.13u w=0.6u m=1
+M30 N_86 N_3 N_8 VDD mp15  l=0.13u w=0.17u m=1
+M31 Q N_8 VDD VDD mp15  l=0.13u w=0.69u m=1
+M32 Q N_8 VDD VDD mp15  l=0.13u w=0.69u m=1
+M33 Q N_8 VDD VDD mp15  l=0.13u w=0.69u m=1
+M34 N_15 N_8 VDD VDD mp15  l=0.13u w=0.66u m=1
+.ends lanlb3
+* SPICE INPUT		Tue Jul 31 19:39:33 2018	laphb0
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=laphb0
+.subckt laphb0 VDD Q QN SN D GND G
+M1 Q N_14 GND GND mn15  l=0.13u w=0.26u m=1
+M2 N_4 N_14 GND GND mn15  l=0.13u w=0.18u m=1
+M3 QN N_4 GND GND mn15  l=0.13u w=0.26u m=1
+M4 N_7 G GND GND mn15  l=0.13u w=0.17u m=1
+M5 N_62 N_7 N_14 GND mn15  l=0.13u w=0.17u m=1
+M6 GND N_7 N_10 GND mn15  l=0.13u w=0.17u m=1
+M7 N_62 N_4 GND GND mn15  l=0.13u w=0.17u m=1
+M8 N_14 N_10 N_13 GND mn15  l=0.13u w=0.28u m=1
+M9 N_13 D GND GND mn15  l=0.13u w=0.18u m=1
+M10 GND N_9 N_14 GND mn15  l=0.13u w=0.18u m=1
+M11 GND SN N_9 GND mn15  l=0.13u w=0.18u m=1
+M12 Q N_14 VDD VDD mp15  l=0.13u w=0.4u m=1
+M13 N_4 N_14 VDD VDD mp15  l=0.13u w=0.26u m=1
+M14 VDD N_4 QN VDD mp15  l=0.13u w=0.4u m=1
+M15 N_7 G VDD VDD mp15  l=0.13u w=0.42u m=1
+M16 N_9 SN VDD VDD mp15  l=0.13u w=0.26u m=1
+M17 VDD N_7 N_10 VDD mp15  l=0.13u w=0.42u m=1
+M18 N_14 N_7 N_13 VDD mp15  l=0.13u w=0.28u m=1
+M19 N_17 N_9 VDD VDD mp15  l=0.13u w=0.17u m=1
+M20 N_17 N_4 N_16 VDD mp15  l=0.13u w=0.17u m=1
+M21 N_16 N_10 N_14 VDD mp15  l=0.13u w=0.17u m=1
+M22 N_15 D N_13 VDD mp15  l=0.13u w=0.48u m=1
+M23 N_15 N_9 VDD VDD mp15  l=0.13u w=0.48u m=1
+.ends laphb0
+* SPICE INPUT		Tue Jul 31 19:39:45 2018	laphb1
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=laphb1
+.subckt laphb1 GND Q QN SN D VDD G
+M1 N_3 SN GND GND mn15  l=0.13u w=0.28u m=1
+M2 GND N_3 N_6 GND mn15  l=0.13u w=0.28u m=1
+M3 N_9 D GND GND mn15  l=0.13u w=0.28u m=1
+M4 N_9 N_4 N_6 GND mn15  l=0.13u w=0.28u m=1
+M5 N_17 N_14 GND GND mn15  l=0.13u w=0.17u m=1
+M6 GND N_11 N_4 GND mn15  l=0.13u w=0.2u m=1
+M7 N_17 N_11 N_6 GND mn15  l=0.13u w=0.17u m=1
+M8 N_11 G GND GND mn15  l=0.13u w=0.2u m=1
+M9 Q N_6 GND GND mn15  l=0.13u w=0.46u m=1
+M10 N_14 N_6 GND GND mn15  l=0.13u w=0.28u m=1
+M11 QN N_14 GND GND mn15  l=0.13u w=0.46u m=1
+M12 N_3 SN VDD VDD mp15  l=0.13u w=0.41u m=1
+M13 N_63 N_3 VDD VDD mp15  l=0.13u w=0.7u m=1
+M14 N_63 D N_9 VDD mp15  l=0.13u w=0.7u m=1
+M15 N_64 N_4 N_6 VDD mp15  l=0.13u w=0.17u m=1
+M16 N_65 N_14 N_64 VDD mp15  l=0.13u w=0.17u m=1
+M17 N_65 N_3 VDD VDD mp15  l=0.13u w=0.17u m=1
+M18 VDD N_11 N_4 VDD mp15  l=0.13u w=0.51u m=1
+M19 N_6 N_11 N_9 VDD mp15  l=0.13u w=0.41u m=1
+M20 N_11 G VDD VDD mp15  l=0.13u w=0.51u m=1
+M21 Q N_6 VDD VDD mp15  l=0.13u w=0.69u m=1
+M22 N_14 N_6 VDD VDD mp15  l=0.13u w=0.4u m=1
+M23 QN N_14 VDD VDD mp15  l=0.13u w=0.69u m=1
+.ends laphb1
+* SPICE INPUT		Tue Jul 31 19:39:58 2018	laphb2
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=laphb2
+.subckt laphb2 QN GND Q D G SN VDD
+M1 GND N_13 Q GND mn15  l=0.13u w=0.46u m=1
+M2 Q N_13 GND GND mn15  l=0.13u w=0.46u m=1
+M3 GND N_13 N_4 GND mn15  l=0.13u w=0.37u m=1
+M4 GND N_4 QN GND mn15  l=0.13u w=0.46u m=1
+M5 GND N_4 QN GND mn15  l=0.13u w=0.46u m=1
+M6 N_9 G GND GND mn15  l=0.13u w=0.17u m=1
+M7 N_18 N_9 N_13 GND mn15  l=0.13u w=0.17u m=1
+M8 GND N_9 N_10 GND mn15  l=0.13u w=0.17u m=1
+M9 N_18 N_4 GND GND mn15  l=0.13u w=0.17u m=1
+M10 N_13 N_10 N_14 GND mn15  l=0.13u w=0.37u m=1
+M11 N_14 D GND GND mn15  l=0.13u w=0.37u m=1
+M12 N_13 N_17 GND GND mn15  l=0.13u w=0.37u m=1
+M13 N_17 SN GND GND mn15  l=0.13u w=0.28u m=1
+M14 Q N_13 VDD VDD mp15  l=0.13u w=0.69u m=1
+M15 Q N_13 VDD VDD mp15  l=0.13u w=0.69u m=1
+M16 N_4 N_13 VDD VDD mp15  l=0.13u w=0.55u m=1
+M17 VDD N_4 QN VDD mp15  l=0.13u w=0.69u m=1
+M18 VDD N_4 QN VDD mp15  l=0.13u w=0.69u m=1
+M19 N_9 G VDD VDD mp15  l=0.13u w=0.42u m=1
+M20 N_73 D N_14 VDD mp15  l=0.13u w=0.5u m=1
+M21 N_13 N_9 N_14 VDD mp15  l=0.13u w=0.59u m=1
+M22 VDD N_9 N_10 VDD mp15  l=0.13u w=0.42u m=1
+M23 N_76 N_17 VDD VDD mp15  l=0.13u w=0.17u m=1
+M24 N_76 N_4 N_75 VDD mp15  l=0.13u w=0.17u m=1
+M25 N_75 N_10 N_13 VDD mp15  l=0.13u w=0.17u m=1
+M26 N_14 D N_74 VDD mp15  l=0.13u w=0.48u m=1
+M27 N_74 N_17 VDD VDD mp15  l=0.13u w=0.48u m=1
+M28 N_73 N_17 VDD VDD mp15  l=0.13u w=0.5u m=1
+M29 N_17 SN VDD VDD mp15  l=0.13u w=0.42u m=1
+.ends laphb2
+* SPICE INPUT		Tue Jul 31 19:40:11 2018	laphb3
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=laphb3
+.subckt laphb3 GND QN Q G VDD D SN
+M1 N_3 SN GND GND mn15  l=0.13u w=0.37u m=1
+M2 GND D N_7 GND mn15  l=0.13u w=0.3u m=1
+M3 N_7 D GND GND mn15  l=0.13u w=0.29u m=1
+M4 GND N_3 N_8 GND mn15  l=0.13u w=0.46u m=1
+M5 N_7 N_4 N_8 GND mn15  l=0.13u w=0.325u m=1
+M6 N_8 N_4 N_7 GND mn15  l=0.13u w=0.315u m=1
+M7 N_22 N_19 GND GND mn15  l=0.13u w=0.17u m=1
+M8 GND N_14 N_4 GND mn15  l=0.13u w=0.17u m=1
+M9 N_22 N_14 N_8 GND mn15  l=0.13u w=0.17u m=1
+M10 QN N_19 GND GND mn15  l=0.13u w=0.46u m=1
+M11 QN N_19 GND GND mn15  l=0.13u w=0.46u m=1
+M12 QN N_19 GND GND mn15  l=0.13u w=0.46u m=1
+M13 GND G N_14 GND mn15  l=0.13u w=0.17u m=1
+M14 Q N_8 GND GND mn15  l=0.13u w=0.46u m=1
+M15 Q N_8 GND GND mn15  l=0.13u w=0.46u m=1
+M16 Q N_8 GND GND mn15  l=0.13u w=0.46u m=1
+M17 GND N_8 N_19 GND mn15  l=0.13u w=0.41u m=1
+M18 N_3 SN VDD VDD mp15  l=0.13u w=0.55u m=1
+M19 Q N_8 VDD VDD mp15  l=0.13u w=0.69u m=1
+M20 Q N_8 VDD VDD mp15  l=0.13u w=0.69u m=1
+M21 Q N_8 VDD VDD mp15  l=0.13u w=0.69u m=1
+M22 N_19 N_8 VDD VDD mp15  l=0.13u w=0.62u m=1
+M23 N_82 D N_7 VDD mp15  l=0.13u w=0.62u m=1
+M24 N_83 N_3 VDD VDD mp15  l=0.13u w=0.54u m=1
+M25 N_82 N_3 VDD VDD mp15  l=0.13u w=0.62u m=1
+M26 N_83 D N_7 VDD mp15  l=0.13u w=0.54u m=1
+M27 N_84 N_4 N_8 VDD mp15  l=0.13u w=0.17u m=1
+M28 N_85 N_19 N_84 VDD mp15  l=0.13u w=0.17u m=1
+M29 N_85 N_3 VDD VDD mp15  l=0.13u w=0.17u m=1
+M30 VDD N_14 N_4 VDD mp15  l=0.13u w=0.42u m=1
+M31 N_8 N_14 N_7 VDD mp15  l=0.13u w=0.56u m=1
+M32 QN N_19 VDD VDD mp15  l=0.13u w=0.69u m=1
+M33 QN N_19 VDD VDD mp15  l=0.13u w=0.69u m=1
+M34 QN N_19 VDD VDD mp15  l=0.13u w=0.69u m=1
+M35 VDD G N_14 VDD mp15  l=0.13u w=0.42u m=1
+.ends laphb3
+* SPICE INPUT		Tue Jul 31 19:40:24 2018	laplb0
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=laplb0
+.subckt laplb0 VDD QN Q GND GN D SN
+M1 GND SN N_3 GND mn15  l=0.13u w=0.18u m=1
+M2 GND N_3 N_14 GND mn15  l=0.13u w=0.18u m=1
+M3 N_14 N_6 N_13 GND mn15  l=0.13u w=0.28u m=1
+M4 GND N_6 N_10 GND mn15  l=0.13u w=0.17u m=1
+M5 N_62 N_10 N_14 GND mn15  l=0.13u w=0.17u m=1
+M6 N_62 N_9 GND GND mn15  l=0.13u w=0.17u m=1
+M7 N_13 D GND GND mn15  l=0.13u w=0.19u m=1
+M8 N_6 GN GND GND mn15  l=0.13u w=0.17u m=1
+M9 QN N_9 GND GND mn15  l=0.13u w=0.26u m=1
+M10 Q N_14 GND GND mn15  l=0.13u w=0.26u m=1
+M11 N_9 N_14 GND GND mn15  l=0.13u w=0.18u m=1
+M12 N_3 SN VDD VDD mp15  l=0.13u w=0.26u m=1
+M13 N_6 GN VDD VDD mp15  l=0.13u w=0.42u m=1
+M14 VDD N_9 QN VDD mp15  l=0.13u w=0.4u m=1
+M15 Q N_14 VDD VDD mp15  l=0.13u w=0.4u m=1
+M16 N_9 N_14 VDD VDD mp15  l=0.13u w=0.26u m=1
+M17 N_15 N_3 VDD VDD mp15  l=0.13u w=0.5u m=1
+M18 N_17 N_3 VDD VDD mp15  l=0.13u w=0.17u m=1
+M19 VDD N_6 N_10 VDD mp15  l=0.13u w=0.42u m=1
+M20 N_16 N_6 N_14 VDD mp15  l=0.13u w=0.17u m=1
+M21 N_14 N_10 N_13 VDD mp15  l=0.13u w=0.42u m=1
+M22 N_17 N_9 N_16 VDD mp15  l=0.13u w=0.17u m=1
+M23 N_15 D N_13 VDD mp15  l=0.13u w=0.5u m=1
+.ends laplb0
+* SPICE INPUT		Tue Jul 31 19:40:37 2018	laplb1
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=laplb1
+.subckt laplb1 GND QN Q GN VDD D SN
+M1 N_3 SN GND GND mn15  l=0.13u w=0.28u m=1
+M2 GND N_11 N_4 GND mn15  l=0.13u w=0.17u m=1
+M3 N_7 N_11 N_8 GND mn15  l=0.13u w=0.37u m=1
+M4 N_7 N_3 GND GND mn15  l=0.13u w=0.28u m=1
+M5 N_8 D GND GND mn15  l=0.13u w=0.33u m=1
+M6 N_17 N_4 N_7 GND mn15  l=0.13u w=0.17u m=1
+M7 N_17 N_16 GND GND mn15  l=0.13u w=0.17u m=1
+M8 N_11 GN GND GND mn15  l=0.13u w=0.17u m=1
+M9 QN N_16 GND GND mn15  l=0.13u w=0.46u m=1
+M10 Q N_7 GND GND mn15  l=0.13u w=0.46u m=1
+M11 N_16 N_7 GND GND mn15  l=0.13u w=0.28u m=1
+M12 N_3 SN VDD VDD mp15  l=0.13u w=0.42u m=1
+M13 N_70 N_3 VDD VDD mp15  l=0.13u w=0.17u m=1
+M14 VDD N_11 N_4 VDD mp15  l=0.13u w=0.42u m=1
+M15 N_69 N_11 N_7 VDD mp15  l=0.13u w=0.17u m=1
+M16 N_67 D N_8 VDD mp15  l=0.13u w=0.46u m=1
+M17 N_68 N_3 VDD VDD mp15  l=0.13u w=0.46u m=1
+M18 N_67 N_3 VDD VDD mp15  l=0.13u w=0.46u m=1
+M19 N_8 D N_68 VDD mp15  l=0.13u w=0.46u m=1
+M20 N_7 N_4 N_8 VDD mp15  l=0.13u w=0.55u m=1
+M21 N_70 N_16 N_69 VDD mp15  l=0.13u w=0.17u m=1
+M22 N_11 GN VDD VDD mp15  l=0.13u w=0.42u m=1
+M23 Q N_7 VDD VDD mp15  l=0.13u w=0.69u m=1
+M24 N_16 N_7 VDD VDD mp15  l=0.13u w=0.39u m=1
+M25 QN N_16 VDD VDD mp15  l=0.13u w=0.69u m=1
+.ends laplb1
+* SPICE INPUT		Tue Jul 31 19:40:49 2018	laplb2
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=laplb2
+.subckt laplb2 GND QN Q VDD GN D SN
+M1 N_3 SN GND GND mn15  l=0.13u w=0.28u m=1
+M2 N_7 N_3 GND GND mn15  l=0.13u w=0.36u m=1
+M3 N_8 D GND GND mn15  l=0.13u w=0.4u m=1
+M4 N_18 N_4 N_7 GND mn15  l=0.13u w=0.17u m=1
+M5 N_18 N_14 GND GND mn15  l=0.13u w=0.17u m=1
+M6 GND N_11 N_4 GND mn15  l=0.13u w=0.17u m=1
+M7 N_7 N_11 N_8 GND mn15  l=0.13u w=0.52u m=1
+M8 N_11 GN GND GND mn15  l=0.13u w=0.17u m=1
+M9 GND N_7 Q GND mn15  l=0.13u w=0.46u m=1
+M10 Q N_7 GND GND mn15  l=0.13u w=0.46u m=1
+M11 GND N_7 N_14 GND mn15  l=0.13u w=0.37u m=1
+M12 GND N_14 QN GND mn15  l=0.13u w=0.46u m=1
+M13 GND N_14 QN GND mn15  l=0.13u w=0.46u m=1
+M14 N_3 SN VDD VDD mp15  l=0.13u w=0.42u m=1
+M15 N_73 D N_8 VDD mp15  l=0.13u w=0.535u m=1
+M16 N_74 N_3 VDD VDD mp15  l=0.13u w=0.535u m=1
+M17 N_73 N_3 VDD VDD mp15  l=0.13u w=0.535u m=1
+M18 N_8 D N_74 VDD mp15  l=0.13u w=0.535u m=1
+M19 N_7 N_4 N_8 VDD mp15  l=0.13u w=0.59u m=1
+M20 N_76 N_14 N_75 VDD mp15  l=0.13u w=0.16u m=1
+M21 N_76 N_3 VDD VDD mp15  l=0.13u w=0.17u m=1
+M22 VDD N_11 N_4 VDD mp15  l=0.13u w=0.42u m=1
+M23 N_75 N_11 N_7 VDD mp15  l=0.13u w=0.16u m=1
+M24 N_11 GN VDD VDD mp15  l=0.13u w=0.42u m=1
+M25 Q N_7 VDD VDD mp15  l=0.13u w=0.69u m=1
+M26 Q N_7 VDD VDD mp15  l=0.13u w=0.69u m=1
+M27 N_14 N_7 VDD VDD mp15  l=0.13u w=0.55u m=1
+M28 VDD N_14 QN VDD mp15  l=0.13u w=0.69u m=1
+M29 VDD N_14 QN VDD mp15  l=0.13u w=0.69u m=1
+.ends laplb2
+* SPICE INPUT		Tue Jul 31 19:41:02 2018	laplb3
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=laplb3
+.subckt laplb3 GND Q QN SN D VDD GN
+M1 Q N_16 GND GND mn15  l=0.13u w=0.46u m=1
+M2 Q N_16 GND GND mn15  l=0.13u w=0.46u m=1
+M3 Q N_16 GND GND mn15  l=0.13u w=0.46u m=1
+M4 GND N_16 N_4 GND mn15  l=0.13u w=0.45u m=1
+M5 QN N_4 GND GND mn15  l=0.13u w=0.46u m=1
+M6 QN N_4 GND GND mn15  l=0.13u w=0.46u m=1
+M7 QN N_4 GND GND mn15  l=0.13u w=0.46u m=1
+M8 GND GN N_9 GND mn15  l=0.13u w=0.17u m=1
+M9 N_14 N_9 N_16 GND mn15  l=0.13u w=0.32u m=1
+M10 GND N_9 N_12 GND mn15  l=0.13u w=0.17u m=1
+M11 N_16 N_9 N_14 GND mn15  l=0.13u w=0.31u m=1
+M12 N_22 N_4 GND GND mn15  l=0.13u w=0.17u m=1
+M13 N_22 N_12 N_16 GND mn15  l=0.13u w=0.17u m=1
+M14 GND N_21 N_16 GND mn15  l=0.13u w=0.46u m=1
+M15 GND D N_14 GND mn15  l=0.13u w=0.3u m=1
+M16 GND D N_14 GND mn15  l=0.13u w=0.33u m=1
+M17 N_21 SN GND GND mn15  l=0.13u w=0.33u m=1
+M18 Q N_16 VDD VDD mp15  l=0.13u w=0.69u m=1
+M19 Q N_16 VDD VDD mp15  l=0.13u w=0.69u m=1
+M20 Q N_16 VDD VDD mp15  l=0.13u w=0.69u m=1
+M21 N_4 N_16 VDD VDD mp15  l=0.13u w=0.67u m=1
+M22 QN N_4 VDD VDD mp15  l=0.13u w=0.69u m=1
+M23 QN N_4 VDD VDD mp15  l=0.13u w=0.69u m=1
+M24 QN N_4 VDD VDD mp15  l=0.13u w=0.69u m=1
+M25 VDD GN N_9 VDD mp15  l=0.13u w=0.42u m=1
+M26 VDD N_9 N_12 VDD mp15  l=0.13u w=0.42u m=1
+M27 N_84 N_9 N_16 VDD mp15  l=0.13u w=0.17u m=1
+M28 N_85 N_21 VDD VDD mp15  l=0.13u w=0.17u m=1
+M29 N_85 N_4 N_84 VDD mp15  l=0.13u w=0.17u m=1
+M30 N_16 N_12 N_14 VDD mp15  l=0.13u w=0.59u m=1
+M31 N_83 D N_14 VDD mp15  l=0.13u w=0.6u m=1
+M32 N_83 N_21 VDD VDD mp15  l=0.13u w=0.6u m=1
+M33 N_82 N_21 VDD VDD mp15  l=0.13u w=0.7u m=1
+M34 N_82 D N_14 VDD mp15  l=0.13u w=0.7u m=1
+M35 N_21 SN VDD VDD mp15  l=0.13u w=0.5u m=1
+.ends laplb3
+
+* SPICE INPUT		Tue Jul 31 20:33:14 2018	tlatncad0
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatncad0
+.subckt tlatncad0 VDD ECK GND CK E
+M1 GND N_6 N_3 GND mn15  l=0.13u w=0.26u m=1
+M2 N_50 N_3 GND GND mn15  l=0.13u w=0.26u m=1
+M3 N_50 N_5 N_6 GND mn15  l=0.13u w=0.26u m=1
+M4 N_49 N_10 N_6 GND mn15  l=0.13u w=0.18u m=1
+M5 GND N_10 N_5 GND mn15  l=0.13u w=0.18u m=1
+M6 N_49 E GND GND mn15  l=0.13u w=0.18u m=1
+M7 N_10 CK GND GND mn15  l=0.13u w=0.23u m=1
+M8 N_51 CK N_11 GND mn15  l=0.13u w=0.26u m=1
+M9 N_51 N_3 GND GND mn15  l=0.13u w=0.26u m=1
+M10 ECK N_11 GND GND mn15  l=0.13u w=0.26u m=1
+M11 N_3 N_6 VDD VDD mp15  l=0.13u w=0.38u m=1
+M12 N_13 N_3 VDD VDD mp15  l=0.13u w=0.26u m=1
+M13 N_12 N_5 N_6 VDD mp15  l=0.13u w=0.27u m=1
+M14 N_5 N_10 VDD VDD mp15  l=0.13u w=0.46u m=1
+M15 N_13 N_10 N_6 VDD mp15  l=0.13u w=0.26u m=1
+M16 N_12 E VDD VDD mp15  l=0.13u w=0.27u m=1
+M17 N_10 CK VDD VDD mp15  l=0.13u w=0.58u m=1
+M18 N_11 CK VDD VDD mp15  l=0.13u w=0.31u m=1
+M19 N_11 N_3 VDD VDD mp15  l=0.13u w=0.31u m=1
+M20 ECK N_11 VDD VDD mp15  l=0.13u w=0.65u m=1
+.ends tlatncad0
+* SPICE INPUT		Tue Jul 31 20:33:27 2018	tlatncad1
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatncad1
+.subckt tlatncad1 VDD ECK GND CK E
+M1 N_49 E GND GND mn15  l=0.13u w=0.18u m=1
+M2 N_49 N_10 N_6 GND mn15  l=0.13u w=0.18u m=1
+M3 GND N_10 N_5 GND mn15  l=0.13u w=0.18u m=1
+M4 N_50 N_5 N_6 GND mn15  l=0.13u w=0.26u m=1
+M5 N_50 N_3 GND GND mn15  l=0.13u w=0.26u m=1
+M6 GND N_6 N_3 GND mn15  l=0.13u w=0.26u m=1
+M7 N_10 CK GND GND mn15  l=0.13u w=0.23u m=1
+M8 N_51 CK N_11 GND mn15  l=0.13u w=0.26u m=1
+M9 N_51 N_3 GND GND mn15  l=0.13u w=0.26u m=1
+M10 ECK N_11 GND GND mn15  l=0.13u w=0.27u m=1
+M11 N_12 E VDD VDD mp15  l=0.13u w=0.27u m=1
+M12 N_5 N_10 VDD VDD mp15  l=0.13u w=0.46u m=1
+M13 N_13 N_10 N_6 VDD mp15  l=0.13u w=0.26u m=1
+M14 N_12 N_5 N_6 VDD mp15  l=0.13u w=0.27u m=1
+M15 N_13 N_3 VDD VDD mp15  l=0.13u w=0.26u m=1
+M16 N_3 N_6 VDD VDD mp15  l=0.13u w=0.38u m=1
+M17 N_10 CK VDD VDD mp15  l=0.13u w=0.58u m=1
+M18 N_11 CK VDD VDD mp15  l=0.13u w=0.31u m=1
+M19 N_11 N_3 VDD VDD mp15  l=0.13u w=0.31u m=1
+M20 ECK N_11 VDD VDD mp15  l=0.13u w=0.69u m=1
+.ends tlatncad1
+* SPICE INPUT		Tue Jul 31 20:33:41 2018	tlatncad2
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatncad2
+.subckt tlatncad2 ECK GND VDD CK E
+M1 GND N_4 ECK GND mn15  l=0.13u w=0.275u m=1
+M2 GND N_4 ECK GND mn15  l=0.13u w=0.275u m=1
+M3 N_13 N_7 GND GND mn15  l=0.13u w=0.46u m=1
+M4 N_13 CK N_4 GND mn15  l=0.13u w=0.46u m=1
+M5 GND N_12 N_8 GND mn15  l=0.13u w=0.19u m=1
+M6 N_14 N_12 N_10 GND mn15  l=0.13u w=0.25u m=1
+M7 N_15 N_8 N_10 GND mn15  l=0.13u w=0.26u m=1
+M8 N_7 N_10 GND GND mn15  l=0.13u w=0.26u m=1
+M9 N_15 N_7 GND GND mn15  l=0.13u w=0.26u m=1
+M10 N_14 E GND GND mn15  l=0.13u w=0.25u m=1
+M11 N_12 CK GND GND mn15  l=0.13u w=0.23u m=1
+M12 VDD N_4 ECK VDD mp15  l=0.13u w=0.69u m=1
+M13 VDD N_4 ECK VDD mp15  l=0.13u w=0.69u m=1
+M14 VDD N_7 N_4 VDD mp15  l=0.13u w=0.57u m=1
+M15 N_4 CK VDD VDD mp15  l=0.13u w=0.57u m=1
+M16 N_12 CK VDD VDD mp15  l=0.13u w=0.58u m=1
+M17 N_8 N_12 VDD VDD mp15  l=0.13u w=0.48u m=1
+M18 N_57 N_8 N_10 VDD mp15  l=0.13u w=0.38u m=1
+M19 N_7 N_10 VDD VDD mp15  l=0.13u w=0.4u m=1
+M20 N_58 N_7 VDD VDD mp15  l=0.13u w=0.26u m=1
+M21 N_58 N_12 N_10 VDD mp15  l=0.13u w=0.26u m=1
+M22 N_57 E VDD VDD mp15  l=0.13u w=0.38u m=1
+.ends tlatncad2
+* SPICE INPUT		Tue Jul 31 20:33:54 2018	tlatncad4
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatncad4
+.subckt tlatncad4 ECK VDD GND CK E
+M1 N_25 CK N_6 GND mn15  l=0.13u w=0.38u m=1
+M2 GND N_13 N_24 GND mn15  l=0.13u w=0.38u m=1
+M3 N_25 N_13 GND GND mn15  l=0.13u w=0.38u m=1
+M4 N_6 CK N_24 GND mn15  l=0.13u w=0.38u m=1
+M5 ECK N_6 GND GND mn15  l=0.13u w=0.265u m=1
+M6 GND N_6 ECK GND mn15  l=0.13u w=0.265u m=1
+M7 GND N_6 ECK GND mn15  l=0.13u w=0.265u m=1
+M8 GND N_6 ECK GND mn15  l=0.13u w=0.265u m=1
+M9 GND CK N_5 GND mn15  l=0.13u w=0.27u m=1
+M10 N_27 N_13 GND GND mn15  l=0.13u w=0.26u m=1
+M11 GND N_5 N_15 GND mn15  l=0.13u w=0.23u m=1
+M12 N_16 N_5 N_26 GND mn15  l=0.13u w=0.26u m=1
+M13 GND N_16 N_13 GND mn15  l=0.13u w=0.46u m=1
+M14 N_26 E GND GND mn15  l=0.13u w=0.26u m=1
+M15 N_27 N_15 N_16 GND mn15  l=0.13u w=0.26u m=1
+M16 N_5 CK VDD VDD mp15  l=0.13u w=0.69u m=1
+M17 N_6 CK VDD VDD mp15  l=0.13u w=0.49u m=1
+M18 VDD N_13 N_6 VDD mp15  l=0.13u w=0.49u m=1
+M19 N_6 N_13 VDD VDD mp15  l=0.13u w=0.49u m=1
+M20 VDD CK N_6 VDD mp15  l=0.13u w=0.49u m=1
+M21 VDD N_6 ECK VDD mp15  l=0.13u w=0.69u m=1
+M22 VDD N_6 ECK VDD mp15  l=0.13u w=0.69u m=1
+M23 VDD N_6 ECK VDD mp15  l=0.13u w=0.69u m=1
+M24 ECK N_6 VDD VDD mp15  l=0.13u w=0.69u m=1
+M25 N_18 N_13 VDD VDD mp15  l=0.13u w=0.26u m=1
+M26 N_15 N_5 VDD VDD mp15  l=0.13u w=0.57u m=1
+M27 N_13 N_16 VDD VDD mp15  l=0.13u w=0.58u m=1
+M28 N_17 E VDD VDD mp15  l=0.13u w=0.48u m=1
+M29 N_17 N_15 N_16 VDD mp15  l=0.13u w=0.48u m=1
+M30 N_18 N_5 N_16 VDD mp15  l=0.13u w=0.26u m=1
+.ends tlatncad4
+* SPICE INPUT		Tue Jul 31 20:34:07 2018	tlatnfcad0
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatnfcad0
+.subckt tlatnfcad0 VDD ECK GND CKN E
+M1 GND CKN N_2 GND mn15  l=0.13u w=0.23u m=1
+M2 N_11 CKN GND GND mn15  l=0.13u w=0.17u m=1
+M3 N_11 N_8 GND GND mn15  l=0.13u w=0.17u m=1
+M4 ECK N_11 GND GND mn15  l=0.13u w=0.26u m=1
+M5 N_5 N_8 GND GND mn15  l=0.13u w=0.26u m=1
+M6 N_22 N_7 N_8 GND mn15  l=0.13u w=0.39u m=1
+M7 GND N_2 N_7 GND mn15  l=0.13u w=0.19u m=1
+M8 N_22 E GND GND mn15  l=0.13u w=0.39u m=1
+M9 N_23 N_2 N_8 GND mn15  l=0.13u w=0.26u m=1
+M10 N_23 N_5 GND GND mn15  l=0.13u w=0.26u m=1
+M11 VDD CKN N_2 VDD mp15  l=0.13u w=0.57u m=1
+M12 N_5 N_8 VDD VDD mp15  l=0.13u w=0.26u m=1
+M13 N_7 N_2 VDD VDD mp15  l=0.13u w=0.48u m=1
+M14 N_12 E VDD VDD mp15  l=0.13u w=0.58u m=1
+M15 N_12 N_2 N_8 VDD mp15  l=0.13u w=0.58u m=1
+M16 N_13 N_5 VDD VDD mp15  l=0.13u w=0.26u m=1
+M17 N_13 N_7 N_8 VDD mp15  l=0.13u w=0.26u m=1
+M18 N_14 CKN N_11 VDD mp15  l=0.13u w=0.69u m=1
+M19 N_14 N_8 VDD VDD mp15  l=0.13u w=0.69u m=1
+M20 ECK N_11 VDD VDD mp15  l=0.13u w=0.63u m=1
+.ends tlatnfcad0
+* SPICE INPUT		Tue Jul 31 20:34:20 2018	tlatnfcad1
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatnfcad1
+.subckt tlatnfcad1 VDD ECK GND CKN E
+M1 GND CKN N_2 GND mn15  l=0.13u w=0.23u m=1
+M2 N_11 CKN GND GND mn15  l=0.13u w=0.18u m=1
+M3 N_11 N_8 GND GND mn15  l=0.13u w=0.18u m=1
+M4 ECK N_11 GND GND mn15  l=0.13u w=0.27u m=1
+M5 N_5 N_8 GND GND mn15  l=0.13u w=0.26u m=1
+M6 N_22 N_7 N_8 GND mn15  l=0.13u w=0.39u m=1
+M7 GND N_2 N_7 GND mn15  l=0.13u w=0.19u m=1
+M8 N_22 E GND GND mn15  l=0.13u w=0.39u m=1
+M9 N_23 N_2 N_8 GND mn15  l=0.13u w=0.26u m=1
+M10 N_23 N_5 GND GND mn15  l=0.13u w=0.26u m=1
+M11 VDD CKN N_2 VDD mp15  l=0.13u w=0.55u m=1
+M12 N_5 N_8 VDD VDD mp15  l=0.13u w=0.26u m=1
+M13 N_7 N_2 VDD VDD mp15  l=0.13u w=0.48u m=1
+M14 N_12 E VDD VDD mp15  l=0.13u w=0.58u m=1
+M15 N_12 N_2 N_8 VDD mp15  l=0.13u w=0.58u m=1
+M16 N_13 N_5 VDD VDD mp15  l=0.13u w=0.26u m=1
+M17 N_13 N_7 N_8 VDD mp15  l=0.13u w=0.26u m=1
+M18 N_14 CKN N_11 VDD mp15  l=0.13u w=0.69u m=1
+M19 N_14 N_8 VDD VDD mp15  l=0.13u w=0.69u m=1
+M20 ECK N_11 VDD VDD mp15  l=0.13u w=0.69u m=1
+.ends tlatnfcad1
+* SPICE INPUT		Tue Jul 31 20:34:33 2018	tlatnfcad2
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatnfcad2
+.subckt tlatnfcad2 VDD ECK GND CKN E
+M1 N_10 CKN GND GND mn15  l=0.13u w=0.26u m=1
+M2 N_11 CKN GND GND mn15  l=0.13u w=0.27u m=1
+M3 N_11 N_6 GND GND mn15  l=0.13u w=0.27u m=1
+M4 GND N_11 ECK GND mn15  l=0.13u w=0.275u m=1
+M5 GND N_11 ECK GND mn15  l=0.13u w=0.275u m=1
+M6 GND N_10 N_5 GND mn15  l=0.13u w=0.19u m=1
+M7 N_26 E GND GND mn15  l=0.13u w=0.41u m=1
+M8 N_26 N_5 N_6 GND mn15  l=0.13u w=0.41u m=1
+M9 N_3 N_6 GND GND mn15  l=0.13u w=0.26u m=1
+M10 N_27 N_10 N_6 GND mn15  l=0.13u w=0.26u m=1
+M11 N_27 N_3 GND GND mn15  l=0.13u w=0.26u m=1
+M12 N_5 N_10 VDD VDD mp15  l=0.13u w=0.48u m=1
+M13 N_13 E VDD VDD mp15  l=0.13u w=0.62u m=1
+M14 N_14 N_5 N_6 VDD mp15  l=0.13u w=0.26u m=1
+M15 N_3 N_6 VDD VDD mp15  l=0.13u w=0.26u m=1
+M16 N_13 N_10 N_6 VDD mp15  l=0.13u w=0.62u m=1
+M17 N_14 N_3 VDD VDD mp15  l=0.13u w=0.26u m=1
+M18 N_10 CKN VDD VDD mp15  l=0.13u w=0.59u m=1
+M19 VDD N_6 N_16 VDD mp15  l=0.13u w=0.54u m=1
+M20 N_16 CKN N_11 VDD mp15  l=0.13u w=0.54u m=1
+M21 N_11 CKN N_15 VDD mp15  l=0.13u w=0.54u m=1
+M22 N_15 N_6 VDD VDD mp15  l=0.13u w=0.54u m=1
+M23 VDD N_11 ECK VDD mp15  l=0.13u w=0.69u m=1
+M24 VDD N_11 ECK VDD mp15  l=0.13u w=0.69u m=1
+.ends tlatnfcad2
+* SPICE INPUT		Tue Jul 31 20:34:46 2018	tlatnfcad4
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatnfcad4
+.subckt tlatnfcad4 ECK GND VDD CKN E
+M1 ECK N_6 GND GND mn15  l=0.13u w=0.265u m=1
+M2 ECK N_6 GND GND mn15  l=0.13u w=0.265u m=1
+M3 GND N_6 ECK GND mn15  l=0.13u w=0.26u m=1
+M4 GND N_6 ECK GND mn15  l=0.13u w=0.26u m=1
+M5 N_6 N_13 GND GND mn15  l=0.13u w=0.39u m=1
+M6 N_6 CKN GND GND mn15  l=0.13u w=0.39u m=1
+M7 GND N_14 N_11 GND mn15  l=0.13u w=0.23u m=1
+M8 N_16 E GND GND mn15  l=0.13u w=0.41u m=1
+M9 N_16 N_11 N_13 GND mn15  l=0.13u w=0.41u m=1
+M10 N_17 N_14 N_13 GND mn15  l=0.13u w=0.26u m=1
+M11 N_17 N_10 GND GND mn15  l=0.13u w=0.26u m=1
+M12 N_10 N_13 GND GND mn15  l=0.13u w=0.26u m=1
+M13 GND CKN N_14 GND mn15  l=0.13u w=0.26u m=1
+M14 N_11 N_14 VDD VDD mp15  l=0.13u w=0.58u m=1
+M15 N_30 E VDD VDD mp15  l=0.13u w=0.62u m=1
+M16 N_31 N_11 N_13 VDD mp15  l=0.13u w=0.26u m=1
+M17 N_30 N_14 N_13 VDD mp15  l=0.13u w=0.62u m=1
+M18 N_31 N_10 VDD VDD mp15  l=0.13u w=0.26u m=1
+M19 N_10 N_13 VDD VDD mp15  l=0.13u w=0.26u m=1
+M20 VDD CKN N_14 VDD mp15  l=0.13u w=0.62u m=1
+M21 N_33 N_13 VDD VDD mp15  l=0.13u w=0.52u m=1
+M22 N_34 CKN N_6 VDD mp15  l=0.13u w=0.52u m=1
+M23 N_6 CKN N_33 VDD mp15  l=0.13u w=0.52u m=1
+M24 VDD N_13 N_32 VDD mp15  l=0.13u w=0.51u m=1
+M25 N_34 N_13 VDD VDD mp15  l=0.13u w=0.52u m=1
+M26 N_6 CKN N_32 VDD mp15  l=0.13u w=0.51u m=1
+M27 VDD N_6 ECK VDD mp15  l=0.13u w=0.69u m=1
+M28 VDD N_6 ECK VDD mp15  l=0.13u w=0.69u m=1
+M29 VDD N_6 ECK VDD mp15  l=0.13u w=0.69u m=1
+M30 ECK N_6 VDD VDD mp15  l=0.13u w=0.69u m=1
+.ends tlatnfcad4
+* SPICE INPUT		Tue Jul 31 20:34:59 2018	tlatnftscad0
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatnftscad0
+.subckt tlatnftscad0 VDD ECK GND E SE CKN
+M1 N_4 CKN GND GND mn15  l=0.13u w=0.19u m=1
+M2 GND N_4 N_3 GND mn15  l=0.13u w=0.19u m=1
+M3 GND SE N_9 GND mn15  l=0.13u w=0.19u m=1
+M4 N_9 E GND GND mn15  l=0.13u w=0.19u m=1
+M5 N_8 N_3 N_9 GND mn15  l=0.13u w=0.31u m=1
+M6 N_52 N_6 GND GND mn15  l=0.13u w=0.26u m=1
+M7 N_6 N_8 GND GND mn15  l=0.13u w=0.26u m=1
+M8 N_52 N_4 N_8 GND mn15  l=0.13u w=0.26u m=1
+M9 ECK N_4 N_53 GND mn15  l=0.13u w=0.26u m=1
+M10 GND N_6 N_53 GND mn15  l=0.13u w=0.26u m=1
+M11 N_4 CKN VDD VDD mp15  l=0.13u w=0.48u m=1
+M12 N_3 N_4 VDD VDD mp15  l=0.13u w=0.48u m=1
+M13 N_13 SE VDD VDD mp15  l=0.13u w=0.48u m=1
+M14 N_9 E N_13 VDD mp15  l=0.13u w=0.48u m=1
+M15 N_9 N_4 N_8 VDD mp15  l=0.13u w=0.48u m=1
+M16 N_14 N_3 N_8 VDD mp15  l=0.13u w=0.26u m=1
+M17 N_14 N_6 VDD VDD mp15  l=0.13u w=0.26u m=1
+M18 N_6 N_8 VDD VDD mp15  l=0.13u w=0.38u m=1
+M19 ECK N_4 VDD VDD mp15  l=0.13u w=0.325u m=1
+M20 ECK N_6 VDD VDD mp15  l=0.13u w=0.325u m=1
+.ends tlatnftscad0
+* SPICE INPUT		Tue Jul 31 20:35:12 2018	tlatnftscad1
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatnftscad1
+.subckt tlatnftscad1 VDD ECK GND E SE CKN
+M1 GND N_4 N_3 GND mn15  l=0.13u w=0.19u m=1
+M2 N_4 CKN GND GND mn15  l=0.13u w=0.23u m=1
+M3 ECK N_4 N_53 GND mn15  l=0.13u w=0.46u m=1
+M4 GND N_6 N_53 GND mn15  l=0.13u w=0.46u m=1
+M5 GND SE N_8 GND mn15  l=0.13u w=0.23u m=1
+M6 N_8 E GND GND mn15  l=0.13u w=0.23u m=1
+M7 N_6 N_9 GND GND mn15  l=0.13u w=0.26u m=1
+M8 N_54 N_6 GND GND mn15  l=0.13u w=0.26u m=1
+M9 N_54 N_4 N_9 GND mn15  l=0.13u w=0.26u m=1
+M10 N_9 N_3 N_8 GND mn15  l=0.13u w=0.39u m=1
+M11 N_3 N_4 VDD VDD mp15  l=0.13u w=0.48u m=1
+M12 N_4 CKN VDD VDD mp15  l=0.13u w=0.6u m=1
+M13 N_6 N_9 VDD VDD mp15  l=0.13u w=0.38u m=1
+M14 N_14 N_6 VDD VDD mp15  l=0.13u w=0.26u m=1
+M15 N_14 N_3 N_9 VDD mp15  l=0.13u w=0.26u m=1
+M16 N_9 N_4 N_8 VDD mp15  l=0.13u w=0.57u m=1
+M17 N_13 SE VDD VDD mp15  l=0.13u w=0.58u m=1
+M18 N_13 E N_8 VDD mp15  l=0.13u w=0.58u m=1
+M19 VDD N_4 ECK VDD mp15  l=0.13u w=0.57u m=1
+M20 VDD N_6 ECK VDD mp15  l=0.13u w=0.53u m=1
+.ends tlatnftscad1
+* SPICE INPUT		Tue Jul 31 20:35:26 2018	tlatnftscad2
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatnftscad2
+.subckt tlatnftscad2 GND ECK VDD E SE CKN
+M1 N_4 CKN GND GND mn15  l=0.13u w=0.27u m=1
+M2 GND N_4 N_2 GND mn15  l=0.13u w=0.23u m=1
+M3 GND SE N_6 GND mn15  l=0.13u w=0.26u m=1
+M4 N_6 E GND GND mn15  l=0.13u w=0.26u m=1
+M5 N_16 N_4 ECK GND mn15  l=0.13u w=0.46u m=1
+M6 N_16 N_12 GND GND mn15  l=0.13u w=0.46u m=1
+M7 GND N_12 N_15 GND mn15  l=0.13u w=0.46u m=1
+M8 ECK N_4 N_15 GND mn15  l=0.13u w=0.46u m=1
+M9 N_12 N_13 GND GND mn15  l=0.13u w=0.35u m=1
+M10 N_6 N_2 N_13 GND mn15  l=0.13u w=0.35u m=1
+M11 N_17 N_12 GND GND mn15  l=0.13u w=0.26u m=1
+M12 N_17 N_4 N_13 GND mn15  l=0.13u w=0.26u m=1
+M13 N_4 CKN VDD VDD mp15  l=0.13u w=0.69u m=1
+M14 N_2 N_4 VDD VDD mp15  l=0.13u w=0.58u m=1
+M15 N_28 SE VDD VDD mp15  l=0.13u w=0.61u m=1
+M16 N_12 N_13 VDD VDD mp15  l=0.13u w=0.52u m=1
+M17 N_29 N_2 N_13 VDD mp15  l=0.13u w=0.26u m=1
+M18 N_28 E N_6 VDD mp15  l=0.13u w=0.61u m=1
+M19 N_29 N_12 VDD VDD mp15  l=0.13u w=0.26u m=1
+M20 N_13 N_4 N_6 VDD mp15  l=0.13u w=0.53u m=1
+M21 ECK N_4 VDD VDD mp15  l=0.13u w=0.56u m=1
+M22 VDD N_12 ECK VDD mp15  l=0.13u w=0.57u m=1
+M23 ECK N_12 VDD VDD mp15  l=0.13u w=0.57u m=1
+M24 VDD N_4 ECK VDD mp15  l=0.13u w=0.57u m=1
+.ends tlatnftscad2
+* SPICE INPUT		Tue Jul 31 20:35:39 2018	tlatnftscad4
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatnftscad4
+.subckt tlatnftscad4 VDD ECK GND SE E CKN
+M1 N_12 N_2 GND GND mn15  l=0.13u w=0.3u m=1
+M2 N_12 N_9 GND GND mn15  l=0.13u w=0.305u m=1
+M3 N_12 N_9 GND GND mn15  l=0.13u w=0.3u m=1
+M4 N_12 N_2 GND GND mn15  l=0.13u w=0.305u m=1
+M5 N_12 N_2 GND GND mn15  l=0.13u w=0.305u m=1
+M6 N_12 N_9 GND GND mn15  l=0.13u w=0.305u m=1
+M7 GND N_12 ECK GND mn15  l=0.13u w=0.265u m=1
+M8 GND N_12 ECK GND mn15  l=0.13u w=0.265u m=1
+M9 ECK N_12 GND GND mn15  l=0.13u w=0.265u m=1
+M10 GND N_12 ECK GND mn15  l=0.13u w=0.265u m=1
+M11 N_4 CKN GND GND mn15  l=0.13u w=0.27u m=1
+M12 N_2 N_4 GND GND mn15  l=0.13u w=0.27u m=1
+M13 GND SE N_8 GND mn15  l=0.13u w=0.26u m=1
+M14 N_8 E GND GND mn15  l=0.13u w=0.26u m=1
+M15 N_9 N_2 N_8 GND mn15  l=0.13u w=0.32u m=1
+M16 N_33 N_4 N_9 GND mn15  l=0.13u w=0.26u m=1
+M17 N_33 N_5 GND GND mn15  l=0.13u w=0.26u m=1
+M18 N_5 N_9 GND GND mn15  l=0.13u w=0.26u m=1
+M19 N_4 CKN VDD VDD mp15  l=0.13u w=0.69u m=1
+M20 VDD N_4 N_2 VDD mp15  l=0.13u w=0.69u m=1
+M21 N_18 SE VDD VDD mp15  l=0.13u w=0.62u m=1
+M22 N_18 E N_8 VDD mp15  l=0.13u w=0.62u m=1
+M23 N_19 N_2 N_9 VDD mp15  l=0.13u w=0.26u m=1
+M24 N_9 N_4 N_8 VDD mp15  l=0.13u w=0.53u m=1
+M25 N_19 N_5 VDD VDD mp15  l=0.13u w=0.26u m=1
+M26 VDD N_9 N_5 VDD mp15  l=0.13u w=0.26u m=1
+M27 N_20 N_2 N_12 VDD mp15  l=0.13u w=0.61u m=1
+M28 N_21 N_9 VDD VDD mp15  l=0.13u w=0.61u m=1
+M29 N_20 N_9 VDD VDD mp15  l=0.13u w=0.61u m=1
+M30 N_22 N_2 N_12 VDD mp15  l=0.13u w=0.61u m=1
+M31 N_12 N_2 N_21 VDD mp15  l=0.13u w=0.61u m=1
+M32 N_22 N_9 VDD VDD mp15  l=0.13u w=0.61u m=1
+M33 VDD N_12 ECK VDD mp15  l=0.13u w=0.69u m=1
+M34 VDD N_12 ECK VDD mp15  l=0.13u w=0.69u m=1
+M35 VDD N_12 ECK VDD mp15  l=0.13u w=0.69u m=1
+M36 ECK N_12 VDD VDD mp15  l=0.13u w=0.69u m=1
+.ends tlatnftscad4
+* SPICE INPUT		Tue Jul 31 20:35:52 2018	tlatntscad0
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatntscad0
+.subckt tlatntscad0 VDD ECK GND E SE CK
+M1 N_8 E GND GND mn15  l=0.13u w=0.19u m=1
+M2 GND SE N_8 GND mn15  l=0.13u w=0.19u m=1
+M3 N_8 N_4 N_9 GND mn15  l=0.13u w=0.32u m=1
+M4 N_55 N_6 GND GND mn15  l=0.13u w=0.26u m=1
+M5 N_6 N_9 GND GND mn15  l=0.13u w=0.26u m=1
+M6 N_55 N_3 N_9 GND mn15  l=0.13u w=0.26u m=1
+M7 GND N_4 N_3 GND mn15  l=0.13u w=0.19u m=1
+M8 N_4 CK GND GND mn15  l=0.13u w=0.23u m=1
+M9 GND N_9 ECK GND mn15  l=0.13u w=0.26u m=1
+M10 ECK N_4 GND GND mn15  l=0.13u w=0.26u m=1
+M11 N_3 N_4 VDD VDD mp15  l=0.13u w=0.48u m=1
+M12 N_4 CK VDD VDD mp15  l=0.13u w=0.58u m=1
+M13 N_13 N_4 N_9 VDD mp15  l=0.13u w=0.26u m=1
+M14 N_12 E N_8 VDD mp15  l=0.13u w=0.48u m=1
+M15 N_13 N_6 VDD VDD mp15  l=0.13u w=0.26u m=1
+M16 N_12 SE VDD VDD mp15  l=0.13u w=0.48u m=1
+M17 N_6 N_9 VDD VDD mp15  l=0.13u w=0.26u m=1
+M18 N_9 N_3 N_8 VDD mp15  l=0.13u w=0.48u m=1
+M19 VDD N_9 N_14 VDD mp15  l=0.13u w=0.69u m=1
+M20 ECK N_4 N_14 VDD mp15  l=0.13u w=0.69u m=1
+.ends tlatntscad0
+* SPICE INPUT		Tue Jul 31 20:36:05 2018	tlatntscad1
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatntscad1
+.subckt tlatntscad1 GND ECK VDD E SE CK
+M1 N_15 N_12 GND GND mn15  l=0.13u w=0.26u m=1
+M2 ECK N_4 GND GND mn15  l=0.13u w=0.27u m=1
+M3 N_15 N_5 N_4 GND mn15  l=0.13u w=0.26u m=1
+M4 N_7 CK GND GND mn15  l=0.13u w=0.19u m=1
+M5 GND N_7 N_5 GND mn15  l=0.13u w=0.23u m=1
+M6 GND SE N_9 GND mn15  l=0.13u w=0.23u m=1
+M7 N_9 E GND GND mn15  l=0.13u w=0.23u m=1
+M8 N_16 N_5 N_14 GND mn15  l=0.13u w=0.26u m=1
+M9 N_14 N_7 N_9 GND mn15  l=0.13u w=0.35u m=1
+M10 N_16 N_12 GND GND mn15  l=0.13u w=0.26u m=1
+M11 N_12 N_14 GND GND mn15  l=0.13u w=0.26u m=1
+M12 N_7 CK VDD VDD mp15  l=0.13u w=0.48u m=1
+M13 VDD N_7 N_5 VDD mp15  l=0.13u w=0.58u m=1
+M14 N_57 SE VDD VDD mp15  l=0.13u w=0.58u m=1
+M15 N_14 N_5 N_9 VDD mp15  l=0.13u w=0.52u m=1
+M16 N_57 E N_9 VDD mp15  l=0.13u w=0.58u m=1
+M17 N_58 N_7 N_14 VDD mp15  l=0.13u w=0.26u m=1
+M18 N_58 N_12 VDD VDD mp15  l=0.13u w=0.26u m=1
+M19 VDD N_14 N_12 VDD mp15  l=0.13u w=0.38u m=1
+M20 N_4 N_12 VDD VDD mp15  l=0.13u w=0.325u m=1
+M21 ECK N_4 VDD VDD mp15  l=0.13u w=0.69u m=1
+M22 N_4 N_5 VDD VDD mp15  l=0.13u w=0.325u m=1
+.ends tlatntscad1
+* SPICE INPUT		Tue Jul 31 20:36:18 2018	tlatntscad2
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatntscad2
+.subckt tlatntscad2 GND ECK VDD E SE CK
+M1 GND N_5 N_2 GND mn15  l=0.13u w=0.34u m=1
+M2 N_16 N_2 GND GND mn15  l=0.13u w=0.26u m=1
+M3 N_16 N_7 N_5 GND mn15  l=0.13u w=0.26u m=1
+M4 N_5 N_8 N_4 GND mn15  l=0.13u w=0.27u m=1
+M5 N_8 CK GND GND mn15  l=0.13u w=0.21u m=1
+M6 N_7 N_8 GND GND mn15  l=0.13u w=0.26u m=1
+M7 GND N_11 ECK GND mn15  l=0.13u w=0.275u m=1
+M8 GND N_11 ECK GND mn15  l=0.13u w=0.275u m=1
+M9 N_17 N_2 GND GND mn15  l=0.13u w=0.43u m=1
+M10 N_17 N_7 N_11 GND mn15  l=0.13u w=0.43u m=1
+M11 GND SE N_4 GND mn15  l=0.13u w=0.26u m=1
+M12 N_4 E GND GND mn15  l=0.13u w=0.26u m=1
+M13 N_61 SE VDD VDD mp15  l=0.13u w=0.61u m=1
+M14 N_61 E N_4 VDD mp15  l=0.13u w=0.61u m=1
+M15 N_2 N_5 VDD VDD mp15  l=0.13u w=0.53u m=1
+M16 N_62 N_2 VDD VDD mp15  l=0.13u w=0.26u m=1
+M17 N_5 N_7 N_4 VDD mp15  l=0.13u w=0.53u m=1
+M18 N_62 N_8 N_5 VDD mp15  l=0.13u w=0.26u m=1
+M19 VDD N_11 ECK VDD mp15  l=0.13u w=0.69u m=1
+M20 VDD N_11 ECK VDD mp15  l=0.13u w=0.69u m=1
+M21 VDD N_2 N_11 VDD mp15  l=0.13u w=0.53u m=1
+M22 N_11 N_7 VDD VDD mp15  l=0.13u w=0.53u m=1
+M23 N_8 CK VDD VDD mp15  l=0.13u w=0.53u m=1
+M24 N_7 N_8 VDD VDD mp15  l=0.13u w=0.63u m=1
+.ends tlatntscad2
+* SPICE INPUT		Tue Jul 31 20:36:31 2018	tlatntscad4
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=tlatntscad4
+.subckt tlatntscad4 GND ECK VDD E SE CK
+M1 N_4 CK GND GND mn15  l=0.13u w=0.26u m=1
+M2 N_3 N_4 GND GND mn15  l=0.13u w=0.27u m=1
+M3 GND SE N_6 GND mn15  l=0.13u w=0.26u m=1
+M4 N_6 E GND GND mn15  l=0.13u w=0.26u m=1
+M5 N_11 N_4 N_6 GND mn15  l=0.13u w=0.35u m=1
+M6 N_19 N_9 GND GND mn15  l=0.13u w=0.26u m=1
+M7 N_9 N_11 GND GND mn15  l=0.13u w=0.35u m=1
+M8 N_19 N_3 N_11 GND mn15  l=0.13u w=0.26u m=1
+M9 N_20 N_9 GND GND mn15  l=0.13u w=0.46u m=1
+M10 N_21 N_3 N_15 GND mn15  l=0.13u w=0.46u m=1
+M11 N_15 N_3 N_20 GND mn15  l=0.13u w=0.46u m=1
+M12 N_21 N_9 GND GND mn15  l=0.13u w=0.46u m=1
+M13 ECK N_15 GND GND mn15  l=0.13u w=0.265u m=1
+M14 ECK N_15 GND GND mn15  l=0.13u w=0.265u m=1
+M15 GND N_15 ECK GND mn15  l=0.13u w=0.26u m=1
+M16 GND N_15 ECK GND mn15  l=0.13u w=0.26u m=1
+M17 N_4 CK VDD VDD mp15  l=0.13u w=0.63u m=1
+M18 N_3 N_4 VDD VDD mp15  l=0.13u w=0.69u m=1
+M19 N_82 SE VDD VDD mp15  l=0.13u w=0.61u m=1
+M20 N_82 E N_6 VDD mp15  l=0.13u w=0.61u m=1
+M21 N_83 N_4 N_11 VDD mp15  l=0.13u w=0.26u m=1
+M22 N_83 N_9 VDD VDD mp15  l=0.13u w=0.26u m=1
+M23 VDD N_11 N_9 VDD mp15  l=0.13u w=0.35u m=1
+M24 N_9 N_11 VDD VDD mp15  l=0.13u w=0.35u m=1
+M25 N_11 N_3 N_6 VDD mp15  l=0.13u w=0.52u m=1
+M26 N_15 N_9 VDD VDD mp15  l=0.13u w=0.57u m=1
+M27 N_15 N_3 VDD VDD mp15  l=0.13u w=0.57u m=1
+M28 VDD N_3 N_15 VDD mp15  l=0.13u w=0.57u m=1
+M29 VDD N_9 N_15 VDD mp15  l=0.13u w=0.57u m=1
+M30 VDD N_15 ECK VDD mp15  l=0.13u w=0.69u m=1
+M31 VDD N_15 ECK VDD mp15  l=0.13u w=0.69u m=1
+M32 VDD N_15 ECK VDD mp15  l=0.13u w=0.69u m=1
+M33 ECK N_15 VDD VDD mp15  l=0.13u w=0.69u m=1
+.ends tlatntscad4

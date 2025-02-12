@@ -1,0 +1,282 @@
+********************
+TB
+@TB.a: Minimum TB width must be >= 0.62 um 
+@TB.a1: Minimum Hot TB width( NW not connected to the most positive voltage-Vdd ) must be >= 1.62 um 
+@TB.b: Min TB space must be >= 0.62 um 
+@TB.c: Min space of LV N-well with the different potential must be >= 0.9 um 
+@TB.c1: Min space of LV N-well to HV N-well must be >= 1.08 um 
+@TB.c2: Min space of HV N-well with the different potential must be >= 1.08 um 
+@TB.d: Min TB area must be>= 1.0 um2. 
+@TB.e: Min enclose area must be >= 0.384 um2 
+********************
+TO
+@TO.ab: Min TO width must be >= 0.135 um 
+@TO.a1: Min TO width for 5V/Quasi_HV NMOS and 5V/Quasi_HV PMOS Channel Width must be >= 0.8 um 
+@TO.a2: Min TO width for 5V/Quasi_HV ZMOS Channel Width must be >= 1.2 um 
+@TO.a3: Min TO width for 1.5V ZMOS and 3.3V ZMOS Channel Width must be >= 1 um 
+@TO.b1: Min TO width for interconnect for 5V/Quasi_HV MOS must be >= 0.22 um 
+@TO.c: Min TO except SRAM cell and 5V/Quasi_HV MOS area space must be >= 0.185 um 
+@TO.c1: Min TO in SRAM cell space must be >= 0.18 um 
+@TO.c2:Min TO space when 5V/Quasi_HV MOS is involved, except pickup must be >= 0.8 um 
+@TO.c3:Min TO space when 5V/Quasi_HV MOS TO to pickup TO must be >= 0.5 um 
+@TO.sram: TO cross VTSRAM layer is not allowed. 
+@TO.d: Min extension of TB beyond N+TO region which is inside the TB must be >= 0.215 um 
+@TO.e: Min clearance from TB edge to N+TO region which is outside cold/hot TB must be >= 0.275 um 
+@TO.f: Min extension of TB beyond P+TO region which is inside TB must be >= 0.275 um 
+@TO.g: Min clearance from TB edge to P+TO region which is outside TB must be >= 0.215 um 
+@TO.h: Min clearance from poly edge to the edge of a butted diffusion TO region 
+@ that has no common run length parallel to transistor channel must be >= 0.285 um 
+@TO.h1.1: Min clearance from poly edge to the edge of a butted diffusion TO region 
+@ that is parallel to transistor channel must be >= 0.360 um 
+@TO.h1.2: Min clearance from poly edge to the edge of a butted diffusion TO region 
+@ that is parallel to transistor channel must be >= 0.360 um 
+@TO.j: One segment of the consecutive SN/SP edge of a butted 
+@ diffusion active should be longer than 0.27 um 
+@TO.j_1: Min implant area for the butted diffusion is 0.25 um2 
+@TO.k:When J<0.3um,Max length of ( TO( source ) interact with butted diffusion ) must be <= 0.54 um 
+@TO.l: Min. clearance from TB edge to a N+TO region which is outside a TB connected to DN must be >= 0.385 um. 
+@TO.n: Min. TO area must be >= 0.1 um2. 
+@TO.o: Min. TO enclosure area must be >= 0.122 um2. 
+@TO.t: TO must be fully covered BY N+/P+ except dummy active,Logo and NW resistor within TO 
+@TO.a.guid: Recommended Min. TO width for stable Idsat( avoid corner rounding effect ) must be >= 0.3 um 
+@TO.c.guid: Recommended Min .TO space is 0.26 um to reduce short possibility caseed by particle 
+@TO.m.guid: Recommanded Min. TO space >= 0.35 um when TO area is more than 4,000,000um2 
+********************
+GT
+@GT.a1: Min. width for channel length of LPMOS( 1.5V ) must be >= 0.13 um 
+@GT.a2: Min. width for channel length of HPMOS( 3.3V ) must be >= 0.30 um 
+@GT.a3: Min. width for channel length of HPMOS( 5V ) must be >= 0.8 um 
+@GT.a4: Min. width for channel length of Quasi_HV PMOS must be >= 1.0 um 
+@GT.b1: Min. width for channel length of LNMOS( 1.5V ) must be >= 0.13 um 
+@GT.b2: Min. width for channel length of HNMOS( 3.3V ) must be >= 0.35 um 
+@GT.b3: Min. width for channel length of HNMOS( 5V ) must be >= 0.8 um 
+@GT.b4: Min. width for channel length of Quasi_HV HNMOS must be >= 1.0 um 
+@GT.c: Min. width for interconnect must be >= 0.13 um 
+@GT.c1: Min. width for interconnect for 5V/Quasi_HV MOS must be >= 0.2 um 
+@GT.d: Min. spacing between two GT regions must be >= 0.145 um 
+@GT.d1: Min. GT space >= 0.315 um when GT area is more than 4,000,000um2 
+@GT.e: Min. spacing between two GT regions in the same TO must be >= 0.16 um 
+@GT.e1: Min. spacing between two GT regions in the 3.3V region must be >= 0.225 um 
+@GT.e2: Min. spacing between two GT regions in the 5V/Quasi_HV region must be >= 0.4 um 
+@GT.f: Min. clearance from TO region to a GT on field oxide must be >= 0.06 um 
+@GT.f1: Min. clearance from TO region to a GT on field oxide for 5V/Quasi_HV MOS must be >= 0.2 um 
+@GT.g: Min. endcap with GT over TO must be >= 0.16 um 
+@GT.g1: Min. endcap with GT over TO for 5V/Quasi_HV NMOS and 5V/Quasi_HV PMOS must be >= 0.3 um 
+@GT.g2: Min. endcap with GT over TO for 5V/Quasi_HV ZMOS must be >= 0.4 um 
+@GT.h: Min. width of 45 degree bend poly on field oxied must be >= 0.14 um 
+@ if the bend poly length is >=0.39um 
+@GT.i: Min. extension of TO region beyond a related GT inside TO must be >= 0.205 um 
+@GT.i1: Min. extension of TO region beyond a related GT inside TO for 5V/Quasi_HV MOS must be >= 0.44 um 
+@GT.j: Min. GT area must be >= 0.073 um2 
+@GT.k: Min. GT enclosure area must be >= 0.122 um2. 
+@GT.n: Intrinsic ( un-implanted ) poly line is not allowed.Poly lines must be implanted with N+ or P+ implant except HR. 
+@GT.s: The 45 degree and 90 degree angle are not allowed for poly gate in TO. 
+@All GT must be orthogonal to TO edge 
+@GT.d.guid: Recommended min interconnect GT space is 0.23 um to reduce short possibility caused by particle. 
+@GT.e.guid: Recommended min space between two GT region in the same TO to avoid Isat degradation is 0.23 um. 
+@GT.i.guid: Recommended min extension of TO region beyond a related GT inside TO is 0.34 um. 
+@GT.l.guid: For small MOS ( channel width <=0.3 ), Recommended min clearance from L-shape or T-shape GT to TO must be >= 0.105 um 
+@when GT and TO are in the same MOS 
+********************
+SP
+@SP.a: Min. width of SP region must be >= 0.275 um. 
+@SP.b: Min. space between two SP regions must be >= 0.275 um. 
+@SP.c: Min. clearance from a SP region to a N+ active TO region( inside PT ) must be >= 0.16 um. 
+@SP.c1: Min. clearance from a SP region inside TB to a non-butted 
+@ edge of TB pick-up N+TO region must be >= 0.025 um. 
+@SP.c2: Min. clearance from a SP region inside SNW to a pick-up N+ TO region must be >= 0.03 um. 
+@SP.d: Min clearance from an SP edge to an N-channel poly gate must be >= 0.36 um. 
+@SP.f: Min overlap from a SP edge to a TO region must be >= 0.16 um. 
+@SG.g: Min extension of a SP region beyond a P+ active TO region must be >= 0.16 um 
+@ if the distance to the related poly > 0.27um. 
+@SP.g: For 1.5V or 3.3V device, Min extension of a SP region beyond a P+ active TO region must be >= 0.16 um 
+@ if the distance to the related poly >0.27um. 
+@SP.g1: Min extension of a SP region beyond a P+ active TO region must be >= 0.27 um 
+@ if the distance to the related poly <=0.27um. 
+@SP.g2: For 5V/Quasi_HV device, Min extension of a SP region beyond a P+ active TO region must be >= 0.4 um 
+@SP.h: Min extension of a SP region beyond a PT pick-up P+TO region must be >= 0.025 um. 
+@SP.h2: Min extension of a SP region beyond a SPW pick-up P+TO region must be >= 0.03 um. 
+@SP.k:Min clearance from a butted diffusion SP to the related poly edge in PT must be >= 0.24 um 
+@SP.k:if butting P+ TO extending J <0.3 
+@SP.k:Min clearance from a butted diffusion SP to the related poly edge in PT must be >= 0.24 um 
+@SP.k:if butting P+ TO extending J <0.3 
+@SP.l: Min extension of SP region beyond an P type poly resistor must be >= 0.18 um 
+@SP.m: Min clearance from a SP edge to a N type resistor must be >= 0.18 um 
+@SP.q: Min area of SP region must be >= 0.2 um2. 
+@SP.r: Min enclosed area must be >= 0.2 um2. 
+@SPW.a:Min SPW width must be >= 1.0 um 
+@SPW.b:Min space of SPW must be >= 1.5 um 
+@SPW.c:Min clearance from SPW to TB must be >= 1.5 um 
+@SPW.d:Min clearance from SPW to DN must be >= 1.5 um 
+@SPW.e:Min clearance from SPW to SNW must be >= 1.5 um 
+@SPW.f:Min clearance from SPW to PWB must be >= 0.62 um 
+@SPW.g:Min clearance from SPW to HV must be >= 0.62 um 
+@SPW.h:Min clearance from SPW to N+ TO must be >= 0.5 um 
+@SPW.i:Min extension of SPW beyond TO except ptap must be >= 1.3 um 
+@SPW.j:Min extension of SPW beyond ptap must be >= 0.32 um 
+@SPW.k:Min extension of SPW beyond PWB must be >= 0.86 um 
+@SPW.l:Min extension of SPW beyond SP must be >= 0.08 um 
+@SPW.m:SPW is not allowed to interact with TB. 
+@SPW.n:SPW is not allowed to interact with DN. 
+@SPW.o:SPW is not allowed to interact with HV. 
+@SPW.p:SPW is not allowed to interact with SNW. 
+@SPW.q:SPW non-orthogonal polygon is no allowed. 
+@SPW.r:TO cannot cross / straddle SPW 
+********************
+SN
+@SN.a: Min. width of SN region must be >= 0.275 um. 
+@SN.b: Min. space between two SN regions must be >= 0.275 um. 
+@SN.c: Min. clearance from a SN region to a P+ active TO region( inside TB ) must be >= 0.16 um. 
+@SN.c1: Min. clearance from a SN region inside PT to a non-butted 
+@ edge of PT pick-up P_TO region must be >= 0.025 um. 
+@SN.c2: Min. clearance from a SN region inside SPW to a pick-up P+ TO region must be >= 0.03 um. 
+@SN.d: Min clearance from an SN edge to a P-channel poly gate must be >= 0.36 um. 
+@SN.f: Min overlap from a SN edge to a TO region must be >= 0.16 um. 
+@SN.g: Min extension of a SN region beyond a N+ active TO region must be >= 0.16 um 
+@ if the distance to the related poly >0.27um. 
+@SN.g: For 1.5V or 3.3V device, Min extension of a SN region beyond a N+ active TO region must be >= 0.16 um 
+@ if the distance to the related poly >0.27um. 
+@SN.g1: Min extension of a SN region beyond a N+ active TO region must be >= 0.27 um 
+@ if the distance to the related poly <=0.27um. 
+@SN.g2: For 5V/Quasi_HV device, Min extension of a SN region beyond a N+ active TO region must be >= 0.4 um 
+@SN.h: Min extension of a SN region beyond a TB pick-up N+TO region must be >= 0.025 um. 
+@SN.h2: Min extension of a SN region beyond a SNW pick-up N+TO region must be >= 0.03 um. 
+@SN.k:Min clearance from a butted diffusion SN to the related poly edge in TB must be >= 0.24 um 
+@SN.k:if butting P+ TO extending J <0.3 
+@SN.k:Min clearance from a butted diffusion SN to the related poly edge in TB must be >= 0.24 um 
+@SN.k:if butting P+ TO extending J <0.3 
+@SN.l: Min extension of SN region beyond an N type poly resistor must be >= 0.18 um 
+@SN.m: Min clearance from a SN edge to a P type resistor must be >= 0.18 um 
+@SN_SP.p:Implant polylines on field with N+ or P+ implant to ensure low resistance of salicide polylines 
+@ The implant to Poly extension with N+ and P+ implants combined as a whole is 0.18 um 
+@SN.q: Min area of SN region must be >= 0.2 um2. 
+@SN.r: Min enclosed area must be >= 0.2 um2. 
+@SN_SP.t: SN is not allowed to overlap SP. 
+@SNW.a:Min SNW width must be >= 1.0 um 
+@SNW.b:Min space of SNW must be >= 3.0 um 
+@SNW.c:Min clearance from SNW to TB must be >= 3.0 um 
+@SNW.d:Min clearance from SNW to DN must be >= 3.0 um 
+@SNW.e:Min clearance from SNW to PWB must be >= 1.66 um 
+@SNW.f:Min clearance from SNW to HV must be >= 0.62 um 
+@SNW.g:Min clearance from SNW to TO except ptap must be >= 3.0 um 
+@SNW.h:Min clearance from SNW to ptap must be >= 0.44 um 
+@SNW.i:Min extension of SNW beyond TO except ntap must be >= 1.2 um 
+@SNW.j:Min extension of SNW beyond ntap must be >= 0.32 um 
+@SNW.k:Min extension of SNW beyond SN must be >= 0.08 um 
+@SNW.l:SNW is not allowed to interact with PWB. 
+@SNW.m:SNW is not allowed to interact with TB. 
+@SNW.n:SNW is not allowed to interact with DN. 
+@SNW.o:SNW is not allowed to interact with HV. 
+@SNW.p:SNW non-orthogonal polygon is no allowed. 
+@SNW.q:SNW must contain only p+TO and ntap TO. 
+@SNW.t:TO cannot cross / straddle SNW 
+********************
+W1
+@W1.a.1: Min. & Max. Contact size must be == 0.14 um 
+@W1.a.2: Min. & Max. Contact width of W1 bar must be == 0.14 W1 bar is only allowed in seal ring 
+@W1.b: Min W1 space must be >= 0.165 um 
+@W1.b1: Min W1 space in W1 array must be >= 0.18 um. 
+@( W1 number >= 4 x 4 ( row and column>=w1_b1_num ) with space <= 0.21 um ) 
+@W1.c.1: Min clearance from W1 on TO region to a GT of 1.5V devices must be >= 0.095 um. 
+@W1.c.2: Min clearance from W1 on TO region to a GT of 3.3V devices must be >= 0.115 um. 
+@W1.c.3: Min clearance from W1 on TO region to a GT of 5V/Quasi_HV devices must be >= 0.13 um. 
+@W1.d: Min clearance from W1 on GT to TO must be >= 0.125 um. 
+@W1.e: Min extension of TO beyond TO W1 must be >= 0.06 um. 
+@W1.f: Min extension of GT beyond a poly W1 must be >= 0.06 um. 
+@W1.g.1: Min extension of butted SP region beyond an TO W1 region must be >= 0.08 um 
+@W1.g.2: Min extension of butted SP region beyond an TO W1 region must be >= 0.08 um 
+@W1.g.1: Min extension of butted SN region beyond an TO W1 region must be >= 0.08 um. 
+@W1.g.2: Min extension of butted SN region beyond an TO W1 region must be >= 0.08 um. 
+@W1.j: W1 on Gate poly over TO is not allowed. 
+@W1.k: W1 without the cover of ( GATE or TO ) is not allowed 
+@W1.note:W1 on the body of any resistor is not allowed. 
+@W1.e.guid: Recommended Min extension of TO beyond TO W1 to avoid high Rc is 0.12 um. 
+@W1.f.guid: Recommended Min extension of GT beyond a Poly W1 to avoid high Rc is W1_f_guid um. 
+********************
+A1
+@A1.a: Min width of A1 region must be >= 0.14 um 
+@A1.a1: Min width of 45 degree bent metal must be >= 0.18 um if the bent metal length is >= 0.45 um 
+@A1.b: Min space of A1 region must be >= 0.165 um 
+@A1.c: Min extension of A1 beyond W1 region must be >= 0 um 
+@A1.c1: Min extension of A1 end-of-line beyond W1 region must be >= 0.045 um 
+@A1.d12: Min space between metal lines must be >= 0.45 um with one or both metal line width and length >=10um; 
+@Min space between metal line and a small piece of metal( <10um ) must be >= 0.45 um 
+@that is connected to the wide metal within 1.0 range from the wide metal 
+@A1.e: Min space between two metal line must be >= 0.2 um with at least one metal line width is>=0.27um and the parallel run length is >=1.0um 
+@A1.f: Min space between 45 degree bent metal must be >= 0.195 um ( the bent metal length is >=0.45um ) 
+@A1.h: Min area A1 must be >= 0.1 um2. 
+@A1.i: Min enclosed area must be >= 0.162 um2. 
+@A1.c1.guid: Recommended Min extension of A1 end-of-line beyond W1 region is 0.08 um to avoid high Rc 
+@A1.c1.guid2: Recommended Min extension of A1 ( width >0.6um ) beyond W1 region is 0.08 um to avoid high Rc 
+@A1.g.guid: Recommended Min space between non-A1 regions is 0.35 um( one of non-A1 regions>4,000,000um2 ). 
+@non-A1 region is ( not( A1 or A1 dummy ) ). 
+********************
+W2
+@W2.a.1: Min & Max W2 size must be == 0.17 um. 
+@W2.a.2: Min. & Max. W2 width of W2 bar must be == 0.115 um,W2 bar is only allowed in seal ring 
+@W2.b: Min W2 space msut be >= 0.195 um 
+@W2.b1: Min W2 space in W2 array must be >= 0.26 ( W2 number>=3x3( row and column>=3 ) with space<=0.31um ) 
+@W2.c: Min extension of A1 beyond W2 must be >= 0.005 um 
+@W2.c1: Min extension of A1 end of line region beyond W2 must be >= 0.045 um ( at least 2 opposite sides ) 
+@W2.c.guid: Recommended Min extension of A1 beyond W2 is 0.05 um 
+@W2.c.guid2: Recommended Min extension of A1 ( width >10um ) beyond W2 region is 0.18 um 
+@W2.c1.guid: Recommended Min extension of A1 end of line region beyond W2 is 0.08 um ( at least 2 opposite sides ) 
+********************
+A2
+@A2.a: Min width of A2 region must be >= 0.18 um 
+@A2.a1: Min width of 45 degree bent metal must be >= 0.215 um if the bent metal length is >=0.5um 
+@A2.b: Min space of A2 region must be >= 0.185 um 
+@A2.c: Min extension of A2 beyond W2 region must be >= 0.005 um 
+@A2.c1: Min extension of A2 end of line region beyond W2 ( at least two opposite sides ) must be >= 0.045 um 
+@A2.d: Min space between metal lines must be >= 0.45 um with one or both metal line width and length >=10um; 
+@Min space between metal line and a small piece of metal( <10um ) must be >= 0.45 um 
+@that is connected to the wide metal within 1.0 range from the wide metal. 
+@A2.d3: Min space between metal lines must be >= 0.225 um with one or both metal line width and length >=2um; 
+@A2.e: Min space between two metal line must be >= 0.225 um with at least one metal line width is>=0.4um and the parallel run length is >=1.0um 
+@A2.h: Min area must be >= 0.117 um2 
+@A2.i: Min enclosure area must be >= 0.215 um2. 
+@A2.l: Min. space of two adjacent stacked metal ( metal layers >= 3 ) [ both length and width of ( either A or B ) > 7 um, and the projection length ( L ) > 7 um ] The stacked metal layers >= 3 mean that the overlapped area contains >= 3 consecutive metal layers. ( For example: A1/A2/A3, or A4/A5/A6 , and so on ) >= 0.9 um 
+@A2.c.guid: Min extension of A2 beyond W2 region must be >= 0.05 um 
+@A2.c1.guid: Recommended Min extension of A2 end of line region beyond W2 ( at least two opposite sides ) is 0.08 um 
+@A2.g.guid: Recommended Min space between non-A2 regions is 0.350 um( one of non-A2 regions>4,000,000um2 ). 
+@non-A2 region is ( not( A2 or A2 dummy ) ). 
+@A2.j.guid: Recommended An space is 0.3 um when An is within( An and ( wide An-1 size 5 ) ). 
+@the wide An-1 is that both width and length >5um. 
+@A2.l.guid: Recommended Min. space of two adjacent stacked metal ( metal layers >= 3 ) [ both length and width of ( either A or B ) > 5 um, and the projection length ( L ) > 5 um ] The stacked metal layers >= 3 mean that the overlapped area contains >= 3 consecutive metal layers. ( For example: A1/A2/A3, or A4/A5/A6 , and so on ) >= 0.6 um 
+@A2.f: Min space between 45 degree bent metal must be >= 0.215 um ( the bent metal length is >=0.5um ). 
+********************
+W3
+@W3.a.1: Min & Max W3 size must be == 0.17 um. 
+@W3.a.2: Min. & Max. W3 width of W3 bar must be == 0.115 um,W3 bar is only allowed in seal ring 
+@W3.b: Min W3 space msut be >= 0.195 um 
+@W3.b1: Min W3 space in W3 array must be >= 0.26 ( W3 number>=3x3( row and column>=3 ) with space<=0.31um ) 
+@W3.c: Min extension of A2 beyond W3 must be >= 0.005 um 
+@W3.c1: Min extension of A2 end of line region beyond W3 must be >= 0.045 um ( at least 2 opposite sides ) 
+@W3.c.guid: Recommended Min extension of A2 beyond W3 is 0.05 um 
+@W3.c.guid2: Recommended Min extension of A2 ( width >10um ) beyond W3 region is 0.18 um 
+@W3.c1.guid: Recommended Min extension of A2 end of line region beyond W3 is 0.08 um ( at least 2 opposite sides ) 
+********************
+A3
+@A3.a: Min width of A3 region must be >= 0.18 um 
+@A3.a1: Min width of 45 degree bent metal must be >= 0.215 um if the bent metal length is >=0.5um 
+@A3.b: Min space of A3 region must be >= 0.185 um 
+@A3.c: Min extension of A3 beyond W3 region must be >= 0.005 um 
+@A3.c1: Min extension of A3 end of line region beyond W3 ( at least two opposite sides ) must be >= 0.045 um 
+@A3.d: Min space between metal lines must be >= 0.45 um with one or both metal line width and length >=10um; 
+@Min space between metal line and a small piece of metal( <10um ) must be >= 0.45 um 
+@that is connected to the wide metal within 1.0 range from the wide metal. 
+@A3.d3: Min space between metal lines must be >= 0.225 um with one or both metal line width and length >=2um; 
+@A3.e: Min space between two metal line must be >= 0.225 um with at least one metal line width is>=0.4um and the parallel run length is >=1.0um 
+@A3.h: Min area must be >= 0.117 um2 
+@A3.f: Min space between 45 degree bent metal must be >= 0.215 um ( the bent metal length is >=0.5um ). 
+@A3.i: Min enclosure area must be >= 0.215 um2. 
+@A3.c.guid: Min extension of A3 beyond W3 region must be >= 0.05 um 
+@A3.c1.guid: Recommended Min extension of A3 end of line region beyond W3 ( at least two opposite sides ) is 0.08 um 
+@A3.g.guid: Recommended Min space between non-A3 regions is 0.350 um( one of non-A3 regions>4,000,000um2 ). 
+@non-A3 region is ( not( A3 or A3 dummy ) ). 
+@A3.j.guid: Recommended An space is 0.3 um when An is within( An and ( wide An-1 size 5 ) ). 
+@the wide An-1 is that both width and length >5um. 
+********************
+prBoundry
+********************
+text

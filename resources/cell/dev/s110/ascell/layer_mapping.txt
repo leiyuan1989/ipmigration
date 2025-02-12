@@ -1,0 +1,341 @@
+##########################################################################
+##                  Virtuoso Mapping File                                #
+##########################################################################
+##
+##=======================================================================
+## @Process:	0.11um/0.13um Logic & Mix-Signal 1.2/2.5/3.3v generic and 1.5/3.3v low leakage process
+## @File Name:	SMIC_VTMP_011013LGMSLL_12152533_V1.25_0.map
+##=======================================================================
+## @File Comment
+##
+## DR main rule:
+## Smic:	0.11um/0.13um Logic & Mix-Signal 1.2/2.5/3.3v generic and 1.5/3.3v low leakage Design Rule
+## Doc No:	TD-LO13-DR-2001
+## Doc Rev:	21
+## Tech Dev Rev:1.25
+##
+## Revision History:
+##     Rev     Date         Who                   What
+##   -----   ---------   ---------      --------------------------------
+##    1.1   2003/07/23   Wendy Sui              Initial
+##    1.2   2004/03/08   Jacky Chang     Add some CAD and Mask lalyers
+##    1.3   2004/03/11   Jacky Chang     Add RFDEV, RFMOSD, JVARDUM layer
+##    1.4   2004/04/28   Jacky Chang     Add PFL and via layer definition
+##    1.5   2004/09/10   Shelly Liu      Add dummy layer for AA and GT.
+##    1.6   2004/11/18   Shelly Liu      Add block layer for job view.
+##    1.7   2004/12/10   Shelly Liu      Add "0M", and modify some layer names.
+##    1.8   2005/07/18   Shelly Liu      Add BCB1, BCB2, RDL and BUMP layers.
+##    1.9   2005/09/08   longle shi      Add some layers        
+##    2.0   2006/03/21   longle shi      Add layer RESP3T,remove layer DP.
+##    2.1   2006/05/11   longle shi      Update layer NN(85:0) to PSUB
+##                                       Change TM1TXT NO. from (120:2) to (120:3),TM2TXT NO. from (122:2) to (122:3)
+##    2.2   2006/12/07   longle shi      Update the techfile based on new layer mapping PM-DATA-02-2001(12).
+##    2.3   2008/11/11   Drincy Wei      Add User-Defined Purposes for MnB/MnDUB/MnR/MnSLOTB
+##    2.4   2008/11/12   Drincy Wei      Add layers DDNW(217:0), PWHT(109:0), NWHT(110:0), NDRF(103:0), PDRF(104:0)
+##    2.5   2009/01/20   Seek Rui        Add layer MD(130:0),TM1B(193:0),TM2B(194:0),TM1DUB(193:1),TM2DUB(194:1)
+##    2.6   2009/05/12   Seek Rui        Add layer ALPAR(83:1),ALPATXT(83:2),ALRDL(83:3),MOMDMY(211:1)
+##    2.7   2010/01/08   Seek Rui        Add layer DNWTR(19:2)
+##    2.8   2011/01/19   Susan Wu        Add layer RF3T(183:2)
+##    2.9   2011/02/11   Zhitao Chen     Add ALPA into viaLayer part.
+##    3.0   2011/02/17   Zhitao Chen     Remove layers M*SLOT, add layer MOSCKT (131:2) RESCKT(131:3).
+##    3.1   2011/12/09   Liu Li         Add layer RP185(185;0)  
+##    3.2   2012/09/28   Eric Wang      Add layer CCT(117;0) B1(141;0) PLDMK(131;4) NFDMK(131;5) RFSD(181;3) RFDN6T(181;4) EXDFM(239;1) EXLFD(239;2)  
+##					Add STSRAM,DNSRAM,UDSRAM,DPSRAM,LRSRAM,MARKF,MARKG,MARKS
+##    3.3   2012/10/12   Eric Wang      Add layer STIDMY(215;0)  
+##V2.3_0P=3.4	2013/05/23	Iori Wang	Add layer MnSLOT,MIMCKT(131,6),MIMSHD(89,155),INDR(212,1),GTFUSE(81,1),
+##						EFUSE(81,2),CLPDMY(87,2),DMRES(137,2),SURNW(209,0),MIMSTK(131,8).
+##						Remove layer AR(11,0),HT(3,0),L0(0,0),NEGR(4,0),RGM(2,0).
+##	V2.3_0P	2013/07/29	Iori Wang	Remove layer B1, redefine layer M1TXT GDS NO as (141,0).
+##	V2.3_1P	2013/10/09	Iori Wang	Add layer DUPMK1(89,156).
+## V1.24_0	2016/03/21	Iori Wang	Add layers: ALMK1(83:151), FUSEMK1(81:152), MOMMKn(n=1~8).
+##						Rename layer DUMAA to AADUM, DUMGT to GTDUM.
+##						Add tech files with metal option.
+## V1.25_0	2018/02/06	Kesheng_Zhang	Add LUWMK1 VDDMK1 VSSMK1 layers,delete NSR PSR AMO PWL JVDUM EXDFM EXLFD layers;
+##						Delete tech files with metal option.
+##
+##***********************************************************************
+#DISCLAIMER
+
+#SMIC hereby provides the quality information to you but makes no claims,
+#promises or guarantees about the accuracy, completeness, or adequacy of
+#the information herein. The information contained herein is provided on
+#an "AS IS" basis without any warranty, and SMIC assumes no obligation to
+#provide support of any kind or otherwise maintain the information.
+#SMIC disclaims any representation that the information does not infringe
+#any intellectual property rights or proprietary rights of any third parties.
+#SMIC makes no other warranty, whether express, implied or statutory as to
+#any matter whatsoever, including but not limited to the accuracy or sufficiency
+#of any information or the merchantability and fitness for a particular purpose.
+#Neither SMIC nor any of its representatives shall be liable for any cause of
+#action incurred to connect to this service.
+
+#STATEMENT OF USE AND CONFIDENTIALITY
+
+#The following/attached material contains confidential and proprietary information
+#of SMIC. This material is based upon information which SMIC considers reliable,
+#but SMIC neither represents nor warrants that such information is accurate or
+#complete, and it must not be relied upon as such.  This information was prepared
+#for informational purposes and is for the use by SMIC's customer only.  SMIC
+#reserves the right to make changes in the information at any time without notice.
+#No part of this information may be reproduced, transmitted, transcribed, stored
+#in a retrieval system, or translated into any human or computer language, in any
+#form or by any means, electronic, mechanical, magnetic, optical, chemical, manual,
+#or otherwise, without the prior written consent of SMIC.  Any unauthorized use or
+#disclosure of this material is strictly prohibited and may be unlawful. By accepting
+#this material, the receiving party shall be deemed to have acknowledged, accepted,
+#and agreed to be bound by the foregoing limitations and restrictions. Thank you.
+#
+####################################################################################
+####################################################################################
+
+#	Layer	Purpose		GDS	Datatype
+#	Name	Name		No.
+#####################################################
+	0M	drawing		1	0
+	LUWMK1		drawing		131		177
+	VDDMK1		drawing		131		175
+	VSSMK1		drawing		131		176
+	CO	drawing		8	0
+	KV	drawing		9	0
+	AA	drawing		10	0
+	AADUM	drawing		10	1
+	TG	drawing		125	0
+	NPAA	drawing		12	0
+	PPAA	drawing		13	0
+	NW	drawing		14	0
+	TP	drawing		15	0
+	PC	drawing		16	0
+	CL	drawing		18	0
+	DNW	drawing		19	0
+	DNWTR	drawing		19	2
+	PW	drawing		20	0
+	NC	drawing		21	0
+	CPT	drawing		22	0
+	BNP	drawing		23	0
+	TN	drawing		24	0
+	CODE	drawing		25	0
+	LOGO	drawing		26	0
+	BC	drawing		28	0
+	DG	drawing		29	0
+	GT	drawing		30	0
+	GTDUM	drawing		30	1
+	P2	drawing		31	0
+	P3	drawing		32	0
+	P4	drawing		33	0
+	HR	drawing		34	0
+	NLL	drawing		35	0
+	NLH	drawing		36	0
+	PLH	drawing		37	0
+	PLL	drawing		38	0
+	HRP	drawing		39	0
+	SN	drawing		40	0
+	SP	drawing		43	0
+	ESD1	drawing		41	0
+	ESD2	drawing		42	0
+	MVP	drawing		44	0
+	MVN	drawing		45	0
+	VTPH	drawing		46	0
+	VTNH	drawing		47	0
+	SAB	drawing		48	0
+	IDT	drawing		49	0
+	CT	drawing		50	0
+	CM	drawing		51	0
+	DDN	drawing		53	0
+	HVBN	drawing		54	0
+	NDDD	drawing		55	0
+	DDP	drawing		56	0
+	MIM	drawing		58	0
+	M0	drawing		59	0
+	INST	drawing		60	0
+	M1	drawing		61	0
+	M2	drawing		62	0
+	M3	drawing		63	0
+	M4	drawing		64	0
+	M5	drawing		65	0
+	M6	drawing		66	0
+	M7	drawing		67	0
+	M8	drawing		68	0
+	M1DUM	drawing		61	1
+	M2DUM	drawing		62	1
+	M3DUM	drawing		63	1
+	M4DUM	drawing		64	1
+	M5DUM	drawing		65	1
+	M6DUM	drawing		66	1
+	M7DUM	drawing		67	1
+	M8DUM	drawing		68	1
+	V1	drawing		70	0
+	V2	drawing		71	0
+	V3	drawing		72	0
+	V4	drawing		73	0
+	V5	drawing		74	0
+	V6	drawing		75	0
+	V7	drawing		76	0
+	PIPR	drawing		79	0
+	PA	drawing		80	0
+	FUSE	drawing		81	0
+	PI	drawing		82	0
+	ALPA	drawing		83	0
+	ALPAR	drawing		83	1
+	ALPATXT	drawing		83	2
+	ALRDL	drawing		83	3
+	PSUB	drawing		85	0
+	VSIA	drawing		63	63
+	TTXT	drawing		87	0
+	BTXT	drawing		88	0
+	CTXT	drawing		89	0
+	DUMBM	drawing		90	0
+	DUMBA	drawing		91	0
+	DUMBP	drawing		92	0
+	VARMOS	drawing		93	0
+	VARJUN	drawing		94	0
+	RESNW	drawing		95	0
+	RESP1	drawing		96	0
+	RESP3T	drawing		96	1
+	RESAA	drawing		97	0
+	RESCKT	drawing		131	3
+	MOSCKT	drawing		131	2
+	PFL	drawing		98	0
+	OPCBA	drawing		100	0
+	OPCBP	drawing		101	0
+	OPCBM	drawing		102	0
+	NDRF	drawing		103	0
+	PDRF	drawing		104	0
+	BORDER	drawing		127	0
+	SUBD	drawing		131	1
+	HTNWL	drawing		131	0
+	EXCLU	drawing		132	0
+	PPCI	drawing		107	0
+	NPCI	drawing		108	0
+	PWHT	drawing		109	0
+	NWHT	drawing		110	0
+	PIP	drawing		113	0
+	TM1	drawing		120	0
+	TM1DUM	drawing		120	1
+	TM1TXT	drawing		120	3
+	TV1	drawing		121	0
+	TM2	drawing		122	0
+	TM2DUM	drawing		122	1
+	TM2TXT	drawing		122	3
+	TV2	drawing		123	0
+	ESDIO1	drawing		133	0
+	ESD5V	drawing		133	1
+	POWRING	drawing		133	2
+	ESDIO2	drawing		133	3
+	DMPNP	drawing		134	0
+	PDC	drawing		135	0
+	CAPBP	drawing		137	0
+	DSTR	drawing		138	0
+	DCTY	drawing		139	0
+	SBT	drawing		140	0
+	M1TXT	drawing		141	0
+	M2TXT	drawing		142	0
+	M3TXT	drawing		143	0
+	M4TXT	drawing		144	0
+	M5TXT	drawing		145	0
+	M6TXT	drawing		146	0
+	M7TXT	drawing		147	0
+	M8TXT	drawing		148	0
+	SUBTXT	drawing		161	0
+	WELTXT	drawing		162	0
+	DIFTXT	drawing		163	0
+	POLYTXT	drawing		164	0
+	BCB1	drawing		165	0
+	RDL	drawing		166	0
+	BCB2	drawing		167	0
+	BUMP	drawing		168	0
+	MnB	metal1		151	0
+	MnB	metal2		152	0
+	MnB	metal3		153	0
+	MnB	metal4		154	0
+	MnB	metal5		155	0
+	MnB	metal6		156	0
+	MnB	metal7		157	0
+	MnB	metal8		158	0
+	MnB	topmetal1	193	0
+	MnB	topmetal2	194	0
+	MnDUB	metal1		151	1
+	MnDUB	metal2		152	1
+	MnDUB	metal3		153	1
+	MnDUB	metal4		154	1
+	MnDUB	metal5		155	1
+	MnDUB	metal6		156	1
+	MnDUB	metal7		157	1
+	MnDUB	metal8		158	1
+	MnDUB	topmetal1	193	1
+	MnDUB	topmetal2	194	1
+	PWH	drawing		105	0
+	NWH	drawing		106	0
+	MnR	metal1		171	0
+	MnR	metal2		172	0
+	MnR	metal3		173	0
+	MnR	metal4		174	0
+	MnR	metal5		175	0
+	MnR	metal6		176	0
+	MnR	metal7		177	0
+	MnR	metal8		178	0
+	MnR	topmetal1	201	0
+	MnR	topmetal2	202	0
+	MnSLOTB	metal1		171	1
+	MnSLOTB	metal2		172	1
+	MnSLOTB	metal3		173	1
+	MnSLOTB	metal4		174	1
+	MnSLOTB	metal5		175	1
+	MnSLOTB	metal6		176	1
+	MnSLOTB	metal7		177	1
+	MnSLOTB	metal8		178	1
+	MnSLOT	metal1		61	2
+	MnSLOT	metal2		62	2
+	MnSLOT	metal3		63	2
+	MnSLOT	metal4		64	2
+	MnSLOT	metal5		65	2
+	MnSLOT	metal6		66	2
+	MnSLOT	metal7		67	2
+	MnSLOT	metal8		68	2
+	MnSLOT	topmetal1	120	2
+	MnSLOT	topmetal2	122	2
+	MIMCKT	drawing		131	6
+	MIMSHD	drawing		89	155
+	INDR	drawing		212	1
+	GTFUSE	drawing		81	1
+	EFUSE	drawing		81	2
+	CLPDMY	drawing		87	2
+	DMRES	drawing		137	2
+	SURNW	drawing		209	0
+	DDNW	drawing		217	0
+	NODMF	drawing		180	0
+	HRPDMY	drawing		210	0
+	MIMDMY	drawing		211	0
+	MOMDMY	drawing		211	1
+	MOMDMY	mk1		211	11
+	MOMDMY	mk2		211	12
+	MOMDMY	mk3		211	13
+	MOMDMY	mk4		211	14
+	MOMDMY	mk5		211	15
+	MOMDMY	mk6		211	16
+	MOMDMY	mk7		211	17
+	MOMDMY	mk8		211	18
+	INDMY	drawing		212	0
+	RFDEV	drawing		181	0
+	RFMOSD	drawing		182	0
+	JVARDUM	drawing		183	0
+	MD	drawing		130	0
+	RF3T	drawing		183	2
+	RP185	drawing		185	0
+	CCT	drawing		117	0
+	PLDMK	drawing		131	4
+	NFDMK	drawing		131	5
+	SRAM	stsram		60	1
+	SRAM	dnsram		60	2
+	SRAM	udsram		60	3
+	SRAM	dpsram		60	4
+	SRAM	lrsram		60	5
+	RFSD	drawing		181	3
+	RFDN6T	drawing		181	4
+	MIMSTK	drawing		131	8
+	STIDMY	drawing		215	0
+	MARK	markg		189	0
+	MARK	marks		189	151
+	MARK	markf		190	0
+	DUPMK1	drawing		89	156
+	FUSE	mk1		81	152
+	ALMK1	drawing		83	151

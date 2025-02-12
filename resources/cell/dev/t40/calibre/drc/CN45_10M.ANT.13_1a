@@ -1,0 +1,937 @@
+//*********************************************************************************
+//* CALIBRE ANTENNA DRC COMMAND FILE - CN45_10M.ANT.13_1a  (12/15/2010)
+//* FOR TSMC 45NM/40NM 1P10M+APRDL PROCESS
+//* DRC COMMAND FILE DOCUMENT: T-N45-CL-DR-001-C1 VER 1.3_1a
+//* DESIGN RULE DOCUMENT: T-N45-CL-DR-001 VER 1.3_1
+//*********************************************************************************
+//************************************************************************************
+//* TSMC developed this deck using Mentor Graphics proprietary SVRF and TVF formats.
+//* The deck is to be used only in Calibre tools.
+//************************************************************************************
+
+
+//  OPTION SETUP
+//================
+//#DEFINE AP_20K_THICKNESS     //Turn on for 20K AP-RDL. Turn off for 14.5K AP-RDL.
+//#DEFINE AP_28K_THICKNESS     //Turn on for 28K AP-RDL. Turn off for 14.5K AP-RDL.
+//#DEFINE AP_36K_THICKNESS     //Turn on for 36K AP-RDL. Turn off for 14.5K AP-RDL.
+//#DEFINE PID_20mv             //Turn on to check PID rule for 20mv. This option is for TSMC internal use only.
+//#DEFINE PID_5mv              //Turn on to check PID rule for 5mv. This option is for TSMC internal use only
+
+// ENVIRONMENT SETUP
+//==================
+PRECISION    1000
+RESOLUTION      5
+
+LAYOUT SYSTEM GDSII
+LAYOUT PATH "GDSFILENAME"
+LAYOUT PRIMARY "TOPCELLNAME"
+
+DRC RESULTS DATABASE "DRC_RES.db"
+DRC SUMMARY REPORT "DRC.rep"
+DRC KEEP EMPTY NO
+DRC CHECK TEXT ALL
+DRC MAXIMUM RESULTS ALL
+LAYOUT PROCESS BOX RECORD YES
+
+DRC INCREMENTAL CONNECT YES
+
+VARIABLE LargeNumber 1000000000
+VARIABLE DIO_AREA 0
+
+// DRAWN LAYER DEFINITIONS
+//========================
+LAYER  OD18     16  // define 1.8V thick gate oxides
+LAYER  OD25     18  // define 2.5V thick gate oxides
+LAYER  OD33     15  // define 3.3V thick gate oxides
+LAYER  CO       30  // Contact, connect M1 and OD/Poly
+LAYER  VIA1     51 // VIA1 layer
+LAYER  VIA2     52 // VIA2 layer
+LAYER  VIA3     53 // VIA3 layer
+LAYER  VIA4     54 // VIA4 layer
+LAYER  VIA5     55 // VIA5 layer
+LAYER  VIA6     56 // VIA6 layer
+LAYER  VIA7     57 // VIA7 layer
+LAYER  VIA8     58 // VIA8 layer
+LAYER  VIA9     59 // VIA9 layer
+LAYER  M1    331  // Metal1 layer
+LAYER MAP 31 DATATYPE 0  331  // Mapping (31;0)  to 331 for M1 
+LAYER MAP 31 DATATYPE 20 331  // Mapping (31;20) to 331 for M1
+LAYER MAP 31 DATATYPE 40 331  // Mapping (31;40) to 331 for M1
+LAYER MAP 31 DATATYPE 60 331  // Mapping (31;60) to 331 for M1
+LAYER MAP 31 DATATYPE 80 331  // Mapping (31;80) to 331 for M1
+LAYER  M2    332  // Metal2 layer
+LAYER MAP 32 DATATYPE 0  332  // Mapping (32;0)  to 332 for M2 
+LAYER MAP 32 DATATYPE 20 332  // Mapping (32;20) to 332 for M2
+LAYER MAP 32 DATATYPE 40 332  // Mapping (32;40) to 332 for M2
+LAYER MAP 32 DATATYPE 60 332  // Mapping (32;60) to 332 for M2
+LAYER MAP 32 DATATYPE 80 332  // Mapping (32;80) to 332 for M2
+LAYER  M3    333  // Metal3 layer
+LAYER MAP 33 DATATYPE 0  333  // Mapping (33;0)  to 333 for M3 
+LAYER MAP 33 DATATYPE 20 333  // Mapping (33;20) to 333 for M3
+LAYER MAP 33 DATATYPE 40 333  // Mapping (33;40) to 333 for M3
+LAYER MAP 33 DATATYPE 60 333  // Mapping (33;60) to 333 for M3
+LAYER MAP 33 DATATYPE 80 333  // Mapping (33;80) to 333 for M3
+LAYER  M4    334  // Metal4 layer
+LAYER MAP 34 DATATYPE 0  334  // Mapping (34;0)  to 334 for M4 
+LAYER MAP 34 DATATYPE 20 334  // Mapping (34;20) to 334 for M4
+LAYER MAP 34 DATATYPE 40 334  // Mapping (34;40) to 334 for M4
+LAYER MAP 34 DATATYPE 60 334  // Mapping (34;60) to 334 for M4
+LAYER MAP 34 DATATYPE 80 334  // Mapping (34;80) to 334 for M4
+LAYER  M5    335  // Metal5 layer
+LAYER MAP 35 DATATYPE 0  335  // Mapping (35;0)  to 335 for M5 
+LAYER MAP 35 DATATYPE 20 335  // Mapping (35;20) to 335 for M5
+LAYER MAP 35 DATATYPE 40 335  // Mapping (35;40) to 335 for M5
+LAYER MAP 35 DATATYPE 60 335  // Mapping (35;60) to 335 for M5
+LAYER MAP 35 DATATYPE 80 335  // Mapping (35;80) to 335 for M5
+LAYER  M6    336  // Metal6 layer
+LAYER MAP 36 DATATYPE 0  336  // Mapping (36;0)  to 336 for M6 
+LAYER MAP 36 DATATYPE 20 336  // Mapping (36;20) to 336 for M6
+LAYER MAP 36 DATATYPE 40 336  // Mapping (36;40) to 336 for M6
+LAYER MAP 36 DATATYPE 60 336  // Mapping (36;60) to 336 for M6
+LAYER MAP 36 DATATYPE 80 336  // Mapping (36;80) to 336 for M6
+LAYER  M7    337  // Metal7 layer
+LAYER MAP 37 DATATYPE 0  337  // Mapping (37;0)  to 337 for M7 
+LAYER MAP 37 DATATYPE 20 337  // Mapping (37;20) to 337 for M7
+LAYER MAP 37 DATATYPE 40 337  // Mapping (37;40) to 337 for M7
+LAYER MAP 37 DATATYPE 60 337  // Mapping (37;60) to 337 for M7
+LAYER MAP 37 DATATYPE 80 337  // Mapping (37;80) to 337 for M7
+LAYER  M8    338  // Metal8 layer
+LAYER MAP 38 DATATYPE 0  338  // Mapping (38;0)  to 338 for M8 
+LAYER MAP 38 DATATYPE 20 338  // Mapping (38;20) to 338 for M8
+LAYER MAP 38 DATATYPE 40 338  // Mapping (38;40) to 338 for M8
+LAYER MAP 38 DATATYPE 60 338  // Mapping (38;60) to 338 for M8
+LAYER MAP 38 DATATYPE 80 338  // Mapping (38;80) to 338 for M8
+LAYER  M9    339  // Metal9 layer
+LAYER MAP 39 DATATYPE 0  339  // Mapping (39;0)  to 339 for M9 
+LAYER MAP 39 DATATYPE 20 339  // Mapping (39;20) to 339 for M9
+LAYER MAP 39 DATATYPE 40 339  // Mapping (39;40) to 339 for M9
+LAYER MAP 39 DATATYPE 60 339  // Mapping (39;60) to 339 for M9
+LAYER MAP 39 DATATYPE 80 339  // Mapping (39;80) to 339 for M9
+LAYER  M10    340  // Metal10 layer
+LAYER MAP 40 DATATYPE 0  340  // Mapping (40;0)  to 340 for M10 
+LAYER MAP 40 DATATYPE 20 340  // Mapping (40;20) to 340 for M10
+LAYER MAP 40 DATATYPE 40 340  // Mapping (40;40) to 340 for M10
+LAYER MAP 40 DATATYPE 60 340  // Mapping (40;60) to 340 for M10
+LAYER MAP 40 DATATYPE 80 340  // Mapping (40;80) to 340 for M10
+
+LAYER AP         74   // AP RDL 
+LAYER Cu_PPI     7410 // Cu_PPI interconnection between Polymide1 and Polymide2 for WLCSP
+LAYER MAP 74 DATATYPE 10 7410
+LAYER RV         85   // RV Define connect for M10 to AP
+LAYER CB         76   // CB Define connect for M10 to AP
+LAYER CBD        169  // CBD Define connect for M10 to AP
+
+LAYER OD  350         // gate oxide and diffusion region
+LAYER MAP 6 DATATYPE 0 350  // Mapping (6;0) to 350 for OD
+LAYER MAP 7 DATATYPE 0 350  // Mapping (7;0) to 350 for OD
+LAYER MAP 8 DATATYPE 0 350  // Mapping (8;0) to 350 for OD
+LAYER POLY  353             // poly interconnection and gate
+LAYER MAP 17 DATATYPE 0 353 // Mapping (17;0) to 353 for PO
+LAYER PPi        25      // P+ S/D imlant
+LAYER NPi        26      // N+ S/D imlant
+
+LAYER POS1        2541          // GATE CD size-up 1nm/side
+LAYER MAP 254 DATATYPE 1 2541
+LAYER POS2        2542          // GATE CD size-up 2nm/side
+LAYER MAP 254 DATATYPE 2 2542
+
+
+LAYOUT TOP LAYER M1 VIA1 
+LAYOUT TOP LAYER M2 VIA2 
+LAYOUT TOP LAYER M3 VIA3 
+LAYOUT TOP LAYER M4 VIA4 
+LAYOUT TOP LAYER M5 VIA5 
+LAYOUT TOP LAYER M6 VIA6 
+LAYOUT TOP LAYER M7 VIA7 
+LAYOUT TOP LAYER M8 VIA8 
+LAYOUT TOP LAYER M9 VIA9 
+LAYOUT TOP LAYER M10 AP RV CB CBD
+
+POLY_POS1 = SIZE (POLY AND POS1) BY 0.001
+POLY_POS2 = SIZE (POLY AND POS2) BY 0.002
+POLYx = (POLY OR POLY_POS1) OR POLY_POS2
+GATE     = OD AND POLYx
+SD       = OD NOT POLY
+CO_PO    = CO AND POLY
+GATE_VIA = COPY GATE
+OD2      = (OD18 OR OD25) OR OD33
+HV_GATE  = GATE AND OD2
+HV18_GATE = GATE AND OD18 
+
+GATE_W = POLYx COIN INSIDE EDGE GATE
+GATE_L = GATE NOT TOUCH EDGE GATE_W
+GATE_N_WL3 = ((GATE INTERACT NPi) NOT INTERACT OD2) WITH EDGE (LENGTH GATE_L >= 0.27 < 9 )
+GATE_N_WL01 = ((GATE INTERACT NPi) NOT INTERACT OD2) WITH EDGE (LENGTH GATE_L >= 9)
+
+//POLY CHECKS
+//===========
+CONNECT GATE GATE_N_WL3 GATE_N_WL01 HV_GATE HV18_GATE GATE_VIA POLY
+
+A.R.1.POLY { @ (Poly top area / gate area) <= 250
+  NET AREA RATIO POLY GATE > 250
+      [
+        !!AREA(GATE) * ( AREA(POLY)/AREA(GATE) )
+      ] RDB A.R.1.POLY.rep POLY GATE BY LAYER
+}
+
+// POLY thickness is 800A
+A.R.2.POLY { @ (Poly perim*thickness / gate area) <= 500
+  NET AREA RATIO POLY GATE > 500
+      [
+        !!AREA(GATE) * ( PERIMETER(POLY)*0.08/AREA(GATE) )
+      ] RDB A.R.2.POLY.rep POLY GATE BY LAYER
+}
+
+//CO CHECKS
+//=========
+
+CONNECT CO_PO POLY
+
+A.R.3.CO { @ (contact area / gate area) <= 10 
+  NET AREA RATIO POLY CO_PO GATE > 10   // error highlight on POLY
+      [
+        !!AREA(GATE) * !!AREA(POLY) *      
+	    AREA(CO_PO)/AREA(GATE)
+      ] RDB A.R.3.CO.rep CO_PO GATE BY LAYER
+}
+
+//M1 CHECKS
+//=========
+
+CONNECT M1 POLY SD BY CO
+CONNECT VIA1 M1
+
+M1_DIO = NET AREA SD >= DIO_AREA
+
+A.R.6_A.R.8.M1 { @ (M1 area / gate area) <= (1000 in OD_18, 5000 not in OD_18) (without diode) 
+		 @ (M1 area / gate area) <= diode area * 456 + 43000 (with diode) 
+  NET AREA RATIO M1 M1_DIO HV18_GATE GATE > 0
+       [
+       !!AREA(M1) * !!AREA(GATE) *
+	   (!AREA(M1_DIO) * (!!AREA(HV18_GATE)*(AREA(M1)/AREA(GATE)-1000) +
+	                     !AREA(HV18_GATE)*(AREA(M1)/AREA(GATE)-5000)) +
+	    !!AREA(M1_DIO) * ( AREA(M1)/AREA(GATE)-AREA(M1_DIO)*456-43000 ))
+       ] RDB A.R.6_A.R.8.M1.rep M1 M1_DIO HV18_GATE GATE BY LAYER 
+}
+
+
+ACC_M1 = NET AREA RATIO M1 GATE >=0 ACCUMULATE
+
+
+//VIA1 CHECKS
+//===========
+
+A.R.4_A.R.7.VIA1 { @ (VIA1 area / gate area) <= 20 (without diode)
+                   @ (VIA1 area / gate area) <= diode area * 210 + 900 (with diode) 
+  NET AREA RATIO M1 VIA1 M1_DIO GATE_VIA > 0
+       [
+       !!AREA(M1) * !!AREA(VIA1) * 
+           (!!AREA(M1_DIO) * ( AREA(VIA1)/AREA(GATE_VIA)-AREA(M1_DIO)*210-900 ) +
+	     !AREA(M1_DIO) * ( AREA(VIA1)/AREA(GATE_VIA)-20 ) )
+       ] RDB A.R.4_A.R.7.VIA1.rep VIA1 M1_DIO GATE_VIA BY LAYER 
+}
+
+#IFDEF PID_20mv
+#DEFINE PID
+#ENDIF
+#IFDEF PID_5mv
+#DEFINE PID
+#ENDIF
+
+#IFDEF PID
+#IFDEF PID_5mv
+VARIABLE A_R_7_1   20
+VARIABLE A_R_7_1_D 1
+VARIABLE A_R_7_2   10
+VARIABLE A_R_7_2_D 0.2
+#ELSE
+VARIABLE A_R_7_1   90
+VARIABLE A_R_7_1_D 7
+VARIABLE A_R_7_2   90
+VARIABLE A_R_7_2_D 2
+#ENDIF
+
+
+A.R.7.1.VIA1 { @ (VIA1 area / gate area) <= diode area * ^A_R_7_1_D + ^A_R_7_1 (with diode, for core NMOS  0.27 <= L < 9) 
+   NET AREA RATIO GATE_N_WL3 VIA1 M1_DIO GATE_VIA > 0
+       [
+          !!AREA(GATE_N_WL3)*!!AREA(M1_DIO) * ( AREA(VIA1)/AREA(GATE_VIA)-AREA(M1_DIO)*A_R_7_1_D-A_R_7_1)
+       ] RDB A.R.7.1.VIA1.rep VIA1 M1_DIO GATE_N_WL3 GATE_VIA BY LAYER 
+}
+
+A.R.7.2.VIA1 { @ (VIA1 area / gate area) <= diode area * ^A_R_7_2_D + ^A_R_7_2 (with diode, for core NMOS  L >= 9) 
+   NET AREA RATIO GATE_N_WL01 VIA1 M1_DIO GATE_VIA > 0
+       [
+          !!AREA(GATE_N_WL01)*!!AREA(M1_DIO) * ( AREA(VIA1)/AREA(GATE_VIA)-AREA(M1_DIO)*A_R_7_2_D-A_R_7_2)
+       ] RDB A.R.7.2.VIA1.rep VIA1 M1_DIO GATE_N_WL01 GATE_VIA BY LAYER 
+}
+#ENDIF
+
+
+ACC_VIA1 = NET AREA RATIO VIA1 GATE_VIA >=0 ACCUMULATE
+
+
+
+
+//M2 CHECKS
+//=========
+
+CONNECT M2 M1 BY VIA1
+CONNECT VIA2 M2
+
+M2_DIO = NET AREA SD >= DIO_AREA
+
+A.R.6_A.R.8.M2 { @ (cumulative M1~M2 area / gate area) <= (1000 in OD_18, 5000 not in OD_18) (without diode) 
+		 @ (cumulative M1~M2 area / gate area) <= diode area * 456 + 43000 (with diode)
+  NET AREA RATIO M2 M1 M2_DIO HV18_GATE GATE > 0 ACCUMULATE ACC_M1 
+       [
+         !!AREA(M2) * !!AREA(M1) * !!AREA(GATE) *
+	   (!AREA(M2_DIO) * (!!AREA(HV18_GATE)*(AREA(M2)/AREA(GATE)-1000) +
+	                     !AREA(HV18_GATE)*(AREA(M2)/AREA(GATE)-5000)) +
+	    !!AREA(M2_DIO) * ( AREA(M2)/AREA(GATE)-AREA(M2_DIO)*456-43000 ))
+       - (!AREA(M2)+!AREA(GATE)) * LargeNumber	    
+       ] RDB A.R.6_A.R.8.M2.rep M2 M1 M2_DIO HV18_GATE GATE BY LAYER
+}
+
+
+ACC_M2 = NET AREA RATIO M2 GATE >= 0 ACCUMULATE ACC_M1
+
+//VIA2 CHECKS
+//===========
+
+A.R.4.VIA2 { @ (VIA2 area / gate area) <= 20
+  NET AREA RATIO VIA2 GATE_VIA M2_DIO > 20
+      [
+        !AREA(M2_DIO) * !!AREA(VIA2) * !!AREA(GATE_VIA) * ( AREA(VIA2)/AREA(GATE_VIA) )
+      ] RDB A.R.4.VIA2.rep VIA2 GATE_VIA M2_DIO BY LAYER
+}
+
+A.R.7.VIA2 { @ (cumulative VIA1~VIA2 area / gate area) <= diode area * 210 + 900 (with diode) 
+  NET AREA RATIO VIA2 VIA1 M2_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA1 
+       [
+         !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(M2_DIO) *
+	   ( AREA(VIA2)/AREA(GATE_VIA)-AREA(M2_DIO)*210-900 ) 
+       - (!AREA(VIA2)+!AREA(M2_DIO)) * LargeNumber	    
+       ] RDB A.R.7.VIA2.rep VIA2 VIA1 M2_DIO GATE_VIA BY LAYER 
+}
+
+#IFDEF PID
+A.R.7.1.VIA2 { @ (cumulative VIA1~VIA2 area / gate area) <= diode area * ^A_R_7_1_D + ^A_R_7_1 (with diode, for core NMOS 0.27<= L < 9)
+   X = NET AREA RATIO VIA2 VIA1 M2_DIO GATE_N_WL3 GATE_VIA > 0 ACCUMULATE ACC_VIA1 
+       [
+          !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL3)*!!AREA(M2_DIO) * ( AREA(VIA2)/AREA(GATE_VIA)-AREA(M2_DIO)*A_R_7_1_D-A_R_7_1)
+	  - (!AREA(VIA2)+!AREA(M2_DIO)+!AREA(GATE_N_WL3)) * LargeNumber
+       ] RDB A.R.7.1.VIA2.rep VIA2 VIA1 M2_DIO GATE_N_WL3 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL3   
+}
+A.R.7.2.VIA2 { @ (cumulative VIA1~VIA2 area / gate area) <= diode area * ^A_R_7_2_D + ^A_R_7_2 (with diode, for core NMOS L >= 9)
+   X = NET AREA RATIO VIA2 VIA1 M2_DIO GATE_N_WL01 GATE_VIA > 0 ACCUMULATE ACC_VIA1 
+       [
+          !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL01)*!!AREA(M2_DIO) * ( AREA(VIA2)/AREA(GATE_VIA)-AREA(M2_DIO)*A_R_7_2_D-A_R_7_2)
+	  - (!AREA(VIA2)+!AREA(M2_DIO)+!AREA(GATE_N_WL01)) * LargeNumber
+       ] RDB A.R.7.2.VIA2.rep VIA2 VIA1 M2_DIO GATE_N_WL01 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL01   
+}
+#ENDIF
+
+A.R.9.VIA2 { @ (cumulative VIA1~VIA2 area / gate area) <= 50 (in OD2/without Diode)  
+  NET AREA RATIO VIA2 VIA1 HV_GATE M2_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA1 
+      [
+        !AREA(M2_DIO) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_VIA) * !!AREA(HV_GATE) * ( AREA(VIA2)/AREA(GATE_VIA) - 50 )
+        - (!!AREA(M2_DIO)+!AREA(VIA2)+!AREA(GATE_VIA)+!AREA(HV_GATE)) * LargeNumber
+      ] RDB A.R.9.VIA2.rep VIA2 VIA1 GATE_VIA BY LAYER
+}
+
+ACC_VIA2 = NET AREA RATIO VIA2 GATE_VIA >=0 ACCUMULATE ACC_VIA1
+
+
+
+//M3 CHECKS
+//=========
+
+CONNECT M3 M2 BY VIA2
+CONNECT VIA3 M3
+
+M3_DIO = NET AREA SD >= DIO_AREA
+
+A.R.6_A.R.8.M3 { @ (cumulative M1~M3 area / gate area) <= (1000 in OD_18, 5000 not in OD_18) (without diode) 
+		 @ (cumulative M1~M3 area / gate area) <= diode area * 456 + 43000 (with diode)
+  NET AREA RATIO M3 M2 M1 M3_DIO HV18_GATE GATE > 0 ACCUMULATE ACC_M2 ACC_M1 
+       [
+         !!AREA(M3) * !!AREA(M2) * !!AREA(M1) * !!AREA(GATE) *
+	   (!AREA(M3_DIO) * (!!AREA(HV18_GATE)*(AREA(M3)/AREA(GATE)-1000) +
+	                     !AREA(HV18_GATE)*(AREA(M3)/AREA(GATE)-5000)) +
+	    !!AREA(M3_DIO) * ( AREA(M3)/AREA(GATE)-AREA(M3_DIO)*456-43000 ))
+       - (!AREA(M3)+!AREA(GATE)) * LargeNumber	    
+       ] RDB A.R.6_A.R.8.M3.rep M3 M2 M1 M3_DIO HV18_GATE GATE BY LAYER
+}
+
+
+ACC_M3 = NET AREA RATIO M3 GATE >= 0 ACCUMULATE ACC_M2
+
+//VIA3 CHECKS
+//===========
+
+A.R.4.VIA3 { @ (VIA3 area / gate area) <= 20
+  NET AREA RATIO VIA3 GATE_VIA M3_DIO > 20
+      [
+        !AREA(M3_DIO) * !!AREA(VIA3) * !!AREA(GATE_VIA) * ( AREA(VIA3)/AREA(GATE_VIA) )
+      ] RDB A.R.4.VIA3.rep VIA3 GATE_VIA M3_DIO BY LAYER
+}
+
+A.R.7.VIA3 { @ (cumulative VIA1~VIA3 area / gate area) <= diode area * 210 + 900 (with diode) 
+  NET AREA RATIO VIA3 VIA2 VIA1 M3_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA2 ACC_VIA1 
+       [
+         !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(M3_DIO) *
+	   ( AREA(VIA3)/AREA(GATE_VIA)-AREA(M3_DIO)*210-900 ) 
+       - (!AREA(VIA3)+!AREA(M3_DIO)) * LargeNumber	    
+       ] RDB A.R.7.VIA3.rep VIA3 VIA2 VIA1 M3_DIO GATE_VIA BY LAYER 
+}
+
+#IFDEF PID
+A.R.7.1.VIA3 { @ (cumulative VIA1~VIA3 area / gate area) <= diode area * ^A_R_7_1_D + ^A_R_7_1 (with diode, for core NMOS 0.27<= L < 9)
+   X = NET AREA RATIO VIA3 VIA2 VIA1 M3_DIO GATE_N_WL3 GATE_VIA > 0 ACCUMULATE ACC_VIA2 ACC_VIA1 
+       [
+          !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL3)*!!AREA(M3_DIO) * ( AREA(VIA3)/AREA(GATE_VIA)-AREA(M3_DIO)*A_R_7_1_D-A_R_7_1)
+	  - (!AREA(VIA3)+!AREA(M3_DIO)+!AREA(GATE_N_WL3)) * LargeNumber
+       ] RDB A.R.7.1.VIA3.rep VIA3 VIA2 VIA1 M3_DIO GATE_N_WL3 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL3   
+}
+A.R.7.2.VIA3 { @ (cumulative VIA1~VIA3 area / gate area) <= diode area * ^A_R_7_2_D + ^A_R_7_2 (with diode, for core NMOS L >= 9)
+   X = NET AREA RATIO VIA3 VIA2 VIA1 M3_DIO GATE_N_WL01 GATE_VIA > 0 ACCUMULATE ACC_VIA2 ACC_VIA1 
+       [
+          !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL01)*!!AREA(M3_DIO) * ( AREA(VIA3)/AREA(GATE_VIA)-AREA(M3_DIO)*A_R_7_2_D-A_R_7_2)
+	  - (!AREA(VIA3)+!AREA(M3_DIO)+!AREA(GATE_N_WL01)) * LargeNumber
+       ] RDB A.R.7.2.VIA3.rep VIA3 VIA2 VIA1 M3_DIO GATE_N_WL01 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL01   
+}
+#ENDIF
+
+A.R.9.VIA3 { @ (cumulative VIA1~VIA3 area / gate area) <= 50 (in OD2/without Diode)  
+  NET AREA RATIO VIA3 VIA2 VIA1 HV_GATE M3_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA2 ACC_VIA1 
+      [
+        !AREA(M3_DIO) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_VIA) * !!AREA(HV_GATE) * ( AREA(VIA3)/AREA(GATE_VIA) - 50 )
+        - (!!AREA(M3_DIO)+!AREA(VIA3)+!AREA(GATE_VIA)+!AREA(HV_GATE)) * LargeNumber
+      ] RDB A.R.9.VIA3.rep VIA3 VIA2 VIA1 GATE_VIA BY LAYER
+}
+
+ACC_VIA3 = NET AREA RATIO VIA3 GATE_VIA >=0 ACCUMULATE ACC_VIA2
+
+
+
+//M4 CHECKS
+//=========
+
+CONNECT M4 M3 BY VIA3
+CONNECT VIA4 M4
+
+M4_DIO = NET AREA SD >= DIO_AREA
+
+A.R.6_A.R.8.M4 { @ (cumulative M1~M4 area / gate area) <= (1000 in OD_18, 5000 not in OD_18) (without diode) 
+		 @ (cumulative M1~M4 area / gate area) <= diode area * 456 + 43000 (with diode)
+  NET AREA RATIO M4 M3 M2 M1 M4_DIO HV18_GATE GATE > 0 ACCUMULATE ACC_M3 ACC_M2 ACC_M1 
+       [
+         !!AREA(M4) * !!AREA(M3) * !!AREA(M2) * !!AREA(M1) * !!AREA(GATE) *
+	   (!AREA(M4_DIO) * (!!AREA(HV18_GATE)*(AREA(M4)/AREA(GATE)-1000) +
+	                     !AREA(HV18_GATE)*(AREA(M4)/AREA(GATE)-5000)) +
+	    !!AREA(M4_DIO) * ( AREA(M4)/AREA(GATE)-AREA(M4_DIO)*456-43000 ))
+       - (!AREA(M4)+!AREA(GATE)) * LargeNumber	    
+       ] RDB A.R.6_A.R.8.M4.rep M4 M3 M2 M1 M4_DIO HV18_GATE GATE BY LAYER
+}
+
+
+ACC_M4 = NET AREA RATIO M4 GATE >= 0 ACCUMULATE ACC_M3
+
+//VIA4 CHECKS
+//===========
+
+A.R.4.VIA4 { @ (VIA4 area / gate area) <= 20
+  NET AREA RATIO VIA4 GATE_VIA M4_DIO > 20
+      [
+        !AREA(M4_DIO) * !!AREA(VIA4) * !!AREA(GATE_VIA) * ( AREA(VIA4)/AREA(GATE_VIA) )
+      ] RDB A.R.4.VIA4.rep VIA4 GATE_VIA M4_DIO BY LAYER
+}
+
+A.R.7.VIA4 { @ (cumulative VIA1~VIA4 area / gate area) <= diode area * 210 + 900 (with diode) 
+  NET AREA RATIO VIA4 VIA3 VIA2 VIA1 M4_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+         !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(M4_DIO) *
+	   ( AREA(VIA4)/AREA(GATE_VIA)-AREA(M4_DIO)*210-900 ) 
+       - (!AREA(VIA4)+!AREA(M4_DIO)) * LargeNumber	    
+       ] RDB A.R.7.VIA4.rep VIA4 VIA3 VIA2 VIA1 M4_DIO GATE_VIA BY LAYER 
+}
+
+#IFDEF PID
+A.R.7.1.VIA4 { @ (cumulative VIA1~VIA4 area / gate area) <= diode area * ^A_R_7_1_D + ^A_R_7_1 (with diode, for core NMOS 0.27<= L < 9)
+   X = NET AREA RATIO VIA4 VIA3 VIA2 VIA1 M4_DIO GATE_N_WL3 GATE_VIA > 0 ACCUMULATE ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+          !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL3)*!!AREA(M4_DIO) * ( AREA(VIA4)/AREA(GATE_VIA)-AREA(M4_DIO)*A_R_7_1_D-A_R_7_1)
+	  - (!AREA(VIA4)+!AREA(M4_DIO)+!AREA(GATE_N_WL3)) * LargeNumber
+       ] RDB A.R.7.1.VIA4.rep VIA4 VIA3 VIA2 VIA1 M4_DIO GATE_N_WL3 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL3   
+}
+A.R.7.2.VIA4 { @ (cumulative VIA1~VIA4 area / gate area) <= diode area * ^A_R_7_2_D + ^A_R_7_2 (with diode, for core NMOS L >= 9)
+   X = NET AREA RATIO VIA4 VIA3 VIA2 VIA1 M4_DIO GATE_N_WL01 GATE_VIA > 0 ACCUMULATE ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+          !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL01)*!!AREA(M4_DIO) * ( AREA(VIA4)/AREA(GATE_VIA)-AREA(M4_DIO)*A_R_7_2_D-A_R_7_2)
+	  - (!AREA(VIA4)+!AREA(M4_DIO)+!AREA(GATE_N_WL01)) * LargeNumber
+       ] RDB A.R.7.2.VIA4.rep VIA4 VIA3 VIA2 VIA1 M4_DIO GATE_N_WL01 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL01   
+}
+#ENDIF
+
+A.R.9.VIA4 { @ (cumulative VIA1~VIA4 area / gate area) <= 50 (in OD2/without Diode)  
+  NET AREA RATIO VIA4 VIA3 VIA2 VIA1 HV_GATE M4_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA3 ACC_VIA2 ACC_VIA1 
+      [
+        !AREA(M4_DIO) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_VIA) * !!AREA(HV_GATE) * ( AREA(VIA4)/AREA(GATE_VIA) - 50 )
+        - (!!AREA(M4_DIO)+!AREA(VIA4)+!AREA(GATE_VIA)+!AREA(HV_GATE)) * LargeNumber
+      ] RDB A.R.9.VIA4.rep VIA4 VIA3 VIA2 VIA1 GATE_VIA BY LAYER
+}
+
+ACC_VIA4 = NET AREA RATIO VIA4 GATE_VIA >=0 ACCUMULATE ACC_VIA3
+
+
+
+//M5 CHECKS
+//=========
+
+CONNECT M5 M4 BY VIA4
+CONNECT VIA5 M5
+
+M5_DIO = NET AREA SD >= DIO_AREA
+
+A.R.6_A.R.8.M5 { @ (cumulative M1~M5 area / gate area) <= (1000 in OD_18, 5000 not in OD_18) (without diode) 
+		 @ (cumulative M1~M5 area / gate area) <= diode area * 456 + 43000 (with diode)
+  NET AREA RATIO M5 M4 M3 M2 M1 M5_DIO HV18_GATE GATE > 0 ACCUMULATE ACC_M4 ACC_M3 ACC_M2 ACC_M1 
+       [
+         !!AREA(M5) * !!AREA(M4) * !!AREA(M3) * !!AREA(M2) * !!AREA(M1) * !!AREA(GATE) *
+	   (!AREA(M5_DIO) * (!!AREA(HV18_GATE)*(AREA(M5)/AREA(GATE)-1000) +
+	                     !AREA(HV18_GATE)*(AREA(M5)/AREA(GATE)-5000)) +
+	    !!AREA(M5_DIO) * ( AREA(M5)/AREA(GATE)-AREA(M5_DIO)*456-43000 ))
+       - (!AREA(M5)+!AREA(GATE)) * LargeNumber	    
+       ] RDB A.R.6_A.R.8.M5.rep M5 M4 M3 M2 M1 M5_DIO HV18_GATE GATE BY LAYER
+}
+
+
+ACC_M5 = NET AREA RATIO M5 GATE >= 0 ACCUMULATE ACC_M4
+
+//VIA5 CHECKS
+//===========
+
+A.R.4.VIA5 { @ (VIA5 area / gate area) <= 20
+  NET AREA RATIO VIA5 GATE_VIA M5_DIO > 20
+      [
+        !AREA(M5_DIO) * !!AREA(VIA5) * !!AREA(GATE_VIA) * ( AREA(VIA5)/AREA(GATE_VIA) )
+      ] RDB A.R.4.VIA5.rep VIA5 GATE_VIA M5_DIO BY LAYER
+}
+
+A.R.7.VIA5 { @ (cumulative VIA1~VIA5 area / gate area) <= diode area * 210 + 900 (with diode) 
+  NET AREA RATIO VIA5 VIA4 VIA3 VIA2 VIA1 M5_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+         !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(M5_DIO) *
+	   ( AREA(VIA5)/AREA(GATE_VIA)-AREA(M5_DIO)*210-900 ) 
+       - (!AREA(VIA5)+!AREA(M5_DIO)) * LargeNumber	    
+       ] RDB A.R.7.VIA5.rep VIA5 VIA4 VIA3 VIA2 VIA1 M5_DIO GATE_VIA BY LAYER 
+}
+
+#IFDEF PID
+A.R.7.1.VIA5 { @ (cumulative VIA1~VIA5 area / gate area) <= diode area * ^A_R_7_1_D + ^A_R_7_1 (with diode, for core NMOS 0.27<= L < 9)
+   X = NET AREA RATIO VIA5 VIA4 VIA3 VIA2 VIA1 M5_DIO GATE_N_WL3 GATE_VIA > 0 ACCUMULATE ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+          !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL3)*!!AREA(M5_DIO) * ( AREA(VIA5)/AREA(GATE_VIA)-AREA(M5_DIO)*A_R_7_1_D-A_R_7_1)
+	  - (!AREA(VIA5)+!AREA(M5_DIO)+!AREA(GATE_N_WL3)) * LargeNumber
+       ] RDB A.R.7.1.VIA5.rep VIA5 VIA4 VIA3 VIA2 VIA1 M5_DIO GATE_N_WL3 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL3   
+}
+A.R.7.2.VIA5 { @ (cumulative VIA1~VIA5 area / gate area) <= diode area * ^A_R_7_2_D + ^A_R_7_2 (with diode, for core NMOS L >= 9)
+   X = NET AREA RATIO VIA5 VIA4 VIA3 VIA2 VIA1 M5_DIO GATE_N_WL01 GATE_VIA > 0 ACCUMULATE ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+          !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL01)*!!AREA(M5_DIO) * ( AREA(VIA5)/AREA(GATE_VIA)-AREA(M5_DIO)*A_R_7_2_D-A_R_7_2)
+	  - (!AREA(VIA5)+!AREA(M5_DIO)+!AREA(GATE_N_WL01)) * LargeNumber
+       ] RDB A.R.7.2.VIA5.rep VIA5 VIA4 VIA3 VIA2 VIA1 M5_DIO GATE_N_WL01 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL01   
+}
+#ENDIF
+
+A.R.9.VIA5 { @ (cumulative VIA1~VIA5 area / gate area) <= 50 (in OD2/without Diode)  
+  NET AREA RATIO VIA5 VIA4 VIA3 VIA2 VIA1 HV_GATE M5_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+      [
+        !AREA(M5_DIO) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_VIA) * !!AREA(HV_GATE) * ( AREA(VIA5)/AREA(GATE_VIA) - 50 )
+        - (!!AREA(M5_DIO)+!AREA(VIA5)+!AREA(GATE_VIA)+!AREA(HV_GATE)) * LargeNumber
+      ] RDB A.R.9.VIA5.rep VIA5 VIA4 VIA3 VIA2 VIA1 GATE_VIA BY LAYER
+}
+
+ACC_VIA5 = NET AREA RATIO VIA5 GATE_VIA >=0 ACCUMULATE ACC_VIA4
+
+
+
+//M6 CHECKS
+//=========
+
+CONNECT M6 M5 BY VIA5
+CONNECT VIA6 M6
+
+M6_DIO = NET AREA SD >= DIO_AREA
+
+A.R.6_A.R.8.M6 { @ (cumulative M1~M6 area / gate area) <= (1000 in OD_18, 5000 not in OD_18) (without diode) 
+		 @ (cumulative M1~M6 area / gate area) <= diode area * 456 + 43000 (with diode)
+  NET AREA RATIO M6 M5 M4 M3 M2 M1 M6_DIO HV18_GATE GATE > 0 ACCUMULATE ACC_M5 ACC_M4 ACC_M3 ACC_M2 ACC_M1 
+       [
+         !!AREA(M6) * !!AREA(M5) * !!AREA(M4) * !!AREA(M3) * !!AREA(M2) * !!AREA(M1) * !!AREA(GATE) *
+	   (!AREA(M6_DIO) * (!!AREA(HV18_GATE)*(AREA(M6)/AREA(GATE)-1000) +
+	                     !AREA(HV18_GATE)*(AREA(M6)/AREA(GATE)-5000)) +
+	    !!AREA(M6_DIO) * ( AREA(M6)/AREA(GATE)-AREA(M6_DIO)*456-43000 ))
+       - (!AREA(M6)+!AREA(GATE)) * LargeNumber	    
+       ] RDB A.R.6_A.R.8.M6.rep M6 M5 M4 M3 M2 M1 M6_DIO HV18_GATE GATE BY LAYER
+}
+
+
+ACC_M6 = NET AREA RATIO M6 GATE >= 0 ACCUMULATE ACC_M5
+
+//VIA6 CHECKS
+//===========
+
+A.R.4.VIA6 { @ (VIA6 area / gate area) <= 20
+  NET AREA RATIO VIA6 GATE_VIA M6_DIO > 20
+      [
+        !AREA(M6_DIO) * !!AREA(VIA6) * !!AREA(GATE_VIA) * ( AREA(VIA6)/AREA(GATE_VIA) )
+      ] RDB A.R.4.VIA6.rep VIA6 GATE_VIA M6_DIO BY LAYER
+}
+
+A.R.7.VIA6 { @ (cumulative VIA1~VIA6 area / gate area) <= diode area * 210 + 900 (with diode) 
+  NET AREA RATIO VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M6_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+         !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(M6_DIO) *
+	   ( AREA(VIA6)/AREA(GATE_VIA)-AREA(M6_DIO)*210-900 ) 
+       - (!AREA(VIA6)+!AREA(M6_DIO)) * LargeNumber	    
+       ] RDB A.R.7.VIA6.rep VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M6_DIO GATE_VIA BY LAYER 
+}
+
+#IFDEF PID
+A.R.7.1.VIA6 { @ (cumulative VIA1~VIA6 area / gate area) <= diode area * ^A_R_7_1_D + ^A_R_7_1 (with diode, for core NMOS 0.27<= L < 9)
+   X = NET AREA RATIO VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M6_DIO GATE_N_WL3 GATE_VIA > 0 ACCUMULATE ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+          !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL3)*!!AREA(M6_DIO) * ( AREA(VIA6)/AREA(GATE_VIA)-AREA(M6_DIO)*A_R_7_1_D-A_R_7_1)
+	  - (!AREA(VIA6)+!AREA(M6_DIO)+!AREA(GATE_N_WL3)) * LargeNumber
+       ] RDB A.R.7.1.VIA6.rep VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M6_DIO GATE_N_WL3 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL3   
+}
+A.R.7.2.VIA6 { @ (cumulative VIA1~VIA6 area / gate area) <= diode area * ^A_R_7_2_D + ^A_R_7_2 (with diode, for core NMOS L >= 9)
+   X = NET AREA RATIO VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M6_DIO GATE_N_WL01 GATE_VIA > 0 ACCUMULATE ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+          !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL01)*!!AREA(M6_DIO) * ( AREA(VIA6)/AREA(GATE_VIA)-AREA(M6_DIO)*A_R_7_2_D-A_R_7_2)
+	  - (!AREA(VIA6)+!AREA(M6_DIO)+!AREA(GATE_N_WL01)) * LargeNumber
+       ] RDB A.R.7.2.VIA6.rep VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M6_DIO GATE_N_WL01 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL01   
+}
+#ENDIF
+
+A.R.9.VIA6 { @ (cumulative VIA1~VIA6 area / gate area) <= 50 (in OD2/without Diode)  
+  NET AREA RATIO VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 HV_GATE M6_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+      [
+        !AREA(M6_DIO) * !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_VIA) * !!AREA(HV_GATE) * ( AREA(VIA6)/AREA(GATE_VIA) - 50 )
+        - (!!AREA(M6_DIO)+!AREA(VIA6)+!AREA(GATE_VIA)+!AREA(HV_GATE)) * LargeNumber
+      ] RDB A.R.9.VIA6.rep VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 GATE_VIA BY LAYER
+}
+
+ACC_VIA6 = NET AREA RATIO VIA6 GATE_VIA >=0 ACCUMULATE ACC_VIA5
+
+
+
+//M7 CHECKS
+//=========
+
+CONNECT M7 M6 BY VIA6
+CONNECT VIA7 M7
+
+M7_DIO = NET AREA SD >= DIO_AREA
+
+A.R.6_A.R.8.M7 { @ (cumulative M1~M7 area / gate area) <= (1000 in OD_18, 5000 not in OD_18) (without diode) 
+		 @ (cumulative M1~M7 area / gate area) <= diode area * 456 + 43000 (with diode)
+  NET AREA RATIO M7 M6 M5 M4 M3 M2 M1 M7_DIO HV18_GATE GATE > 0 ACCUMULATE ACC_M6 ACC_M5 ACC_M4 ACC_M3 ACC_M2 ACC_M1 
+       [
+         !!AREA(M7) * !!AREA(M6) * !!AREA(M5) * !!AREA(M4) * !!AREA(M3) * !!AREA(M2) * !!AREA(M1) * !!AREA(GATE) *
+	   (!AREA(M7_DIO) * (!!AREA(HV18_GATE)*(AREA(M7)/AREA(GATE)-1000) +
+	                     !AREA(HV18_GATE)*(AREA(M7)/AREA(GATE)-5000)) +
+	    !!AREA(M7_DIO) * ( AREA(M7)/AREA(GATE)-AREA(M7_DIO)*456-43000 ))
+       - (!AREA(M7)+!AREA(GATE)) * LargeNumber	    
+       ] RDB A.R.6_A.R.8.M7.rep M7 M6 M5 M4 M3 M2 M1 M7_DIO HV18_GATE GATE BY LAYER
+}
+
+
+ACC_M7 = NET AREA RATIO M7 GATE >= 0 ACCUMULATE ACC_M6
+
+//VIA7 CHECKS
+//===========
+
+A.R.4.VIA7 { @ (VIA7 area / gate area) <= 20
+  NET AREA RATIO VIA7 GATE_VIA M7_DIO > 20
+      [
+        !AREA(M7_DIO) * !!AREA(VIA7) * !!AREA(GATE_VIA) * ( AREA(VIA7)/AREA(GATE_VIA) )
+      ] RDB A.R.4.VIA7.rep VIA7 GATE_VIA M7_DIO BY LAYER
+}
+
+A.R.7.VIA7 { @ (cumulative VIA1~VIA7 area / gate area) <= diode area * 210 + 900 (with diode) 
+  NET AREA RATIO VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M7_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA6 ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+         !!AREA(VIA7) * !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(M7_DIO) *
+	   ( AREA(VIA7)/AREA(GATE_VIA)-AREA(M7_DIO)*210-900 ) 
+       - (!AREA(VIA7)+!AREA(M7_DIO)) * LargeNumber	    
+       ] RDB A.R.7.VIA7.rep VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M7_DIO GATE_VIA BY LAYER 
+}
+
+#IFDEF PID
+A.R.7.1.VIA7 { @ (cumulative VIA1~VIA7 area / gate area) <= diode area * ^A_R_7_1_D + ^A_R_7_1 (with diode, for core NMOS 0.27<= L < 9)
+   X = NET AREA RATIO VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M7_DIO GATE_N_WL3 GATE_VIA > 0 ACCUMULATE ACC_VIA6 ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+          !!AREA(VIA7) * !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL3)*!!AREA(M7_DIO) * ( AREA(VIA7)/AREA(GATE_VIA)-AREA(M7_DIO)*A_R_7_1_D-A_R_7_1)
+	  - (!AREA(VIA7)+!AREA(M7_DIO)+!AREA(GATE_N_WL3)) * LargeNumber
+       ] RDB A.R.7.1.VIA7.rep VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M7_DIO GATE_N_WL3 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL3   
+}
+A.R.7.2.VIA7 { @ (cumulative VIA1~VIA7 area / gate area) <= diode area * ^A_R_7_2_D + ^A_R_7_2 (with diode, for core NMOS L >= 9)
+   X = NET AREA RATIO VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M7_DIO GATE_N_WL01 GATE_VIA > 0 ACCUMULATE ACC_VIA6 ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+          !!AREA(VIA7) * !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL01)*!!AREA(M7_DIO) * ( AREA(VIA7)/AREA(GATE_VIA)-AREA(M7_DIO)*A_R_7_2_D-A_R_7_2)
+	  - (!AREA(VIA7)+!AREA(M7_DIO)+!AREA(GATE_N_WL01)) * LargeNumber
+       ] RDB A.R.7.2.VIA7.rep VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M7_DIO GATE_N_WL01 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL01   
+}
+#ENDIF
+
+A.R.9.VIA7 { @ (cumulative VIA1~VIA7 area / gate area) <= 50 (in OD2/without Diode)  
+  NET AREA RATIO VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 HV_GATE M7_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA6 ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+      [
+        !AREA(M7_DIO) * !!AREA(VIA7) * !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_VIA) * !!AREA(HV_GATE) * ( AREA(VIA7)/AREA(GATE_VIA) - 50 )
+        - (!!AREA(M7_DIO)+!AREA(VIA7)+!AREA(GATE_VIA)+!AREA(HV_GATE)) * LargeNumber
+      ] RDB A.R.9.VIA7.rep VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 GATE_VIA BY LAYER
+}
+
+ACC_VIA7 = NET AREA RATIO VIA7 GATE_VIA >=0 ACCUMULATE ACC_VIA6
+
+
+
+//M8 CHECKS
+//=========
+
+CONNECT M8 M7 BY VIA7
+CONNECT VIA8 M8
+
+M8_DIO = NET AREA SD >= DIO_AREA
+
+A.R.6_A.R.8.M8 { @ (cumulative M1~M8 area / gate area) <= (1000 in OD_18, 5000 not in OD_18) (without diode) 
+		 @ (cumulative M1~M8 area / gate area) <= diode area * 456 + 43000 (with diode)
+  NET AREA RATIO M8 M7 M6 M5 M4 M3 M2 M1 M8_DIO HV18_GATE GATE > 0 ACCUMULATE ACC_M7 ACC_M6 ACC_M5 ACC_M4 ACC_M3 ACC_M2 ACC_M1 
+       [
+         !!AREA(M8) * !!AREA(M7) * !!AREA(M6) * !!AREA(M5) * !!AREA(M4) * !!AREA(M3) * !!AREA(M2) * !!AREA(M1) * !!AREA(GATE) *
+	   (!AREA(M8_DIO) * (!!AREA(HV18_GATE)*(AREA(M8)/AREA(GATE)-1000) +
+	                     !AREA(HV18_GATE)*(AREA(M8)/AREA(GATE)-5000)) +
+	    !!AREA(M8_DIO) * ( AREA(M8)/AREA(GATE)-AREA(M8_DIO)*456-43000 ))
+       - (!AREA(M8)+!AREA(GATE)) * LargeNumber	    
+       ] RDB A.R.6_A.R.8.M8.rep M8 M7 M6 M5 M4 M3 M2 M1 M8_DIO HV18_GATE GATE BY LAYER
+}
+
+
+ACC_M8 = NET AREA RATIO M8 GATE >= 0 ACCUMULATE ACC_M7
+
+//VIA8 CHECKS
+//===========
+
+A.R.4.VIA8 { @ (VIA8 area / gate area) <= 20
+  NET AREA RATIO VIA8 GATE_VIA M8_DIO > 20
+      [
+        !AREA(M8_DIO) * !!AREA(VIA8) * !!AREA(GATE_VIA) * ( AREA(VIA8)/AREA(GATE_VIA) )
+      ] RDB A.R.4.VIA8.rep VIA8 GATE_VIA M8_DIO BY LAYER
+}
+
+A.R.7.VIA8 { @ (cumulative VIA1~VIA8 area / gate area) <= diode area * 210 + 900 (with diode) 
+  NET AREA RATIO VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M8_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA7 ACC_VIA6 ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+         !!AREA(VIA8) * !!AREA(VIA7) * !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(M8_DIO) *
+	   ( AREA(VIA8)/AREA(GATE_VIA)-AREA(M8_DIO)*210-900 ) 
+       - (!AREA(VIA8)+!AREA(M8_DIO)) * LargeNumber	    
+       ] RDB A.R.7.VIA8.rep VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M8_DIO GATE_VIA BY LAYER 
+}
+
+#IFDEF PID
+A.R.7.1.VIA8 { @ (cumulative VIA1~VIA8 area / gate area) <= diode area * ^A_R_7_1_D + ^A_R_7_1 (with diode, for core NMOS 0.27<= L < 9)
+   X = NET AREA RATIO VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M8_DIO GATE_N_WL3 GATE_VIA > 0 ACCUMULATE ACC_VIA7 ACC_VIA6 ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+          !!AREA(VIA8) * !!AREA(VIA7) * !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL3)*!!AREA(M8_DIO) * ( AREA(VIA8)/AREA(GATE_VIA)-AREA(M8_DIO)*A_R_7_1_D-A_R_7_1)
+	  - (!AREA(VIA8)+!AREA(M8_DIO)+!AREA(GATE_N_WL3)) * LargeNumber
+       ] RDB A.R.7.1.VIA8.rep VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M8_DIO GATE_N_WL3 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL3   
+}
+A.R.7.2.VIA8 { @ (cumulative VIA1~VIA8 area / gate area) <= diode area * ^A_R_7_2_D + ^A_R_7_2 (with diode, for core NMOS L >= 9)
+   X = NET AREA RATIO VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M8_DIO GATE_N_WL01 GATE_VIA > 0 ACCUMULATE ACC_VIA7 ACC_VIA6 ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+          !!AREA(VIA8) * !!AREA(VIA7) * !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL01)*!!AREA(M8_DIO) * ( AREA(VIA8)/AREA(GATE_VIA)-AREA(M8_DIO)*A_R_7_2_D-A_R_7_2)
+	  - (!AREA(VIA8)+!AREA(M8_DIO)+!AREA(GATE_N_WL01)) * LargeNumber
+       ] RDB A.R.7.2.VIA8.rep VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M8_DIO GATE_N_WL01 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL01   
+}
+#ENDIF
+
+A.R.9.VIA8 { @ (cumulative VIA1~VIA8 area / gate area) <= 50 (in OD2/without Diode)  
+  NET AREA RATIO VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 HV_GATE M8_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA7 ACC_VIA6 ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+      [
+        !AREA(M8_DIO) * !!AREA(VIA8) * !!AREA(VIA7) * !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_VIA) * !!AREA(HV_GATE) * ( AREA(VIA8)/AREA(GATE_VIA) - 50 )
+        - (!!AREA(M8_DIO)+!AREA(VIA8)+!AREA(GATE_VIA)+!AREA(HV_GATE)) * LargeNumber
+      ] RDB A.R.9.VIA8.rep VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 GATE_VIA BY LAYER
+}
+
+ACC_VIA8 = NET AREA RATIO VIA8 GATE_VIA >=0 ACCUMULATE ACC_VIA7
+
+
+
+//M9 CHECKS
+//=========
+
+CONNECT M9 M8 BY VIA8
+CONNECT VIA9 M9
+
+M9_DIO = NET AREA SD >= DIO_AREA
+
+A.R.6_A.R.8.M9 { @ (cumulative M1~M9 area / gate area) <= (1000 in OD_18, 5000 not in OD_18) (without diode) 
+		 @ (cumulative M1~M9 area / gate area) <= diode area * 456 + 43000 (with diode)
+  NET AREA RATIO M9 M8 M7 M6 M5 M4 M3 M2 M1 M9_DIO HV18_GATE GATE > 0 ACCUMULATE ACC_M8 ACC_M7 ACC_M6 ACC_M5 ACC_M4 ACC_M3 ACC_M2 ACC_M1 
+       [
+         !!AREA(M9) * !!AREA(M8) * !!AREA(M7) * !!AREA(M6) * !!AREA(M5) * !!AREA(M4) * !!AREA(M3) * !!AREA(M2) * !!AREA(M1) * !!AREA(GATE) *
+	   (!AREA(M9_DIO) * (!!AREA(HV18_GATE)*(AREA(M9)/AREA(GATE)-1000) +
+	                     !AREA(HV18_GATE)*(AREA(M9)/AREA(GATE)-5000)) +
+	    !!AREA(M9_DIO) * ( AREA(M9)/AREA(GATE)-AREA(M9_DIO)*456-43000 ))
+       - (!AREA(M9)+!AREA(GATE)) * LargeNumber	    
+       ] RDB A.R.6_A.R.8.M9.rep M9 M8 M7 M6 M5 M4 M3 M2 M1 M9_DIO HV18_GATE GATE BY LAYER
+}
+
+
+ACC_M9 = NET AREA RATIO M9 GATE >= 0 ACCUMULATE ACC_M8
+
+//VIA9 CHECKS
+//===========
+
+A.R.4.VIA9 { @ (VIA9 area / gate area) <= 20
+  NET AREA RATIO VIA9 GATE_VIA M9_DIO > 20
+      [
+        !AREA(M9_DIO) * !!AREA(VIA9) * !!AREA(GATE_VIA) * ( AREA(VIA9)/AREA(GATE_VIA) )
+      ] RDB A.R.4.VIA9.rep VIA9 GATE_VIA M9_DIO BY LAYER
+}
+
+A.R.7.VIA9 { @ (cumulative VIA1~VIA9 area / gate area) <= diode area * 210 + 900 (with diode) 
+  NET AREA RATIO VIA9 VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M9_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA8 ACC_VIA7 ACC_VIA6 ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+         !!AREA(VIA9) * !!AREA(VIA8) * !!AREA(VIA7) * !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(M9_DIO) *
+	   ( AREA(VIA9)/AREA(GATE_VIA)-AREA(M9_DIO)*210-900 ) 
+       - (!AREA(VIA9)+!AREA(M9_DIO)) * LargeNumber	    
+       ] RDB A.R.7.VIA9.rep VIA9 VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M9_DIO GATE_VIA BY LAYER 
+}
+
+#IFDEF PID
+A.R.7.1.VIA9 { @ (cumulative VIA1~VIA9 area / gate area) <= diode area * ^A_R_7_1_D + ^A_R_7_1 (with diode, for core NMOS 0.27<= L < 9)
+   X = NET AREA RATIO VIA9 VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M9_DIO GATE_N_WL3 GATE_VIA > 0 ACCUMULATE ACC_VIA8 ACC_VIA7 ACC_VIA6 ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+          !!AREA(VIA9) * !!AREA(VIA8) * !!AREA(VIA7) * !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL3)*!!AREA(M9_DIO) * ( AREA(VIA9)/AREA(GATE_VIA)-AREA(M9_DIO)*A_R_7_1_D-A_R_7_1)
+	  - (!AREA(VIA9)+!AREA(M9_DIO)+!AREA(GATE_N_WL3)) * LargeNumber
+       ] RDB A.R.7.1.VIA9.rep VIA9 VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M9_DIO GATE_N_WL3 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL3   
+}
+A.R.7.2.VIA9 { @ (cumulative VIA1~VIA9 area / gate area) <= diode area * ^A_R_7_2_D + ^A_R_7_2 (with diode, for core NMOS L >= 9)
+   X = NET AREA RATIO VIA9 VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M9_DIO GATE_N_WL01 GATE_VIA > 0 ACCUMULATE ACC_VIA8 ACC_VIA7 ACC_VIA6 ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+       [
+          !!AREA(VIA9) * !!AREA(VIA8) * !!AREA(VIA7) * !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_N_WL01)*!!AREA(M9_DIO) * ( AREA(VIA9)/AREA(GATE_VIA)-AREA(M9_DIO)*A_R_7_2_D-A_R_7_2)
+	  - (!AREA(VIA9)+!AREA(M9_DIO)+!AREA(GATE_N_WL01)) * LargeNumber
+       ] RDB A.R.7.2.VIA9.rep VIA9 VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 M9_DIO GATE_N_WL01 GATE_VIA BY LAYER
+   X INTERACT GATE_N_WL01   
+}
+#ENDIF
+
+A.R.9.VIA9 { @ (cumulative VIA1~VIA9 area / gate area) <= 50 (in OD2/without Diode)  
+  NET AREA RATIO VIA9 VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 HV_GATE M9_DIO GATE_VIA > 0 ACCUMULATE ACC_VIA8 ACC_VIA7 ACC_VIA6 ACC_VIA5 ACC_VIA4 ACC_VIA3 ACC_VIA2 ACC_VIA1 
+      [
+        !AREA(M9_DIO) * !!AREA(VIA9) * !!AREA(VIA8) * !!AREA(VIA7) * !!AREA(VIA6) * !!AREA(VIA5) * !!AREA(VIA4) * !!AREA(VIA3) * !!AREA(VIA2) * !!AREA(VIA1) * !!AREA(GATE_VIA) * !!AREA(HV_GATE) * ( AREA(VIA9)/AREA(GATE_VIA) - 50 )
+        - (!!AREA(M9_DIO)+!AREA(VIA9)+!AREA(GATE_VIA)+!AREA(HV_GATE)) * LargeNumber
+      ] RDB A.R.9.VIA9.rep VIA9 VIA8 VIA7 VIA6 VIA5 VIA4 VIA3 VIA2 VIA1 GATE_VIA BY LAYER
+}
+
+
+
+//M10 CHECKS
+//=========
+CONNECT M10 M9 BY VIA9
+CONNECT RV  M10 
+CONNECT CB  M10 
+CONNECT CBD M10 
+
+M10_DIO = NET AREA SD >= DIO_AREA
+
+
+
+A.R.6.M10 { @ (cumulative M1~M10 area / gate area) <= (1000 in OD18,5000 not in OD18) (without diode) 
+  NET AREA RATIO M10 M9 M8 M7 M6 M5 M4 M3 M2 M1 M10_DIO HV18_GATE GATE > 0 ACCUMULATE ACC_M9 ACC_M8 ACC_M7 ACC_M6 ACC_M5 ACC_M4 ACC_M3 ACC_M2 ACC_M1 
+    [
+      !!AREA(M10) * !!AREA(M9) * !!AREA(M8) * !!AREA(M7) * !!AREA(M6) * !!AREA(M5) * !!AREA(M4) * !!AREA(M3) * !!AREA(M2) * !!AREA(M1) * !!AREA(GATE) * !AREA(M10_DIO) * 
+	(!!AREA(HV18_GATE)*(AREA(M10)/AREA(GATE)-1000) + !AREA(HV18_GATE)*(AREA(M10)/AREA(GATE)-5000))
+    - (!AREA(M10)+!AREA(GATE)+!!AREA(M10_DIO)) * LargeNumber	    
+    ] RDB A.R.6.M10.rep M10 M9 M8 M7 M6 M5 M4 M3 M2 M1 M10_DIO HV18_GATE GATE BY LAYER
+}
+
+A.R.8.1.M10 { @ (M10 area / gate area) <= diode area * 8000 + 50000 (with diode)
+  NET AREA RATIO M10 M10_DIO GATE > 0
+    [
+      !!AREA(M10_DIO) * ( AREA(M10)/AREA(GATE)-AREA(M10_DIO)*8000-50000 )
+    ] RDB A.R.8.M10.rep M10 M10_DIO GATE BY LAYER
+}
+
+
+
+//RV CHECK 
+//========
+A.R.10_A.R.12.RV { @ (RV area / gate area) <= (20 in OD2, 200 not in OD2) (without diode)
+                   @ (RV area / gate area) <= diode area * 83 + 400 (with diode) 
+  NET AREA RATIO RV M10_DIO HV_GATE GATE_VIA > 0
+       [
+         !!AREA(RV) * !!AREA(GATE_VIA) *
+           (!AREA(M10_DIO) * (!!AREA(HV_GATE)*(AREA(RV)/AREA(GATE_VIA)-20) +
+			     !AREA(HV_GATE)*(AREA(RV)/AREA(GATE_VIA)-200)) +
+	    !!AREA(M10_DIO) * ( AREA(RV)/AREA(GATE_VIA)-AREA(M10_DIO)*83-400 ))
+       ] RDB A.R.10_A.R.12.RV.rep RV M10_DIO HV_GATE GATE_VIA BY LAYER
+}
+
+
+//AP CHECKS
+//=========
+
+CONNECT AP M10 BY RV
+CONNECT AP M10 BY CB
+CONNECT AP M10 BY CBD
+
+AP_DIO = NET AREA SD >= DIO_AREA
+
+#IFDEF AP_36K_THICKNESS 
+VARIABLE AP_THICKNESS 3.6
+#ELSE
+#IFDEF AP_28K_THICKNESS 
+VARIABLE AP_THICKNESS 2.8
+#ELSE
+#IFDEF AP_20K_THICKNESS 
+VARIABLE AP_THICKNESS 2.0
+#ELSE
+VARIABLE AP_THICKNESS 1.45
+#ENDIF
+#ENDIF
+#ENDIF
+
+A.R.11_A.R.13.AP {@ (AP sidewall area / gate area) <= (1000 in OD2, 2000 not in OD2) (without diode)   
+                  @ (AP sidewall area / gate area) <= diode area * 8000 + 30000 (with diode)
+     NET AREA RATIO AP AP_DIO HV_GATE GATE > 0
+       [
+       !!AREA(AP) * !!AREA(GATE) *
+	   (!AREA(AP_DIO) * (!!AREA(HV_GATE)*(PERIMETER(AP)*AP_THICKNESS/AREA(GATE)-1000) +
+			     !AREA(HV_GATE)*(PERIMETER(AP)*AP_THICKNESS/AREA(GATE)-2000)) +
+	    !!AREA(AP_DIO) * (PERIMETER(AP)*AP_THICKNESS/AREA(GATE) - AREA(AP_DIO)*8000 - 30000))
+       - (!AREA(AP)+!AREA(GATE)) * LargeNumber    
+       ] RDB A.R.11_A.R.13.AP.rep AP AP_DIO HV_GATE GATE BY LAYER
+}
+
+
