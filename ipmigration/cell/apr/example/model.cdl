@@ -1,2 +1,0 @@
-.model N12LL nmos4 l=1 w=1 n=1
-.model P12LL pmos4 l=1 w=1 n=1

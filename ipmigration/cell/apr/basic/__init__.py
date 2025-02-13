@@ -1,1 +1,0 @@
-# Copyright ASTRI LEI Yuan

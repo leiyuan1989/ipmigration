@@ -1,5 +1,0 @@
-Tue Nov 19 16:03:01 2024: Begin processing netlist( AC1CONHSV1 ), total 20 devices.
-Tue Nov 19 16:03:01 2024: 01 Netlist deconstruction.
-Tue Nov 19 16:03:01 2024: 02 SubCircuits Merge.
-Tue Nov 19 16:03:03 2024: 03 Placeing.
-Tue Nov 19 16:03:03 2024: 04 Grid Generation.

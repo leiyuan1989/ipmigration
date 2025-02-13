@@ -12,11 +12,12 @@ import pandas as pd
 import klayout.db as db
 import matplotlib.pyplot as plt
 
-from src.schema.shape import Range, Box
-from src.lego import lego
-from src.lego.channel import Channels
-from src.lego.layout.instance import M2_Tracks,M1_Rails
-from src.utils.utils import timer
+
+# from ipmigration.cell.apr.basic.shape import Range, Box
+from ipmigration.cell.apr.lego import lego
+from ipmigration.cell.apr.lego.channel import Channels
+from ipmigration.cell.apr.lego.layout.instance import M2_Tracks,M1_Rails
+from ipmigration.cell.apr.utils.utils import timer
 
 
 import tkinter as tk
@@ -42,7 +43,7 @@ def merge_structs():
 # layer_name_align
 
 class ASCell:
-    def __init__(self, args, tech, io_offset=0):
+    def __init__(self, cfgs, tech):
         '''
         Parameters
         ----------
@@ -53,23 +54,25 @@ class ASCell:
         None.
         '''
             
-        self.args = args
+        self.cfgs = cfgs
         self.tech = tech
-        self.io_offset = io_offset
         
-        self.tech_dir = args.tech_dir     
-        self.read_cell_para()
-        self.init_layout()
-        self.data_file = open(os.path.join(args.output_dir,'data_%s.txt'%(self.tech.tech_name)),'w')
+        self.tech.pre_cal()
+        
+        # self.tech_dir = args.tech_dir     
+        # self.read_cell_para()
+        # self.init_layout()
+        # self.data_file = open(os.path.join(args.output_dir,'data_%s.txt'%(self.tech.tech_name)),'w')
 
-        #TODO
-        self.ready_structs = ready_structs()
+        # #TODO
+        # self.ready_structs = ready_structs()
         #init placer and router
         #set placer
         # self.placer = SMTPlacer(False, os.path.join(args.output_dir))
         # self.router = HybridRouter
         
         #load lego library here
+        
     
         
     def read_cell_para(self):

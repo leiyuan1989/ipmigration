@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Oct 28 20:17:18 2024
-
-@author: Administrator
 """
 
 #develop decomposition
