@@ -1,0 +1,72 @@
+,Layer,Rule,Category,Description,Value
+0,GT,PO.W.1,Width,Width  >=  0.06 um,>= 0.06 um
+1,GT,PO.S.1,Spacing,Space  >=  0.12 um,>= 0.12 um
+2,GT,PO.S.2,Spacing,GATE space in the same OD  >=  0.13 um.,>= 0.13 um
+3,GT,PO.W.2,Length,Channel length of 2.5V MOS  >=  0.28 um,>= 0.28 um
+4,GT,PO.W.3,Length,Channel length of 3.3V MOS (except gate without PO CO in RFDMY)  >=  0.38 um,>= 0.38 um
+5,GT,PO.W.4,Length,Channel length of 1.8V MOS  >=  0.2 um,>= 0.2 um
+6,GT,PO.W.5,Width,Width of 45 degree FIELD poly  >=  0.19 um,>= 0.19 um
+7,GT,PO.S.16,Spacing,Space to 45 degree FIELD poly  >=  0.19 um,>= 0.19 um
+8,GT,PO.S.2.1,Spacing,Gate space [either one channel length  >  0.09 um]  >=  0.15 um,>= 0.15 um
+9,GT,PO.S.3,Spacing,"Min. two 1.8V , 2.5V or 3.3V POLY space on OD w/o contact  >=  0.25 um",>= 0.25 um
+10,GT,PO.S.4,Spacing,Field PO space to OD  >=  0.05 um,>= 0.05 um
+11,GT,PO.S.4.1,Spacing,Gate space when the area enclosed by (L-shape OD & PO  <  0.0121 um2)  >=  0.15 um,>= 0.15 um
+12,GT,PO.S.5,Spacing,Space to L-shape OD when PO & OD are in same MOS(channel width  <  0.15 ) 0.1 um,0.1 um
+13,GT,PO.S.6,Spacing,L-shape PO space to OD when PO and OD are in same MOS (channel width  <  0.15 um) 0.1 um,0.1 um
+14,GT,PO.S.7,Spacing,"Space if at least one PO width is  >  0.13 um ,  and the PO parallel run length is  >  0.18 um (individual projection).  >=  0.18",>= 0.18
+15,GT,PO.S.9,Spacing,Space of {PO AND RPO}  >=  0.25,>= 0.25
+16,GT,PO.S.10,Spacing,"Space at PO line-end (W < Q1 = 0.090) in a dense-line-end configuration: If PO has parallel run length with opposite PO (measured with T1 = 0.035 extension) along 2 adjacent edges of PO [any one edge  < Q1 distance from the corner of the two edges] ,  then one of the space (S1 or S2) needs to be at least this value (except for small jog with edge length  <  0.06 um(R))  >=  0.14",>= 0.14
+17,GT,PO.EX.1,Extension,Extension on OD (end-cap)  >=  0.14,>= 0.14
+18,GT,PO.EX.2,Extension,OD extension on PO  >=  0.115,>= 0.115
+19,GT,PO.EX.3,Extension,"Extension on OD (end-cap) when the PO space to L-shape OD (in the same MOS) is  <  0.1 um ,  and the channel width (W) is  >=  0.15 um.  >=  0.16",>= 0.16
+20,GT,PO.L.1,Length,"Maximum PO length between 2 contacts ,  as well as the length bewteen one contact and the end of PO gate ,  when the PO width   <  0.13 um (except RTMOM region)  <=   25.0 um",<= 25.0 um
+21,GT,PO.A.1,Area,Area  >=  0.042,>= 0.042
+22,GT,PO.A.1.1,Area,Area {PO not interacting with Gate}  >=  0.051,>= 0.051
+23,GT,PO.A.2,Area,Enclosed area  >=  0.094,>= 0.094
+24,AA,OD.W.1,Width,Width  >=  0.08,>= 0.08
+25,AA,OD.W.2,Width,Width of MOS ( <=  1.2V) [for core device]  >=  0.12,>= 0.12
+26,AA,OD.W.3,Width,Width of MOS ( >  1.2V to  <=  3.3V) [for I/O device]  >=  0.4,>= 0.4
+27,AA,OD.W.4,Width,"Width of 45 degree bent OD Please make sure the vertex of 45 degree pattern is on 5nm grid (refer to the guideline ,  G.6gU ,  in section 3.7)  >=  0.18",>= 0.18
+28,AA,OD.S.1,Spacing,Space  >=  0.11,>= 0.11
+29,AA,OD.S.2,Spacing,Space (inside OD2)  >=  0.18,>= 0.18
+30,AA,OD.S.3,Spacing,"Space of two ODs (width (W)  >  0.15 m) ,  if the parallel length (L)  >=  0.2 m  >=  0.13",>= 0.13
+31,AA,OD.S.3.1,Spacing,"Space to OD (width (W)  >  0.15 m) ,  if the parallel length (L)  >=  0.2 m  >=  0.125",>= 0.125
+32,AA,OD.S.4,Spacing,Space to 45-degree bent OD  >=  0.18,>= 0.18
+33,AA,OD.S.5,Spacing,Space between two segments of a U-shape or an O-shape OD (notch only)  >=  0.18,>= 0.18
+34,AA,OD.A.1,Area,Area  >=  0.054,>= 0.054
+35,AA,OD.A.2,Area,Enclosed area  >=  0.085,>= 0.085
+36,AA,OD.L.1,Length,Maximum length of {ACTIVE (source) [width  <  0.15 m] interacts with butted_STRAP}  <=  0.5,<= 0.5
+37,AA,OD.L.2,Length,Maximum OD length [OD width is  <  0.15 m] between two contacts as well as between one contact and the OD line end  <=  25,<= 25
+38,AA,OD.R.1,Restrictions,OD must be fully covered by {NP OR PP} except for {DOD OR NWDMY},N/A
+39,AA,OD.S.1.SRM_SRAMDMY,Spacing,Spacing between OD along the boundary of SRM and SRAMDMY,N/A
+40,CT,CO.W.1,Width,Width (maximum = minimum except for seal-ring and fuse protection ring) = 0.09 um,= 0.09 um
+41,CT,CO.R.3,Restrictions,45-degree rotated CO is not allowed,
+42,CT,CO.W.2,Width,CO bar width = 0.09 um (CO bar is covered by SEALRING layer and only allowed in seal-ring and fuse protecion ring),= 0.09 um
+43,CT,CO.S.1,Spacing,Space >= 0.11,>= 0.11
+44,CT,CO.S.2,Spacing,Space to 3-neighboring CO (< 0.15 um distance) >= 0.14,>= 0.14
+45,CT,CO.S.2.1,Spacing,Space to neighboring CO [different net and common parallel run length > 0] >= 0.14,>= 0.14
+46,CT,CO.S.2.2,Spacing,Space to neighboring CO [different net] >= 0.12,>= 0.12
+47,CT,CO.S.3,Spacing,Space to GATE (Overlap of GATE is not allowed) >= 0.055,>= 0.055
+48,CT,CO.S.4,Spacing,{CO inside PO} space to OD >= 0.07,>= 0.07
+49,CT,CO.S.5,Spacing,{CO inside OD} space to 1.8V or 2.5V or 3.3V GATE >= 0.09,>= 0.09
+50,CT,CO.S.6,Spacing,Space to butted PP/NP edge on OD (overlap of NP/PP boundary on OD is not allowed.) >= 0.06,>= 0.06
+51,CT,CO.EN.1,Enclosure,Enclosure by OD >= 0.015 um,>= 0.015 um
+52,CT,CO.EN.1.1,Enclosure,Enclosure by OD [at least two opposite side] >= 0.03 um,>= 0.03 um
+53,CT,CO.EN.2,Enclosure,Enclosure by PO >= 0.01,>= 0.01
+54,CT,CO.S.1.SRM_SRAMDMY,Spacing,Spacing between CO along the boundary of SRM and SRAMDMY,
+55,M1,M1.W.1,Width,Width  >= 0.09,>= 0.09
+56,M1,M1.W.2,Width,"Width of 45-degree bent M1 Please make sure the vertex of 45 degree pattern is on 5nm grid (refer to the guideline ,  G.6gU ,  in section 3.7)  >=  0.19",>= 0.19
+57,M1,M1.W.3,Width,Maximum width  <=  12.00,<= 12.00
+58,M1,M1.S.1,Spacing,Space  >=  0.09,>= 0.09
+59,M1,M1.S.2,Spacing,Space [at least one metal line width  >  0.2 um  and the parallel metal run length  >  0.38 um ] (union projection)  >=  0.11,>= 0.11
+60,M1,M1.S.2.1,Spacing,Space [at least one metal line width  >  0.42 um  and the parallel metal run length  >  0.42 um ] (union projection)  >=  0.16,>= 0.16
+61,M1,M1.S.3,Spacing,Space [at least one metal line width  >  1.5 um  and the parallel metal run length  >  1.5 um ] (union projection)  >=  0.5,>= 0.5
+62,M1,M1.S.4,Spacing,Space [at least one metal line width  >  4.5 um  and the parallel metal run length  >  4.5 um ] (union projection)  >=  1.5,>= 1.5
+63,M1,M1.S.5,Spacing,"Space at M1 line-end (W < Q = 0.110) in a dense-line-end configuration: If M1 has parallel run length with opposite M1 (measured with T = 0.035 extension) along 2 adjacent edges of M1 [any one edge  < Q distance from the corner of the two edges] ,  then one of the space (S1 or S2) needs to be at least this value (except for small jog with edge length  <  0.09 um (R))  >=  0.11",>= 0.11
+64,M1,M1.S.6,Spacing,Space to 45-degree bent M1  >=  0.19,>= 0.19
+65,M1,M1.EN.1,Enclosure,Enclosure of CO  >=  0.00,>= 0.00
+66,M1,M1.EN.2_M1.EN.3,Enclosure,"Enclosure of CO [at least two opposite sides]  >=  ^M1_EN_2 ,  or [all sides]  >=  0.025",>= 0.025
+67,M1,M1.EN.4,Enclosure,Enclosure of CO [M1 width  >  1um]  >=  0.04,>= 0.04
+68,M1,M1.A.1,Area,Area  >=  0.042 um2,>= 0.042 um2
+69,M1,M1.A.2,Area,Enclosed area  >=   0.2 um2,>= 0.2 um2
+70,M1,M1.S.1.SRM_SRAMDMY,Spacing,Spacing between M1 along the boundary of SRM and SRAMDMY,

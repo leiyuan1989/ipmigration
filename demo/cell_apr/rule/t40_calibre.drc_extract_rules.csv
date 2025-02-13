@@ -1,0 +1,69 @@
+,Layer,Rule,Category,Description,Value
+0,GT,PO.W.1,Width,Width  >=  0.04,>= 0.04
+1,GT,PO.W.2,Width,"Channel length of 2.5V MOS (for 2.5V overdrive to 3.3V ,  please refer to section OD25_33 Layout Rules)  >=  0.27",>= 0.27
+2,GT,PO.W.3,Width,Channel length of 3.3V MOS  >=  0.42 um,>= 0.42
+3,GT,PO.W.4,Width,"Channel length of 1.8 V MOS (For 2.5V underdrive to 1.8V ,  please refer to section OD25_18 Layout Rules. For 1.8V underdrive to 1.5V ,  please refer to section OD18_15 Layout Rules.)  >=  0.15",>= 0.15
+4,GT,PO.W.6,Width,"Channel length of core device for GS (This check doesn't include the regions covered by layers of NT_N ,  SDI ,  and VAR.)  =  0.04 / 0.045 / 0.05 / 0.06 / 0.07 / 0.08~10",= 0.04 / 0.045 / 0.05 / 0.06 / 0.07 / 0.08~10
+5,GT,PO.W.7,Width,"Width of 45-degree FIELD PO (except PO fuse element ,  POFUSE ,  156;0). (Please make sure the vertex of 45 degree pattern is on 5nm grid (refer to the rule ,  G.6U ,  in section 3.7))  >=  0.17",>= 0.17
+6,GT,PO.S.1,Spacing,Space  >=  0.10,>= 0.10
+7,GT,PO.S.3,Spacing,{GATE inside OD2} space in the same OD  >=  0.22,>= 0.22
+8,GT,PO.S.4,Spacing,FIELD PO space to OD (except CSRDMY (166;0) region)  >=  0.03,>= 0.03
+9,GT,PO.S.4.1,Spacing,Gate space [L-shape OD and L-shape PO enclosed area  <  0.0121 um2 ]  >=  0.11,>= 0.11
+10,GT,PO.S.6,Spacing,L-shape PO space to OD when PO and OD are in the same MOS L-shape PO length (R1)  <=  0.06 um]  >=  0.04,>= 0.04
+11,GT,PO.S.6.1,Spacing,L-shape PO space to OD when PO and OD are in the same MOS [L-shape PO length  >  0.06 um (R1) and L-shape PO length  <=  0.1 um (R1)]  >=  0.05,>= 0.05
+12,GT,PO.S.7,Spacing,"Space if at least one {PO OR SR_DPO} width  >  0.12 um ,  and the {PO OR SR_DPO} parallel run length  >  0.14 um (individual projection).  >=  0.16",>= 0.16
+13,GT,PO.S.9,Spacing,Space [in same RPO]  >=  0.18,>= 0.18
+14,GT,PO.S.10,Spacing,"Space at {PO OR SR_DPO} line-end (W  < 0.07 um (Q1)) in a dense-line-end configuration: If {PO OR SR_DPO} has parallel run length with opposite {PO OR SR_DPO} (measured with T1  =  0.035 um extension) along 2 adjacent edges of {PO OR SR_DPO} [any one edge  <  Q1 distance from the corner of the two edges] ,  then one of the space (S1 or S2) needs to be at least this value (This check doesn't include small jog with edge length  <  0.04 um (R))  >=  0.11",>= 0.11
+15,GT,PO.S.16,Spacing,Space to 45-degree bent {PO OR SR_DPO}  >=  0.17,>= 0.17
+16,GT,PO.EX.1,Extension,Extension on OD (end-cap)  >=  0.09,>= 0.09
+17,AA,OD.W.1,Width,Width  >=  0.06,>= 0.06
+18,AA,OD.W.2,Width,Channel width of core device  >=  0.12,>= 0.12
+19,AA,OD.W.2.1,Width,"Maximum channel width of core NMOS device for GS and LPG G device  <=  10 (This rule doesn't include the NT_N ,  SR_ESD ,  VAR)",<= 10
+20,AA,OD.W.2.2,Width,"Maximum channel width for core PMOS device for GS  <=  1.5 (This rule doesn't include the NT_N ,  SR_ESD ,  VAR)",<= 1.5
+21,AA,OD.W.3,Width,Channel width of MOS [for I/O device]  >=  0.32,>= 0.32
+22,AA,OD.W.4,Width,Min. width of 45 degree bent OD 0.17 um,>= 0.17
+23,AA,OD.S.1,Spacing,Space  >=  0.08,>= 0.08
+24,AA,OD.S.2,Spacing,Space (inside OD2)  >=  0.15 um,>= 0.15
+25,AA,OD.S.3,Spacing,Space to OD [width  >  0.12 um] if the parallel length  >=  0.14 um (P)  >=  0.10,>= 0.10
+26,AA,OD.S.3.1,Spacing,Space to OD [width  >  0.12 um] if the parallel length  >=  0.14 um (P1) in PO gate direction  >=  0.11,>= 0.11
+27,AA,OD.S.4,Spacing,Space to 45-degree bent OD  >=  0.17,>= 0.17
+28,AA,OD.S.5,Spacing,Space between two segments of a U-shape or an O-shape OD (notch only)  >=  0.15,>= 0.15
+29,AA,OD.A.1,Area,Area (This check doesn't include the patterns filling 0.06 um x 0.26 um rectangular tile)  >=  0.035,>= 0.035
+30,AA,OD.A.2,Area,Area [with all of edge length  <  0.21 um]  >=  0.055,>= 0.055
+31,AA,OD.A.3,Area,Enclosed area  >=  0.04,>= 0.04
+32,AA,OD.A.4,Area,Enclosed area [with all of inner edge length  <  0.21 um]  >=  0.077,>= 0.077
+33,AA,OD.A.5,Area,Maximum ACTIVE area sum of ((checking Area INTERACT PO) NOT (PO OR SR_DPO)) in same checking Area  <=  300. Checking area is defined by size 0.22um in S/D direction and 0.08um in endcap direction from gate,<= 300
+34,AA,OD.L.1,Length,"Length of active with width  <  0.12 um ,  connected to butted strap  <=  0.4 um",<= 0.4
+35,AA,OD.L.2,Length,Max. OD length between 2 CO or CO to OD line end when OD width  <=  0.12 um  60.0 um,<= 60.0
+36,AA,OD.R.1,Restrictions,OD must be fully covered by {NP OR PP} except for {(DOD OR SR_DOD) OR NWDMY},N/A
+37,CT,CO.W.1,Width,Width (maximum = minimum) (Except butted CO in SRAM (186;0) region only) = 0.06,0.06
+38,CT,CO.S.1,Spacing,Space (Except SRAM (186;0) region) >= 0.08,>= 0.08
+39,CT,CO.S.2,Spacing,Space to 3-neighboring CO (distance < 0.11 um) (Except SRAM (186;0) region) >= 0.10,>= 0.10
+40,CT,CO.S.2.1,Spacing,Space [different net] (Except SRAM (186;0) region) >= 0.11,>= 0.11
+41,CT,CO.S.3,Spacing,Space to GATE (Overlap of GATE is not allowed) [space >= 0.035 um is allowed inside SRAM word line driver covered by layer 186;5 or 186;4] (Except SRAM (186;0) region) >= 0.04,>= 0.04
+42,CT,CO.S.4,Spacing,{CO inside PO} space to OD (Except SRAM (186;0) region) >= 0.05,>= 0.05
+43,CT,CO.S.5,Spacing,{CO inside OD} space to I/O GATE >= 0.08,>= 0.08
+44,CT,CO.S.5.1,Spacing,{CO inside drain side OD} space to HVD GATE = 0.6,0.6
+45,CT,CO.S.6,Spacing,Space to butted PP/NP edge on OD (overlap of NP/PP boundary on OD is not allowed.) >= 0.04,>= 0.04
+46,CT,CO.EN.1,Enclosure,Enclosure by OD (Except SRAM (186;0) region) >= 0.01,>= 0.01
+47,CT,CO.EN.1.1_CO.EN.1.3,Enclosure,"Enclosure by OD [at least two opposite sides] >= 0.03 or [four sides] >= ^CO_EN_1_3 , do not check butted contact",>= 0.03
+48,CT,CO.EN.1.2,Enclosure,Enclosure by OD for STRAP NOT VAR [at least two opposite sides] >= 0.02,>= 0.02
+49,CT,CO.EN.0,Enclosure,"Enclosure by PO is defined by either {CO.EN.2 and CO.EN.3} or {CO.EN.5 and CO.EN.6} , that is enclosure by poly must meet either 10/20/10/20nm or 5/30/15/30nm",10/20/10/20 or 5/30/15/30
+50,CT,CO.W.2,Width,Width of CO bar. CO bar is only allowed in seal ring and SLDB. == 0.06,0.06
+51,M1,M1.W.1,Width,Width  >=  0.07,>= 0.07
+52,M1,M1.W.2,Width,"Width of 45-degree bent M1. (Please make sure the vertex of 45 degree pattern is on 0.005 um grid (refer to the guideline ,  G.6gU ,  in section 3.7))  >=  0.17",>= 0.17
+53,M1,M1.W.3,Width,Maximum width (This check doesn't include the sealring (162;2) region)  <=  4.50,<= 4.50
+54,M1,M1.S.1,Spacing,Space  >=  0.07,>= 0.07
+55,M1,M1.S.2,Spacing,Min. Metal space (for W >  0.17 um & parallel length  >  0.27 um)  >=  0.08 um,>= 0.08
+56,M1,M1.S.2.1,Spacing,Min. Metal space (for W >  0.24 um & parallel length  >  0.27 um)  >=  0.12 um,>= 0.12
+57,M1,M1.S.2.2,Spacing,Min. Metal space (for W >  0.31 um & parallel length  >  0.4 um)  >=  0.14 um,>= 0.14
+58,M1,M1.S.2.3,Spacing,Min. Metal space (for W >  0.62 um & parallel length  >  0.62 um)  >=  0.21 um,>= 0.21
+59,M1,M1.S.3,Spacing,Min. Metal space (for W >  1.5 um & parallel length  >  1.5 um)  >=  0.5 um,>= 0.5
+60,M1,M1.S.5,Spacing,"If M1 has parallel run length with opposite M1 along two adjacent edges of M1 [any one edge  <  0.09 Q  =  0.07 um and its opposite extension <  0.025 distance from the corner of the two edges of M1] ,  then one of the space (S1 or S2) to opposite M1 must be  >=  0.08 um.",>= 0.08
+61,M1,M1.S.6,Spacing,Space to 45-degree bent M1  >=  0.17,>= 0.17
+62,M1,M1.S.1.1,Spacing,Space [any one of Mx connect to  >  3.3V and  <=  5V net]  >=  0.09,>= 0.09
+63,M1,M1.S.8.2,Spacing,"Space to neighboring {VIAx-1 or VIAx} [either VIAx-1 ,  VIAx or Mx connects to  >  3.3V and  <=  5V net]  >=  0.18",>= 0.18
+64,M1,M1.S.8,Spacing,"Space to VIA1 [different net ,  either VIA1 or M1 connects to 1.8V ~ 3.3V net] 0.1",0.1
+65,M1,M1.S.9,Spacing,This rule is to check Metal (A) space to neighboring VIA1 [either VIA1 or M1 connects to  > 3.3V and  <=  5V net]. DRC methodology to find Metal (A) Find a edge (B) of metal line end [edge length  <=  0.12um] Run length (C) from edge (B) inside metal  >=  0.13um Jog length (D)  <=  0.01um within 0.13um run length Extend 0.06um outside from edge (B) to form a polygon metal (A) Metal (A) is defined if conditions 1~4 are all satisfied.  >=  0.15,>= 0.15
+66,M1,M1.S.8.1,Spacing,"Space to VIA1 [different net ,  either VIA1 or M1 connects to  >=  1.5V and  <  1.8V net] 0.08",0.08
+67,M1,M1.EN.1,Enclosure,"Enclosure of CO  >=  0.00 ,  do not check butted contact in SRAM",>= 0.00
