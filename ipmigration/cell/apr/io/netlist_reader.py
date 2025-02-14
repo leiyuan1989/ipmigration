@@ -6,8 +6,8 @@ import re
 import collections
 import logging
 
-from src.basic.circuit import Ckt
-from src.basic.pdk import PDK_Model
+from ipmigration.cell.apr.cir.circuit  import Ckt
+from ipmigration.cell.apr.cir.base  import PDK_Model
 
 # import klayout.db as db
 

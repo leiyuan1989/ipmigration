@@ -37,7 +37,7 @@ cells = ASCell(cfgs,tech)
 
 
 
-
+c1 = cells.netlist.ckt_dict['XR03D2']
 
 # def ascell(args,app):
 #     file = open('log_tmp.txt','w')

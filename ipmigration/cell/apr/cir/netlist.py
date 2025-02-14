@@ -11,10 +11,12 @@
 import pandas as pd
 import re
 import logging
+from ipmigration.cell.apr.io.netlist_reader import SpiceParser
 
-from src.io.netlist_reader import SpiceParser
+logger = logging.getLogger(__name__)
 
-class Circuits:
+
+class Netlist:
     def __init__(self, tech_name, pin_align_file, model_cdl, netlist_cdl):
         self.tech_name = tech_name
         
@@ -56,9 +58,11 @@ class Circuits:
 
     def load(self, model_cdl, netlist_cdl):
         pdk_lib, ckt_dict = self.load_netlist(model_cdl, netlist_cdl)
-        self.ckt_dict_all = ckt_dict
+        self.ckt_dict = ckt_dict
 
 
+
+        
 
         '''
         very bad process
@@ -66,17 +70,17 @@ class Circuits:
 
         #TODO not process V8 V12 ... 
         #no high v cells here
-        new_ckt_dict = {}
-        for k,v in ckt_dict.items():
-            digit = re.findall(r'\d+', k)
-            if len(digit)>0:        
-                if int(digit[0]) <=1:
-                    new_ckt_dict[k] = v
+        # new_ckt_dict = {}
+        # for k,v in ckt_dict.items():
+        #     digit = re.findall(r'\d+', k)
+        #     if len(digit)>0:        
+        #         if int(digit[0]) <=1:
+        #             new_ckt_dict[k] = v
 
 
-        self.ckt_dict = new_ckt_dict
-        for name,ckt in self.ckt_dict.items():
-            ckt.inspect_parallel()
+        # self.ckt_dict = new_ckt_dict
+        # for name,ckt in self.ckt_dict.items():
+        #     ckt.inspect_parallel()
 
 
         

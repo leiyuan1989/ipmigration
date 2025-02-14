@@ -12,30 +12,31 @@ import pandas as pd
 import klayout.db as db
 import matplotlib.pyplot as plt
 
-
-# from ipmigration.cell.apr.basic.shape import Range, Box
-from ipmigration.cell.apr.lego import lego
-from ipmigration.cell.apr.lego.channel import Channels
-from ipmigration.cell.apr.lego.layout.instance import M2_Tracks,M1_Rails
-from ipmigration.cell.apr.utils.utils import timer
+from ipmigration.cell.apr.cir.netlist import Netlist
+from ipmigration.cell.apr.stdcell import StdCell
 
 
-import tkinter as tk
+# from ipmigration.cell.apr.cir.shape import Range, Box
+# from ipmigration.cell.apr.lego import lego
+# from ipmigration.cell.apr.lego.channel import Channels
+# from ipmigration.cell.apr.lego.layout.instance import M2_Tracks,M1_Rails
+# from ipmigration.cell.apr.utils.utils import timer
+# import tkinter as tk
 
-#ascell2
+#ascell
 logger = logging.getLogger(__name__)
 
 #TODO temp here
-def ready_structs():
-    return ['CLK1',
-            'OUT_2INV','OUT_INV',
-            'INPUT_D1','INPUT_D2',
-            'LA_0_1','INV','LATCH1','LA_3','PMM_SR1',
+# def ready_structs():
+#     return ['CLK1',
+#             'OUT_2INV','OUT_INV',
+#             'INPUT_D1','INPUT_D2',
+#             'LA_0_1','INV','LATCH1','LA_3','PMM_SR1',
             
-            ]
+#             ]
 
-def merge_structs():
-    return ['INPUT_D1','INPUT_D2','INPUT_D3',]
+# def merge_structs():
+#     return ['INPUT_D1','INPUT_D2','INPUT_D3',]
 
 
 
@@ -56,8 +57,15 @@ class ASCell:
             
         self.cfgs = cfgs
         self.tech = tech
-        
         self.tech.pre_cal()
+        
+        #load .cdl file
+        self.netlist = Netlist(cfgs.tech_name, cfgs.pins_align, cfgs.model_file, cfgs.netlist)
+        
+        
+        #select 
+        
+        
         
         # self.tech_dir = args.tech_dir     
         # self.read_cell_para()
@@ -75,19 +83,19 @@ class ASCell:
         
     
         
-    def read_cell_para(self):
-        df = pd.read_csv(self.args.cell_para_file)
-        for i,r in df.iterrows():
-            para = r['parameter'].strip()
-            my_re = re.compile(r'[A-Za-z]',re.S)
-            res = re.findall(my_re,str(r['value']))
-            if len(res):
-                value = str(r['value'])  
-            else:
-                value = int(r['value'])
-            self.__setattr__(para,value)
+    # def read_cell_para(self):
+    #     df = pd.read_csv(self.args.cell_para_file)
+    #     for i,r in df.iterrows():
+    #         para = r['parameter'].strip()
+    #         my_re = re.compile(r'[A-Za-z]',re.S)
+    #         res = re.findall(my_re,str(r['value']))
+    #         if len(res):
+    #             value = str(r['value'])  
+    #         else:
+    #             value = int(r['value'])
+    #         self.__setattr__(para,value)
         
-        logger.info('ascell-> Read cell para file successfully')
+    #     logger.info('ascell-> Read cell para file successfully')
   
     
     def output_data(self,file, ckt_name, structs_sequence=None):
@@ -355,3 +363,8 @@ class ASCell:
         self.layout.write(gds_out_path)        
         
         
+        
+        
+        
+
+    

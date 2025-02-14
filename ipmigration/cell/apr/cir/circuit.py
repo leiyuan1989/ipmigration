@@ -4,17 +4,7 @@ Created on Thu May 23 15:41:51 2024
 
 @author: leiyuan
 """
-import networkx as nx
 import pandas as pd
-
-# from src.schema.graph import CellMultiGraph, CellGraph, replace_matching_subgraph
-
-# import klayout.db as db
-# from src.reader.netlist_reader import load_circuit
-# from src.schema.basic import Transistor,Net
-
-
-
 
 class Ckt:
     def __init__(self, name, devices = None, pins= None):
@@ -44,14 +34,7 @@ class Ckt:
         else:
             raise ValueError('Not found or found more than 1')
         
-    def find_device(self,device_name):
-        t1 = [t for t in self.devices if t.name == device_name]
-        if len(t1) == 1:
-            return True
-        elif len(t1) == 0:
-            return False
-        else:
-            raise ValueError('Not found or found more than 1')        
+   
             
         
     def add_pins(self,pins):
@@ -70,6 +53,22 @@ class Ckt:
     def __len__(self):
         return len(self.devices)
     
+    
+    
+    
+    
+    
+    #move the following to cell    
+    
+    def find_device(self,device_name):
+        t1 = [t for t in self.devices if t.name == device_name]
+        if len(t1) == 1:
+            return True
+        elif len(t1) == 0:
+            return False
+        else:
+            raise ValueError('Not found or found more than 1')     
+
     def extract_nets(self):
         #get nets, exclude B
         self.nets_cdl = {}
