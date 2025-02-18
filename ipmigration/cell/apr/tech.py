@@ -20,7 +20,7 @@ class Tech(object):
     def __init__(self, cfgs):
         self.tech_name = cfgs.tech_name
         self._init_layer_name()
-        self._read_tech_align(cfgs.tech_align)
+        self._read_tech_align(cfgs.layer_align)
         self._read_layermap(cfgs.mapping_file)   
         
         self._gen_lyp(cfgs.output_dir)#maybe give user the option to gen it
@@ -49,13 +49,15 @@ class Tech(object):
                            self.BORDER, self.M1TXT, self.SUBTXT ]
         logger.info('tech->layers: '+ str(self.layer_list))
         
-    def _read_tech_align(self, tech_align_file):
-        assert os.path.exists(tech_align_file), "layer align file is not exist"
+    def _read_tech_align(self, layer_align_file):
+        assert os.path.exists(layer_align_file), "layer align file is not exist"
         
-        df = pd.read_csv(tech_align_file,index_col=0)
+        df = pd.read_csv(layer_align_file,index_col=0)
         
-        layer_n = self.tech_name +'_ln'
-        layer_p = self.tech_name +'_lp'
+        # layer_n = self.tech_name +'_ln'
+        # layer_p = self.tech_name +'_lp'
+        layer_n = 'name'
+        layer_p = 'purpose'
         assert layer_n in df.columns
         assert layer_p in df.columns
         

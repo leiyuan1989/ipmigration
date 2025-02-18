@@ -7,7 +7,7 @@
 
 #deconstruction match
 
-
+import os
 import pandas as pd
 import re
 import logging
@@ -19,19 +19,33 @@ logger = logging.getLogger(__name__)
 class Netlist:
     def __init__(self, tech_name, pin_align_file, model_cdl, netlist_cdl):
         self.tech_name = tech_name
+        #load pin maps
+        self._read_pin_align(pin_align_file)
         
-        self.log = []
+        
+        
+        self.load(model_cdl, netlist_cdl)
+        
+        #gen pin map template
+        
+        
 
         #load pin maps
-        self.pin_maps = self.read_pin_align(pin_align_file)
-        self.techs = list(self.pin_maps.keys())
-        assert tech_name in self.techs, 'tech %s, not found in pin align file!'%(tech_name) 
-        self.pin_map  = self.pin_maps[tech_name]
-        self.load(model_cdl, netlist_cdl)
+        # self.pin_maps = self.read_pin_align(pin_align_file) #netlist pinmap, which is one-way.
+        # self.techs = list(self.pin_maps.keys())
+        # assert tech_name in self.techs, 'tech %s, not found in pin align file!'%(tech_name) 
+        # self.pin_map  = self.pin_maps[tech_name]
+        # self.load(model_cdl, netlist_cdl)
 
 
-    def read_pin_align(self, file):
-        df_pin_align = pd.read_csv(file,index_col='pin')
+    def _read_pin_align(self, file):
+        #need have ability to help users to revise pin align file if there is some error
+        df = pd.read_csv(file)
+        
+        # for i,r in df.iterrows():
+            
+        
+        
         pin_map = {}
         for i,r in df_pin_align.iterrows():
             pin_map[i] = {}
@@ -39,7 +53,38 @@ class Netlist:
                 names = r[c]
                 for name in names.split():     
                     pin_map[i][name] = c        
+                    
         return pin_map
+  
+    def _classify_ckt(self):
+        pass
+  
+    
+  
+    
+    @staticmethod
+    def extract_pins(model_cdl,netlist_cdl,output_dir):
+        pdk_lib, ckts_dict = Netlist.load_netlist(model_cdl,netlist_cdl)
+        pins = []
+        with open(os.path.join(output_dir,'pins_list.txt'),'w') as f:
+            for k,v in ckts_dict.items():
+                line = '%-15s: '%(k)
+                for p in v.pins:
+                    line += '%-4s ,'%(p)
+                    if not(p in pins):
+                        pins.append(p)
+                        
+                line += '\n'
+                f.write(line)                
+        
+        with open(os.path.join(output_dir,'pins_map_tp.csv'),'w') as f:     
+            f.write('netlist_pin,ascell_pin\n')
+            for p in pins:
+                f.write('%s,%s\n'%(p,p))
+        
+        
+        
+  
     
     @staticmethod
     def load_netlist(base_model,base_netlist):

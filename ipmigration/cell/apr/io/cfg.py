@@ -22,7 +22,7 @@ class Cfg:
         cfg_dict = {r['setting']:r['value'] for i,r in df.iterrows()}
         
         settings = ['tech_name', 'netlist','output_dir','model_file','mapping_file',
-                    'rule_file','tech_align','pins_align','cell_height',
+                    'rule_file','layer_align','pins_align','cell_height',
                     'gate_length','v_pin_grid','h_pin_grid','power_rail_width',
                     'cell_offset_x','np_ext_border','nw_ext_np','gen_cells',
                     'metal_layers','cost_funcs']
@@ -36,7 +36,7 @@ class Cfg:
         self.model_file = cfg_dict['model_file']       
         self.mapping_file = cfg_dict['mapping_file']  
         self.rule_file = cfg_dict['rule_file']   
-        self.tech_align = cfg_dict['tech_align']  
+        self.layer_align = cfg_dict['layer_align']  
         self.pins_align = cfg_dict['pins_align']  
         self.gen_cells =  cfg_dict['gen_cells']
         self.cost_funcs = cfg_dict['cost_funcs'] 
