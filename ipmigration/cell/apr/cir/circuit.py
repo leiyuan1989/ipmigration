@@ -19,24 +19,32 @@ class Ckt:
             self.devices = devices               
         else:
             self.devices = []
-        # self.nets = {}
 
+        self.clk_net = None
+        #TODO, think if need a pos or neg parameter 
+
+        self.pin_map = {}   # ascell to netlist
+        self.pin_map_r = {} # netlist to ascell
+        self.input_pins = []
+        self.out_pins = []
         
+        self.nets = {}
+        self.supply_pins = {}
+        self.power_pins = {}
+        self.io_pins = {}
+        self.ckt_type = 'undefined'
 
-    
     def add_device(self,device):
         self.devices.append(device)
         #refresh net or process together?
+    
     def get_device(self,device_name):
         t1 = [t for t in self.devices if t.name == device_name]
         if len(t1) == 1:
             return t1[0]
         else:
             raise ValueError('Not found or found more than 1')
-        
-   
-            
-        
+           
     def add_pins(self,pins):
         for p in pins:
             if is_ground_net(p):
@@ -46,7 +54,31 @@ class Ckt:
             else:
                 self.pins.append(p)
         #refresh net or process together?        
-        
+    
+    def set_type(self, ckt_type):
+        self.ckt_type = ckt_type
+            
+    def set_pin_map(self, pins_in, pins_out, pins_power,pins_clk):
+        for pin in self.pins:
+            if pin in pins_in:
+                self.pin_map_r[pin] = pins_in[pin] 
+            elif pin in pins_out:
+                self.pin_map_r[pin] = pins_out[pin] 
+            elif pin in pins_power:
+                self.pin_map_r[pin] = pins_power[pin]        
+            elif pin in pins_clk:
+                self.pin_map_r[pin] = pins_clk[pin] 
+            else:
+                print(self.ckt_type,self.pins)
+                raise ValueError(pin,pins_out)
+            
+        # print('1', pins_in,pins_out,pins_power,pins_clk)
+    
+    
+    @staticmethod
+    def inv_map(maps):
+        return {v: k for k, v in maps.items()}
+    
     def __repr__(self):
         return "(%s, %d devices)"%(self.name, len(self.devices))
     
