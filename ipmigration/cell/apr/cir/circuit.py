@@ -20,20 +20,27 @@ class Ckt:
         else:
             self.devices = []
 
-        self.clk_net = None
         #TODO, think if need a pos or neg parameter 
 
-        self.pin_map = {}   # ascell to netlist
-        self.pin_map_r = {} # netlist to ascell
-        self.input_pins = []
-        self.out_pins = []
-        
         self.nets = {}
-        self.supply_pins = {}
-        self.power_pins = {}
-        self.io_pins = {}
+        
+        self.pin_map = {}   #netlist to ascell
+        self.pin_map_r = {} #ascell to netlist
+        self.io_map = {}    #netlist to ascell
+        self.io_map_r = {}  #ascell to netlist       
+        self.ipins = {}
+        self.ipins_r = {}        
+        self.opins = {}
+        self.opins_r = {}      
+            
         self.ckt_type = 'undefined'
-
+        self.clk_net = 'undefined'
+        self.vdd_net = 'undefined'
+        self.vss_net = 'undefined'
+        self.vnw_net = 'undefined' #vdd
+        self.vpw_net = 'undefined' #vss
+        
+        
     def add_device(self,device):
         self.devices.append(device)
         #refresh net or process together?
@@ -59,21 +66,50 @@ class Ckt:
         self.ckt_type = ckt_type
             
     def set_pin_map(self, pins_in, pins_out, pins_power,pins_clk):
+        clock_nets = []
         for pin in self.pins:
             if pin in pins_in:
-                self.pin_map_r[pin] = pins_in[pin] 
+                self.pin_map[pin] = pins_in[pin] 
+                self.io_map[pin] = pins_in[pin] 
+                self.ipins[pin] = pins_in[pin] 
             elif pin in pins_out:
-                self.pin_map_r[pin] = pins_out[pin] 
-            elif pin in pins_power:
-                self.pin_map_r[pin] = pins_power[pin]        
+                self.pin_map[pin] = pins_out[pin] 
+                self.io_map[pin] = pins_out[pin]    
+                self.opins[pin] = pins_out[pin] 
             elif pin in pins_clk:
-                self.pin_map_r[pin] = pins_clk[pin] 
+                self.pin_map[pin] = pins_clk[pin] 
+                clock_nets.append(pin)
+                # self.io_map[pin] = pins_clk[pin] 
+            elif pin in pins_power:
+                self.pin_map[pin] = pins_power[pin] 
+                # self.io_map[pin] = pins_power[pin]             
             else:
                 print(self.ckt_type,self.pins)
                 raise ValueError(pin,pins_out)
-            
-        # print('1', pins_in,pins_out,pins_power,pins_clk)
-    
+        
+        if len(clock_nets) == 1:    
+            self.clk_net = clock_nets[0]
+        elif len(clock_nets) == 0:  
+            pass
+        else:
+            raise ValueError
+        
+        self.pin_map_r = self.inv_map(self.pin_map)
+        self.io_map_r  = self.inv_map(self.io_map)    
+        self.ipins_r = self.inv_map(self.ipins)
+        self.opins_r = self.inv_map(self.opins)           
+        
+        self.vdd_net = self.pin_map_r['VDD']
+        self.vss_net = self.pin_map_r['VSS']
+        if 'VNW' in self.pin_map_r:
+            self.vnw_net = self.pin_map_r['VNW']
+        else:
+            self.vnw_net = self.pin_map_r['VDD']
+        if 'VPW' in self.pin_map_r:
+            self.vpw_net = self.pin_map_r['VPW']
+        else:
+            self.vpw_net = self.pin_map_r['VSS']        
+        
     
     @staticmethod
     def inv_map(maps):

@@ -15,8 +15,9 @@ from ipmigration.cell.apr.io.netlist_reader import SpiceParser
 
 logger = logging.getLogger(__name__)
 
-ckt_types  = ['arithmetic','complex','multiplex','ff'       ,'scanff'   ,'latch'     ,'clockgate']
-ckt_clocks = ['none'      ,'none'   ,'none'     ,'clock_pin','clock_pin','enable_pin','clock_pin']
+CKT_TYPES  = ['arithmetic','complex','multiplex','ff'       ,'scanff'   ,'latch'     ,'clockgate']
+CKT_CLOCKS = ['none'      ,'none'   ,'none'     ,'clock_pin','clock_pin','enable_pin','clock_pin']
+DEBUG=False
 
 class Netlist:
     def __init__(self, tech_name, pin_align_file, model_cdl, netlist_cdl):
@@ -60,7 +61,7 @@ class Netlist:
                 d3[k]=v
             return d3
         
-        for ckt_type, ckt_clock in zip(ckt_types,ckt_clocks):   
+        for ckt_type, ckt_clock in zip(CKT_TYPES,CKT_CLOCKS):   
             di[(ckt_type,'inout')] = merge_dict( di[(ckt_type,'in')], di[(ckt_type,'out')])
             di[(ckt_type,'all')] =   merge_dict( di[(ckt_type,'inout')], di[('power_pin', 'all')])            
             if ckt_clock != 'none':
@@ -74,12 +75,12 @@ class Netlist:
 
   
     def _classify_ckts(self,ckt_di,pin_map):
-        ckt_types_di = {t:[] for t in ckt_types}
+        ckt_types_di = {t:[] for t in CKT_TYPES}
         
         for name, ckt in ckt_di.items():
             predict_types = [] 
             pins = set(ckt.pins)
-            for ckt_type, ckt_clock in zip(ckt_types,ckt_clocks):
+            for ckt_type, ckt_clock in zip(CKT_TYPES,CKT_CLOCKS):
                 if pins <= set(pin_map[(ckt_type,'all')].keys()):
                     mapped_pins = [pin_map[(ckt_type,'all')][t] for t in pins]
                     predict_type = self._classify_ckt(mapped_pins)
@@ -94,12 +95,18 @@ class Netlist:
                                 
             else:#0 
                 print('Warning: %s can not be processed!'%(name),pins)
-                # print(init_type)
+                if DEBUG:
+                    for ckt_type, ckt_clock in zip(CKT_TYPES,CKT_CLOCKS):
+                        if pins <= set(pin_map[(ckt_type,'all')].keys()):
+                            mapped_pins = [pin_map[(ckt_type,'all')][t] for t in pins]
+                            predict_type = self._classify_ckt(mapped_pins,debug=True)
+                            print(predict_type,ckt_type)
+
                 # raise ValueError
                         
         return ckt_types_di
   
-    def _classify_ckt(self, mapped_pins):
+    def _classify_ckt(self, mapped_pins, debug=False):
         c0 = 'CK' in mapped_pins or 'CKN' in mapped_pins 
         c1 = 'G'  in mapped_pins or 'GN'  in mapped_pins 
         c2 = 'Y' in mapped_pins
@@ -107,14 +114,17 @@ class Netlist:
         c4 = 'ECK' in mapped_pins
         c5 = 'S' in mapped_pins
         c6 = 'CO' in mapped_pins
-        c7 = 'SO' in mapped_pins
+        c7 = 'S0' in mapped_pins
         c8 = 'SE'  in mapped_pins and 'SI'  in mapped_pins 
-        
+        if debug:
+            print(mapped_pins,c0,c1,c2,c3,c4,c5,c6,c7,c8)
         if c5 and c6:
             return 'arithmetic'
         elif c2 and not(c7):
+            # print(c1,c7)
             return 'complex'
         elif c2 and c7:
+            # print(c1,c7)
             return 'multiplex'
         elif c3 and c0 and not(c8):
             return 'ff'
@@ -140,7 +150,7 @@ class Netlist:
         elif ckt_clock == 'enable_pin':
             pins_clk = pin_map[('enable_pin', 'all')]
         else:
-            pins_clk = None
+            pins_clk = []
         ckt.set_pin_map(pins_in,pins_out,pins_power,pins_clk)        
   
     

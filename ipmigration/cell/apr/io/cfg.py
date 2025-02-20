@@ -38,7 +38,7 @@ class Cfg:
         self.rule_file = cfg_dict['rule_file']   
         self.layer_align = cfg_dict['layer_align']  
         self.pins_align = cfg_dict['pins_align']  
-        self.gen_cells =  cfg_dict['gen_cells']
+        self.gen_cells =  [t.strip() for t in cfg_dict['gen_cells'].split()]
         self.cost_funcs = cfg_dict['cost_funcs'] 
         #list
         self.gate_length = self.load_gate_length(cfg_dict['gate_length']) 

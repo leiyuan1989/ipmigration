@@ -1,5 +1,5 @@
 type,io,pins,ascell,description
-power_pin,all,VDD VSS VNW VPW,VDD VSS VDD VSS,"power pins,VPW VNW maybe not appear"
+power_pin,all,VDD VSS VNW VPW,VDD VSS VNW VPW,"power pins,VPW VNW maybe not appear"
 clock_pin,all,CK CKN,CK CKN,"clock"
 enable_pin,all,G GN,G GN,"latch enable(high/low)"
 arithmetic,in,A B CI,A B CI,"arithmetic gates"

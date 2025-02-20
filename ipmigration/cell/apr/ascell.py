@@ -59,8 +59,9 @@ class ASCell:
         self.tech = tech
         self.tech.pre_cal()
         
-        #load .cdl file
+        #load .cdl file and process
         self.netlist = Netlist(cfgs.tech_name, cfgs.pins_align, cfgs.model_file, cfgs.netlist)
+        
         
         
         #select 
