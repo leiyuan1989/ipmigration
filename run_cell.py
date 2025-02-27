@@ -46,11 +46,22 @@ if extract_pins:
 tech  = Tech(cfgs)
 cells = ASCell(cfgs,tech)
 
-
-
-
-c1 = cells.netlist.ckt_di['XR03D2']
-c2 = cells.netlist.ckt_di['LANHB1']
+ck1 = cells.netlist['XR03D2']
+ck2 = cells.netlist['LANHB1']
+cells.run()
+'''
+DENRQ0
+DFBFB1
+DFANRQ0
+SDMNRQ0
+SENRQ0
+'''
+c1 = cells['LANHB1']
+c2 = cells['DENRQ0']
+c3 = cells['DFBFB1']
+c4 = cells['DFANRQ0']
+c5 = cells['SDMNRQ0']
+c6 = cells['SENRQ0']
 
 # def ascell(args,app):
 #     file = open('log_tmp.txt','w')

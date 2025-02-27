@@ -23,17 +23,20 @@ class MosGraph(nx.Graph):
         self.n_pointer = (5, 5 , 5)
         self.net_pointer = (5, 10 , 5)
         self.vdd_pointer = (5, 20 , 5)
-        self.vss_pointer = (5, 0 , 5)       
+        self.vss_pointer = (5, 0 , 5) 
+        
+        self.vdd_net = ckt.vdd_net
+        self.vss_net = ckt.vss_net     
+        
         self.ckt_to_graph(ckt)
         
     def __repr__(self):
         return "%s graph: %d devices, %d nodes"%(self.ckt.name, len(self.ckt.devices), len(self.nodes))
         
     def ckt_to_graph(self, ckt):
-        ckt.extract_nets()
         for device in ckt.devices:
             self._add_device(device)
-        for net, terms in ckt.nets_cdl.items():
+        for net, terms in ckt.nets.items():
             self._add_nets(net,terms)
         
 
@@ -52,7 +55,7 @@ class MosGraph(nx.Graph):
                 'pintype' : 'SD',
                 'pin'  : 'S',
                 'net'  : device.S,
-                'power': device.S == 'VDD' or device.S == 'VSS',
+                'power': device.S==self.vdd_net or device.S==self.vss_net,
                 'pos'  : (p[0]-1,p[1],p[2]),
                 'color': color_theme['diff']}
         self.add_node(device.name+':S', **attr)
@@ -62,7 +65,7 @@ class MosGraph(nx.Graph):
                 'pintype' : 'G',
                 'pin'  : 'G',
                 'net'  : device.G,
-                'power': device.G == 'VDD' or device.G == 'VSS',
+                'power': device.G==self.vdd_net or device.G==self.vss_net,
                 'pos'  : (p[0],p[1],p[2] + 1),
                 'color': color_theme['poly']}
         self.add_node(device.name+':G', **attr)
@@ -72,7 +75,7 @@ class MosGraph(nx.Graph):
                 'pintype' : 'SD',
                 'pin'  : 'D',
                 'net'  : device.D,
-                'power': device.D == 'VDD' or device.D == 'VSS',
+                'power': device.D==self.vdd_net or device.D==self.vss_net,
                 'pos'  : (p[0]+1,p[1],p[2]),
                 'color': color_theme['diff']}
         self.add_node(device.name+':D', **attr)
@@ -99,10 +102,10 @@ class MosGraph(nx.Graph):
         else:
             color = color_theme['net']
         
-        if net == 'VDD':
+        if net == self.vdd_net:
             p = self.vdd_pointer
             power = True
-        elif net == 'VSS':
+        elif net == self.vss_net:
             p = self.vss_pointer
             power = True
         else:
@@ -137,7 +140,7 @@ class MosGraph(nx.Graph):
         # return (x.get('power') == y.get('power')) and (x.get('mostype') == y.get('mostype')) and (x.get('pintype') == y.get('pintype')) 
         return (x.get('mostype') == y.get('mostype')) and (x.get('pintype') == y.get('pintype')) 
   
-    @staticmethod
+    @staticmethod #VDD and VSS are regarded as tasks that must be matched.
     def node_match_power(x, y):
         return  (x.get('mostype') == y.get('mostype')) and (x.get('pintype') == y.get('pintype')) and (x.get('power') == y.get('power'))
 
@@ -145,7 +148,7 @@ class MosGraph(nx.Graph):
     def default_edge_match(x, y):        
         return (x.get('internal') == y.get('internal')) 
     
-    @staticmethod
+    @staticmethod #VDD and VSS are regarded as tasks that must be matched.
     def edge_match_power(x, y):        
         return (x.get('internal') == y.get('internal')) and (x.get('power') == y.get('power'))
 

@@ -3,15 +3,13 @@
 @author: LEI Yuan
 """
 
-
-from src.schematic.circuits import Circuits
-from src.schematic.graph import MosGraph
-
+from ipmigration.cell.apr.cir.netlist import Netlist
+from ipmigration.cell.apr.cir.graph import MosGraph
 
 class Patterns:
     def __init__(self):
-        model = 'src/schematic/pattern_cdl/model.cdl'
-        netlist = 'src/schematic/pattern_cdl/patterns.cdl'
+        model = 'ipmigration/cell/apr/cir/pattern_cdl/model.cdl'
+        netlist = 'ipmigration/cell/apr/cir/pattern_cdl/patterns.cdl'
         # cross = 'src/schematic/pattern_cdl/patterns.cdl'
         
         self.ckt_dict = {}
@@ -28,7 +26,7 @@ class Patterns:
         self.input_ed_dict = {}
         self.input_md_dict = {}
 
-        pdk_lib, self.ckt_dict = Circuits.load_netlist(model, netlist)
+        pdk_lib, self.ckt_dict = Netlist.load_netlist(model, netlist)
 
         
         for k,v in self.ckt_dict.items():
@@ -56,6 +54,7 @@ class Patterns:
         
         self.examine_structs(self.cross_dict)
 
+
     def examine_structs(self,ckt_dict):
         for name1,ckt1 in ckt_dict.items():
             for name2,ckt2 in ckt_dict.items():
@@ -69,13 +68,19 @@ class Patterns:
 
 class Pattern:
     def __init__(self, pattern_ckt, master_ckt, match_table):
+        '''
+        pattern_ckt
+        master_ckt
+        match_table: 
+        '''
+        
         self.pattern_name = pattern_ckt.name
         self.pattern_ckt = pattern_ckt
         self.master_ckt = master_ckt
         # self.match_table = match_table
         #
         self.map_ckt(match_table) #map and flipped
-
+ 
         #for global routing
         self.pins = []
         # self.place = {}
@@ -117,16 +122,7 @@ class Pattern:
             else: #net 
                 self.net_map[k] = v
                 self.net_map_r[v] = k               
-        # print(match_devices)
-        
-        # for k,v in match_devices.items():   
-        #     if 'G:G' in v:
-        #         t1,t2 = k.split(':')
-        #         self.device_map[t1] = t2
-        #         self.device_map_r[t2] = t1
-        #     else:
-        #         raise ValueError(k,v) 
-        
+
         #flipped
         loc = {}
         devices = []
@@ -135,11 +131,11 @@ class Pattern:
                 t1,t2 = k.split(':')
                 self.device_map[t1] = t2
                 self.device_map_r[t2] = t1
-                device = self.master_ckt.get_device(t2)
-                
-                loc[device] = self.pattern_ckt.get_device(t1).COL
-                
+                device = self.master_ckt[t2]      
+                loc[device] = self.pattern_ckt[t1].COL
                 devices.append(device)
+                
+                #flipped device
                 if 'S:D' in v and 'D:S' in v:
                     device.flipped()    
             else:
@@ -174,22 +170,3 @@ class Pattern:
                 #     # print('a',device)
                 #     device.flipped()    
                     # print('b',self.master_ckt.get_device(t2))
-
-            
-
-
-
-        
-
-
-
-
-# def remove_match(devices,match_devices):
-#     # print(devices,'aa') 
-#     # print(match_devices,'bb')
-#     for d1 in match_devices:
-#         for d2 in d1:
-#             devices.remove(d2)       
-#     return devices
-    
-

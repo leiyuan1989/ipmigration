@@ -42,8 +42,8 @@ class Netlist:
         # assert tech_name in self.techs, 'tech %s, not found in pin align file!'%(tech_name) 
         # self.pin_map  = self.pin_maps[tech_name]
         # self.load(model_cdl, netlist_cdl)
-
-
+    def __getitem__(self,key):
+        return self.ckt_di[key]
     def _read_pin_align(self, file):
         #need have ability to help users to revise pin align file if there is some error
         df = pd.read_csv(file)
@@ -84,15 +84,20 @@ class Netlist:
                 if pins <= set(pin_map[(ckt_type,'all')].keys()):
                     mapped_pins = [pin_map[(ckt_type,'all')][t] for t in pins]
                     predict_type = self._classify_ckt(mapped_pins)
+                    
                     if predict_type == ckt_type:
-                        predict_types.append([ckt_type, ckt_clock])
+                        predict_types.append([ckt_type, ckt_clock, mapped_pins])
                     
             if len(predict_types) == 1:
-                ckt_type, ckt_clock = predict_types[0]
-                #Add a judgment here
+                ckt_type, ckt_clock, mapped_pins = predict_types[0]
+ 
+                if ckt_type in ['ff', 'scanff', 'latch', 'clockgate']:#sl logic
+                    input_type = self._analyze_sl_input_type(mapped_pins)
+
+                else:
+                    input_type= None #left for cl
                 ckt_types_di[ckt_type].append(name)
-                self._set_ckt(ckt, ckt_type, ckt_clock, pin_map)
-                                
+                self._set_ckt(ckt, ckt_type, input_type, ckt_clock, pin_map)                
             else:#0 
                 print('Warning: %s can not be processed!'%(name),pins)
                 if DEBUG:
@@ -121,10 +126,8 @@ class Netlist:
         if c5 and c6:
             return 'arithmetic'
         elif c2 and not(c7):
-            # print(c1,c7)
             return 'complex'
         elif c2 and c7:
-            # print(c1,c7)
             return 'multiplex'
         elif c3 and c0 and not(c8):
             return 'ff'
@@ -139,11 +142,35 @@ class Netlist:
         # ckt_types  = ['arithmetic','complex','multiplex','ff'       ,'scanff'   ,'latch'     ,'clockgate']
   
     
-    def _set_ckt(self, ckt, ckt_type, ckt_clock, pin_map):                
-        ckt.set_type(ckt_type)
-        pins_in  = pin_map[(ckt_type, 'in')]
-        pins_out = pin_map[(ckt_type, 'out')]
-        pins_power = pin_map[('power_pin', 'all')]
+    def _analyze_sl_input_type(self, mapped_pins):
+        c0 = 'D'  in mapped_pins 
+        c1 = 'E'  in mapped_pins 
+        c2 = 'D0' in mapped_pins and 'D1' in mapped_pins 
+        c3 = 'RN' in mapped_pins
+        c4 = 'SN' in mapped_pins 
+        din = False
+        enable = False
+        mulin = False
+        sn = False
+        rn = False
+        if c0:
+            din = True  
+        if c1:
+            enable = True
+        if c2:
+            mulin = True
+        if c3:
+            rn = True
+        if c4:
+            sn = True
+        return [din,enable, mulin, rn, sn]
+        
+    
+    
+    def _set_ckt(self, ckt, ckt_type, input_type, ckt_clock, pin_map):                
+        pins_in  = pin_map[(ckt_type, 'in')]  #From netlist names to standardized ascell names
+        pins_out = pin_map[(ckt_type, 'out')] #From netlist names to standardized ascell names
+        pins_power = pin_map[('power_pin', 'all')] #From netlist names to standardized ascell names
         
         if ckt_clock == 'clock_pin':
             pins_clk = pin_map[('clock_pin', 'all')]
@@ -151,7 +178,9 @@ class Netlist:
             pins_clk = pin_map[('enable_pin', 'all')]
         else:
             pins_clk = []
-        ckt.set_pin_map(pins_in,pins_out,pins_power,pins_clk)        
+        #set circuit type and inputs 
+        ckt.set_cir_type_and_in_nets(ckt_type,pins_in,pins_out,pins_power,pins_clk,input_type)  
+        
   
     
     @staticmethod
@@ -176,8 +205,6 @@ class Netlist:
         
         
         
-  
-    
     @staticmethod
     def load_netlist(base_model,base_netlist):
         with open(base_model, 'r') as f:
@@ -193,14 +220,24 @@ class Netlist:
         s.parse(lines) 
         return pdk_lib, s.data    
 
-    def load(self, model_cdl, netlist_cdl):
-        pdk_lib, ckt_dict = self.load_netlist(model_cdl, netlist_cdl)
-        self.ckt_dict = ckt_dict
+    # def load(self, model_cdl, netlist_cdl):
+    #     pdk_lib, ckt_dict = self.load_netlist(model_cdl, netlist_cdl)
+    #     self.ckt_dict = ckt_dict
 
 
-
-        
-
+    def save_ckt_types(self, save_dir):
+        data = {'ckt':[],'type':[],'en':[], 'mi':[], 'rn':[],'sn':[] }
+        for k,vs in self.ckt_types.items():
+            for v in vs:
+                ckt = self[v]
+                data['ckt'].append(v)
+                data['type'].append(ckt.ckt_type)
+                data['en'].append(ckt.enable)
+                data['mi'].append(ckt.mul_in)
+                data['rn'].append(ckt.rn)
+                data['sn'].append(ckt.sn)
+        df = pd.DataFrame(data)
+        df.to_csv(os.path.join(save_dir,'ckt_types.csv'))
         '''
         very bad process
         '''

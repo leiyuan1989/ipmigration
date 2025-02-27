@@ -13,6 +13,9 @@ import klayout.db as db
 import matplotlib.pyplot as plt
 
 from ipmigration.cell.apr.cir.netlist import Netlist
+from ipmigration.cell.apr.cir.patterns import Patterns
+
+
 from ipmigration.cell.apr.stdcell import StdCell
 
 
@@ -26,22 +29,6 @@ from ipmigration.cell.apr.stdcell import StdCell
 #ascell
 logger = logging.getLogger(__name__)
 
-#TODO temp here
-# def ready_structs():
-#     return ['CLK1',
-#             'OUT_2INV','OUT_INV',
-#             'INPUT_D1','INPUT_D2',
-#             'LA_0_1','INV','LATCH1','LA_3','PMM_SR1',
-            
-#             ]
-
-# def merge_structs():
-#     return ['INPUT_D1','INPUT_D2','INPUT_D3',]
-
-
-
-# pin_align_file
-# layer_name_align
 
 class ASCell:
     def __init__(self, cfgs, tech):
@@ -54,17 +41,29 @@ class ASCell:
         -------
         None.
         '''
-            
+        
+        self.cells = {}
         self.cfgs = cfgs
         self.tech = tech
         self.tech.pre_cal()
-        
+        print('01 Design Rule Loaded and Preprocessed!')
         #load .cdl file and process
         self.netlist = Netlist(cfgs.tech_name, cfgs.pins_align, cfgs.model_file, cfgs.netlist)
+        #save ckt types 
+        self.netlist.save_ckt_types(cfgs.output_dir)
+        print('02 Netlist Loaded and Classified!')
+        self.patterns = Patterns()
+        print('03 Expertise-Library Loaded!')
+        
+        #load patterns
         
         
+            
         
-        #select 
+        #initial layout settings
+        # self.init_layout()
+        
+        
         
         
         
@@ -82,7 +81,31 @@ class ASCell:
         
         #load lego library here
         
-    
+    def run(self):
+        # self.time_record = {}
+        # time_s = time.time()
+        
+        
+        #clear and create aux_file
+        aux_file = os.path.join(self.cfgs.output_dir,'aux_netlist.txt')
+        f=open(aux_file,'w')
+        f.close()
+        
+        logger.info('ascell-> Begin processing tech%s @ %s'%(self.tech.tech_name, time.asctime())) 
+        if self.cfgs.gen_cells == 'all':
+            self.cfgs.gen_cells = list(self.netlist.ckt_types.keys())
+        
+        for cell_type in self.cfgs.gen_cells:
+            # print(cell_type)
+            for ckt_name in self.netlist.ckt_types[cell_type]:
+                ckt = self.netlist[ckt_name]
+                cell = StdCell(ckt,self.tech,self.cfgs,self.patterns)
+                self.cells[ckt_name] = cell
+                cell.run()
+                
+    def __getitem__(self,key):
+        return self.cells[key]     
+        
         
     # def read_cell_para(self):
     #     df = pd.read_csv(self.args.cell_para_file)
@@ -99,6 +122,9 @@ class ASCell:
     #     logger.info('ascell-> Read cell para file successfully')
   
     
+  
+    
+  
     def output_data(self,file, ckt_name, structs_sequence=None):
         file.write('\n**------------%s--------------**\n'%(ckt_name))
         if structs_sequence:
@@ -195,7 +221,7 @@ class ASCell:
         self.v_mode[0]['GT_nmos'] = Range(gt_ct_down.p2 + tech.CT_E_GT.v, self.net_gt_down.p1,set_t='pp')        
         #2
 
-    def run(self,file, app = None):
+    def run_bk(self,file, app = None):
         self.time_record = {}
         time_s = time.time()
         

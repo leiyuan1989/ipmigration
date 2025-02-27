@@ -1,68 +1,111 @@
 # -*- coding: utf-8 -*-
+import os
 import networkx as nx
-import pandas as pd
-from src.schematic.graph import MosGraph,ChainGraph
-from src.schematic.classify_ckt import classify_ckt
-from src.schematic.patterns import Pattern
+from ipmigration.cell.apr.cir.graph import MosGraph
+from ipmigration.cell.apr.cir.patterns import Pattern
 
+DEBUG=False
 
-
-# from src.lego.struct import Struct
-
-class Deconstruction:
-    def __init__(self, tech_name, ckt, netlist_pin_map, patterns, log, debug=False):
-        self.tech_name = tech_name 
-        self.ckt = ckt
-        self.netlist_pin_map = netlist_pin_map
-        self.classify_ckt() 
+class DeCKT:
+    def __init__(self, ckt, patterns, tech_name, output_dir):
+        self.init_ckt = ckt
+        self.ckt = ckt.copy()
         self.patterns = patterns
-        self.log = log
-        self.debug = debug
-        
-        self.ckt_net_map(netlist_pin_map) 
-        
         self.sub_ckts = {}
-        
-        self.input_point = self.net_map_r[self.ckt_type['input_pins'][0]]
-        
-        self.power_match_list = ['CROSS_NOD_2','CROSS_NOD_3','CROSS_NOD_P1']
-        
-        
+        self.tech_name = tech_name
+        self.output_dir = output_dir
+        # self.input_point = self.net_map_r[self.ckt_type['input_pins'][0]]
+        # self.power_match_list = ['CROSS_NOD_2','CROSS_NOD_3','CROSS_NOD_P1']
         # self.struct_array = {'match':[],'devices':[],'struct':[],'struct_t':[]}
     
     
     # def __repr__(self):
     #     return str(self.struct_array['struct_t']) + ' ' + str(self.struct_array['struct'])
-        
-    def ckt_net_map(self, netlist_pin_map):
-        net_map = {}
-        for p in self.ckt.pins:
-            net_map[p] = netlist_pin_map[p]
-        net_map_r = {v: k for k, v in  net_map.items()} 
-        self.net_map = net_map   # ckt to pattern
-        self.net_map_r = net_map_r #pattern to ckt 
     
-    def classify_ckt(self):
-        mapped_pins = []
-        for p in self.ckt.pins:
-            # if p == 'EN' or p == 'E':
-            #     print('aaaa',p)
-            if not(p in self.netlist_pin_map):
-                raise ValueError('Pin not found in netlist pin map',self.tech_name,self.ckt.name,p,self.netlist_pin_map)
-            else:
-                p1 = self.netlist_pin_map[p]
-                if p1 != 'VDD' and p1 != 'VSS':
-                    mapped_pins.append(p1)        
-        # self.mapped_pins = mapped_pins
-        self.ckt_type = classify_ckt(mapped_pins)
-    
-    # @staticmethod
-    # def _add_net(net_map, net_map_r, nets):
-    #     for a,b in nets.items():
-    #         net_map[a] = b
-    #         net_map_r[b] = a
+    def run(self):
+        print('%s, %s, %d devices'%(self.tech_name,self.ckt, len(self.ckt.devices)))
+        aux_file = os.path.join(self.output_dir,'aux_netlist.txt')
 
-    def match(self,devices_graph,struct_graph,net_match, nopower=True):
+        #Sequential logic processing
+        if self.ckt.ckt_type in ['ff', 'scanff', 'latch', 'clockgate']:
+            #search clock patterns 
+            self.sub_ckts['clk'] = self.search_clk(self.ckt, self.init_ckt )
+            if not(self.sub_ckts['clk']):
+                raise ValueError('CLK patterns are not found in netlist!')
+            else:
+                #remove device                 
+                self.ckt = self.ckt.sub_ckt(self.sub_ckts['clk'].ckt.devices, remove=True)  
+                #set key net c and cn:
+                self.init_ckt.c_net = self.sub_ckts['clk'].net_map[self.init_ckt.key_nets['c_net']]
+                self.init_ckt.cn_net = self.sub_ckts['clk'].net_map[self.init_ckt.key_nets['cn_net']]
+            
+            #search inv of D, E ,MD , RN SN SE SI....
+            for pin in ['D', 'E' ,'D0','D1','S0','RN','SN','SE','SI']:
+                if pin in self.init_ckt.ipins_r:
+                    input_net= self.init_ckt.ipins_r[pin]
+                    pattern = self.search_input_inv(input_net, self.ckt, self.init_ckt)
+                    if pattern:
+                        print('input_inv_%s'%(pin))
+                        self.sub_ckts['input_inv_%s'%(pin)] = pattern
+                        self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
+                        #revise initial ckt and ckt key_nets
+                        inv_input_name = 'inv_%s_net'%(pin)
+                        inv_input_net = pattern.net_map['OUT1']
+                        self.init_ckt.__setattr__(inv_input_name,inv_input_net)
+                        self.init_ckt.key_nets[inv_input_name] = '%s_N'%(pin)
+                                
+
+            
+            #aux
+            self.out_aux_netlist(aux_file, self.init_ckt, self.ckt, self.sub_ckts)
+            
+            
+        elif self.ckt.ckt_type in ['arithmetic','complex','multiplex']:
+            pass
+        else:
+            raise ValueError('%s is not a right circuit type!'%(self.ckt.ckt_type))
+        # ckt.c = 
+        # ckt.cn = 
+        # ckt.add_pin_map(pin_map)
+        
+        self.input = []
+        self.net_pm = None
+        self.net_bm = None
+        self.net_m = None
+        self.net_s = None
+        
+        # self.search_clk()
+        # devices_graph = MosGraph(self.ckt)
+        # self.search_inv(devices_graph)
+        # self.search_logic(devices_graph)   
+        # self.search_out(devices_graph)
+        
+        
+        # t1 = self.search_input()
+        
+        
+        
+        
+        # print('2',self.tech_name,self.ckt)
+        #search RN SN 
+        # NRN NSN RNG NRNG SNG NSNG SNP NSNP.....
+        # print('3',self.tech_name,self.ckt)
+    
+        # t1 = self.search_cross1()        
+        #search Input
+        # t1 = self.search_input()
+                
+    
+        # print(self.tech_name,self.ckt)
+        # t1 = self.search_cross()
+        
+        # remove cross 
+        # mark 
+        
+        return 0   
+    
+    #match two graph with net match
+    def match(self,devices_graph,struct_graph, net_match, nopower=True):
         #{p1:p2,...} :p1 is pin in pattern, p2 ckt net 
         if nopower:
             matches = devices_graph.find_subgraph_matches(struct_graph)
@@ -88,28 +131,23 @@ class Deconstruction:
                 searched.append(match)       
         return searched
     
-     
-        
-    # def add_struct(self, struct_t, match_dict):
-    #     for k,v in match_dict.items():
-    #         self.struct_array[k].append(v)
-    #     self.struct_array['struct_t'].append(struct_t)    
-
-    def search_clk(self):
+    #search clk pattern
+    def search_clk(self,ckt,master_ckt):
         clk1_ckt   = self.patterns.clk_dict['CLK1']   
         clk1_graph = self.patterns.ckt_graph['CLK1']
         clk2_ckt   = self.patterns.clk_dict['CLK2']
         clk2_graph = self.patterns.ckt_graph['CLK2']
         
-        devices_graph = MosGraph(self.ckt)
+        devices_graph = MosGraph(ckt)
         # devices_dict = {t.name:t for t in self.ckt.devices} 
+        
 
-        matches = self.match(devices_graph,clk2_graph,{'CK': self.net_map_r[self.ckt_type['clk']] })
+        matches = self.match(devices_graph,clk2_graph,{'CK': self.ckt.clk_net})
         if len(matches) == 1:
             search = matches[0]
             clk_ckt = clk2_ckt
         else:
-            matches = self.match(devices_graph,clk1_graph,{'CK':self.net_map_r[self.ckt_type['clk']] })    
+            matches = self.match(devices_graph,clk1_graph,{'CK': self.ckt.clk_net})    
             if len(matches) == 1:
                 search = matches[0]  
                 clk_ckt = clk1_ckt
@@ -117,22 +155,73 @@ class Deconstruction:
                 search = None
                 clk_ckt = None
         if search:
-            self.sub_ckts['clk'] = Pattern(pattern_ckt=clk_ckt, 
-                                           master_ckt=self.init_ckt, 
-                                           match_table=search)
-            
-            self.clk_p = self.sub_ckts['clk'].net_map['C']
-            self.clk_n = self.sub_ckts['clk'].net_map['CN']
-            # self.net_map[self.clk_p] = 'C'
-            # self.net_map[self.clk_n] = 'CN'
-            # self.net_map_r['C'] = self.clk_p
-            # self.net_map_r['CN'] = self.clk_n
-            
-            self.ckt = self.ckt.sub_ckt(self.sub_ckts['clk'].ckt.devices, remove=True) 
-            #TODO add below to log
-            # print('01 CLK found! Pattern: %s, %d devices left!'%(clk_ckt.name, len(self.ckt.devices)))
+            pattern = Pattern(clk_ckt, master_ckt, search)
+            return pattern
         else:
-            raise ValueError('CLK patterns are not found in netlist!')
+            return None
+            # raise ValueError('CLK patterns are not found in netlist!')        
+
+
+    #search input inv pattern
+    def search_input_inv(self, input_net, ckt, master_ckt):
+        inv_ckt   = self.patterns.ckt_dict['INV']   
+        inv_graph = self.patterns.ckt_graph['INV']  
+        devices_graph = MosGraph(self.ckt)
+
+    
+        matches = self.match(devices_graph,inv_graph,{'IN1':input_net}, nopower=False)
+        if len(matches) == 1:
+            search = matches[0]
+            pattern = Pattern(inv_ckt, master_ckt, search)
+            return pattern
+        else:
+            return None
+
+
+
+
+
+
+
+
+    def ckt_net_map(self, netlist_pin_map):
+        net_map = {}
+        for p in self.ckt.pins:
+            net_map[p] = netlist_pin_map[p]
+        net_map_r = {v: k for k, v in  net_map.items()} 
+        self.net_map = net_map   # ckt to pattern
+        self.net_map_r = net_map_r #pattern to ckt 
+    
+    # def classify_ckt(self):
+    #     mapped_pins = []
+    #     for p in self.ckt.pins:
+    #         # if p == 'EN' or p == 'E':
+    #         #     print('aaaa',p)
+    #         if not(p in self.netlist_pin_map):
+    #             raise ValueError('Pin not found in netlist pin map',self.tech_name,self.ckt.name,p,self.netlist_pin_map)
+    #         else:
+    #             p1 = self.netlist_pin_map[p]
+    #             if p1 != 'VDD' and p1 != 'VSS':
+    #                 mapped_pins.append(p1)        
+    #     # self.mapped_pins = mapped_pins
+    #     self.ckt_type = classify_ckt(mapped_pins)
+    
+    # @staticmethod
+    # def _add_net(net_map, net_map_r, nets):
+    #     for a,b in nets.items():
+    #         net_map[a] = b
+    #         net_map_r[b] = a
+
+
+    
+     
+        
+    # def add_struct(self, struct_t, match_dict):
+    #     for k,v in match_dict.items():
+    #         self.struct_array[k].append(v)
+    #     self.struct_array['struct_t'].append(struct_t)    
+
+
 
 
 
@@ -604,42 +693,34 @@ class Deconstruction:
         
         return 0
  
+    #for netlist mapping support
+    
+    def out_aux_netlist(self, file_path, init_ckt, ckt, sub_ckts):
+        def write_line(f,d,key_net_mapping):
+            if d.S in key_net_mapping:
+                s1 =  key_net_mapping[d.S]
+            else:
+                s1 = ' '
+            if d.G in key_net_mapping:
+                s2 =  key_net_mapping[d.G]
+            else:
+                s2 = ' '
+            if d.D in key_net_mapping:
+                s3 =  key_net_mapping[d.D]
+            else:
+                s3 = ' '
+            f.write('\t%5s : %5s [%5s], %5s [%5s], %5s [%5s]\n'%(d.name,d.S,s1,d.G,s2,d.D,s3))
+            
+        key_net_mapping = init_ckt.key_net_mapping
+        with open(file_path,'a+') as f:
+            f.write('\n**********%s : %s**********\n'%(init_ckt.ckt_type,init_ckt.name))
+            for name,pat in sub_ckts.items():
+                f.write('%-10s\n'%(name))
+                for d in pat.ckt.devices:
+                    write_line(f,d,key_net_mapping)
+            f.write('%-10s\n'%('devices left:'))
+            for d in ckt.devices:
+                write_line(f,d,key_net_mapping)
 
-    def run(self):
-        self.init_ckt = self.ckt
-        # self.devices = self.ckt.devices.copy()   
-        print('%s, %s, %d devices'%(self.tech_name,self.ckt, len(self.ckt.devices)))
-        
-        self.input = []
-        self.net_pm = None
-        self.net_bm = None
-        self.net_m = None
-        self.net_s = None
-        
-        self.search_clk()
-        devices_graph = MosGraph(self.ckt)
-        self.search_inv(devices_graph)
-        self.search_logic(devices_graph)   
-        self.search_out(devices_graph)
-        
-        
-        t1 = self.search_input()
-        # print('2',self.tech_name,self.ckt)
-        #search RN SN 
-        # NRN NSN RNG NRNG SNG NSNG SNP NSNP.....
-        # print('3',self.tech_name,self.ckt)
-    
-        # t1 = self.search_cross1()        
-        #search Input
-        # t1 = self.search_input()
-                
-    
-        # print(self.tech_name,self.ckt)
-        # t1 = self.search_cross()
-        
-        # remove cross 
-        # mark 
-        
-        return t1
 
 
