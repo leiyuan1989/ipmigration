@@ -53,9 +53,16 @@ class DeCKT:
                         inv_input_net = pattern.net_map['OUT1']
                         self.init_ckt.__setattr__(inv_input_name,inv_input_net)
                         self.init_ckt.key_nets[inv_input_name] = '%s_N'%(pin)
-                                
+            #search output             
+         
+            #process input for more than 1 input: mul-d d with e, e with se, se and si...
 
-            
+            #cross recognization
+
+            #pull up/down
+          
+         
+            #left cells?
             #aux
             self.out_aux_netlist(aux_file, self.init_ckt, self.ckt, self.sub_ckts)
             
