@@ -376,7 +376,13 @@ class CellLayout:
                
         
     def lvs(self, ckt):
-        pass
+        self.sche_ckt = ckt
+        G_ckt = MosGraph(ckt)
+        G_lyt = MosGraph(self.ckt)
+        is_same,matches = G_ckt.match(G_lyt)
+        if is_same:
+            return True
+        
 
 
 class CT:
@@ -560,11 +566,10 @@ for tech_name, paths in data.items():
         print('------------name:', name)
         cell_lyt = CellLayout(lyt_di[name],layer2index)
         cell_lyt.extract_ckt()
+
         print(len(cell_ckt.nets)==len(cell_lyt.nets),len(cell_ckt.nets),len(cell_lyt.nets))
-        G_ckt = MosGraph(cell_ckt)
-        G_lyt = MosGraph(cell_lyt.ckt)
-        
-        is_same,matches = G_ckt.match(G_lyt)
+        print(len(cell_ckt.devices)==len(cell_lyt.ckt.devices),len(cell_ckt.devices),len(cell_lyt.ckt.devices))
+        is_same = cell_lyt.lvs(cell_ckt)
         print(is_same)
         #merge all shapes
 
