@@ -501,6 +501,7 @@ for tech_name, paths in data.items():
     
     count = 0
     lvs_data = {}
+    fail_lvs = []
     for name, cell_ckt in cells.netlist.ckt_di.items():
         print('------------name:', name)
         cell_lyt = CellLayout(lyt_di[name],layer2index)
@@ -518,7 +519,8 @@ for tech_name, paths in data.items():
                 lvs_data[device_num].append(run_time)
             else:
                 lvs_data[device_num] = [run_time]
-        
+        else:
+            fail_lvs.append(name)
         
         count+=1
     
