@@ -170,7 +170,9 @@ class MosGraph(nx.Graph):
         matcher = GraphMatcher(self, graph, node_match=self.default_node_match, edge_match=self.default_edge_match)
         return matcher.is_isomorphic()
     
-    
+    def match(self,graph):
+        matcher = GraphMatcher(self, graph, node_match=self.default_node_match, edge_match=self.default_edge_match)
+        return matcher.is_isomorphic(),  list(matcher.isomorphisms_iter())
     # @staticmethod
     # def graph_to_ckt(match_dict,devices_dict):
      

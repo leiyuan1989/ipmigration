@@ -6,7 +6,6 @@
 
 #gds reader
 
-from src.data_types import Transistor
 import klayout.db as db
 
 import logging

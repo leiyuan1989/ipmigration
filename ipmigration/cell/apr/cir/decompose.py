@@ -185,6 +185,35 @@ class DeCKT:
             return None
 
 
+    #search out inv pattern? 1 and 2 inv. is 3 needed?
+    '''
+    for all 
+    if a inverter is found, 
+    
+    for single
+    if input for the inv is the out of another inv and no other net?  
+    
+    for both
+    '''
+    
+    def search_output_inv(self, opins, ckt, master_ckt):
+        inv_ckt   = self.patterns.ckt_dict['INV']   
+        inv_graph = self.patterns.ckt_graph['INV']  
+        devices_graph = MosGraph(self.ckt)
+
+    
+        matches = self.match(devices_graph,inv_graph,{'IN1':input_net}, nopower=False)
+        #find inv
+        
+        #inv input net has 4 device, search next inv
+        
+        #how to find 
+        if len(matches) == 1:
+            search = matches[0]
+            pattern = Pattern(inv_ckt, master_ckt, search)
+            return pattern
+        else:
+            return None
 
 
 
