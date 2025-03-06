@@ -7,6 +7,7 @@
 #ferry
 #read gds
 import os
+import time
 import klayout.db as db
 import shapely #for polygon process
 from shapely.geometry import Polygon,MultiPolygon
@@ -20,15 +21,29 @@ from ipmigration.cell.apr.cir.circuit import Ckt, is_ground_net,is_supply_net
 from ipmigration.cell.apr.cir.base import PMos4,NMos4
 from ipmigration.cell.apr.cir.graph import MosGraph
 
-def get_texts(cell, text_layer, layer2index):
-    texts = [t.text for t in cell.shapes(layer2index[text_layer]).each() if t.is_text()]
-    return texts    
+import matplotlib.pyplot as plt
+import numpy as np
 
-def find_pin_shape(labels, m1_shapes):
-    pass
 
-def search_inst(cell, layer2index):
-    pass
+def plot_lvs(data):
+    device_numbers = list(data.keys())
+    running_times = list(data.values())
+    mins = [np.min(times) for times in running_times]
+    maxs = [np.max(times) for times in running_times]
+    heights = [max - min for min, max in zip(mins, maxs)]
+
+    fig, ax = plt.subplots(figsize=(20, 6))
+
+    bars = ax.bar(device_numbers, heights, bottom=mins, color='skyblue', edgecolor='skyblue')
+    
+
+    ax.set_xlabel('Device Number')
+    ax.set_ylabel('Running Time(s)')
+    ax.set_title('LVS Running Time')
+    
+    # 显示图形
+    plt.show()
+
 
 class DeviceKL:
     def __init__(self):
@@ -277,58 +292,7 @@ class CellLayout:
         
         self.ckt = lyt_ckt
         
-        # m1_to_cts = {t:[] for t in self.draw_shapes['M1']}
-        
-        # aa_to_cts = {t:[] for t in self.draw_shapes['AASD']}
-        # gt_to_cts = {t:[] for t in self.draw_shapes['GT']}
-        # ct_to_m1 = {}
-        # ct_to_aa = {}
-        # ct_to_gt = {}
-        # for data in self.contacts:
-        #     ct_to_m1[data['key']] = data['up_s']
-        #     m1_to_cts[data['up_s']].append(data['key'])
 
-        #     if data['down_l'] == 'AA':
-        #         ct_to_aa[data['key']] = data['down_s']  
-        #         aa_to_cts[data['down_s']].append(data['key'])
-        #     else:
-        #         ct_to_gt[data['key']] = data['down_s']
-        #         gt_to_cts[data['down_s']].append(data['key'])
-
-        # self.m1_to_cts = m1_to_cts
-        # self.aa_to_cts = aa_to_cts
-        # self.gt_to_cts = gt_to_cts
-        # self.ct_to_m1 = ct_to_m1
-        # self.ct_to_aa = ct_to_aa
-        # self.ct_to_gt = ct_to_gt
-
-        # m1_shapes = self.draw_shapes['M1']
-        # pin_shapes = list(self.pins.values())
-        # not_pin_shapes = [t for t in m1_shapes if not(t in pin_shapes)]
-        
-        # for pin, shape in self.pins.items():
-        #     self.nets['M1'][pin] = shape   
-        #     self.nets_r['M1'][shape] = pin
-        
-        #any metal without contants? dummy?
-
-        #M1->CTs->Poly or AA->CTs not in M1->other M->other AA or Poly?
-        
-        #abutment aasd, aasd without cts
-        
-        
-        
-        # count = 0 
-        # for ct_data in self.contacts:
-        #     pass
-        # for key in self.draw_shapes['M1']:
-        #     m1_polygon = self.data[key]
-        # for key in self.draw_shapes['gt']:
-        #     gt_polygon = self.data[key]
-        # for key in self.draw_shapes['AASD']:
-        #     aasd = self.data[key]
-        
-    
    
     def set_nets_gt(self):
         self.nets['GT']  = {}
@@ -356,33 +320,19 @@ class CellLayout:
         fake_box = db.Box(x,y,x,y)
         return polygon.touches(fake_box)
            
-
-        # intersection = p2.intersection(p1)  # 覆盖部分
-        # difference = p1.difference(p2)      # 两侧部分
-
-        # list(difference.geoms)
-
-        # # 输出结果
-        # print("overlap:", list(intersection.exterior.coords))
-        # print("sides:", list(difference.geoms))
-        # p1.touches(p2)
-        # p1.touches(p3)
-        # shapely.overlaps(p1,p2)
-        # shapely.overlaps(p1,p3)
-        # x,y = point
-        # fake_box = db.Box(x,y,x,y)
-        # polygon = shape.polygon
-        # return polygon.touches(fake_box)
-               
         
     def lvs(self, ckt):
+        s_time = time.time()
         self.sche_ckt = ckt
+        ckt.combine_parallel()
+        self.ckt.combine_parallel()
         G_ckt = MosGraph(ckt)
         G_lyt = MosGraph(self.ckt)
         is_same,matches = G_ckt.match(G_lyt)
         if is_same:
-            return True
-        
+            return True, time.time() - s_time
+        else:
+            return False, 0
 
 
 class CT:
@@ -517,20 +467,6 @@ class AA:
 
 
 
-def sort_rectangles(rectangles):
-    # 使用 sorted 函数对长方形列表进行排序，排序依据是每个长方形的左边界坐标 x1
-    return sorted(rectangles, key=lambda rect: rect[0])
-
-# 示例长方形列表
-rectangles = [(20, 10, 50, 30), (10, 20, 40, 50), (5, 15, 30, 40)]
-
-# 调用排序函数
-sorted_rectangles = sort_rectangles(rectangles)
-
-# 输出排序后的长方形列表
-print("排序后的长方形列表：", sorted_rectangles)
-
-
 log_level = 'INFO'
 data = {'c110': ['demo/cell_apr/setting_c110.csv', 'resources/cell/gds/csmc011.gds'],
         
@@ -562,6 +498,9 @@ for tech_name, paths in data.items():
     
     
     lyt_di = {t.name.upper():t for t in layout.each_cell()}
+    
+    count = 0
+    lvs_data = {}
     for name, cell_ckt in cells.netlist.ckt_di.items():
         print('------------name:', name)
         cell_lyt = CellLayout(lyt_di[name],layer2index)
@@ -569,8 +508,24 @@ for tech_name, paths in data.items():
 
         print(len(cell_ckt.nets)==len(cell_lyt.nets),len(cell_ckt.nets),len(cell_lyt.nets))
         print(len(cell_ckt.devices)==len(cell_lyt.ckt.devices),len(cell_ckt.devices),len(cell_lyt.ckt.devices))
-        is_same = cell_lyt.lvs(cell_ckt)
-        print(is_same)
+        is_same, run_time = cell_lyt.lvs(cell_ckt) #consider parallel devices
+        print(is_same, run_time)
+        print(len(cell_ckt.devices)==len(cell_lyt.ckt.devices),len(cell_ckt.devices),len(cell_lyt.ckt.devices))
+        
+        if is_same:
+            device_num = len(cell_lyt.ckt.devices) 
+            if device_num in lvs_data:
+                lvs_data[device_num].append(run_time)
+            else:
+                lvs_data[device_num] = [run_time]
+        
+        
+        count+=1
+    
+        #
+        # if count>=100:
+        #     break
+    plot_lvs(lvs_data)
         #merge all shapes
 
         # labels = get_texts(cell_lyt, 'M1TXT', layer2index)
@@ -628,7 +583,7 @@ klayout
 t1.insert_hole(hole)
 
 
-'''
+
 #shapely version '2.0.7'
 
 from shapely.geometry import Polygon
@@ -649,3 +604,4 @@ p1.touches(p2)
 p1.touches(p3)
 shapely.overlaps(p1,p2)
 shapely.overlaps(p1,p3)
+'''

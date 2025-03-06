@@ -6,6 +6,8 @@ Created on Thu May 23 15:41:51 2024
 """
 # import pandas as pd
 import copy
+from ipmigration.cell.apr.cir.base import PMos4,NMos4
+
 
 def is_ground_net(net: str) -> bool:
     """ Test if net is something like 'gnd' or 'vss'.
@@ -185,6 +187,9 @@ class Ckt:
         else:
             pass
 
+
+
+
     
     def add_pin_map(self,pin_map):
         #pin map: netlist:ascell
@@ -291,10 +296,52 @@ class Ckt:
             ckt.pins.remove(pin)
         return ckt    
 
-
-
-
-
+  
+    def combine_parallel(self):
+        self.parallel = {}
+        parallel_list = []
+        for d1 in self.devices:
+            for d2 in self.devices:
+                if d1.name != d2.name:
+                    # if d1.T ==d2.T and d1.W == d2.W and d1.L == d2.L and d1.G == d2.G: 
+                    #TODO not condider different W
+                    if d1.T ==d2.T and d1.L == d2.L and d1.G == d2.G:   
+                        if (d1.S == d2.S and d1.D == d2.D) or (d1.S == d2.D and d1.D == d2.S):
+                            find_parallel = False
+                            for parallel in parallel_list:
+                                if (d1 in parallel) and not(d2 in parallel):
+                                    parallel.append(d2)
+                                    find_parallel = True
+                                elif (d2 in parallel) and not(d1 in parallel):
+                                    parallel.append(d1)
+                                    find_parallel = True
+                                elif (d1 in parallel) and (d2 in parallel):
+                                    find_parallel = True
+                            if not(find_parallel):
+                                parallel_list.append([d1,d2])
+        if len(parallel_list)>0:
+            for parallel in parallel_list:
+                name=''
+                W = 0
+                L = parallel[0].L
+                T = parallel[0].T
+                pins = parallel[0].pins_dict
+                
+                for device in parallel:
+                    W += device.W
+                    name += device.name+'_'
+                    self.devices.remove(device)
+                name = name[:-1]
+                parameters = {'W':W,'L':L}
+                if T == 'P':
+                    new_device = PMos4(name,pins,parameters)    
+                else:
+                    new_device = NMos4(name,pins,parameters)    
+                # print('Combine devices', new_device)
+                self.add_device(new_device)
+                self.parallel[new_device] = parallel
+            
+ 
 
     #move the following to cell   
 
@@ -361,7 +408,7 @@ class Ckt:
                                     find_parallel = True
                             if not(find_parallel):
                                 parallel_list.append([d1,d2])
-
+                                
         if len(parallel_list) >0:
             print(parallel_list)
             raise ValueError('CKT: %s has parallel devices'%(self.name))
