@@ -200,9 +200,21 @@ class DeCKT:
         inv_ckt   = self.patterns.ckt_dict['INV']   
         inv_graph = self.patterns.ckt_graph['INV']  
         devices_graph = MosGraph(self.ckt)
+        out_patterns = {}
+        for opin in opins:
+            out_patterns[opin] = {'patterns':[],'input':'none' }
+            
+            matches = self.match(devices_graph,inv_graph,{'OUT1':opin}, nopower=False)
+            if len(matches) == 1:
+                search = matches[0]
+                pattern = Pattern(inv_ckt, master_ckt, search)
+            
+                
+           s = [1,2,3]
 
-    
-        matches = self.match(devices_graph,inv_graph,{'IN1':input_net}, nopower=False)
+In [2]: ls.insert(0, "new")     
+                
+                
         #find inv
         
         #inv input net has 4 device, search next inv
