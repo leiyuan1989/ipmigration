@@ -20,6 +20,7 @@ from ipmigration.cell.apr.ascell import ASCell
 from ipmigration.cell.apr.cir.circuit import Ckt, is_ground_net,is_supply_net
 from ipmigration.cell.apr.cir.base import PMos4,NMos4
 from ipmigration.cell.apr.cir.graph import MosGraph
+from ipmigration.cell.apr.utils.timeout import timeout
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -320,7 +321,7 @@ class CellLayout:
         fake_box = db.Box(x,y,x,y)
         return polygon.touches(fake_box)
            
-        
+    @timeout(30)
     def lvs(self, ckt):
         s_time = time.time()
         self.sche_ckt = ckt
@@ -509,7 +510,17 @@ for tech_name, paths in data.items():
 
         print(len(cell_ckt.nets)==len(cell_lyt.nets),len(cell_ckt.nets),len(cell_lyt.nets))
         print(len(cell_ckt.devices)==len(cell_lyt.ckt.devices),len(cell_ckt.devices),len(cell_lyt.ckt.devices))
-        is_same, run_time = cell_lyt.lvs(cell_ckt) #consider parallel devices
+        
+        try:
+            is_same, run_time = cell_lyt.lvs(cell_ckt) #consider parallel devices
+            if is_same:
+                error_type = 'none'
+            else:
+                error_type = 'not same'
+        except TimeoutError:
+            is_same = False    
+            run_time = 60
+            error_type = 'time out'
         print(is_same, run_time)
         print(len(cell_ckt.devices)==len(cell_lyt.ckt.devices),len(cell_ckt.devices),len(cell_lyt.ckt.devices))
         
@@ -520,7 +531,7 @@ for tech_name, paths in data.items():
             else:
                 lvs_data[device_num] = [run_time]
         else:
-            fail_lvs.append(name)
+            fail_lvs.append([name,error_type])
         
         count+=1
     

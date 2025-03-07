@@ -210,9 +210,9 @@ class DeCKT:
                 pattern = Pattern(inv_ckt, master_ckt, search)
             
                 
-           s = [1,2,3]
+           # s = [1,2,3]
 
-In [2]: ls.insert(0, "new")     
+# In [2]: ls.insert(0, "new")     
                 
                 
         #find inv
