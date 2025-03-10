@@ -26,8 +26,9 @@ class Patterns:
         self.input_ed_dict = {}
         self.input_md_dict = {}
 
-        pdk_lib, self.ckt_dict = Netlist.load_netlist(model, netlist)
-
+        pdk_lib, ckt_dict = Netlist.load_netlist(model, netlist)
+        
+        self.ckt_dict = self.sort_dict(ckt_dict)
         
         for k,v in self.ckt_dict.items():
             if 'CLK' in k:
@@ -53,6 +54,9 @@ class Patterns:
             # print(chain)
         
         self.examine_structs(self.cross_dict)
+
+    def sort_dict(self, di):
+        return  dict(sorted(di.items(), key=lambda item: len(item[1]),reverse=True))
 
 
     def examine_structs(self,ckt_dict):

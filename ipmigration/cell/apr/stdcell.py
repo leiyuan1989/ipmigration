@@ -18,6 +18,7 @@ class StdCell:
     
     
     def global_place(self):
+        self.ckt.combine_parallel()
         self.de_ckt = DeCKT(self.ckt, 
                             self.patterns, 
                             self.tech.tech_name, 

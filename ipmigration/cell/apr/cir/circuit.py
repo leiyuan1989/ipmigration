@@ -89,7 +89,7 @@ class Ckt:
                          'sn_net':'SN',  'rn_net':'RN',
                          'se_net':'SE',  'si_net':'SI',                      
                          'c_net':'C',    'cn_net':'CN',
-                         'pm_net':'PM','bm_net':'BM','m_net':'M','s_net':'S'
+                         'pm_net':'PM','bm_net':'BM','m_net':'M','s_net':'S',
                          }    
         
         for attr in self.key_nets:
@@ -97,6 +97,7 @@ class Ckt:
                 self.__setattr__(attr,'undef') 
         
         if ckt_type in ['latch','ff','scanff']:      
+    
             if self.din:
                 self.din_net = self.pin_map_r[self.key_nets['din_net']]   
             elif self.mul_in:
@@ -126,8 +127,16 @@ class Ckt:
                 self.se_net = self.pin_map_r[self.key_nets['se_net']]      
         else:
             raise ValueError
-
-            
+    def init_sl_outputs(self):
+        if 'Q' in self.pin_map_r:
+            self.q_net =  self.pin_map_r['Q']
+            self.key_nets['q_net'] = 'Q'
+        if 'QN' in self.pin_map_r:
+            self.qn_net =  self.pin_map_r['QN']      
+            self.key_nets['qn_net'] = 'QN'
+        if 'ECK' in self.pin_map_r:
+            self.eck_net =  self.pin_map_r['ECK']   
+            self.key_nets['eck_net'] = 'ECK'
   
                     
     def set_cir_type_and_in_nets(self, ckt_type, pins_in, pins_out, pins_power,pins_clk, input_type):
@@ -183,7 +192,7 @@ class Ckt:
         #sequential cells
         if self.ckt_type in ['ff', 'scanff', 'latch', 'clockgate']:
             self.init_sl_inputs(self.ckt_type,input_type)
-        
+            self.init_sl_outputs()
         else:
             pass
 

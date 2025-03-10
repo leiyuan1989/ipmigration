@@ -82,8 +82,8 @@ def set_logger(save_dir, tech_name, log_level):
         raise ValueError('log_level is not INFO DEBUG or WARNING')
     
     log_file =  os.path.join(save_dir, time.strftime("%b_%d")+ '_%s_cellapr_log.txt'%(tech_name))  
-    logging.basicConfig(format='%(asctime)s %(levelname)8s: %(message)s',
-                        datefmt="%Y-%m-%d %H:%M:%S",
+    logging.basicConfig(format='%(asctime)s %(levelname)5s: %(message)s',
+                        datefmt="%d-%H:%M:%S",
                         level=log_level,
                         filemode='w',
                         filename=log_file)

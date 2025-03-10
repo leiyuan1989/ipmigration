@@ -15,56 +15,35 @@ import time
 logger = logging.getLogger(__name__)
 
 
-def init_logger(args):
-    #set log file
-    if args.log_level == 'INFO':
-        log_level = logging.INFO
-    elif args.log_level == 'DEBUG':
-        log_level = logging.INFO
-    elif args.log_level == 'FATAL':
-        log_level = logging.INFO    
-    else:
-        raise ValueError('log_level is not INFO DEBUG or FATAL')
-    log_file =  os.path.join(args.save_dir, time.strftime("%b_%d")+ '_log.txt')  
-    logging.basicConfig(format='%(asctime)s %(levelname)8s: %(message)s',
-                        datefmt="%Y-%m-%d %H:%M:%S",
-                        level=log_level,
-                        filemode='w',
-                        filename=log_file)
-    
-    
-    logger.info("="*50+"Begin ASCell: %s "%(args.tech_name) + "="*50)
-
-
-def init_check(args): 
-    #1
-    assert os.path.exists(args.tech_align_file), str(args.tech_align_file)
-    #2
-    assert os.path.exists(args.pin_align_file), str(args.pin_align_file)
-    #3
-    args.cell_para_file = os.path.join(args.tech_dir,'cell_para.csv')
-    assert os.path.exists(args.cell_para_file), str(args.cell_para_file)
-    #4
-    args.layer_mapping_file = os.path.join(args.tech_dir,'layer_mapping.txt')  
-    assert os.path.exists(args.layer_mapping_file), str(args.layer_mapping_file)
-    #5
-    args.design_rule_file = os.path.join(args.tech_dir,'design_rule.xlsx')  
-    assert os.path.exists(args.design_rule_file), str(args.design_rule_file)
-    #6
-    args.model_file = os.path.join(args.tech_dir,'model.cdl') 
-    assert os.path.exists(args.model_file), str(args.model_file)
-    #7
-    assert os.path.exists(args.netlist), str(args.netlist_file)
+# def init_check(args): 
+#     #1
+#     assert os.path.exists(args.tech_align_file), str(args.tech_align_file)
+#     #2
+#     assert os.path.exists(args.pin_align_file), str(args.pin_align_file)
+#     #3
+#     args.cell_para_file = os.path.join(args.tech_dir,'cell_para.csv')
+#     assert os.path.exists(args.cell_para_file), str(args.cell_para_file)
+#     #4
+#     args.layer_mapping_file = os.path.join(args.tech_dir,'layer_mapping.txt')  
+#     assert os.path.exists(args.layer_mapping_file), str(args.layer_mapping_file)
+#     #5
+#     args.design_rule_file = os.path.join(args.tech_dir,'design_rule.xlsx')  
+#     assert os.path.exists(args.design_rule_file), str(args.design_rule_file)
+#     #6
+#     args.model_file = os.path.join(args.tech_dir,'model.cdl') 
+#     assert os.path.exists(args.model_file), str(args.model_file)
+#     #7
+#     assert os.path.exists(args.netlist), str(args.netlist_file)
     
 
-    #set output dir
+#     #set output dir
 
-    # args.output_dir = os.path.join(args.save_dir, time.strftime("%b_%d") + '_' + args.tech_name)
-    args.output_dir = os.path.join(args.save_dir, 'Jul_18' + '_' + args.tech_name)
-    if not(os.path.exists(args.output_dir)):
-        os.mkdir(args.output_dir)
+#     # args.output_dir = os.path.join(args.save_dir, time.strftime("%b_%d") + '_' + args.tech_name)
+#     args.output_dir = os.path.join(args.save_dir, 'Jul_18' + '_' + args.tech_name)
+#     if not(os.path.exists(args.output_dir)):
+#         os.mkdir(args.output_dir)
 
-    logger.info("Cfg initial check is sucessfull: %s "%(args.tech_name))
+#     logger.info("Cfg initial check is sucessfull: %s "%(args.tech_name))
 
 
 

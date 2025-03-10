@@ -25,7 +25,6 @@ PM1 VDD  IN1  OUT1 VDD pmos l=1 w=1 n=1 ro=5 co=1
 NM1 VSS  IN1  OUT1 VSS nmos l=1 w=1 n=1 ro=2 co=1
 .ends INV
 ******************Logic ************************
-
 .SUBCKT LOGIC_AND2 IN1 IN2 VDD VSS OUT1
 pmos_1 VDD  IN1  net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
 nmos_1 net1 IN1  net2 VSS nmos l=1 w=1 n=1 ro=1 co=1
@@ -34,6 +33,18 @@ nmos_2 net2 IN2  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=2
 pmos_3 VDD  net1  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=3
 nmos_3 VSS  net1  OUT1  VSS nmos l=1 w=1 n=1 ro=1 co=3
 .ends LOGIC_AND2
+
+
+.SUBCKT LOGIC_AND2_2 IN1 IN2 VDD VSS OUT1
+pmos_1 VDD  IN1  net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+pmos_2 net1 IN2  VDD  VDD pmos l=1 w=1 n=1 ro=1 co=3
+nmos_1 net1 IN1  net2 VSS nmos l=1 w=1 n=1 ro=1 co=1
+nmos_3 net1 IN1  net3 VSS nmos l=1 w=1 n=1 ro=1 co=2
+nmos_2 net2 IN2  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=3
+nmos_4 net3 IN2  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
+pmos_5 VDD  net1  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=3
+nmos_5 VSS  net1  OUT1  VSS nmos l=1 w=1 n=1 ro=1 co=3
+.ends LOGIC_AND2_2
 
 .SUBCKT LOGIC_OR2 IN1 IN2 VDD VSS OUT1
 pmos_1 net1  IN1  net2 VDD pmos l=1 w=1 n=1 ro=1 co=1
