@@ -25,6 +25,7 @@ PM1 VDD  IN1  OUT1 VDD pmos l=1 w=1 n=1 ro=5 co=1
 NM1 VSS  IN1  OUT1 VSS nmos l=1 w=1 n=1 ro=2 co=1
 .ends INV
 ******************Logic ************************
+*Logic can be used to match clockgate output, D0 D1 and ...
 .SUBCKT LOGIC_AND2 IN1 IN2 VDD VSS OUT1
 pmos_1 VDD  IN1  net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
 nmos_1 net1 IN1  net2 VSS nmos l=1 w=1 n=1 ro=1 co=1
@@ -33,7 +34,6 @@ nmos_2 net2 IN2  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=2
 pmos_3 VDD  net1  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=3
 nmos_3 VSS  net1  OUT1  VSS nmos l=1 w=1 n=1 ro=1 co=3
 .ends LOGIC_AND2
-
 
 .SUBCKT LOGIC_AND2_2 IN1 IN2 VDD VSS OUT1
 pmos_1 VDD  IN1  net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
@@ -68,6 +68,85 @@ NM1 VSS  IN1  OUT1  VSS nmos l=1 w=1 n=1 ro=1 co=1
 PM2 net1 IN2  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=2
 NM2 OUT1 IN2  VSS  VSS nmos l=1 w=1 n=1  ro=1 co=2
 .ends LOGIC_NOR2
+
+******************Multiplex ************************
+
+
+
+
+*FCROSS can be used to match D with E or CN/C with D
+.SUBCKT FCROSS_1 D E E_N D1 VDD VSS OUT1 OUT2 
+PM1 VDD   E_N net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+PM2 net1  D   OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
+PM3 OUT1  D1  net2 VDD pmos l=1 w=1 n=1 ro=1 co=3
+PM4 net2  E   VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
+NM1 VSS   E   net3 VSS nmos l=1 w=1 n=1 ro=1 co=1
+NM2 net3  D   OUT2 VSS nmos l=1 w=1 n=1 ro=1 co=2
+NM3 OUT2  D1  net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
+NM4 net4  E_N VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
+.ends FCROSS_1
+
+.SUBCKT FCROSS_2  D E E_N D1 VDD VSS OUT1
+PM1 VDD   E_N net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+PM2 net1  D   OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
+PM3 OUT1  D1  net2 VDD pmos l=1 w=1 n=1 ro=1 co=3
+PM4 net2  E   VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
+NM1 VSS   E   net3 VSS nmos l=1 w=1 n=1 ro=1 co=1
+NM2 net3  D   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=2
+NM3 OUT1  D1  net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
+NM4 net4  E_N VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
+.ends FCROSS_2
+
+.SUBCKT FCROSS_3  D E E_N D1 VDD VSS OUT1 OUT2
+PM1 VDD   D   net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+PM2 net1  E_N OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
+PM3 OUT1  E   net2 VDD pmos l=1 w=1 n=1 ro=1 co=3
+PM4 net2  D1  VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
+
+NM1 VSS   D   net3 VSS nmos l=1 w=1 n=1 ro=1 co=1
+NM2 net3  E   OUT2 VSS nmos l=1 w=1 n=1 ro=1 co=2
+NM3 OUT2  E_N net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
+NM4 net4  D1  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
+.ends FCROSS_3
+
+.SUBCKT FCROSS_4  D E E_N D1 VDD VSS OUT1
+PM1 VDD   D   net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+PM2 net1  E_N OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
+PM3 OUT1  E   net2 VDD pmos l=1 w=1 n=1 ro=1 co=3
+PM4 net2  D1  VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
+NM1 VSS   D   net3 VSS nmos l=1 w=1 n=1 ro=1 co=1
+NM2 net3  E   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=2
+NM3 OUT1  E_N net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
+NM4 net4  D1  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
+.ends FCROSS_4
+
+******************D0 and D1 or S0************************
+*see logic and mux
+
+
+*multiple inputs s65  DXHSV1
+.SUBCKT INPUT_MD1 D0 D1 S0 VDD VSS OUT1
+PM1 N_D0 N_S0 OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+NM1 N_D0 S0   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=1
+PM2 OUT1 S0   N_D1 VDD pmos l=1 w=1 n=1 ro=1 co=2
+NM2 OUT1 N_S0 N_D1 VSS nmos l=1 w=1 n=1 ro=1 co=2
+.ends INPUT_MDR1  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ******************CROSS without D********************************
@@ -193,74 +272,3 @@ NM1 VSS  IN2  PM   VSS nmos l=1 w=1 n=1 ro=2 co=2
 *.ends PULL_5
 
 
-******************D and E************************
-.SUBCKT INPUT_ED1 Q VDD VDD VSS VSS CK D E
-*D is N_D here
-
-PM1 N_D  N_E OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
-NM1 N_D  E   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=2
-PM2 OUT1 E   net1 VDD pmos l=1 w=1 n=1 ro=1 co=3
-NM2 OUT1 N_E net2 VSS nmos l=1 w=1 n=1 ro=1 co=3
-PM3 net1 s   VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
-NM3 net2 s   VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
-
-
-.ends INPUT_ED_1
-
-.SUBCKT INPUT_ED2_1 D E s VDD VSS OUT1 OUT2 
-PM1 VDD   N_E net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
-PM2 net1  D   OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
-PM3 OUT1  s   net2 VDD pmos l=1 w=1 n=1 ro=1 co=3
-PM4 net2  E   VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
-
-NM1 VSS   E   net3 VSS nmos l=1 w=1 n=1 ro=1 co=1
-NM2 net3  D   OUT2 VSS nmos l=1 w=1 n=1 ro=1 co=2
-NM3 OUT2  s   net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
-NM4 net4  N_E VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
-.ends INPUT_ED2_1
-
-.SUBCKT INPUT_ED2_2  VDD  VSS  D E s OUT1
-PM1 VDD   N_E net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
-PM2 net1  D   OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
-PM3 OUT1  s   net2 VDD pmos l=1 w=1 n=1 ro=1 co=3
-PM4 net2  E   VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
-
-NM1 VSS   E   net3 VSS nmos l=1 w=1 n=1 ro=1 co=1
-NM2 net3  D   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=2
-NM3 OUT1  s   net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
-NM4 net4  N_E VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
-.ends INPUT_ED2_2
-
-.SUBCKT INPUT_ED3_1  VDD  VSS  D E OUT1
-PM1 VDD   D   net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
-PM2 net1  N_E OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
-PM3 OUT1  E   net2 VDD pmos l=1 w=1 n=1 ro=1 co=3
-PM4 net2  s   VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
-
-NM1 VSS   D   net3 VSS nmos l=1 w=1 n=1 ro=1 co=1
-NM2 net3  E   OUT2 VSS nmos l=1 w=1 n=1 ro=1 co=2
-NM3 OUT2  N_E net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
-NM4 net4  s   VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
-.ends INPUT_ED3_1
-
-.SUBCKT INPUT_ED3_2  VDD  VSS  D E OUT1
-PM1 VDD   D   net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
-PM2 net1  N_E OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
-PM3 OUT1  E   net2 VDD pmos l=1 w=1 n=1 ro=1 co=3
-PM4 net2  s   VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
-
-NM1 VSS   D   net3 VSS nmos l=1 w=1 n=1 ro=1 co=1
-NM2 net3  E   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=2
-NM3 OUT1  N_E net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
-NM4 net4  s   VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
-.ends INPUT_ED3_2
-
-******************D0 and D1 or S0************************
-
-*multiple inputs s65  DXHSV1
-.SUBCKT INPUT_MD1 D0 D1 S0 VDD VSS OUT1
-PM1 N_D0 N_S0 OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=1
-NM1 N_D0 S0   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=1
-PM2 OUT1 S0   N_D1 VDD pmos l=1 w=1 n=1 ro=1 co=2
-NM2 OUT1 N_S0 N_D1 VSS nmos l=1 w=1 n=1 ro=1 co=2
-.ends INPUT_MDR1  

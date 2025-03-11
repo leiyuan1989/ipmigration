@@ -10,21 +10,27 @@ class Patterns:
     def __init__(self):
         model = 'ipmigration/cell/apr/cir/pattern_cdl/model.cdl'
         netlist = 'ipmigration/cell/apr/cir/pattern_cdl/patterns.cdl'
-        # cross = 'src/schematic/pattern_cdl/patterns.cdl'
+
         
         self.ckt_dict = {}
         self.ckt_place = {}
         self.ckt_graph = {}
 
         self.clk_dict = {}
+        self.logic_dict = {}
+        self.mux_dict = {}
+        
+        self.fcross_dict = {}
+        
+        
+        
         # self.out_dict = {}
         self.cross_dict = {}
-        self.logic_dict = {}
+
         self.backtrack_dict  = {}
         self.pull_dict  = {}
-        
-        self.input_ed_dict = {}
-        self.input_md_dict = {}
+
+
 
         pdk_lib, ckt_dict = Netlist.load_netlist(model, netlist)
         
@@ -36,14 +42,20 @@ class Patterns:
             # if 'OUT_' in k:
             #     self.clk_dict[k] = v                
                 
-            if 'CROSS' in k:
-                self.cross_dict[k] = v            
             if 'LOGIC' in k:
                 self.logic_dict[k] = v 
-            if 'INPUT_ED' in k:
-                self.input_ed_dict[k] = v
-            if 'INPUT_MD' in k:
-                self.input_md_dict[k] = v                
+            if 'MUX' in k:
+                self.mux_dict[k] = v           
+            
+            if 'FCROSS' in k:
+                self.fcross_dict[k] = v
+                
+                
+            if 'CROSS' in k:
+                self.cross_dict[k] = v            
+         
+            
+
             
             if 'BACKTRACK' in k:
                 self.backtrack_dict[k] = v  
