@@ -1,21 +1,26 @@
 
 **********ff : DENRQ0**********
-clk       
+clk         CLK1
 	  M23  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M28  P:   VDD [  VDD],   N_2 [   CN],  N_12 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	   M7  N:   VSS [  VSS],   N_2 [   CN],  N_12 [    C]
-ininv_E_0 
+ininv_E_0   INV
 	  M19  P:   VDD [  VDD],     E [    E],   N_5 [ E_N0]
 	   M3  N:   VSS [  VSS],     E [    E],   N_5 [ E_N0]
-out_Q     
+out_Q       INV
 	  M29  P:   VDD [  VDD],  N_16 [     ],     Q [    Q]
 	  M11  N:   VSS [  VSS],  N_16 [     ],     Q [    Q]
-devices left:
-	   M1  N:  N_33 [     ],     D [    D],   VSS [  VSS]
-	   M2  N:   N_6 [     ],     E [    E],  N_33 [     ]
-	   M4  N:  N_34 [     ],   N_5 [ E_N0],   N_6 [     ]
+inputs      FCROSS_4
+	  M18  P:   VDD [  VDD],     D [    D],  N_18 [     ]
+	  M22  P:  N_19 [     ],  N_17 [     ],   VDD [  VDD]
+	   M1  N:   VSS [  VSS],     D [    D],  N_33 [     ]
+	  M21  P:  N_18 [     ],   N_5 [ E_N0],   N_6 [     ]
+	   M4  N:   N_6 [     ],   N_5 [ E_N0],  N_34 [     ]
+	  M20  P:   N_6 [     ],     E [    E],  N_19 [     ]
+	   M2  N:  N_33 [     ],     E [    E],   N_6 [     ]
 	   M5  N:  N_34 [     ],  N_17 [     ],   VSS [  VSS]
+devices left:
 	   M8  N:  N_35 [     ],  N_12 [    C],   N_9 [     ]
 	   M9  N:   VSS [  VSS],   N_8 [     ],  N_35 [     ]
 	  M10  N:   N_8 [     ],   N_9 [     ],   VSS [  VSS]
@@ -25,10 +30,6 @@ devices left:
 	  M15  N:  N_36 [     ],   N_8 [     ],   VSS [  VSS]
 	  M16  N:  N_16 [     ],  N_12 [    C],  N_36 [     ]
 	  M17  N:  N_37 [     ],  N_17 [     ],   VSS [  VSS]
-	  M18  P:  N_18 [     ],     D [    D],   VDD [  VDD]
-	  M20  P:   N_6 [     ],     E [    E],  N_19 [     ]
-	  M21  P:   N_6 [     ],   N_5 [ E_N0],  N_18 [     ]
-	  M22  P:  N_19 [     ],  N_17 [     ],   VDD [  VDD]
 	  M24  P:   N_6 [     ],  N_12 [    C],   N_9 [     ]
 	  M25  P:  N_20 [     ],   N_8 [     ],   VDD [  VDD]
 	  M26  P:   N_8 [     ],   N_9 [     ],   VDD [  VDD]
@@ -40,22 +41,27 @@ devices left:
 	  M34  P:  N_22 [     ],  N_17 [     ],   VDD [  VDD]
 
 **********ff : DENRQ1**********
-clk       
+clk         CLK1
 	  M23  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M33  P:   VDD [  VDD],   N_2 [   CN],  N_15 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M15  N:   VSS [  VSS],   N_2 [   CN],  N_15 [    C]
-ininv_E_0 
+ininv_E_0   INV
 	  M19  P:   VDD [  VDD],     E [    E],   N_4 [ E_N0]
 	   M3  N:   VSS [  VSS],     E [    E],   N_4 [ E_N0]
-out_Q     
+out_Q       INV
 	  M34  P:   VDD [  VDD],  N_12 [     ],     Q [    Q]
 	  M16  N:   VSS [  VSS],  N_12 [     ],     Q [    Q]
-devices left:
-	   M1  N:  N_35 [     ],     D [    D],   VSS [  VSS]
-	   M2  N:   N_6 [     ],     E [    E],  N_35 [     ]
-	   M4  N:  N_36 [     ],   N_4 [ E_N0],   N_6 [     ]
+inputs      FCROSS_4
+	  M18  P:   VDD [  VDD],     D [    D],  N_24 [     ]
+	  M22  P:  N_25 [     ],  N_18 [     ],   VDD [  VDD]
+	   M1  N:   VSS [  VSS],     D [    D],  N_35 [     ]
+	  M20  P:  N_24 [     ],   N_4 [ E_N0],   N_6 [     ]
+	   M4  N:   N_6 [     ],   N_4 [ E_N0],  N_36 [     ]
+	  M21  P:   N_6 [     ],     E [    E],  N_25 [     ]
+	   M2  N:  N_35 [     ],     E [    E],   N_6 [     ]
 	   M5  N:  N_36 [     ],  N_18 [     ],   VSS [  VSS]
+devices left:
 	   M7  N:  N_37 [     ],  N_15 [    C],   N_9 [     ]
 	   M8  N:  N_37 [     ],   N_8 [     ],   VSS [  VSS]
 	   M9  N:   VSS [  VSS],   N_9 [     ],   N_8 [     ]
@@ -65,10 +71,6 @@ devices left:
 	  M13  N:   VSS [  VSS],  N_18 [     ],  N_39 [     ]
 	  M14  N:  N_39 [     ],   N_2 [   CN],  N_12 [     ]
 	  M17  N:  N_18 [     ],  N_12 [     ],   VSS [  VSS]
-	  M18  P:  N_24 [     ],     D [    D],   VDD [  VDD]
-	  M20  P:  N_24 [     ],   N_4 [ E_N0],   N_6 [     ]
-	  M21  P:  N_25 [     ],     E [    E],   N_6 [     ]
-	  M22  P:  N_25 [     ],  N_18 [     ],   VDD [  VDD]
 	  M24  P:   N_6 [     ],  N_15 [    C],   N_9 [     ]
 	  M25  P:  N_26 [     ],   N_8 [     ],   VDD [  VDD]
 	  M28  P:  N_26 [     ],   N_2 [   CN],   N_9 [     ]
@@ -80,23 +82,28 @@ devices left:
 	M26_M27  P:   N_8 [     ],   N_9 [     ],   VDD [  VDD]
 
 **********ff : DENRQ2**********
-clk       
+clk         CLK1
 	  M32  P:   N_6 [   CN],    CK [   CK],   VDD [  VDD]
 	  M24  P:   VDD [  VDD],   N_6 [   CN],  N_14 [    C]
 	   M4  N:   N_6 [   CN],    CK [   CK],   VSS [  VSS]
 	  M12  N:   VSS [  VSS],   N_6 [   CN],  N_14 [    C]
-ininv_E_0 
+ininv_E_0   INV
 	  M36  P:   VDD [  VDD],     E [    E],   N_8 [ E_N0]
 	   M8  N:   VSS [  VSS],     E [    E],   N_8 [ E_N0]
-out_Q     
+out_Q       INV
 	M19_M20  P:   VDD [  VDD],  N_12 [     ],     Q [    Q]
 	M1_M2  N:   VSS [  VSS],  N_12 [     ],     Q [    Q]
+inputs      FCROSS_4
+	  M37  P:   VDD [  VDD],     D [    D],  N_99 [     ]
+	  M33  P: N_100 [     ],   N_4 [     ],   VDD [  VDD]
+	   M9  N:   VSS [  VSS],     D [    D],  N_21 [     ]
+	  M35  P:  N_99 [     ],   N_8 [ E_N0],  N_10 [     ]
+	   M6  N:  N_10 [     ],   N_8 [ E_N0],  N_22 [     ]
+	  M34  P:  N_10 [     ],     E [    E], N_100 [     ]
+	   M7  N:  N_21 [     ],     E [    E],  N_10 [     ]
+	   M5  N:  N_22 [     ],   N_4 [     ],   VSS [  VSS]
 devices left:
 	   M3  N:   VSS [  VSS],  N_12 [     ],   N_4 [     ]
-	   M5  N:  N_22 [     ],   N_4 [     ],   VSS [  VSS]
-	   M6  N:  N_22 [     ],   N_8 [ E_N0],  N_10 [     ]
-	   M7  N:  N_10 [     ],     E [    E],  N_21 [     ]
-	   M9  N:  N_21 [     ],     D [    D],   VSS [  VSS]
 	  M10  N:  N_23 [     ],   N_4 [     ],   VSS [  VSS]
 	  M11  N:  N_12 [     ],   N_6 [   CN],  N_23 [     ]
 	  M13  N:   VSS [  VSS],  N_17 [     ],  N_24 [     ]
@@ -113,28 +120,27 @@ devices left:
 	  M27  P:  N_98 [     ],   N_6 [   CN],  N_19 [     ]
 	  M30  P:  N_98 [     ],  N_17 [     ],   VDD [  VDD]
 	  M31  P:  N_10 [     ],  N_14 [    C],  N_19 [     ]
-	  M33  P: N_100 [     ],   N_4 [     ],   VDD [  VDD]
-	  M34  P: N_100 [     ],     E [    E],  N_10 [     ]
-	  M35  P:  N_99 [     ],   N_8 [ E_N0],  N_10 [     ]
-	  M37  P:  N_99 [     ],     D [    D],   VDD [  VDD]
 	M28_M29  P:  N_17 [     ],  N_19 [     ],   VDD [  VDD]
 
 **********ff : DFANRQ0**********
-clk       
+clk         CLK1
 	  M26  P:  N_15 [   CN],    CK [   CK],   VDD [  VDD]
 	  M19  P:   VDD [  VDD],  N_15 [   CN],   N_8 [    C]
 	   M1  N:  N_15 [   CN],    CK [   CK],   VSS [  VSS]
 	   M8  N:   VSS [  VSS],  N_15 [   CN],   N_8 [    C]
-out_Q     
+out_Q       INV
 	  M24  P:   VDD [  VDD],  N_10 [     ],     Q [    Q]
 	  M13  N:   VSS [  VSS],  N_10 [     ],     Q [    Q]
+inputs      LOGIC_NAND2
+	  M27  P:   N_4 [     ],    D0 [   D0],   VDD [  VDD]
+	  M28  P:   VDD [  VDD],    D1 [   D1],   N_4 [     ]
+	   M7  N:  N_26 [     ],    D1 [   D1],   N_4 [     ]
+	   M2  N:   VSS [  VSS],    D0 [   D0],  N_26 [     ]
 devices left:
-	   M2  N:  N_26 [     ],    D0 [   D0],   VSS [  VSS]
 	   M3  N:   N_5 [     ],  N_15 [   CN],   N_4 [     ]
 	   M4  N:  N_27 [     ],   N_8 [    C],   N_5 [     ]
 	   M5  N:   VSS [  VSS],   N_2 [     ],  N_27 [     ]
 	   M6  N:   VSS [  VSS],   N_5 [     ],   N_2 [     ]
-	   M7  N:   N_4 [     ],    D1 [   D1],  N_26 [     ]
 	   M9  N:  N_28 [     ],   N_8 [    C],  N_10 [     ]
 	  M10  N:  N_29 [     ],  N_11 [     ],   VSS [  VSS]
 	  M11  N:  N_28 [     ],   N_2 [     ],   VSS [  VSS]
@@ -149,21 +155,22 @@ devices left:
 	  M22  P:  N_10 [     ],  N_15 [   CN],  N_17 [     ]
 	  M23  P:  N_18 [     ],   N_8 [    C],  N_10 [     ]
 	  M25  P:  N_11 [     ],  N_10 [     ],   VDD [  VDD]
-	  M27  P:   VDD [  VDD],    D0 [   D0],   N_4 [     ]
-	  M28  P:   N_4 [     ],    D1 [   D1],   VDD [  VDD]
 
 **********ff : DFANRQ1**********
-clk       
+clk         CLK1
 	  M15  P:   N_3 [   CN],    CK [   CK],   VDD [  VDD]
 	  M28  P:   VDD [  VDD],   N_3 [   CN],   N_9 [    C]
 	   M1  N:   N_3 [   CN],    CK [   CK],   VSS [  VSS]
 	  M12  N:   VSS [  VSS],   N_3 [   CN],   N_9 [    C]
-out_Q     
+out_Q       INV
 	  M22  P:   VDD [  VDD],  N_11 [     ],     Q [    Q]
 	  M13  N:   VSS [  VSS],  N_11 [     ],     Q [    Q]
+inputs      LOGIC_NAND2
+	  M16  P:   N_5 [     ],    D0 [   D0],   VDD [  VDD]
+	  M17  P:   VDD [  VDD],    D1 [   D1],   N_5 [     ]
+	   M3  N:  N_15 [     ],    D1 [   D1],   N_5 [     ]
+	   M2  N:   VSS [  VSS],    D0 [   D0],  N_15 [     ]
 devices left:
-	   M2  N:  N_15 [     ],    D0 [   D0],   VSS [  VSS]
-	   M3  N:   N_5 [     ],    D1 [   D1],  N_15 [     ]
 	   M4  N:   N_6 [     ],   N_3 [   CN],   N_5 [     ]
 	   M5  N:   VSS [  VSS],   N_2 [     ],  N_16 [     ]
 	   M6  N:   VSS [  VSS],   N_6 [     ],   N_2 [     ]
@@ -173,8 +180,6 @@ devices left:
 	  M10  N:  N_17 [     ],  N_14 [     ],   VSS [  VSS]
 	  M11  N:  N_18 [     ],   N_2 [     ],   VSS [  VSS]
 	  M14  N:  N_14 [     ],  N_11 [     ],   VSS [  VSS]
-	  M16  P:   N_5 [     ],    D0 [   D0],   VDD [  VDD]
-	  M17  P:   N_5 [     ],    D1 [   D1],   VDD [  VDD]
 	  M18  P:  N_30 [     ],   N_3 [   CN],   N_6 [     ]
 	  M19  P:  N_30 [     ],   N_2 [     ],   VDD [  VDD]
 	  M20  P:   VDD [  VDD],   N_6 [     ],   N_2 [     ]
@@ -186,17 +191,20 @@ devices left:
 	  M27  P:  N_32 [     ],   N_2 [     ],   VDD [  VDD]
 
 **********ff : DFANRQ2**********
-clk       
+clk         CLK1
 	  M17  P:   N_5 [   CN],    CK [   CK],   VDD [  VDD]
 	  M25  P:   VDD [  VDD],   N_5 [   CN],  N_11 [    C]
 	   M1  N:   N_5 [   CN],    CK [   CK],   VSS [  VSS]
 	   M9  N:   VSS [  VSS],   N_5 [   CN],  N_11 [    C]
-out_Q     
+out_Q       INV
 	M30_M31  P:   VDD [  VDD],  N_13 [     ],     Q [    Q]
 	M14_M15  N:   VSS [  VSS],  N_13 [     ],     Q [    Q]
-devices left:
-	   M2  N:  N_16 [     ],    D1 [   D1],   VSS [  VSS]
+inputs      LOGIC_NAND2
+	  M18  P:   N_6 [     ],    D1 [   D1],   VDD [  VDD]
+	  M19  P:   VDD [  VDD],    D0 [   D0],   N_6 [     ]
 	   M3  N:  N_16 [     ],    D0 [   D0],   N_6 [     ]
+	   M2  N:   VSS [  VSS],    D1 [   D1],  N_16 [     ]
+devices left:
 	   M4  N:   N_7 [     ],   N_5 [   CN],   N_6 [     ]
 	   M5  N:   VSS [  VSS],   N_3 [     ],  N_17 [     ]
 	   M8  N:  N_17 [     ],  N_11 [    C],   N_7 [     ]
@@ -205,8 +213,6 @@ devices left:
 	  M12  N:  N_19 [     ],   N_5 [   CN],  N_13 [     ]
 	  M13  N:   VSS [  VSS],  N_10 [     ],  N_19 [     ]
 	  M16  N:  N_10 [     ],  N_13 [     ],   VSS [  VSS]
-	  M18  P:   VDD [  VDD],    D1 [   D1],   N_6 [     ]
-	  M19  P:   N_6 [     ],    D0 [   D0],   VDD [  VDD]
 	  M20  P:  N_31 [     ],   N_5 [   CN],   N_7 [     ]
 	  M21  P:  N_31 [     ],   N_3 [     ],   VDD [  VDD]
 	  M24  P:   N_7 [     ],  N_11 [    C],   N_6 [     ]
@@ -219,18 +225,18 @@ devices left:
 	M22_M23  P:   N_3 [     ],   N_7 [     ],   VDD [  VDD]
 
 **********ff : DFBFB0**********
-clk       
+clk         CLK1
 	  M18  P:   N_2 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M17  P:   VDD [  VDD],   N_2 [   CN],   N_3 [    C]
 	   M2  N:   N_2 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M1  N:   VSS [  VSS],   N_2 [   CN],   N_3 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M29  P:   VDD [  VDD],    RN [   RN],  N_17 [RN_N0]
 	  M13  N:   VSS [  VSS],    RN [   RN],  N_17 [RN_N0]
-out_Q     
+out_Q       INV
 	  M30  P:   VDD [  VDD],  N_20 [     ],     Q [    Q]
 	  M14  N:   VSS [  VSS],  N_20 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M31  P:   VDD [  VDD],  N_11 [     ],    QN [   QN]
 	  M15  N:   VSS [  VSS],  N_11 [     ],    QN [   QN]
 devices left:
@@ -258,18 +264,18 @@ devices left:
 	  M32  P:  N_20 [     ],  N_11 [     ],   VDD [  VDD]
 
 **********ff : DFBFB1**********
-clk       
+clk         CLK1
 	  M18  P:   N_2 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M17  P:   VDD [  VDD],   N_2 [   CN],   N_3 [    C]
 	   M2  N:   N_2 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M1  N:   VSS [  VSS],   N_2 [   CN],   N_3 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M33  P:   VDD [  VDD],    RN [   RN],  N_10 [RN_N0]
 	   M5  N:   VSS [  VSS],    RN [   RN],  N_10 [RN_N0]
-out_QN    
+out_QN      INV
 	  M19  P:   VDD [  VDD],  N_14 [     ],    QN [   QN]
 	   M3  N:   VSS [  VSS],  N_14 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M34  P:   VDD [  VDD],   N_7 [     ],     Q [    Q]
 	   M6  N:   VSS [  VSS],   N_7 [     ],     Q [    Q]
 devices left:
@@ -297,18 +303,18 @@ devices left:
 	M29_M30  P:  N_33 [     ],  N_10 [RN_N0],   VDD [  VDD]
 
 **********ff : DFBFB2**********
-clk       
+clk         CLK1
 	  M22  P:   N_4 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M26  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M5  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M38  P:   VDD [  VDD],    RN [   RN],  N_19 [RN_N0]
 	  M16  N:   VSS [  VSS],    RN [   RN],  N_19 [RN_N0]
-out_Q     
+out_Q       INV
 	M39_M40  P:   VDD [  VDD],  N_23 [     ],     Q [    Q]
 	M17_M18  N:   VSS [  VSS],  N_23 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	M41_M42  P:   VDD [  VDD],   N_8 [     ],    QN [   QN]
 	M19_M20  N:   VSS [  VSS],   N_8 [     ],    QN [   QN]
 devices left:
@@ -336,18 +342,18 @@ devices left:
 	M35_M36_M37  P:  N_35 [     ],  N_19 [RN_N0],   VDD [  VDD]
 
 **********ff : DFBRB0**********
-clk       
+clk         CLK1
 	  M17  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M18  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M26  P:   VDD [  VDD],    RN [   RN],  N_14 [RN_N0]
 	  M11  N:   VSS [  VSS],    RN [   RN],  N_14 [RN_N0]
-out_Q     
+out_Q       INV
 	  M27  P:   VDD [  VDD],  N_17 [     ],     Q [    Q]
 	  M12  N:   VSS [  VSS],  N_17 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M28  P:   VDD [  VDD],  N_11 [     ],    QN [   QN]
 	  M13  N:   VSS [  VSS],  N_11 [     ],    QN [   QN]
 devices left:
@@ -375,18 +381,18 @@ devices left:
 	  M32  P:   VDD [  VDD],    SN [   SN],  N_11 [     ]
 
 **********ff : DFBRB1**********
-clk       
+clk         CLK1
 	  M23  P:  N_21 [   CN],    CK [   CK],   VDD [  VDD]
 	  M22  P:   VDD [  VDD],  N_21 [   CN],  N_19 [    C]
 	  M16  N:  N_21 [   CN],    CK [   CK],   VSS [  VSS]
 	  M15  N:   VSS [  VSS],  N_21 [   CN],  N_19 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M20  P:   VDD [  VDD],    RN [   RN],   N_7 [RN_N0]
 	   M4  N:   VSS [  VSS],    RN [   RN],   N_7 [RN_N0]
-out_QN    
+out_QN      INV
 	  M17  P:   VDD [  VDD],  N_10 [     ],    QN [   QN]
 	   M1  N:   VSS [  VSS],  N_10 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M19  P:   VDD [  VDD],   N_4 [     ],     Q [    Q]
 	   M3  N:   VSS [  VSS],   N_4 [     ],     Q [    Q]
 devices left:
@@ -414,18 +420,18 @@ devices left:
 	M27_M28  P:  N_13 [     ],  N_18 [     ],  N_31 [     ]
 
 **********ff : DFBRB2**********
-clk       
+clk         CLK1
 	  M29  P:   N_5 [   CN],    CK [   CK],   VDD [  VDD]
 	  M33  P:   VDD [  VDD],   N_5 [   CN],   N_2 [    C]
 	   M1  N:   N_5 [   CN],    CK [   CK],   VSS [  VSS]
 	   M6  N:   VSS [  VSS],   N_5 [   CN],   N_2 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M26  P:   VDD [  VDD],    RN [   RN],  N_16 [RN_N0]
 	  M13  N:   VSS [  VSS],    RN [   RN],  N_16 [RN_N0]
-out_Q     
+out_Q       INV
 	M27_M28  P:   VDD [  VDD],  N_24 [     ],     Q [    Q]
 	M14_M15  N:   VSS [  VSS],  N_24 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	M23_M24  P:   VDD [  VDD],  N_12 [     ],    QN [   QN]
 	M20_M21  N:   VSS [  VSS],  N_12 [     ],    QN [   QN]
 devices left:
@@ -453,18 +459,18 @@ devices left:
 	M40_M41_M42_M43  P:   N_9 [     ],   N_6 [     ],  N_36 [     ]
 
 **********ff : DFBRBM**********
-clk       
+clk         CLK1
 	  M17  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M18  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M24  P:   VDD [  VDD],    RN [   RN],  N_10 [RN_N0]
 	   M8  N:   VSS [  VSS],    RN [   RN],  N_10 [RN_N0]
-out_Q     
+out_Q       INV
 	  M23  P:   VDD [  VDD],  N_13 [     ],     Q [    Q]
 	   M7  N:   VSS [  VSS],  N_13 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M31  P:   VDD [  VDD],  N_17 [     ],    QN [   QN]
 	   M9  N:   VSS [  VSS],  N_17 [     ],    QN [   QN]
 devices left:
@@ -492,15 +498,15 @@ devices left:
 	  M32  P:  N_13 [     ],  N_17 [     ],   VDD [  VDD]
 
 **********ff : DFBRQ0**********
-clk       
+clk         CLK1
 	  M19  P:   N_8 [   CN],    CK [   CK],   VDD [  VDD]
 	  M20  P:   VDD [  VDD],   N_8 [   CN],   N_6 [    C]
 	   M4  N:   N_8 [   CN],    CK [   CK],   VSS [  VSS]
 	   M5  N:   VSS [  VSS],   N_8 [   CN],   N_6 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M18  P:   VDD [  VDD],    RN [   RN],  N_11 [RN_N0]
 	   M7  N:   VSS [  VSS],    RN [   RN],  N_11 [RN_N0]
-out_Q     
+out_Q       INV
 	  M17  P:   VDD [  VDD],   N_2 [     ],     Q [    Q]
 	   M6  N:   VSS [  VSS],   N_2 [     ],     Q [    Q]
 devices left:
@@ -528,15 +534,15 @@ devices left:
 	  M30  P:   N_4 [     ],   N_8 [   CN],  N_16 [     ]
 
 **********ff : DFBRQ1**********
-clk       
+clk         CLK1
 	  M22  P:  N_11 [   CN],    CK [   CK],   VDD [  VDD]
 	  M23  P:   VDD [  VDD],  N_11 [   CN],   N_9 [    C]
 	   M8  N:  N_11 [   CN],    CK [   CK],   VSS [  VSS]
 	   M9  N:   VSS [  VSS],  N_11 [   CN],   N_9 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M24  P:   VDD [  VDD],    RN [   RN],  N_14 [RN_N0]
 	  M10  N:   VSS [  VSS],    RN [   RN],  N_14 [RN_N0]
-out_Q     
+out_Q       INV
 	  M25  P:   VDD [  VDD],   N_6 [     ],     Q [    Q]
 	  M11  N:   VSS [  VSS],   N_6 [     ],     Q [    Q]
 devices left:
@@ -564,15 +570,15 @@ devices left:
 	M29_M30  P:  N_16 [     ],   N_4 [     ],  N_30 [     ]
 
 **********ff : DFBRQ2**********
-clk       
+clk         CLK1
 	  M21  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M25  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M6  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M40  P:   VDD [  VDD],    RN [   RN],   N_9 [RN_N0]
 	   M9  N:   VSS [  VSS],    RN [   RN],   N_9 [RN_N0]
-out_Q     
+out_Q       INV
 	M38_M39  P:   VDD [  VDD],   N_8 [     ],     Q [    Q]
 	M7_M8  N:   VSS [  VSS],   N_8 [     ],     Q [    Q]
 devices left:
@@ -600,18 +606,18 @@ devices left:
 	M34_M35_M36  P:  N_35 [     ],   N_9 [RN_N0],   VDD [  VDD]
 
 **********ff : DFCFB0**********
-clk       
+clk         CLK1
 	  M16  P:   N_4 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M20  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M5  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M27  P:   VDD [  VDD],    RN [   RN],  N_15 [RN_N0]
 	  M14  N:   VSS [  VSS],    RN [   RN],  N_15 [RN_N0]
-out_Q     
+out_Q       INV
 	  M28  P:   VDD [  VDD],  N_18 [     ],     Q [    Q]
 	  M15  N:   VSS [  VSS],  N_18 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M29  P:   VDD [  VDD],   N_9 [     ],    QN [   QN]
 	  M12  N:   VSS [  VSS],   N_9 [     ],    QN [   QN]
 devices left:
@@ -637,18 +643,18 @@ devices left:
 	  M30  P:  N_18 [     ],   N_9 [     ],   VDD [  VDD]
 
 **********ff : DFCFB1**********
-clk       
+clk         CLK1
 	  M25  P:   N_4 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M29  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M5  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M32  P:   VDD [  VDD],    RN [   RN],  N_18 [RN_N0]
 	  M16  N:   VSS [  VSS],    RN [   RN],  N_18 [RN_N0]
-out_QN    
+out_QN      INV
 	  M17  P:   VDD [  VDD],  N_10 [     ],    QN [   QN]
 	   M7  N:   VSS [  VSS],  N_10 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M31  P:   VDD [  VDD],   N_9 [     ],     Q [    Q]
 	  M15  N:   VSS [  VSS],   N_9 [     ],     Q [    Q]
 devices left:
@@ -674,18 +680,18 @@ devices left:
 	M22_M23  P:  N_11 [     ],   N_2 [    C],  N_10 [     ]
 
 **********ff : DFCFB2**********
-clk       
+clk         CLK1
 	  M20  P:   N_4 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M25  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M5  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M35  P:   VDD [  VDD],    RN [   RN],  N_17 [RN_N0]
 	  M14  N:   VSS [  VSS],    RN [   RN],  N_17 [RN_N0]
-out_Q     
+out_Q       INV
 	M36_M37  P:   VDD [  VDD],  N_21 [     ],     Q [    Q]
 	M15_M16  N:   VSS [  VSS],  N_21 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	M38_M39  P:   VDD [  VDD],   N_8 [     ],    QN [   QN]
 	M17_M18  N:   VSS [  VSS],   N_8 [     ],    QN [   QN]
 devices left:
@@ -711,18 +717,18 @@ devices left:
 	M32_M33  P:   VDD [  VDD],  N_17 [RN_N0],  N_31 [     ]
 
 **********ff : DFCRB0**********
-clk       
+clk         CLK1
 	  M16  P:   N_5 [   CN],    CK [   CK],   VDD [  VDD]
 	  M20  P:   VDD [  VDD],   N_5 [   CN],   N_2 [    C]
 	   M1  N:   N_5 [   CN],    CK [   CK],   VSS [  VSS]
 	   M6  N:   VSS [  VSS],   N_5 [   CN],   N_2 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M28  P:   VDD [  VDD],    RN [   RN],  N_16 [RN_N0]
 	  M12  N:   VSS [  VSS],    RN [   RN],  N_16 [RN_N0]
-out_Q     
+out_Q       INV
 	  M29  P:   VDD [  VDD],  N_19 [     ],     Q [    Q]
 	  M13  N:   VSS [  VSS],  N_19 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M30  P:   VDD [  VDD],  N_10 [     ],    QN [   QN]
 	  M14  N:   VSS [  VSS],  N_10 [     ],    QN [   QN]
 devices left:
@@ -748,18 +754,18 @@ devices left:
 	M22_M23  P:   N_8 [     ],   N_6 [     ],   N_7 [     ]
 
 **********ff : DFCRB1**********
-clk       
+clk         CLK1
 	  M19  P:   N_7 [   CN],    CK [   CK],   VDD [  VDD]
 	  M23  P:   VDD [  VDD],   N_7 [   CN],   N_5 [    C]
 	   M3  N:   N_7 [   CN],    CK [   CK],   VSS [  VSS]
 	   M8  N:   VSS [  VSS],   N_7 [   CN],   N_5 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M32  P:   VDD [  VDD],    RN [   RN],  N_18 [RN_N0]
 	  M15  N:   VSS [  VSS],    RN [   RN],  N_18 [RN_N0]
-out_QN    
+out_QN      INV
 	  M17  P:   VDD [  VDD],  N_11 [     ],    QN [   QN]
 	   M1  N:   VSS [  VSS],  N_11 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M33  P:   VDD [  VDD],   N_4 [     ],     Q [    Q]
 	  M16  N:   VSS [  VSS],   N_4 [     ],     Q [    Q]
 devices left:
@@ -785,18 +791,18 @@ devices left:
 	M30_M31  P:  N_27 [     ],  N_18 [RN_N0],   VDD [  VDD]
 
 **********ff : DFCRB2**********
-clk       
+clk         CLK1
 	  M19  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M20  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_D_0 
+ininv_D_0   INV
 	  M21  P:   VDD [  VDD],     D [    D],   N_6 [ D_N0]
 	   M3  N:   VSS [  VSS],     D [    D],   N_6 [ D_N0]
-out_QN    
+out_QN      INV
 	M35_M36  P:   VDD [  VDD],  N_17 [     ],    QN [   QN]
 	M14_M15  N:   VSS [  VSS],  N_17 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M37_M38  P:   VDD [  VDD],  N_11 [     ],     Q [    Q]
 	M16_M17  N:   VSS [  VSS],  N_11 [     ],     Q [    Q]
 devices left:
@@ -824,18 +830,18 @@ devices left:
 	M33_M34  P:  N_10 [     ],    RN [   RN],   VDD [  VDD]
 
 **********ff : DFCRBM**********
-clk       
+clk         CLK1
 	  M17  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M21  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M6  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M30  P:   VDD [  VDD],    RN [   RN],  N_15 [RN_N0]
 	  M13  N:   VSS [  VSS],    RN [   RN],  N_15 [RN_N0]
-out_Q     
+out_Q       INV
 	  M31  P:   VDD [  VDD],  N_18 [     ],     Q [    Q]
 	  M14  N:   VSS [  VSS],  N_18 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M32  P:   VDD [  VDD],   N_7 [     ],    QN [   QN]
 	  M15  N:   VSS [  VSS],   N_7 [     ],    QN [   QN]
 devices left:
@@ -861,15 +867,15 @@ devices left:
 	M28_M29  P:  N_28 [     ],  N_15 [RN_N0],   VDD [  VDD]
 
 **********ff : DFCRQ0**********
-clk       
+clk         CLK1
 	  M17  P:   N_7 [   CN],    CK [   CK],   VDD [  VDD]
 	  M16  P:   VDD [  VDD],   N_7 [   CN],   N_5 [    C]
 	   M4  N:   N_7 [   CN],    CK [   CK],   VSS [  VSS]
 	   M3  N:   VSS [  VSS],   N_7 [   CN],   N_5 [    C]
-ininv_D_0 
+ininv_D_0   INV
 	  M21  P:   VDD [  VDD],     D [    D],   N_9 [ D_N0]
 	   M9  N:   VSS [  VSS],     D [    D],   N_9 [ D_N0]
-out_Q     
+out_Q       INV
 	  M25  P:   VDD [  VDD],  N_13 [     ],     Q [    Q]
 	   M1  N:   VSS [  VSS],  N_13 [     ],     Q [    Q]
 devices left:
@@ -897,15 +903,15 @@ devices left:
 	  M30  P:  N_34 [     ],   N_4 [     ],   VDD [  VDD]
 
 **********ff : DFCRQ1**********
-clk       
+clk         CLK1
 	  M16  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M17  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_D_0 
+ininv_D_0   INV
 	  M20  P:   VDD [  VDD],     D [    D],   N_6 [ D_N0]
 	   M3  N:   VSS [  VSS],     D [    D],   N_6 [ D_N0]
-out_Q     
+out_Q       INV
 	  M18  P:   VDD [  VDD],  N_11 [     ],     Q [    Q]
 	  M14  N:   VSS [  VSS],  N_11 [     ],     Q [    Q]
 devices left:
@@ -933,15 +939,15 @@ devices left:
 	M23_M24  P:  N_10 [     ],   N_8 [     ],   VDD [  VDD]
 
 **********ff : DFCRQ2**********
-clk       
+clk         CLK1
 	  M18  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M19  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_D_0 
+ininv_D_0   INV
 	  M20  P:   VDD [  VDD],     D [    D],   N_6 [ D_N0]
 	   M3  N:   VSS [  VSS],     D [    D],   N_6 [ D_N0]
-out_Q     
+out_Q       INV
 	M29_M30  P:   VDD [  VDD],  N_11 [     ],     Q [    Q]
 	M14_M15_M16  N:   VSS [  VSS],  N_11 [     ],     Q [    Q]
 devices left:
@@ -969,15 +975,15 @@ devices left:
 	M36_M37  P:   VDD [  VDD],    RN [   RN],  N_11 [     ]
 
 **********ff : DFCRQ3**********
-clk       
+clk         CLK1
 	  M18  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M19  P:   VDD [  VDD],   N_4 [   CN],   N_3 [    C]
 	   M1  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_3 [    C]
-ininv_D_0 
+ininv_D_0   INV
 	  M20  P:   VDD [  VDD],     D [    D],   N_8 [ D_N0]
 	   M3  N:   VSS [  VSS],     D [    D],   N_8 [ D_N0]
-out_Q     
+out_Q       INV
 	M32_M33_M34  P:   VDD [  VDD],  N_12 [     ],     Q [    Q]
 	M14_M15_M16  N:   VSS [  VSS],  N_12 [     ],     Q [    Q]
 devices left:
@@ -1003,15 +1009,15 @@ devices left:
 	M27_M28  P:   N_6 [     ],   N_4 [   CN],  N_12 [     ]
 
 **********ff : DFCRQM**********
-clk       
+clk         CLK1
 	  M16  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M17  P:   VDD [  VDD],   N_4 [   CN],   N_3 [    C]
 	   M1  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_3 [    C]
-ininv_D_0 
+ininv_D_0   INV
 	  M19  P:   VDD [  VDD],     D [    D],   N_7 [ D_N0]
 	   M5  N:   VSS [  VSS],     D [    D],   N_7 [ D_N0]
-out_Q     
+out_Q       INV
 	  M29  P:   VDD [  VDD],  N_12 [     ],     Q [    Q]
 	  M14  N:   VSS [  VSS],  N_12 [     ],     Q [    Q]
 devices left:
@@ -1039,15 +1045,15 @@ devices left:
 	  M30  P:  N_17 [     ],  N_12 [     ],   VDD [  VDD]
 
 **********ff : DFNFB0**********
-clk       
+clk         CLK1
 	  M15  P:   N_5 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M23  P:   VDD [  VDD],   N_5 [   CN],   N_9 [    C]
 	   M1  N:   N_5 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M9  N:   VSS [  VSS],   N_5 [   CN],   N_9 [    C]
-out_QN    
+out_QN      INV
 	  M25  P:   VDD [  VDD],  N_14 [     ],    QN [   QN]
 	  M11  N:   VSS [  VSS],  N_14 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M27  P:   VDD [  VDD],  N_11 [     ],     Q [    Q]
 	  M13  N:   VSS [  VSS],  N_11 [     ],     Q [    Q]
 devices left:
@@ -1073,15 +1079,15 @@ devices left:
 	  M28  P:  N_14 [     ],  N_11 [     ],   VDD [  VDD]
 
 **********ff : DFNFB1**********
-clk       
+clk         CLK1
 	  M15  P:   N_4 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M24  P:   VDD [  VDD],   N_4 [   CN],  N_12 [    C]
 	   M1  N:   N_4 [   CN],   CKN [   CK],   VSS [  VSS]
 	  M13  N:   VSS [  VSS],   N_4 [   CN],  N_12 [    C]
-out_Q     
+out_Q       INV
 	  M27  P:   VDD [  VDD],  N_14 [     ],     Q [    Q]
 	   M7  N:   VSS [  VSS],  N_14 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M22  P:   VDD [  VDD],   N_9 [     ],    QN [   QN]
 	  M11  N:   VSS [  VSS],   N_9 [     ],    QN [   QN]
 devices left:
@@ -1107,15 +1113,15 @@ devices left:
 	  M28  P:   N_9 [     ],  N_14 [     ],   VDD [  VDD]
 
 **********ff : DFNFB2**********
-clk       
+clk         CLK1
 	  M17  P:   N_4 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M23  P:   VDD [  VDD],   N_4 [   CN],   N_9 [    C]
 	   M1  N:   N_4 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M7  N:   VSS [  VSS],   N_4 [   CN],   N_9 [    C]
-out_QN    
+out_QN      INV
 	M27_M28  P:   VDD [  VDD],  N_15 [     ],    QN [   QN]
 	M11_M12  N:   VSS [  VSS],  N_15 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M30_M31  P:   VDD [  VDD],  N_11 [     ],     Q [    Q]
 	M14_M15  N:   VSS [  VSS],  N_11 [     ],     Q [    Q]
 devices left:
@@ -1141,12 +1147,12 @@ devices left:
 	  M32  P:  N_15 [     ],  N_11 [     ],   VDD [  VDD]
 
 **********ff : DFNFQ0**********
-clk       
+clk         CLK1
 	  M26  P:  N_11 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M16  P:   VDD [  VDD],  N_11 [   CN],   N_6 [    C]
 	  M13  N:  N_11 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M5  N:   VSS [  VSS],  N_11 [   CN],   N_6 [    C]
-out_Q     
+out_Q       INV
 	  M14  P:   VDD [  VDD],   N_8 [     ],     Q [    Q]
 	   M1  N:   VSS [  VSS],   N_8 [     ],     Q [    Q]
 devices left:
@@ -1172,12 +1178,12 @@ devices left:
 	  M25  P:  N_16 [     ],     D [    D],   VDD [  VDD]
 
 **********ff : DFNFQ1**********
-clk       
+clk         CLK1
 	  M16  P:   N_7 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M23  P:   VDD [  VDD],   N_7 [   CN],  N_11 [    C]
 	   M3  N:   N_7 [   CN],   CKN [   CK],   VSS [  VSS]
 	  M10  N:   VSS [  VSS],   N_7 [   CN],  N_11 [    C]
-out_Q     
+out_Q       INV
 	  M14  P:   VDD [  VDD],  N_13 [     ],     Q [    Q]
 	   M1  N:   VSS [  VSS],  N_13 [     ],     Q [    Q]
 devices left:
@@ -1203,12 +1209,12 @@ devices left:
 	  M26  P:  N_33 [     ],   N_4 [     ],   VDD [  VDD]
 
 **********ff : DFNFQ2**********
-clk       
+clk         CLK1
 	  M15  P:   N_5 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M25  P:   VDD [  VDD],   N_5 [   CN],  N_12 [    C]
 	   M4  N:   N_5 [   CN],   CKN [   CK],   VSS [  VSS]
 	  M11  N:   VSS [  VSS],   N_5 [   CN],  N_12 [    C]
-out_Q     
+out_Q       INV
 	M21_M22  P:   VDD [  VDD],  N_14 [     ],     Q [    Q]
 	M1_M2  N:   VSS [  VSS],  N_14 [     ],     Q [    Q]
 devices left:
@@ -1234,15 +1240,15 @@ devices left:
 	  M28  P:  N_14 [     ],   N_5 [   CN],  N_17 [     ]
 
 **********ff : DFNRB0**********
-clk       
+clk         CLK1
 	  M26  P:  N_11 [   CN],    CK [   CK],   VDD [  VDD]
 	  M22  P:   VDD [  VDD],  N_11 [   CN],   N_7 [    C]
 	  M11  N:  N_11 [   CN],    CK [   CK],   VSS [  VSS]
 	   M8  N:   VSS [  VSS],  N_11 [   CN],   N_7 [    C]
-out_Q     
+out_Q       INV
 	  M15  P:   VDD [  VDD],   N_9 [     ],     Q [    Q]
 	   M1  N:   VSS [  VSS],   N_9 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M17  P:   VDD [  VDD],   N_4 [     ],    QN [   QN]
 	   M3  N:   VSS [  VSS],   N_4 [     ],    QN [   QN]
 devices left:
@@ -1268,15 +1274,15 @@ devices left:
 	  M28  P:  N_28 [     ],     D [    D],   VDD [  VDD]
 
 **********ff : DFNRB1**********
-clk       
+clk         CLK1
 	  M28  P:  N_11 [   CN],    CK [   CK],   VDD [  VDD]
 	  M22  P:   VDD [  VDD],  N_11 [   CN],   N_7 [    C]
 	  M14  N:  N_11 [   CN],    CK [   CK],   VSS [  VSS]
 	   M8  N:   VSS [  VSS],  N_11 [   CN],   N_7 [    C]
-out_Q     
+out_Q       INV
 	  M15  P:   VDD [  VDD],   N_9 [     ],     Q [    Q]
 	   M1  N:   VSS [  VSS],   N_9 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M17  P:   VDD [  VDD],   N_4 [     ],    QN [   QN]
 	   M3  N:   VSS [  VSS],   N_4 [     ],    QN [   QN]
 devices left:
@@ -1302,15 +1308,15 @@ devices left:
 	  M27  P:  N_73 [     ],     D [    D],   VDD [  VDD]
 
 **********ff : DFNRB2**********
-clk       
+clk         CLK1
 	  M20  P:   N_5 [   CN],    CK [   CK],   VDD [  VDD]
 	  M25  P:   VDD [  VDD],   N_5 [   CN],  N_14 [    C]
 	   M3  N:   N_5 [   CN],    CK [   CK],   VSS [  VSS]
 	  M11  N:   VSS [  VSS],   N_5 [   CN],  N_14 [    C]
-out_Q     
+out_Q       INV
 	M32_M33  P:   VDD [  VDD],  N_16 [     ],     Q [    Q]
 	M8_M9  N:   VSS [  VSS],  N_16 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	M28_M29  P:   VDD [  VDD],  N_10 [     ],    QN [   QN]
 	M15_M16  N:   VSS [  VSS],  N_10 [     ],    QN [   QN]
 devices left:
@@ -1336,12 +1342,12 @@ devices left:
 	M21_M22  P:   N_3 [     ],   N_6 [     ],   VDD [  VDD]
 
 **********ff : DFNRQ0**********
-clk       
+clk         CLK1
 	  M17  P:   N_5 [   CN],    CK [   CK],   VDD [  VDD]
 	  M24  P:   VDD [  VDD],   N_5 [   CN],   N_9 [    C]
 	   M4  N:   N_5 [   CN],    CK [   CK],   VSS [  VSS]
 	  M11  N:   VSS [  VSS],   N_5 [   CN],   N_9 [    C]
-out_Q     
+out_Q       INV
 	  M25  P:   VDD [  VDD],  N_10 [     ],     Q [    Q]
 	  M12  N:   VSS [  VSS],  N_10 [     ],     Q [    Q]
 devices left:
@@ -1367,12 +1373,12 @@ devices left:
 	  M26  P:  N_13 [     ],  N_10 [     ],   VDD [  VDD]
 
 **********ff : DFNRQ1**********
-clk       
+clk         CLK1
 	  M14  P:   N_3 [   CN],    CK [   CK],   VDD [  VDD]
 	  M20  P:   VDD [  VDD],   N_3 [   CN],   N_8 [    C]
 	   M1  N:   N_3 [   CN],    CK [   CK],   VSS [  VSS]
 	   M7  N:   VSS [  VSS],   N_3 [   CN],   N_8 [    C]
-out_Q     
+out_Q       INV
 	  M25  P:   VDD [  VDD],  N_10 [     ],     Q [    Q]
 	  M12  N:   VSS [  VSS],  N_10 [     ],     Q [    Q]
 devices left:
@@ -1398,12 +1404,12 @@ devices left:
 	  M26  P:  N_13 [     ],  N_10 [     ],   VDD [  VDD]
 
 **********ff : DFNRQ2**********
-clk       
+clk         CLK1
 	  M24  P:  N_12 [   CN],    CK [   CK],   VDD [  VDD]
 	  M22  P:   VDD [  VDD],  N_12 [   CN],   N_4 [    C]
 	   M9  N:  N_12 [   CN],    CK [   CK],   VSS [  VSS]
 	   M6  N:   VSS [  VSS],  N_12 [   CN],   N_4 [    C]
-out_Q     
+out_Q       INV
 	M20_M21  P:   VDD [  VDD],   N_6 [     ],     Q [    Q]
 	M3_M4  N:   VSS [  VSS],   N_6 [     ],     Q [    Q]
 devices left:
@@ -1429,15 +1435,15 @@ devices left:
 	M28_M29  P:  N_10 [     ],  N_13 [     ],   VDD [  VDD]
 
 **********ff : DFPFB0**********
-clk       
+clk         CLK1
 	  M15  P:   N_4 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M19  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M6  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-out_Q     
+out_Q       INV
 	  M26  P:   VDD [  VDD],  N_16 [     ],     Q [    Q]
 	  M14  N:   VSS [  VSS],  N_16 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M27  P:   VDD [  VDD],  N_10 [     ],    QN [   QN]
 	   M7  N:   VSS [  VSS],  N_10 [     ],    QN [   QN]
 devices left:
@@ -1463,15 +1469,15 @@ devices left:
 	  M28  P:  N_16 [     ],  N_10 [     ],   VDD [  VDD]
 
 **********ff : DFPFB1**********
-clk       
+clk         CLK1
 	  M15  P:   N_3 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M20  P:   VDD [  VDD],   N_3 [   CN],   N_2 [    C]
 	   M1  N:   N_3 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M6  N:   VSS [  VSS],   N_3 [   CN],   N_2 [    C]
-out_Q     
+out_Q       INV
 	  M27  P:   VDD [  VDD],  N_16 [     ],     Q [    Q]
 	  M12  N:   VSS [  VSS],  N_16 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M28  P:   VDD [  VDD],  N_10 [     ],    QN [   QN]
 	  M13  N:   VSS [  VSS],  N_10 [     ],    QN [   QN]
 devices left:
@@ -1497,15 +1503,15 @@ devices left:
 	M21_M22  P:   N_9 [     ],   N_5 [     ],   VDD [  VDD]
 
 **********ff : DFPFB2**********
-clk       
+clk         CLK1
 	  M18  P:   N_4 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M20  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M4  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-out_Q     
+out_Q       INV
 	M33_M34  P:   VDD [  VDD],  N_16 [     ],     Q [    Q]
 	M16_M17  N:   VSS [  VSS],  N_16 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	M30_M31  P:   VDD [  VDD],  N_10 [     ],    QN [   QN]
 	M13_M14  N:   VSS [  VSS],  N_10 [     ],    QN [   QN]
 devices left:
@@ -1531,15 +1537,15 @@ devices left:
 	M24_M25  P:   VDD [  VDD],   N_5 [     ],   N_9 [     ]
 
 **********ff : DFPRB0**********
-clk       
+clk         CLK1
 	  M16  P:   N_5 [   CN],    CK [   CK],   VDD [  VDD]
 	  M20  P:   VDD [  VDD],   N_5 [   CN],   N_2 [    C]
 	   M1  N:   N_5 [   CN],    CK [   CK],   VSS [  VSS]
 	   M6  N:   VSS [  VSS],   N_5 [   CN],   N_2 [    C]
-out_Q     
+out_Q       INV
 	  M27  P:   VDD [  VDD],  N_17 [     ],     Q [    Q]
 	  M12  N:   VSS [  VSS],  N_17 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M29  P:   VDD [  VDD],  N_10 [     ],    QN [   QN]
 	  M14  N:   VSS [  VSS],  N_10 [     ],    QN [   QN]
 devices left:
@@ -1565,15 +1571,15 @@ devices left:
 	M22_M23  P:   N_8 [     ],   N_6 [     ],   VDD [  VDD]
 
 **********ff : DFPRB1**********
-clk       
+clk         CLK1
 	  M24  P:  N_12 [   CN],    CK [   CK],   VDD [  VDD]
 	  M25  P:   VDD [  VDD],  N_12 [   CN],  N_10 [    C]
 	   M8  N:  N_12 [   CN],    CK [   CK],   VSS [  VSS]
 	   M9  N:   VSS [  VSS],  N_12 [   CN],  N_10 [    C]
-out_QN    
+out_QN      INV
 	  M22  P:   VDD [  VDD],   N_9 [     ],    QN [   QN]
 	   M1  N:   VSS [  VSS],   N_9 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M31_M32  P:   VDD [  VDD],   N_4 [     ],     Q [    Q]
 	  M16  N:   VSS [  VSS],   N_4 [     ],     Q [    Q]
 devices left:
@@ -1599,15 +1605,15 @@ devices left:
 	M17_M18  P:   N_6 [     ],  N_14 [     ],   VDD [  VDD]
 
 **********ff : DFPRB2**********
-clk       
+clk         CLK1
 	  M25  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M22  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M7  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M6  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-out_Q     
+out_Q       INV
 	M34_M35  P:   VDD [  VDD],  N_20 [     ],     Q [    Q]
 	M19_M20  N:   VSS [  VSS],  N_20 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	M36_M37  P:   VDD [  VDD],  N_11 [     ],    QN [   QN]
 	M1_M2  N:   VSS [  VSS],  N_11 [     ],    QN [   QN]
 devices left:
@@ -1633,18 +1639,18 @@ devices left:
 	M32_M33  P:  N_11 [     ],    SN [   SN],   VDD [  VDD]
 
 **********ff : DFPRQ0**********
-clk       
+clk         CLK1
 	  M18  P:   N_7 [   CN],    CK [   CK],   VDD [  VDD]
 	  M19  P:   VDD [  VDD],   N_7 [   CN],   N_6 [    C]
 	   M3  N:   N_7 [   CN],    CK [   CK],   VSS [  VSS]
 	   M4  N:   VSS [  VSS],   N_7 [   CN],   N_6 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M26  P:   VDD [  VDD],    SN [   SN],   N_9 [SN_N0]
 	  M15  N:   VSS [  VSS],    SN [   SN],   N_9 [SN_N0]
-ininv_D_0 
+ininv_D_0   INV
 	  M27  P:   VDD [  VDD],     D [    D],  N_16 [ D_N0]
 	   M5  N:   VSS [  VSS],     D [    D],  N_16 [ D_N0]
-out_Q     
+out_Q       INV
 	  M16  P:   VDD [  VDD],  N_13 [     ],     Q [    Q]
 	   M1  N:   VSS [  VSS],  N_13 [     ],     Q [    Q]
 devices left:
@@ -1670,18 +1676,18 @@ devices left:
 	M20_M21  P:  N_10 [     ],  N_18 [     ],  N_11 [     ]
 
 **********ff : DFPRQ1**********
-clk       
+clk         CLK1
 	  M16  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M17  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M30  P:   VDD [  VDD],    SN [   SN],  N_15 [SN_N0]
 	  M14  N:   VSS [  VSS],    SN [   SN],  N_15 [SN_N0]
-ininv_D_0 
+ininv_D_0   INV
 	  M20  P:   VDD [  VDD],     D [    D],   N_9 [ D_N0]
 	   M5  N:   VSS [  VSS],     D [    D],   N_9 [ D_N0]
-out_Q     
+out_Q       INV
 	  M18  P:   VDD [  VDD],  N_14 [     ],     Q [    Q]
 	   M3  N:   VSS [  VSS],  N_14 [     ],     Q [    Q]
 devices left:
@@ -1707,18 +1713,18 @@ devices left:
 	M25_M26  P:  N_26 [     ],  N_11 [     ],  N_13 [     ]
 
 **********ff : DFPRQ2**********
-clk       
+clk         CLK1
 	  M17  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M18  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M19  P:   VDD [  VDD],    SN [   SN],  N_13 [SN_N0]
 	  M11  N:   VSS [  VSS],    SN [   SN],  N_13 [SN_N0]
-ininv_D_0 
+ininv_D_0   INV
 	  M23  P:   VDD [  VDD],     D [    D],   N_8 [ D_N0]
 	   M3  N:   VSS [  VSS],     D [    D],   N_8 [ D_N0]
-out_Q     
+out_Q       INV
 	M20_M21  P:   VDD [  VDD],   N_5 [     ],     Q [    Q]
 	M12_M13  N:   VSS [  VSS],   N_5 [     ],     Q [    Q]
 devices left:
@@ -1744,18 +1750,18 @@ devices left:
 	M30_M31_M32_M33  P:   N_6 [     ],   N_9 [     ],  N_27 [     ]
 
 **********ff : DFPRQM**********
-clk       
+clk         CLK1
 	  M17  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M16  P:   VDD [  VDD],   N_4 [   CN],   N_3 [    C]
 	   M2  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M1  N:   VSS [  VSS],   N_4 [   CN],   N_3 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M29  P:   VDD [  VDD],    SN [   SN],  N_12 [SN_N0]
 	  M14  N:   VSS [  VSS],    SN [   SN],  N_12 [SN_N0]
-ininv_D_0 
+ininv_D_0   INV
 	  M18  P:   VDD [  VDD],     D [    D],   N_6 [ D_N0]
 	   M3  N:   VSS [  VSS],     D [    D],   N_6 [ D_N0]
-out_Q     
+out_Q       INV
 	  M23  P:   VDD [  VDD],  N_17 [     ],     Q [    Q]
 	  M13  N:   VSS [  VSS],  N_17 [     ],     Q [    Q]
 devices left:
@@ -1781,12 +1787,12 @@ devices left:
 	M25_M26  P:  N_14 [     ],   N_8 [     ],  N_15 [     ]
 
 **********ff : DFSCRQ0**********
-clk       
+clk         CLK1
 	  M15  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M22  P:   VDD [  VDD],   N_4 [   CN],  N_11 [    C]
 	   M1  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M8  N:   VSS [  VSS],   N_4 [   CN],  N_11 [    C]
-out_Q     
+out_Q       INV
 	  M27  P:   VDD [  VDD],  N_13 [     ],     Q [    Q]
 	  M13  N:   VSS [  VSS],  N_13 [     ],     Q [    Q]
 devices left:
@@ -1814,12 +1820,12 @@ devices left:
 	  M28  P:  N_14 [     ],  N_13 [     ],   VDD [  VDD]
 
 **********ff : DFSCRQ1**********
-clk       
+clk         CLK1
 	  M15  P:   N_3 [   CN],    CK [   CK],   VDD [  VDD]
 	  M22  P:   VDD [  VDD],   N_3 [   CN],   N_9 [    C]
 	   M1  N:   N_3 [   CN],    CK [   CK],   VSS [  VSS]
 	   M8  N:   VSS [  VSS],   N_3 [   CN],   N_9 [    C]
-out_Q     
+out_Q       INV
 	  M27  P:   VDD [  VDD],  N_11 [     ],     Q [    Q]
 	  M13  N:   VSS [  VSS],  N_11 [     ],     Q [    Q]
 devices left:
@@ -1847,12 +1853,12 @@ devices left:
 	  M28  P:  N_14 [     ],  N_11 [     ],   VDD [  VDD]
 
 **********ff : DFSCRQ2**********
-clk       
+clk         CLK1
 	  M17  P:   N_5 [   CN],    CK [   CK],   VDD [  VDD]
 	  M25  P:   VDD [  VDD],   N_5 [   CN],  N_11 [    C]
 	   M1  N:   N_5 [   CN],    CK [   CK],   VSS [  VSS]
 	   M9  N:   VSS [  VSS],   N_5 [   CN],  N_11 [    C]
-out_Q     
+out_Q       INV
 	M29_M30  P:   VDD [  VDD],  N_13 [     ],     Q [    Q]
 	M13_M14  N:   VSS [  VSS],  N_13 [     ],     Q [    Q]
 devices left:
@@ -1880,22 +1886,27 @@ devices left:
 	M22_M23  P:   N_3 [     ],   N_7 [     ],   VDD [  VDD]
 
 **********ff : DMNRQ0**********
-clk       
+clk         CLK1
 	  M23  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M28  P:   VDD [  VDD],   N_2 [   CN],  N_12 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M11  N:   VSS [  VSS],   N_2 [   CN],  N_12 [    C]
-ininv_S0_0
+ininv_S0_0  INV
 	  M18  P:   VDD [  VDD],    S0 [   S0],   N_4 [S0_N0]
 	   M1  N:   VSS [  VSS],    S0 [   S0],   N_4 [S0_N0]
-out_Q     
+out_Q       INV
 	  M33  P:   VDD [  VDD],  N_14 [     ],     Q [    Q]
 	  M16  N:   VSS [  VSS],  N_14 [     ],     Q [    Q]
-devices left:
-	   M2  N:  N_18 [     ],    D0 [   D0],   VSS [  VSS]
+inputs      FCROSS_4
+	  M19  P:   VDD [  VDD],    D0 [   D0],  N_39 [     ]
+	  M22  P:  N_40 [     ],    D1 [   D1],   VDD [  VDD]
+	   M2  N:   VSS [  VSS],    D0 [   D0],  N_18 [     ]
+	  M20  P:  N_39 [     ],    S0 [   S0],   N_6 [     ]
+	   M4  N:   N_6 [     ],    S0 [   S0],  N_19 [     ]
+	  M21  P:   N_6 [     ],   N_4 [S0_N0],  N_40 [     ]
 	   M3  N:  N_18 [     ],   N_4 [S0_N0],   N_6 [     ]
-	   M4  N:  N_19 [     ],    S0 [   S0],   N_6 [     ]
 	   M5  N:  N_19 [     ],    D1 [   D1],   VSS [  VSS]
+devices left:
 	   M7  N:  N_20 [     ],  N_12 [    C],   N_9 [     ]
 	   M8  N:  N_20 [     ],   N_7 [     ],   VSS [  VSS]
 	   M9  N:   VSS [  VSS],   N_9 [     ],   N_7 [     ]
@@ -1905,10 +1916,6 @@ devices left:
 	  M14  N:  N_14 [     ],   N_2 [   CN],  N_21 [     ]
 	  M15  N:  N_21 [     ],  N_17 [     ],   VSS [  VSS]
 	  M17  N:  N_17 [     ],  N_14 [     ],   VSS [  VSS]
-	  M19  P:  N_39 [     ],    D0 [   D0],   VDD [  VDD]
-	  M20  P:  N_39 [     ],    S0 [   S0],   N_6 [     ]
-	  M21  P:  N_40 [     ],   N_4 [S0_N0],   N_6 [     ]
-	  M22  P:  N_40 [     ],    D1 [   D1],   VDD [  VDD]
 	  M24  P:   N_6 [     ],  N_12 [    C],   N_9 [     ]
 	  M25  P:  N_41 [     ],   N_7 [     ],   VDD [  VDD]
 	  M26  P:   VDD [  VDD],   N_9 [     ],   N_7 [     ]
@@ -1920,35 +1927,36 @@ devices left:
 	  M34  P:  N_17 [     ],  N_14 [     ],   VDD [  VDD]
 
 **********ff : DMNRQ1**********
-clk       
+clk         CLK1
 	  M23  P:   N_6 [   CN],    CK [   CK],   VDD [  VDD]
 	  M30  P:   VDD [  VDD],   N_6 [   CN],   N_3 [    C]
 	  M11  N:   N_6 [   CN],    CK [   CK],   VSS [  VSS]
 	   M3  N:   VSS [  VSS],   N_6 [   CN],   N_3 [    C]
-ininv_S0_0
+ininv_S0_0  INV
 	  M18  P:   VDD [  VDD],    S0 [   S0],   N_8 [S0_N0]
 	   M6  N:   VSS [  VSS],    S0 [   S0],   N_8 [S0_N0]
-out_Q     
+out_Q       INV
 	  M33  P:   VDD [  VDD],   N_5 [     ],     Q [    Q]
 	  M12  N:   VSS [  VSS],   N_5 [     ],     Q [    Q]
+inputs      FCROSS_4
+	  M19  P:   VDD [  VDD],    D0 [   D0],  N_39 [     ]
+	  M22  P:  N_40 [     ],    D1 [   D1],   VDD [  VDD]
+	   M7  N:   VSS [  VSS],    D0 [   D0],  N_20 [     ]
+	  M20  P:  N_39 [     ],    S0 [   S0],  N_10 [     ]
+	   M9  N:  N_10 [     ],    S0 [   S0],  N_21 [     ]
+	  M21  P:  N_10 [     ],   N_8 [S0_N0],  N_40 [     ]
+	   M8  N:  N_20 [     ],   N_8 [S0_N0],  N_10 [     ]
+	  M10  N:  N_21 [     ],    D1 [   D1],   VSS [  VSS]
 devices left:
 	   M1  N:   N_5 [     ],   N_6 [   CN],  N_18 [     ]
 	   M2  N:  N_19 [     ],   N_3 [    C],   N_5 [     ]
 	   M4  N:  N_18 [     ],  N_13 [     ],   VSS [  VSS]
 	   M5  N:  N_19 [     ],  N_15 [     ],   VSS [  VSS]
-	   M7  N:  N_20 [     ],    D0 [   D0],   VSS [  VSS]
-	   M8  N:  N_20 [     ],   N_8 [S0_N0],  N_10 [     ]
-	   M9  N:  N_21 [     ],    S0 [   S0],  N_10 [     ]
-	  M10  N:  N_21 [     ],    D1 [   D1],   VSS [  VSS]
 	  M13  N:  N_13 [     ],   N_5 [     ],   VSS [  VSS]
 	  M14  N:  N_10 [     ],   N_6 [   CN],  N_16 [     ]
 	  M15  N:  N_15 [     ],  N_16 [     ],   VSS [  VSS]
 	  M16  N:  N_22 [     ],   N_3 [    C],  N_16 [     ]
 	  M17  N:  N_22 [     ],  N_15 [     ],   VSS [  VSS]
-	  M19  P:  N_39 [     ],    D0 [   D0],   VDD [  VDD]
-	  M20  P:  N_10 [     ],    S0 [   S0],  N_39 [     ]
-	  M21  P:  N_40 [     ],   N_8 [S0_N0],  N_10 [     ]
-	  M22  P:  N_40 [     ],    D1 [   D1],   VDD [  VDD]
 	  M24  P:  N_41 [     ],   N_6 [   CN],  N_16 [     ]
 	  M25  P:   VDD [  VDD],  N_16 [     ],  N_15 [     ]
 	  M26  P:  N_10 [     ],   N_3 [    C],  N_16 [     ]
@@ -1960,22 +1968,27 @@ devices left:
 	  M34  P:  N_13 [     ],   N_5 [     ],   VDD [  VDD]
 
 **********ff : DMNRQ2**********
-clk       
+clk         CLK1
 	  M25  P:   N_3 [   CN],    CK [   CK],   VDD [  VDD]
 	  M30  P:   VDD [  VDD],   N_3 [   CN],  N_13 [    C]
 	   M6  N:   N_3 [   CN],    CK [   CK],   VSS [  VSS]
 	  M19  N:   VSS [  VSS],   N_3 [   CN],  N_13 [    C]
-ininv_S0_0
+ininv_S0_0  INV
 	  M20  P:   VDD [  VDD],    S0 [   S0],   N_4 [S0_N0]
 	   M1  N:   VSS [  VSS],    S0 [   S0],   N_4 [S0_N0]
-out_Q     
+out_Q       INV
 	M36_M37  P:   VDD [  VDD],  N_10 [     ],     Q [    Q]
 	M11_M12  N:   VSS [  VSS],  N_10 [     ],     Q [    Q]
-devices left:
-	   M2  N:  N_19 [     ],    D0 [   D0],   VSS [  VSS]
-	   M3  N:   N_6 [     ],   N_4 [S0_N0],  N_19 [     ]
-	   M4  N:  N_20 [     ],    S0 [   S0],   N_6 [     ]
+inputs      FCROSS_4
+	  M21  P:   VDD [  VDD],    D0 [   D0],  N_41 [     ]
+	  M24  P:  N_42 [     ],    D1 [   D1],   VDD [  VDD]
+	   M2  N:   VSS [  VSS],    D0 [   D0],  N_19 [     ]
+	  M22  P:  N_41 [     ],    S0 [   S0],   N_6 [     ]
+	   M4  N:   N_6 [     ],    S0 [   S0],  N_20 [     ]
+	  M23  P:   N_6 [     ],   N_4 [S0_N0],  N_42 [     ]
+	   M3  N:  N_19 [     ],   N_4 [S0_N0],   N_6 [     ]
 	   M5  N:  N_20 [     ],    D1 [   D1],   VSS [  VSS]
+devices left:
 	   M7  N:  N_21 [     ],  N_18 [     ],   VSS [  VSS]
 	   M8  N:  N_21 [     ],  N_13 [    C],  N_10 [     ]
 	   M9  N:  N_22 [     ],   N_3 [   CN],  N_10 [     ]
@@ -1984,10 +1997,6 @@ devices left:
 	  M14  N:  N_23 [     ],  N_13 [    C],  N_16 [     ]
 	  M15  N:  N_16 [     ],   N_3 [   CN],   N_6 [     ]
 	  M16  N:   VSS [  VSS],  N_18 [     ],  N_23 [     ]
-	  M21  P:  N_41 [     ],    D0 [   D0],   VDD [  VDD]
-	  M22  P:   N_6 [     ],    S0 [   S0],  N_41 [     ]
-	  M23  P:  N_42 [     ],   N_4 [S0_N0],   N_6 [     ]
-	  M24  P:  N_42 [     ],    D1 [   D1],   VDD [  VDD]
 	  M26  P:  N_16 [     ],  N_13 [    C],   N_6 [     ]
 	  M27  P:  N_43 [     ],   N_3 [   CN],  N_16 [     ]
 	  M28  P:  N_43 [     ],  N_18 [     ],   VDD [  VDD]
@@ -2000,20 +2009,23 @@ devices left:
 	M17_M18  N:  N_18 [     ],  N_16 [     ],   VSS [  VSS]
 
 **********scanff : SDANRQ0**********
-clk       
+clk         CLK1
 	  M25  P:   N_8 [   CN],    CK [   CK],   VDD [  VDD]
 	  M33  P:   VDD [  VDD],   N_8 [   CN],   N_7 [    C]
 	   M7  N:   N_8 [   CN],    CK [   CK],   VSS [  VSS]
 	  M16  N:   VSS [  VSS],   N_8 [   CN],   N_7 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M24  P:   VDD [  VDD],    SE [   SE],   N_2 [SE_N0]
 	   M6  N:   VSS [  VSS],    SE [   SE],   N_2 [SE_N0]
-out_Q     
+out_Q       INV
 	  M35  P:   VDD [  VDD],  N_12 [     ],     Q [    Q]
 	  M17  N:   VSS [  VSS],  N_12 [     ],     Q [    Q]
+inputs      LOGIC_NAND2
+	  M19  P:   N_5 [     ],    D0 [   D0],   VDD [  VDD]
+	  M20  P:   VDD [  VDD],    D1 [   D1],   N_5 [     ]
+	   M2  N:  N_18 [     ],    D1 [   D1],   N_5 [     ]
+	   M1  N:   VSS [  VSS],    D0 [   D0],  N_18 [     ]
 devices left:
-	   M1  N:  N_18 [     ],    D0 [   D0],   VSS [  VSS]
-	   M2  N:   N_5 [     ],    D1 [   D1],  N_18 [     ]
 	   M3  N:  N_19 [     ],    SE [   SE],   N_6 [     ]
 	   M4  N:   N_6 [     ],   N_2 [SE_N0],   N_5 [     ]
 	   M5  N:  N_19 [     ],    SI [   SI],   VSS [  VSS]
@@ -2026,8 +2038,6 @@ devices left:
 	  M14  N:  N_22 [     ],  N_17 [     ],   VSS [  VSS]
 	  M15  N:  N_22 [     ],   N_8 [   CN],  N_12 [     ]
 	  M18  N:  N_17 [     ],  N_12 [     ],   VSS [  VSS]
-	  M19  P:   VDD [  VDD],    D0 [   D0],   N_5 [     ]
-	  M20  P:   N_5 [     ],    D1 [   D1],   VDD [  VDD]
 	  M21  P:  N_38 [     ],   N_2 [SE_N0],   N_6 [     ]
 	  M22  P:  N_38 [     ],    SI [   SI],   VDD [  VDD]
 	  M23  P:   N_6 [     ],    SE [   SE],   N_5 [     ]
@@ -2042,20 +2052,23 @@ devices left:
 	  M36  P:  N_17 [     ],  N_12 [     ],   VDD [  VDD]
 
 **********scanff : SDANRQ1**********
-clk       
+clk         CLK1
 	  M25  P:   N_9 [   CN],    CK [   CK],   VDD [  VDD]
 	  M29  P:   VDD [  VDD],   N_9 [   CN],   N_7 [    C]
 	   M7  N:   N_9 [   CN],    CK [   CK],   VSS [  VSS]
 	  M11  N:   VSS [  VSS],   N_9 [   CN],   N_7 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M24  P:   VDD [  VDD],    SE [   SE],   N_2 [SE_N0]
 	   M6  N:   VSS [  VSS],    SE [   SE],   N_2 [SE_N0]
-out_Q     
+out_Q       INV
 	  M35  P:   VDD [  VDD],  N_14 [     ],     Q [    Q]
 	  M17  N:   VSS [  VSS],  N_14 [     ],     Q [    Q]
+inputs      LOGIC_NAND2
+	  M19  P:   N_5 [     ],    D0 [   D0],   VDD [  VDD]
+	  M20  P:   VDD [  VDD],    D1 [   D1],   N_5 [     ]
+	   M2  N:  N_18 [     ],    D1 [   D1],   N_5 [     ]
+	   M1  N:   VSS [  VSS],    D0 [   D0],  N_18 [     ]
 devices left:
-	   M1  N:  N_18 [     ],    D0 [   D0],   VSS [  VSS]
-	   M2  N:   N_5 [     ],    D1 [   D1],  N_18 [     ]
 	   M3  N:   N_6 [     ],   N_2 [SE_N0],   N_5 [     ]
 	   M4  N:  N_19 [     ],    SE [   SE],   N_6 [     ]
 	   M5  N:  N_19 [     ],    SI [   SI],   VSS [  VSS]
@@ -2068,8 +2081,6 @@ devices left:
 	  M15  N:  N_13 [     ],  N_11 [     ],   VSS [  VSS]
 	  M16  N:  N_14 [     ],   N_7 [    C],  N_13 [     ]
 	  M18  N:  N_17 [     ],  N_14 [     ],   VSS [  VSS]
-	  M19  P:   VDD [  VDD],    D0 [   D0],   N_5 [     ]
-	  M20  P:   N_5 [     ],    D1 [   D1],   VDD [  VDD]
 	  M21  P:  N_38 [     ],   N_2 [SE_N0],   N_6 [     ]
 	  M22  P:  N_38 [     ],    SI [   SI],   VDD [  VDD]
 	  M23  P:   N_6 [     ],    SE [   SE],   N_5 [     ]
@@ -2084,20 +2095,23 @@ devices left:
 	  M36  P:  N_17 [     ],  N_14 [     ],   VDD [  VDD]
 
 **********scanff : SDANRQ2**********
-clk       
+clk         CLK1
 	  M32  P:   N_9 [   CN],    CK [   CK],   VDD [  VDD]
 	  M24  P:   VDD [  VDD],   N_9 [   CN],   N_8 [    C]
 	  M13  N:   N_9 [   CN],    CK [   CK],   VSS [  VSS]
 	   M7  N:   VSS [  VSS],   N_9 [   CN],   N_8 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M34  P:   VDD [  VDD],    SE [   SE],  N_16 [SE_N0]
 	  M17  N:   VSS [  VSS],    SE [   SE],  N_16 [SE_N0]
-out_Q     
+out_Q       INV
 	M20_M21  P:   VDD [  VDD],  N_14 [     ],     Q [    Q]
 	M3_M4  N:   VSS [  VSS],  N_14 [     ],     Q [    Q]
-devices left:
-	   M1  N:   N_2 [     ],    D1 [   D1],  N_20 [     ]
+inputs      LOGIC_NAND2
+	  M37  P:   N_2 [     ],    D0 [   D0],   VDD [  VDD]
+	  M35  P:   VDD [  VDD],    D1 [   D1],   N_2 [     ]
+	   M1  N:  N_20 [     ],    D1 [   D1],   N_2 [     ]
 	   M2  N:   VSS [  VSS],    D0 [   D0],  N_20 [     ]
+devices left:
 	   M5  N:   VSS [  VSS],  N_14 [     ],   N_6 [     ]
 	   M6  N:  N_23 [     ],   N_9 [   CN],  N_14 [     ]
 	   M8  N:  N_14 [     ],   N_8 [    C],  N_13 [     ]
@@ -2118,29 +2132,27 @@ devices left:
 	  M30  P:  N_99 [     ],   N_8 [    C],  N_11 [     ]
 	  M31  P: N_100 [     ],   N_9 [   CN],  N_11 [     ]
 	  M33  P:  N_99 [     ],  N_18 [     ],   VDD [  VDD]
-	  M35  P:   N_2 [     ],    D1 [   D1],   VDD [  VDD]
 	  M36  P: N_101 [     ],  N_16 [SE_N0],  N_18 [     ]
-	  M37  P:   VDD [  VDD],    D0 [   D0],   N_2 [     ]
 	  M38  P: N_101 [     ],    SI [   SI],   VDD [  VDD]
 	  M39  P:  N_18 [     ],    SE [   SE],   N_2 [     ]
 	M28_M29  P:  N_13 [     ],  N_11 [     ],   VDD [  VDD]
 
 **********scanff : SDBFB0**********
-clk       
+clk         CLK1
 	  M28  P:   N_3 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M31  P:   VDD [  VDD],   N_3 [   CN],   N_7 [    C]
 	   M6  N:   N_3 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M8  N:   VSS [  VSS],   N_3 [   CN],   N_7 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M40  P:   VDD [  VDD],    RN [   RN],  N_21 [RN_N0]
 	  M19  N:   VSS [  VSS],    RN [   RN],  N_21 [RN_N0]
-ininv_SE_0
+ininv_SE_0  INV
 	  M25  P:   VDD [  VDD],    SE [   SE],   N_5 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_5 [SE_N0]
-out_Q     
+out_Q       INV
 	  M42  P:   VDD [  VDD],  N_26 [     ],     Q [    Q]
 	  M22  N:   VSS [  VSS],  N_26 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M43  P:   VDD [  VDD],  N_14 [     ],    QN [   QN]
 	  M17  N:   VSS [  VSS],  N_14 [     ],    QN [   QN]
 devices left:
@@ -2174,21 +2186,21 @@ devices left:
 	M38_M39  P:  N_11 [     ],  N_21 [RN_N0],   VDD [  VDD]
 
 **********scanff : SDBFB1**********
-clk       
+clk         CLK1
 	  M28  P:   N_2 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M30  P:   VDD [  VDD],   N_2 [   CN],   N_7 [    C]
 	   M6  N:   N_2 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M8  N:   VSS [  VSS],   N_2 [   CN],   N_7 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M42  P:   VDD [  VDD],    RN [   RN],  N_24 [RN_N0]
 	  M19  N:   VSS [  VSS],    RN [   RN],  N_24 [RN_N0]
-ininv_SE_0
+ininv_SE_0  INV
 	  M25  P:   VDD [  VDD],    SE [   SE],   N_5 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_5 [SE_N0]
-out_QN    
+out_QN      INV
 	  M38  P:   VDD [  VDD],  N_14 [     ],    QN [   QN]
 	  M17  N:   VSS [  VSS],  N_14 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M44  P:   VDD [  VDD],  N_18 [     ],     Q [    Q]
 	  M22  N:   VSS [  VSS],  N_18 [     ],     Q [    Q]
 devices left:
@@ -2222,21 +2234,21 @@ devices left:
 	M40_M41  P:  N_11 [     ],  N_24 [RN_N0],   VDD [  VDD]
 
 **********scanff : SDBFB2**********
-clk       
+clk         CLK1
 	  M48  P:  N_27 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M45  P:   VDD [  VDD],  N_27 [   CN],  N_22 [    C]
 	  M10  N:  N_27 [   CN],   CKN [   CK],   VSS [  VSS]
 	  M24  N:   VSS [  VSS],  N_27 [   CN],  N_22 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M50  P:   VDD [  VDD],    SE [   SE],  N_29 [SE_N0]
 	  M12  N:   VSS [  VSS],    SE [   SE],  N_29 [SE_N0]
-ininv_RN_0
+ininv_RN_0  INV
 	  M33  P:   VDD [  VDD],    RN [   RN],  N_10 [RN_N0]
 	   M9  N:   VSS [  VSS],    RN [   RN],  N_10 [RN_N0]
-out_Q     
+out_Q       INV
 	M30_M31  P:   VDD [  VDD],   N_5 [     ],     Q [    Q]
 	M4_M5  N:   VSS [  VSS],   N_5 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	M27_M28  P:   VDD [  VDD],   N_9 [     ],    QN [   QN]
 	M1_M2  N:   VSS [  VSS],   N_9 [     ],    QN [   QN]
 devices left:
@@ -2270,21 +2282,21 @@ devices left:
 	M40_M41_M42_M43  P:  N_13 [     ],  N_25 [     ],  N_14 [     ]
 
 **********scanff : SDBRB0**********
-clk       
+clk         CLK1
 	  M27  P:   N_3 [   CN],    CK [   CK],   VDD [  VDD]
 	  M30  P:   VDD [  VDD],   N_3 [   CN],   N_7 [    C]
 	   M6  N:   N_3 [   CN],    CK [   CK],   VSS [  VSS]
 	  M10  N:   VSS [  VSS],   N_3 [   CN],   N_7 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M37  P:   VDD [  VDD],    RN [   RN],  N_19 [RN_N0]
 	  M19  N:   VSS [  VSS],    RN [   RN],  N_19 [RN_N0]
-ininv_SE_0
+ininv_SE_0  INV
 	  M25  P:   VDD [  VDD],    SE [   SE],   N_5 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_5 [SE_N0]
-out_Q     
+out_Q       INV
 	  M39  P:   VDD [  VDD],  N_24 [     ],     Q [    Q]
 	  M21  N:   VSS [  VSS],  N_24 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M40  P:   VDD [  VDD],  N_14 [     ],    QN [   QN]
 	  M11  N:   VSS [  VSS],  N_14 [     ],    QN [   QN]
 devices left:
@@ -2318,21 +2330,21 @@ devices left:
 	M13_M14  N:  N_34 [     ],  N_10 [     ],  N_12 [     ]
 
 **********scanff : SDBRB1**********
-clk       
+clk         CLK1
 	  M28  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M31  P:   VDD [  VDD],   N_2 [   CN],   N_7 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M10  N:   VSS [  VSS],   N_2 [   CN],   N_7 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M40  P:   VDD [  VDD],    RN [   RN],  N_19 [RN_N0]
 	  M17  N:   VSS [  VSS],    RN [   RN],  N_19 [RN_N0]
-ininv_SE_0
+ininv_SE_0  INV
 	  M25  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M3  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_Q     
+out_Q       INV
 	  M42  P:   VDD [  VDD],  N_24 [     ],     Q [    Q]
 	  M20  N:   VSS [  VSS],  N_24 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M43  P:   VDD [  VDD],  N_12 [     ],    QN [   QN]
 	  M21  N:   VSS [  VSS],  N_12 [     ],    QN [   QN]
 devices left:
@@ -2366,21 +2378,21 @@ devices left:
 	M38_M39  P:  N_37 [     ],  N_19 [RN_N0],   VDD [  VDD]
 
 **********scanff : SDBRB2**********
-clk       
+clk         CLK1
 	  M33  P:   N_5 [   CN],    CK [   CK],   VDD [  VDD]
 	  M39  P:   VDD [  VDD],   N_5 [   CN],   N_9 [    C]
 	   M3  N:   N_5 [   CN],    CK [   CK],   VSS [  VSS]
 	  M12  N:   VSS [  VSS],   N_5 [   CN],   N_9 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M29  P:   VDD [  VDD],    SE [   SE],   N_3 [SE_N0]
 	   M1  N:   VSS [  VSS],    SE [   SE],   N_3 [SE_N0]
-ininv_RN_0
+ininv_RN_0  INV
 	  M45  P:   VDD [  VDD],    RN [   RN],  N_19 [RN_N0]
 	  M20  N:   VSS [  VSS],    RN [   RN],  N_19 [RN_N0]
-out_QN    
+out_QN      INV
 	M50_M51  P:   VDD [  VDD],  N_15 [     ],    QN [   QN]
 	M27_M28  N:   VSS [  VSS],  N_15 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M48_M49  P:   VDD [  VDD],  N_23 [     ],     Q [    Q]
 	M25_M26  N:   VSS [  VSS],  N_23 [     ],     Q [    Q]
 devices left:
@@ -2418,21 +2430,21 @@ devices left:
 	M56_M57  P:  N_15 [     ],   N_5 [   CN],  N_26 [     ]
 
 **********scanff : SDBRBM**********
-clk       
+clk         CLK1
 	  M28  P:   N_3 [   CN],    CK [   CK],   VDD [  VDD]
 	  M31  P:   VDD [  VDD],   N_3 [   CN],   N_7 [    C]
 	   M6  N:   N_3 [   CN],    CK [   CK],   VSS [  VSS]
 	  M10  N:   VSS [  VSS],   N_3 [   CN],   N_7 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M40  P:   VDD [  VDD],    RN [   RN],  N_21 [RN_N0]
 	  M17  N:   VSS [  VSS],    RN [   RN],  N_21 [RN_N0]
-ininv_SE_0
+ininv_SE_0  INV
 	  M25  P:   VDD [  VDD],    SE [   SE],   N_5 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_5 [SE_N0]
-out_Q     
+out_Q       INV
 	  M42  P:   VDD [  VDD],  N_26 [     ],     Q [    Q]
 	  M20  N:   VSS [  VSS],  N_26 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M43  P:   VDD [  VDD],  N_14 [     ],    QN [   QN]
 	  M21  N:   VSS [  VSS],  N_14 [     ],    QN [   QN]
 devices left:
@@ -2466,18 +2478,18 @@ devices left:
 	M38_M39  P:   VDD [  VDD],  N_21 [RN_N0],  N_11 [     ]
 
 **********scanff : SDBRQ0**********
-clk       
+clk         CLK1
 	  M27  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M32  P:   VDD [  VDD],   N_2 [   CN],   N_7 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M10  N:   VSS [  VSS],   N_2 [   CN],   N_7 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M26  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M5  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-ininv_RN_0
+ininv_RN_0  INV
 	  M28  P:   VDD [  VDD],    RN [   RN],  N_15 [RN_N0]
 	  M15  N:   VSS [  VSS],    RN [   RN],  N_15 [RN_N0]
-out_Q     
+out_Q       INV
 	  M20  P:   VDD [  VDD],  N_21 [     ],     Q [    Q]
 	  M18  N:   VSS [  VSS],  N_21 [     ],     Q [    Q]
 devices left:
@@ -2511,18 +2523,18 @@ devices left:
 	M38_M39  P:  N_14 [     ],  N_10 [     ],  N_37 [     ]
 
 **********scanff : SDBRQ1**********
-clk       
+clk         CLK1
 	  M21  P:  N_18 [   CN],    CK [   CK],   VDD [  VDD]
 	  M27  P:   VDD [  VDD],  N_18 [   CN],   N_2 [    C]
 	  M15  N:  N_18 [   CN],    CK [   CK],   VSS [  VSS]
 	   M1  N:   VSS [  VSS],  N_18 [   CN],   N_2 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M23  P:   VDD [  VDD],    SE [   SE],  N_20 [SE_N0]
 	  M17  N:   VSS [  VSS],    SE [   SE],  N_20 [SE_N0]
-ininv_RN_0
+ininv_RN_0  INV
 	  M38  P:   VDD [  VDD],    RN [   RN],   N_6 [RN_N0]
 	   M5  N:   VSS [  VSS],    RN [   RN],   N_6 [RN_N0]
-out_Q     
+out_Q       INV
 	  M40  P:   VDD [  VDD],  N_11 [     ],     Q [    Q]
 	   M7  N:   VSS [  VSS],  N_11 [     ],     Q [    Q]
 devices left:
@@ -2556,18 +2568,18 @@ devices left:
 	M36_M37  P:  N_36 [     ],   N_6 [RN_N0],   VDD [  VDD]
 
 **********scanff : SDBRQ2**********
-clk       
+clk         CLK1
 	  M30  P:   N_5 [   CN],    CK [   CK],   VDD [  VDD]
 	  M48  P:   VDD [  VDD],   N_5 [   CN],   N_9 [    C]
 	   M5  N:   N_5 [   CN],    CK [   CK],   VSS [  VSS]
 	   M9  N:   VSS [  VSS],   N_5 [   CN],   N_9 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M25  P:   VDD [  VDD],    SE [   SE],   N_2 [SE_N0]
 	   M1  N:   VSS [  VSS],    SE [   SE],   N_2 [SE_N0]
-ininv_RN_0
+ininv_RN_0  INV
 	  M43  P:   VDD [  VDD],    RN [   RN],  N_13 [RN_N0]
 	  M13  N:   VSS [  VSS],    RN [   RN],  N_13 [RN_N0]
-out_Q     
+out_Q       INV
 	M46_M47  P:   VDD [  VDD],  N_19 [     ],     Q [    Q]
 	M17_M18  N:   VSS [  VSS],  N_19 [     ],     Q [    Q]
 devices left:
@@ -2605,21 +2617,21 @@ devices left:
 	M39_M40  P:  N_45 [     ],  N_13 [RN_N0],   VDD [  VDD]
 
 **********scanff : SDCFB0**********
-clk       
+clk         CLK1
 	  M28  P:   N_9 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M35  P:   VDD [  VDD],   N_9 [   CN],  N_18 [    C]
 	   M9  N:   N_9 [   CN],   CKN [   CK],   VSS [  VSS]
 	  M16  N:   VSS [  VSS],   N_9 [   CN],  N_18 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M22  P:   VDD [  VDD],    RN [   RN],   N_7 [RN_N0]
 	   M3  N:   VSS [  VSS],    RN [   RN],   N_7 [RN_N0]
-ininv_SE_0
+ininv_SE_0  INV
 	  M27  P:   VDD [  VDD],    SE [   SE],  N_11 [SE_N0]
 	   M8  N:   VSS [  VSS],    SE [   SE],  N_11 [SE_N0]
-out_QN    
+out_QN      INV
 	  M20  P:   VDD [  VDD],  N_16 [     ],    QN [   QN]
 	   M1  N:   VSS [  VSS],  N_16 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M23  P:   VDD [  VDD],   N_4 [     ],     Q [    Q]
 	   M4  N:   VSS [  VSS],   N_4 [     ],     Q [    Q]
 devices left:
@@ -2651,21 +2663,21 @@ devices left:
 	  M38  P:  N_13 [     ],   N_7 [RN_N0],   VDD [  VDD]
 
 **********scanff : SDCFB1**********
-clk       
+clk         CLK1
 	  M25  P:   N_3 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M30  P:   VDD [  VDD],   N_3 [   CN],  N_12 [    C]
 	   M8  N:   N_3 [   CN],   CKN [   CK],   VSS [  VSS]
 	  M11  N:   VSS [  VSS],   N_3 [   CN],  N_12 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M38  P:   VDD [  VDD],    RN [   RN],  N_22 [RN_N0]
 	  M10  N:   VSS [  VSS],    RN [   RN],  N_22 [RN_N0]
-ininv_SE_0
+ininv_SE_0  INV
 	  M23  P:   VDD [  VDD],    SE [   SE],   N_5 [SE_N0]
 	   M6  N:   VSS [  VSS],    SE [   SE],   N_5 [SE_N0]
-out_QN    
+out_QN      INV
 	  M34  P:   VDD [  VDD],   N_9 [     ],    QN [   QN]
 	   M1  N:   VSS [  VSS],   N_9 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M37  P:   VDD [  VDD],  N_17 [     ],     Q [    Q]
 	   M9  N:   VSS [  VSS],  N_17 [     ],     Q [    Q]
 devices left:
@@ -2697,21 +2709,21 @@ devices left:
 	  M36  P:   N_7 [     ],  N_22 [RN_N0],   VDD [  VDD]
 
 **********scanff : SDCFB2**********
-clk       
+clk         CLK1
 	  M29  P:   N_2 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M32  P:   VDD [  VDD],   N_2 [   CN],   N_7 [    C]
 	   M6  N:   N_2 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M9  N:   VSS [  VSS],   N_2 [   CN],   N_7 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M27  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-ininv_RN_0
+ininv_RN_0  INV
 	  M42  P:   VDD [  VDD],    RN [   RN],  N_21 [RN_N0]
 	M17_M18  N:   VSS [  VSS],    RN [   RN],  N_21 [RN_N0]
-out_Q     
+out_Q       INV
 	M43_M44  P:   VDD [  VDD],  N_25 [     ],     Q [    Q]
 	M19_M20  N:   VSS [  VSS],  N_25 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	M45_M46  P:   VDD [  VDD],  N_14 [     ],    QN [   QN]
 	M21_M22  N:   VSS [  VSS],  N_14 [     ],    QN [   QN]
 devices left:
@@ -2743,21 +2755,21 @@ devices left:
 	M40_M41  P:  N_40 [     ],  N_21 [RN_N0],   VDD [  VDD]
 
 **********scanff : SDCRB0**********
-clk       
+clk         CLK1
 	  M25  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M28  P:   VDD [  VDD],   N_2 [   CN],   N_7 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M10  N:   VSS [  VSS],   N_2 [   CN],   N_7 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M22  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-ininv_RN_0
+ininv_RN_0  INV
 	  M37  P:   VDD [  VDD],    RN [   RN],  N_18 [RN_N0]
 	  M16  N:   VSS [  VSS],    RN [   RN],  N_18 [RN_N0]
-out_Q     
+out_Q       INV
 	  M38  P:   VDD [  VDD],  N_21 [     ],     Q [    Q]
 	  M17  N:   VSS [  VSS],  N_21 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M39  P:   VDD [  VDD],  N_11 [     ],    QN [   QN]
 	  M18  N:   VSS [  VSS],  N_11 [     ],    QN [   QN]
 devices left:
@@ -2789,21 +2801,21 @@ devices left:
 	M35_M36  P:  N_34 [     ],  N_18 [RN_N0],   VDD [  VDD]
 
 **********scanff : SDCRB1**********
-clk       
+clk         CLK1
 	  M26  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M29  P:   VDD [  VDD],   N_2 [   CN],   N_7 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M10  N:   VSS [  VSS],   N_2 [   CN],   N_7 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M40  P:   VDD [  VDD],    RN [   RN],  N_22 [RN_N0]
 	  M19  N:   VSS [  VSS],    RN [   RN],  N_22 [RN_N0]
-ininv_SE_0
+ininv_SE_0  INV
 	  M23  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_QN    
+out_QN      INV
 	  M37  P:   VDD [  VDD],  N_12 [     ],    QN [   QN]
 	  M17  N:   VSS [  VSS],  N_12 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M41  P:   VDD [  VDD],  N_19 [     ],     Q [    Q]
 	  M20  N:   VSS [  VSS],  N_19 [     ],     Q [    Q]
 devices left:
@@ -2835,18 +2847,18 @@ devices left:
 	M38_M39  P:  N_33 [     ],  N_22 [RN_N0],   VDD [  VDD]
 
 **********scanff : SDCRB2**********
-clk       
+clk         CLK1
 	  M28  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M32  P:   VDD [  VDD],   N_2 [   CN],   N_8 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M12  N:   VSS [  VSS],   N_2 [   CN],   N_8 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M26  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_QN    
+out_QN      INV
 	M45_M46  P:   VDD [  VDD],  N_16 [     ],    QN [   QN]
 	M21_M22  N:   VSS [  VSS],  N_16 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M42_M43  P:   VDD [  VDD],  N_13 [     ],     Q [    Q]
 	M18_M19  N:   VSS [  VSS],  N_13 [     ],     Q [    Q]
 devices left:
@@ -2882,21 +2894,21 @@ devices left:
 	M36_M37  P:  N_12 [     ],  N_10 [     ],   VDD [  VDD]
 
 **********scanff : SDCRBM**********
-clk       
+clk         CLK1
 	  M26  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M29  P:   VDD [  VDD],   N_2 [   CN],   N_7 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M10  N:   VSS [  VSS],   N_2 [   CN],   N_7 [    C]
-ininv_RN_0
+ininv_RN_0  INV
 	  M40  P:   VDD [  VDD],    RN [   RN],  N_19 [RN_N0]
 	  M17  N:   VSS [  VSS],    RN [   RN],  N_19 [RN_N0]
-ininv_SE_0
+ininv_SE_0  INV
 	  M23  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_Q     
+out_Q       INV
 	  M41  P:   VDD [  VDD],  N_22 [     ],     Q [    Q]
 	  M18  N:   VSS [  VSS],  N_22 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M37  P:   VDD [  VDD],  N_11 [     ],    QN [   QN]
 	  M19  N:   VSS [  VSS],  N_11 [     ],    QN [   QN]
 devices left:
@@ -2928,15 +2940,15 @@ devices left:
 	M38_M39  P:  N_34 [     ],  N_19 [RN_N0],   VDD [  VDD]
 
 **********scanff : SDCRQ0**********
-clk       
+clk         CLK1
 	  M24  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M28  P:   VDD [  VDD],   N_2 [   CN],   N_8 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M11  N:   VSS [  VSS],   N_2 [   CN],   N_8 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M21  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_Q     
+out_Q       INV
 	  M30  P:   VDD [  VDD],  N_15 [     ],     Q [    Q]
 	  M17  N:   VSS [  VSS],  N_15 [     ],     Q [    Q]
 devices left:
@@ -2970,15 +2982,15 @@ devices left:
 	M32_M33  P:  N_13 [     ],  N_10 [     ],   VDD [  VDD]
 
 **********scanff : SDCRQ1**********
-clk       
+clk         CLK1
 	  M24  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M28  P:   VDD [  VDD],   N_2 [   CN],   N_8 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M11  N:   VSS [  VSS],   N_2 [   CN],   N_8 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M21  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_Q     
+out_Q       INV
 	  M30  P:   VDD [  VDD],  N_15 [     ],     Q [    Q]
 	  M17  N:   VSS [  VSS],  N_15 [     ],     Q [    Q]
 devices left:
@@ -3012,15 +3024,15 @@ devices left:
 	M32_M33  P:  N_13 [     ],  N_10 [     ],   VDD [  VDD]
 
 **********scanff : SDCRQ2**********
-clk       
+clk         CLK1
 	  M25  P:   N_3 [   CN],    CK [   CK],   VDD [  VDD]
 	  M33  P:   VDD [  VDD],   N_3 [   CN],   N_8 [    C]
 	   M6  N:   N_3 [   CN],    CK [   CK],   VSS [  VSS]
 	  M11  N:   VSS [  VSS],   N_3 [   CN],   N_8 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M22  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_Q     
+out_Q       INV
 	M38_M39  P:   VDD [  VDD],  N_15 [     ],     Q [    Q]
 	M17_M18  N:   VSS [  VSS],  N_15 [     ],     Q [    Q]
 devices left:
@@ -3054,15 +3066,15 @@ devices left:
 	M29_M30_M31  P:  N_13 [     ],  N_10 [     ],   VDD [  VDD]
 
 **********scanff : SDCRQM**********
-clk       
+clk         CLK1
 	  M24  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M34  P:   VDD [  VDD],   N_2 [   CN],  N_16 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M15  N:   VSS [  VSS],   N_2 [   CN],  N_16 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M21  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_Q     
+out_Q       INV
 	  M31  P:   VDD [  VDD],  N_11 [     ],     Q [    Q]
 	  M12  N:   VSS [  VSS],  N_11 [     ],     Q [    Q]
 devices left:
@@ -3096,25 +3108,30 @@ devices left:
 	M26_M27  P:   N_9 [     ],  N_18 [     ],   VDD [  VDD]
 
 **********scanff : SDMNRQ0**********
-clk       
+clk         CLK1
 	  M44  P:  N_20 [   CN],    CK [   CK],   VDD [  VDD]
 	  M37  P:   VDD [  VDD],  N_20 [   CN],   N_8 [    C]
 	  M22  N:  N_20 [   CN],    CK [   CK],   VSS [  VSS]
 	  M16  N:   VSS [  VSS],  N_20 [   CN],   N_8 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M28  P:   VDD [  VDD],    SE [   SE],   N_3 [SE_N0]
 	   M6  N:   VSS [  VSS],    SE [   SE],   N_3 [SE_N0]
-ininv_S0_0
+ininv_S0_0  INV
 	  M26  P:   VDD [  VDD],    S0 [   S0],   N_5 [S0_N0]
 	   M2  N:   VSS [  VSS],    S0 [   S0],   N_5 [S0_N0]
-out_Q     
+out_Q       INV
 	  M43  P:   VDD [  VDD],  N_16 [     ],     Q [    Q]
 	  M21  N:   VSS [  VSS],  N_16 [     ],     Q [    Q]
-devices left:
-	   M1  N:  N_43 [     ],    D1 [   D1],   VSS [  VSS]
-	   M3  N:  N_43 [     ],    S0 [   S0],   N_6 [     ]
+inputs      FCROSS_4
+	  M27  P:   VDD [  VDD],    D0 [   D0],  N_23 [     ]
+	  M23  P:  N_22 [     ],    D1 [   D1],   VDD [  VDD]
+	   M5  N:   VSS [  VSS],    D0 [   D0],  N_44 [     ]
+	  M25  P:  N_23 [     ],    S0 [   S0],   N_6 [     ]
+	   M3  N:   N_6 [     ],    S0 [   S0],  N_43 [     ]
+	  M24  P:   N_6 [     ],   N_5 [S0_N0],  N_22 [     ]
 	   M4  N:  N_44 [     ],   N_5 [S0_N0],   N_6 [     ]
-	   M5  N:  N_44 [     ],    D0 [   D0],   VSS [  VSS]
+	   M1  N:  N_43 [     ],    D1 [   D1],   VSS [  VSS]
+devices left:
 	   M7  N:   N_6 [     ],   N_3 [SE_N0],   N_9 [     ]
 	   M8  N:  N_45 [     ],    SE [   SE],   N_9 [     ]
 	   M9  N:   VSS [  VSS],    SI [   SI],  N_45 [     ]
@@ -3126,10 +3143,6 @@ devices left:
 	  M18  N:  N_48 [     ],  N_20 [   CN],  N_16 [     ]
 	  M19  N:  N_48 [     ],  N_15 [     ],   VSS [  VSS]
 	  M20  N:   VSS [  VSS],  N_16 [     ],  N_15 [     ]
-	  M23  P:  N_22 [     ],    D1 [   D1],   VDD [  VDD]
-	  M24  P:   N_6 [     ],   N_5 [S0_N0],  N_22 [     ]
-	  M25  P:  N_23 [     ],    S0 [   S0],   N_6 [     ]
-	  M27  P:  N_23 [     ],    D0 [   D0],   VDD [  VDD]
 	  M29  P:  N_24 [     ],   N_3 [SE_N0],   N_9 [     ]
 	  M30  P:   N_6 [     ],    SE [   SE],   N_9 [     ]
 	  M31  P:   VDD [  VDD],    SI [   SI],  N_24 [     ]
@@ -3145,25 +3158,30 @@ devices left:
 	M35_M36  P:  N_14 [     ],  N_12 [     ],   VDD [  VDD]
 
 **********scanff : SDMNRQ1**********
-clk       
+clk         CLK1
 	  M44  P:  N_20 [   CN],    CK [   CK],   VDD [  VDD]
 	  M37  P:   VDD [  VDD],  N_20 [   CN],   N_8 [    C]
 	  M22  N:  N_20 [   CN],    CK [   CK],   VSS [  VSS]
 	  M16  N:   VSS [  VSS],  N_20 [   CN],   N_8 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M28  P:   VDD [  VDD],    SE [   SE],   N_3 [SE_N0]
 	   M6  N:   VSS [  VSS],    SE [   SE],   N_3 [SE_N0]
-ininv_S0_0
+ininv_S0_0  INV
 	  M26  P:   VDD [  VDD],    S0 [   S0],   N_4 [S0_N0]
 	   M3  N:   VSS [  VSS],    S0 [   S0],   N_4 [S0_N0]
-out_Q     
+out_Q       INV
 	  M43  P:   VDD [  VDD],  N_16 [     ],     Q [    Q]
 	  M21  N:   VSS [  VSS],  N_16 [     ],     Q [    Q]
-devices left:
-	   M1  N:  N_43 [     ],    D1 [   D1],   VSS [  VSS]
-	   M2  N:  N_43 [     ],    S0 [   S0],   N_6 [     ]
+inputs      FCROSS_4
+	  M27  P:   VDD [  VDD],    D0 [   D0],  N_23 [     ]
+	  M23  P:  N_22 [     ],    D1 [   D1],   VDD [  VDD]
+	   M5  N:   VSS [  VSS],    D0 [   D0],  N_44 [     ]
+	  M25  P:  N_23 [     ],    S0 [   S0],   N_6 [     ]
+	   M2  N:   N_6 [     ],    S0 [   S0],  N_43 [     ]
+	  M24  P:   N_6 [     ],   N_4 [S0_N0],  N_22 [     ]
 	   M4  N:  N_44 [     ],   N_4 [S0_N0],   N_6 [     ]
-	   M5  N:  N_44 [     ],    D0 [   D0],   VSS [  VSS]
+	   M1  N:  N_43 [     ],    D1 [   D1],   VSS [  VSS]
+devices left:
 	   M7  N:   N_6 [     ],   N_3 [SE_N0],   N_9 [     ]
 	   M8  N:  N_45 [     ],    SE [   SE],   N_9 [     ]
 	   M9  N:   VSS [  VSS],    SI [   SI],  N_45 [     ]
@@ -3175,10 +3193,6 @@ devices left:
 	  M18  N:  N_48 [     ],  N_20 [   CN],  N_16 [     ]
 	  M19  N:  N_48 [     ],  N_15 [     ],   VSS [  VSS]
 	  M20  N:  N_15 [     ],  N_16 [     ],   VSS [  VSS]
-	  M23  P:  N_22 [     ],    D1 [   D1],   VDD [  VDD]
-	  M24  P:  N_22 [     ],   N_4 [S0_N0],   N_6 [     ]
-	  M25  P:  N_23 [     ],    S0 [   S0],   N_6 [     ]
-	  M27  P:  N_23 [     ],    D0 [   D0],   VDD [  VDD]
 	  M29  P:  N_24 [     ],   N_3 [SE_N0],   N_9 [     ]
 	  M30  P:   N_6 [     ],    SE [   SE],   N_9 [     ]
 	  M31  P:   VDD [  VDD],    SI [   SI],  N_24 [     ]
@@ -3194,25 +3208,30 @@ devices left:
 	M35_M36  P:  N_14 [     ],  N_12 [     ],   VDD [  VDD]
 
 **********scanff : SDMNRQ2**********
-clk       
+clk         CLK1
 	  M32  P:  N_12 [   CN],    CK [   CK],   VDD [  VDD]
 	  M42  P:   VDD [  VDD],  N_12 [   CN],  N_10 [    C]
 	  M10  N:  N_12 [   CN],    CK [   CK],   VSS [  VSS]
 	  M19  N:   VSS [  VSS],  N_12 [   CN],  N_10 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M30  P:   VDD [  VDD],    SE [   SE],   N_6 [SE_N0]
 	   M8  N:   VSS [  VSS],    SE [   SE],   N_6 [SE_N0]
-ininv_S0_0
+ininv_S0_0  INV
 	  M23  P:   VDD [  VDD],    S0 [   S0],   N_3 [S0_N0]
 	   M1  N:   VSS [  VSS],    S0 [   S0],   N_3 [S0_N0]
-out_Q     
+out_Q       INV
 	M43_M44  P:   VDD [  VDD],  N_16 [     ],     Q [    Q]
 	M20_M21  N:   VSS [  VSS],  N_16 [     ],     Q [    Q]
-devices left:
-	   M2  N:  N_23 [     ],    D0 [   D0],   VSS [  VSS]
-	   M3  N:   N_5 [     ],   N_3 [S0_N0],  N_23 [     ]
+inputs      FCROSS_4
+	  M24  P:   VDD [  VDD],    D0 [   D0],  N_48 [     ]
+	  M27  P:  N_47 [     ],    D1 [   D1],   VDD [  VDD]
+	   M2  N:   VSS [  VSS],    D0 [   D0],  N_23 [     ]
+	  M25  P:  N_48 [     ],    S0 [   S0],   N_5 [     ]
 	   M4  N:   N_5 [     ],    S0 [   S0],  N_22 [     ]
+	  M26  P:   N_5 [     ],   N_3 [S0_N0],  N_47 [     ]
+	   M3  N:  N_23 [     ],   N_3 [S0_N0],   N_5 [     ]
 	   M5  N:  N_22 [     ],    D1 [   D1],   VSS [  VSS]
+devices left:
 	   M6  N:   N_5 [     ],   N_6 [SE_N0],   N_8 [     ]
 	   M7  N:  N_24 [     ],    SE [   SE],   N_8 [     ]
 	   M9  N:  N_24 [     ],    SI [   SI],   VSS [  VSS]
@@ -3225,10 +3244,6 @@ devices left:
 	  M17  N:  N_27 [     ],  N_20 [     ],   VSS [  VSS]
 	  M18  N:  N_27 [     ],  N_12 [   CN],  N_16 [     ]
 	  M22  N:   VSS [  VSS],  N_16 [     ],  N_20 [     ]
-	  M24  P:  N_48 [     ],    D0 [   D0],   VDD [  VDD]
-	  M25  P:   N_5 [     ],    S0 [   S0],  N_48 [     ]
-	  M26  P:   N_5 [     ],   N_3 [S0_N0],  N_47 [     ]
-	  M27  P:  N_47 [     ],    D1 [   D1],   VDD [  VDD]
 	  M28  P:   N_5 [     ],    SE [   SE],   N_8 [     ]
 	  M29  P:  N_49 [     ],   N_6 [SE_N0],   N_8 [     ]
 	  M31  P:  N_49 [     ],    SI [   SI],   VDD [  VDD]
@@ -3243,18 +3258,18 @@ devices left:
 	M37_M38  P:  N_15 [     ],  N_13 [     ],   VDD [  VDD]
 
 **********scanff : SDNFB0**********
-clk       
+clk         CLK1
 	  M19  P:   N_3 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M29  P:   VDD [  VDD],   N_3 [   CN],  N_13 [    C]
 	  M13  N:   N_3 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M7  N:   VSS [  VSS],   N_3 [   CN],  N_13 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M22  P:   VDD [  VDD],    SE [   SE],   N_5 [SE_N0]
 	  M16  N:   VSS [  VSS],    SE [   SE],   N_5 [SE_N0]
-out_Q     
+out_Q       INV
 	  M25  P:   VDD [  VDD],  N_14 [     ],     Q [    Q]
 	   M1  N:   VSS [  VSS],  N_14 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M27  P:   VDD [  VDD],   N_9 [     ],    QN [   QN]
 	   M3  N:   VSS [  VSS],   N_9 [     ],    QN [   QN]
 devices left:
@@ -3286,18 +3301,18 @@ devices left:
 	  M36  P:  N_23 [     ],  N_13 [    C],  N_18 [     ]
 
 **********scanff : SDNFB1**********
-clk       
+clk         CLK1
 	  M24  P:   N_5 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M31  P:   VDD [  VDD],   N_5 [   CN],  N_16 [    C]
 	   M8  N:   N_5 [   CN],   CKN [   CK],   VSS [  VSS]
 	  M13  N:   VSS [  VSS],   N_5 [   CN],  N_16 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M21  P:   VDD [  VDD],    SE [   SE],   N_7 [SE_N0]
 	   M6  N:   VSS [  VSS],    SE [   SE],   N_7 [SE_N0]
-out_Q     
+out_Q       INV
 	  M25  P:   VDD [  VDD],  N_18 [     ],     Q [    Q]
 	   M1  N:   VSS [  VSS],  N_18 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M35  P:   VDD [  VDD],   N_4 [     ],    QN [   QN]
 	  M17  N:   VSS [  VSS],   N_4 [     ],    QN [   QN]
 devices left:
@@ -3329,18 +3344,18 @@ devices left:
 	  M36  P:  N_39 [     ],   N_4 [     ],   VDD [  VDD]
 
 **********scanff : SDNFB2**********
-clk       
+clk         CLK1
 	  M40  P:   N_7 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M38  P:   VDD [  VDD],   N_7 [   CN],  N_17 [    C]
 	   M6  N:   N_7 [   CN],   CKN [   CK],   VSS [  VSS]
 	  M18  N:   VSS [  VSS],   N_7 [   CN],  N_17 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M41  P:   VDD [  VDD],    SE [   SE],   N_9 [SE_N0]
 	   M8  N:   VSS [  VSS],    SE [   SE],   N_9 [SE_N0]
-out_Q     
+out_Q       INV
 	M23_M24  P:   VDD [  VDD],  N_13 [     ],     Q [    Q]
 	M1_M2  N:   VSS [  VSS],  N_13 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	M26_M27  P:   VDD [  VDD],   N_4 [     ],    QN [   QN]
 	M10_M11  N:   VSS [  VSS],   N_4 [     ],    QN [   QN]
 devices left:
@@ -3376,15 +3391,15 @@ devices left:
 	  M44  P: N_117 [     ],   N_9 [SE_N0],  N_10 [     ]
 
 **********scanff : SDNFQ0**********
-clk       
+clk         CLK1
 	  M23  P:   N_3 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M28  P:   VDD [  VDD],   N_3 [   CN],  N_13 [    C]
 	   M6  N:   N_3 [   CN],   CKN [   CK],   VSS [  VSS]
 	  M11  N:   VSS [  VSS],   N_3 [   CN],  N_13 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M21  P:   VDD [  VDD],    SE [   SE],   N_5 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_5 [SE_N0]
-out_Q     
+out_Q       INV
 	  M33  P:   VDD [  VDD],  N_14 [     ],     Q [    Q]
 	  M16  N:   VSS [  VSS],  N_14 [     ],     Q [    Q]
 devices left:
@@ -3416,15 +3431,15 @@ devices left:
 	  M34  P:  N_17 [     ],  N_14 [     ],   VDD [  VDD]
 
 **********scanff : SDNFQ1**********
-clk       
+clk         CLK1
 	  M27  P:   N_9 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M23  P:   VDD [  VDD],   N_9 [   CN],   N_6 [    C]
 	   M6  N:   N_9 [   CN],   CKN [   CK],   VSS [  VSS]
 	  M13  N:   VSS [  VSS],   N_9 [   CN],   N_6 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M29  P:   VDD [  VDD],    SE [   SE],  N_11 [SE_N0]
 	   M8  N:   VSS [  VSS],    SE [   SE],  N_11 [SE_N0]
-out_Q     
+out_Q       INV
 	  M18  P:   VDD [  VDD],   N_8 [     ],     Q [    Q]
 	   M1  N:   VSS [  VSS],   N_8 [     ],     Q [    Q]
 devices left:
@@ -3456,15 +3471,15 @@ devices left:
 	  M34  P:  N_15 [     ],  N_16 [     ],   VDD [  VDD]
 
 **********scanff : SDNFQ2**********
-clk       
+clk         CLK1
 	  M32  P:  N_13 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M21  P:   VDD [  VDD],  N_13 [   CN],   N_2 [    C]
 	  M10  N:  N_13 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M1  N:   VSS [  VSS],  N_13 [   CN],   N_2 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M34  P:   VDD [  VDD],    SE [   SE],  N_15 [SE_N0]
 	  M13  N:   VSS [  VSS],    SE [   SE],  N_15 [SE_N0]
-out_Q     
+out_Q       INV
 	M22_M23  P:   VDD [  VDD],  N_18 [     ],     Q [    Q]
 	M6_M7  N:   VSS [  VSS],  N_18 [     ],     Q [    Q]
 devices left:
@@ -3500,18 +3515,18 @@ devices left:
 	  M40  P:  N_50 [     ],   N_2 [    C],   N_6 [     ]
 
 **********scanff : SDNRB0**********
-clk       
+clk         CLK1
 	  M24  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M29  P:   VDD [  VDD],   N_2 [   CN],  N_13 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M11  N:   VSS [  VSS],   N_2 [   CN],  N_13 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M20  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_QN    
+out_QN      INV
 	  M33  P:   VDD [  VDD],  N_18 [     ],    QN [   QN]
 	  M15  N:   VSS [  VSS],  N_18 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M35  P:   VDD [  VDD],  N_15 [     ],     Q [    Q]
 	  M17  N:   VSS [  VSS],  N_15 [     ],     Q [    Q]
 devices left:
@@ -3543,18 +3558,18 @@ devices left:
 	  M36  P:  N_18 [     ],  N_15 [     ],   VDD [  VDD]
 
 **********scanff : SDNRB1**********
-clk       
+clk         CLK1
 	  M24  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M29  P:   VDD [  VDD],   N_2 [   CN],  N_13 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M11  N:   VSS [  VSS],   N_2 [   CN],  N_13 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M21  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_QN    
+out_QN      INV
 	  M33  P:   VDD [  VDD],  N_18 [     ],    QN [   QN]
 	  M15  N:   VSS [  VSS],  N_18 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M35  P:   VDD [  VDD],  N_15 [     ],     Q [    Q]
 	  M17  N:   VSS [  VSS],  N_15 [     ],     Q [    Q]
 devices left:
@@ -3586,18 +3601,18 @@ devices left:
 	  M36  P:  N_18 [     ],  N_15 [     ],   VDD [  VDD]
 
 **********scanff : SDNRB2**********
-clk       
+clk         CLK1
 	  M40  P:  N_19 [   CN],    CK [   CK],   VDD [  VDD]
 	  M35  P:   VDD [  VDD],  N_19 [   CN],  N_12 [    C]
 	  M18  N:  N_19 [   CN],    CK [   CK],   VSS [  VSS]
 	  M12  N:   VSS [  VSS],  N_19 [   CN],  N_12 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M44  P:   VDD [  VDD],    SE [   SE],  N_20 [SE_N0]
 	  M21  N:   VSS [  VSS],    SE [   SE],  N_20 [SE_N0]
-out_Q     
+out_Q       INV
 	M24_M25  P:   VDD [  VDD],   N_8 [     ],     Q [    Q]
 	M1_M2  N:   VSS [  VSS],   N_8 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	M27_M28  P:   VDD [  VDD],   N_4 [     ],    QN [   QN]
 	M4_M5  N:   VSS [  VSS],   N_4 [     ],    QN [   QN]
 devices left:
@@ -3633,15 +3648,15 @@ devices left:
 	M14_M15  N:  N_17 [     ],  N_14 [     ],   VSS [  VSS]
 
 **********scanff : SDNRQ0**********
-clk       
+clk         CLK1
 	  M23  P:   N_3 [   CN],    CK [   CK],   VDD [  VDD]
 	  M28  P:   VDD [  VDD],   N_3 [   CN],  N_13 [    C]
 	   M6  N:   N_3 [   CN],    CK [   CK],   VSS [  VSS]
 	  M13  N:   VSS [  VSS],   N_3 [   CN],  N_13 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M20  P:   VDD [  VDD],    SE [   SE],   N_5 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_5 [SE_N0]
-out_Q     
+out_Q       INV
 	  M33  P:   VDD [  VDD],  N_14 [     ],     Q [    Q]
 	  M11  N:   VSS [  VSS],  N_14 [     ],     Q [    Q]
 devices left:
@@ -3673,15 +3688,15 @@ devices left:
 	  M34  P:  N_17 [     ],  N_14 [     ],   VDD [  VDD]
 
 **********scanff : SDNRQ1**********
-clk       
+clk         CLK1
 	  M25  P:   N_6 [   CN],    CK [   CK],   VDD [  VDD]
 	  M27  P:   VDD [  VDD],   N_6 [   CN],   N_3 [    C]
 	  M11  N:   N_6 [   CN],    CK [   CK],   VSS [  VSS]
 	   M3  N:   VSS [  VSS],   N_6 [   CN],   N_3 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M23  P:   VDD [  VDD],    SE [   SE],   N_8 [SE_N0]
 	   M8  N:   VSS [  VSS],    SE [   SE],   N_8 [SE_N0]
-out_Q     
+out_Q       INV
 	  M18  P:   VDD [  VDD],   N_5 [     ],     Q [    Q]
 	  M16  N:   VSS [  VSS],   N_5 [     ],     Q [    Q]
 devices left:
@@ -3713,15 +3728,15 @@ devices left:
 	  M34  P:  N_43 [     ],  N_11 [     ],   VDD [  VDD]
 
 **********scanff : SDNRQ2**********
-clk       
+clk         CLK1
 	  M36  P:  N_16 [   CN],    CK [   CK],   VDD [  VDD]
 	  M22  P:   VDD [  VDD],  N_16 [   CN],   N_9 [    C]
 	  M16  N:  N_16 [   CN],    CK [   CK],   VSS [  VSS]
 	  M10  N:   VSS [  VSS],  N_16 [   CN],   N_9 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M39  P:   VDD [  VDD],    SE [   SE],  N_17 [SE_N0]
 	  M19  N:   VSS [  VSS],    SE [   SE],  N_17 [SE_N0]
-out_Q     
+out_Q       INV
 	M24_M25  P:   VDD [  VDD],   N_4 [     ],     Q [    Q]
 	M1_M2  N:   VSS [  VSS],   N_4 [     ],     Q [    Q]
 devices left:
@@ -3757,18 +3772,18 @@ devices left:
 	M12_M13  N:  N_14 [     ],  N_12 [     ],   VSS [  VSS]
 
 **********scanff : SDPFB0**********
-clk       
+clk         CLK1
 	  M26  P:   N_2 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M30  P:   VDD [  VDD],   N_2 [   CN],  N_10 [    C]
 	   M6  N:   N_2 [   CN],   CKN [   CK],   VSS [  VSS]
 	  M11  N:   VSS [  VSS],   N_2 [   CN],  N_10 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M24  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_QN    
+out_QN      INV
 	  M19  P:   VDD [  VDD],  N_15 [     ],    QN [   QN]
 	   M7  N:   VSS [  VSS],  N_15 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M36  P:   VDD [  VDD],   N_9 [     ],     Q [    Q]
 	  M18  N:   VSS [  VSS],   N_9 [     ],     Q [    Q]
 devices left:
@@ -3800,18 +3815,18 @@ devices left:
 	  M35  P:  N_15 [     ],    SN [   SN],   VDD [  VDD]
 
 **********scanff : SDPFB1**********
-clk       
+clk         CLK1
 	  M24  P:   N_2 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M28  P:   VDD [  VDD],   N_2 [   CN],   N_7 [    C]
 	   M6  N:   N_2 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M9  N:   VSS [  VSS],   N_2 [   CN],   N_7 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M22  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M3  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_Q     
+out_Q       INV
 	  M34  P:   VDD [  VDD],  N_21 [     ],     Q [    Q]
 	  M16  N:   VSS [  VSS],  N_21 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M35  P:   VDD [  VDD],  N_12 [     ],    QN [   QN]
 	  M17  N:   VSS [  VSS],  N_12 [     ],    QN [   QN]
 devices left:
@@ -3843,18 +3858,18 @@ devices left:
 	  M36  P:  N_21 [     ],  N_12 [     ],   VDD [  VDD]
 
 **********scanff : SDPFB2**********
-clk       
+clk         CLK1
 	  M30  P:   N_8 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M39  P:   VDD [  VDD],   N_8 [   CN],  N_16 [    C]
 	  M10  N:   N_8 [   CN],   CKN [   CK],   VSS [  VSS]
 	  M16  N:   VSS [  VSS],   N_8 [   CN],  N_16 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M27  P:   VDD [  VDD],    SE [   SE],   N_9 [SE_N0]
 	   M8  N:   VSS [  VSS],    SE [   SE],   N_9 [SE_N0]
-out_Q     
+out_Q       INV
 	M31_M32  P:   VDD [  VDD],  N_14 [     ],     Q [    Q]
 	M1_M2  N:   VSS [  VSS],  N_14 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	M41_M42  P:   VDD [  VDD],  N_22 [     ],    QN [   QN]
 	M11_M12  N:   VSS [  VSS],  N_22 [     ],    QN [   QN]
 devices left:
@@ -3886,18 +3901,18 @@ devices left:
 	M46_M47  P:  N_21 [     ],  N_16 [    C],  N_22 [     ]
 
 **********scanff : SDPRB0**********
-clk       
+clk         CLK1
 	  M25  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M28  P:   VDD [  VDD],   N_2 [   CN],  N_10 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M12  N:   VSS [  VSS],   N_2 [   CN],  N_10 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M23  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_QN    
+out_QN      INV
 	  M37  P:   VDD [  VDD],  N_17 [     ],    QN [   QN]
 	   M7  N:   VSS [  VSS],  N_17 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M36  P:   VDD [  VDD],   N_9 [     ],     Q [    Q]
 	  M19  N:   VSS [  VSS],   N_9 [     ],     Q [    Q]
 devices left:
@@ -3929,18 +3944,18 @@ devices left:
 	M30_M31  P:  N_15 [     ],  N_12 [     ],   VDD [  VDD]
 
 **********scanff : SDPRB1**********
-clk       
+clk         CLK1
 	  M31  P:  N_15 [   CN],    CK [   CK],   VDD [  VDD]
 	  M39  P:   VDD [  VDD],  N_15 [   CN],  N_19 [    C]
 	   M9  N:  N_15 [   CN],    CK [   CK],   VSS [  VSS]
 	  M20  N:   VSS [  VSS],  N_15 [   CN],  N_19 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M36  P:   VDD [  VDD],    SE [   SE],  N_16 [SE_N0]
 	  M14  N:   VSS [  VSS],    SE [   SE],  N_16 [SE_N0]
-out_Q     
+out_Q       INV
 	M27_M28  P:   VDD [  VDD],  N_13 [     ],     Q [    Q]
 	   M8  N:   VSS [  VSS],  N_13 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M29  P:   VDD [  VDD],   N_6 [     ],    QN [   QN]
 	  M15  N:   VSS [  VSS],   N_6 [     ],    QN [   QN]
 devices left:
@@ -3972,18 +3987,18 @@ devices left:
 	M21_M22  P:   N_3 [     ],  N_21 [     ],   VDD [  VDD]
 
 **********scanff : SDPRB2**********
-clk       
+clk         CLK1
 	  M28  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M30  P:   VDD [  VDD],   N_2 [   CN],   N_7 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	   M9  N:   VSS [  VSS],   N_2 [   CN],   N_7 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M25  P:   VDD [  VDD],    SE [   SE],   N_3 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_3 [SE_N0]
-out_Q     
+out_Q       INV
 	M40_M41  P:   VDD [  VDD],  N_23 [     ],     Q [    Q]
 	M18_M19  N:   VSS [  VSS],  N_23 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	M42_M43  P:   VDD [  VDD],  N_15 [     ],    QN [   QN]
 	M20_M21  N:   VSS [  VSS],  N_15 [     ],    QN [   QN]
 devices left:
@@ -4015,18 +4030,18 @@ devices left:
 	M38_M39  P:  N_15 [     ],    SN [   SN],   VDD [  VDD]
 
 **********scanff : SDPRQ0**********
-clk       
+clk         CLK1
 	  M27  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M32  P:   VDD [  VDD],   N_2 [   CN],  N_11 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M16  N:   VSS [  VSS],   N_2 [   CN],  N_11 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M39  P:   VDD [  VDD],    SN [   SN],  N_18 [SN_N0]
 	  M19  N:   VSS [  VSS],    SN [   SN],  N_18 [SN_N0]
-ininv_SE_0
+ininv_SE_0  INV
 	  M25  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M3  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_Q     
+out_Q       INV
 	  M20  P:   VDD [  VDD],  N_10 [     ],     Q [    Q]
 	   M7  N:   VSS [  VSS],  N_10 [     ],     Q [    Q]
 devices left:
@@ -4060,18 +4075,18 @@ devices left:
 	M35_M36  P:  N_15 [     ],  N_13 [     ],  N_32 [     ]
 
 **********scanff : SDPRQ1**********
-clk       
+clk         CLK1
 	  M25  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M30  P:   VDD [  VDD],   N_2 [   CN],   N_8 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M14  N:   VSS [  VSS],   N_2 [   CN],   N_8 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M37  P:   VDD [  VDD],    SN [   SN],  N_15 [SN_N0]
 	  M17  N:   VSS [  VSS],    SN [   SN],  N_15 [SN_N0]
-ininv_SE_0
+ininv_SE_0  INV
 	  M23  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M3  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_Q     
+out_Q       INV
 	  M38  P:   VDD [  VDD],   N_7 [     ],     Q [    Q]
 	  M18  N:   VSS [  VSS],   N_7 [     ],     Q [    Q]
 devices left:
@@ -4105,18 +4120,18 @@ devices left:
 	M31_M32  P:  N_12 [     ],  N_10 [     ],  N_32 [     ]
 
 **********scanff : SDPRQ2**********
-clk       
+clk         CLK1
 	  M21  P:  N_18 [   CN],    CK [   CK],   VDD [  VDD]
 	  M31  P:   VDD [  VDD],  N_18 [   CN],  N_10 [    C]
 	  M15  N:  N_18 [   CN],    CK [   CK],   VSS [  VSS]
 	   M8  N:   VSS [  VSS],  N_18 [   CN],  N_10 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M30  P:   VDD [  VDD],    SN [   SN],   N_2 [SN_N0]
 	   M4  N:   VSS [  VSS],    SN [   SN],   N_2 [SN_N0]
-ininv_SE_0
+ininv_SE_0  INV
 	  M25  P:   VDD [  VDD],    SE [   SE],  N_19 [SE_N0]
 	  M18  N:   VSS [  VSS],    SE [   SE],  N_19 [SE_N0]
-out_Q     
+out_Q       INV
 	M27_M28  P:   VDD [  VDD],   N_7 [     ],     Q [    Q]
 	M1_M2  N:   VSS [  VSS],   N_7 [     ],     Q [    Q]
 devices left:
@@ -4150,18 +4165,18 @@ devices left:
 	M40_M41_M42  P:  N_15 [     ],  N_12 [     ],  N_34 [     ]
 
 **********scanff : SDPRQM**********
-clk       
+clk         CLK1
 	  M27  P:   N_2 [   CN],    CK [   CK],   VDD [  VDD]
 	  M31  P:   VDD [  VDD],   N_2 [   CN],  N_11 [    C]
 	   M6  N:   N_2 [   CN],    CK [   CK],   VSS [  VSS]
 	  M18  N:   VSS [  VSS],   N_2 [   CN],  N_11 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M39  P:   VDD [  VDD],    SN [   SN],  N_18 [SN_N0]
 	  M19  N:   VSS [  VSS],    SN [   SN],  N_18 [SN_N0]
-ininv_SE_0
+ininv_SE_0  INV
 	  M25  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M4  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_Q     
+out_Q       INV
 	  M20  P:   VDD [  VDD],  N_10 [     ],     Q [    Q]
 	   M7  N:   VSS [  VSS],  N_10 [     ],     Q [    Q]
 devices left:
@@ -4195,15 +4210,15 @@ devices left:
 	M35_M36  P:  N_15 [     ],  N_13 [     ],  N_32 [     ]
 
 **********scanff : SDSCRQ0**********
-clk       
+clk         CLK1
 	  M29  P:  N_11 [   CN],    CK [   CK],   VDD [  VDD]
 	  M26  P:   VDD [  VDD],  N_11 [   CN],  N_10 [    C]
 	  M13  N:  N_11 [   CN],    CK [   CK],   VSS [  VSS]
 	  M12  N:   VSS [  VSS],  N_11 [   CN],  N_10 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M24  P:   VDD [  VDD],    SE [   SE],   N_5 [SE_N0]
 	   M8  N:   VSS [  VSS],    SE [   SE],   N_5 [SE_N0]
-out_Q     
+out_Q       INV
 	  M35  P:   VDD [  VDD],  N_15 [     ],     Q [    Q]
 	   M1  N:   VSS [  VSS],  N_15 [     ],     Q [    Q]
 devices left:
@@ -4237,15 +4252,15 @@ devices left:
 	  M36  P:   N_4 [     ],  N_15 [     ],   VDD [  VDD]
 
 **********scanff : SDSCRQ1**********
-clk       
+clk         CLK1
 	  M28  P:  N_12 [   CN],    CK [   CK],   VDD [  VDD]
 	  M26  P:   VDD [  VDD],  N_12 [   CN],  N_10 [    C]
 	  M11  N:  N_12 [   CN],    CK [   CK],   VSS [  VSS]
 	  M10  N:   VSS [  VSS],  N_12 [   CN],  N_10 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M24  P:   VDD [  VDD],    SE [   SE],   N_2 [SE_N0]
 	   M6  N:   VSS [  VSS],    SE [   SE],   N_2 [SE_N0]
-out_Q     
+out_Q       INV
 	  M35  P:   VDD [  VDD],  N_17 [     ],     Q [    Q]
 	   M7  N:   VSS [  VSS],  N_17 [     ],     Q [    Q]
 devices left:
@@ -4279,15 +4294,15 @@ devices left:
 	  M36  P:   N_9 [     ],  N_17 [     ],   VDD [  VDD]
 
 **********scanff : SDSCRQ2**********
-clk       
+clk         CLK1
 	  M26  P:  N_13 [   CN],    CK [   CK],   VDD [  VDD]
 	  M36  P:   VDD [  VDD],  N_13 [   CN],  N_12 [    C]
 	  M10  N:  N_13 [   CN],    CK [   CK],   VSS [  VSS]
 	  M19  N:   VSS [  VSS],  N_13 [   CN],  N_12 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M25  P:   VDD [  VDD],    SE [   SE],   N_4 [SE_N0]
 	   M6  N:   VSS [  VSS],    SE [   SE],   N_4 [SE_N0]
-out_Q     
+out_Q       INV
 	M37_M38  P:   VDD [  VDD],  N_18 [     ],     Q [    Q]
 	M7_M8  N:   VSS [  VSS],  N_18 [     ],     Q [    Q]
 devices left:
@@ -4321,29 +4336,34 @@ devices left:
 	M31_M32  P:  N_17 [     ],  N_15 [     ],   VDD [  VDD]
 
 **********scanff : SENRQ0**********
-clk       
+clk         CLK1
 	  M28  P:   N_6 [   CN],    CK [   CK],   VDD [  VDD]
 	  M38  P:   VDD [  VDD],   N_6 [   CN],  N_14 [    C]
 	   M6  N:   N_6 [   CN],    CK [   CK],   VSS [  VSS]
 	  M22  N:   VSS [  VSS],   N_6 [   CN],  N_14 [    C]
-ininv_E_0 
+ininv_E_0   INV
 	  M39  P:   VDD [  VDD],     E [    E],  N_11 [ E_N0]
 	   M7  N:   VSS [  VSS],     E [    E],  N_11 [ E_N0]
-ininv_SE_0
+ininv_SE_0  INV
 	  M44  P:   VDD [  VDD],    SE [   SE],   N_9 [SE_N0]
 	  M12  N:   VSS [  VSS],    SE [   SE],   N_9 [SE_N0]
-out_Q     
+out_Q       INV
 	  M27  P:   VDD [  VDD],   N_4 [     ],     Q [    Q]
 	   M5  N:   VSS [  VSS],   N_4 [     ],     Q [    Q]
+inputs      FCROSS_4
+	  M40  P:   VDD [  VDD],     D [    D],  N_46 [     ]
+	  M43  P:  N_47 [     ],   N_2 [     ],   VDD [  VDD]
+	   M8  N:   VSS [  VSS],     D [    D],  N_23 [     ]
+	  M41  P:  N_46 [     ],  N_11 [ E_N0],  N_13 [     ]
+	  M10  N:  N_13 [     ],  N_11 [ E_N0],  N_24 [     ]
+	  M42  P:  N_13 [     ],     E [    E],  N_47 [     ]
+	   M9  N:  N_23 [     ],     E [    E],  N_13 [     ]
+	  M11  N:  N_24 [     ],   N_2 [     ],   VSS [  VSS]
 devices left:
 	   M1  N:   N_5 [     ],  N_14 [    C],   N_4 [     ]
 	   M2  N:  N_22 [     ],   N_6 [   CN],   N_4 [     ]
 	   M3  N:  N_22 [     ],   N_2 [     ],   VSS [  VSS]
 	   M4  N:   VSS [  VSS],   N_4 [     ],   N_2 [     ]
-	   M8  N:  N_23 [     ],     D [    D],   VSS [  VSS]
-	   M9  N:  N_23 [     ],     E [    E],  N_13 [     ]
-	  M10  N:  N_24 [     ],  N_11 [ E_N0],  N_13 [     ]
-	  M11  N:  N_24 [     ],   N_2 [     ],   VSS [  VSS]
 	  M13  N:  N_25 [     ],    SE [   SE],  N_17 [     ]
 	  M14  N:  N_17 [     ],   N_9 [SE_N0],  N_13 [     ]
 	  M15  N:  N_25 [     ],    SI [   SI],   VSS [  VSS]
@@ -4362,33 +4382,34 @@ devices left:
 	  M33  P:  N_45 [     ],   N_6 [   CN],  N_19 [     ]
 	  M34  P:   VDD [  VDD],   N_5 [     ],  N_45 [     ]
 	  M37  P:  N_44 [     ],  N_14 [    C],  N_19 [     ]
-	  M40  P:  N_46 [     ],     D [    D],   VDD [  VDD]
-	  M41  P:  N_13 [     ],  N_11 [ E_N0],  N_46 [     ]
-	  M42  P:  N_47 [     ],     E [    E],  N_13 [     ]
-	  M43  P:  N_47 [     ],   N_2 [     ],   VDD [  VDD]
 	M19_M20  N:   N_5 [     ],  N_19 [     ],   VSS [  VSS]
 	M35_M36  P:   N_5 [     ],  N_19 [     ],   VDD [  VDD]
 
 **********scanff : SENRQ1**********
-clk       
+clk         CLK1
 	  M44  P:  N_19 [   CN],    CK [   CK],   VDD [  VDD]
 	  M38  P:   VDD [  VDD],  N_19 [   CN],   N_7 [    C]
 	  M22  N:  N_19 [   CN],    CK [   CK],   VSS [  VSS]
 	  M16  N:   VSS [  VSS],  N_19 [   CN],   N_7 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M28  P:   VDD [  VDD],    SE [   SE],   N_2 [SE_N0]
 	   M6  N:   VSS [  VSS],    SE [   SE],   N_2 [SE_N0]
-ininv_E_0 
+ininv_E_0   INV
 	  M23  P:   VDD [  VDD],     E [    E],   N_4 [ E_N0]
 	   M1  N:   VSS [  VSS],     E [    E],   N_4 [ E_N0]
-out_Q     
+out_Q       INV
 	  M43  P:   VDD [  VDD],  N_17 [     ],     Q [    Q]
 	  M21  N:   VSS [  VSS],  N_17 [     ],     Q [    Q]
-devices left:
-	   M2  N:  N_22 [     ],     D [    D],   VSS [  VSS]
-	   M3  N:   N_6 [     ],     E [    E],  N_22 [     ]
-	   M4  N:  N_23 [     ],   N_4 [ E_N0],   N_6 [     ]
+inputs      FCROSS_4
+	  M24  P:   VDD [  VDD],     D [    D],  N_48 [     ]
+	  M27  P:  N_49 [     ],  N_16 [     ],   VDD [  VDD]
+	   M2  N:   VSS [  VSS],     D [    D],  N_22 [     ]
+	  M25  P:  N_48 [     ],   N_4 [ E_N0],   N_6 [     ]
+	   M4  N:   N_6 [     ],   N_4 [ E_N0],  N_23 [     ]
+	  M26  P:   N_6 [     ],     E [    E],  N_49 [     ]
+	   M3  N:  N_22 [     ],     E [    E],   N_6 [     ]
 	   M5  N:  N_23 [     ],  N_16 [     ],   VSS [  VSS]
+devices left:
 	   M7  N:  N_24 [     ],    SE [   SE],  N_10 [     ]
 	   M8  N:  N_10 [     ],   N_2 [SE_N0],   N_6 [     ]
 	   M9  N:  N_24 [     ],    SI [   SI],   VSS [  VSS]
@@ -4400,10 +4421,6 @@ devices left:
 	  M18  N:  N_27 [     ],  N_19 [   CN],  N_17 [     ]
 	  M19  N:  N_27 [     ],  N_16 [     ],   VSS [  VSS]
 	  M20  N:  N_16 [     ],  N_17 [     ],   VSS [  VSS]
-	  M24  P:  N_48 [     ],     D [    D],   VDD [  VDD]
-	  M25  P:   N_6 [     ],   N_4 [ E_N0],  N_48 [     ]
-	  M26  P:  N_49 [     ],     E [    E],   N_6 [     ]
-	  M27  P:  N_49 [     ],  N_16 [     ],   VDD [  VDD]
 	  M29  P:   N_6 [     ],    SE [   SE],  N_10 [     ]
 	  M30  P:  N_50 [     ],   N_2 [SE_N0],  N_10 [     ]
 	  M31  P:   VDD [  VDD],    SI [   SI],  N_50 [     ]
@@ -4419,25 +4436,30 @@ devices left:
 	M35_M36  P:  N_14 [     ],  N_12 [     ],   VDD [  VDD]
 
 **********scanff : SENRQ2**********
-clk       
+clk         CLK1
 	  M46  P:  N_19 [   CN],    CK [   CK],   VDD [  VDD]
 	  M39  P:   VDD [  VDD],  N_19 [   CN],   N_8 [    C]
 	  M20  N:  N_19 [   CN],    CK [   CK],   VSS [  VSS]
 	  M16  N:   VSS [  VSS],  N_19 [   CN],   N_8 [    C]
-ininv_SE_0
+ininv_SE_0  INV
 	  M29  P:   VDD [  VDD],    SE [   SE],   N_2 [SE_N0]
 	   M6  N:   VSS [  VSS],    SE [   SE],   N_2 [SE_N0]
-ininv_E_0 
+ininv_E_0   INV
 	  M24  P:   VDD [  VDD],     E [    E],   N_4 [ E_N0]
 	   M1  N:   VSS [  VSS],     E [    E],   N_4 [ E_N0]
-out_Q     
+out_Q       INV
 	M43_M44  P:   VDD [  VDD],  N_16 [     ],     Q [    Q]
 	M17_M18  N:   VSS [  VSS],  N_16 [     ],     Q [    Q]
-devices left:
-	   M2  N:  N_44 [     ],     D [    D],   VSS [  VSS]
-	   M3  N:   N_6 [     ],     E [    E],  N_44 [     ]
-	   M4  N:  N_45 [     ],   N_4 [ E_N0],   N_6 [     ]
+inputs      FCROSS_4
+	  M25  P:   VDD [  VDD],     D [    D],  N_23 [     ]
+	  M28  P:  N_24 [     ],  N_21 [     ],   VDD [  VDD]
+	   M2  N:   VSS [  VSS],     D [    D],  N_44 [     ]
+	  M26  P:  N_23 [     ],   N_4 [ E_N0],   N_6 [     ]
+	   M4  N:   N_6 [     ],   N_4 [ E_N0],  N_45 [     ]
+	  M27  P:   N_6 [     ],     E [    E],  N_24 [     ]
+	   M3  N:  N_44 [     ],     E [    E],   N_6 [     ]
 	   M5  N:  N_45 [     ],  N_21 [     ],   VSS [  VSS]
+devices left:
 	   M7  N:   N_9 [     ],   N_2 [SE_N0],   N_6 [     ]
 	   M8  N:  N_46 [     ],    SE [   SE],   N_9 [     ]
 	   M9  N:  N_46 [     ],    SI [   SI],   VSS [  VSS]
@@ -4449,10 +4471,6 @@ devices left:
 	  M21  N:  N_14 [     ],   N_8 [    C],  N_16 [     ]
 	  M22  N:  N_16 [     ],  N_19 [   CN],  N_49 [     ]
 	  M23  N:  N_49 [     ],  N_21 [     ],   VSS [  VSS]
-	  M25  P:  N_23 [     ],     D [    D],   VDD [  VDD]
-	  M26  P:   N_6 [     ],   N_4 [ E_N0],  N_23 [     ]
-	  M27  P:  N_24 [     ],     E [    E],   N_6 [     ]
-	  M28  P:  N_24 [     ],  N_21 [     ],   VDD [  VDD]
 	  M30  P:   N_6 [     ],    SE [   SE],   N_9 [     ]
 	  M31  P:  N_25 [     ],   N_2 [SE_N0],   N_9 [     ]
 	  M32  P:   VDD [  VDD],    SI [   SI],  N_25 [     ]
@@ -4468,18 +4486,18 @@ devices left:
 	M36_M37  P:  N_14 [     ],  N_12 [     ],   VDD [  VDD]
 
 **********latch : LABHB0**********
-clk       
+clk         CLK1
 	  M13  P:   N_4 [   CN],     G [   CK],   VDD [  VDD]
 	  M14  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],     G [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M21  P:   VDD [  VDD],    SN [   SN],   N_8 [SN_N0]
 	   M8  N:   VSS [  VSS],    SN [   SN],   N_8 [SN_N0]
-out_QN    
+out_QN      INV
 	  M24  P:   VDD [  VDD],  N_17 [     ],    QN [   QN]
 	  M10  N:   VSS [  VSS],  N_17 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M22  P:   VDD [  VDD],   N_7 [     ],     Q [    Q]
 	  M11  N:   VSS [  VSS],   N_7 [     ],     Q [    Q]
 devices left:
@@ -4499,18 +4517,18 @@ devices left:
 	  M23  P:  N_17 [     ],   N_7 [     ],   VDD [  VDD]
 
 **********latch : LABHB1**********
-clk       
+clk         CLK1
 	  M15  P:   N_4 [   CN],     G [   CK],   VDD [  VDD]
 	  M16  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],     G [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	M23_M24  P:   VDD [  VDD],    SN [   SN],  N_14 [SN_N0]
 	M9_M10  N:   VSS [  VSS],    SN [   SN],  N_14 [SN_N0]
-out_QN    
+out_QN      INV
 	  M25  P:   VDD [  VDD],  N_17 [     ],    QN [   QN]
 	  M11  N:   VSS [  VSS],  N_17 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M26  P:   VDD [  VDD],   N_8 [     ],     Q [    Q]
 	  M13  N:   VSS [  VSS],   N_8 [     ],     Q [    Q]
 devices left:
@@ -4530,18 +4548,18 @@ devices left:
 	M5_M6  N:  N_10 [     ],    RN [   RN],   VSS [  VSS]
 
 **********latch : LABHB2**********
-clk       
+clk         CLK1
 	  M20  P:   N_4 [   CN],     G [   CK],   VDD [  VDD]
 	  M21  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],     G [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	M33_M34  P:   VDD [  VDD],    SN [   SN],  N_19 [SN_N0]
 	M13_M14  N:   VSS [  VSS],    SN [   SN],  N_19 [SN_N0]
-out_QN    
+out_QN      INV
 	M35_M36  P:   VDD [  VDD],  N_23 [     ],    QN [   QN]
 	M15_M16  N:   VSS [  VSS],  N_23 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M37_M38  P:   VDD [  VDD],   N_8 [     ],     Q [    Q]
 	M17_M18  N:   VSS [  VSS],   N_8 [     ],     Q [    Q]
 devices left:
@@ -4561,18 +4579,18 @@ devices left:
 	M31_M32  P:  N_29 [     ],  N_19 [SN_N0],   VDD [  VDD]
 
 **********latch : LABHB3**********
-clk       
+clk         CLK1
 	  M25  P:   N_4 [   CN],     G [   CK],   VDD [  VDD]
 	  M26  P:   VDD [  VDD],   N_4 [   CN],   N_3 [    C]
 	   M1  N:   N_4 [   CN],     G [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_3 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	M35_M36  P:   VDD [  VDD],    SN [   SN],  N_21 [SN_N0]
 	M13_M14  N:   VSS [  VSS],    SN [   SN],  N_21 [SN_N0]
-out_QN    
+out_QN      INV
 	M37_M38_M39  P:   VDD [  VDD],  N_27 [     ],    QN [   QN]
 	M15_M16_M18  N:   VSS [  VSS],  N_27 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M44_M45_M46  P:   VDD [  VDD],   N_5 [     ],     Q [    Q]
 	M21_M22_M23  N:   VSS [  VSS],   N_5 [     ],     Q [    Q]
 devices left:
@@ -4592,18 +4610,18 @@ devices left:
 	M41_M42_M43  P:   N_8 [     ],  N_21 [SN_N0],   VDD [  VDD]
 
 **********latch : LABLB0**********
-clk       
+clk         CLK1
 	  M13  P:   N_4 [   CN],    GN [   CK],   VDD [  VDD]
 	  M14  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    GN [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M18  P:   VDD [  VDD],    SN [   SN],  N_10 [SN_N0]
 	   M6  N:   VSS [  VSS],    SN [   SN],  N_10 [SN_N0]
-out_Q     
+out_Q       INV
 	  M15  P:   VDD [  VDD],  N_12 [     ],     Q [    Q]
 	   M3  N:   VSS [  VSS],  N_12 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M17  P:   VDD [  VDD],   N_7 [     ],    QN [   QN]
 	   M5  N:   VSS [  VSS],   N_7 [     ],    QN [   QN]
 devices left:
@@ -4623,18 +4641,18 @@ devices left:
 	  M24  P:  N_12 [     ],    RN [   RN],  N_20 [     ]
 
 **********latch : LABLB1**********
-clk       
+clk         CLK1
 	  M13  P:   N_4 [   CN],    GN [   CK],   VDD [  VDD]
 	  M14  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    GN [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M23  P:   VDD [  VDD],    SN [   SN],  N_17 [SN_N0]
 	  M12  N:   VSS [  VSS],    SN [   SN],  N_17 [SN_N0]
-out_Q     
+out_Q       INV
 	  M24  P:   VDD [  VDD],   N_7 [     ],     Q [    Q]
 	   M5  N:   VSS [  VSS],   N_7 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M22  P:   VDD [  VDD],  N_10 [     ],    QN [   QN]
 	  M11  N:   VSS [  VSS],  N_10 [     ],    QN [   QN]
 devices left:
@@ -4654,18 +4672,18 @@ devices left:
 	M18_M19  P:   N_7 [     ],   N_2 [    C],   N_5 [     ]
 
 **********latch : LABLB2**********
-clk       
+clk         CLK1
 	  M18  P:   N_4 [   CN],    GN [   CK],   VDD [  VDD]
 	  M19  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    GN [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M29  P:   VDD [  VDD],    SN [   SN],  N_17 [SN_N0]
 	M11_M12  N:   VSS [  VSS],    SN [   SN],  N_17 [SN_N0]
-out_QN    
+out_QN      INV
 	M30_M31  P:   VDD [  VDD],  N_21 [     ],    QN [   QN]
 	M13_M14  N:   VSS [  VSS],  N_21 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M32_M33  P:   VDD [  VDD],   N_5 [     ],     Q [    Q]
 	M15_M16  N:   VSS [  VSS],   N_5 [     ],     Q [    Q]
 devices left:
@@ -4685,18 +4703,18 @@ devices left:
 	M27_M28  P:  N_28 [     ],  N_17 [SN_N0],   VDD [  VDD]
 
 **********latch : LABLB3**********
-clk       
+clk         CLK1
 	  M31  P:  N_10 [   CN],    GN [   CK],   VDD [  VDD]
 	  M32  P:   VDD [  VDD],  N_10 [   CN],   N_9 [    C]
 	   M6  N:  N_10 [   CN],    GN [   CK],   VSS [  VSS]
 	   M7  N:   VSS [  VSS],  N_10 [   CN],   N_9 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M24  P:   VDD [  VDD],    SN [   SN],  N_16 [SN_N0]
 	M11_M12  N:   VSS [  VSS],    SN [   SN],  N_16 [SN_N0]
-out_Q     
+out_Q       INV
 	M33_M34_M35  P:   VDD [  VDD],  N_14 [     ],     Q [    Q]
 	M1_M2_M3  N:   VSS [  VSS],  N_14 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	M21_M22_M23  P:   VDD [  VDD],   N_5 [     ],    QN [   QN]
 	M8_M9_M10  N:   VSS [  VSS],   N_5 [     ],    QN [   QN]
 devices left:
@@ -4716,15 +4734,15 @@ devices left:
 	M39_M40  P:  N_19 [     ],     D [    D],  N_31 [     ]
 
 **********latch : LACHB0**********
-clk       
+clk         CLK1
 	  M12  P:   N_4 [   CN],     G [   CK],   VDD [  VDD]
 	  M13  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],     G [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-out_QN    
+out_QN      INV
 	  M19  P:   VDD [  VDD],  N_13 [     ],    QN [   QN]
 	   M9  N:   VSS [  VSS],  N_13 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M20  P:   VDD [  VDD],   N_5 [     ],     Q [    Q]
 	  M10  N:   VSS [  VSS],   N_5 [     ],     Q [    Q]
 devices left:
@@ -4743,15 +4761,15 @@ devices left:
 	  M21  P:  N_13 [     ],   N_5 [     ],   VDD [  VDD]
 
 **********latch : LACHB1**********
-clk       
+clk         CLK1
 	  M12  P:   N_4 [   CN],     G [   CK],   VDD [  VDD]
 	  M13  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],     G [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-out_Q     
+out_Q       INV
 	  M20  P:   VDD [  VDD],   N_5 [     ],     Q [    Q]
 	   M9  N:   VSS [  VSS],   N_5 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M19  P:   VDD [  VDD],  N_11 [     ],    QN [   QN]
 	  M11  N:   VSS [  VSS],  N_11 [     ],    QN [   QN]
 devices left:
@@ -4770,15 +4788,15 @@ devices left:
 	  M21  P:  N_11 [     ],   N_5 [     ],   VDD [  VDD]
 
 **********latch : LACHB2**********
-clk       
+clk         CLK1
 	  M15  P:   N_4 [   CN],     G [   CK],   VDD [  VDD]
 	  M16  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],     G [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-out_QN    
+out_QN      INV
 	M26_M27  P:   VDD [  VDD],  N_12 [     ],    QN [   QN]
 	M13_M14  N:   VSS [  VSS],  N_12 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M23_M24  P:   VDD [  VDD],   N_5 [     ],     Q [    Q]
 	M10_M11  N:   VSS [  VSS],   N_5 [     ],     Q [    Q]
 devices left:
@@ -4797,15 +4815,15 @@ devices left:
 	M17_M18  P:   N_6 [     ],   N_4 [   CN],   N_5 [     ]
 
 **********latch : LACHB3**********
-clk       
+clk         CLK1
 	  M21  P:   N_4 [   CN],     G [   CK],   VDD [  VDD]
 	  M22  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],     G [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-out_QN    
+out_QN      INV
 	M32_M33_M34  P:   VDD [  VDD],  N_18 [     ],    QN [   QN]
 	M14_M15_M16  N:   VSS [  VSS],  N_18 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M36_M37_M38  P:   VDD [  VDD],   N_6 [     ],     Q [    Q]
 	M17_M19_M20  N:   VSS [  VSS],   N_6 [     ],     Q [    Q]
 devices left:
@@ -4828,15 +4846,15 @@ devices left:
 	M29_M30  P:   N_6 [     ],   N_4 [   CN],   N_5 [     ]
 
 **********latch : LACLB0**********
-clk       
+clk         CLK1
 	  M14  P:   N_4 [   CN],    GN [   CK],   VDD [  VDD]
 	  M15  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    GN [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-out_QN    
+out_QN      INV
 	  M21  P:   VDD [  VDD],  N_13 [     ],    QN [   QN]
 	   M9  N:   VSS [  VSS],  N_13 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M12  P:   VDD [  VDD],   N_5 [     ],     Q [    Q]
 	  M10  N:   VSS [  VSS],   N_5 [     ],     Q [    Q]
 devices left:
@@ -4855,15 +4873,15 @@ devices left:
 	  M20  P:  N_26 [     ],  N_13 [     ],   VDD [  VDD]
 
 **********latch : LACLB1**********
-clk       
+clk         CLK1
 	  M12  P:   N_4 [   CN],    GN [   CK],   VDD [  VDD]
 	  M13  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    GN [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-out_QN    
+out_QN      INV
 	  M19  P:   VDD [  VDD],  N_13 [     ],    QN [   QN]
 	   M9  N:   VSS [  VSS],  N_13 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M20  P:   VDD [  VDD],   N_5 [     ],     Q [    Q]
 	  M10  N:   VSS [  VSS],   N_5 [     ],     Q [    Q]
 devices left:
@@ -4882,15 +4900,15 @@ devices left:
 	  M21  P:  N_13 [     ],   N_5 [     ],   VDD [  VDD]
 
 **********latch : LACLB2**********
-clk       
+clk         CLK1
 	  M14  P:   N_4 [   CN],    GN [   CK],   VDD [  VDD]
 	  M15  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    GN [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-out_QN    
+out_QN      INV
 	M24_M25  P:   VDD [  VDD],  N_11 [     ],    QN [   QN]
 	M12_M13  N:   VSS [  VSS],  N_11 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M21_M22  P:   VDD [  VDD],   N_5 [     ],     Q [    Q]
 	M9_M10  N:   VSS [  VSS],   N_5 [     ],     Q [    Q]
 devices left:
@@ -4909,15 +4927,15 @@ devices left:
 	  M23  P:  N_11 [     ],   N_5 [     ],   VDD [  VDD]
 
 **********latch : LACLB3**********
-clk       
+clk         CLK1
 	  M19  P:   N_4 [   CN],    GN [   CK],   VDD [  VDD]
 	  M20  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],    GN [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-out_QN    
+out_QN      INV
 	M29_M30_M31  P:   VDD [  VDD],  N_18 [     ],    QN [   QN]
 	M12_M13_M14  N:   VSS [  VSS],  N_18 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M33_M34_M35  P:   VDD [  VDD],   N_8 [     ],     Q [    Q]
 	M15_M16_M17  N:   VSS [  VSS],   N_8 [     ],     Q [    Q]
 devices left:
@@ -4938,15 +4956,15 @@ devices left:
 	M26_M27  P:   N_5 [     ],   N_2 [    C],   N_8 [     ]
 
 **********latch : LANHB0**********
-clk       
+clk         CLK1
 	  M18  P:  N_10 [   CN],     G [   CK],   VDD [  VDD]
 	  M12  P:   VDD [  VDD],  N_10 [   CN],   N_5 [    C]
 	   M9  N:  N_10 [   CN],     G [   CK],   VSS [  VSS]
 	   M4  N:   VSS [  VSS],  N_10 [   CN],   N_5 [    C]
-out_QN    
+out_QN      INV
 	  M15  P:   VDD [  VDD],   N_9 [     ],    QN [   QN]
 	   M5  N:   VSS [  VSS],   N_9 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M16  P:   VDD [  VDD],   N_6 [     ],     Q [    Q]
 	   M7  N:   VSS [  VSS],   N_6 [     ],     Q [    Q]
 devices left:
@@ -4962,15 +4980,15 @@ devices left:
 	  M17  P:   N_9 [     ],   N_6 [     ],   VDD [  VDD]
 
 **********latch : LANHB1**********
-clk       
+clk         CLK1
 	  M10  P:   N_2 [   CN],     G [   CK],   VDD [  VDD]
 	  M13  P:   VDD [  VDD],   N_2 [   CN],   N_6 [    C]
 	   M1  N:   N_2 [   CN],     G [   CK],   VSS [  VSS]
 	   M4  N:   VSS [  VSS],   N_2 [   CN],   N_6 [    C]
-out_QN    
+out_QN      INV
 	  M15  P:   VDD [  VDD],  N_11 [     ],    QN [   QN]
 	   M6  N:   VSS [  VSS],  N_11 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M17  P:   VDD [  VDD],   N_8 [     ],     Q [    Q]
 	   M8  N:   VSS [  VSS],   N_8 [     ],     Q [    Q]
 devices left:
@@ -4986,15 +5004,15 @@ devices left:
 	  M18  P:  N_11 [     ],   N_8 [     ],   VDD [  VDD]
 
 **********latch : LANHB2**********
-clk       
+clk         CLK1
 	  M14  P:   N_3 [   CN],     G [   CK],   VDD [  VDD]
 	  M22  P:   VDD [  VDD],   N_3 [   CN],  N_13 [    C]
 	  M13  N:   N_3 [   CN],     G [   CK],   VSS [  VSS]
 	   M1  N:   VSS [  VSS],   N_3 [   CN],  N_13 [    C]
-out_QN    
+out_QN      INV
 	M16_M17  P:   VDD [  VDD],   N_5 [     ],    QN [   QN]
 	M7_M8  N:   VSS [  VSS],   N_5 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M19_M20  P:   VDD [  VDD],   N_6 [     ],     Q [    Q]
 	M10_M11  N:   VSS [  VSS],   N_6 [     ],     Q [    Q]
 devices left:
@@ -5014,15 +5032,15 @@ devices left:
 	  M26  P:  N_17 [     ],     D [    D],   VDD [  VDD]
 
 **********latch : LANHB3**********
-clk       
+clk         CLK1
 	  M18  P:  N_16 [   CN],     G [   CK],   VDD [  VDD]
 	  M30  P:   VDD [  VDD],  N_16 [   CN],   N_9 [    C]
 	  M17  N:  N_16 [   CN],     G [   CK],   VSS [  VSS]
 	   M9  N:   VSS [  VSS],  N_16 [   CN],   N_9 [    C]
-out_Q     
+out_Q       INV
 	M19_M20_M21  P:   VDD [  VDD],  N_11 [     ],     Q [    Q]
 	M1_M2_M3  N:   VSS [  VSS],  N_11 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	M23_M24_M25  P:   VDD [  VDD],   N_4 [     ],    QN [   QN]
 	M5_M6_M7  N:   VSS [  VSS],   N_4 [     ],    QN [   QN]
 devices left:
@@ -5046,15 +5064,15 @@ devices left:
 	  M34  P:  N_37 [     ],   N_9 [    C],  N_11 [     ]
 
 **********latch : LANLB0**********
-clk       
+clk         CLK1
 	  M18  P:  N_11 [   CN],    GN [   CK],   VDD [  VDD]
 	  M10  P:   VDD [  VDD],  N_11 [   CN],   N_5 [    C]
 	   M9  N:  N_11 [   CN],    GN [   CK],   VSS [  VSS]
 	   M1  N:   VSS [  VSS],  N_11 [   CN],   N_5 [    C]
-out_QN    
+out_QN      INV
 	  M14  P:   VDD [  VDD],   N_9 [     ],    QN [   QN]
 	   M5  N:   VSS [  VSS],   N_9 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M16  P:   VDD [  VDD],   N_6 [     ],     Q [    Q]
 	   M7  N:   VSS [  VSS],   N_6 [     ],     Q [    Q]
 devices left:
@@ -5070,15 +5088,15 @@ devices left:
 	  M17  P:   N_9 [     ],   N_6 [     ],   VDD [  VDD]
 
 **********latch : LANLB1**********
-clk       
+clk         CLK1
 	  M10  P:   N_5 [   CN],    GN [   CK],   VDD [  VDD]
 	  M11  P:   VDD [  VDD],   N_5 [   CN],   N_9 [    C]
 	   M3  N:   N_5 [   CN],    GN [   CK],   VSS [  VSS]
 	   M4  N:   VSS [  VSS],   N_5 [   CN],   N_9 [    C]
-out_Q     
+out_Q       INV
 	  M17  P:   VDD [  VDD],  N_11 [     ],     Q [    Q]
 	   M1  N:   VSS [  VSS],  N_11 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M13  P:   VDD [  VDD],   N_4 [     ],    QN [   QN]
 	   M7  N:   VSS [  VSS],   N_4 [     ],    QN [   QN]
 devices left:
@@ -5094,15 +5112,15 @@ devices left:
 	  M18  P:   N_4 [     ],  N_11 [     ],   VDD [  VDD]
 
 **********latch : LANLB2**********
-clk       
+clk         CLK1
 	  M14  P:   N_3 [   CN],    GN [   CK],   VDD [  VDD]
 	  M21  P:   VDD [  VDD],   N_3 [   CN],   N_6 [    C]
 	   M1  N:   N_3 [   CN],    GN [   CK],   VSS [  VSS]
 	   M8  N:   VSS [  VSS],   N_3 [   CN],   N_6 [    C]
-out_QN    
+out_QN      INV
 	M15_M16  P:   VDD [  VDD],  N_13 [     ],    QN [   QN]
 	M2_M3  N:   VSS [  VSS],  N_13 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M26_M27  P:   VDD [  VDD],   N_8 [     ],     Q [    Q]
 	M11_M12  N:   VSS [  VSS],   N_8 [     ],     Q [    Q]
 devices left:
@@ -5124,15 +5142,15 @@ devices left:
 	  M28  P:  N_13 [     ],   N_8 [     ],   VDD [  VDD]
 
 **********latch : LANLB3**********
-clk       
+clk         CLK1
 	  M18  P:   N_3 [   CN],    GN [   CK],   VDD [  VDD]
 	  M22  P:   VDD [  VDD],   N_3 [   CN],   N_6 [    C]
 	   M1  N:   N_3 [   CN],    GN [   CK],   VSS [  VSS]
 	   M5  N:   VSS [  VSS],   N_3 [   CN],   N_6 [    C]
-out_QN    
+out_QN      INV
 	M25_M26_M27  P:   VDD [  VDD],  N_15 [     ],    QN [   QN]
 	M8_M9_M10  N:   VSS [  VSS],  N_15 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M31_M32_M33  P:   VDD [  VDD],   N_8 [     ],     Q [    Q]
 	M14_M15_M16  N:   VSS [  VSS],   N_8 [     ],     Q [    Q]
 devices left:
@@ -5156,18 +5174,18 @@ devices left:
 	  M34  P:  N_15 [     ],   N_8 [     ],   VDD [  VDD]
 
 **********latch : LAPHB0**********
-clk       
+clk         CLK1
 	  M15  P:   N_7 [   CN],     G [   CK],   VDD [  VDD]
 	  M17  P:   VDD [  VDD],   N_7 [   CN],  N_10 [    C]
 	   M4  N:   N_7 [   CN],     G [   CK],   VSS [  VSS]
 	   M6  N:   VSS [  VSS],   N_7 [   CN],  N_10 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M16  P:   VDD [  VDD],    SN [   SN],   N_9 [SN_N0]
 	  M11  N:   VSS [  VSS],    SN [   SN],   N_9 [SN_N0]
-out_Q     
+out_Q       INV
 	  M12  P:   VDD [  VDD],  N_14 [     ],     Q [    Q]
 	   M1  N:   VSS [  VSS],  N_14 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M14  P:   VDD [  VDD],   N_4 [     ],    QN [   QN]
 	   M3  N:   VSS [  VSS],   N_4 [     ],    QN [   QN]
 devices left:
@@ -5186,18 +5204,18 @@ devices left:
 	  M23  P:  N_15 [     ],   N_9 [SN_N0],   VDD [  VDD]
 
 **********latch : LAPHB1**********
-clk       
+clk         CLK1
 	  M20  P:  N_11 [   CN],     G [   CK],   VDD [  VDD]
 	  M18  P:   VDD [  VDD],  N_11 [   CN],   N_4 [    C]
 	   M8  N:  N_11 [   CN],     G [   CK],   VSS [  VSS]
 	   M6  N:   VSS [  VSS],  N_11 [   CN],   N_4 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M12  P:   VDD [  VDD],    SN [   SN],   N_3 [SN_N0]
 	   M1  N:   VSS [  VSS],    SN [   SN],   N_3 [SN_N0]
-out_Q     
+out_Q       INV
 	  M21  P:   VDD [  VDD],   N_6 [     ],     Q [    Q]
 	   M9  N:   VSS [  VSS],   N_6 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	  M23  P:   VDD [  VDD],  N_14 [     ],    QN [   QN]
 	  M11  N:   VSS [  VSS],  N_14 [     ],    QN [   QN]
 devices left:
@@ -5216,18 +5234,18 @@ devices left:
 	  M22  P:  N_14 [     ],   N_6 [     ],   VDD [  VDD]
 
 **********latch : LAPHB2**********
-clk       
+clk         CLK1
 	  M19  P:   N_9 [   CN],     G [   CK],   VDD [  VDD]
 	  M22  P:   VDD [  VDD],   N_9 [   CN],  N_10 [    C]
 	   M6  N:   N_9 [   CN],     G [   CK],   VSS [  VSS]
 	   M8  N:   VSS [  VSS],   N_9 [   CN],  N_10 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M29  P:   VDD [  VDD],    SN [   SN],  N_17 [SN_N0]
 	  M13  N:   VSS [  VSS],    SN [   SN],  N_17 [SN_N0]
-out_QN    
+out_QN      INV
 	M17_M18  P:   VDD [  VDD],   N_4 [     ],    QN [   QN]
 	M4_M5  N:   VSS [  VSS],   N_4 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M14_M15  P:   VDD [  VDD],  N_13 [     ],     Q [    Q]
 	M1_M2  N:   VSS [  VSS],  N_13 [     ],     Q [    Q]
 devices left:
@@ -5248,18 +5266,18 @@ devices left:
 	  M28  P:  N_73 [     ],  N_17 [SN_N0],   VDD [  VDD]
 
 **********latch : LAPHB3**********
-clk       
+clk         CLK1
 	  M35  P:  N_14 [   CN],     G [   CK],   VDD [  VDD]
 	  M30  P:   VDD [  VDD],  N_14 [   CN],   N_4 [    C]
 	  M13  N:  N_14 [   CN],     G [   CK],   VSS [  VSS]
 	   M8  N:   VSS [  VSS],  N_14 [   CN],   N_4 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M18  P:   VDD [  VDD],    SN [   SN],   N_3 [SN_N0]
 	   M1  N:   VSS [  VSS],    SN [   SN],   N_3 [SN_N0]
-out_QN    
+out_QN      INV
 	M32_M33_M34  P:   VDD [  VDD],  N_19 [     ],    QN [   QN]
 	M10_M11_M12  N:   VSS [  VSS],  N_19 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M19_M20_M21  P:   VDD [  VDD],   N_8 [     ],     Q [    Q]
 	M14_M15_M16  N:   VSS [  VSS],   N_8 [     ],     Q [    Q]
 devices left:
@@ -5280,18 +5298,18 @@ devices left:
 	M5_M6  N:   N_7 [     ],   N_4 [    C],   N_8 [     ]
 
 **********latch : LAPLB0**********
-clk       
+clk         CLK1
 	  M13  P:   N_6 [   CN],    GN [   CK],   VDD [  VDD]
 	  M19  P:   VDD [  VDD],   N_6 [   CN],  N_10 [    C]
 	   M8  N:   N_6 [   CN],    GN [   CK],   VSS [  VSS]
 	   M4  N:   VSS [  VSS],   N_6 [   CN],  N_10 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M12  P:   VDD [  VDD],    SN [   SN],   N_3 [SN_N0]
 	   M1  N:   VSS [  VSS],    SN [   SN],   N_3 [SN_N0]
-out_QN    
+out_QN      INV
 	  M14  P:   VDD [  VDD],   N_9 [     ],    QN [   QN]
 	   M9  N:   VSS [  VSS],   N_9 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M15  P:   VDD [  VDD],  N_14 [     ],     Q [    Q]
 	  M10  N:   VSS [  VSS],  N_14 [     ],     Q [    Q]
 devices left:
@@ -5310,18 +5328,18 @@ devices left:
 	  M23  P:  N_15 [     ],     D [    D],  N_13 [     ]
 
 **********latch : LAPLB1**********
-clk       
+clk         CLK1
 	  M22  P:  N_11 [   CN],    GN [   CK],   VDD [  VDD]
 	  M14  P:   VDD [  VDD],  N_11 [   CN],   N_4 [    C]
 	   M8  N:  N_11 [   CN],    GN [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],  N_11 [   CN],   N_4 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M12  P:   VDD [  VDD],    SN [   SN],   N_3 [SN_N0]
 	   M1  N:   VSS [  VSS],    SN [   SN],   N_3 [SN_N0]
-out_QN    
+out_QN      INV
 	  M25  P:   VDD [  VDD],  N_16 [     ],    QN [   QN]
 	   M9  N:   VSS [  VSS],  N_16 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	  M23  P:   VDD [  VDD],   N_7 [     ],     Q [    Q]
 	  M10  N:   VSS [  VSS],   N_7 [     ],     Q [    Q]
 devices left:
@@ -5342,18 +5360,18 @@ devices left:
 	  M24  P:  N_16 [     ],   N_7 [     ],   VDD [  VDD]
 
 **********latch : LAPLB2**********
-clk       
+clk         CLK1
 	  M24  P:  N_11 [   CN],    GN [   CK],   VDD [  VDD]
 	  M22  P:   VDD [  VDD],  N_11 [   CN],   N_4 [    C]
 	   M8  N:  N_11 [   CN],    GN [   CK],   VSS [  VSS]
 	   M6  N:   VSS [  VSS],  N_11 [   CN],   N_4 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M14  P:   VDD [  VDD],    SN [   SN],   N_3 [SN_N0]
 	   M1  N:   VSS [  VSS],    SN [   SN],   N_3 [SN_N0]
-out_QN    
+out_QN      INV
 	M28_M29  P:   VDD [  VDD],  N_14 [     ],    QN [   QN]
 	M12_M13  N:   VSS [  VSS],  N_14 [     ],    QN [   QN]
-out_Q     
+out_Q       INV
 	M25_M26  P:   VDD [  VDD],   N_7 [     ],     Q [    Q]
 	M9_M10  N:   VSS [  VSS],   N_7 [     ],     Q [    Q]
 devices left:
@@ -5374,18 +5392,18 @@ devices left:
 	  M27  P:  N_14 [     ],   N_7 [     ],   VDD [  VDD]
 
 **********latch : LAPLB3**********
-clk       
+clk         CLK1
 	  M25  P:   N_9 [   CN],    GN [   CK],   VDD [  VDD]
 	  M26  P:   VDD [  VDD],   N_9 [   CN],  N_12 [    C]
 	   M8  N:   N_9 [   CN],    GN [   CK],   VSS [  VSS]
 	  M10  N:   VSS [  VSS],   N_9 [   CN],  N_12 [    C]
-ininv_SN_0
+ininv_SN_0  INV
 	  M35  P:   VDD [  VDD],    SN [   SN],  N_21 [SN_N0]
 	  M17  N:   VSS [  VSS],    SN [   SN],  N_21 [SN_N0]
-out_Q     
+out_Q       INV
 	M18_M19_M20  P:   VDD [  VDD],  N_16 [     ],     Q [    Q]
 	M1_M2_M3  N:   VSS [  VSS],  N_16 [     ],     Q [    Q]
-out_QN    
+out_QN      INV
 	M22_M23_M24  P:   VDD [  VDD],   N_4 [     ],    QN [   QN]
 	M5_M6_M7  N:   VSS [  VSS],   N_4 [     ],    QN [   QN]
 devices left:
@@ -5406,12 +5424,12 @@ devices left:
 	M15_M16  N:   VSS [  VSS],     D [    D],  N_14 [     ]
 
 **********clockgate : TLATNCAD0**********
-clk       
+clk         CLK1
 	  M17  P:  N_10 [   CN],    CK [   CK],   VDD [  VDD]
 	  M14  P:   VDD [  VDD],  N_10 [   CN],   N_5 [    C]
 	   M7  N:  N_10 [   CN],    CK [   CK],   VSS [  VSS]
 	   M5  N:   VSS [  VSS],  N_10 [   CN],   N_5 [    C]
-out_ECK   
+out_ECK     LOGIC_AND2
 	  M18  P:   VDD [  VDD],    CK [   CK],  N_11 [     ]
 	  M19  P:  N_11 [     ],   N_3 [     ],   VDD [  VDD]
 	  M20  P:   VDD [  VDD],  N_11 [     ],   ECK [  ECK]
@@ -5431,12 +5449,12 @@ devices left:
 	  M16  P:  N_12 [     ],     E [    E],   VDD [  VDD]
 
 **********clockgate : TLATNCAD1**********
-clk       
+clk         CLK1
 	  M17  P:  N_10 [   CN],    CK [   CK],   VDD [  VDD]
 	  M12  P:   VDD [  VDD],  N_10 [   CN],   N_5 [    C]
 	   M7  N:  N_10 [   CN],    CK [   CK],   VSS [  VSS]
 	   M3  N:   VSS [  VSS],  N_10 [   CN],   N_5 [    C]
-out_ECK   
+out_ECK     LOGIC_AND2
 	  M18  P:   VDD [  VDD],    CK [   CK],  N_11 [     ]
 	  M19  P:  N_11 [     ],   N_3 [     ],   VDD [  VDD]
 	  M20  P:   VDD [  VDD],  N_11 [     ],   ECK [  ECK]
@@ -5456,12 +5474,12 @@ devices left:
 	  M16  P:   N_3 [     ],   N_6 [     ],   VDD [  VDD]
 
 **********clockgate : TLATNCAD2**********
-clk       
+clk         CLK1
 	  M16  P:  N_12 [   CN],    CK [   CK],   VDD [  VDD]
 	  M17  P:   VDD [  VDD],  N_12 [   CN],   N_8 [    C]
 	  M11  N:  N_12 [   CN],    CK [   CK],   VSS [  VSS]
 	   M5  N:   VSS [  VSS],  N_12 [   CN],   N_8 [    C]
-out_ECK   
+out_ECK     LOGIC_AND2
 	  M15  P:   VDD [  VDD],    CK [   CK],   N_4 [     ]
 	  M14  P:   N_4 [     ],   N_7 [     ],   VDD [  VDD]
 	M12_M13  P:   VDD [  VDD],   N_4 [     ],   ECK [  ECK]
@@ -5481,12 +5499,12 @@ devices left:
 	  M22  P:  N_57 [     ],     E [    E],   VDD [  VDD]
 
 **********clockgate : TLATNCAD4**********
-clk       
+clk         CLK1
 	  M16  P:   N_5 [   CN],    CK [   CK],   VDD [  VDD]
 	  M26  P:   VDD [  VDD],   N_5 [   CN],  N_15 [    C]
 	   M9  N:   N_5 [   CN],    CK [   CK],   VSS [  VSS]
 	  M11  N:   VSS [  VSS],   N_5 [   CN],  N_15 [    C]
-out_ECK   
+out_ECK     LOGIC_AND2_2
 	M17_M20  P:   VDD [  VDD],    CK [   CK],   N_6 [     ]
 	M18_M19  P:   N_6 [     ],  N_13 [     ],   VDD [  VDD]
 	M21_M22_M23_M24  P:   VDD [  VDD],   N_6 [     ],   ECK [  ECK]
@@ -5508,12 +5526,12 @@ devices left:
 	  M30  P:  N_18 [     ],   N_5 [   CN],  N_16 [     ]
 
 **********clockgate : TLATNFCAD0**********
-clk       
+clk         CLK1
 	  M11  P:   N_2 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M13  P:   VDD [  VDD],   N_2 [   CN],   N_7 [    C]
 	   M1  N:   N_2 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M7  N:   VSS [  VSS],   N_2 [   CN],   N_7 [    C]
-out_ECK   
+out_ECK     LOGIC_OR2
 	  M18  P:  N_11 [     ],   CKN [   CK],  N_14 [     ]
 	   M2  N:   VSS [  VSS],   CKN [   CK],  N_11 [     ]
 	   M3  N:  N_11 [     ],   N_8 [     ],   VSS [  VSS]
@@ -5533,12 +5551,12 @@ devices left:
 	  M17  P:  N_13 [     ],   N_7 [    C],   N_8 [     ]
 
 **********clockgate : TLATNFCAD1**********
-clk       
+clk         CLK1
 	  M11  P:   N_2 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M13  P:   VDD [  VDD],   N_2 [   CN],   N_7 [    C]
 	   M1  N:   N_2 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M7  N:   VSS [  VSS],   N_2 [   CN],   N_7 [    C]
-out_ECK   
+out_ECK     LOGIC_OR2
 	  M18  P:  N_11 [     ],   CKN [   CK],  N_14 [     ]
 	   M2  N:   VSS [  VSS],   CKN [   CK],  N_11 [     ]
 	   M3  N:  N_11 [     ],   N_8 [     ],   VSS [  VSS]
@@ -5558,12 +5576,12 @@ devices left:
 	  M17  P:  N_13 [     ],   N_7 [    C],   N_8 [     ]
 
 **********clockgate : TLATNFCAD2**********
-clk       
+clk         CLK1
 	  M18  P:  N_10 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M12  P:   VDD [  VDD],  N_10 [   CN],   N_5 [    C]
 	   M1  N:  N_10 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M6  N:   VSS [  VSS],  N_10 [   CN],   N_5 [    C]
-out_ECK   
+out_ECK     LOGIC_OR2
 	  M20  P:  N_11 [     ],   CKN [   CK],  N_16 [     ]
 	   M2  N:   VSS [  VSS],   CKN [   CK],  N_11 [     ]
 	   M3  N:  N_11 [     ],   N_6 [     ],   VSS [  VSS]
@@ -5585,12 +5603,12 @@ devices left:
 	  M22  P:  N_15 [     ],   N_6 [     ],   VDD [  VDD]
 
 **********clockgate : TLATNFCAD4**********
-clk       
+clk         CLK1
 	  M20  P:  N_14 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M14  P:   VDD [  VDD],  N_14 [   CN],  N_11 [    C]
 	  M13  N:  N_14 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M7  N:   VSS [  VSS],  N_14 [   CN],  N_11 [    C]
-out_ECK   
+out_ECK     LOGIC_OR2
 	  M22  P:   N_6 [     ],   CKN [   CK],  N_34 [     ]
 	   M6  N:   VSS [  VSS],   CKN [   CK],   N_6 [     ]
 	   M5  N:   N_6 [     ],  N_13 [     ],   VSS [  VSS]
@@ -5614,44 +5632,48 @@ devices left:
 	  M26  P:   N_6 [     ],   CKN [   CK],  N_32 [     ]
 
 **********clockgate : TLATNFTSCAD0**********
-clk       
+clk         CLK1
 	  M11  P:   N_4 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M12  P:   VDD [  VDD],   N_4 [   CN],   N_3 [    C]
 	   M1  N:   N_4 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_3 [    C]
-out_ECK   
+out_ECK     LOGIC_NAND2
 	  M20  P:   ECK [  ECK],   N_6 [     ],   VDD [  VDD]
 	  M19  P:   VDD [  VDD],   N_4 [   CN],   ECK [  ECK]
 	   M9  N:  N_53 [     ],   N_4 [   CN],   ECK [  ECK]
 	  M10  N:   VSS [  VSS],   N_6 [     ],  N_53 [     ]
-devices left:
+inputs      LOGIC_NOR2
+	  M13  P:   VDD [  VDD],    SE [   SE],  N_13 [     ]
 	   M3  N:   VSS [  VSS],    SE [   SE],   N_9 [     ]
+	  M14  P:  N_13 [     ],     E [    E],   N_9 [     ]
 	   M4  N:   N_9 [     ],     E [    E],   VSS [  VSS]
+devices left:
 	   M5  N:   N_8 [     ],   N_3 [    C],   N_9 [     ]
 	   M6  N:  N_52 [     ],   N_6 [     ],   VSS [  VSS]
 	   M7  N:   N_6 [     ],   N_8 [     ],   VSS [  VSS]
 	   M8  N:  N_52 [     ],   N_4 [   CN],   N_8 [     ]
-	  M13  P:  N_13 [     ],    SE [   SE],   VDD [  VDD]
-	  M14  P:   N_9 [     ],     E [    E],  N_13 [     ]
 	  M15  P:   N_9 [     ],   N_4 [   CN],   N_8 [     ]
 	  M16  P:  N_14 [     ],   N_3 [    C],   N_8 [     ]
 	  M17  P:  N_14 [     ],   N_6 [     ],   VDD [  VDD]
 	  M18  P:   N_6 [     ],   N_8 [     ],   VDD [  VDD]
 
 **********clockgate : TLATNFTSCAD1**********
-clk       
+clk         CLK1
 	  M12  P:   N_4 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M11  P:   VDD [  VDD],   N_4 [   CN],   N_3 [    C]
 	   M2  N:   N_4 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M1  N:   VSS [  VSS],   N_4 [   CN],   N_3 [    C]
-out_ECK   
+out_ECK     LOGIC_NAND2
 	  M20  P:   ECK [  ECK],   N_6 [     ],   VDD [  VDD]
 	  M19  P:   VDD [  VDD],   N_4 [   CN],   ECK [  ECK]
 	   M3  N:  N_53 [     ],   N_4 [   CN],   ECK [  ECK]
 	   M4  N:   VSS [  VSS],   N_6 [     ],  N_53 [     ]
-devices left:
+inputs      LOGIC_NOR2
+	  M17  P:   VDD [  VDD],    SE [   SE],  N_13 [     ]
 	   M5  N:   VSS [  VSS],    SE [   SE],   N_8 [     ]
+	  M18  P:  N_13 [     ],     E [    E],   N_8 [     ]
 	   M6  N:   N_8 [     ],     E [    E],   VSS [  VSS]
+devices left:
 	   M7  N:   N_6 [     ],   N_9 [     ],   VSS [  VSS]
 	   M8  N:  N_54 [     ],   N_6 [     ],   VSS [  VSS]
 	   M9  N:  N_54 [     ],   N_4 [   CN],   N_9 [     ]
@@ -5660,58 +5682,58 @@ devices left:
 	  M14  P:  N_14 [     ],   N_6 [     ],   VDD [  VDD]
 	  M15  P:  N_14 [     ],   N_3 [    C],   N_9 [     ]
 	  M16  P:   N_9 [     ],   N_4 [   CN],   N_8 [     ]
-	  M17  P:  N_13 [     ],    SE [   SE],   VDD [  VDD]
-	  M18  P:  N_13 [     ],     E [    E],   N_8 [     ]
 
 **********clockgate : TLATNFTSCAD2**********
-clk       
+clk         CLK1
 	  M13  P:   N_4 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M14  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	   M1  N:   N_4 [   CN],   CKN [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-out_ECK   
+out_ECK     LOGIC_NAND2
 	M22_M23  P:   ECK [  ECK],  N_12 [     ],   VDD [  VDD]
 	M21_M24  P:   VDD [  VDD],   N_4 [   CN],   ECK [  ECK]
-	   M8  N:  N_15 [     ],   N_4 [   CN],   ECK [  ECK]
-	   M7  N:   VSS [  VSS],  N_12 [     ],  N_15 [     ]
-devices left:
-	   M3  N:   VSS [  VSS],    SE [   SE],   N_6 [     ]
-	   M4  N:   N_6 [     ],     E [    E],   VSS [  VSS]
 	   M5  N:  N_16 [     ],   N_4 [   CN],   ECK [  ECK]
-	   M6  N:  N_16 [     ],  N_12 [     ],   VSS [  VSS]
+	   M6  N:   VSS [  VSS],  N_12 [     ],  N_16 [     ]
+inputs      LOGIC_NOR2
+	  M15  P:   VDD [  VDD],    SE [   SE],  N_28 [     ]
+	   M3  N:   VSS [  VSS],    SE [   SE],   N_6 [     ]
+	  M18  P:  N_28 [     ],     E [    E],   N_6 [     ]
+	   M4  N:   N_6 [     ],     E [    E],   VSS [  VSS]
+devices left:
+	   M7  N:   VSS [  VSS],  N_12 [     ],  N_15 [     ]
+	   M8  N:   ECK [  ECK],   N_4 [   CN],  N_15 [     ]
 	   M9  N:  N_12 [     ],  N_13 [     ],   VSS [  VSS]
 	  M10  N:   N_6 [     ],   N_2 [    C],  N_13 [     ]
 	  M11  N:  N_17 [     ],  N_12 [     ],   VSS [  VSS]
 	  M12  N:  N_17 [     ],   N_4 [   CN],  N_13 [     ]
-	  M15  P:  N_28 [     ],    SE [   SE],   VDD [  VDD]
 	  M16  P:  N_12 [     ],  N_13 [     ],   VDD [  VDD]
 	  M17  P:  N_29 [     ],   N_2 [    C],  N_13 [     ]
-	  M18  P:  N_28 [     ],     E [    E],   N_6 [     ]
 	  M19  P:  N_29 [     ],  N_12 [     ],   VDD [  VDD]
 	  M20  P:  N_13 [     ],   N_4 [   CN],   N_6 [     ]
 
 **********clockgate : TLATNFTSCAD4**********
-clk       
+clk         CLK1
 	  M19  P:   N_4 [   CN],   CKN [   CK],   VDD [  VDD]
 	  M20  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
 	  M11  N:   N_4 [   CN],   CKN [   CK],   VSS [  VSS]
 	  M12  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
-out_ECK   
+out_ECK     LOGIC_OR2
 	  M27  P:  N_12 [     ],   N_2 [    C],  N_20 [     ]
 	M1_M4_M5  N:   VSS [  VSS],   N_2 [    C],  N_12 [     ]
 	M2_M3_M6  N:  N_12 [     ],   N_9 [     ],   VSS [  VSS]
 	M33_M34_M35_M36  P:   VDD [  VDD],  N_12 [     ],   ECK [  ECK]
 	M7_M8_M9_M10  N:   VSS [  VSS],  N_12 [     ],   ECK [  ECK]
 	  M29  P:  N_20 [     ],   N_9 [     ],   VDD [  VDD]
-devices left:
+inputs      LOGIC_NOR2
+	  M21  P:   VDD [  VDD],    SE [   SE],  N_18 [     ]
 	  M13  N:   VSS [  VSS],    SE [   SE],   N_8 [     ]
+	  M22  P:  N_18 [     ],     E [    E],   N_8 [     ]
 	  M14  N:   N_8 [     ],     E [    E],   VSS [  VSS]
+devices left:
 	  M15  N:   N_9 [     ],   N_2 [    C],   N_8 [     ]
 	  M16  N:  N_33 [     ],   N_4 [   CN],   N_9 [     ]
 	  M17  N:  N_33 [     ],   N_5 [     ],   VSS [  VSS]
 	  M18  N:   N_5 [     ],   N_9 [     ],   VSS [  VSS]
-	  M21  P:  N_18 [     ],    SE [   SE],   VDD [  VDD]
-	  M22  P:  N_18 [     ],     E [    E],   N_8 [     ]
 	  M23  P:  N_19 [     ],   N_2 [    C],   N_9 [     ]
 	  M24  P:   N_9 [     ],   N_4 [   CN],   N_8 [     ]
 	  M25  P:  N_19 [     ],   N_5 [     ],   VDD [  VDD]
@@ -5722,91 +5744,94 @@ devices left:
 	  M32  P:  N_22 [     ],   N_9 [     ],   VDD [  VDD]
 
 **********clockgate : TLATNTSCAD0**********
-clk       
+clk         CLK1
 	  M12  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M11  P:   VDD [  VDD],   N_4 [   CN],   N_3 [    C]
 	   M8  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M7  N:   VSS [  VSS],   N_4 [   CN],   N_3 [    C]
-out_ECK   
+out_ECK     LOGIC_NOR2
 	  M19  P:   VDD [  VDD],   N_9 [     ],  N_14 [     ]
 	   M9  N:   VSS [  VSS],   N_9 [     ],   ECK [  ECK]
 	  M20  P:  N_14 [     ],   N_4 [   CN],   ECK [  ECK]
 	  M10  N:   ECK [  ECK],   N_4 [   CN],   VSS [  VSS]
-devices left:
-	   M1  N:   N_8 [     ],     E [    E],   VSS [  VSS]
+inputs      LOGIC_NOR2
+	  M16  P:   VDD [  VDD],    SE [   SE],  N_12 [     ]
 	   M2  N:   VSS [  VSS],    SE [   SE],   N_8 [     ]
+	  M14  P:  N_12 [     ],     E [    E],   N_8 [     ]
+	   M1  N:   N_8 [     ],     E [    E],   VSS [  VSS]
+devices left:
 	   M3  N:   N_8 [     ],   N_4 [   CN],   N_9 [     ]
 	   M4  N:  N_55 [     ],   N_6 [     ],   VSS [  VSS]
 	   M5  N:   N_6 [     ],   N_9 [     ],   VSS [  VSS]
 	   M6  N:  N_55 [     ],   N_3 [    C],   N_9 [     ]
 	  M13  P:  N_13 [     ],   N_4 [   CN],   N_9 [     ]
-	  M14  P:  N_12 [     ],     E [    E],   N_8 [     ]
 	  M15  P:  N_13 [     ],   N_6 [     ],   VDD [  VDD]
-	  M16  P:  N_12 [     ],    SE [   SE],   VDD [  VDD]
 	  M17  P:   N_6 [     ],   N_9 [     ],   VDD [  VDD]
 	  M18  P:   N_9 [     ],   N_3 [    C],   N_8 [     ]
 
 **********clockgate : TLATNTSCAD1**********
-clk       
+clk         CLK1
 	  M12  P:   N_7 [   CN],    CK [   CK],   VDD [  VDD]
 	  M13  P:   VDD [  VDD],   N_7 [   CN],   N_5 [    C]
 	   M4  N:   N_7 [   CN],    CK [   CK],   VSS [  VSS]
 	   M5  N:   VSS [  VSS],   N_7 [   CN],   N_5 [    C]
-out_ECK   
+out_ECK     LOGIC_AND2
 	  M22  P:   VDD [  VDD],   N_5 [    C],   N_4 [     ]
 	  M20  P:   N_4 [     ],  N_12 [     ],   VDD [  VDD]
 	  M21  P:   VDD [  VDD],   N_4 [     ],   ECK [  ECK]
 	   M3  N:   N_4 [     ],   N_5 [    C],  N_15 [     ]
 	   M2  N:   VSS [  VSS],   N_4 [     ],   ECK [  ECK]
 	   M1  N:  N_15 [     ],  N_12 [     ],   VSS [  VSS]
-devices left:
+inputs      LOGIC_NOR2
+	  M14  P:   VDD [  VDD],    SE [   SE],  N_57 [     ]
 	   M6  N:   VSS [  VSS],    SE [   SE],   N_9 [     ]
+	  M16  P:  N_57 [     ],     E [    E],   N_9 [     ]
 	   M7  N:   N_9 [     ],     E [    E],   VSS [  VSS]
+devices left:
 	   M8  N:  N_16 [     ],   N_5 [    C],  N_14 [     ]
 	   M9  N:  N_14 [     ],   N_7 [   CN],   N_9 [     ]
 	  M10  N:  N_16 [     ],  N_12 [     ],   VSS [  VSS]
 	  M11  N:  N_12 [     ],  N_14 [     ],   VSS [  VSS]
-	  M14  P:  N_57 [     ],    SE [   SE],   VDD [  VDD]
 	  M15  P:  N_14 [     ],   N_5 [    C],   N_9 [     ]
-	  M16  P:  N_57 [     ],     E [    E],   N_9 [     ]
 	  M17  P:  N_58 [     ],   N_7 [   CN],  N_14 [     ]
 	  M18  P:  N_58 [     ],  N_12 [     ],   VDD [  VDD]
 	  M19  P:   VDD [  VDD],  N_14 [     ],  N_12 [     ]
 
 **********clockgate : TLATNTSCAD2**********
-clk       
+clk         CLK1
 	  M23  P:   N_8 [   CN],    CK [   CK],   VDD [  VDD]
 	  M24  P:   VDD [  VDD],   N_8 [   CN],   N_7 [    C]
 	   M5  N:   N_8 [   CN],    CK [   CK],   VSS [  VSS]
 	   M6  N:   VSS [  VSS],   N_8 [   CN],   N_7 [    C]
-out_ECK   
+out_ECK     LOGIC_AND2
 	  M22  P:   VDD [  VDD],   N_7 [    C],  N_11 [     ]
 	  M21  P:  N_11 [     ],   N_2 [     ],   VDD [  VDD]
 	M19_M20  P:   VDD [  VDD],  N_11 [     ],   ECK [  ECK]
 	  M10  N:  N_11 [     ],   N_7 [    C],  N_17 [     ]
 	M7_M8  N:   VSS [  VSS],  N_11 [     ],   ECK [  ECK]
 	   M9  N:  N_17 [     ],   N_2 [     ],   VSS [  VSS]
+inputs      LOGIC_NOR2
+	  M13  P:   VDD [  VDD],    SE [   SE],  N_61 [     ]
+	  M11  N:   VSS [  VSS],    SE [   SE],   N_4 [     ]
+	  M14  P:  N_61 [     ],     E [    E],   N_4 [     ]
+	  M12  N:   N_4 [     ],     E [    E],   VSS [  VSS]
 devices left:
 	   M1  N:   VSS [  VSS],   N_5 [     ],   N_2 [     ]
 	   M2  N:  N_16 [     ],   N_2 [     ],   VSS [  VSS]
 	   M3  N:  N_16 [     ],   N_7 [    C],   N_5 [     ]
 	   M4  N:   N_5 [     ],   N_8 [   CN],   N_4 [     ]
-	  M11  N:   VSS [  VSS],    SE [   SE],   N_4 [     ]
-	  M12  N:   N_4 [     ],     E [    E],   VSS [  VSS]
-	  M13  P:  N_61 [     ],    SE [   SE],   VDD [  VDD]
-	  M14  P:  N_61 [     ],     E [    E],   N_4 [     ]
 	  M15  P:   N_2 [     ],   N_5 [     ],   VDD [  VDD]
 	  M16  P:  N_62 [     ],   N_2 [     ],   VDD [  VDD]
 	  M17  P:   N_5 [     ],   N_7 [    C],   N_4 [     ]
 	  M18  P:  N_62 [     ],   N_8 [   CN],   N_5 [     ]
 
 **********clockgate : TLATNTSCAD4**********
-clk       
+clk         CLK1
 	  M17  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
 	  M18  P:   VDD [  VDD],   N_4 [   CN],   N_3 [    C]
 	   M1  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
 	   M2  N:   VSS [  VSS],   N_4 [   CN],   N_3 [    C]
-out_ECK   
+out_ECK     LOGIC_AND2_2
 	M27_M28  P:   VDD [  VDD],   N_3 [    C],  N_15 [     ]
 	M26_M29  P:  N_15 [     ],   N_9 [     ],   VDD [  VDD]
 	M30_M31_M32_M33  P:   VDD [  VDD],  N_15 [     ],   ECK [  ECK]
@@ -5815,15 +5840,16 @@ out_ECK
 	M13_M14_M15_M16  N:   VSS [  VSS],  N_15 [     ],   ECK [  ECK]
 	  M12  N:  N_21 [     ],   N_9 [     ],   VSS [  VSS]
 	   M9  N:  N_20 [     ],   N_9 [     ],   VSS [  VSS]
-devices left:
+inputs      LOGIC_NOR2
+	  M19  P:   VDD [  VDD],    SE [   SE],  N_82 [     ]
 	   M3  N:   VSS [  VSS],    SE [   SE],   N_6 [     ]
+	  M20  P:  N_82 [     ],     E [    E],   N_6 [     ]
 	   M4  N:   N_6 [     ],     E [    E],   VSS [  VSS]
+devices left:
 	   M5  N:  N_11 [     ],   N_4 [   CN],   N_6 [     ]
 	   M6  N:  N_19 [     ],   N_9 [     ],   VSS [  VSS]
 	   M7  N:   N_9 [     ],  N_11 [     ],   VSS [  VSS]
 	   M8  N:  N_19 [     ],   N_3 [    C],  N_11 [     ]
-	  M19  P:  N_82 [     ],    SE [   SE],   VDD [  VDD]
-	  M20  P:  N_82 [     ],     E [    E],   N_6 [     ]
 	  M21  P:  N_83 [     ],   N_4 [   CN],  N_11 [     ]
 	  M22  P:  N_83 [     ],   N_9 [     ],   VDD [  VDD]
 	  M25  P:  N_11 [     ],   N_3 [    C],   N_6 [     ]

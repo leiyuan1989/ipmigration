@@ -63,6 +63,8 @@ c4 = cells['DFANRQ0']
 c5 = cells['SDMNRQ0']
 c6 = cells['SENRQ0']
 c7 = cells['TLATNFCAD4']
+
+c8 = cells['SDPRQM']
 # def ascell(args,app):
 #     file = open('log_tmp.txt','w')
 #     init_logger(args)

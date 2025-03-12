@@ -21,11 +21,11 @@ class Patterns:
         self.mux_dict = {}
         
         self.fcross_dict = {}
-        
+        self.pcross_dict = {}
         
         
         # self.out_dict = {}
-        self.cross_dict = {}
+
 
         self.backtrack_dict  = {}
         self.pull_dict  = {}
@@ -39,24 +39,16 @@ class Patterns:
         for k,v in self.ckt_dict.items():
             if 'CLK' in k:
                 self.clk_dict[k] = v
-            # if 'OUT_' in k:
-            #     self.clk_dict[k] = v                
-                
             if 'LOGIC' in k:
                 self.logic_dict[k] = v 
             if 'MUX' in k:
                 self.mux_dict[k] = v           
-            
             if 'FCROSS' in k:
                 self.fcross_dict[k] = v
-                
-                
-            if 'CROSS' in k:
-                self.cross_dict[k] = v            
+            if 'PCROSS' in k:
+                self.pcross_dict[k] = v            
          
-            
-
-            
+                       
             if 'BACKTRACK' in k:
                 self.backtrack_dict[k] = v  
             if 'PULL' in k:
@@ -65,7 +57,7 @@ class Patterns:
             self.ckt_graph[k] = MosGraph(v)
             # print(chain)
         
-        self.examine_structs(self.cross_dict)
+        # self.examine_structs(self.cross_dict)
 
     def sort_dict(self, di):
         return  dict(sorted(di.items(), key=lambda item: len(item[1]),reverse=True))

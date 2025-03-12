@@ -55,7 +55,7 @@ class Ckt:
         self.clk_net = 'undef'
         
         self.din, self.enable,self.mul_in,self.rn,self.sn = False, False, False, False,False
-    
+
     
     def add_device(self,device):
         self.devices.append(device)

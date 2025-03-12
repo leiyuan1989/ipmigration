@@ -69,10 +69,6 @@ PM2 net1 IN2  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=2
 NM2 OUT1 IN2  VSS  VSS nmos l=1 w=1 n=1  ro=1 co=2
 .ends LOGIC_NOR2
 
-******************Multiplex ************************
-
-
-
 
 *FCROSS can be used to match D with E or CN/C with D
 .SUBCKT FCROSS_1 D E E_N D1 VDD VSS OUT1 OUT2 
@@ -120,36 +116,39 @@ NM3 OUT1  E_N net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
 NM4 net4  D1  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
 .ends FCROSS_4
 
-******************D0 and D1 or S0************************
-*see logic and mux
-
-
-*multiple inputs s65  DXHSV1
-.SUBCKT INPUT_MD1 D0 D1 S0 VDD VSS OUT1
-PM1 N_D0 N_S0 OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=1
-NM1 N_D0 S0   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=1
-PM2 OUT1 S0   N_D1 VDD pmos l=1 w=1 n=1 ro=1 co=2
-NM2 OUT1 N_S0 N_D1 VSS nmos l=1 w=1 n=1 ro=1 co=2
-.ends INPUT_MDR1  
 
 
 
+******************PCROSS without D********************************
+.SUBCKT PCROSS_1 IN0 IN1 D1 E_N E OUT1 VDD VSS 
+PM1 IN0   E_N OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+PM2 OUT1  E   net2 VDD pmos l=1 w=1 n=1 ro=1 co=2
+PM3 net2  D1  VDD  VDD pmos l=1 w=1 n=1 ro=1 co=3
+NM1 IN1   E   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=1
+NM2 OUT1  E_N net4 VSS nmos l=1 w=1 n=1 ro=1 co=2
+NM3 net4  D1  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=3
+.ends PCROSS_1
 
 
-
-
-
-
-
-
-
-
-
+.SUBCKT PCROSS_2 IN0 D1 E_N E OUT1 VDD VSS 
+PM1 IN0   E_N OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+PM2 OUT1  E   net2 VDD pmos l=1 w=1 n=1 ro=1 co=2
+PM3 net2  D1  VDD  VDD pmos l=1 w=1 n=1 ro=1 co=3
+NM1 IN0   E   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=1
+NM2 OUT1  E_N net4 VSS nmos l=1 w=1 n=1 ro=1 co=2
+NM3 net4  D1  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=3
+.ends PCROSS_2
 
 
 
 
-******************CROSS without D********************************
+
+
+
+
+
+
+
 .SUBCKT CROSS_NOD_1_1 IN1 A B OUT1 OUT2 VDD VSS 
 PMA IN1  A   PM   VDD pmos  l=1 w=1 n=1 ro=1 co=1
 PMB PM   B   OUT1 VDD pmos  l=1 w=1 n=1 ro=1 co=2
