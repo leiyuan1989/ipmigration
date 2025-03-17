@@ -55,7 +55,6 @@ class Ckt:
         self.clk_net = 'undef'
         
         self.din, self.enable,self.mul_in,self.rn,self.sn = False, False, False, False,False
-
     
     def add_device(self,device):
         self.devices.append(device)
@@ -89,7 +88,7 @@ class Ckt:
                          'sn_net':'SN',  'rn_net':'RN',
                          'se_net':'SE',  'si_net':'SI',                      
                          'c_net':'C',    'cn_net':'CN',
-                         'pm_net':'PM','bm_net':'BM','m_net':'M','s_net':'S',
+                         'pm0_net':'PM0','bm0_net':'BM','m_net':'M','s_net':'S',
                          }    
         
         for attr in self.key_nets:

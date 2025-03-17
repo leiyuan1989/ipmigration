@@ -17,12 +17,13 @@ class Patterns:
         self.ckt_graph = {}
 
         self.clk_dict = {}
-        self.logic_dict = {}
+        self.logic2_dict = {}
         self.mux_dict = {}
         
         self.fcross_dict = {}
         self.pcross_dict = {}
-        
+        self.rscross_dict = {'FRS':{},'FR':{},'FS':{},
+                             'PRS':{},'PR':{},'PS':{} }#Asynchronous RN/SN
         
         # self.out_dict = {}
 
@@ -39,15 +40,27 @@ class Patterns:
         for k,v in self.ckt_dict.items():
             if 'CLK' in k:
                 self.clk_dict[k] = v
-            if 'LOGIC' in k:
-                self.logic_dict[k] = v 
+            if 'LOGIC2' in k:
+                self.logic2_dict[k] = v 
             if 'MUX' in k:
                 self.mux_dict[k] = v           
             if 'FCROSS' in k:
                 self.fcross_dict[k] = v
             if 'PCROSS' in k:
-                self.pcross_dict[k] = v            
-         
+                self.pcross_dict[k] = v   
+            
+            if 'FRSCROSS' in k:
+                self.rscross_dict['FRS'][k] = v  
+            if 'FRCROSS' in k:
+                self.rscross_dict['FR'][k] = v                  
+            if 'FSCROSS' in k:
+                self.rscross_dict['FS'][k] = v  
+            if 'PRSCROSS' in k:
+                self.rscross_dict['PRS'][k] = v  
+            if 'PRCROSS' in k:
+                self.rscross_dict['PR'][k] = v                  
+            if 'PSCROSS' in k:
+                self.rscross_dict['PS'][k] = v                  
                        
             if 'BACKTRACK' in k:
                 self.backtrack_dict[k] = v  
@@ -55,12 +68,65 @@ class Patterns:
                 self.pull_dict[k] = v                 
 
             self.ckt_graph[k] = MosGraph(v)
+        self.pattern_augment()
             # print(chain)
         
         # self.examine_structs(self.cross_dict)
 
     def sort_dict(self, di):
         return  dict(sorted(di.items(), key=lambda item: len(item[1]),reverse=True))
+
+    def pattern_augment(self):
+        self.fcross_aug_dict = {}
+        self.pcross_aug_dict = {}
+        self.backtrack_aug_dict = {}
+        aug_types = {'_noVDD':[True,False],'_noVSS':[False,True],'_noVDDVSS':[True,True]}
+        for ckt_name,ckt in self.fcross_dict.items():
+            for aug_type,vddvss in aug_types.items():
+                aug_ckt = ckt.copy()
+                vdd,vss = vddvss
+                aug_ckt_name = ckt_name+aug_type
+                self.clear_vddvsss(aug_ckt,VDD=vdd, VSS=vss)
+                self.fcross_aug_dict[aug_ckt_name] = aug_ckt
+                self.ckt_graph[aug_ckt_name] = MosGraph(aug_ckt)
+                self.ckt_dict[aug_ckt_name] = aug_ckt
+        for ckt_name,ckt in self.pcross_dict.items():
+            for aug_type,vddvss in aug_types.items():
+                aug_ckt = ckt.copy()
+                vdd,vss = vddvss
+                aug_ckt_name = ckt_name+aug_type
+                self.clear_vddvsss(aug_ckt,VDD=vdd, VSS=vss)
+                self.pcross_aug_dict[aug_ckt_name] = aug_ckt
+                self.ckt_graph[aug_ckt_name] = MosGraph(aug_ckt)
+                self.ckt_dict[aug_ckt_name] = aug_ckt    
+        for ckt_name,ckt in self.backtrack_dict.items():
+            for aug_type,vddvss in aug_types.items():
+                aug_ckt = ckt.copy()
+                vdd,vss = vddvss
+                aug_ckt_name = ckt_name+aug_type
+                self.clear_vddvsss(aug_ckt,VDD=vdd, VSS=vss)
+                self.backtrack_aug_dict[aug_ckt_name] = aug_ckt
+                self.ckt_graph[aug_ckt_name] = MosGraph(aug_ckt)
+                self.ckt_dict[aug_ckt_name] = aug_ckt    
+    
+    
+    def clear_vddvsss(self,ckt,VDD,VSS):
+        for d in ckt.devices:
+            if VDD:
+                if d.G == 'VDD':
+                    d.G = 'NETP'
+                if d.S == 'VDD':
+                    d.S = 'NETP'                
+                if d.D == 'VDD':
+                    d.D = 'NETP'                
+            if VSS:
+                if d.G == 'VSS':
+                    d.G = 'NETG'
+                if d.S == 'VSS':
+                    d.S = 'NETG'                
+                if d.D == 'VSS':
+                    d.D = 'NETG'             
+            
 
 
     def examine_structs(self,ckt_dict):

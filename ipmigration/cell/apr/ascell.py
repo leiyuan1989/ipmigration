@@ -101,7 +101,7 @@ class ASCell:
                 ckt = self.netlist[ckt_name]
                 cell = StdCell(ckt,self.tech,self.cfgs,self.patterns)
                 self.cells[ckt_name] = cell
-                cell.run()
+                result = cell.run()
                 
     def __getitem__(self,key):
         return self.cells[key]     
