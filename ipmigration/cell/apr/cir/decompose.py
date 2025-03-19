@@ -43,7 +43,7 @@ class DeCKT:
 
         #Sequential logic processing
         if self.init_ckt.ckt_type in ['ff', 'scanff', 'latch', 'clockgate']:
-            print('-----%10s: %7s %5s %5s %5s'%(self.ckt.name, self.ckt.ckt_type, str(self.ckt.enable), str(self.ckt.mul_in),self.ckt.se_net))
+            logger.info('-----%10s: %7s %5s %5s %5s'%(self.ckt.name, self.ckt.ckt_type, str(self.ckt.enable), str(self.ckt.mul_in),self.ckt.se_net))
             if self.init_ckt.ckt_type == 'clockgate':
                 self.data_net = {'IN1':self.init_ckt.enable_net} 
             else:
@@ -185,10 +185,11 @@ class DeCKT:
             
             self.out_aux_netlist(aux_file, self.init_ckt, self.ckt, self.sub_ckts)                  
             if len(self.ckt.devices) == 0:
-                return True
+                return 1
             else:
                 print('-------------failed-------------')
-                return False  
+                # raise ValueError
+                return 0  
                # pattern,cross2_match = 
             #5.3 cross2 if any
             
@@ -221,12 +222,13 @@ class DeCKT:
     
     
     #match two graph with net match
-    def match(self,devices_graph,struct_graph, net_match, nopower=True):
+    def match(self,devices_graph,struct_graph, net_match, nopower=False):
         #{p1:p2,...} :p1 is pin in pattern, p2 ckt net 
         if nopower:
             matches = devices_graph.find_subgraph_matches(struct_graph)
-
+    
         else:
+
             matches = devices_graph.find_subgraph_matches(struct_graph,
                                                           node_match=MosGraph.node_match_power,
                                                           edge_match=MosGraph.edge_match_power)
@@ -619,8 +621,7 @@ class DeCKT:
             data_net = {'D':self.data_net['IN1']}
         if input_net:
             data_net = input_net
-    
- 
+     
         result = self.search_rscross(devices_graph, is_rn,is_sn,**data_net)
         return result
     
@@ -699,6 +700,9 @@ class DeCKT:
                 if len(search_result) == 0:
                     input_net = {'IN1':M} #for PSC
                     search_result = self.search_asynchronous(ckt,master_ckt,input_net=input_net)
+        
+        
+        
         if len(search_result) == 0:   
             search_result = self.search_pcross(devices_graph, IN1=M,aug=True)
             # if len(search_result)>0:
@@ -723,14 +727,7 @@ class DeCKT:
 
     def search_backtrack(self, ckt, master_ckt, IN0, OUT, IN1=None):
         devices_graph = MosGraph(ckt)
-        #search inv
-        matches = self.search_inv(devices_graph, IN1=IN0, OUT1=OUT)
-        assert len(matches)<=1,'muti-backtrack inveters'
-        if len(matches) == 1:
-            pattern_ckt =  self.patterns.ckt_dict['INV']
-            pattern =  Pattern(pattern_ckt, master_ckt, matches[0])
-            return pattern
-        else:
+        if master_ckt.rn or master_ckt.sn:
             #search backtrack with RN SN
             inputs = [IN0]
             if IN1:
@@ -738,370 +735,87 @@ class DeCKT:
             if master_ckt.rn:
                 inputs += self.input_nets['RN']
             if master_ckt.sn:
-                inputs += self.input_nets['SN']            
+                inputs += self.input_nets['SN'] 
             
-            result = []
+            result = []              
             net_match = {'OUT1':OUT}
-            backtrack_dict = self.patterns.backtrack_dict
-            for ckt_name, ckt in backtrack_dict.items():
+            #search 3 inputs
+            for ckt_name, ckt in self.patterns.backtrack3_dict.items():
+                ckt_graph = self.patterns.ckt_graph[ckt_name] 
+                matches = self.match(devices_graph,ckt_graph,net_match,nopower=False)
+                if matches:
+                    for match in matches:
+                        bt_inputs = [match['IN1'],match['IN2'],match['IN3']]
+                        if set(bt_inputs)<=set(inputs):
+                            result.append([ckt_name, match])   
+            #search 3 inputs aug
+            if len(result)==0:
+                for ckt_name, ckt in self.patterns.backtrack3_aug_dict.items():
+                    ckt_graph = self.patterns.ckt_graph[ckt_name] 
+                    matches = self.match(devices_graph,ckt_graph,net_match,nopower=False)
+                    if matches:
+                        for match in matches:
+                            bt_inputs = [match['IN1'],match['IN2'],match['IN3']]
+                            if set(bt_inputs)<=set(inputs):
+                                result.append([ckt_name, match])                      
+            #search 2 inputs
+            for ckt_name, ckt in self.patterns.backtrack2_dict.items():
                 ckt_graph = self.patterns.ckt_graph[ckt_name] 
                 matches = self.match(devices_graph,ckt_graph,net_match,nopower=False)
                 if matches:
                     for match in matches:
                         bt_inputs = [match['IN1'],match['IN2']]
-                        if 'IN3' in match:
-                            bt_inputs.append(match['IN3'])
-                        # print(set(bt_inputs),set(inputs))    
                         if set(bt_inputs)<=set(inputs):
-                            result.append([ckt_name, match])
-            if len(result)==1:
-                ckt_name, match = result[0]
-                pattern_ckt =  self.patterns.ckt_dict[ckt_name]
-                pattern =  Pattern(pattern_ckt, master_ckt, match)
-                return pattern
-            else:#aug backtrack
-                result = []
-                net_match = {'OUT1':OUT}
-                backtrack_dict =  self.patterns.backtrack_aug_dict 
-                for ckt_name, ckt in backtrack_dict.items():
+                            result.append([ckt_name, match])   
+            #search 2 inputs aug
+            if len(result)==0:
+                for ckt_name, ckt in self.patterns.backtrack2_aug_dict.items():
                     ckt_graph = self.patterns.ckt_graph[ckt_name] 
                     matches = self.match(devices_graph,ckt_graph,net_match,nopower=False)
                     if matches:
                         for match in matches:
                             bt_inputs = [match['IN1'],match['IN2']]
-                            if 'IN3' in match:
-                                bt_inputs.append(match['IN3'])
-                            # print(set(bt_inputs),set(inputs))    
                             if set(bt_inputs)<=set(inputs):
-                                result.append([ckt_name, match])                
-                if len(result)==1:
-                    ckt_name, match = result[0]
-                    pattern_ckt =  self.patterns.ckt_dict[ckt_name]
-                    pattern =  Pattern(pattern_ckt, master_ckt, match)
-                    return pattern
-                else:
-                
-                
-                    raise ValueError
-            #not a inverter
+                                result.append([ckt_name, match])  
+            #search 1 inputs
+            if len(result)==0:
+                for ckt_name, ckt in self.patterns.backtrack1_dict.items():
+                    ckt_graph = self.patterns.ckt_graph[ckt_name] 
+                    matches = self.match(devices_graph,ckt_graph,net_match,nopower=False)
+                    if matches:
+                        for match in matches:
+                            if match['IN1'] == IN0:
+                                result.append([ckt_name, match])   
+            #search 1 inputs aug
+            if len(result)==0:            
+                for ckt_name, ckt in self.patterns.backtrack1_aug_dict.items():
+                    ckt_graph = self.patterns.ckt_graph[ckt_name] 
+                    matches = self.match(devices_graph,ckt_graph,net_match,nopower=False)
+                    if matches:
+                        for match in matches:
+                            if match['IN1'] == IN0:
+                                result.append([ckt_name, match])  
+            
+            if len(result)>0:
+                ckt_name, match = result[0]
+                pattern_ckt =  self.patterns.ckt_dict[ckt_name]
+                pattern =  Pattern(pattern_ckt, master_ckt, match)
+                return pattern
+            else:
+                raise ValueError
         
-        
-
-
-
-
-
-
-    def classify_cross(self,searched,input_node):
-        #split search cn/c cross patterns into front and back
-        dist_graph = MosGraph(self.ckt)
-        dist_graph.remove_nodes_from(['VDD','VSS',self.clk_n,self.clk_p])
-        nodes_d = dict(nx.all_pairs_shortest_path_length(dist_graph))
-        nodes_d_i = nodes_d[input_node] 
-        dist_set_l = []
-        for ckt_name,match in searched:
-            dp1 = nodes_d_i[match['PMA:G']]
-            dp2 = nodes_d_i[match['PMB:G']]
-            dn1 = nodes_d_i[match['NMB:G']]
-            dn2 = nodes_d_i[match['NMA:G']]
-            dist_set = [dp1,dp2,dn1,dn2]
-            dist_set.sort()
-            if not(dist_set) in dist_set_l:
-                dist_set_l.append(dist_set)
-
-        # print(searched)
-        # print(dist_set_l)
-        
-        if len(dist_set_l) != 2:
-            print(searched)
-            print(dist_set_l)     
-        assert len(dist_set_l) == 2  
-   
-        if sum(dist_set_l[0]) > sum(dist_set_l[1]) :
-            cross1_dist_set = dist_set_l[1]
-            cross2_dist_set = dist_set_l[0]
         else:
-            cross1_dist_set = dist_set_l[0]
-            cross2_dist_set = dist_set_l[1]           
-        
-        cross1 = []
-        cross2 = []
-        for ckt_name,match in searched:
-            dp1 = nodes_d_i[match['PMA:G']]
-            dp2 = nodes_d_i[match['PMB:G']]
-            dn1 = nodes_d_i[match['NMB:G']]
-            dn2 = nodes_d_i[match['NMA:G']]
-            dist_set = [dp1,dp2,dn1,dn2]
-            dist_set.sort()
-            if dist_set == cross1_dist_set:
-                cross1.append([ckt_name,match])
-            if dist_set == cross2_dist_set:
-                cross2.append([ckt_name,match])
-        return cross1,cross2
-
-    def fix_cross(self, searched, input_node, name='cross1'):
-        dist_graph = MosGraph(self.ckt)
-        dist_graph.remove_nodes_from(['VDD','VSS',self.clk_n,self.clk_p])
-        nodes_d = dict(nx.all_pairs_shortest_path_length(dist_graph))
-        nodes_d_i = nodes_d[input_node] 
-        
-
-        if len(searched) == 1:     
-            ckt_name,match = searched[0]
-            pattern = Pattern(self.patterns.ckt_dict[ckt_name], self.init_ckt, match)
-            self.sub_ckts[name] = pattern
-            return pattern.net_map['PM']
-        else: #symmetry
-            for ckt_name,match in searched:
-                dp1 = nodes_d_i[match['PMA:G']]
-                dp2 = nodes_d_i[match['PMB:G']]
-                dn1 = nodes_d_i[match['NMB:G']]
-                dn2 = nodes_d_i[match['NMA:G']]
-                # print(ckt_name,dp1,dp2,dn1,dn2)
-                if (dp1 + dn1) < (dp2 + dn2) :      
-                    pattern = Pattern(self.patterns.ckt_dict[ckt_name], self.init_ckt, match)
-                    self.sub_ckts[name] = pattern
-                    return  pattern.net_map['PM']
-        raise ValueError #error in found searched
-        # return False
-    
-    # def find_pm(self, cross_pattern):
-                
-
-      
-    
-    def search_rnsn(self):
-        self.rnsn_signal = []
-        self.rnsn_switch = []
-        
-        for p in ['RN','SN']:
-            if p in self.net_map_r:
-                self.rnsn_signal.append(self.net_map_r[p])
-                if p in self.sub_ckts['inv_in']:
-                    self.rnsn_signal.append(self.net_map_r['N_' + p] )
-            
-        # for d in self.ckt.devices:
-        #     if d.G in self.rnsn_signal:
-                
-        #
-    
-    
-    def search_pull(self,devices_graph, input_net, name='pull1'):
-        #PM BM 
-        #search logic
-        for ckt_name, ckt in self.patterns.pull_dict.items():
-            ckt_graph = self.patterns.ckt_graph[ckt_name] 
-            matches = devices_graph.find_subgraph_matches(ckt_graph)
-            matches = self.match(devices_graph,ckt_graph,{'PM':input_net })    
-            for match in matches:
-                pins = []
-                for t in ['IN1','IN2','IN3','IN4','IN5']:
-                    if t in match:
-                        pins.append(match[t])
-                
-                if_match = True
-                for p in pins:
-                    if p in self.rnsn_signal:
-                        pass
-                    else:
-                        if_match = False
-                        break
-                if if_match: 
-                    pattern = Pattern(ckt, self.init_ckt, match)  
-                    self.sub_ckts[name] = pattern            
-                    return True  
-            return False
-    
-        
-    def pruning(self):
-        assert  'cross1' in self.sub_ckts
-        assert  'backtrack1' in self.sub_ckts
-        # print('1',self.ckt)
-        self.ckt = self.ckt.sub_ckt( self.sub_ckts['cross1'].ckt.devices, remove=True)  
-        self.ckt = self.ckt.sub_ckt( self.sub_ckts['backtrack1'].ckt.devices, remove=True)  
-        # print('2',self.ckt)
-        if 'cross2' in self.sub_ckts:
-            self.ckt = self.ckt.sub_ckt( self.sub_ckts['cross2'].ckt.devices, remove=True)  
-            print('cross2', self.sub_ckts['cross2'])
-        if 'backtrack2' in self.sub_ckts:
-            self.ckt = self.ckt.sub_ckt( self.sub_ckts['backtrack2'].ckt.devices, remove=True)  
-            # print('3',self.ckt)          
-        
-        self.sub_ckts['inv'] = {}
-        for name, pattern in self.sub_ckts['inv_in'].items():
-            prune = False
-            for device in pattern.ckt.devices:
-                if self.ckt.find_device(device.name):
-                    pass
-                else:
-                    prune=True
-            if not(prune):
-                self.sub_ckts['inv'][name] = pattern
-                self.ckt = self.ckt.sub_ckt( pattern.ckt.devices, remove=True)  
-        
-        devices_graph = MosGraph(self.ckt)
-        self.search_rnsn()
-        t1 = self.search_pull(devices_graph,self.net_pm, name='pull1')
-        if t1:
-            print('YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY')
-            self.ckt = self.ckt.sub_ckt( self.sub_ckts['pull1'].ckt.devices, remove=True)  
-        
-        
-        # print(self.clk_n,self.clk_p,self.net_pm,self.net_bm,self.net_map)
-        # print(self.ckt.devices)
-    
-    # def 
-
-        
-    
-    
-    
-    # def expand_cross(self, cross_pattern, input_pn): #important
-    #     #IN1 IN2 OUT1 OUT2
-        
-        
-        
-        
-    #     p_devices = [t for t in self.ckt.devices if t.T == 'P']
-    #     n_devices = [t for t in self.ckt.devices if t.T == 'N']
-
-    #     g1 = ChainGraph(p_devices)
-    #     g2 = ChainGraph(n_devices)
-    
-    #     pma = cross_pattern.device_map['PMA']
-    #     pmb = cross_pattern.device_map['PMB']
-    #     nmb = cross_pattern.device_map['NMB']
-    #     nma = cross_pattern.device_map['NMA']        
-    #     # t1
-    #     path_p = nx.all_simple_paths(g1,pma+':G',pmb+':G')
-    #     path_n = nx.all_simple_paths(g2,nmb+':G',nma+':G') 
-    #     t1 = list(path_p)
-    #     t2 = list(path_n)
-    #     if len(t1) != 2 or  len(t2) != 2:
-    #         print('aaaaaaa',t1,len(t1))
-    #         print('bbbbbbb',t2,len(t2))
-    
-    
-    
-    
-    
-    def search_input(self):
-        devices_graph = MosGraph(self.ckt)
-        
-        self.sub_ckts['input'] = {}
-        itype = self.ckt_type['input_type']
-        
-        if itype == (1,1) or itype == (2,1):
-            searched = self.search_cross(devices_graph,{})
-            assert len(searched) > 0 #cross not found
-            input_node = self.ckt_type['input_pins'][0] 
-            self.net_pm = self.fix_cross(searched, input_node)
-            self.search_backtrack(devices_graph, self.net_pm )
-            
-            
-            self.pruning()
-
-                
-                
-                
+            #search inv
+            matches = self.search_inv(devices_graph, IN1=IN0, OUT1=OUT)
+            assert len(matches)<=1,'muti-backtrack inveters'
+            if len(matches) == 1:
+                pattern_ckt =  self.patterns.ckt_dict['INV']
+                pattern =  Pattern(pattern_ckt, master_ckt, matches[0])
+                return pattern
+            else:
+                raise ValueError
  
-                
-        elif itype == (1,2):
-            pass        
-        
-        elif itype == (1,3):
-            pass   
-        elif itype == (1,4):
-            pass   
-        elif itype == (2,1):
-            pass   
-        elif itype == (2,2):
-            pass   
-        elif itype == (3,1):
-            searched = self.search_cross(devices_graph,{})  
-            assert len(searched) > 1
-            
-            input_node = self.ckt_type['input_pins'][0] 
-            cross1,cross2 = self.classify_cross(searched,input_node)
-            self.net_pm = self.fix_cross(cross1,input_node)
-            self.net_bm = self.fix_cross(cross2,self.net_pm,name='cross2')
-            
-            self.search_backtrack(devices_graph, self.net_pm )
-            self.search_backtrack(devices_graph, self.net_bm,name='backtrack2' )
-            
-            self.pruning()
-    
-        elif itype == (3,2):
-            pass   
-        elif itype == (3,3):
-            pass   
-        elif itype == (3,4):
-            pass   
-        elif itype == (4,1):
-            pass   
-        elif itype == (4,2):
-            pass   
-        elif itype == (4,3):
-            pass   
-        elif itype == (4,4):
-            pass   
-        else:
-            raise ValueError
-        # no_scan = (self.ckt_type['scan'] == [])
-        # if no_scan:
-        #     #D 
-        #     if self.ckt_type['input_pins'] == ['D'] or self.ckt_type['input_pins'] == ['E']:
-        #         return 1        #no need to search input
-            
-        #     #Enable D
-        #     if self.ckt_type['input_pins'] == ['D', 'E']:
-        #         for ckt_name, ckt in self.patterns.input_ed_dict.items():
-        #             ckt_graph = self.patterns.ckt_graph[ckt_name] 
-        #             devices_graph = MosGraph(self.ckt)
-        #             if 'N_D' in self.net_map_r:
-        #                 net_match={'N_D': self.net_map_r['N_D'],'E':self.net_map_r['E'],'N_E':self.net_map_r['N_E'] }
-        #             else:   
-        #                 net_match={'D': self.net_map_r['D'],'E':self.net_map_r['E'],'N_E':self.net_map_r['N_E'] }
-        #             # net_match={ 'E':self.net_map_r['E']}
-        #             matches=self.match(devices_graph,ckt_graph,net_match,nopower=True)
-    
-            
-        #             if len(matches) == 1:
-        #                 pattern = Pattern(ckt, self.init_ckt, matches[0])  
-        #                 self.sub_ckts['input']['pattern'] = pattern  
-        #                 self.sub_ckts['input']['type'] = 'ED'              
-                        
-        #                 return 1
-        #         print("!!!!!!!!!!!! No Enable D found!!!!!!!!!")
-           
-        #     #D0 D1
-        #     if self.ckt_type['input_pins'] == ['D0', 'D1'] or self.ckt_type['input_pins'] == ['D0', 'D1', 'S0']:      
-        #         print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
-        #         # print(self.sub_ckts)
-                
-        #         if ('D0','D1') in self.sub_ckts['logic_input']:
-        #             pass
-        #         else:
-        #             pass
-        #         print(self.sub_ckts['logic_input'] )
-                
-        #         for ckt_name, ckt in self.patterns.input_md_dict.items():
-        #             ckt_graph = self.patterns.ckt_graph[ckt_name] 
-        #             devices_graph = MosGraph(self.ckt)
-                    
-        #             # net_match={'D': self.net_map_r['D'],'E':self.net_map_r['E'],'N_E':self.net_map_r['N_E'] }
-        #             # net_match={'N_D': self.net_map_r['N_D'],'E':self.net_map_r['E'],'N_E':self.net_map_r['N_E'] }
-                    
-        #             # matches=self.match(devices_graph,ckt_graph,net_match,nopower=True)
-                
-        # else:
-        #     pass
-        
-        
-        
-        return 0
- 
-    #for netlist mapping support
+
     
     def out_aux_netlist(self, file_path, init_ckt, ckt, sub_ckts):
         def write_line(f,d,key_net_mapping):

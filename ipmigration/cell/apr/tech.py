@@ -188,7 +188,7 @@ class Tech(object):
                 return False
         return True
 
-    def pre_cal(self):
+    def pre_cal(self,cfgs):
         #for easy program
         
         self.CT_W_half = int(0.5*self.CT_W.v)
@@ -204,6 +204,10 @@ class Tech(object):
         self.gt_space4 = 2*self.GT_S_LAA_GT.v + self.min_width  #abut
                 
         self.m1_width_end = self.M1_W.v + 2*self.CT_E_M1_END.v
+        
+        
+        
+        
         
         # self.GT_wire_width = self.CT_W.v + 2*self.CT_E_GT.v
         # # self.AA_side = self.CT_E_AA.v + self.CT_W.v + self.CT_S_GT.v

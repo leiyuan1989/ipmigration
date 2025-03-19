@@ -28,7 +28,10 @@ class Patterns:
         # self.out_dict = {}
 
 
-        self.backtrack_dict  = {}
+        self.backtrack3_dict  = {}
+        self.backtrack2_dict  = {}
+        self.backtrack1_dict  = {}
+        
         self.pull_dict  = {}
 
 
@@ -62,10 +65,17 @@ class Patterns:
             if 'PSCROSS' in k:
                 self.rscross_dict['PS'][k] = v                  
                        
-            if 'BACKTRACK' in k:
-                self.backtrack_dict[k] = v  
-            if 'PULL' in k:
-                self.pull_dict[k] = v                 
+            if 'BACKTRACK3' in k:
+                self.backtrack3_dict[k] = v  
+            if 'BACKTRACK2' in k:
+                self.backtrack2_dict[k] = v              
+            if 'LOGIC2' in k:
+                self.backtrack2_dict[k] = v 
+            if 'INV' in k:
+                self.backtrack1_dict[k] = v            
+            
+            # if 'PULL' in k:
+            #     self.pull_dict[k] = v                 
 
             self.ckt_graph[k] = MosGraph(v)
         self.pattern_augment()
@@ -79,13 +89,17 @@ class Patterns:
     def pattern_augment(self):
         self.fcross_aug_dict = {}
         self.pcross_aug_dict = {}
-        self.backtrack_aug_dict = {}
+        self.backtrack3_aug_dict = {}
+        self.backtrack2_aug_dict = {}
+        self.backtrack1_aug_dict = {}
+        
         aug_types = {'_noVDD':[True,False],'_noVSS':[False,True],'_noVDDVSS':[True,True]}
         for ckt_name,ckt in self.fcross_dict.items():
             for aug_type,vddvss in aug_types.items():
                 aug_ckt = ckt.copy()
                 vdd,vss = vddvss
                 aug_ckt_name = ckt_name+aug_type
+                aug_ckt.name = aug_ckt_name
                 self.clear_vddvsss(aug_ckt,VDD=vdd, VSS=vss)
                 self.fcross_aug_dict[aug_ckt_name] = aug_ckt
                 self.ckt_graph[aug_ckt_name] = MosGraph(aug_ckt)
@@ -95,19 +109,43 @@ class Patterns:
                 aug_ckt = ckt.copy()
                 vdd,vss = vddvss
                 aug_ckt_name = ckt_name+aug_type
+                aug_ckt.name = aug_ckt_name
                 self.clear_vddvsss(aug_ckt,VDD=vdd, VSS=vss)
                 self.pcross_aug_dict[aug_ckt_name] = aug_ckt
                 self.ckt_graph[aug_ckt_name] = MosGraph(aug_ckt)
                 self.ckt_dict[aug_ckt_name] = aug_ckt    
-        for ckt_name,ckt in self.backtrack_dict.items():
+        
+        for ckt_name,ckt in self.backtrack3_dict.items():
             for aug_type,vddvss in aug_types.items():
                 aug_ckt = ckt.copy()
                 vdd,vss = vddvss
                 aug_ckt_name = ckt_name+aug_type
+                aug_ckt.name = aug_ckt_name
                 self.clear_vddvsss(aug_ckt,VDD=vdd, VSS=vss)
-                self.backtrack_aug_dict[aug_ckt_name] = aug_ckt
+                self.backtrack3_aug_dict[aug_ckt_name] = aug_ckt
                 self.ckt_graph[aug_ckt_name] = MosGraph(aug_ckt)
                 self.ckt_dict[aug_ckt_name] = aug_ckt    
+        for ckt_name,ckt in self.backtrack2_dict.items():
+            for aug_type,vddvss in aug_types.items():
+                aug_ckt = ckt.copy()
+                vdd,vss = vddvss
+                aug_ckt_name = ckt_name+aug_type
+                aug_ckt.name = aug_ckt_name
+                self.clear_vddvsss(aug_ckt,VDD=vdd, VSS=vss)
+                self.backtrack2_aug_dict[aug_ckt_name] = aug_ckt
+                self.ckt_graph[aug_ckt_name] = MosGraph(aug_ckt)
+                self.ckt_dict[aug_ckt_name] = aug_ckt    
+        for ckt_name,ckt in self.backtrack1_dict.items():
+            for aug_type,vddvss in aug_types.items():
+                aug_ckt = ckt.copy()
+                vdd,vss = vddvss
+                aug_ckt_name = ckt_name+aug_type
+                aug_ckt.name = aug_ckt_name
+                self.clear_vddvsss(aug_ckt,VDD=vdd, VSS=vss)
+                self.backtrack1_aug_dict[aug_ckt_name] = aug_ckt
+                self.ckt_graph[aug_ckt_name] = MosGraph(aug_ckt)
+                self.ckt_dict[aug_ckt_name] = aug_ckt    
+    
     
     
     def clear_vddvsss(self,ckt,VDD,VSS):
@@ -225,22 +263,3 @@ class Pattern:
             self.place[loc-1][device.T] = device
 
         
-        
-        # for device in self.ckt.devices:
-            
-                    
-        # chain = Chain()
-        # chain.load_from_netlist(v)                
-        # self.ckt_place[k] = chain
-        # def add_device(self, device):
-            
-                # device_struct.W = device.W 
-                # device_struct.L = device.L 
-                # device_struct.NF = device.NF     
-                
-                # #flip devices
-                # if 'S:D' in v and 'D:S' in v:
-                #     device = self.master_ckt.get_device(t2)
-                #     # print('a',device)
-                #     device.flipped()    
-                    # print('b',self.master_ckt.get_device(t2))

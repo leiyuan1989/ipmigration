@@ -17,9 +17,8 @@ from ipmigration.cell.apr.cir.patterns import Patterns
 
 
 from ipmigration.cell.apr.stdcell import StdCell
-
-
 # from ipmigration.cell.apr.cir.shape import Range, Box
+
 # from ipmigration.cell.apr.lego import lego
 # from ipmigration.cell.apr.lego.channel import Channels
 # from ipmigration.cell.apr.lego.layout.instance import M2_Tracks,M1_Rails
@@ -55,6 +54,8 @@ class ASCell:
         self.patterns = Patterns()
         print('03 Expertise-Library Loaded!')
         
+        #init
+        
         #load patterns
         
         
@@ -84,8 +85,7 @@ class ASCell:
     def run(self):
         # self.time_record = {}
         # time_s = time.time()
-        
-        
+
         #clear and create aux_file
         aux_file = os.path.join(self.cfgs.output_dir,'aux_netlist.txt')
         f=open(aux_file,'w')
@@ -94,15 +94,16 @@ class ASCell:
         logger.info('ascell-> Begin processing tech%s @ %s'%(self.tech.tech_name, time.asctime())) 
         if self.cfgs.gen_cells == 'all':
             self.cfgs.gen_cells = list(self.netlist.ckt_types.keys())
-        
+
         for cell_type in self.cfgs.gen_cells:
             # print(cell_type)
             for ckt_name in self.netlist.ckt_types[cell_type]:
                 ckt = self.netlist[ckt_name]
                 cell = StdCell(ckt,self.tech,self.cfgs,self.patterns)
                 self.cells[ckt_name] = cell
-                result = cell.run()
-                
+                cell.run()
+
+        
     def __getitem__(self,key):
         return self.cells[key]     
         
@@ -125,24 +126,24 @@ class ASCell:
   
     
   
-    def output_data(self,file, ckt_name, structs_sequence=None):
-        file.write('\n**------------%s--------------**\n'%(ckt_name))
-        if structs_sequence:
-            for struct in structs_sequence:
-                file.write('----%s----\n'%(struct.struct_ckt.name))
-                for device in struct.struct_ckt.devices:
-                    line = '%s->%s: %s->%s %s->%s %s->%s\n'%(struct.device_mapping[device.name].name,
-                                                          device.name,
-                                                          struct.net_mapping[device.S],
-                                                          device.S,
-                                                          struct.net_mapping[device.G],
-                                                          device.G,
-                                                          struct.net_mapping[device.D],
-                                                          device.D)
-                    file.write(line)
+    # def output_data(self,file, ckt_name, structs_sequence=None):
+    #     file.write('\n**------------%s--------------**\n'%(ckt_name))
+    #     if structs_sequence:
+    #         for struct in structs_sequence:
+    #             file.write('----%s----\n'%(struct.struct_ckt.name))
+    #             for device in struct.struct_ckt.devices:
+    #                 line = '%s->%s: %s->%s %s->%s %s->%s\n'%(struct.device_mapping[device.name].name,
+    #                                                       device.name,
+    #                                                       struct.net_mapping[device.S],
+    #                                                       device.S,
+    #                                                       struct.net_mapping[device.G],
+    #                                                       device.G,
+    #                                                       struct.net_mapping[device.D],
+    #                                                       device.D)
+    #                 file.write(line)
         
-        #out put cdl at utils
-        pass
+    #     #out put cdl at utils
+    #     pass
 
     def init_layout(self):
         #init klayout 
@@ -154,6 +155,9 @@ class ASCell:
 
         #init layout tracks
         tech = self.tech
+        cfgs = self.cfgs
+        
+        
         #vdd and vss rails        
         self.rail_vdd = Range(self.cell_height, self.power_rail_width) 
         self.rail_vss = Range(0, self.power_rail_width) 
