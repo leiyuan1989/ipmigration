@@ -31,17 +31,12 @@ runfile('demo/cell_apr/rule/extract_rule.py',wdir='./')
 args.input = 'demo/cell_apr/setting_c110.csv'
 
 cfgs  = cfg.Cfg(args.input, args.log_level)
-
-#extract all pins need to map
-
+cfgs.io_offset = 0 #maybe different for sl cells and cl cells?
+#extract all pins 
 if extract_pins:
     from ipmigration.cell.apr.cir.netlist import Netlist
     Netlist.extract_pins(cfgs.model_file, cfgs.netlist, cfgs.output_dir  )
     # return 0
-
-
-
-
 
 tech  = Tech(cfgs)
 cells = ASCell(cfgs,tech)

@@ -9,7 +9,7 @@ Created on Tue Apr  9 14:45:48 2024
 import os
 import logging
 import pandas as pd
-
+from ipmigration.cell.apr.lyt.shape import Range
 
 # from src.writer.gds_writer import GdsWriter
 # from src.writer.oasis_writer import OasisWriter
@@ -188,9 +188,162 @@ class Tech(object):
                 return False
         return True
 
-    def pre_cal(self,cfgs):
-        #for easy program
+    def preprocess(self,cfgs):
+        self.GT_CT_W = DR(name='GT_CT_W',layer1=self.GT,layer2=self.CT,
+                          value=self.CT_W.v + 2*self.CT_E_GT.v,
+                          note='Min Widht of GT with CT')
+        self.M1_S_W =  DR(name='M1_S_W',layer1=self.M1,layer2=self.M1,
+                          value=self.M1_W.v + self.M1_S.v,
+                          note='M1 space + width')
         
+        
+        
+        #vdd and vss rails        
+        self.rail_vdd = Range(cfgs.cell_height , cfgs.power_rail_width) 
+        self.rail_vss = Range(0, cfgs.power_rail_width) 
+        
+        #vdd and vss aa
+        self.rail_vdd_aa = Range(self.rail_vdd.p2 - self.AA_S.h_v, 
+                                 self.rail_vdd.p1 + self.AA_S.h_v, 
+                                 set_t='pp')
+        self.rail_vss_aa = Range(self.rail_vss.p2 - self.AA_S.h_v, 
+                                 self.rail_vss.p1 + self.AA_S.h_v, 
+                                 set_t='pp')
+        
+        #calculate tracks number 
+        self.tracks_num = int(cfgs.cell_height / cfgs.v_pin_grid) + 1
+        assert cfgs.cell_height % cfgs.v_pin_grid == 0, 'Height can not be divided by v grid'
+        #for pin assesment 
+        self.v_grids = [cfgs.v_pin_grid*t for t in range(self.tracks_num)]
+        self.h_grids = [cfgs.h_pin_grid*t for t in range(100)] #temp
+        
+
+        print("Tech-> Track Number is %d!"%(self.tracks_num) )
+                      
+        #up and down poly tracks, also gt top/bottom 
+        self.gt_up_range = Range(cfgs.cell_height - self.GT_W.h_v - self.GT_W.v, 
+                                 cfgs.cell_height - self.GT_W.h_v, 
+                                 set_t='pp')
+        self.gt_down_range = Range(0 + self.GT_W.h_v, 
+                                   0 + self.GT_W.h_v + self.GT_W.v, 
+                                   set_t='pp')        
+        
+        #power rail diffusion contact
+        #TODO consider AA space? Add AA space to dr
+        self.ct_up_range = Range(cfgs.cell_height - self.CT_S.h_v - self.CT_W.v, 
+                                 cfgs.cell_height - self.CT_S.h_v, 
+                                 set_t = 'pp')
+        self.ct_down_range = Range(0 + self.CT_S.h_v, 
+                                   0 + self.CT_S.h_v + self.CT_W.v, 
+                                   set_t = 'pp')        
+       
+        # m1 tracks on top and bottom
+        top    = self.ct_up_range.p1 - self.CT_E_M1.v  
+        bottom = self.ct_down_range.p2 + self.CT_E_M1.v  
+        
+        #Middle 2 tracks can also be connected by poly.  
+        s1 = self.M1_W.v + self.M1_S.v
+        s2 = self.GT_CT_W.v + self.GT_S.v
+        if s2>=s1:
+            mid_s = 0
+        else:
+            mid_s = s2-s1
+            
+        locs = place_rectangles(top-bottom-mid_s, self.M1_W.v, self.M1_S.v)
+        assert len(locs)<5,'Cell Height is too low!'
+        
+        num = len(self.M1_tracks)
+        if num % 2 == 0:
+            median1 = num // 2
+            median2 = median1 - 1
+            median = median2
+        else:
+            median1 = num // 2
+            median2 = median1 - 1
+            median = median1
+    
+        
+        self.M1_tracks = [Range(bottom+t,bottom+t+self.M1_W.v,set_t='pp') for t in locs]
+        self.mid_track1 = self.M1_tracks[median]
+        self.mid_track2 = [self.M1_tracks[median2],self.M1_tracks[median1]]
+
+        #AA up and down
+        # AA_p_up   = self.net_gt_up.p2   - tech.GT_X_AA.v
+        # AA_n_down = self.net_gt_down.p1 + tech.GT_X_AA.v
+        
+        #TODO, may extract this to DB
+        self.v_mode = {}     
+        '''
+        Principle:
+        1. gt up and down are only used for cn/c
+        2. m/bm/pm/s must be used
+        3. Not may cross pattern nets, only cn/c and RN/SN pull
+        4. 
+        5. 
+        
+        0: GT connected and with 1 CT, INV, Logic, CLK...
+        Detection conditions, all columns are GT pair.
+        
+        0: GT connected and with 2 CTs, and not GT up/down: INV, Logic, CLK...
+        Detection conditions, all columns are GT pair.
+            
+            
+        1: GT not connected and with 2 CTs, and not GT up/down: Cross, Backtrack...
+        Detection conditions, not all columns are GT pair.
+            
+        2-n: TO be designed
+        '''
+        
+        #V-Mode 0
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+        #1 2 gt-ct in middle, gt are connected. e.x. clk and output, dff cn c c cn 
+        #2 1 gt-ct in middle,  e.x. inv  
+        #output 6 tracks, track2 and 5 may not exist
+        #output AA range 
+        
+        # #1e3
+        # t1 = int(0.5*(tech.GT_S.v + tech.CT_W.v + 2*tech.CT_E_GT.v))
+        # t2 = int(0.5*(tech.M1_S.v + tech.CT_W.v + 2*tech.CT_E_M1.v))
+        # t = max(t1,t2)
+        
+        # gt_ct_up   = Range(self.middle + t,  tech.CT_W.v)  
+        # gt_ct_down = Range(self.middle - t,  tech.CT_W.v)  
+        
+        # # gt_ct_up center to next ct center
+        # t = max(tech.GT_S_LGT_AA.v + tech.CT_E_GT.v, tech.CT_S_AA.v) + tech.CT_E_AA.v + tech.CT_W.v
+        
+        # mos_ct_up  = Range( gt_ct_up.c   + t,  tech.CT_W.v)  
+        # mos_ct_down = Range( gt_ct_down.c - t,  tech.CT_W.v) 
+        
+        # AA_p_down = mos_ct_up.p1   - tech.CT_E_AA.v
+        # AA_n_up   = mos_ct_down.p2 + tech.CT_E_AA.v
+        
+        # #drc check
+        # assert self.net_m1_up.p1 - mos_ct_up.p2 - tech.CT_E_M1.v >= tech.M1_S.v  
+        # assert mos_ct_down.p1 - self.net_m1_down.p2 - tech.CT_E_M1.v >= tech.M1_S.v
+        
+        # self.v_mode[0] = {'tracks': [self.net_m1_down, mos_ct_down, gt_ct_down,gt_ct_up,mos_ct_up, self.net_m1_up]}
+        
+        # self.v_mode[0]['AA_pmos'] = Range(AA_p_up, AA_p_down,set_t='pp')
+        # self.v_mode[0]['AA_nmos'] = Range(AA_n_up, AA_n_down,set_t='pp')
+        # self.v_mode[0]['GT_pmos'] = Range(self.net_gt_up.p2, gt_ct_up.p1 - tech.CT_E_GT.v,set_t='pp')
+        # self.v_mode[0]['GT_nmos'] = Range(gt_ct_down.p2 + tech.CT_E_GT.v, self.net_gt_down.p1,set_t='pp')        
+        # #2       
+        
+        
+        
+        
+        '''
         self.CT_W_half = int(0.5*self.CT_W.v)
         self.CT_GT_W_half = self.CT_W_half + self.CT_E_GT.v
         self.CT_M1_W_half = self.CT_W_half + self.CT_E_M1.v
@@ -204,18 +357,21 @@ class Tech(object):
         self.gt_space4 = 2*self.GT_S_LAA_GT.v + self.min_width  #abut
                 
         self.m1_width_end = self.M1_W.v + 2*self.CT_E_M1_END.v
+        '''
+
+class VMode:
+    #based on mos pair
+    def __init__(self):
+        pass
+        pmos_aa
+        nmos_aa
+        m1_nets
         
+    def 
         
-        
-        
-        
-        # self.GT_wire_width = self.CT_W.v + 2*self.CT_E_GT.v
-        # # self.AA_side = self.CT_E_AA.v + self.CT_W.v + self.CT_S_GT.v
-        # self.AA_side = self.CT_E_AA.v + self.CT_W.v + self.CT_E_AA.v + self.GT_S_AA.v
-        # self.AA_middle1 = self.CT_S_GT.v + self.CT_W.v + self.CT_S_GT.v
-        # self.AA_middle2 = 2*self.GT_S_AA.v + self.CT_W.v + 2*self.CT_E_AA.v
-        # self.AA_middle3 = self.GT_S_AA.v + self.CT_E_AA.v + self.CT_W.v + self.GT_S.v +  self.CT_E_GT.v
-        
+
+
+
 
 
 
@@ -254,25 +410,35 @@ class DR(object):
         return int(0.5*self.value)
 
 
+def place_rectangles(height, h, s):
+    # 先计算理论上最多能放的长方形数量
+    max_possible_n = 0
+    while True:
+        total_height_needed = max_possible_n * h + (max_possible_n + 1) * s
+        if total_height_needed > height:
+            break
+        max_possible_n += 1
+    # 确定实际能放置的长方形数量
+    n = max_possible_n - 1
+    if n < 0:
+        print("给定的总高度无法放置任何长方形。")
+        return []
+    # 计算所有长方形占用的总高度
+    total_rect_height = n * h
+    # 计算至少需要的间距总长度，n 个长方形有 n + 1 个间距
+    min_gap_space = (n + 1) * s
+    # 计算剩余可用于分配额外间距的空间
+    remaining_space = height - total_rect_height - min_gap_space
+    # 尝试均匀分配剩余空间作为额外间距
+    extra_gap = remaining_space // (n + 1)
+    actual_gap = s + extra_gap
+    positions = []
+    current_height = actual_gap
+    for i in range(n):
+        positions.append(current_height)
+        current_height += h + actual_gap
+    return positions
 
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    

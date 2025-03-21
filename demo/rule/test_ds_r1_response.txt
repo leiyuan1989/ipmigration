@@ -1,0 +1,85 @@
+<think> Okay, so I need to process these design rules and categorize them. The user provided a bunch of rules starting with GT numbers and letters. I'm supposed to classify them into categories like Width, Spacing, Enclosure, etc., and extract the value with symbols.
+
+Hmm, let me see. First, I'll go through each rule one by one. GT_1a mentions the minimum channel length for different voltages. So the category here is Length, and the value is 0.04. That seems straightforward.
+
+GT_1b is similar, just for 1.8V. Same category, value 0.15.
+
+GT_1g is a bit tricky because it has two values. Both are 0.24, but for NMOS and PMOS. So each part goes into Length.
+
+GT_3 is about space between two polys, so that's Spacing, value 0.1.
+
+GT_3c has more conditions. The space is >=0.15 when one GT's width is >0.12um. So it's a Spacing rule with the condition and value combined.
+
+GT_4 is space between AA and poly, so Spacing, 0.03.
+
+GT_5 is about extension, so Enclosure, 0.06.
+
+GT_6 is another extension, Enclosure, 0.09.
+
+GT_7 involves space between poly ends. It's Spacing with a complicated condition, so include all that in the Description.
+
+GT_8 is similar space but with a > symbol, so Spacing, >0.1, and it's not applicable in SRAM.
+
+GT_10 is min space to GT or GTDUM when length >=0.06, so Spacing, 0.13.
+
+GT_17 is area, 0.012, so Area.
+
+GT_18 poly area, so Area, 0.040.
+
+GT_19 talks about maximum enclosed area, so Area, 50000.
+
+GT_20c and GT_20d are DRC checks with formulas. Not sure the category here. Maybe Restrictions since they're checks.
+
+GT_21 says no bent gates except at 45 or 135, so Restrictions.
+
+GT_22 is about GT enclosure, so Enclosure but with exceptions.
+
+GT_24 is L-shaped GT space, so Spacing, 0.04.
+
+GT_25 is L-shape AA space, Spacing, 0.03.
+
+GT_26 is about gate direction in memory cells, probably Restrictions.
+
+GT_27 is bent GT width, so Width, 0.16.
+
+GT_28 is space between bent GTs, Spacing, 0.16.
+
+Wait, I need to ensure each rule is correctly categorized. For GT_20c and d, they're more about checks and calculations, so maybe Restrictions. Also, for GT_17, the rule repeats, so I need to list each occurrence separately.
+
+I think I've covered all the rules. Now, I'll need to format this into a CSV with the specified headers and delimiter. Make sure the Description field is exactly as given without changes. </think>
+
+Here is the classification of the design rules into categories and the extraction of their values, formatted in CSV as requested.
+
+Rule    |    Category    |    Description    |    Value
+GT_1a    |    Length    |    Gate minimum channel length for 0.9/1.1/1.2V N/P MOS transistors (std ,  high ,  or low VT) is 0.04 SRGT_1 Gate minimum length is 0.04    |    0.04
+GT_1b    |    Length    |    GATE minimum channel length for 1.8V N/P MOS transistors is 0.15    |    0.15
+GT_1c    |    Length    |    GATE minimum channel length for 2.5V N/P MOS transistors is 0.27    |    0.27
+GT_1d    |    Length    |    Gate minimum channel length for 2.5V overdrive 3.3V NMOS transistors is 0.55    |    0.55
+GT_1e    |    Length    |    Gate minimum channel length for 2.5V overdrive 3.3V PMOS transistors is 0.44    |    0.44
+GT_1fg    |    Length    |    Gate minimum channel length for 2.5V underdrive 1.8V NMOS transistors is 0.24 Gate minimum length for 2.5V underdrive 1.8V PMOS transistors is 0.24    |    0.24
+GT_1h    |    Length    |    Gate channel length for 1.8V underdrive 1.5V N/P MOS transistors    |    0.125
+GT_2a    |    Width    |    Poly minimum width is 0.04    |    0.04
+GT_2b_R    |    Width    |    Non-floating poly outside of (extend AA W >= 2.5um) region minimum width is 0.06 This rule is not applicable for GT interacting with EFUSE(81;2).||0.06
+GT_3    |    Spacing    |    Space between two poly is 0.1    |    0.1
+GT_3c    |    Spacing    |    GT to GT space if one GT's width > 0.12um is >= 0.15 parallel run length of the two GT > 0.14um||>0.12um >=0.15 >0.14um
+GT_4    |    Spacing    |    Space between AA and poly on field oxide is 0.03    |    0.03
+GT_5    |    Enclosure    |    Extension of AA outside of GATE is 0.06 excluding LDMOS and within inductor area(layer INDMY)||0.06
+GT_6    |    Enclosure    |    Extension of poly outside of AA to form poly end-cap is 0.09 Waive within LDBK area    |    0.09
+GT_6a_R    |    Enclosure    |    Extension E of GT outside of AA to form poly end-cap is 0.11 The GT to L shape AA(in the same MOS) space S < 0.1um The L shape AA height h > 0.02um    |    0.11 <0.1um >0.02um
+GT_7    |    Spacing||(poly_end with length < 0.120) minimum space to (poly_end with length < 0.120) (head to head space) with run length > 0 must be is 0.1||<0.120 <0.120 >0 0.1
+GT_8    |    Spacing||(poly_end with length < 0.120) minimum space to poly (head to side) must be > 0.1 This rule is not applicable for SRAM region check.||<0.120 >0.1
+GT_8a    |    Spacing    |    Space between GT line end to line (Dh) or GT line to line (Ds) when the layout structures meet the conditions of below (Waive the GT small extrusion F < 0.04um) 1 GT line end definition GT width W < 0.065um 2 Runlength of GT line to line or GT line to end E1 >= -0.03um 3 Any one edge distance from the corner of the two edges K1 < 0.065um Any one of Dh or Ds meet this rule value is ok This rule is not applicable for SRAM region check.||=0.11
+GT_10    |    Spacing    |    For GT channel length >= 0.06 minimum gate space to (GT or GTDUM) is 0.13 PFET gate minimum space over AA is 0.13||>=0.06 0.13
+GT_17    |    Area    |    Minimum area is 0.012 SR minimum area is 0.012    |    0.012
+GT_18    |    Area    |    Poly minimum enclosed area is 0.040    |    0.040
+GT_19    |    Area    |    GT and AA area GTAA GTAA enclose 200x200um area Maximum area for GTAA (um2) 50000    |    50000
+GT_20c    |    Restrictions    |    DRC check with the said window size and rule number and highlight as X Y = X not (DG or TG) Z = (Y area)/(100*100)||Y = X not (DG or TG) Z = (Y area)/(100*100)
+GT_20d    |    Restrictions    |    DRC check with the said window size and rule number and highlight as X Y = X and (DG or TG) Z = (Y area)/(100*100)||Y = X and (DG or TG) Z = (Y area)/(100*100)
+GT_21    |    Restrictions    |    No bent GATE (45 or 135 degree) on AA are allowed All gate patterns on AA have to be orthogonal to AA edge and SR    |    No bent GATE (45 or 135 degree) allowed All gate patterns on AA have to be orthogonal to AA edge
+GT_22    |    Enclosure    |    GT must be enclosed by (SN or SP) except the MOM GTFUSE and (HRP AND GT) Exclude floating GT    |    Enclosed by (SN or SP) except MOM GTFUSE and (HRP AND GT) Exclude floating GT
+GT_24    |    Spacing    |    L-shaped GT minimum space to AA is 0.04    |    0.04
+GT_25    |    Spacing    |    L-shape AA minimum space to poly(in same transistor) is 0.03    |    0.03
+GT_26    |    Restrictions    |    All memory cell transistor(transistors within INST layer) gate GT direction should be unidirectional in one chip.||Gate GT direction should be unidirectional in one chip
+GT_27    |    Width    |    Bent 45 deg GT min width is 0.16    |    0.16
+GT_28    |    Spacing    |    The space between two bent 45 degree GTs is 0.16    |    0.16
+The CSV file categorizes each design rule into its respective category (Width, Spacing, Enclosure, etc.), extracts the value with the associated symbol (if any), and retains the original rule description in the "Description" field.

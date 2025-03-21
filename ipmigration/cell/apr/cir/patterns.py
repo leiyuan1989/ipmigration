@@ -262,4 +262,6 @@ class Pattern:
         for device,loc in loc.items():
             self.place[loc-1][device.T] = device
 
-        
+    def apr(self):
+        pass
+    

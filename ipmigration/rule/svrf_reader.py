@@ -566,7 +566,7 @@ class RuleFile:
                     rules_dict[rule.name] = rule.comment
                 # print(rules_dict) 
                 ers = self.llm.response(rules_dict)   
-                print('test1:',ers)
+                # print('test1:',ers)
                 assert len(ers) != 0, 'llm may not work!'
                 for er in ers[1:]:
                     if len(er) == 4:

@@ -316,7 +316,7 @@ def test_mip_route():
     # nx.draw_networkx_edges(G, pos, edgelist=routing_tree.edges, width=4, edge_color=colors[0])
 
     for i, signal in enumerate(signals):
-        edges = list(routing_trees[i].edges)
+        edges = list(routing_trees[1][i].edges)
         nx.draw_networkx_edges(G, pos, edgelist=edges, width=4, edge_color=colors[i])
 
     nx.draw_networkx_nodes(G, pos, nodelist=list(chain(*signals)), node_size=32, node_color='black')
