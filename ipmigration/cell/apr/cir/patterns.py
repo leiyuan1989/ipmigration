@@ -5,6 +5,7 @@
 
 from ipmigration.cell.apr.cir.netlist import Netlist
 from ipmigration.cell.apr.cir.graph import MosGraph
+from ipmigration.cell.apr.tech import VMode
 
 class Patterns:
     def __init__(self):
@@ -178,6 +179,9 @@ class Patterns:
 
 
 
+pattern_type = {}
+
+
 class Pattern:
     def __init__(self, pattern_ckt, master_ckt, match_table):
         '''
@@ -189,20 +193,19 @@ class Pattern:
         self.pattern_name = pattern_ckt.name
         self.pattern_ckt = pattern_ckt
         self.master_ckt = master_ckt
-        # self.match_table = match_table
-        #
-        self.map_ckt(match_table) #map and flipped
- 
         #for global routing
-        self.pins = []
-        # self.place = {}
-        
-        
+        # self.pins = []
+
         self.signal_nets = []
         self.left_nets = []
         self.right_nets = []
         self.cross_nets = []
         self.internal_nets = []
+        
+        self.place = []
+        self.vmode = []
+        
+        self.map_ckt(match_table) #map and flipped
         #load from saved
         self.load_from_saved = True
         
@@ -213,6 +216,7 @@ class Pattern:
 
     def __repr__(self):
         return "pattern: %s in %s"%(self.pattern_name, self.master_ckt.name)
+
 
 
     def map_ckt(self, match_table):
@@ -256,12 +260,22 @@ class Pattern:
         self.ckt = self.master_ckt.sub_ckt(devices)
         self.ckt.name = self.pattern_name 
         
-        self.place = []
+
         for i in range(max(loc.values())):
              self.place.append({'P':None,'N':None})
         for device,loc in loc.items():
             self.place[loc-1][device.T] = device
-
-    def apr(self):
-        pass
     
+    def set_vmode(self,tech):
+        for pn_pair in self.place:
+            vmode = VMode.get_vmode(pn_pair,self.ckt.io_map)
+            self.vmode.append(tech.vmode[vmode])
+
+    def apr(self, loc, ext_nets):
+        print(self.place,self.vmode,loc)
+        for i, pn_pair in enumerate(self.place):
+            vmode = self.vmode[i]
+            t = vmode.gen_grids(pn_pair)
+            print(t)
+    
+

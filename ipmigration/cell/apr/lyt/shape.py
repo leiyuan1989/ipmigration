@@ -30,9 +30,10 @@ class Range:
     def __repr__(self):
         return 'b:%d c:%d u:%d'%(self.p1,self.c,self.p2)
 
-    def if_in(self, o_range):
+    def is_in(self, o_range):
         return (self.p1 >= o_range.p1) and (self.p2 <= o_range.p2) 
-        
+    def is_enclose(self, o_range):
+        return (self.p1 <= o_range.p1) and (self.p2 >= o_range.p2)   
         
         
     def stretch(self, v):

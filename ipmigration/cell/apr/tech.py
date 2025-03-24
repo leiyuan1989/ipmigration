@@ -189,12 +189,18 @@ class Tech(object):
         return True
 
     def preprocess(self,cfgs):
+        #other design rules
         self.GT_CT_W = DR(name='GT_CT_W',layer1=self.GT,layer2=self.CT,
                           value=self.CT_W.v + 2*self.CT_E_GT.v,
                           note='Min Widht of GT with CT')
         self.M1_S_W =  DR(name='M1_S_W',layer1=self.M1,layer2=self.M1,
                           value=self.M1_W.v + self.M1_S.v,
                           note='M1 space + width')
+        
+        self.GT_CT_S_AA = DR(name='GT_CT_S_AA',layer1=self.GT,layer2=self.AA,
+                             value= max(self.GT_S_LGT_AA.v, 
+                                        self.CT_S_AA.v-self.CT_E_GT.v),
+                             note='Min Space of GT with CT to AA')
         
         
         
@@ -203,15 +209,15 @@ class Tech(object):
         self.rail_vss = Range(0, cfgs.power_rail_width) 
         
         #vdd and vss aa
-        self.rail_vdd_aa = Range(self.rail_vdd.p2 - self.AA_S.h_v, 
-                                 self.rail_vdd.p1 + self.AA_S.h_v, 
+        self.rail_vdd_aa = Range(self.rail_vdd.p2 - self.AA_S.hv, 
+                                 self.rail_vdd.p1 + self.AA_S.hv, 
                                  set_t='pp')
-        self.rail_vss_aa = Range(self.rail_vss.p2 - self.AA_S.h_v, 
-                                 self.rail_vss.p1 + self.AA_S.h_v, 
+        self.rail_vss_aa = Range(self.rail_vss.p2 - self.AA_S.hv, 
+                                 self.rail_vss.p1 + self.AA_S.hv, 
                                  set_t='pp')
         
         #calculate tracks number 
-        self.tracks_num = int(cfgs.cell_height / cfgs.v_pin_grid) + 1
+        self.tracks_num = int(cfgs.cell_height / cfgs.v_pin_grid)
         assert cfgs.cell_height % cfgs.v_pin_grid == 0, 'Height can not be divided by v grid'
         #for pin assesment 
         self.v_grids = [cfgs.v_pin_grid*t for t in range(self.tracks_num)]
@@ -221,36 +227,46 @@ class Tech(object):
         print("Tech-> Track Number is %d!"%(self.tracks_num) )
                       
         #up and down poly tracks, also gt top/bottom 
-        self.gt_up_range = Range(cfgs.cell_height - self.GT_W.h_v - self.GT_W.v, 
-                                 cfgs.cell_height - self.GT_W.h_v, 
-                                 set_t='pp')
-        self.gt_down_range = Range(0 + self.GT_W.h_v, 
-                                   0 + self.GT_W.h_v + self.GT_W.v, 
-                                   set_t='pp')        
+        self.gt_up_rg = Range(cfgs.cell_height - self.GT_S.hv - self.GT_W.v, 
+                              cfgs.cell_height - self.GT_S.hv, 
+                              set_t='pp')
+        self.gt_dn_rg = Range(0 + self.GT_S.hv, 
+                              0 + self.GT_S.hv + self.GT_W.v, 
+                              set_t='pp')        
         
         #power rail diffusion contact
-        #TODO consider AA space? Add AA space to dr
-        self.ct_up_range = Range(cfgs.cell_height - self.CT_S.h_v - self.CT_W.v, 
-                                 cfgs.cell_height - self.CT_S.h_v, 
-                                 set_t = 'pp')
-        self.ct_down_range = Range(0 + self.CT_S.h_v, 
-                                   0 + self.CT_S.h_v + self.CT_W.v, 
-                                   set_t = 'pp')        
+        #consider AA space and CT space for abutment rule
+        t1 = self.rail_vdd_aa.p2 - self.CT_E_AA.v
+        t2 = cfgs.cell_height - self.CT_S.hv
+        t = min(t1,t2)
+        self.ct_up_rg = Range(t - self.CT_W.v, t, set_t = 'pp')
+        
+        t1 = self.rail_vss_aa.p1 + self.CT_E_AA.v
+        t2 = 0 + self.CT_S.hv
+        t = max(t1,t2)
+        self.ct_dn_rg = Range(t, t + self.CT_W.v, set_t = 'pp')        
        
         # m1 tracks on top and bottom
-        top    = self.ct_up_range.p1 - self.CT_E_M1.v  
-        bottom = self.ct_down_range.p2 + self.CT_E_M1.v  
+        top    = self.ct_up_rg.p1 - self.CT_E_M1.v  
+        bottom = self.ct_dn_rg.p2 + self.CT_E_M1.v  
         
-        #Middle 2 tracks can also be connected by poly.  
-        s1 = self.M1_W.v + self.M1_S.v
-        s2 = self.GT_CT_W.v + self.GT_S.v
-        if s2>=s1:
-            mid_s = 0
-        else:
-            mid_s = s2-s1
+        # #Middle 2 tracks can also be connected by poly.  
+        # s1 = self.M1_W.v + self.M1_S.v
+        # s2 = self.GT_CT_W.v + self.GT_S.v
+        # if s2>=s1:
+        #     mid_s = 0
+        # else:
+        #     mid_s = s2-s1
             
-        locs = place_rectangles(top-bottom-mid_s, self.M1_W.v, self.M1_S.v)
-        assert len(locs)<5,'Cell Height is too low!'
+        locs = place_rectangles(top-bottom, self.M1_W.v, self.M1_S.v)
+        self.M1_tracks_num = len(locs)
+        assert len(locs)>=5,'Cell Height is too low!'
+        #TODO, we need consider 5,6 or >6 3 conditions, e.g. for 5 
+        
+        
+        
+        self.M1_tracks = [Range(bottom+t,bottom+t+self.M1_W.v,set_t='pp') for t in locs]
+        self.CT_tracks = [Range(t.c, self.CT_W.v) for t in self.M1_tracks]
         
         num = len(self.M1_tracks)
         if num % 2 == 0:
@@ -261,38 +277,25 @@ class Tech(object):
             median1 = num // 2
             median2 = median1 - 1
             median = median1
-    
         
-        self.M1_tracks = [Range(bottom+t,bottom+t+self.M1_W.v,set_t='pp') for t in locs]
+        self.median  = median
+        self.median1 = median1
+        self.median2 = median2       
         self.mid_track1 = self.M1_tracks[median]
         self.mid_track2 = [self.M1_tracks[median2],self.M1_tracks[median1]]
+
 
         #AA up and down
         # AA_p_up   = self.net_gt_up.p2   - tech.GT_X_AA.v
         # AA_n_down = self.net_gt_down.p1 + tech.GT_X_AA.v
         
         #TODO, may extract this to DB
-        self.v_mode = {}     
-        '''
-        Principle:
-        1. gt up and down are only used for cn/c
-        2. m/bm/pm/s must be used
-        3. Not may cross pattern nets, only cn/c and RN/SN pull
-        4. 
-        5. 
+        self.vmode = {i:VMode(self, i)  for i in range(VMode.total_vmodes)}     
         
-        0: GT connected and with 1 CT, INV, Logic, CLK...
-        Detection conditions, all columns are GT pair.
         
-        0: GT connected and with 2 CTs, and not GT up/down: INV, Logic, CLK...
-        Detection conditions, all columns are GT pair.
             
-            
-        1: GT not connected and with 2 CTs, and not GT up/down: Cross, Backtrack...
-        Detection conditions, not all columns are GT pair.
-            
-        2-n: TO be designed
-        '''
+        
+
         
         #V-Mode 0
         
@@ -360,22 +363,299 @@ class Tech(object):
         '''
 
 class VMode:
+    total_vmodes = 6
     #based on mos pair
-    def __init__(self):
+    
+            
+    '''
+    Principle:
+    1. gt up and down are only used for cn/c
+    2. m/bm/pm/s must be used
+    3. Not may cross pattern nets, only cn/c and RN/SN pull
+    4. 
+    5. 
+    
+    0: GT connected and with 1 CT, INV, Logic, CLK...
+    Detection conditions, all columns are GT pair.
+    
+    1: GT connected and with 2 CTs, and not GT up/down: INV, Logic, CLK...
+    Detection conditions, all columns are GT pair. GT connect is pin(2 CTs is a must)
+        
+        
+    2: GT not connected and with 2 CTs, and not GT up/down: Cross, Backtrack...
+    One M1 Track in 2-GT/CT to avoid dr violation
+    Detection conditions, not all columns are GT pair.
+    
+        
+    2-n: TO be designed
+    '''
+    
+    
+    def __init__(self, tech, vmode):
+        self.tech = tech
+        self.vmode = vmode
+        # self.init_vmode()
+        
+        if self.vmode == 0:     
+            pass
+        elif self.vmode == 1: #only pmos
+            self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
+                                     tech.mid_track1.c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
+                                     set_t='pp')
+        elif self.vmode == 2: #only nmos
+            self.nmos_aa_max = Range(tech.gt_dn_rg.p1 + tech.GT_X_AA.v, 
+                                     tech.mid_track1.c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
+                                     set_t='pp')       
+        elif vmode == 3:          
+            self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
+                                     tech.mid_track1.c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
+                                     set_t='pp')
+            
+            self.nmos_aa_max = Range(tech.gt_dn_rg.p1 + tech.GT_X_AA.v, 
+                                     tech.mid_track1.c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
+                                     set_t='pp')
+        
+        elif vmode == 4:
+            self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
+                                     tech.mid_track2[1].c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
+                                     set_t='pp')
+            
+            self.nmos_aa_max = Range(tech.gt_dn_rg.p1 + tech.GT_X_AA.v, 
+                                     tech.mid_track2[0].c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
+                                     set_t='pp')
+        
+        elif vmode == 5:
+            t1 = tech.M1_tracks[tech.median - 1]
+            t2 = tech.M1_tracks[tech.median + 1]        
+            
+            
+            self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
+                                     t2.c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
+                                     set_t='pp')
+            self.nmos_aa_max = Range(tech.gt_dn_rg.p1 + tech.GT_X_AA.v, 
+                                     t1.c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
+                                     set_t='pp')
+        
+            if (tech.GT_S.v + tech.GT_W.v) <= (tech.M1_S.v + tech.M1_W.v):
+                self.mid_gt = True
+            else:
+                self.mid_gt = False
+        
+            
+        
+        
+        else:
+            raise ValueError('vmode is error!')
+    def __repr__(self):
+        return 'vmode: %d'%(self.vmode)
+        
+    @staticmethod 
+    def get_vmode(pn_pairs,io_map):
+        pmos = pn_pairs['P']
+        nmos = pn_pairs['N']
+        if not(pmos) and not(nmos):
+            return 0
+        elif not(nmos) and pmos:
+            return 1
+        elif not(pmos) and nmos:
+            return 2
+        else:
+            if pmos.G == nmos.G:
+                if pmos.G in io_map:
+                    return 4 
+                else:
+                    return 3
+            else:
+                #TODO, will add more modes
+                return 5
+
+        
+
+    def gen_grids(self, pn_pairs):
+        #init m1 tracks
+        tech = self.tech
+        s_grid = {(-1,i,1):'none' for i in range(tech.M1_tracks_num)}
+        g_grid = {( 0,i,1):'none' for i in range(tech.M1_tracks_num)}
+        d_grid = {( 1,i,1):'none' for i in range(tech.M1_tracks_num)}
+        edges = []
+        connected = {} 
+        #pre-connected will be merged into one node in route graph
+        
+        for i in range(tech.M1_tracks_num):
+            edges.append( ((-1,i,1), ( 0,i,1)) )
+            edges.append( (( 1,i,1), ( 0,i,1)) )
+            if i != 0:
+                edges.append( ((-1,i-1,1), ( -1,i,1)) )
+                edges.append( (( 0,i-1,1), (  0,i,1)) )
+                edges.append( (( 1,i-1,1), (  1,i,1)) )
+        
+        pmos = pn_pairs['P']
+        nmos = pn_pairs['N']       
+        
+        if self.vmode == 0:     
+            pass
+            return []
+        elif self.vmode == 1:
+            pass
+            return []
+        elif self.vmode == 2:
+            pass
+            return []
+        
+        
+        elif self.vmode == 3:
+            #GT connected
+            assert pmos.G == nmos.G
+            t = tech.median
+            s_grid_gt = {(-1,t,0):'none'}
+            g_grid_gt = {( 0,t,0):pmos.G}
+            d_grid_gt = {( 1,t,0):'none'}
+            edges.append( ((-1,t,0),(-1,t,1)) )
+            edges.append( (( 0,t,0),( 0,t,1)) )
+            edges.append( ((-1,t,0),(-1,t,1)) )
+            edges.append( ((-1,t,0),( 0,t,0)) )
+            edges.append( (( 0,t,0),( 1,t,0)) )
+            #S and D
+            if pmos.S == 'VDD':
+                s_grid[(-1,tech.M1_tracks_num-1,1)] = 'VDD'
+            else:
+                s_grid[(-1,tech.median+1,1)] = pmos.S
+            
+            if pmos.D == 'VDD':
+                d_grid[( 1,tech.M1_tracks_num-1,1)] = 'VDD'
+            else:
+                d_grid[( 1,tech.median+1,1)] = pmos.D
+            
+            if nmos.S == 'VSS':
+                s_grid[(-1,0,1)] = 'VSS'
+            else:
+                s_grid[(-1,tech.median-1,1)] = nmos.S
+            
+            if nmos.D == 'VSS':
+                d_grid[( 1,0,1)] = 'VSS'
+            else:
+                d_grid[( 1,tech.median-1,1)] = nmos.D
+
+            return [[s_grid,g_grid,d_grid],
+                    [s_grid_gt,g_grid_gt,d_grid_gt],
+                    edges,connected]
+        elif self.vmode == 4:
+            assert pmos.G == nmos.G
+            t1 = tech.median1
+            t2 = tech.median2            
+            s_grid_gt = {(-1,t1,0):'none',(-1,t2,0):'none'}
+            g_grid_gt = {( 0,t1,0):pmos.G,(-1,t2,0):pmos.G}
+            d_grid_gt = {( 1,t1,0):'none',(-1,t2,0):'none'}
+            
+            edges.append( ((-1,t1,0),(-1,t1,1)) )
+            edges.append( (( 0,t1,0),( 0,t1,1)) )
+            edges.append( ((-1,t1,0),(-1,t1,1)) )
+            edges.append( ((-1,t1,0),( 0,t1,0)) )
+            edges.append( (( 0,t1,0),( 1,t1,0)) )
+
+            edges.append( ((-1,t2,0),(-1,t2,1)) )
+            edges.append( (( 0,t2,0),( 0,t2,1)) )
+            edges.append( ((-1,t2,0),(-1,t2,1)) )
+            edges.append( ((-1,t2,0),( 0,t2,0)) )
+            edges.append( (( 0,t2,0),( 1,t2,0)) )            
+            
+            edges.append( ((-1,t1,0),( -1,t2,0)) )         
+            edges.append( (( 0,t1,0),(  0,t2,0)) )              
+            edges.append( (( 1,t1,0),(  1,t2,0)) )             
+            
+            connected[pmos.G] = [(( 0,t1,0),(  0,t2,0)),
+                                 (( 0,t1,1),(  0,t2,1)),
+                                 (( 0,t1,0),(  0,t1,1)),
+                                 (( 0,t2,0),(  0,t2,1))]
+            
+            #S and D
+            if pmos.S == 'VDD':
+                s_grid[(-1,tech.M1_tracks_num-1,1)] = 'VDD'
+            else:
+                s_grid[(-1,tech.median1+1,1)] = pmos.S
+            
+            if pmos.D == 'VDD':
+                d_grid[( 1,tech.M1_tracks_num-1,1)] = 'VDD'
+            else:
+                d_grid[( 1,tech.median1+1,1)] = pmos.D
+            
+            if nmos.S == 'VSS':
+                s_grid[(-1,0,1)] = 'VSS'
+            else:
+                s_grid[(-1,tech.median2-1,1)] = nmos.S
+            
+            if nmos.D == 'VSS':
+                d_grid[( 1,0,1)] = 'VSS'
+            else:
+                d_grid[( 1,tech.median2-1,1)] = nmos.D
+            
+            return [[s_grid,g_grid,d_grid],
+                    [s_grid_gt,g_grid_gt,d_grid_gt],
+                    edges,connected]       
+       
+        elif self.vmode == 5:     
+            t = tech.median
+            t1 = t + 1
+            t2 = t - 1           
+            s_grid_gt = {(-1,t1,0):'none',(-1,t2,0):'none'}
+            g_grid_gt = {( 0,t1,0):pmos.G,(-1,t2,0):nmos.G}
+            d_grid_gt = {( 1,t1,0):'none',(-1,t2,0):'none'}
+            
+            #S and D
+            s_grid[(-1,tech.M1_tracks_num-1,1)] = pmos.S
+            d_grid[( 1,tech.M1_tracks_num-1,1)] = pmos.D
+
+            s_grid[(-1,0,1)] = nmos.S
+            d_grid[( 1,0,1)] = nmos.D           
+            
+            
+            edges.append( ((-1,t1,0),(-1,t1,1)) )
+            edges.append( (( 0,t1,0),( 0,t1,1)) )
+            edges.append( ((-1,t1,0),(-1,t1,1)) )
+            edges.append( ((-1,t1,0),( 0,t1,0)) )
+            edges.append( (( 0,t1,0),( 1,t1,0)) )
+
+            edges.append( ((-1,t2,0),(-1,t2,1)) )
+            edges.append( (( 0,t2,0),( 0,t2,1)) )
+            edges.append( ((-1,t2,0),(-1,t2,1)) )
+            edges.append( ((-1,t2,0),( 0,t2,0)) )
+            edges.append( (( 0,t2,0),( 1,t2,0)) )            
+            
+            if self.mid_gt:
+                s_grid_gt[(-1,t,0)] = 'none'
+                g_grid_gt[( 0,t,0)] = 'none'
+                d_grid_gt[( 1,t,0)] = 'none'
+                
+                edges.append( ((-1,t,0),(-1,t,1)) )
+                edges.append( (( 0,t,0),( 0,t,1)) )
+                edges.append( ((-1,t,0),(-1,t,1)) )
+                edges.append( ((-1,t,0),( 0,t,0)) )
+                edges.append( (( 0,t,0),( 1,t,0)) )
+
+                edges.append( ((-1,t,0),(-1,t1,0)) )
+                edges.append( ((-1,t,0),(-1,t2,0)) )
+                edges.append( (( 0,t,0),( 0,t1,0)) )
+                edges.append( (( 0,t,0),( 0,t2,0)) )
+                edges.append( (( 1,t,0),( 1,t1,0)) )
+                edges.append( (( 1,t,0),( 1,t2,0)) )
+                
+            else:
+                edges.append( ((-1,t1,0),( -1,t2,0)) )         
+                edges.append( (( 0,t1,0),(  0,t2,0)) )              
+                edges.append( (( 1,t1,0),(  1,t2,0)) )             
+        
+            return [[s_grid,g_grid,d_grid],
+                    [s_grid_gt,g_grid_gt,d_grid_gt],
+                    edges,connected]        
+        else:
+            pass
+            
+        
+    def detect(self):
+        #is fold needed:
+        #vmode is suitable? 
         pass
-        pmos_aa
-        nmos_aa
-        m1_nets
         
-    def 
-        
-
-
-
-
-
-
-
 
 class DR(object):
     dr_list =[]
@@ -406,7 +686,7 @@ class DR(object):
     def v(self):
         return self.value
     @property
-    def h_v(self):
+    def hv(self):
         return int(0.5*self.value)
 
 

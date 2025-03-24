@@ -248,18 +248,7 @@ class MIPGraphRouter():
         return node_used
 
 
-
-
-
-
-
-
-
-
-
-
-
-def test_mip_route():
+if __name__ == 'main':    
     import matplotlib.pyplot as plt
 
     G = nx.Graph()

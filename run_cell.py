@@ -38,8 +38,12 @@ if extract_pins:
     Netlist.extract_pins(cfgs.model_file, cfgs.netlist, cfgs.output_dir  )
     # return 0
 
+cfgs.gen_cells = ['latch']
+
 tech  = Tech(cfgs)
 cells = ASCell(cfgs,tech)
+
+
 
 ck1 = cells.netlist['XR03D2']
 ck2 = cells.netlist['LANHB1']
@@ -52,14 +56,14 @@ SDMNRQ0
 SENRQ0
 '''
 c1 = cells['LANHB1']
-c2 = cells['DENRQ0']
-c3 = cells['DFBFB1']
-c4 = cells['DFANRQ0']
-c5 = cells['SDMNRQ0']
-c6 = cells['SENRQ0']
-c7 = cells['TLATNFCAD4']
+# c2 = cells['DENRQ0']
+# c3 = cells['DFBFB1']
+# c4 = cells['DFANRQ0']
+# c5 = cells['SDMNRQ0']
+# c6 = cells['SENRQ0']
+# c7 = cells['TLATNFCAD4']
 
-c8 = cells['SDPRQM']
+# c8 = cells['SDPRQM']
 # def ascell(args,app):
 #     file = open('log_tmp.txt','w')
 #     init_logger(args)

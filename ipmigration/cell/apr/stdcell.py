@@ -15,6 +15,9 @@ class StdCell:
         self.cfgs = cfgs
         self.patterns= patterns
         
+        
+        
+        
     def run(self):
         self.init_layout()
         self.global_place()
@@ -29,18 +32,27 @@ class StdCell:
                             self.tech.tech_name, 
                             self.cfgs.output_dir)
         result = self.de_ckt.run()
-
         if result:
             print('Success: ', self.ckt.name)
             pat_placer = Placer(self.de_ckt.sub_ckts)
             queue = pat_placer.find_opt_perm(self.ckt.ckt_type)
+            self.queue = [self.de_ckt.sub_ckts[t] for t in queue]
+            #TODO: Visualization this part with multi-graph
+            self.extract_ext_net(self.queue)
+            ext_nets = {}
+            for loc,pattern in enumerate(self.queue):
+                pattern.set_vmode(self.tech)
+                pattern.apr(loc,ext_nets)
+                
+            
+            
             
             #auto-folding
             
             
             
-            self.pat_placer = pat_placer
-            self.queue = queue
+            # self.pat_placer = pat_placer
+
         else:
             print('Fail: ', self.ckt.name)
         
@@ -51,6 +63,7 @@ class StdCell:
     
     def global_route(self):
         pass
+        #some points may be occupied but not connected. e.g. GT-CT and End-line CT
     
 
     def detail_place(self):
@@ -63,7 +76,45 @@ class StdCell:
     def pre_process(self, ckt, right, left=0, m2_tracks=False):
         pass
 
-       
+     
+
+    def extract_ext_net(self,queue):
+        for pattern in queue: 
+            signal_nets = list(pattern.net_map.values())
+            if 'VDD' in signal_nets:
+                signal_nets.remove('VDD')
+            if 'VSS' in signal_nets:
+                signal_nets.remove('VSS')
+            pattern.signal_nets  = signal_nets
+        nets_loc = {}
+        for net in self.ckt.nets:
+            if net != 'VDD' and net != 'VSS':
+                nets_loc[net] = []
+                for i, pattern in enumerate(queue):
+                    if net in pattern.signal_nets:
+                        nets_loc[net].append(i)
+        
+        for i, pattern in enumerate(queue):
+            for net, loc in nets_loc.items():
+                if len(loc) ==1:
+                    if loc[0] == i:
+                        pattern.internal_nets.append(net)
+
+                else: #len loc >1
+                    if min(loc) == i:
+                        pattern.right_nets.append(net)
+                    elif max(loc) == i:
+                        pattern.left_nets.append(net)
+                    elif min(loc) < i and max(loc) > i:
+                        pattern.cross_nets.append(net)
+
+
+                
+                
+    def gen_graph(self):
+        pass
+
+
     def apr(self, ckt, file):
         #init ckt layout
         ckt.preprocess(self.layout,self.layout_layers)
