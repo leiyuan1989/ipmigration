@@ -181,6 +181,10 @@ class StdCell:
         signals,cost_edge = route_G.gen_routing_signals(route_nets,route_G)
         G.cost_edge = cost_edge
 
+        print('Begin Routing',pattern.pattern_name,signals)
+        route_G.plot(grid_columns)
+        G.plot(grid_columns)
+
         router = MIPGraphRouter()
         routing_trees = router.min_steiner_tree(route_G, signals,
                                          node_cost_fn=None,
@@ -192,8 +196,7 @@ class StdCell:
         
         
         
-        route_G.plot(grid_columns)
-        G.plot(grid_columns)
+
             # vmode.gt_nodes  
             # vmode.gt_nets 
             # vmode.connected  
