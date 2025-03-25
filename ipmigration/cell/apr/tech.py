@@ -375,14 +375,18 @@ class VMode:
     4. 
     5. 
     
-    0: GT connected and with 1 CT, INV, Logic, CLK...
+    
+    0:
+    1:
+    2:
+    3: GT connected and with 1 CT, INV, Logic, CLK...
     Detection conditions, all columns are GT pair.
     
-    1: GT connected and with 2 CTs, and not GT up/down: INV, Logic, CLK...
+    4: GT connected and with 2 CTs, and not GT up/down: INV, Logic, CLK...
     Detection conditions, all columns are GT pair. GT connect is pin(2 CTs is a must)
         
         
-    2: GT not connected and with 2 CTs, and not GT up/down: Cross, Backtrack...
+    5: GT not connected and with 2 CTs, and not GT up/down: Cross, Backtrack...
     One M1 Track in 2-GT/CT to avoid dr violation
     Detection conditions, not all columns are GT pair.
     
@@ -397,15 +401,39 @@ class VMode:
         # self.init_vmode()
         
         if self.vmode == 0:     
-            pass
+            t = tech.median
+            self.gt_nodes = [(0,t-1,0),(0,t,0),(0,t+1,0)]
+            self.gt_nets = {}
+            self.connected = {}
+            self.edges = [] #edges that not nearby
+            self.ct_nodes = [(0,t,0.5)]
+
+            
         elif self.vmode == 1: #only pmos
             self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
                                      tech.mid_track1.c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
                                      set_t='pp')
+        
+            t = tech.median
+            self.gt_nodes = [(-1,t,0),(0,t,0),(1,t,0)]
+            self.gt_nets = {(0,t,0):'P'}
+            self.connected = {}
+            self.edges = [] #edges that not nearby
+            self.ct_nodes = [(-1,t,0.5),(0,t,0.5),(1,t,0.5)]
+
+        
         elif self.vmode == 2: #only nmos
             self.nmos_aa_max = Range(tech.gt_dn_rg.p1 + tech.GT_X_AA.v, 
                                      tech.mid_track1.c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
-                                     set_t='pp')       
+                                     set_t='pp')      
+            
+            t = tech.median
+            self.gt_nodes = [(-1,t,0),(0,t,0),(1,t,0)]
+            self.gt_nets = {(0,t,0):'N'}
+            self.connected = {}
+            self.edges = [] #edges that not nearby
+            self.ct_nodes = [(-1,t,0.5),(0,t,0.5),(1,t,0.5)]
+            
         elif vmode == 3:          
             self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
                                      tech.mid_track1.c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
@@ -415,6 +443,13 @@ class VMode:
                                      tech.mid_track1.c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
                                      set_t='pp')
         
+            t = tech.median
+            self.gt_nodes = [(-1,t,0),(0,t,0),(1,t,0)]
+            self.gt_nets = {(0,t,0):'P'}
+            self.connected = {}
+            self.edges = [] #edges that not nearby
+            self.ct_nodes = [(-1,t,0.5),(0,t,0.5),(1,t,0.5)]
+            
         elif vmode == 4:
             self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
                                      tech.mid_track2[1].c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
@@ -424,11 +459,29 @@ class VMode:
                                      tech.mid_track2[0].c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
                                      set_t='pp')
         
+            t1 = tech.median1
+            t2 = tech.median2       
+            self.gt_nodes = [(-1,t1,0),(0,t1,0),(1,t1,0),
+                             (-1,t2,0),(0,t2,0),(1,t2,0)]         
+            self.gt_nets = {(0,t1,0):'P'}
+            #key is the node with net labels
+            self.connected = {(0,t1,0): [(( 0,t1,0),  (  0,t2,0)),
+                                         (( 0,t1,1),  (  0,t2,1)),
+                                         (( 0,t1,0),  (  0,t1,0.5)),
+                                         (( 0,t1,0.5),(  0,t1,1)),
+                                         (( 0,t2,0),  (  0,t2,0.5)),
+                                         (( 0,t2,0.5),(  0,t2,1))
+                                         ]
+                              }
+            self.ct_nodes = [(-1,t1,0.5),(0,t1,0.5),(1,t1,0.5),(0,t2,0.5)]
+            self.edges = []
+            
         elif vmode == 5:
+            assert (tech.GT_S.v + tech.GT_W.v) <= (tech.M1_S.v + tech.M1_W.v)
+            
             t1 = tech.M1_tracks[tech.median - 1]
             t2 = tech.M1_tracks[tech.median + 1]        
-            
-            
+                
             self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
                                      t2.c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
                                      set_t='pp')
@@ -436,19 +489,63 @@ class VMode:
                                      t1.c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
                                      set_t='pp')
         
-            if (tech.GT_S.v + tech.GT_W.v) <= (tech.M1_S.v + tech.M1_W.v):
-                self.mid_gt = True
-            else:
-                self.mid_gt = False
-        
+            t = tech.median
+            t1 = t + 1
+            t2 = t - 1           
             
-        
-        
+            self.gt_nodes = [(-1,t1,0),(0,t1,0),(1,t1,0),
+                             (-1,t,0), (0,t,0), (1,t,0),
+                             (-1,t2,0),(0,t2,0),(1,t2,0)]    
+            
+            self.gt_nets = {(0,t1,0):'P',(0,t2,0):'N'}
+            self.connected= {}
+            self.ct_nodes = [(0,t1,0.5),(0,t2,0.5),(-1,t,0.5),(1,t,0.5)]
+            self.edges = []
+            
+            
+
         else:
             raise ValueError('vmode is error!')
     def __repr__(self):
         return 'vmode: %d'%(self.vmode)
         
+    def gen_grids(self, offset):
+        gt_nodes = {'s':[],'g':[],'d':[]}
+        ct_nodes  = {'s':[],'g':[],'d':[]}
+        gt_nets = {}
+        connected = {}
+        edges = []
+        for t in self.gt_nodes:
+            if t[0] == -1:
+                gt_nodes['s'].append((t[0] + offset,t[1],t[2]))
+            elif t[0] == 0:
+                gt_nodes['g'].append((t[0] + offset,t[1],t[2]))
+            elif t[0] == 1:
+                gt_nodes['d'].append((t[0] + offset,t[1],t[2]))
+                
+                
+        for t in self.ct_nodes:
+            if t[0] == -1:
+                ct_nodes['s'].append((t[0] + offset,t[1],t[2]))
+            elif t[0] == 0:
+                ct_nodes['g'].append((t[0] + offset,t[1],t[2]))
+            elif t[0] == 1:
+                ct_nodes['d'].append((t[0] + offset,t[1],t[2]))   
+        
+        for k,v in self.gt_nets.items():
+            gt_nets[(k[0]+offset,k[1],k[2])] = v
+        for k,v in self.connected.items():
+            new_v = []
+            for t in v:
+                t1,t2 =t
+                new_v.append(((t1[0]+offset,t1[1],t1[2]), (t2[0]+offset,t2[1],t2[2])))
+            connected[(k[0]+offset,k[1],k[2])] = new_v
+
+        for t in self.edges:
+            t1,t2 =t
+            edges.append(((t1[0]+offset,t1[1],t1[2]), (t2[0]+offset,t2[1],t2[2])))
+        return [gt_nodes,ct_nodes,gt_nets,connected,edges]
+
     @staticmethod 
     def get_vmode(pn_pairs,io_map):
         pmos = pn_pairs['P']
@@ -469,192 +566,17 @@ class VMode:
                 #TODO, will add more modes
                 return 5
 
-        
-
-    def gen_grids(self, pn_pairs):
-        #init m1 tracks
-        tech = self.tech
-        s_grid = {(-1,i,1):'none' for i in range(tech.M1_tracks_num)}
-        g_grid = {( 0,i,1):'none' for i in range(tech.M1_tracks_num)}
-        d_grid = {( 1,i,1):'none' for i in range(tech.M1_tracks_num)}
-        edges = []
-        connected = {} 
-        #pre-connected will be merged into one node in route graph
-        
+    @staticmethod    
+    def gen_m1_grids(tech,max_col,offset=0):
+        nodes = {}
         for i in range(tech.M1_tracks_num):
-            edges.append( ((-1,i,1), ( 0,i,1)) )
-            edges.append( (( 1,i,1), ( 0,i,1)) )
-            if i != 0:
-                edges.append( ((-1,i-1,1), ( -1,i,1)) )
-                edges.append( (( 0,i-1,1), (  0,i,1)) )
-                edges.append( (( 1,i-1,1), (  1,i,1)) )
+            for j in range(max_col):
+                nodes[(offset + j,i,1)] = {'net':'',
+                                           'loc':(offset + j,i),
+                                           'color':'orange'}
         
-        pmos = pn_pairs['P']
-        nmos = pn_pairs['N']       
-        
-        if self.vmode == 0:     
-            pass
-            return []
-        elif self.vmode == 1:
-            pass
-            return []
-        elif self.vmode == 2:
-            pass
-            return []
-        
-        
-        elif self.vmode == 3:
-            #GT connected
-            assert pmos.G == nmos.G
-            t = tech.median
-            s_grid_gt = {(-1,t,0):'none'}
-            g_grid_gt = {( 0,t,0):pmos.G}
-            d_grid_gt = {( 1,t,0):'none'}
-            edges.append( ((-1,t,0),(-1,t,1)) )
-            edges.append( (( 0,t,0),( 0,t,1)) )
-            edges.append( ((-1,t,0),(-1,t,1)) )
-            edges.append( ((-1,t,0),( 0,t,0)) )
-            edges.append( (( 0,t,0),( 1,t,0)) )
-            #S and D
-            if pmos.S == 'VDD':
-                s_grid[(-1,tech.M1_tracks_num-1,1)] = 'VDD'
-            else:
-                s_grid[(-1,tech.median+1,1)] = pmos.S
-            
-            if pmos.D == 'VDD':
-                d_grid[( 1,tech.M1_tracks_num-1,1)] = 'VDD'
-            else:
-                d_grid[( 1,tech.median+1,1)] = pmos.D
-            
-            if nmos.S == 'VSS':
-                s_grid[(-1,0,1)] = 'VSS'
-            else:
-                s_grid[(-1,tech.median-1,1)] = nmos.S
-            
-            if nmos.D == 'VSS':
-                d_grid[( 1,0,1)] = 'VSS'
-            else:
-                d_grid[( 1,tech.median-1,1)] = nmos.D
+        return nodes
 
-            return [[s_grid,g_grid,d_grid],
-                    [s_grid_gt,g_grid_gt,d_grid_gt],
-                    edges,connected]
-        elif self.vmode == 4:
-            assert pmos.G == nmos.G
-            t1 = tech.median1
-            t2 = tech.median2            
-            s_grid_gt = {(-1,t1,0):'none',(-1,t2,0):'none'}
-            g_grid_gt = {( 0,t1,0):pmos.G,(-1,t2,0):pmos.G}
-            d_grid_gt = {( 1,t1,0):'none',(-1,t2,0):'none'}
-            
-            edges.append( ((-1,t1,0),(-1,t1,1)) )
-            edges.append( (( 0,t1,0),( 0,t1,1)) )
-            edges.append( ((-1,t1,0),(-1,t1,1)) )
-            edges.append( ((-1,t1,0),( 0,t1,0)) )
-            edges.append( (( 0,t1,0),( 1,t1,0)) )
-
-            edges.append( ((-1,t2,0),(-1,t2,1)) )
-            edges.append( (( 0,t2,0),( 0,t2,1)) )
-            edges.append( ((-1,t2,0),(-1,t2,1)) )
-            edges.append( ((-1,t2,0),( 0,t2,0)) )
-            edges.append( (( 0,t2,0),( 1,t2,0)) )            
-            
-            edges.append( ((-1,t1,0),( -1,t2,0)) )         
-            edges.append( (( 0,t1,0),(  0,t2,0)) )              
-            edges.append( (( 1,t1,0),(  1,t2,0)) )             
-            
-            connected[pmos.G] = [(( 0,t1,0),(  0,t2,0)),
-                                 (( 0,t1,1),(  0,t2,1)),
-                                 (( 0,t1,0),(  0,t1,1)),
-                                 (( 0,t2,0),(  0,t2,1))]
-            
-            #S and D
-            if pmos.S == 'VDD':
-                s_grid[(-1,tech.M1_tracks_num-1,1)] = 'VDD'
-            else:
-                s_grid[(-1,tech.median1+1,1)] = pmos.S
-            
-            if pmos.D == 'VDD':
-                d_grid[( 1,tech.M1_tracks_num-1,1)] = 'VDD'
-            else:
-                d_grid[( 1,tech.median1+1,1)] = pmos.D
-            
-            if nmos.S == 'VSS':
-                s_grid[(-1,0,1)] = 'VSS'
-            else:
-                s_grid[(-1,tech.median2-1,1)] = nmos.S
-            
-            if nmos.D == 'VSS':
-                d_grid[( 1,0,1)] = 'VSS'
-            else:
-                d_grid[( 1,tech.median2-1,1)] = nmos.D
-            
-            return [[s_grid,g_grid,d_grid],
-                    [s_grid_gt,g_grid_gt,d_grid_gt],
-                    edges,connected]       
-       
-        elif self.vmode == 5:     
-            t = tech.median
-            t1 = t + 1
-            t2 = t - 1           
-            s_grid_gt = {(-1,t1,0):'none',(-1,t2,0):'none'}
-            g_grid_gt = {( 0,t1,0):pmos.G,(-1,t2,0):nmos.G}
-            d_grid_gt = {( 1,t1,0):'none',(-1,t2,0):'none'}
-            
-            #S and D
-            s_grid[(-1,tech.M1_tracks_num-1,1)] = pmos.S
-            d_grid[( 1,tech.M1_tracks_num-1,1)] = pmos.D
-
-            s_grid[(-1,0,1)] = nmos.S
-            d_grid[( 1,0,1)] = nmos.D           
-            
-            
-            edges.append( ((-1,t1,0),(-1,t1,1)) )
-            edges.append( (( 0,t1,0),( 0,t1,1)) )
-            edges.append( ((-1,t1,0),(-1,t1,1)) )
-            edges.append( ((-1,t1,0),( 0,t1,0)) )
-            edges.append( (( 0,t1,0),( 1,t1,0)) )
-
-            edges.append( ((-1,t2,0),(-1,t2,1)) )
-            edges.append( (( 0,t2,0),( 0,t2,1)) )
-            edges.append( ((-1,t2,0),(-1,t2,1)) )
-            edges.append( ((-1,t2,0),( 0,t2,0)) )
-            edges.append( (( 0,t2,0),( 1,t2,0)) )            
-            
-            if self.mid_gt:
-                s_grid_gt[(-1,t,0)] = 'none'
-                g_grid_gt[( 0,t,0)] = 'none'
-                d_grid_gt[( 1,t,0)] = 'none'
-                
-                edges.append( ((-1,t,0),(-1,t,1)) )
-                edges.append( (( 0,t,0),( 0,t,1)) )
-                edges.append( ((-1,t,0),(-1,t,1)) )
-                edges.append( ((-1,t,0),( 0,t,0)) )
-                edges.append( (( 0,t,0),( 1,t,0)) )
-
-                edges.append( ((-1,t,0),(-1,t1,0)) )
-                edges.append( ((-1,t,0),(-1,t2,0)) )
-                edges.append( (( 0,t,0),( 0,t1,0)) )
-                edges.append( (( 0,t,0),( 0,t2,0)) )
-                edges.append( (( 1,t,0),( 1,t1,0)) )
-                edges.append( (( 1,t,0),( 1,t2,0)) )
-                
-            else:
-                edges.append( ((-1,t1,0),( -1,t2,0)) )         
-                edges.append( (( 0,t1,0),(  0,t2,0)) )              
-                edges.append( (( 1,t1,0),(  1,t2,0)) )             
-        
-            return [[s_grid,g_grid,d_grid],
-                    [s_grid_gt,g_grid_gt,d_grid_gt],
-                    edges,connected]        
-        else:
-            pass
-            
-        
-    def detect(self):
-        #is fold needed:
-        #vmode is suitable? 
-        pass
         
 
 class DR(object):

@@ -81,9 +81,6 @@ class StructGraph(nx.Graph):
     
 
 
-class RouteGraph:
-    def __init__(self, net_dict):
-        self.net_dict = net_dict
 
 
 

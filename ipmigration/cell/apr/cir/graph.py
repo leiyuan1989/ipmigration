@@ -4,6 +4,7 @@ Created on Fri Aug 16 09:50:42 2024
 
 @author: leiyuan
 """
+import copy
 import itertools
 import matplotlib.pyplot as plt
 
@@ -180,6 +181,137 @@ class MosGraph(nx.Graph):
         
         
     #     return [devices_dict[t] for t in match_dict.values() if t in devices_dict]
+
+
+
+class RouteGraph(nx.Graph):
+    def __init__(self,pattern, pt_connected, pt_edges):
+        super().__init__() 
+        self.pattern = pattern
+        self.pt_connected = pt_connected
+        self.pt_edges = pt_edges
+        
+    def add_nodes(self, m1_nodes, gt_nodes, ct_nodes):  
+        self.m1_nodes = m1_nodes
+        self.gt_nodes = gt_nodes
+        self.ct_nodes = ct_nodes
+
+        for node,attr in m1_nodes.items():
+            self.add_node(node,**attr)        
+        for node,attr in gt_nodes.items():
+            self.add_node(node, **attr)  
+        for node,attr in ct_nodes.items():
+            self.add_node(node, **attr)  
+
+    def add_edges(self):
+        for node1 in self.m1_nodes:
+            for node2 in self.m1_nodes:
+                if node1 != node2:
+                    if not(self.has_edge(node1,node2)):
+                        distance = (node1[0] - node2[0]) ** 2 + (node1[1] - node2[1]) ** 2 
+                        if distance == 1:
+                            self.add_edge(node1, node2, cost=1)
+        for node1 in self.gt_nodes:
+            for node2 in self.gt_nodes:
+                if node1 != node2:
+                    if not(self.has_edge(node1,node2)):
+                        distance = (node1[0] - node2[0]) ** 2 + (node1[1] - node2[1]) ** 2 
+                        if distance == 1:
+                            self.add_edge(node1, node2, cost=3)                    
+        
+        for node in self.ct_nodes:
+            node1 = (node[0],node[1],0)
+            node2 = (node[0],node[1],1)            
+            self.add_edge(node1, node2, cost=3)                    
+               
+
+            
+            
+    def gen_routing_graph(self):
+        G_copy = copy.deepcopy(self)
+        for k,v in self.pt_connected.items():
+            nodes = []
+            for t in v:
+                nodes.append(t[0])
+                nodes.append(t[1])
+            nodes = list(set(nodes))
+            # print(nodes,k)
+            nodes.remove(k)
+            
+            adj_nodes= []
+            for n1 in nodes:
+                adjs = list(self.adj[n1])
+                for adj in adjs:
+                    if not(adj in nodes):
+                        adj_nodes.append(adj)
+            adj_nodes = list(set(adj_nodes))      
+            adj_nodes.remove(k)
+            G_copy.remove_nodes_from(nodes)
+            for node in adj_nodes:    
+                G_copy.add_edge(node,k,cost=1)
+        return G_copy
+            
+    def gen_routing_signals(self, route_nets, routing_graph):
+        signals = []
+        for k,v in route_nets.items():
+            if k !='VDD' and k !='VSS':
+                if len(v)>1:
+                    signals.append(v)
+            
+        
+        cost_dict = {}
+        for i,j,v in routing_graph.edges(data=True):
+            cost_dict[(i,j)] = v['cost']
+            cost_dict[(j,i)] = v['cost']
+        def cost_edge(t):
+            return cost_dict[t]
+
+        return signals, cost_edge  
+
+    def add_grid(self,loc,):
+        # loc, 
+        # net
+        # is_merge?
+        pass
+    def add_connect(self,loc,):
+        #cost
+        
+        pass
+
+    def get_column(self, col):
+        pass
+
+    def plot(self,grid_columns):
+        pos = nx.get_node_attributes(self, 'loc')
+        colors = [self.nodes[node]['color'] for node in self.nodes()]
+
+        plt.figure(figsize=(2*grid_columns, 12))
+    
+        nx.draw_networkx_nodes(self, pos, node_color=colors)
+        nx.draw_networkx_edges(self, pos, edge_color='gray', style='dashed')
+        
+        labels = {node: str(self.nodes[node]['net']) for node in self.nodes()}
+        nx.draw_networkx_labels(self, pos, labels=labels, font_size=16)
+        
+        # 显示图形
+        plt.title(self.pattern.pattern_name)
+        plt.axis('on')
+        plt.show()
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class ChainGraph(nx.Graph):
     def __init__(self, devices):

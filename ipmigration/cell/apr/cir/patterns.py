@@ -260,22 +260,38 @@ class Pattern:
         self.ckt = self.master_ckt.sub_ckt(devices)
         self.ckt.name = self.pattern_name 
         
-
+        #folding applied on pn_pairs
+        #place/vmode/grid_columns
+        
         for i in range(max(loc.values())):
              self.place.append({'P':None,'N':None})
         for device,loc in loc.items():
             self.place[loc-1][device.T] = device
+        
+        #get total grid columns
+        grid_columns = []
+        for i, pn_pair in enumerate(self.place):
+            pmos = pn_pair['P']
+            nmos = pn_pair['N']
+            if not(pmos) and not(nmos):
+                grid_columns.append(1)
+            else:
+                if i != len(self.place)-1:
+                    next_pair = self.place[i+1]
+                    if not(next_pair['P']) and not(next_pair['N']):
+                        grid_columns.append(3)
+                    else:
+                        grid_columns.append(2)
+                else:
+                    grid_columns.append(3)
+    
+        self.grid_columns =grid_columns
     
     def set_vmode(self,tech):
         for pn_pair in self.place:
-            vmode = VMode.get_vmode(pn_pair,self.ckt.io_map)
+            vmode = VMode.get_vmode(pn_pair,self.master_ckt.pin_map)
             self.vmode.append(tech.vmode[vmode])
 
-    def apr(self, loc, ext_nets):
-        print(self.place,self.vmode,loc)
-        for i, pn_pair in enumerate(self.place):
-            vmode = self.vmode[i]
-            t = vmode.gen_grids(pn_pair)
-            print(t)
-    
+
+
 
