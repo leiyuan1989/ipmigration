@@ -59,10 +59,10 @@ nmos_3 VSS  net1  OUT1  VSS nmos l=1 w=1 n=1 ro=1 co=3
 .ends LOGIC2_OR2
 
 .SUBCKT LOGIC2_NAND2 IN1 IN2 VDD VSS OUT1
-pmos_1 OUT1 IN1  VDD VDD pmos l=1 w=1 n=1 ro=1 co=1
-nmos_1 VSS  IN1  net1  VSS nmos l=1 w=1 n=1 ro=1 co=1
-pmos_2 VDD  IN2  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=2
-nmos_2 net1 IN2  OUT1  VSS nmos l=1 w=1 n=1 ro=1 co=2  
+pmos_1 OUT1 IN2  VDD VDD pmos l=1 w=1 n=1 ro=1 co=1
+nmos_1 OUT1 IN2  net1  VSS nmos l=1 w=1 n=1 ro=1 co=1
+pmos_2 VDD  IN1  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=2
+nmos_2 net1 IN1  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=2  
 .ends LOGIC2_NAND2
 
 .SUBCKT LOGIC2_NOR2 IN1 IN2 VDD VSS OUT1
@@ -402,7 +402,7 @@ NM2 IN1 IN3 PSS  VSS nmos  l=1 w=1 n=1 ro=1 co=2
 .SUBCKT BACKTRACK2_1  IN1 IN2 VDD VSS OUT1
 PM1 VDD  IN2 NET1 VDD pmos  l=1 w=1 n=1 ro=1 co=1
 PM2 NET1 IN1 OUT1 VDD pmos  l=1 w=1 n=1 ro=1 co=2
-NM2 OUT1 IN1 VSS  VSS nmos  l=1 w=1 n=1 ro=1 co=2
+NM2 VSS IN1 OUT1  VSS nmos  l=1 w=1 n=1 ro=1 co=2
 .ends BACKTRACK2_1
 
 .SUBCKT BACKTRACK2_2  IN1 IN2 VDD VSS OUT1

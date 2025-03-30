@@ -208,10 +208,14 @@ class Pattern:
         self.map_ckt(match_table) #map and flipped
         #load from saved
         self.load_from_saved = True
+
+        self.m2_edges = {}
         
         #
         self.left_pins  = {}
         self.right_pins = {}
+
+
 
 
     def __repr__(self):
@@ -292,6 +296,82 @@ class Pattern:
             vmode = VMode.get_vmode(pn_pair,self.master_ckt.pin_map)
             self.vmode.append(tech.vmode[vmode])
 
+    def gen_left_nodes_in(self,left_nodes_ex):
+        left_node_in = {}
+        net_map = {}
+        count=0
+        for net,v in left_nodes_ex.items():
+            if net in self.net_map_r:
+                net_r = self.net_map_r[net]
+                net_map[net_r] = net
+                left_node_in[net_r]=v
+            
+            else:
+                # cross net 
+                left_node_in['cross_%d'%(count)] = left_nodes_ex[net]
+                net_map['cross_%d'%(count)] = net
+                count+=1  
+
+        return left_node_in,net_map
+
+    def gen_right_nodes_ex(self,right_nodes_in,net_map):
+        right_nodes_ex = {}
+        for net,v in right_nodes_in.items():
+            right_nodes_ex[net_map[net]] = v
+        return right_nodes_ex    
 
 
 
+
+    def gen_right_nodes(self, tech, left_nodes_ex,net_map,clk_loc):
+        median = tech.median
+        # possible_locs = [median-1,median+1,median+2]
+        right_nodes_ex = {}
+        right_nodes_in = {}
+        
+        
+        
+        net_map_r = {v:k for k,v in net_map.items()}
+        for net in self.right_nets + self.cross_nets:   
+            if net in self.net_map_r: #C/CN also in pattern
+                net_r = self.net_map_r[net]
+                net_map[net_r] = net
+                if net in clk_loc:
+                    if net in left_nodes_ex:
+                        right_nodes_ex[net] = left_nodes_ex[net]
+                        right_nodes_in[net_r] = left_nodes_ex[net]
+                    else:
+                        right_nodes_ex[net] = [clk_loc[net],1]
+                        right_nodes_in[net_r] = [clk_loc[net],1]
+                elif net_r == 'OUT1':
+                    right_nodes_ex[net] = [median,1]
+                    right_nodes_in[net_r] = [median,1]
+                elif net_r == 'D1':
+                    right_nodes_ex[net] = [median+1,0]
+                    right_nodes_in[net_r] = [median+1,0]
+                elif net_r == 'IN1':
+                    right_nodes_ex[net] = [median+1,0]
+                    right_nodes_in[net_r] = [median+1,0]
+                else:
+                    t = set([v[0] for k,v in right_nodes_in.items()])
+                    possible_locs = list(set(range(tech.M1_tracks_num)) - t)
+                    possible_locs.sort()
+                    loc = possible_locs.pop()
+                    # print(self.right_nets + self.cross_nets)
+                    right_nodes_ex[net] = [loc,1]
+                    right_nodes_in[net_r] = [loc,1]
+            else:
+                # cross net 
+                t = [v[0] for k,v in right_nodes_in.items()]
+                if left_nodes_ex[net][0] in t:
+                    possible_locs = list(set(range(tech.M1_tracks_num)) - set(t))
+                    possible_locs.sort()
+                    loc = possible_locs.pop()
+                    right_nodes_ex[net] = [loc,1]
+                    right_nodes_in[net_map_r[net]] = [loc,1]
+                else:
+                    right_nodes_ex[net] = left_nodes_ex[net]
+                    right_nodes_in[net_map_r[net]] = left_nodes_ex[net]
+   
+        #TODO: future can use generate a list of possible right nodes.      
+        return right_nodes_ex,right_nodes_in

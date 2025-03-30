@@ -1,6 +1,6 @@
 setting,value,description
 tech_name,c110,"tech name, must same with headers of tech_align and pins_align"
-netlist,./demo/cell_apr/netlist/c110.cdl,"netlist cdl file"
+netlist,./demo/cell_apr/netlist/c110_demo.cdl,"netlist cdl file"
 output_dir,./demo/cell_apr/outputs/c110,"folder to save log and outputs"
 model_file,./demo/cell_apr/settings/c110/model.cdl,"model cdl file"
 mapping_file,./demo/cell_apr/settings/c110/layer_mapping.txt,"layer mapping file"

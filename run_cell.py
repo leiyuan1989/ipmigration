@@ -5,13 +5,7 @@ from ipmigration.cell.apr.io import cfg
 from ipmigration.cell.apr.tech import Tech
 from ipmigration.cell.apr.ascell import ASCell
 
-
-
-extract_pins = True
-
-
-# from src.utils.gui import App
-
+EXTRACT_PIN = True #For Expertise Lib Design
 
 
 logger = logging.getLogger(__name__)
@@ -27,62 +21,29 @@ args = parser.parse_args()
 '''
 runfile('demo/cell_apr/rule/extract_rule.py',wdir='./')
 '''
-
 args.input = 'demo/cell_apr/setting_c110.csv'
 
 cfgs  = cfg.Cfg(args.input, args.log_level)
-cfgs.io_offset = 0 #maybe different for sl cells and cl cells?
-#extract all pins 
-if extract_pins:
-    from ipmigration.cell.apr.cir.netlist import Netlist
-    Netlist.extract_pins(cfgs.model_file, cfgs.netlist, cfgs.output_dir  )
-    # return 0
+# cfgs.io_offset
+# if EXTRACT_PIN:
+#     from ipmigration.cell.apr.cir.netlist import Netlist
+#     Netlist.extract_pins(cfgs.model_file, cfgs.netlist, cfgs.output_dir  )
 
-cfgs.gen_cells = ['latch']
 
 tech  = Tech(cfgs)
 cells = ASCell(cfgs,tech)
-
-
-
-ck1 = cells.netlist['XR03D2']
-ck2 = cells.netlist['LANHB1']
 cells.run()
-'''
-DENRQ0
-DFBFB1
-DFANRQ0
-SDMNRQ0
-SENRQ0
-'''
-c1 = cells['LANHB1']
-# c2 = cells['DENRQ0']
-# c3 = cells['DFBFB1']
-# c4 = cells['DFANRQ0']
-# c5 = cells['SDMNRQ0']
-# c6 = cells['SENRQ0']
-# c7 = cells['TLATNFCAD4']
-
-# c8 = cells['SDPRQM']
-# def ascell(args,app):
-#     file = open('log_tmp.txt','w')
-#     init_logger(args)
-#     init_check(args)
-#     #set tech file
-#     tech = Tech(args)
-#     cells = ASCell(args,tech)
-#     cells.run(file,app=app)
-#     file.close()
 
 
-# data = [
-#         ['Tech Name','c153'], 
-#         ['Netlist', 'example/example_netlist.cdl'],
-#         ['Cfg Dir','example/ascell'],
-#         ['Save Dir','output/test'],
-#         ['Tech Align','data/tech_align.csv'],
-#         ['Pin Align','data/pin_align.csv'],
-#        ]
+c1 = cells['DFANRQ0']
+c2 = cells['DFNFB0']
+c3 = cells['DFNFQ0']
+c4 = cells['DFNRB0']
+c5 = cells['DFNRQ0']
+c6 = cells['DFSCRQ0']
+c7 = cells['SDANRQ0']
+c8 = cells['SDNFB0']
+c9 = cells['LANLB0']
 
 # app = App(ascell)
 # app.run(data,args)

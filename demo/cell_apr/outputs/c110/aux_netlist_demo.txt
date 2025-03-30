@@ -1,0 +1,485 @@
+
+**********ff : DFANRQ0**********
+data:{'IN1': 'N_4'},m:N_2,s:N_11
+
+clk         CLK1
+	  M26  P:  N_15 [   CN],    CK [   CK],   VDD [  VDD]
+	  M19  P:   VDD [  VDD],  N_15 [   CN],   N_8 [    C]
+	   M1  N:  N_15 [   CN],    CK [   CK],   VSS [  VSS]
+	   M8  N:   VSS [  VSS],  N_15 [   CN],   N_8 [    C]
+out_Q       INV
+	  M24  P:   VDD [  VDD],  N_10 [   BM],     Q [    Q]
+	  M13  N:   VSS [  VSS],  N_10 [   BM],     Q [    Q]
+inputs      LOGIC2_NAND2
+	  M27  P:   N_4 [     ],    D0 [   D0],   VDD [  VDD]
+	  M28  P:   VDD [  VDD],    D1 [   D1],   N_4 [     ]
+	   M7  N:  N_26 [     ],    D1 [   D1],   N_4 [     ]
+	   M2  N:   VSS [  VSS],    D0 [   D0],  N_26 [     ]
+cross1      PCROSS_2
+	  M15  P:   N_4 [     ],   N_8 [    C],   N_5 [  PM0]
+	   M3  N:   N_4 [     ],  N_15 [   CN],   N_5 [  PM0]
+	   M4  N:   N_5 [  PM0],   N_8 [    C],  N_27 [     ]
+	  M17  P:   N_5 [  PM0],  N_15 [   CN],  N_16 [     ]
+	  M16  P:  N_16 [     ],   N_2 [    M],   VDD [  VDD]
+	   M5  N:  N_27 [     ],   N_2 [    M],   VSS [  VSS]
+backtrack1  INV
+	  M18  P:   VDD [  VDD],   N_5 [  PM0],   N_2 [    M]
+	   M6  N:   VSS [  VSS],   N_5 [  PM0],   N_2 [    M]
+cross2      FCROSS_4
+	  M21  P:   VDD [  VDD],   N_2 [    M],  N_17 [     ]
+	  M20  P:  N_18 [     ],  N_11 [    S],   VDD [  VDD]
+	  M11  N:   VSS [  VSS],   N_2 [    M],  N_28 [     ]
+	  M22  P:  N_17 [     ],  N_15 [   CN],  N_10 [   BM]
+	  M12  N:  N_10 [   BM],  N_15 [   CN],  N_29 [     ]
+	  M23  P:  N_10 [   BM],   N_8 [    C],  N_18 [     ]
+	   M9  N:  N_28 [     ],   N_8 [    C],  N_10 [   BM]
+	  M10  N:  N_29 [     ],  N_11 [    S],   VSS [  VSS]
+backtrack2  INV
+	  M25  P:   VDD [  VDD],  N_10 [   BM],  N_11 [    S]
+	  M14  N:   VSS [  VSS],  N_10 [   BM],  N_11 [    S]
+devices left:
+
+**********ff : DFCFB0**********
+data:{'IN1': 'D'},m:N_8,s:N_18
+
+clk         CLK1
+	  M16  P:   N_4 [   CN],   CKN [   CK],   VDD [  VDD]
+	  M20  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
+	   M1  N:   N_4 [   CN],   CKN [   CK],   VSS [  VSS]
+	   M5  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
+ininv_RN_0  INV
+	  M27  P:   VDD [  VDD],    RN [   RN],  N_15 [RN_N0]
+	  M14  N:   VSS [  VSS],    RN [   RN],  N_15 [RN_N0]
+out_Q       INV
+	  M28  P:   VDD [  VDD],  N_18 [    S],     Q [    Q]
+	  M15  N:   VSS [  VSS],  N_18 [    S],     Q [    Q]
+out_QN      INV
+	  M29  P:   VDD [  VDD],   N_9 [   BM],    QN [   QN]
+	  M12  N:   VSS [  VSS],   N_9 [   BM],    QN [   QN]
+cross1      FCROSS_4
+	  M17  P:   VDD [  VDD],     D [    D],  N_19 [     ]
+	  M19  P:  N_20 [     ],   N_8 [    M],   VDD [  VDD]
+	   M2  N:   VSS [  VSS],     D [    D],  N_29 [     ]
+	  M21  P:  N_19 [     ],   N_4 [   CN],   N_5 [  PM0]
+	   M6  N:   N_5 [  PM0],   N_4 [   CN],  N_30 [     ]
+	  M18  P:   N_5 [  PM0],   N_2 [    C],  N_20 [     ]
+	   M3  N:  N_29 [     ],   N_2 [    C],   N_5 [  PM0]
+	   M4  N:  N_30 [     ],   N_8 [    M],   VSS [  VSS]
+backtrack1  BACKTRACK2_1
+	  M25  P:   VDD [  VDD],  N_15 [RN_N0],   N_7 [     ]
+	  M23  P:   N_7 [     ],   N_5 [  PM0],   N_8 [    M]
+	   M7  N:   N_8 [    M],   N_5 [  PM0],   VSS [  VSS]
+cross2      PCROSS_2_noVDD
+	  M22  P:   N_8 [    M],   N_2 [    C],   N_9 [   BM]
+	   M9  N:   N_8 [    M],   N_4 [   CN],   N_9 [   BM]
+	  M10  N:   N_9 [   BM],   N_2 [    C],  N_31 [     ]
+	  M24  P:   N_9 [   BM],   N_4 [   CN],  N_21 [     ]
+	  M26  P:  N_21 [     ],  N_18 [    S],   N_7 [     ]
+	  M11  N:  N_31 [     ],  N_18 [    S],   VSS [  VSS]
+backtrack2  BACKTRACK2_3_3
+	  M30  P:   VDD [  VDD],   N_9 [   BM],  N_18 [    S]
+	  M13  N:   VSS [  VSS],   N_9 [   BM],  N_18 [    S]
+	   M8  N:   N_9 [   BM],  N_15 [RN_N0],   VSS [  VSS]
+devices left:
+
+**********ff : DFCRB0**********
+data:{'IN1': 'D'},m:N_8,s:N_19
+
+clk         CLK1
+	  M16  P:   N_5 [   CN],    CK [   CK],   VDD [  VDD]
+	  M20  P:   VDD [  VDD],   N_5 [   CN],   N_2 [    C]
+	   M1  N:   N_5 [   CN],    CK [   CK],   VSS [  VSS]
+	   M6  N:   VSS [  VSS],   N_5 [   CN],   N_2 [    C]
+ininv_RN_0  INV
+	  M28  P:   VDD [  VDD],    RN [   RN],  N_16 [RN_N0]
+	  M12  N:   VSS [  VSS],    RN [   RN],  N_16 [RN_N0]
+out_Q       INV
+	  M29  P:   VDD [  VDD],  N_19 [    S],     Q [    Q]
+	  M13  N:   VSS [  VSS],  N_19 [    S],     Q [    Q]
+out_QN      INV
+	  M30  P:   VDD [  VDD],  N_10 [   BM],    QN [   QN]
+	  M14  N:   VSS [  VSS],  N_10 [   BM],    QN [   QN]
+cross1      FCROSS_4
+	  M17  P:   VDD [  VDD],     D [    D],  N_20 [     ]
+	  M18  P:  N_21 [     ],   N_8 [    M],   VDD [  VDD]
+	   M2  N:   VSS [  VSS],     D [    D],  N_77 [     ]
+	  M19  P:  N_20 [     ],   N_2 [    C],   N_6 [  PM0]
+	   M5  N:   N_6 [  PM0],   N_2 [    C],  N_78 [     ]
+	  M21  P:   N_6 [  PM0],   N_5 [   CN],  N_21 [     ]
+	   M3  N:  N_77 [     ],   N_5 [   CN],   N_6 [  PM0]
+	   M4  N:  N_78 [     ],   N_8 [    M],   VSS [  VSS]
+backtrack1  BACKTRACK2_1
+	  M27  P:   VDD [  VDD],  N_16 [RN_N0],   N_7 [     ]
+	  M22  P:   N_7 [     ],   N_6 [  PM0],   N_8 [    M]
+	   M7  N:   N_8 [    M],   N_6 [  PM0],   VSS [  VSS]
+cross2      PCROSS_2_noVDD
+	  M26  P:   N_8 [    M],   N_5 [   CN],  N_10 [   BM]
+	   M8  N:   N_8 [    M],   N_2 [    C],  N_10 [   BM]
+	   M9  N:  N_10 [   BM],   N_5 [   CN],  N_79 [     ]
+	  M24  P:  N_10 [   BM],   N_2 [    C],  N_22 [     ]
+	  M25  P:  N_22 [     ],  N_19 [    S],   N_7 [     ]
+	  M11  N:  N_79 [     ],  N_19 [    S],   VSS [  VSS]
+backtrack2  BACKTRACK2_3_3
+	  M31  P:   VDD [  VDD],  N_10 [   BM],  N_19 [    S]
+	  M15  N:   VSS [  VSS],  N_10 [   BM],  N_19 [    S]
+	  M10  N:  N_10 [   BM],  N_16 [RN_N0],   VSS [  VSS]
+devices left:
+
+**********ff : DFCRQ0**********
+data:{'IN1': 'N_9'},m:N_14,s:N_4
+
+clk         CLK1
+	  M17  P:   N_7 [   CN],    CK [   CK],   VDD [  VDD]
+	  M16  P:   VDD [  VDD],   N_7 [   CN],   N_5 [    C]
+	   M4  N:   N_7 [   CN],    CK [   CK],   VSS [  VSS]
+	   M3  N:   VSS [  VSS],   N_7 [   CN],   N_5 [    C]
+ininv_D_0   INV
+	  M21  P:   VDD [  VDD],     D [    D],   N_9 [ D_N0]
+	   M9  N:   VSS [  VSS],     D [    D],   N_9 [ D_N0]
+out_Q       INV
+	  M25  P:   VDD [  VDD],  N_13 [   BM],     Q [    Q]
+	   M1  N:   VSS [  VSS],  N_13 [   BM],     Q [    Q]
+cross1      FCROSS_4
+	  M22  P:   VDD [  VDD],   N_9 [ D_N0],  N_32 [     ]
+	  M19  P:  N_33 [     ],  N_14 [    M],   VDD [  VDD]
+	  M10  N:   VSS [  VSS],   N_9 [ D_N0],  N_16 [     ]
+	  M24  P:  N_32 [     ],   N_5 [    C],  N_11 [  PM0]
+	  M11  N:  N_11 [  PM0],   N_5 [    C],  N_17 [     ]
+	  M18  P:  N_11 [  PM0],   N_7 [   CN],  N_33 [     ]
+	   M5  N:  N_16 [     ],   N_7 [   CN],  N_11 [  PM0]
+	   M7  N:  N_17 [     ],  N_14 [    M],   VSS [  VSS]
+backtrack1  LOGIC2_NAND2
+	  M23  P:  N_14 [    M],    RN [   RN],   VDD [  VDD]
+	  M20  P:   VDD [  VDD],  N_11 [  PM0],  N_14 [    M]
+	   M8  N:  N_18 [     ],  N_11 [  PM0],  N_14 [    M]
+	  M12  N:   VSS [  VSS],    RN [   RN],  N_18 [     ]
+cross2      PRCROSS_1
+	  M27  P:  N_14 [    M],   N_7 [   CN],  N_13 [   BM]
+	  M15  N:  N_14 [    M],   N_5 [    C],  N_13 [   BM]
+	   M6  N:  N_13 [   BM],   N_7 [   CN],  N_19 [     ]
+	  M28  P:  N_13 [   BM],   N_5 [    C],  N_34 [     ]
+	  M30  P:  N_34 [     ],   N_4 [    S],   VDD [  VDD]
+	  M14  N:  N_19 [     ],   N_4 [    S],  N_15 [     ]
+	  M13  N:  N_15 [     ],    RN [   RN],   VSS [  VSS]
+backtrack2  BACKTRACK2_3
+	  M26  P:   VDD [  VDD],  N_13 [   BM],   N_4 [    S]
+	  M29  P:  N_13 [   BM],    RN [   RN],   VDD [  VDD]
+	   M2  N:   VSS [  VSS],  N_13 [   BM],   N_4 [    S]
+devices left:
+
+**********ff : DFNFB0**********
+data:{'IN1': 'D'},m:N_2,s:N_14
+
+clk         CLK1
+	  M15  P:   N_5 [   CN],   CKN [   CK],   VDD [  VDD]
+	  M23  P:   VDD [  VDD],   N_5 [   CN],   N_9 [    C]
+	   M1  N:   N_5 [   CN],   CKN [   CK],   VSS [  VSS]
+	   M9  N:   VSS [  VSS],   N_5 [   CN],   N_9 [    C]
+out_QN      INV
+	  M25  P:   VDD [  VDD],  N_14 [    S],    QN [   QN]
+	  M11  N:   VSS [  VSS],  N_14 [    S],    QN [   QN]
+out_Q       INV
+	  M27  P:   VDD [  VDD],  N_11 [   BM],     Q [    Q]
+	  M13  N:   VSS [  VSS],  N_11 [   BM],     Q [    Q]
+cross1      FCROSS_4
+	  M16  P:   VDD [  VDD],     D [    D],  N_15 [     ]
+	  M19  P:  N_16 [     ],   N_2 [    M],   VDD [  VDD]
+	   M2  N:   VSS [  VSS],     D [    D],  N_26 [     ]
+	  M17  P:  N_15 [     ],   N_5 [   CN],   N_6 [  PM0]
+	   M6  N:   N_6 [  PM0],   N_5 [   CN],  N_27 [     ]
+	  M18  P:   N_6 [  PM0],   N_9 [    C],  N_16 [     ]
+	   M3  N:  N_26 [     ],   N_9 [    C],   N_6 [  PM0]
+	   M4  N:  N_27 [     ],   N_2 [    M],   VSS [  VSS]
+backtrack1  INV
+	  M20  P:   VDD [  VDD],   N_6 [  PM0],   N_2 [    M]
+	   M5  N:   VSS [  VSS],   N_6 [  PM0],   N_2 [    M]
+cross2      FCROSS_4
+	  M21  P:   VDD [  VDD],   N_2 [    M],  N_17 [     ]
+	  M26  P:  N_18 [     ],  N_14 [    S],   VDD [  VDD]
+	   M7  N:   VSS [  VSS],   N_2 [    M],  N_28 [     ]
+	  M22  P:  N_17 [     ],   N_9 [    C],  N_11 [   BM]
+	  M10  N:  N_11 [   BM],   N_9 [    C],  N_29 [     ]
+	  M24  P:  N_11 [   BM],   N_5 [   CN],  N_18 [     ]
+	   M8  N:  N_28 [     ],   N_5 [   CN],  N_11 [   BM]
+	  M12  N:  N_29 [     ],  N_14 [    S],   VSS [  VSS]
+backtrack2  INV
+	  M28  P:   VDD [  VDD],  N_11 [   BM],  N_14 [    S]
+	  M14  N:   VSS [  VSS],  N_11 [   BM],  N_14 [    S]
+devices left:
+
+**********ff : DFNFQ0**********
+data:{'IN1': 'D'},m:N_10,s:N_4
+
+clk         CLK1
+	  M26  P:  N_11 [   CN],   CKN [   CK],   VDD [  VDD]
+	  M16  P:   VDD [  VDD],  N_11 [   CN],   N_6 [    C]
+	  M13  N:  N_11 [   CN],   CKN [   CK],   VSS [  VSS]
+	   M5  N:   VSS [  VSS],  N_11 [   CN],   N_6 [    C]
+out_Q       INV
+	  M14  P:   VDD [  VDD],   N_8 [   BM],     Q [    Q]
+	   M1  N:   VSS [  VSS],   N_8 [   BM],     Q [    Q]
+cross1      FCROSS_4
+	  M25  P:   VDD [  VDD],     D [    D],  N_16 [     ]
+	  M22  P:  N_17 [     ],  N_10 [    M],   VDD [  VDD]
+	  M12  N:   VSS [  VSS],     D [    D],  N_27 [     ]
+	  M24  P:  N_16 [     ],  N_11 [   CN],  N_13 [  PM0]
+	   M8  N:  N_13 [  PM0],  N_11 [   CN],  N_28 [     ]
+	  M23  P:  N_13 [  PM0],   N_6 [    C],  N_17 [     ]
+	  M11  N:  N_27 [     ],   N_6 [    C],  N_13 [  PM0]
+	  M10  N:  N_28 [     ],  N_10 [    M],   VSS [  VSS]
+backtrack1  INV
+	  M21  P:   VDD [  VDD],  N_13 [  PM0],  N_10 [    M]
+	   M9  N:   VSS [  VSS],  N_13 [  PM0],  N_10 [    M]
+cross2      FCROSS_4
+	  M19  P:   VDD [  VDD],  N_10 [    M],  N_15 [     ]
+	  M20  P:  N_14 [     ],   N_4 [    S],   VDD [  VDD]
+	   M6  N:   VSS [  VSS],  N_10 [    M],  N_26 [     ]
+	  M18  P:  N_15 [     ],   N_6 [    C],   N_8 [   BM]
+	   M3  N:   N_8 [   BM],   N_6 [    C],  N_25 [     ]
+	  M17  P:   N_8 [   BM],  N_11 [   CN],  N_14 [     ]
+	   M4  N:  N_26 [     ],  N_11 [   CN],   N_8 [   BM]
+	   M7  N:  N_25 [     ],   N_4 [    S],   VSS [  VSS]
+backtrack2  INV
+	  M15  P:   VDD [  VDD],   N_8 [   BM],   N_4 [    S]
+	   M2  N:   VSS [  VSS],   N_8 [   BM],   N_4 [    S]
+devices left:
+
+**********ff : DFNRB0**********
+data:{'IN1': 'D'},m:N_10,s:N_4
+
+clk         CLK1
+	  M26  P:  N_11 [   CN],    CK [   CK],   VDD [  VDD]
+	  M22  P:   VDD [  VDD],  N_11 [   CN],   N_7 [    C]
+	  M11  N:  N_11 [   CN],    CK [   CK],   VSS [  VSS]
+	   M8  N:   VSS [  VSS],  N_11 [   CN],   N_7 [    C]
+out_Q       INV
+	  M15  P:   VDD [  VDD],   N_9 [   BM],     Q [    Q]
+	   M1  N:   VSS [  VSS],   N_9 [   BM],     Q [    Q]
+out_QN      INV
+	  M17  P:   VDD [  VDD],   N_4 [    S],    QN [   QN]
+	   M3  N:   VSS [  VSS],   N_4 [    S],    QN [   QN]
+cross1      FCROSS_4
+	  M28  P:   VDD [  VDD],     D [    D],  N_28 [     ]
+	  M27  P:  N_29 [     ],  N_10 [    M],   VDD [  VDD]
+	  M14  N:   VSS [  VSS],     D [    D],  N_17 [     ]
+	  M23  P:  N_28 [     ],   N_7 [    C],  N_13 [  PM0]
+	   M9  N:  N_13 [  PM0],   N_7 [    C],  N_18 [     ]
+	  M25  P:  N_13 [  PM0],  N_11 [   CN],  N_29 [     ]
+	  M13  N:  N_17 [     ],  N_11 [   CN],  N_13 [  PM0]
+	  M12  N:  N_18 [     ],  N_10 [    M],   VSS [  VSS]
+backtrack1  INV
+	  M24  P:   VDD [  VDD],  N_13 [  PM0],  N_10 [    M]
+	  M10  N:   VSS [  VSS],  N_13 [  PM0],  N_10 [    M]
+cross2      FCROSS_4
+	  M21  P:   VDD [  VDD],  N_10 [    M],  N_26 [     ]
+	  M18  P:  N_27 [     ],   N_4 [    S],   VDD [  VDD]
+	   M7  N:   VSS [  VSS],  N_10 [    M],  N_15 [     ]
+	  M19  P:  N_26 [     ],  N_11 [   CN],   N_9 [   BM]
+	   M5  N:   N_9 [   BM],  N_11 [   CN],  N_16 [     ]
+	  M20  P:   N_9 [   BM],   N_7 [    C],  N_27 [     ]
+	   M6  N:  N_15 [     ],   N_7 [    C],   N_9 [   BM]
+	   M4  N:  N_16 [     ],   N_4 [    S],   VSS [  VSS]
+backtrack2  INV
+	  M16  P:   VDD [  VDD],   N_9 [   BM],   N_4 [    S]
+	   M2  N:   VSS [  VSS],   N_9 [   BM],   N_4 [    S]
+devices left:
+
+**********ff : DFNRQ0**********
+data:{'IN1': 'D'},m:N_2,s:N_13
+
+clk         CLK1
+	  M17  P:   N_5 [   CN],    CK [   CK],   VDD [  VDD]
+	  M24  P:   VDD [  VDD],   N_5 [   CN],   N_9 [    C]
+	   M4  N:   N_5 [   CN],    CK [   CK],   VSS [  VSS]
+	  M11  N:   VSS [  VSS],   N_5 [   CN],   N_9 [    C]
+out_Q       INV
+	  M25  P:   VDD [  VDD],  N_10 [   BM],     Q [    Q]
+	  M12  N:   VSS [  VSS],  N_10 [   BM],     Q [    Q]
+cross1      FCROSS_4
+	  M18  P:   VDD [  VDD],     D [    D],  N_14 [     ]
+	  M15  P:  N_15 [     ],   N_2 [    M],   VDD [  VDD]
+	   M5  N:   VSS [  VSS],     D [    D],  N_25 [     ]
+	  M16  P:  N_14 [     ],   N_9 [    C],   N_6 [  PM0]
+	   M3  N:   N_6 [  PM0],   N_9 [    C],  N_26 [     ]
+	  M19  P:   N_6 [  PM0],   N_5 [   CN],  N_15 [     ]
+	   M6  N:  N_25 [     ],   N_5 [   CN],   N_6 [  PM0]
+	   M2  N:  N_26 [     ],   N_2 [    M],   VSS [  VSS]
+backtrack1  INV
+	  M14  P:   VDD [  VDD],   N_6 [  PM0],   N_2 [    M]
+	   M1  N:   VSS [  VSS],   N_6 [  PM0],   N_2 [    M]
+cross2      FCROSS_4
+	  M23  P:   VDD [  VDD],   N_2 [    M],  N_17 [     ]
+	  M20  P:  N_16 [     ],  N_13 [    S],   VDD [  VDD]
+	  M10  N:   VSS [  VSS],   N_2 [    M],  N_28 [     ]
+	  M22  P:  N_17 [     ],   N_5 [   CN],  N_10 [   BM]
+	   M8  N:  N_10 [   BM],   N_5 [   CN],  N_27 [     ]
+	  M21  P:  N_10 [   BM],   N_9 [    C],  N_16 [     ]
+	   M9  N:  N_28 [     ],   N_9 [    C],  N_10 [   BM]
+	   M7  N:  N_27 [     ],  N_13 [    S],   VSS [  VSS]
+backtrack2  INV
+	  M26  P:   VDD [  VDD],  N_10 [   BM],  N_13 [    S]
+	  M13  N:   VSS [  VSS],  N_10 [   BM],  N_13 [    S]
+devices left:
+
+**********ff : DFPFB0**********
+data:{'IN1': 'D'},m:N_9,s:N_16
+
+clk         CLK1
+	  M15  P:   N_4 [   CN],   CKN [   CK],   VDD [  VDD]
+	  M19  P:   VDD [  VDD],   N_4 [   CN],   N_2 [    C]
+	   M1  N:   N_4 [   CN],   CKN [   CK],   VSS [  VSS]
+	   M6  N:   VSS [  VSS],   N_4 [   CN],   N_2 [    C]
+out_Q       INV
+	  M26  P:   VDD [  VDD],  N_16 [    S],     Q [    Q]
+	  M14  N:   VSS [  VSS],  N_16 [    S],     Q [    Q]
+out_QN      INV
+	  M27  P:   VDD [  VDD],  N_10 [   BM],    QN [   QN]
+	   M7  N:   VSS [  VSS],  N_10 [   BM],    QN [   QN]
+cross1      FCROSS_4
+	  M16  P:   VDD [  VDD],     D [    D],  N_17 [     ]
+	  M18  P:  N_18 [     ],   N_9 [    M],   VDD [  VDD]
+	   M2  N:   VSS [  VSS],     D [    D],  N_29 [     ]
+	  M20  P:  N_17 [     ],   N_4 [   CN],   N_5 [  PM0]
+	   M5  N:   N_5 [  PM0],   N_4 [   CN],  N_30 [     ]
+	  M17  P:   N_5 [  PM0],   N_2 [    C],  N_18 [     ]
+	   M3  N:  N_29 [     ],   N_2 [    C],   N_5 [  PM0]
+	   M4  N:  N_30 [     ],   N_9 [    M],   VSS [  VSS]
+backtrack1  BACKTRACK2_2
+	  M21  P:   VDD [  VDD],   N_5 [  PM0],   N_9 [    M]
+	   M9  N:   N_9 [    M],   N_5 [  PM0],  N_26 [     ]
+	  M13  N:  N_26 [     ],    SN [   SN],   VSS [  VSS]
+cross2      PCROSS_2_noVSS
+	  M24  P:   N_9 [    M],   N_2 [    C],  N_10 [   BM]
+	  M10  N:   N_9 [    M],   N_4 [   CN],  N_10 [   BM]
+	  M12  N:  N_10 [   BM],   N_2 [    C],  N_31 [     ]
+	  M22  P:  N_10 [   BM],   N_4 [   CN],  N_19 [     ]
+	  M23  P:  N_19 [     ],  N_16 [    S],   VDD [  VDD]
+	  M11  N:  N_31 [     ],  N_16 [    S],  N_26 [     ]
+backtrack2  BACKTRACK2_3
+	  M28  P:   VDD [  VDD],  N_10 [   BM],  N_16 [    S]
+	  M25  P:  N_10 [   BM],    SN [   SN],   VDD [  VDD]
+	   M8  N:   VSS [  VSS],  N_10 [   BM],  N_16 [    S]
+devices left:
+
+**********ff : DFPRB0**********
+data:{'IN1': 'D'},m:N_8,s:N_17
+
+clk         CLK1
+	  M16  P:   N_5 [   CN],    CK [   CK],   VDD [  VDD]
+	  M20  P:   VDD [  VDD],   N_5 [   CN],   N_2 [    C]
+	   M1  N:   N_5 [   CN],    CK [   CK],   VSS [  VSS]
+	   M6  N:   VSS [  VSS],   N_5 [   CN],   N_2 [    C]
+out_Q       INV
+	  M27  P:   VDD [  VDD],  N_17 [    S],     Q [    Q]
+	  M12  N:   VSS [  VSS],  N_17 [    S],     Q [    Q]
+out_QN      INV
+	  M29  P:   VDD [  VDD],  N_10 [   BM],    QN [   QN]
+	  M14  N:   VSS [  VSS],  N_10 [   BM],    QN [   QN]
+cross1      FCROSS_4
+	  M17  P:   VDD [  VDD],     D [    D],  N_18 [     ]
+	  M18  P:  N_19 [     ],   N_8 [    M],   VDD [  VDD]
+	   M2  N:   VSS [  VSS],     D [    D],  N_30 [     ]
+	  M19  P:  N_18 [     ],   N_2 [    C],   N_6 [  PM0]
+	   M5  N:   N_6 [  PM0],   N_2 [    C],  N_31 [     ]
+	  M21  P:   N_6 [  PM0],   N_5 [   CN],  N_19 [     ]
+	   M3  N:  N_30 [     ],   N_5 [   CN],   N_6 [  PM0]
+	   M4  N:  N_31 [     ],   N_8 [    M],   VSS [  VSS]
+backtrack1  BACKTRACK2_2
+	  M22  P:   VDD [  VDD],   N_6 [  PM0],   N_8 [    M]
+	   M7  N:   N_8 [    M],   N_6 [  PM0],  N_26 [     ]
+	  M13  N:  N_26 [     ],    SN [   SN],   VSS [  VSS]
+cross2      PCROSS_2_noVSS
+	  M26  P:   N_8 [    M],   N_5 [   CN],  N_10 [   BM]
+	   M9  N:   N_8 [    M],   N_2 [    C],  N_10 [   BM]
+	  M11  N:  N_10 [   BM],   N_5 [   CN],  N_32 [     ]
+	  M24  P:  N_10 [   BM],   N_2 [    C],  N_20 [     ]
+	  M25  P:  N_20 [     ],  N_17 [    S],   VDD [  VDD]
+	  M10  N:  N_32 [     ],  N_17 [    S],  N_26 [     ]
+backtrack2  BACKTRACK2_3
+	  M30  P:   VDD [  VDD],  N_10 [   BM],  N_17 [    S]
+	  M28  P:  N_10 [   BM],    SN [   SN],   VDD [  VDD]
+	  M15  N:   VSS [  VSS],  N_10 [   BM],  N_17 [    S]
+devices left:
+
+**********ff : DFPRQ0**********
+data:{'IN1': 'N_16'},m:N_10,s:N_4
+
+clk         CLK1
+	  M18  P:   N_7 [   CN],    CK [   CK],   VDD [  VDD]
+	  M19  P:   VDD [  VDD],   N_7 [   CN],   N_6 [    C]
+	   M3  N:   N_7 [   CN],    CK [   CK],   VSS [  VSS]
+	   M4  N:   VSS [  VSS],   N_7 [   CN],   N_6 [    C]
+ininv_SN_0  INV
+	  M26  P:   VDD [  VDD],    SN [   SN],   N_9 [SN_N0]
+	  M15  N:   VSS [  VSS],    SN [   SN],   N_9 [SN_N0]
+ininv_D_0   INV
+	  M27  P:   VDD [  VDD],     D [    D],  N_16 [ D_N0]
+	   M5  N:   VSS [  VSS],     D [    D],  N_16 [ D_N0]
+out_Q       INV
+	  M16  P:   VDD [  VDD],  N_13 [   BM],     Q [    Q]
+	   M1  N:   VSS [  VSS],  N_13 [   BM],     Q [    Q]
+cross1      FCROSS_4
+	  M28  P:   VDD [  VDD],  N_16 [ D_N0],  N_24 [     ]
+	  M30  P:  N_23 [     ],  N_10 [    M],   VDD [  VDD]
+	   M6  N:   VSS [  VSS],  N_16 [ D_N0],  N_77 [     ]
+	  M29  P:  N_24 [     ],   N_6 [    C],  N_18 [  PM0]
+	   M9  N:  N_18 [  PM0],   N_6 [    C],  N_78 [     ]
+	  M31  P:  N_18 [  PM0],   N_7 [   CN],  N_23 [     ]
+	  M11  N:  N_77 [     ],   N_7 [   CN],  N_18 [  PM0]
+	   M7  N:  N_78 [     ],  N_10 [    M],   VSS [  VSS]
+backtrack1  BACKTRACK2_1
+	  M25  P:   VDD [  VDD],   N_9 [SN_N0],  N_11 [     ]
+	  M20  P:  N_11 [     ],  N_18 [  PM0],  N_10 [    M]
+	  M10  N:  N_10 [    M],  N_18 [  PM0],   VSS [  VSS]
+cross2      PCROSS_2_noVDD
+	  M22  P:  N_10 [    M],   N_7 [   CN],  N_13 [   BM]
+	   M8  N:  N_10 [    M],   N_6 [    C],  N_13 [   BM]
+	  M12  N:  N_13 [   BM],   N_7 [   CN],  N_76 [     ]
+	  M23  P:  N_13 [   BM],   N_6 [    C],  N_22 [     ]
+	  M24  P:  N_22 [     ],   N_4 [    S],  N_11 [     ]
+	  M13  N:  N_76 [     ],   N_4 [    S],   VSS [  VSS]
+backtrack2  BACKTRACK2_3_3
+	  M17  P:   VDD [  VDD],  N_13 [   BM],   N_4 [    S]
+	   M2  N:   VSS [  VSS],  N_13 [   BM],   N_4 [    S]
+	  M14  N:  N_13 [   BM],   N_9 [SN_N0],   VSS [  VSS]
+devices left:
+
+**********ff : DFSCRQ0**********
+data:{'IN1': 'N_3'},m:N_5,s:N_14
+
+clk         CLK1
+	  M15  P:   N_4 [   CN],    CK [   CK],   VDD [  VDD]
+	  M22  P:   VDD [  VDD],   N_4 [   CN],  N_11 [    C]
+	   M1  N:   N_4 [   CN],    CK [   CK],   VSS [  VSS]
+	   M8  N:   VSS [  VSS],   N_4 [   CN],  N_11 [    C]
+out_Q       INV
+	  M27  P:   VDD [  VDD],  N_13 [   BM],     Q [    Q]
+	  M13  N:   VSS [  VSS],  N_13 [   BM],     Q [    Q]
+sync        LOGIC2_NAND2
+	  M16  P:   N_3 [     ],     D [    D],   VDD [  VDD]
+	  M17  P:   VDD [  VDD],    RN [   RN],   N_3 [     ]
+	   M3  N:  N_25 [     ],    RN [   RN],   N_3 [     ]
+	   M2  N:   VSS [  VSS],     D [    D],  N_25 [     ]
+cross1      PCROSS_2
+	  M21  P:   N_3 [     ],  N_11 [    C],   N_7 [  PM0]
+	   M4  N:   N_3 [     ],   N_4 [   CN],   N_7 [  PM0]
+	   M7  N:   N_7 [  PM0],  N_11 [    C],  N_26 [     ]
+	  M18  P:   N_7 [  PM0],   N_4 [   CN],  N_15 [     ]
+	  M19  P:  N_15 [     ],   N_5 [    M],   VDD [  VDD]
+	   M5  N:  N_26 [     ],   N_5 [    M],   VSS [  VSS]
+backtrack1  INV
+	  M20  P:   VDD [  VDD],   N_7 [  PM0],   N_5 [    M]
+	   M6  N:   VSS [  VSS],   N_7 [  PM0],   N_5 [    M]
+cross2      FCROSS_4
+	  M23  P:   VDD [  VDD],   N_5 [    M],  N_16 [     ]
+	  M26  P:  N_17 [     ],  N_14 [    S],   VDD [  VDD]
+	   M9  N:   VSS [  VSS],   N_5 [    M],  N_27 [     ]
+	  M24  P:  N_16 [     ],   N_4 [   CN],  N_13 [   BM]
+	  M11  N:  N_13 [   BM],   N_4 [   CN],  N_28 [     ]
+	  M25  P:  N_13 [   BM],  N_11 [    C],  N_17 [     ]
+	  M10  N:  N_27 [     ],  N_11 [    C],  N_13 [   BM]
+	  M12  N:  N_28 [     ],  N_14 [    S],   VSS [  VSS]
+backtrack2  INV
+	  M28  P:   VDD [  VDD],  N_13 [   BM],  N_14 [    S]
+	  M14  N:   VSS [  VSS],  N_13 [   BM],  N_14 [    S]
+devices left:

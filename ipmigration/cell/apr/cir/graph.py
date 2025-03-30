@@ -185,8 +185,13 @@ class MosGraph(nx.Graph):
 
 
 class RouteGraph(nx.Graph):
-    def __init__(self,pattern, pt_connected, pt_edges):
+    def __init__(self,):
         super().__init__() 
+
+    def copy(self):
+        return  copy.deepcopy(self)
+        
+    def init(self,pattern, pt_connected, pt_edges):
         self.pattern = pattern
         self.pt_connected = pt_connected
         self.pt_edges = pt_edges
@@ -202,6 +207,9 @@ class RouteGraph(nx.Graph):
             self.add_node(node, **attr)  
         for node,attr in ct_nodes.items():
             self.add_node(node, **attr)  
+        
+        max_col = max([t[0] for t in self.nodes])
+        self.max_col = max_col
 
     def add_edges(self):
         for node1 in self.m1_nodes:
@@ -222,11 +230,48 @@ class RouteGraph(nx.Graph):
         for node in self.ct_nodes:
             node1 = (node[0],node[1],0)
             node2 = (node[0],node[1],1)            
-            self.add_edge(node1, node2, cost=3)                    
-               
+            self.add_edge(node, node1, cost=3)                    
+            self.add_edge(node, node2, cost=3)   
 
+    
+
+    def add_right_nodes(self,median):
+        max_col = self.max_col
+        self.max_col = max_col+1
+        right_nodes = [t for t in self.nodes if t[0] == max_col and t[2]==1]
+        right_nodes_gt =  [t for t in self.nodes if t[0] == max_col and t[2]==0]
+        for node in right_nodes:
+            t1,t2,t3 = node
+            attr =  {'net':'','loc':(t1+1,t2),'color':'orange'}
+            self.add_node((t1+1,t2,t3),**attr)
+            self.add_edge(node,(t1+1,t2,t3),cost=1)
+        for i in [median-1,median,median+1] :
+            attr1 = {'net':'', 'loc':(max_col+1+0.3, i+0.3),'color':'blue'}
+            attr2 = {'net':'', 'loc':(max_col+1+0.15, i+0.15),'color':'cyan'}
+            self.add_node((max_col+1,i,0),**attr1)
+            self.add_node((max_col+1,i,0.5),**attr2)
+            if (max_col,i,0) in right_nodes_gt:
+                self.add_edge((max_col,i,0),(max_col+1,i,0),cost=3)
+            
+            #TODO: if need add ct edge?
+    def add_left_nodes(self,median):
+        right_nodes_gt =  [t for t in self.nodes if t[0] == 1 and t[2]==0]
+        for i in [median-1,median,median+1] :
+            attr1 = {'net':'', 'loc':(0+0.3, i+0.3),'color':'blue'}
+            attr2 = {'net':'', 'loc':(0+0.15, i+0.15),'color':'cyan'}
+            self.add_node((0,i,0),**attr1)
+            self.add_node((0,i,0.5),**attr2)
+            self.add_edge((0,i,0),(0,i,0.5),cost=3)   
+            self.add_edge((0,i,0.5),(0,i,1),cost=3)   
             
             
+            if (1,i,0) in right_nodes_gt:
+                self.add_edge((0,i,0),(1,i,0),cost=3)            
+
+        self.add_edge((0,median-1,0),(0,median,0),cost=3)   
+        self.add_edge((0,median,0),(0,median+1,0),cost=3) 
+    
+    
     def gen_routing_graph(self):
         G_copy = copy.deepcopy(self)
         for k,v in self.pt_connected.items():
@@ -253,20 +298,26 @@ class RouteGraph(nx.Graph):
             
     def gen_routing_signals(self, route_nets, routing_graph):
         signals = []
+        pins = []
         for k,v in route_nets.items():
             if k !='VDD' and k !='VSS':
                 if len(v)>1:
-                    signals.append(v)
-            
+                    signals.append(set(v))
+                else:
+                    if len(v)==1:
+                        if v[0][2] == 0: #pin
+                            pins.append(v[0])        
+        G_copy = copy.deepcopy(routing_graph)
+        G_copy.remove_nodes_from(pins)
         
-        cost_dict = {}
-        for i,j,v in routing_graph.edges(data=True):
-            cost_dict[(i,j)] = v['cost']
-            cost_dict[(j,i)] = v['cost']
-        def cost_edge(t):
-            return cost_dict[t]
+        # cost_dict = {}
+        # for i,j,v in routing_graph.edges(data=True):
+        #     cost_dict[(i,j)] = v['cost']
+        #     cost_dict[(j,i)] = v['cost']
+        # def cost_edge(t):
+        #     return cost_dict[t]
 
-        return signals, cost_edge  
+        return signals, G_copy  
 
     def add_grid(self,loc,):
         # loc, 
@@ -281,8 +332,10 @@ class RouteGraph(nx.Graph):
     def get_column(self, col):
         pass
 
-    def plot(self,grid_columns):
+    def plot(self,paths=[],m2_paths=[],savepath=None):
         pos = nx.get_node_attributes(self, 'loc')
+        grid_columns = max([t[0] for t in self.nodes])
+        
         colors = [self.nodes[node]['color'] for node in self.nodes()]
 
         plt.figure(figsize=(2*grid_columns, 12))
@@ -292,12 +345,40 @@ class RouteGraph(nx.Graph):
         
         labels = {node: str(self.nodes[node]['net']) for node in self.nodes()}
         nx.draw_networkx_labels(self, pos, labels=labels, font_size=16)
+     
+
+        colors = ['red', 'green', 'blue', 'yellow', 'purple', 'orange', 'cyan', 'magenta']
+        for i,path in enumerate(paths):
+           
+            color = colors[i % len(colors)]
+            if path is not None:
+                # print(self.nodes,paths)
+                nx.draw_networkx_edges(self, pos, edgelist=path, edge_color=color, width=2)
+
+        # print(self.nodes)
+        # print(m2_paths)
+        m2_paths = [
+            [
+                tuple(item[:-1] + (1,) for item in sub_tuple)
+                for sub_tuple in sub_list
+            ]
+            for sub_list in m2_paths
+        ]
+        
+        for i,path in enumerate(m2_paths):
+            color = colors[i % len(colors)]
+            if path is not None:
+                nx.draw_networkx_edges(self, pos, edgelist=path,style='dashed', edge_color='black', width=3)
+                
         
         # 显示图形
         plt.title(self.pattern.pattern_name)
         plt.axis('on')
+        
+        if savepath:
+            plt.savefig(savepath)
         plt.show()
-    
+        
 
 
 

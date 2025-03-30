@@ -85,18 +85,25 @@ class ASCell:
         f=open(aux_file,'w')
         f.close()
         
+        #route_data
+        route_data_path = os.path.join(self.cfgs.output_dir,'route_data_%d.json'%(self.tech.M1_tracks_num))
+        
         logger.info('ascell-> Begin processing tech%s @ %s'%(self.tech.tech_name, time.asctime())) 
         if self.cfgs.gen_cells == 'all':
             self.cfgs.gen_cells = list(self.netlist.ckt_types.keys())
 
+        success = []
         for cell_type in self.cfgs.gen_cells:
             # print(cell_type)
-            for ckt_name in self.netlist.ckt_types[cell_type]:
+            for count, ckt_name in enumerate(self.netlist.ckt_types[cell_type]):
                 ckt = self.netlist[ckt_name]
-                cell = StdCell(ckt,self.tech,self.cfgs,self.patterns)
+                cell = StdCell(ckt,self.tech,self.cfgs,self.patterns,route_data_path)
                 self.cells[ckt_name] = cell
-                cell.run()
-
+                result = cell.run()
+                if result:
+                    success.append(cell)
+                #     break
+        self.success = success
         self.gen_gds()        
 
    

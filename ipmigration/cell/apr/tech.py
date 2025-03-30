@@ -414,25 +414,32 @@ class VMode:
                                      tech.mid_track1.c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
                                      set_t='pp')
         
-            t = tech.median
-            self.gt_nodes = [(-1,t,0),(0,t,0),(1,t,0)]
-            self.gt_nets = {(0,t,0):'P'}
+            t1 = tech.median1
+            t2 = tech.median2  
+            self.gt_nodes = [(-1,t1,0),(0,t1,0),(1,t1,0),
+                             (-1,t2,0),(0,t2,0),(1,t2,0)]  
+            
+            self.gt_nets = {(0,t1,0):'P'}
             self.connected = {}
             self.edges = [] #edges that not nearby
-            self.ct_nodes = [(-1,t,0.5),(0,t,0.5),(1,t,0.5)]
-
+            # self.ct_nodes = [(-1,t,0.5),(0,t,0.5),(1,t,0.5)]
+            self.ct_nodes = [(-1,t1,0.5),(0,t1,0.5),(1,t1,0.5),
+                             (-1,t2,0.5),(0,t2,0.5),(1,t2,0.5) ]
         
         elif self.vmode == 2: #only nmos
             self.nmos_aa_max = Range(tech.gt_dn_rg.p1 + tech.GT_X_AA.v, 
                                      tech.mid_track1.c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
                                      set_t='pp')      
             
-            t = tech.median
-            self.gt_nodes = [(-1,t,0),(0,t,0),(1,t,0)]
-            self.gt_nets = {(0,t,0):'N'}
+            t1 = tech.median1
+            t2 = tech.median2  
+            self.gt_nodes = [(-1,t1,0),(0,t1,0),(1,t1,0),
+                             (-1,t2,0),(0,t2,0),(1,t2,0)]  
+            self.gt_nets = {(0,t2,0):'N'}
             self.connected = {}
             self.edges = [] #edges that not nearby
-            self.ct_nodes = [(-1,t,0.5),(0,t,0.5),(1,t,0.5)]
+            self.ct_nodes = [(-1,t1,0.5),(0,t1,0.5),(1,t1,0.5),
+                             (-1,t2,0.5),(0,t2,0.5),(1,t2,0.5) ]
             
         elif vmode == 3:          
             self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
@@ -465,14 +472,18 @@ class VMode:
                              (-1,t2,0),(0,t2,0),(1,t2,0)]         
             self.gt_nets = {(0,t1,0):'P'}
             #key is the node with net labels
-            self.connected = {(0,t1,0): [(( 0,t1,0),  (  0,t2,0)),
-                                         (( 0,t1,1),  (  0,t2,1)),
-                                         (( 0,t1,0),  (  0,t1,0.5)),
-                                         (( 0,t1,0.5),(  0,t1,1)),
-                                         (( 0,t2,0),  (  0,t2,0.5)),
-                                         (( 0,t2,0.5),(  0,t2,1))
-                                         ]
+            self.connected = {(0,t1,0): [
+                                           (( 0,t1,0),  (  0,t2,0)),
+                                          # (( 0,t1,1),  (  0,t2,1)),
+                                          (( 0,t1,0),  (  0,t1,0.5)),
+                                          (( 0,t1,0.5),(  0,t1,1)),
+                                          # (( 0,t2,0),  (  0,t2,0.5)),
+                                          # (( 0,t2,0.5),(  0,t2,1))
+                                          ]
                               }
+            
+            # self.connected = {}
+            
             self.ct_nodes = [(-1,t1,0.5),(0,t1,0.5),(1,t1,0.5),(0,t2,0.5)]
             self.edges = []
             
@@ -493,10 +504,12 @@ class VMode:
             t1 = t + 1
             t2 = t - 1           
             
-            self.gt_nodes = [(-1,t1,0),(0,t1,0),(1,t1,0),
+            # self.gt_nodes = [(-1,t1,0),(0,t1,0),(1,t1,0),
+            #                  (-1,t,0), (0,t,0), (1,t,0),
+            #                  (-1,t2,0),(0,t2,0),(1,t2,0)]    
+            self.gt_nodes = [          (0,t1,0),
                              (-1,t,0), (0,t,0), (1,t,0),
-                             (-1,t2,0),(0,t2,0),(1,t2,0)]    
-            
+                                       (0,t2,0),        ]             
             self.gt_nets = {(0,t1,0):'P',(0,t2,0):'N'}
             self.connected= {}
             self.ct_nodes = [(0,t1,0.5),(0,t2,0.5),(-1,t,0.5),(1,t,0.5)]
@@ -558,10 +571,11 @@ class VMode:
             return 2
         else:
             if pmos.G == nmos.G:
-                if pmos.G in io_map:
-                    return 4 
-                else:
-                    return 3
+                return 4
+                # if pmos.G in io_map:
+                #     return 4 
+                # else:
+                #     return 3
             else:
                 #TODO, will add more modes
                 return 5

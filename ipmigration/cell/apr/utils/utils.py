@@ -11,6 +11,8 @@ import numpy as np
 import logging
 import os
 import time
+import matplotlib.image as mpimg
+
 
 logger = logging.getLogger(__name__)
 
@@ -207,3 +209,36 @@ def add_via_nodes(graph: nx.Graph, tech) -> nx.Graph:
     return new_graph
 
 
+
+
+def concatenate_images(image_paths, output_path):
+    images = []
+    for path in image_paths:
+        try:
+            img = mpimg.imread(path)
+            # 如果图片有4个通道，去掉透明度通道
+            if img.shape[2] == 4:
+                img = img[:, :, :3]
+            # 确保图片数据类型为浮点数且范围在 [0, 1]
+            if img.dtype == np.uint8:
+                img = img / 255.0
+            images.append(img)
+        except Exception as e:
+            print(f"无法打开图片 {path}: {e}")
+
+    if not images:
+        return
+
+    total_width = sum([img.shape[1] for img in images])
+    max_height = max([img.shape[0] for img in images])
+
+    result = np.zeros((max_height, total_width, 3))
+    x_offset = 0
+    for img in images:
+        h, w, _ = img.shape
+        result[:h, x_offset:x_offset + w, :] = img
+        x_offset += w
+
+    # 确保保存时数据类型为 uint8 且范围在 [0, 255]
+    result = (result * 255).astype(np.uint8)
+    plt.imsave(output_path, result)
