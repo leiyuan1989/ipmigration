@@ -15,6 +15,8 @@ from ipmigration.cell.apr.pr.analog_router import AnalogRouter1
 from ipmigration.cell.apr.io.route_loader import load_routing_expertise,save_routing_expertise,list_to_tuple
 from ipmigration.cell.apr.utils.utils import concatenate_images
 
+from  ipmigration.cell.apr.lyt.instance import GT_AA, CT_GT, CT_Nodes, EdgeRoute ,AA_SD,POWER
+
 
 class StdCell:
     def __init__(self, ckt, tech, cfgs, patterns, route_data_path):
@@ -25,25 +27,32 @@ class StdCell:
         self.route_data_path = route_data_path
         self.route_path = []
         
+
         
-    def run(self):
-        self.init_layout()
+    def run(self,top_layout,db_layers):
+       
         result = self.global_pr()
         if result:
             save_fig_path = os.path.join(self.cfgs.output_dir,'route','%s.png'%(self.ckt.name))
             print(self.route_path)
             concatenate_images(self.route_path, save_fig_path)
             
+            #detail pr
+            self.init_layout(top_layout,db_layers)
             result = self.detail_pr()
         if result:
-            # self.post_process()
             pass
+            # self.post_process()
+            
         
         
         return result
     
-    def init_layout(self):
-        pass
+    def init_layout(self,top_layout,db_layers):
+        self.db_layout = top_layout.create_cell(self.ckt.name)
+        self.db_shapes = {}
+        for name in db_layers:
+            self.db_shapes[name] = self.db_layout.shapes(db_layers[name]) 
     
     def global_pr(self):
         self.ckt.combine_parallel()
@@ -86,19 +95,19 @@ class StdCell:
                 print('\n\n\nBegin Routing',pattern.pattern_name)
 
                 if loc ==0 :
-                    is_first = True
+                    pattern.is_first = True
                 else:
-                    is_first = False
+                    pattern.is_first = False
                 
                 if loc == len(self.queue) - 1:
-                    is_last = True
+                    pattern.is_last = True
                 else:
-                    is_last = False
+                    pattern.is_last = False
                 
                 #set vmodes for each pn pair
                 pattern.set_vmode(self.tech)
                 
-                if is_first:    
+                if pattern.is_first:    
                     left_nodes_in = {}
                     net_map= pattern.net_map
                     '''
@@ -127,12 +136,12 @@ class StdCell:
                 if len(matches)==0:
                     edges = {}
                     m2_edges = {}
-                    pattern.aa_pos = aa_pos[0]
+                    pattern.aa_pos = aa_pos[1]
                 else:
                     edges = matches[0]['edges']
                     m2_edges = matches[0]['m2_edges']
                     # right_nodes_in =  matches[0]['right_nodes']
-                    pattern.aa_pos = matches[0]['aa_pos'][0]
+                    pattern.aa_pos = matches[0]['aa_pos']
                     #TODO, this may be more detail next version. 
                     # print('%%%%',edges,m2_edges)
                
@@ -141,7 +150,7 @@ class StdCell:
                 # if not(result):
                 result = self.pattern_route(pattern, left_nodes_in, right_nodes_in, 
                                             aa_pos[1], load_edges=edges,m2_edges=m2_edges)
-                pattern.aa_pos =aa_pos[1]  
+                # pattern.aa_pos =aa_pos[1]  
                 if result:
                     pattern.aa_pos =aa_pos[1]     
                 else:
@@ -174,7 +183,7 @@ class StdCell:
                                 'edges':pattern.routed_edges,
                                 'm2_edges':pattern.m2_edges,
                                 # 'max_col':pattern.max_col,
-                                'aa_pos':[0]
+                                'aa_pos': pattern.aa_pos
                                 }
                     save_routing_expertise(self.route_data_path, route_data, pattern.pattern_name, new_item)
                         
@@ -213,23 +222,347 @@ class StdCell:
     def detail_pr(self):
         cfgs = self.cfgs
         tech = self.tech
+        #init db layout and cell and shapes of cell, then we can use insert function.
+
         x =  cfgs.cell_offset_x + tech.CT_E_AA.v + tech.CT_W.hv        
-        for i, struct in enumerate(self.queue):   
-            x1 = self.detail_pr_7T(ckt, self.tech, self, start_x=x)       
-            
+        for i, pattern in enumerate(self.queue):   
+            pass
+            x = self.pattern_draw(pattern, x)       
+            self.draw(pattern)
             # if i != len(structs_queue)-1:
             #     if not(struct.struct_ckt_name in merge_structs()):
             #         x1 = channels.detail_route(self.tech, self, i, x1)
             
             
-            struct.draw(ckt)
-            x = x1
-        channels.draw(ckt)   
+            # struct.draw(ckt)
+            # x = x1
+            # channels.draw(ckt)   
             
-        self.post_process_layout(ckt,x1 + side_space)  
+        # self.post_process_layout(ckt,x1 + side_space)  
         
-    def pre_process(self, ckt, right, left=0, m2_tracks=False):
-        pass
+    def pattern_draw(self, pattern, start_x):
+        #initial
+        pattern.data = []
+        tech = self.tech
+        
+        # make node_attr:
+        nodes_attr = {}
+        cols = pattern.max_col + 1 #
+        rows = tech.M1_tracks_num
+        for i in range(cols):
+            for j in range(rows):
+                nodes_attr[(i,j)] = {'net':'','is_gt_ct':False,'is_aa_ct':False,
+                                     'is_pin':False,'is_m1':False,'is_m2':False,
+                                     'is_gt':False,
+                                     'eol':'no','col_t':'','pn':{}}
+        #TODO maybe add is_power
+        
+        aa_pos_p,aa_pos_n = pattern.aa_pos
+       
+        routed_edges = pattern.routed_edges
+        m2_edges = pattern.m2_edges
+           
+        
+        route_nets = pattern.route_nets
+        v_mode = pattern.vmode
+        m1_tracks = tech.M1_tracks        
+        pin_map = pattern.master_ckt.pin_map #netlist to ascell
+        
+        route_nets = pattern.route_nets
+        node_net = {}
+        for key, values in route_nets.items():
+            for value in values:
+                node_net[value] = key
+        
+    
+        #process edges:
+        gt_cts = []
+        aa_cts = []
+        m1_edges = []
+        gt_edges = []
+        pins = {}           
+        preconnect_nodes = {}
+
+        for node,nodes in pattern.route_G.pt_connected.items():
+            net = node_net[node]
+            preconnect_nodes[node] = []
+            for n0,n1 in nodes:
+                if n0[2] == 0.5 or n1[2] ==0.5:
+                    gt_cts.append((n0[0],n0[1]))
+                    preconnect_nodes[node].append( (n0[0],n0[1],0) ) 
+                    preconnect_nodes[node].append( (n0[0],n0[1],1) ) 
+                    nodes_attr[ (n0[0],n0[1]) ]['net'] =  net
+                    nodes_attr[ (n0[0],n0[1]) ]['is_gt_ct'] = True
+                    nodes_attr[ (n0[0],n0[1]) ]['is_gt'] = True
+                    nodes_attr[ (n0[0],n0[1]) ]['is_m1'] = True
+                else:
+                    preconnect_nodes[node].append( n0 ) 
+                    preconnect_nodes[node].append( n1 ) 
+                    if n0[2] == 1 and n1[2] == 1:
+                        m1_edges.append( ( (n0[0],n0[1]), (n1[0],n1[1]) ) )
+                        nodes_attr[ (n0[0],n0[1]) ]['net'] = net
+                        nodes_attr[ (n1[0],n1[1]) ]['net'] = net
+                        nodes_attr[ (n0[0],n0[1]) ]['is_m1'] = True
+                        nodes_attr[ (n1[0],n1[1]) ]['is_m1'] = True
+                    elif  n0[2] == 0 and n1[2] == 0:
+                        gt_edges.append( ( (n0[0],n0[1]), (n1[0],n1[1]) ) )
+                        nodes_attr[ (n0[0],n0[1]) ]['net'] = net
+                        nodes_attr[ (n1[0],n1[1]) ]['net'] = net
+                        nodes_attr[ (n0[0],n0[1]) ]['is_gt'] = True
+                        nodes_attr[ (n1[0],n1[1]) ]['is_gt'] = True
+            preconnect_nodes[node] = list(set( preconnect_nodes[node] ))
+                        
+        #process preconnect nodes
+        routed_edges_t = {}
+        for net, nodes in routed_edges.items():
+            routed_edges_t[net] = []
+            for n0,n1 in nodes:
+                if n0 in preconnect_nodes:
+                    nearest_node, min_distance = find_nearst_nodes(preconnect_nodes[n0], n1)
+                    assert min_distance == 1
+                    routed_edges_t[net].append((nearest_node,n1))
+                    
+                elif n1 in preconnect_nodes:
+                    nearest_node, min_distance = find_nearst_nodes(preconnect_nodes[n1], n0)
+                    assert min_distance == 1
+                    routed_edges_t[net].append((nearest_node,n0))
+                else:
+                    routed_edges_t[net].append((n0,n1))
+        
+        #compare difference with following
+        # pattern.route_G.plot(list(routed_edges.values()))
+        # pattern.G.plot(list(routed_edges_t.values()))
+        
+        for net, nodes in route_nets.items():
+            if net == 'VDD':
+                vdd_net = nodes
+            elif net == 'VSS':
+                vss_net = nodes
+            elif 'cross' in net:
+                pass
+            else:
+                if pattern.net_map[net] in pin_map:
+                    pins[net] = (node[0],node[1])
+                    nodes_attr[ (node[0],node[1]) ]['net'] =  net
+                    nodes_attr[ (node[0],node[1]) ]['is_gt_ct'] = True
+                    nodes_attr[ (node[0],node[1]) ]['is_gt'] = True
+                    nodes_attr[ (node[0],node[1]) ]['is_m1'] = True
+                    nodes_attr[ (node[0],node[1]) ]['is_pin'] = True
+   
+                if len(nodes)>1:
+                    for node in nodes:
+                        if node[2] == 1 and node[0] !=0 and node[0] !=pattern.max_col:
+                            aa_cts.append( (node[0],node[1]) )
+ 
+        for net, nodes in m2_edges.items():
+            for node in nodes:
+                nodes_attr[ (node[0],node[1]) ]['net'] =  net
+                nodes_attr[ (node[0],node[1]) ]['is_m2'] = True
+                
+    
+        for net, nodes in routed_edges_t.items():
+            for n0,n1 in nodes:
+                if n0[2] == 0.5 or n1[2] ==0.5:
+                    gt_cts.append((n0[0],n0[1]))
+                    nodes_attr[ (n0[0],n0[1]) ]['net'] =  net
+                    nodes_attr[ (n0[0],n0[1]) ]['is_gt_ct'] = True
+                    nodes_attr[ (n0[0],n0[1]) ]['is_gt'] = True
+                    nodes_attr[ (n0[0],n0[1]) ]['is_m1'] = True
+                else:
+                    if n0[2] == 1 and n1[2] == 1:
+                        m1_edges.append( ( (n0[0],n0[1]), (n1[0],n1[1]) ) )
+                        nodes_attr[ (n0[0],n0[1]) ]['net'] = net
+                        nodes_attr[ (n1[0],n1[1]) ]['net'] = net
+                        nodes_attr[ (n0[0],n0[1]) ]['is_m1'] = True
+                        nodes_attr[ (n1[0],n1[1]) ]['is_m1'] = True
+                    elif  n0[2] == 0 and n1[2] == 0:
+                        gt_edges.append( ( (n0[0],n0[1]), (n1[0],n1[1]) ) )
+                        nodes_attr[ (n0[0],n0[1]) ]['net'] = net
+                        nodes_attr[ (n1[0],n1[1]) ]['net'] = net
+                        nodes_attr[ (n0[0],n0[1]) ]['is_gt'] = True
+                        nodes_attr[ (n1[0],n1[1]) ]['is_gt'] = True
+
+            
+        pn_attr = {0:'space', pattern.max_col:'space'}
+        pn_l_attr =  {}
+        loc = 1
+        for i,n in enumerate(pattern.grid_columns):
+            if n==1:
+                pn_attr[loc] = 'space'
+                loc += 1
+            elif n==2:
+                pn_attr[loc] = 'aa'
+                pn_attr[loc+1] = 'gt'            
+                pn_l_attr[loc+1] =  pattern.place[i]
+                loc += 2
+            elif n==3:
+                pn_attr[loc] = 'aa'
+                pn_attr[loc+1] = 'gt'
+                pn_attr[loc+2] = 'aa'
+                pn_l_attr[loc+1] =  pattern.place[i]
+                loc += 3                
+                
+
+        for node,attr in nodes_attr.items():
+            for i in range(cols):
+                if node[0] == i:
+                    nodes_attr[node]['col_t'] = pn_attr[i]
+                    if pn_attr[i] == 'gt':
+                        nodes_attr[node]['pn'] = pn_l_attr[i]
+                
+             
+        col_axis = self.col_space(pattern, start_x, nodes_attr, tech)
+        row_axis = [t.c for t in m1_tracks]
+        
+        
+        node_loc = {}
+        for c, x in enumerate(col_axis):
+            for r,y in enumerate(row_axis):
+                node_loc[(c,r)] = (x,y)
+        
+ 
+        #1 CT nodes
+        ct_lyt = CT_Nodes(tech, gt_cts, aa_cts, node_loc, nodes_attr)
+        pattern.data.append(ct_lyt.data)
+        #2 edges route
+        edge_lyt = EdgeRoute(tech, gt_edges, m1_edges, node_loc, nodes_attr)
+        pattern.data.append(edge_lyt.data)
+        
+        #3 GTs
+        for i,pn in enumerate(self.mos_loc):
+            if len(pn) >0:
+                pmos = pn['P']
+                nmos = pn['N']
+                x = matrix[i][0][0]
+                if pmos:
+                    gt_aa = GT_AA(tech, x, gt_range_p, aa_range_p, pmos)
+                    self.add_data(pmos.name,gt_aa.data)
+                if nmos:
+                    gt_aa = GT_AA(tech, x, gt_range_n, aa_range_n, nmos)
+                    self.add_data(nmos.name,gt_aa.data)
+   
+        
+        return col_axis[-1]
+        
+        
+        
+
+        # pattern.match_devices() 
+        ct_nodes = {}
+        m1_edges = {}
+        gt_edges = {}
+        
+
+        
+
+        
+        return True     
+
+        # self.end_of_line_examine()
+        # self.tech_process(start_x,tech,cells)
+        
+   
+        
+        
+        #3 MOS
+        for i,pn in enumerate(self.mos_loc):
+            if len(pn) >0:
+                pmos = pn['P']
+                nmos = pn['N']
+                x = matrix[i][0][0]
+                if pmos:
+                    gt_aa = GT_AA(tech, x, gt_range_p, aa_range_p, pmos)
+                    self.add_data(pmos.name,gt_aa.data)
+                if nmos:
+                    gt_aa = GT_AA(tech, x, gt_range_n, aa_range_n, nmos)
+                    self.add_data(nmos.name,gt_aa.data)
+        
+        #4 AA SD
+        for i,pn in enumerate(self.mos_loc):
+            ct_nodes_p = [t for t in self.ct_aa_nodes if t[1]>(self.v_tracks_num/2) and t[0] == i]
+            ct_nodes_n = [t for t in self.ct_aa_nodes if t[1]<=(self.v_tracks_num/2) and t[0] == i]
+            ##????
+            
+            if i == 0:
+                mos_l_p = None
+                mos_l_n = None
+                pn = self.mos_loc[i+1]
+                if len(pn)>0:
+                    if pn['P']:
+                        mos_r_p = self.data[pn['P'].name]
+                    else:
+                        mos_r_p = None
+                    if pn['N']:
+                        mos_r_n = self.data[pn['N'].name]
+                    else:
+                        mos_r_n = None
+                else:
+                    mos_r_p = None
+                    mos_r_n = None
+            elif i >0 and i != len(self.mos_loc) - 1:
+                pn = self.mos_loc[i-1]
+
+                if len(pn)>0:
+                    if pn['P']:
+                        mos_l_p = self.data[pn['P'].name]
+                    else:
+                        mos_l_p = None
+                    if pn['N']:
+                        mos_l_n = self.data[pn['N'].name]               
+                    else:
+                        mos_l_n = None
+                else:
+                    mos_l_p = None
+                    mos_l_n = None
+                pn = self.mos_loc[i+1]
+
+                if len(pn)>0:
+                    if pn['P']:
+                        mos_r_p = self.data[pn['P'].name]
+                    else:
+                        mos_r_p = None
+                    if pn['N']:
+                        mos_r_n = self.data[pn['N'].name]               
+                    else:
+                        mos_r_n = None
+                else:
+                    mos_r_p = None
+                    mos_r_n = None                
+            else: 
+                mos_r_p = None
+                mos_r_n = None
+                pn = self.mos_loc[i-1]
+                if len(pn)>0:
+                    if pn['P']:
+                        mos_l_p = self.data[pn['P'].name]
+                    else:
+                        mos_l_p = None
+                    if pn['N']:
+                        mos_l_n = self.data[pn['N'].name]
+                    else:
+                        mos_l_n = None
+                else:
+                    mos_l_p = None
+                    mos_l_n = None          
+                
+            if mos_l_p or mos_r_p:
+                
+                aa_sd = AA_SD(tech, 'P', i , mos_l_p, mos_r_p, matrix, ct_nodes_p)
+                
+                self.add_data(('P',i),aa_sd.data)
+            
+            if mos_l_n or mos_r_n:
+                aa_sd = AA_SD(tech, 'N', i , mos_l_n, mos_r_n, matrix, ct_nodes_n)
+                self.add_data(('N',i),aa_sd.data)        
+        
+        #5 power   
+        power = POWER(tech, cells, self.power_nodes_prop, matrix, aa_range_p, aa_range_n)
+        self.add_data('power',power.data)    
+        
+
+        #may move to ascell for merge
+        
+        return self.h_tracks[-1]
 
      
 
@@ -474,10 +807,10 @@ class StdCell:
         pattern.G = G   
         pattern.route_G = route_G  
         pattern.route_G_wo_inputs = route_G_wo_inputs  
-        print('a',pattern.left_nets, pattern.right_nets,pattern.cross_nets)
-        print('b',left_nodes)
-        print('c',right_nodes)
-        print('d',pattern.m2_edges)
+        # print('a',pattern.left_nets, pattern.right_nets,pattern.cross_nets)
+        # print('b',left_nodes)
+        # print('c',right_nodes)
+        # print('d',pattern.m2_edges)
         
         '''
         analogrouter is not very stable now!
@@ -519,3 +852,74 @@ class StdCell:
                             pattern.routed_edges[k] = list(path.edges())
     
         return  result
+
+
+    def col_space(self,pattern, start_x, nodes_attr, tech ):
+        x_axis = []
+        for i in range(pattern.max_col+1):
+            x_axis.append(start_x + 366*i)
+        #return list of detail axis
+        return x_axis
+
+
+    def draw(self,pattern):
+        for v in pattern.data:
+            for layer in v:    
+                for box in v[layer]:
+                    self.db_shapes[layer].insert(box.to_dbBox())
+
+
+
+def edges_on_col(edges,col):
+    for name, net_edges in edges.items():
+        for n1,n2 in net_edges:
+            pass
+            
+
+
+def end_of_line_examine(edges, aa_cts):
+    #TODO L shape on ct
+    eol_nodes = {}
+    for net, values in edges.items():
+        nodes = []
+        for t1,t2 in values:
+            nodes.append(t1)
+            nodes.append(t2)
+        nodes = list(set(nodes))
+        
+        for node in nodes:
+            t = []
+            t2 = []
+            
+            x,y,z = node
+            if (x+1,y,z) in nodes:
+                t.append((x+1,y,z))
+                t2.append('e')
+            if (x-1,y,z) in nodes:
+                t.append((x-1,y,z)) 
+                t2.append('w')
+            if (x,y+1,z) in nodes:
+                 t.append((x,y+1,z))     
+                 t2.append('n')
+            if (x,y-1,z) in nodes:
+                t.append((x,y-1,z)) 
+                t2.append('s')
+            if len(t) == 1:
+                if node in self.ct_aa_nodes or  node in self.gt_ct_nodes:
+                   self.eol_nodes[node] = t2[0]
+                   
+                   
+
+def find_nearst_nodes(nodes, node):
+
+    min_distance = float('inf')
+    nearest_node = None
+    for current_node in nodes:
+        distance = (current_node[0] - node[0]) ** 2 +\
+                   (current_node[1] - node[1]) ** 2 +\
+                   (current_node[2] - node[2]) ** 2
+        
+        if distance < min_distance:
+            min_distance = distance
+            nearest_node = current_node
+    return nearest_node, min_distance

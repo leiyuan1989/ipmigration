@@ -7,7 +7,8 @@ Created on Tue Sep  3 10:10:51 2024
 
 
 import logging
-from src.basic.shape import Range, Box, Shapes
+from ipmigration.cell.apr.lyt.shape import Range, Box, Shapes
+# from src.basic.shape import Range, Box, Shapes
 # import klayout.db as db
 
 logger = logging.getLogger(__name__)
@@ -72,19 +73,40 @@ class CT_GT(Instance):
         if mode == 'centre':
             p = loc
         elif mode == 'left':
-            p = (loc[0]+self.tech.CT_W_half + self.tech.CT_E_GT.v , loc[1])
+            p = (loc[0]+self.tech.CT_W.hv + self.tech.CT_E_GT.v , loc[1])
         elif mode == 'right':
-            p = (loc[0]-(self.tech.CT_W_half + self.tech.CT_E_GT.v ) , loc[1])
+            p = (loc[0]-(self.tech.CT_W.hv + self.tech.CT_E_GT.v ) , loc[1])
         else:
             raise ValueError('mode type error!')
         
-        self.CT_box = Box([p,self.tech.CT_W_half,'c'])
-        self.GT_box = Box([p,self.tech.CT_W_half + self.tech.CT_E_GT.v ,'c'])   
+        self.CT_box = Box([p,self.tech.CT_W.hv,'c'])
+        self.GT_box = Box([p,self.tech.CT_W.hv + self.tech.CT_E_GT.v ,'c'])   
 
         self.data['GT'].append(self.GT_box)
         self.data['CT'].append(self.CT_box)
 
-    
+class CT_Nodes(Instance):
+    def __init__(self, tech, gt_cts, aa_cts, node_loc, nodes_attr):
+        super().__init__(tech)
+        self.data['GT'] = []
+        self.data['CT'] = []
+        h_w1 = tech.CT_W.hv
+        v_w1 = tech.CT_W.hv
+        
+        h_w2 = tech.GT_CT_W.hv
+        v_w2 = tech.GT_CT_W.hv
+        
+        for node in gt_cts:
+            x, y = node_loc[node]
+            box1 =  Box([x-h_w1, y-v_w1, x+h_w1, y+v_w1])
+            box2 =  Box([x-h_w2, y-v_w2, x+h_w2, y+v_w2])
+            self.data['CT'].append(box1)
+            self.data['GT'].append(box2)
+
+        for node in aa_cts:
+            x, y = node_loc[node]
+            box1 =  Box([x-h_w1, y-v_w1, x+h_w1, y+v_w1])
+            self.data['CT'].append(box1)  
 
 
         # self.data['AA'] = [self.AA_box]
@@ -118,70 +140,57 @@ class GT_AA(Instance):
         self.data['AA'].append(self.AA_box)
 
 
-class GT_Route(Instance):
-    def __init__(self, tech, gt_edges, matrix, col_type, col_w1, col_w2, col_w3):
+class EdgeRoute(Instance):
+    def __init__(self, tech, gt_edges, m1_edges, node_loc, nodes_attr):
         super().__init__(tech)
         #w1 min gt width; w2 cg ct width; w3 mos width
+        
         self.data['GT'] = []
+        self.data['M1'] = []
         
-        h_w1 = int(0.5*col_w1)
-        h_w2 = int(0.5*col_w2)
-        h_w3 = int(0.5*col_w3)
+        for edge in gt_edges:
+            n1,n2 = edge
+            h_w = tech.GT_W.hv# temp
+            v_w = tech.GT_W.hv# temp
+            
+            if nodes_attr[n1]['is_gt'] and  nodes_attr[n2]['is_gt']:
+                mos_l_list = []
+                pn1 = nodes_attr[n1]['pn'] 
+                pn2 = nodes_attr[n2]['pn'] 
+                if len(pn1)>0:
+                    if pn1['P']:
+                       mos_l_list.append( pn1['P'].L) 
+                    if pn1['N']:
+                       mos_l_list.append( pn1['N'].L) 
+                if len(pn2)>0:
+                    if pn2['P']:
+                       mos_l_list.append( pn2['P'].L) 
+                    if pn2['N']:
+                       mos_l_list.append( pn2['N'].L) 
+                if len(mos_l_list)>0:
+                    h_w = int(0.5*(min(mos_l_list)))
+            x1, y1 = node_loc[n1]
+            x2, y2 = node_loc[n2]
+           
+            box =  Box([x1-h_w, y1-v_w, x2+h_w, y2+v_w])
+            self.data['GT'].append(box)
+        
+        for edge in m1_edges:
+            n1,n2 = edge
+            h_w = tech.M1_W.hv
+            v_w = tech.M1_W.hv
+            
+            
+            #TODO: EOL
+            t1 = nodes_attr[n1]['eol'] 
+            t2 = nodes_attr[n2]['eol'] 
 
-        for i, net in enumerate(gt_edges):
-            if len(gt_edges[net]) > 0: 
-                for p1, p2 in gt_edges[net]:
-                    di = edge_direction(p1,p2)
-                
-                    x1,y1 = matrix[p1[0]][p1[1]-1]
-                    x2,y2 = matrix[p2[0]][p2[1]-1]
-                    
-                    if di[0] == 'v':
-                        c_type = col_type[p1[0]] 
-                        
-                        if c_type == 2:
-                            h_w = h_w3
-                        else:
-                            h_w = h_w1
-                        
-                        ext1 = h_w2
-                        ext2 = h_w2
-                        
-                        if y1 < y2:
-                            box =  Box([x1-h_w, y1-ext1, x2+h_w, y2+ext2])
-                        else:
-                            box =  Box([x1-h_w, y2-ext2, x2+h_w, y1+ext1])
-                        
-                    
-                    else:
-                        c_type1 = col_type[p1[0]] 
-                        c_type2 = col_type[p2[0]] 
-                        
-                        if c_type1 == 2:
-                            ext1 = h_w3
-                        else:
-                            ext1 = h_w1
-                        
-                        if c_type2 == 2:
-                            ext2 = h_w3
-                        else:
-                            ext2 = h_w1                
-                        
-                        
-                        if (p1[1] in [1,6]) and (p2[1] in [1,6]):
-                            pass#left for poly connect top and bottom
-                        else:
-                            h_w = h_w2
-                        
-                        if x1 < x2:
-                            box =  Box([x1-ext1, y1-h_w, x2+ext2, y2+h_w])
-                        else:
-                            box =  Box([x2-ext2, y1-h_w, x1+ext1, y2+h_w])
-                    
-                    # print('testx',p1,p2, x1,x2,y1,y2)
-                    self.data['GT'].append(box)
-    
-        
+            x1, y1 = node_loc[n1]
+            x2, y2 = node_loc[n2]
+           
+            box =  Box([x1-h_w, y1-v_w, x2+h_w, y2+v_w])
+            self.data['M1'].append(box)        
+
 
 
 class M1_Route(Instance):
@@ -320,7 +329,7 @@ class AA_SD(Instance):
         #move to aa sd
         for x,y,z in ct_aa_nodes:
             loc = (matrix[x][y-1])
-            ct_box = Box([loc,tech.CT_W_half,'c'])
+            ct_box = Box([loc,tech.CT_W.hv,'c'])
             self.data['CT'].append(ct_box)
 
 
@@ -400,7 +409,7 @@ def edge_direction(p1,p2):
         else:
             direction = ('v','n')
     elif p1[1] == p2[1]:
-        if p1[1] > p2[1]:
+        if p1[0] > p2[0]:
             direction = ('h','w')
         else:
             direction = ('h','e')
@@ -569,7 +578,7 @@ class AA_ABUT(Instance):
                                 box2.t])
             self.data['AA'].append(self.AA_box1)
             self.data['AA'].append(self.AA_box2)
-            self.CT_centerx = box1.r + tech.CT_S_GT.v + tech.CT_W_half
+            self.CT_centerx = box1.r + tech.CT_S_GT.v + tech.CT_W.hv
             self.AA_box = self.AA_box1 
         elif box1.b >= box2.b and box1.t <= box2.t:
             self.AA_box1 = Box([box1.r,box1.b,box1.r + tech.GT_S_LAA_GT.v, box1.t])
@@ -667,14 +676,14 @@ class GT_int:
 
 def cal_gt_ct_space(tech,p1,n1, gt_metal=False):
     
-    t1 = tech.CT_S_GT.v + max(half(p1.L),half(n1.L))+ tech.CT_W_half
-    t2 = tech.CT_W_half + tech.CT_E_M1.v + half(tech.M1_S.v)
+    t1 = tech.CT_S_GT.v + max(half(p1.L),half(n1.L))+ tech.CT_W.hv
+    t2 = tech.CT_W.hv + tech.CT_E_M1.v + half(tech.M1_S.v)
     t = max(t1,t2)
     if gt_metal:    
         t3 = 2*tech.CT_E_M1.v + tech.M1_S.v + tech.CT_W.v
         t = max(t,t3)
     if p1.W < tech.min_width or n1.W < tech.min_width:
-        t4 = tech.CT_W_half + tech.CT_E_AA.v + tech.GT_S_LAA_GT.v + max(half(p1.L),half(n1.L)) 
+        t4 = tech.CT_W.hv + tech.CT_E_AA.v + tech.GT_S_LAA_GT.v + max(half(p1.L),half(n1.L)) 
         t = max(t,t4)   
     
     return t
@@ -721,9 +730,6 @@ def cal_gt_gt_space(tech,p1,n1,p2,n2, gt_metal=True, aa_metal=True, aa_ct=True, 
 
 
 
-
-
- 
         
 
 

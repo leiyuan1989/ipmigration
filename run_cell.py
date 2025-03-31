@@ -45,5 +45,6 @@ c7 = cells['SDANRQ0']
 c8 = cells['SDNFB0']
 c9 = cells['LANLB0']
 
+pattern = c1.queue[3]
 # app = App(ascell)
 # app.run(data,args)

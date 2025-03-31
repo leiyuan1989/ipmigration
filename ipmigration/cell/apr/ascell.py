@@ -99,7 +99,7 @@ class ASCell:
                 ckt = self.netlist[ckt_name]
                 cell = StdCell(ckt,self.tech,self.cfgs,self.patterns,route_data_path)
                 self.cells[ckt_name] = cell
-                result = cell.run()
+                result = cell.run(self.layout,self.layout_layers)
                 if result:
                     success.append(cell)
                 #     break
