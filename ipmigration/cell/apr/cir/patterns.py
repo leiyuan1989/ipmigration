@@ -2,10 +2,16 @@
 """
 @author: LEI Yuan
 """
+import os
+import json
+from datetime import datetime
 
 from ipmigration.cell.apr.cir.netlist import Netlist
 from ipmigration.cell.apr.cir.graph import MosGraph
 from ipmigration.cell.apr.tech import VMode
+
+from ipmigration.cell.apr.pr.smt_router import MIPGraphRouter
+
 
 class Patterns:
     def __init__(self):
@@ -16,6 +22,8 @@ class Patterns:
         self.ckt_dict = {}
         self.ckt_place = {}
         self.ckt_graph = {}
+
+        self.pattern_route_dict = {}
 
         self.clk_dict = {}
         self.logic2_dict = {}
@@ -177,6 +185,24 @@ class Patterns:
                     if graph1.is_isomorphic(graph2):
                         print('Two struct with same graph: %s, %s !!'%(name1,name2))
 
+    
+    def load_route_data(self, track_num):
+        self.route_data_dir = 'ipmigration/cell/apr/cir/pattern_route'
+        self.track_num = track_num
+        self.route_data_path = os.path.join(self.route_data_dir,'pattern_route_%d.json'%(self.track_num))
+
+        with open(self.route_data_path, 'r', encoding='utf-8') as file:
+            self.route_data = json.load(file)
+            print("Load Pattern Routing Data (%s) Successfully!"%(self.route_data_path))
+    
+
+    def pattern_routing(self):
+        copy_json_file(self.route_data_path)
+        for name, ckt in self.ckt_dict.items():
+            # print(name,ckt)
+            pt_router = PatternRouter(ckt, self.track_num)
+            pt_router.routing()
+            self.pattern_route_dict[name] = pt_router
 
 
 pattern_type = {}
@@ -375,3 +401,199 @@ class Pattern:
    
         #TODO: future can use generate a list of possible right nodes.      
         return right_nodes_ex,right_nodes_in
+    
+    
+    
+    
+    
+class PatternRouter:
+    def __init__(self, ckt, track_num):
+        self.ckt = ckt
+        self.track_num = track_num
+        
+        self.median_u = track_num // 2
+        self.median_d = self.median_u - 1
+        if track_num % 2 == 0:
+            self.median = self.median_d
+        else:
+            self.median = self.median_u
+        
+        
+        
+    def load(self):
+        pass
+    def routing(self):
+        loc = {}
+        for col in range(max([t.COL for t in self.ckt.devices])):
+            loc[col+1] =[]
+            for d in self.ckt.devices:
+                if d.COL == col+1:
+                    loc[d.COL].append(d)        
+        
+        self.pn = loc
+        self.sub_patterns = []
+        
+        i = 1
+        while( i<=max(self.pn.keys()) ):
+            if i == max(self.pn.keys()):
+                pn1 = self.pn[i]
+                pn2 = None
+            else:
+                pn1 = self.pn[i]
+                pn2 = self.pn[i+1]
+            if len(pn1) == 0:
+                self.sub_patterns.append(['none',[i]])
+                i+=1
+            elif len(pn1) == 1:
+                self.sub_patterns.append(['single_%s'%(pn1[0].T),[i]])
+                i+=1
+            else:
+                gt_nets = set([t.G for t in pn1])
+                if len(gt_nets) == 1:
+                    self.sub_patterns.append(['common_g',[i]])  
+                    i+=1
+                else:
+                    cross = False
+                    
+                    if gt_nets == {'E_N', 'E'}:
+                        if pn2:
+                            next_gt_nets = set([t.G for t in pn2])
+                            if  next_gt_nets  == {'E_N', 'E'}:
+                                self.sub_patterns.append(['cross',[i,i+1]])  
+                                i+=2
+                                cross = True
+                    if not(cross):
+                        self.sub_patterns.append(['diff_g',[i]])  
+                        i+=1
+        
+        loc = 1 #0 left for pattern gap
+        for i, sub_pattern in enumerate(self.sub_patterns): 
+            if i != len(self.sub_patterns) - 1:
+                pass
+            gt_type, pn_l = sub_pattern
+            
+                     
+        
+ 
+def gen_nodes_edges(x, gt_type, pn_pairs, top, median, median_d, median_u, right=False):
+    pre_connected = {}
+    gt_nodes = []
+    m1_nodes = []
+    gt_cts = []
+    nets_loc = {}
+    return_types = []
+    
+    if gt_type == 'none':
+        gt_nodes = [[x,median_d],[x,median_u]]
+        m1_nodes = [[x,t] for t in range(top)]
+        gt_cts = [[x,median_d],[x,median_u]]
+        return_types.append(nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected)
+    
+    
+    elif gt_type == 'single_P':
+        pmos = pn_pairs[0][0]
+        gt_nodes = [[x,median_d],[x,median_u],
+                    [x+1,median_d],[x+1,median_u]]
+        m1_nodes = [[t1,t2] for t2 in range(top) for t1 in [x,x+1]]
+        gt_cts = [[x+1,median_u], [x,median_d]]
+        nets_loc[pmos.G] = [x+1,median_u]
+        nets_loc[pmos.S] = [x,  top-1]
+        
+        if right:
+            gt_nodes.append([x+2,median_d])
+            gt_nodes.append([x+2,median_u])
+            m1_nodes = [[t1,t2] for t2 in range(top) for t1 in [x,x+1,x+2]]
+            gt_cts = [[x+1,median_u], [x,median_d], [x+2,median_d]]
+            nets_loc[pmos.D] = [x+2,  top-1]
+        
+        return_types.append(nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected)
+    
+    
+    elif gt_type == 'single_N':
+        nmos = pn_pairs[0][0]
+        gt_nodes = [[x,median_d],[x,median_u],
+                    [x+1,median_d],[x+1,median_u]]
+        m1_nodes = [[t1,t2] for t2 in range(top) for t1 in [x,x+1]]
+        gt_cts = [[x+1,median_d], [x,median_u]]
+        nets_loc[nmos.G] = [x+1,median_d]
+        nets_loc[nmos.S] = [x,1]
+        
+        if right:
+            gt_nodes.append([x+2,median_d])
+            gt_nodes.append([x+2,median_u])
+            m1_nodes = [[t1,t2] for t2 in range(top) for t1 in [x,x+1,x+2]]
+            gt_cts = [[x+1,median_d], [x,median_u], [x+2,median_u]]
+            nets_loc[nmos.D] = [x+2,1]
+        
+        return_types.append(nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected)
+    
+    
+    elif gt_type == 'common_g':
+        for pn in pn_pairs[0]:
+            if pn.T =='P':
+                pmos = pn
+            if pn.T =='N':
+                pmos = pn
+        #1
+        gt_nodes = [[x,median_d],[x,median_u],
+                   [x+1,median_d],[x+1,median_u]]
+        m1_nodes = [[t1,t2] for t2 in range(top) for t1 in [x,x+1]]
+        gt_cts = [[x+1,median_d], [x,median_u]]          
+        nets_loc = {}     
+        nets_loc[nmos.G] = [x+1,median_d]
+        nets_loc[nmos.S] = [x,1]
+
+        if right:
+            gt_nodes.append([x+2,median_d])
+            gt_nodes.append([x+2,median_u])
+            m1_nodes = [[t1,t2] for t2 in range(top) for t1 in [x,x+1,x+2]]
+            gt_cts = [[x+1,median_d], [x,median_u], [x+2,median_u]]
+            nets_loc[nmos.D] = [x+2,1]
+        
+        return_types.append(nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected)       
+        #2
+        
+        
+        
+        
+        pass
+    elif gt_type == 'diff_g':
+        pass
+    elif gt_type == 'cross':
+        pass
+    else:
+        raise ValueError
+    return return_types
+        
+            
+
+
+
+
+
+class Vmodes:
+    def __init__(self, track_num):
+        self.track_num = track_num
+    
+    
+
+
+
+
+def copy_json_file(file_path):
+    try:
+        if not os.path.exists(file_path):
+            print(f"Error: File {file_path} does not exist.")
+            return
+        now = datetime.now()
+        month_day = now.strftime("%m%d")
+        file_name, file_ext = os.path.splitext(file_path)
+        new_file_name = f"{file_name}_{month_day}{file_ext}"
+        with open(file_path, 'rb') as src, open(new_file_name, 'wb') as dst:
+            dst.write(src.read())
+        print(f"File successfully copied to {new_file_name}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    
+    
+    

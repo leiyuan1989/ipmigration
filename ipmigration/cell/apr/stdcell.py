@@ -410,8 +410,10 @@ class StdCell:
                     if pn_attr[i] == 'gt':
                         nodes_attr[node]['pn'] = pn_l_attr[i]
                 
-             
+        #TODO   
         col_axis = self.col_space(pattern, start_x, nodes_attr, tech)
+        
+        
         row_axis = [t.c for t in m1_tracks]
         
         
@@ -424,11 +426,16 @@ class StdCell:
         #1 CT nodes
         ct_lyt = CT_Nodes(tech, gt_cts, aa_cts, node_loc, nodes_attr)
         pattern.data.append(ct_lyt.data)
+        
         #2 edges route
         edge_lyt = EdgeRoute(tech, gt_edges, m1_edges, node_loc, nodes_attr)
         pattern.data.append(edge_lyt.data)
         
         #3 GTs
+        #GTs 
+        #AA
+        
+        
         for i,pn in enumerate(self.mos_loc):
             if len(pn) >0:
                 pmos = pn['P']
