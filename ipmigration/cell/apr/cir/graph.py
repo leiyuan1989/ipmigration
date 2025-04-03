@@ -9,6 +9,7 @@ import itertools
 import matplotlib.pyplot as plt
 
 import networkx as nx
+import numpy as np
 from networkx.algorithms.isomorphism import GraphMatcher
 #
 
@@ -382,7 +383,261 @@ class RouteGraph(nx.Graph):
 
 
 
+class PatternGraph(nx.Graph):
+    def __init__(self):
+        super().__init__() 
 
+    def copy(self):
+        return  copy.deepcopy(self)
+        
+    def init(self,ckt, pt_connected):
+        self.ckt = ckt
+        self.pt_connected = pt_connected
+        
+    def add_nodes(self, m1_nodes, gt_nodes, ct_nodes):  
+        self.m1_nodes = m1_nodes
+        self.gt_nodes = gt_nodes
+        self.ct_nodes = ct_nodes
+
+        for node,attr in m1_nodes.items():
+            self.add_node(node,**attr)        
+        for node,attr in gt_nodes.items():
+            self.add_node(node, **attr)  
+        # for node,attr in ct_nodes.items():
+        #     self.add_node(node, **attr)  
+        
+        max_col = max([t[0] for t in self.nodes])
+        self.max_col = max_col
+
+    def add_edges(self):
+        for node1 in self.m1_nodes:
+            for node2 in self.m1_nodes:
+                if node1 != node2:
+                    if not(self.has_edge(node1,node2)):
+                        distance = (node1[0] - node2[0]) ** 2 + (node1[1] - node2[1]) ** 2 
+                        if distance == 1:
+                            self.add_edge(node1, node2, cost=1)
+        for node1 in self.gt_nodes:
+            for node2 in self.gt_nodes:
+                if node1 != node2:
+                    if not(self.has_edge(node1,node2)):
+                        distance = (node1[0] - node2[0]) ** 2 + (node1[1] - node2[1]) ** 2 
+                        if distance == 1:
+                            self.add_edge(node1, node2, cost=3)                    
+        
+        for node in self.ct_nodes:
+            node1 = (node[0],node[1],0)
+            node2 = (node[0],node[1],1)      
+            # print(node1,node2)
+            assert node1 in self.nodes
+            assert node2 in self.nodes
+            self.add_edge(node1, node2, cost=3)                    
+    
+    def add_side_nodes(self, l_nodes, r_nodes):
+        G = copy.deepcopy(self)
+        l = 1
+        r = G.max_col
+        
+        l_m1 = [t for t in G.nodes if t[0] == l and t[2]==1]
+        l_gt = [t for t in G.nodes if t[0] == l and t[2]==0]
+        r_m1 = [t for t in G.nodes if t[0] == r and t[2]==1]
+        r_gt = [t for t in G.nodes if t[0] == r and t[2]==0]
+        
+        m1_nodes = []
+        for node in l_m1:
+            t1,t2,t3 = node
+            attr =  {'net':'','loc':(t1-1,t2),'color':'orange'}
+            G.add_node((t1-1,t2,t3),**attr)
+            G.add_edge(node,(t1-1,t2,t3),cost=1)
+            m1_nodes.append((t1-1,t2,t3))
+        for node1 in m1_nodes:
+            for node2 in m1_nodes:
+                if node1 != node2:
+                    if not(self.has_edge(node1,node2)):
+                        distance = (node1[0] - node2[0]) ** 2 + (node1[1] - node2[1]) ** 2 
+                        if distance == 1:
+                            G.add_edge(node1, node2, cost=1)
+        
+        for node in r_m1:
+            t1,t2,t3 = node
+            attr =  {'net':'','loc':(t1+1,t2),'color':'orange'}
+            G.add_node((t1+1,t2,t3),**attr)
+            G.add_edge(node,(t1+1,t2,t3),cost=1)
+ 
+        gt_nodes = []
+        for node in l_gt:
+            t1,t2,t3 = node
+            attr =  {'net':'','loc':(t1-1+0.3,t2+0.3),'color':'blue'}
+            G.add_node((t1-1,t2,t3),**attr)
+            G.add_edge(node,(t1-1,t2,t3),cost=3)
+            G.add_edge((t1-1,t2,1),(t1-1,t2,t3),cost=3)
+            gt_nodes.append((t1-1,t2,t3))
+            
+        for node1 in gt_nodes:
+            for node2 in gt_nodes:
+                if node1 != node2:
+                    if not(self.has_edge(node1,node2)):
+                        distance = (node1[0] - node2[0]) ** 2 + (node1[1] - node2[1]) ** 2 
+                        if distance == 1:
+                            G.add_edge(node1, node2, cost=3)
+        
+        for node in r_gt:
+            t1,t2,t3 = node
+            attr =  {'net':'','loc':(t1+1+0.3,t2+0.3),'color':'blue'}
+            G.add_node((t1+1,t2,t3),**attr)
+            G.add_edge(node,(t1+1,t2,t3),cost=3)    
+            G.add_edge((t1+1,t2,1),(t1+1,t2,t3),cost=3)    
+        
+        for net, (t1,t2) in l_nodes.items():
+            G.nodes[(l-1,t1,t2)]['net'] = net
+        for net, (t1,t2) in r_nodes.items():
+            G.nodes[(r+1,t1,t2)]['net'] = net        
+        return G
+
+    def add_right_nodes(self,median):
+        max_col = self.max_col
+        self.max_col = max_col+1
+        right_nodes = [t for t in self.nodes if t[0] == max_col and t[2]==1]
+        right_nodes_gt =  [t for t in self.nodes if t[0] == max_col and t[2]==0]
+        for node in right_nodes:
+            t1,t2,t3 = node
+            attr =  {'net':'','loc':(t1+1,t2),'color':'orange'}
+            self.add_node((t1+1,t2,t3),**attr)
+            self.add_edge(node,(t1+1,t2,t3),cost=1)
+        for i in [median-1,median,median+1] :
+            attr1 = {'net':'', 'loc':(max_col+1+0.3, i+0.3),'color':'blue'}
+            attr2 = {'net':'', 'loc':(max_col+1+0.15, i+0.15),'color':'cyan'}
+            self.add_node((max_col+1,i,0),**attr1)
+            self.add_node((max_col+1,i,0.5),**attr2)
+            if (max_col,i,0) in right_nodes_gt:
+                self.add_edge((max_col,i,0),(max_col+1,i,0),cost=3)
+            
+            #TODO: if need add ct edge?
+    def add_left_nodes(self,median):
+        right_nodes_gt =  [t for t in self.nodes if t[0] == 1 and t[2]==0]
+        for i in [median-1,median,median+1] :
+            attr1 = {'net':'', 'loc':(0+0.3, i+0.3),'color':'blue'}
+            attr2 = {'net':'', 'loc':(0+0.15, i+0.15),'color':'cyan'}
+            self.add_node((0,i,0),**attr1)
+            self.add_node((0,i,0.5),**attr2)
+            self.add_edge((0,i,0),(0,i,0.5),cost=3)   
+            self.add_edge((0,i,0.5),(0,i,1),cost=3)   
+            
+            
+            if (1,i,0) in right_nodes_gt:
+                self.add_edge((0,i,0),(1,i,0),cost=3)            
+
+        self.add_edge((0,median-1,0),(0,median,0),cost=3)   
+        self.add_edge((0,median,0),(0,median+1,0),cost=3) 
+    
+    
+    def gen_routing_graph(self):
+        G_copy = copy.deepcopy(self)
+    
+        for k,v in self.pt_connected.items():
+            nodes = []
+            for t in v:
+                nodes.append(t[0])
+                nodes.append(t[1])
+            nodes = list(set(nodes))
+            # print(nodes,k)
+            nodes.remove(k)
+            
+            adj_nodes= []
+            for n1 in nodes:
+                adjs = list(self.adj[n1])
+                for adj in adjs:
+                    if not(adj in nodes):
+                        adj_nodes.append(adj)
+            adj_nodes = list(set(adj_nodes))      
+            
+            adj_nodes.remove(k)
+            G_copy.remove_nodes_from(nodes)
+            for node in adj_nodes:    
+                G_copy.add_edge(node,k,cost=1)
+        return G_copy
+            
+    def gen_route_nets(self, route_nets):
+        signals = []
+        pins = []
+        for k,v in route_nets.items():
+            if k !='VDD' and k !='VSS':
+                if len(v)>1:
+                    signals.append(set(v))
+                else:
+                    if len(v)==1:
+                        if v[0][2] == 0: #pin
+                            pins.append(v[0])        
+        return signals, pins  
+    
+    def remove_pins(self, pins):
+        self.remove_nodes_from(pins)
+    
+
+    def add_grid(self,loc,):
+        # loc, 
+        # net
+        # is_merge?
+        pass
+    def add_connect(self,loc,):
+        #cost
+        
+        pass
+
+    def get_column(self, col):
+        pass
+
+    def plot(self,name='', paths=[], m2_paths=[], pre_connect=False, savepath=None):
+        pos = nx.get_node_attributes(self, 'loc')
+        grid_columns = max([t[0] for t in self.nodes])
+        
+        colors = [self.nodes[node]['color'] for node in self.nodes()]
+
+        plt.figure(figsize=(2*grid_columns, 12))
+    
+        nx.draw_networkx_nodes(self, pos, node_color=colors)
+        nx.draw_networkx_edges(self, pos, edge_color='gray', style='dashed')
+        
+        labels = {node: str(self.nodes[node]['net']) for node in self.nodes()}
+        nx.draw_networkx_labels(self, pos, labels=labels, font_size=16)
+     
+
+        colors = ['red', 'green', 'blue', 'yellow', 'purple', 'orange', 'cyan', 'magenta']
+        
+        if pre_connect:
+            for i,net in enumerate(self.pt_connected):
+                color = colors[i % len(colors)]
+                path = self.pt_connected[net]
+                nx.draw_networkx_edges(self, pos, edgelist=path, edge_color=color, width=2)
+
+
+        for i,path in enumerate(paths):
+            color = colors[i % len(colors)]
+            if path is not None:
+                # print(self.nodes,paths)
+                nx.draw_networkx_edges(self, pos, edgelist=path, edge_color=color, width=2)
+
+
+        # m2_paths = [
+        #     [
+        #         tuple(item[:-1] + (1,) for item in sub_tuple)
+        #         for sub_tuple in sub_list
+        #     ]
+        #     for sub_list in m2_paths
+        # ]
+        
+        # for i,path in enumerate(m2_paths):
+        #     color = colors[i % len(colors)]
+        #     if path is not None:
+        #         nx.draw_networkx_edges(self, pos, edgelist=path,style='dashed', edge_color='black', width=3)
+                
+
+        plt.title(self.ckt.name+'_'+name)
+        plt.axis('on')
+
+        if savepath:
+            plt.savefig(savepath)
+        plt.show()
 
 
 

@@ -4,12 +4,13 @@
 """
 import os
 import json
+import itertools
 from datetime import datetime
 
 from ipmigration.cell.apr.cir.netlist import Netlist
-from ipmigration.cell.apr.cir.graph import MosGraph
-from ipmigration.cell.apr.tech import VMode
+from ipmigration.cell.apr.cir.graph import MosGraph,PatternGraph
 
+from ipmigration.cell.apr.tech import VMode
 from ipmigration.cell.apr.pr.smt_router import MIPGraphRouter
 
 
@@ -196,12 +197,20 @@ class Patterns:
             print("Load Pattern Routing Data (%s) Successfully!"%(self.route_data_path))
     
 
-    def pattern_routing(self):
+    
+    def pattern_routing(self, json_out=None):
         copy_json_file(self.route_data_path)
         for name, ckt in self.ckt_dict.items():
             # print(name,ckt)
             pt_router = PatternRouter(ckt, self.track_num)
-            pt_router.routing()
+            pt_router.gen_graph()
+            side_nodes = gen_side_nodes(pt_router)
+            for l_nodes,r_nodes in side_nodes:
+                #TODO 
+                for i, (graph,route_nets) in pt_router.graph.items():      
+                    pt_router.routing(graph,route_nets,l_nodes,r_nodes)
+                    pt_router.G.plot()
+            
             self.pattern_route_dict[name] = pt_router
 
 
@@ -422,7 +431,22 @@ class PatternRouter:
         
     def load(self):
         pass
-    def routing(self):
+    
+    def routing(self,graph,route_nets,l_nodes,r_nodes):
+        G = graph.add_side_nodes(l_nodes,r_nodes)
+        self.G = G
+        
+        # signals,pins = graph.gen_route_nets(route_nets)
+        # self.pins = pins
+
+        # graph_route = graph.gen_routing_graph()
+        # graph_route.remove_pins(pins)
+        
+        # return graph, graph_route, signals,pins 
+        
+    
+    
+    def gen_graph(self):
         loc = {}
         for col in range(max([t.COL for t in self.ckt.devices])):
             loc[col+1] =[]
@@ -465,108 +489,410 @@ class PatternRouter:
                     if not(cross):
                         self.sub_patterns.append(['diff_g',[i]])  
                         i+=1
-        
-        loc = 1 #0 left for pattern gap
+        print(self.ckt)
+        x = 1 #0 left for pattern gap       
+        rts = []
         for i, sub_pattern in enumerate(self.sub_patterns): 
             if i != len(self.sub_patterns) - 1:
-                pass
-            gt_type, pn_l = sub_pattern
+                right = False
+                if self.sub_patterns[i+1][0] == 'none':
+                    right = True
+            else:
+                right = True
+            gt_type, pn_key = sub_pattern
+            pn_pairs = [self.pn[t] for t in pn_key]    
+            x, rt = gen_nodes_edges(x, gt_type, pn_pairs, self.track_num, 
+                                    self.median, self.median_d, self.median_u, 
+                                    right=right)         
+            rts.append(rt)
+    
+        all_combinations = list(itertools.product(*rts))   
+
+        self.graph = {}
+        #create graph
+        for i, rt_l in enumerate(all_combinations):
+            nets_loc = {}
+            gt_nodes = []
+            m1_nodes = []
+            gt_cts = []
+            pre_connected = {}
+            for rt in rt_l:
+                #nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected = rt
+                gt_nodes += rt[1]
+                m1_nodes += rt[2]
+                gt_cts   += rt[3]
+                for k,v in rt[0].items():
+                    if k in nets_loc:
+                        if k== 'OUT1':
+                            print('xxx',v)
+                        nets_loc[k] += v
+                    else:
+                        nets_loc[k] = v
+                for k,v in rt[4].items():
+                    if k in pre_connected:
+                        pre_connected[k] += v
+                    else:
+                        pre_connected[k] = v                
+            print('yyy',nets_loc)
+            self.net_loc = nets_loc
+            # raise ValueError
+            self.graph[i] = self.gen_pattern_graph(nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected)
+            # self.graph[i].init(self.ckt, ) 
+        
+
             
-                     
+            # print(len(rts))
+            # for rt in rts:
+            #     nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected = rt
+        
+    def gen_pattern_graph(self,nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected):
+        # print('1',nets_loc)
+        # print('2',gt_nodes)
+        # print('3',m1_nodes)
+        # print('4',gt_cts)
+        # print('5',pre_connected)
+        gt_nodes = {tuple(t):{'net':'','loc':(t[0]+0.3, t[1]+0.3),'color':'blue'} for t in gt_nodes}
+        m1_nodes = {tuple(t):{'net':'','loc':(t[0], t[1]),'color':'orange'} for t in m1_nodes}
+        route_nets={}
+        for k,v in nets_loc.items():
+            new_v = []
+            for t in v:
+                new_v.append(tuple(t))
+                if tuple(t) in gt_nodes:
+                    gt_nodes[tuple(t)]['net'] = k
+                elif tuple(t) in m1_nodes:
+                    m1_nodes[tuple(t)]['net'] = k
+                else:
+                    raise ValueError
+            
+            route_nets[k] = new_v
+        
+        pre_connected_edges = {}
+        for k,v in pre_connected.items():
+            new_v = []
+            for t in v:
+                assert len(t)==2
+                new_v.append( ( tuple(t[0]), tuple(t[1]) ) )
+            pre_connected_edges[k] = new_v
+        
+
+        
+        graph = PatternGraph()
+        graph.init(self.ckt,pre_connected_edges)
+        graph.add_nodes(m1_nodes, gt_nodes, gt_cts)
+        graph.add_edges()
+        # self.route_nets = route_nets
+        return graph,route_nets
         
  
+
+
+            
+            
 def gen_nodes_edges(x, gt_type, pn_pairs, top, median, median_d, median_u, right=False):
     pre_connected = {}
+
     gt_nodes = []
     m1_nodes = []
     gt_cts = []
     nets_loc = {}
     return_types = []
     
+    def update_dict(dictionary, key, value):
+        if key not in dictionary:
+            dictionary[key] = [value]
+        else:
+            dictionary[key].append(value)
+            
     if gt_type == 'none':
-        gt_nodes = [[x,median_d],[x,median_u]]
-        m1_nodes = [[x,t] for t in range(top)]
-        gt_cts = [[x,median_d],[x,median_u]]
-        return_types.append(nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected)
-    
+        gt_nodes = [ [x, median_d, 0],[x, median_u, 0] ]
+        m1_nodes = [ [x,t,1] for t in range(top) ]
+        gt_cts =   [ [x,median_d],[x,median_u] ]
+        return_types.append([nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected])
+        next_x = x+1
     
     elif gt_type == 'single_P':
         pmos = pn_pairs[0][0]
-        gt_nodes = [[x,median_d],[x,median_u],
-                    [x+1,median_d],[x+1,median_u]]
-        m1_nodes = [[t1,t2] for t2 in range(top) for t1 in [x,x+1]]
-        gt_cts = [[x+1,median_u], [x,median_d]]
-        nets_loc[pmos.G] = [x+1,median_u]
-        nets_loc[pmos.S] = [x,  top-1]
-        
+        gt_nodes = [ [x,   median_d, 0], [x,   median_u, 0],
+                     [x+1, median_d, 0], [x+1, median_u, 0]]
+        m1_nodes = [ [t1, t2 , 1] for t2 in range(top) for t1 in [x,x+1]]
+        gt_cts = [ [x+1, median_u], [x, median_d] ]
+
+        update_dict(nets_loc,pmos.G,[x+1, median_u, 0])
+        update_dict(nets_loc,pmos.S,[x,  top-2, 1] )
+
+        next_x = x+2
         if right:
-            gt_nodes.append([x+2,median_d])
-            gt_nodes.append([x+2,median_u])
-            m1_nodes = [[t1,t2] for t2 in range(top) for t1 in [x,x+1,x+2]]
-            gt_cts = [[x+1,median_u], [x,median_d], [x+2,median_d]]
-            nets_loc[pmos.D] = [x+2,  top-1]
-        
-        return_types.append(nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected)
-    
+            gt_nodes.append( [x+2, median_d, 0] )
+            gt_nodes.append( [x+2, median_u, 0] )
+            m1_nodes = [ [t1, t2, 1] for t2 in range(top) for t1 in [x,x+1,x+2]]
+            gt_cts = [ [x+1, median_u], [x, median_d], [x+2, median_d]]
+            update_dict(nets_loc,pmos.D,[x+2, top-2, 1])
+            next_x = x+3
+        return_types.append([nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected])
+
     
     elif gt_type == 'single_N':
         nmos = pn_pairs[0][0]
-        gt_nodes = [[x,median_d],[x,median_u],
-                    [x+1,median_d],[x+1,median_u]]
-        m1_nodes = [[t1,t2] for t2 in range(top) for t1 in [x,x+1]]
+        gt_nodes = [[x,  median_d,0],[x,  median_u,0],
+                    [x+1,median_d,0],[x+1,median_u,0]]
+        m1_nodes = [[t1,t2,1] for t2 in range(top) for t1 in [x,x+1]]
         gt_cts = [[x+1,median_d], [x,median_u]]
-        nets_loc[nmos.G] = [x+1,median_d]
-        nets_loc[nmos.S] = [x,1]
-        
+        update_dict(nets_loc,nmos.G,[x+1, median_d, 0])
+        update_dict(nets_loc,nmos.S,[x,1,1] )
+
+        next_x = x+2
         if right:
-            gt_nodes.append([x+2,median_d])
-            gt_nodes.append([x+2,median_u])
-            m1_nodes = [[t1,t2] for t2 in range(top) for t1 in [x,x+1,x+2]]
+            gt_nodes.append([x+2,median_d,0])
+            gt_nodes.append([x+2,median_u,0])
+            m1_nodes = [[t1,t2,1] for t2 in range(top) for t1 in [x,x+1,x+2]]
             gt_cts = [[x+1,median_d], [x,median_u], [x+2,median_u]]
-            nets_loc[nmos.D] = [x+2,1]
-        
-        return_types.append(nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected)
-    
-    
+            update_dict(nets_loc,nmos.D,[x+2,1,1]  )
+            next_x = x+3
+        return_types.append([nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected])
+
     elif gt_type == 'common_g':
         for pn in pn_pairs[0]:
             if pn.T =='P':
                 pmos = pn
             if pn.T =='N':
-                pmos = pn
-        #1
-        gt_nodes = [[x,median_d],[x,median_u],
-                   [x+1,median_d],[x+1,median_u]]
-        m1_nodes = [[t1,t2] for t2 in range(top) for t1 in [x,x+1]]
-        gt_cts = [[x+1,median_d], [x,median_u]]          
-        nets_loc = {}     
-        nets_loc[nmos.G] = [x+1,median_d]
-        nets_loc[nmos.S] = [x,1]
-
+                nmos = pn
+        
+        pre_connected = {}
+        nets_loc = {}
+        gt_nodes = [[x,  median_d,0],[x,  median_u,0],
+                    [x+1,median_d,0],[x+1,median_u,0]]
+        m1_nodes = [[t1,t2,1] for t2 in range(top) for t1 in [x,x+1]]
+        gt_cts = [ [x+1,median_d], [x+1,median_u], [x,median_u] ]          
+             
+        update_dict(nets_loc,pmos.G,[x+1, median_u, 0])
+        update_dict(nets_loc,pmos.S,[x, top-2, 1] )
+        update_dict(nets_loc,nmos.S,[x, 1    , 1])
+        pre_connected[(x+1,median_u,0)] = [ [[x+1,median_d,0],[x+1,median_u,0]] ]
+        next_x = x+2
         if right:
-            gt_nodes.append([x+2,median_d])
-            gt_nodes.append([x+2,median_u])
-            m1_nodes = [[t1,t2] for t2 in range(top) for t1 in [x,x+1,x+2]]
-            gt_cts = [[x+1,median_d], [x,median_u], [x+2,median_u]]
-            nets_loc[nmos.D] = [x+2,1]
-        
-        return_types.append(nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected)       
-        #2
-        
-        
-        
-        
-        pass
+            gt_nodes.append([x+2,median_d,0])
+            gt_nodes.append([x+2,median_u,0])
+            m1_nodes = [[t1,t2,1] for t2 in range(top) for t1 in [x,x+1,x+2]]
+            gt_cts = [ [x+1,median_d], [x+1,median_u], 
+                       [x,  median_u], [x+2,median_u]]
+            update_dict(nets_loc,pmos.D,[x+2, top-2, 1] )
+            update_dict(nets_loc,nmos.D,[x+2, 1,     1] )
+            next_x = x+3
+        return_types.append([nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected])       
+
     elif gt_type == 'diff_g':
-        pass
+        #2 types now  
+        for pn in pn_pairs[0]:
+            if pn.T =='P':
+                pmos = pn
+            if pn.T =='N':
+                nmos = pn
+        #type 1
+        pre_connected = {}
+        nets_loc = {}
+        
+        gt_nodes = [[x,  median_d,0],[x,  median_u,0],
+                    [x+1,median_d,0],[x+1,median_u,0]]
+        m1_nodes = [[t1,t2,1] for t2 in range(top) for t1 in [x,x+1]]
+        gt_cts = [ [x+1,median_u], [x,median_d] ]          
+             
+        update_dict(nets_loc,pmos.G,[x+1, median_u, 0] )
+        update_dict(nets_loc,nmos.G,[x  , median_d, 0] )
+        update_dict(nets_loc,pmos.S,[x, top-2, 1] )
+        update_dict(nets_loc,nmos.S, [x, 1    , 1])
+        pre_connected[(x,median_d,0)] = [ [[x,median_d,0],[x+1,median_d,0]] ]
+        next_x = x+2
+        if right:
+            gt_nodes.append([x+2,median_d,0])
+            gt_nodes.append([x+2,median_u,0])
+            m1_nodes = [[t1,t2,1] for t2 in range(top) for t1 in [x,x+1,x+2]]
+            gt_cts = [ [x+1,median_u],[x,median_d],[x+2,median_u] ]
+                      
+            update_dict(nets_loc,pmos.D,[x+2, top-2, 1] )
+            update_dict(nets_loc,nmos.D,[x+2, 1,     1] )
+            next_x = x+3
+        return_types.append([nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected])  
+        
+        #type 2
+        pre_connected = {}
+        nets_loc = {}
+        gt_nodes = [[x,  median_d,0],[x,  median_u,0],
+                    [x+1,median_d,0],[x+1,median_u,0]]
+        m1_nodes = [[t1,t2,1] for t2 in range(top) for t1 in [x,x+1]]
+        gt_cts = [ [x+1,median_d], [x,median_u] ]          
+             
+        update_dict(nets_loc,pmos.G,[x  , median_u, 0] )
+        update_dict(nets_loc,nmos.G,[x+1, median_d, 0] )
+        update_dict(nets_loc,pmos.S,[x, top-2, 1] )
+        update_dict(nets_loc,nmos.S,[x, 1    , 1])
+        
+        pre_connected[(x,median_u,0)] = [ [[x,median_u,0],[x+1,median_u,0]] ]
+        next_x = x+2
+        if right:
+            next_x = x+3
+            gt_nodes.append([x+2,median_d,0])
+            gt_nodes.append([x+2,median_u,0])
+            m1_nodes = [[t1,t2,1] for t2 in range(top) for t1 in [x,x+1,x+2]]
+            gt_cts = [ [x+1,median_d],[x,median_u],[x+2,median_d] ]
+
+            update_dict(nets_loc,pmos.D,[x+2, top-2, 1] )
+            update_dict(nets_loc,nmos.D,[x+2, 1,     1] )
+        return_types.append([nets_loc,gt_nodes,m1_nodes,gt_cts,pre_connected])          
+        
     elif gt_type == 'cross':
-        pass
+        #4 types now
+        for pn in pn_pairs[0]:
+            if pn.T =='P':
+                pmos1 = pn
+            if pn.T =='N':
+                nmos1 = pn
+        for pn in pn_pairs[1]:
+            if pn.T =='P':
+                pmos2 = pn
+            if pn.T =='N':
+                nmos2 = pn        
+        
+        pre_connected = {}
+        nets_loc = {}        
+        
+        gt_nodes = [[x,  median_d,0],[x,  median_u,0],
+                    [x+1,median_d,0],[x+1,median_u,0],
+                    [x+2,median_d,0],[x+2,median_u,0],
+                    [x+3,median_d,0],[x+3,median_u,0] ]
+        m1_nodes = [[t1,t2,1] for t2 in range(top) for t1 in [x,x+1,x+2,x+3]]
+                
+        update_dict(nets_loc,pmos1.S,[x,  top-2, 1] )
+        update_dict(nets_loc,nmos1.S,[x,  1    , 1] )
+        update_dict(nets_loc,pmos2.S,[x+2,top-2, 1] )
+        update_dict(nets_loc,nmos2.S,[x+2,1    , 1] )
+        next_x = x+4
+        if right:
+            gt_nodes.append([x+4,median_d,0])
+            gt_nodes.append([x+4,median_u,0])
+            m1_nodes = [[t1,t2,1] for t2 in range(top) for t1 in [x,x+1,x+2,x+3,x+4]]
+        
+            update_dict(nets_loc,pmos2.D,[x+4, top-2, 1] )
+            update_dict(nets_loc,nmos2.D,[x+4, 1,     1])
+            next_x = x+5
+        #type 1
+        pre_connected = {}
+        nets_loc_t = {k:v for k,v in nets_loc.items()}
+        
+        gt_cts = [ [x,median_d], [x+1,median_u], [x+3,median_d] ]        
+        update_dict(nets_loc_t,pmos1.G,[x, median_d, 0] )
+        update_dict(nets_loc_t,pmos2.G,[x+1, median_u, 0])
+        update_dict(nets_loc_t,pmos2.G,[x+3, median_d, 0])
+        pre_connected[(x  ,median_d,0)] = [ [[x  ,median_d,0],[x+1,median_d,0]],
+                                            [[x+1,median_d,0],[x+2,median_d,0]],
+                                            [[x+2,median_d,0],[x+2,median_u,0]],
+                                            [[x+2,median_u,0],[x+3,median_u,0]] ]
+        
+        return_types.append([nets_loc_t,gt_nodes,m1_nodes,gt_cts,pre_connected])  
+        
+        
+        #type 2
+        pre_connected = {}
+        nets_loc_t = {k:v for k,v in nets_loc.items()}
+        
+        gt_cts = [ [x,median_u], [x+1,median_d], [x+3,median_u] ]        
+        update_dict(nets_loc_t,pmos1.G,[x, median_u, 0] ) 
+        update_dict(nets_loc_t,pmos2.G,[x+1, median_d, 0] )
+        update_dict(nets_loc_t,pmos2.G,[x+3, median_u, 0] )        
+        pre_connected[(x  ,median_u,0)] = [[[x  ,median_u,0],[x+1,median_u,0]],
+                                           [[x+1,median_u,0],[x+2,median_u,0]],
+                                           [[x+2,median_u,0],[x+2,median_d,0]],
+                                           [[x+2,median_d,0],[x+3,median_d,0]] ]
+        
+        return_types.append([nets_loc_t,gt_nodes,m1_nodes,gt_cts,pre_connected])  
+        
     else:
         raise ValueError
-    return return_types
+    return next_x, return_types
         
             
-
+def gen_side_nodes(pattern_router):
+    name = pattern_router.ckt.name
+    tp = pattern_router.track_num-1
+    mu = pattern_router.median_u
+    md = pattern_router.median_d
+    dn = 0
+    
+    side_nodes = []
+    
+    if 'INV' in name:
+        if not('no' in name):
+            side_nodes = []
+            side_nodes.append( [ {'IN1': [mu , 0]}, {'OUT1': [mu , 1]} ] )
+            side_nodes.append( [ {'IN1': [mu , 0]}, {'OUT1': [md , 1]} ] )
+            side_nodes.append( [ {'IN1': [md , 0]}, {'OUT1': [mu , 1]} ] )
+            side_nodes.append( [ {'IN1': [md , 0]}, {'OUT1': [md , 1]} ] )
+            side_nodes.append( [ {'IN1': [mu , 1]}, {'OUT1': [mu , 1]} ] )
+            side_nodes.append( [ {'IN1': [mu , 1]}, {'OUT1': [md , 1]} ] )
+            side_nodes.append( [ {'IN1': [md , 1]}, {'OUT1': [mu , 1]} ] )
+            side_nodes.append( [ {'IN1': [md , 1]}, {'OUT1': [md , 1]} ] )            
+            side_nodes.append( [ {'OUT1': [mu , 1]}, {'IN1': [mu , 0]} ] )   
+            side_nodes.append( [ {'OUT1': [md , 1]}, {'IN1': [mu , 0]} ] ) 
+            side_nodes.append( [ {'OUT1': [mu , 1]}, {'IN1': [md , 0]} ] ) 
+            side_nodes.append( [ {'OUT1': [md , 1]}, {'IN1': [md , 0]} ] ) 
+            t_side_nodes = [t for t in side_nodes]
+            for l_n,r_n in t_side_nodes:
+                l = l_n.copy()
+                r = r_n.copy()
+                l['CR1'] = [tp,1]
+                r['CR1'] = [tp,1]
+                l['CR2'] = [dn,1]
+                r['CR2'] = [dn,1]               
+                side_nodes.append([l,r])
+                l = l_n.copy()
+                r = r_n.copy()
+                l['CR1'] = [tp,1]
+                r['CR1'] = [tp,1]
+                l['CR2'] = [dn,1]
+                r['CR2'] = [dn,1]    
+                l['CR3'] = [tp-1,1]
+                r['CR3'] = [tp-1,1]
+                l['CR4'] = [dn+1,1]
+                r['CR4'] = [dn+1,1]  
+                side_nodes.append([l,r])                
+            # print('aaa',len(side_nodes))
+            return side_nodes
+        elif 'noVDDVSS' in name:
+            return side_nodes
+        elif 'noVDD' in name:
+            return side_nodes
+        elif 'noVSS' in name:
+            return side_nodes
+        else:
+            pass
+        
+    elif 'CLK' in name:
+        return side_nodes
+    elif 'LOGIC2' in name:
+        return side_nodes
+    elif 'FCROSS' in name:
+        return side_nodes
+    elif 'PCROSS' in name:
+        return side_nodes        
+    elif 'FRSCROSS' in name:
+        return side_nodes        
+    elif 'FRCROSS' in name:
+        return side_nodes        
+    elif 'FSCROSS' in name:
+        return side_nodes        
+    elif 'PRSCROSS' in name:
+        return side_nodes        
+    elif 'PRCROSS' in name:
+        return side_nodes        
+    elif 'PSCROSS' in name:
+        return side_nodes    
+    elif 'BACKTRACK3' in name:
+        return side_nodes        
+    elif 'BACKTRACK2' in name:
+        return side_nodes  
+    
+    else:
+        raise ValueError
 
 
 
