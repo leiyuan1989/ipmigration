@@ -7,7 +7,7 @@ Created on Wed Jun 26 11:53:21 2024
 
 
 import logging, time, os, re
-import json
+import json,csv
 import pandas as pd
 import klayout.db as db
 import matplotlib.pyplot as plt
@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 from ipmigration.cell.apr.cir.netlist import Netlist
 from ipmigration.cell.apr.cir.patterns import Patterns
 from ipmigration.cell.apr.stdcell import StdCell
-
+from ipmigration.cell.apr.io.route_loader import RouteDB
 
 # from ipmigration.cell.apr.cir.shape import Range, Box
 # from ipmigration.cell.apr.lego import lego
@@ -53,29 +53,9 @@ class ASCell:
         
     def __getitem__(self,key):
         return self.cells[key]       
-            
-        
-        #initial layout settings
-        # self.init_layout()
-        
-        
-        
-        
-        
-        # self.tech_dir = args.tech_dir     
-        # self.read_cell_para()
-        # self.init_layout()
-        # self.data_file = open(os.path.join(args.output_dir,'data_%s.txt'%(self.tech.tech_name)),'w')
 
-        # #TODO
-        # self.ready_structs = ready_structs()
-        #init placer and router
-        #set placer
-        # self.placer = SMTPlacer(False, os.path.join(args.output_dir))
-        # self.router = HybridRouter
-        
-        #load lego library here
-        
+    
+
     def run(self):
         # self.time_record = {}
         # time_s = time.time()
@@ -85,27 +65,32 @@ class ASCell:
         f=open(aux_file,'w')
         f.close()
         
-        #route_data
-        route_data_path = os.path.join(self.cfgs.output_dir,'route_data_%d.json'%(self.tech.M1_tracks_num))
+
         
         logger.info('ascell-> Begin processing tech%s @ %s'%(self.tech.tech_name, time.asctime())) 
         if self.cfgs.gen_cells == 'all':
             self.cfgs.gen_cells = list(self.netlist.ckt_types.keys())
-
+        
+        self.route_db = RouteDB(self.tech.M1_tracks_num)
         success = []
+        side_nodes_statistics = []
+        
         for cell_type in self.cfgs.gen_cells:
             # print(cell_type)
             for count, ckt_name in enumerate(self.netlist.ckt_types[cell_type]):
                 ckt = self.netlist[ckt_name]
-                cell = StdCell(ckt,self.tech,self.cfgs,self.patterns,route_data_path)
+                cell = StdCell(ckt,self.tech,self.cfgs,self.patterns, self.route_db)
                 self.cells[ckt_name] = cell
                 result = cell.run(self.layout,self.layout_layers)
                 if result:
+                    side_nodes_statistics+=cell.side_nodes_statistics
+                    
                     success.append(cell)
                 #     break
         self.success = success
-        self.gen_gds()        
-
+        self.gen_gds()     
+        statis_path = os.path.join(self.cfgs.output_dir, 'side_nodes_statistics.txt')
+        save_side_nodes_statistics(statis_path, side_nodes_statistics)
    
 
 
@@ -194,7 +179,49 @@ class ASCell:
         
         
         
-        
-        
-
+def save_side_nodes_statistics(path, side_nodes_statistics):
+    with open(path, 'w', encoding='utf-8') as file:
+        for d in  side_nodes_statistics:
+            line = '%10s->%10s\n'%(d[0],d[1])
+            file.write(line)
+            line = 'L: %-40s || %-40s\n'%(str(d[2]),str(d[5]))
+            file.write(line)
+            line = 'R: %-40s || %-40s\n'%(str(d[3]),str(d[6]))
+            file.write(line)
+            line = 'C: %-40s || %-40s\n'%(str(d[4]),str(d[7]))
+            file.write(line)
     
+# def json_to_csv(json_file_path, csv_file_path):
+#     try:
+#         with open(json_file_path, 'r', encoding='utf-8') as json_file:
+#             data = json.load(json_file)
+
+#         with open(csv_file_path, 'w', newline='', encoding='utf-8') as csv_file:
+#             fieldnames = ['name', 'left', 'right', 'cross']
+#             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+#             writer.writeheader()
+
+#             for name, elements in data.items():
+#                 for element in elements:
+#                     left_str = ','.join(map(str, element.get('left', [])))
+#                     right_str = ','.join(map(str, element.get('right', [])))
+#                     cross_str = ','.join(map(str, element.get('cross', [])))
+                    
+#                     writer.writerow({
+#                         'name': name,
+#                         'left': left_str,
+#                         'right': right_str,
+#                         'cross': cross_str
+#                     })
+                    
+#         print(f"Successfully converted {len(data)} modules to {csv_file_path}")
+        
+#     except FileNotFoundError:
+#         print("Error: Specified JSON file not found")
+#     except json.JSONDecodeError:
+#         print("Error: Failed to parse JSON file")
+#     except Exception as e:
+#         print(f"An unexpected error occurred: {str(e)}")
+
+
+# json_to_csv('demo\cell_apr\outputs\c110\side_nodes_statistics.json', 'demo\cell_apr\outputs\c110\side_nodes_statistics.csv')

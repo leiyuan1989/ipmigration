@@ -17,6 +17,8 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+#TODO: BIG PROBLEM
+
 
 class Placer:
     def __init__(self,sub_ckts):

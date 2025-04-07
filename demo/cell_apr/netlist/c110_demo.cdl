@@ -1,4 +1,54 @@
 
+**************************************************************************
+
+* SPICE INPUT		Tue Jul 31 19:11:52 2018	denrq0
+* EV_NETLIST Version AMD.64 Release B-2008.09.SP5.HF4.26013 2015/05/03
+*
+*The following line needed for Star-CR:
+*CRU_OPT (KEEP_ELEMENTS "^[CR]D")
+*
+*The following line needed for CDL:
+*.BIPOLAR
+
+* Hierarchy Level 0
+
+* Top of hierarchy  cell=denrq0
+.subckt denrq0 VDD Q GND CK D E
+M1 N_33 D GND GND mn15  l=0.13u w=0.18u m=1
+M2 N_6 E N_33 GND mn15  l=0.13u w=0.18u m=1
+M3 GND E N_5 GND mn15  l=0.13u w=0.18u m=1
+M4 N_34 N_5 N_6 GND mn15  l=0.13u w=0.18u m=1
+M5 N_34 N_17 GND GND mn15  l=0.13u w=0.18u m=1
+M6 GND CK N_2 GND mn15  l=0.13u w=0.17u m=1
+M7 N_12 N_2 GND GND mn15  l=0.13u w=0.17u m=1
+M8 N_35 N_12 N_9 GND mn15  l=0.13u w=0.17u m=1
+M9 GND N_8 N_35 GND mn15  l=0.13u w=0.17u m=1
+M10 N_8 N_9 GND GND mn15  l=0.13u w=0.18u m=1
+M11 Q N_16 GND GND mn15  l=0.13u w=0.26u m=1
+M12 N_17 N_16 GND GND mn15  l=0.13u w=0.18u m=1
+M13 N_9 N_2 N_6 GND mn15  l=0.13u w=0.28u m=1
+M14 N_37 N_2 N_16 GND mn15  l=0.13u w=0.17u m=1
+M15 N_36 N_8 GND GND mn15  l=0.13u w=0.17u m=1
+M16 N_16 N_12 N_36 GND mn15  l=0.13u w=0.17u m=1
+M17 N_37 N_17 GND GND mn15  l=0.13u w=0.17u m=1
+M18 N_18 D VDD VDD mp15  l=0.13u w=0.28u m=1
+M19 N_5 E VDD VDD mp15  l=0.13u w=0.26u m=1
+M20 N_6 E N_19 VDD mp15  l=0.13u w=0.28u m=1
+M21 N_6 N_5 N_18 VDD mp15  l=0.13u w=0.28u m=1
+M22 N_19 N_17 VDD VDD mp15  l=0.13u w=0.28u m=1
+M23 VDD CK N_2 VDD mp15  l=0.13u w=0.42u m=1
+M24 N_6 N_12 N_9 VDD mp15  l=0.13u w=0.42u m=1
+M25 N_20 N_8 VDD VDD mp15  l=0.13u w=0.17u m=1
+M26 N_8 N_9 VDD VDD mp15  l=0.13u w=0.26u m=1
+M27 N_20 N_2 N_9 VDD mp15  l=0.13u w=0.17u m=1
+M28 N_12 N_2 VDD VDD mp15  l=0.13u w=0.42u m=1
+M29 Q N_16 VDD VDD mp15  l=0.13u w=0.4u m=1
+M30 N_17 N_16 VDD VDD mp15  l=0.13u w=0.26u m=1
+M31 N_21 N_2 N_16 VDD mp15  l=0.13u w=0.27u m=1
+M32 N_21 N_8 VDD VDD mp15  l=0.13u w=0.27u m=1
+M33 N_22 N_12 N_16 VDD mp15  l=0.13u w=0.17u m=1
+M34 N_22 N_17 VDD VDD mp15  l=0.13u w=0.17u m=1
+.ends denrq0
 
 * Hierarchy Level 0
 

@@ -151,7 +151,7 @@ class MIPGraphRouter():
             return True, routing_trees
     
         else:
-            msg = 'UNSAT: Constraints not satisfiable.'
+            msg = '    UNSAT: Constraints not satisfiable.'
             print(msg)
             return False, []
 

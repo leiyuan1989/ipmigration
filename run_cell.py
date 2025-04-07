@@ -36,7 +36,7 @@ cells.run()
 
 
 c1 = cells['DFANRQ0']
-c2 = cells['DFNFB0']
+c2 = cells['DENRQ0']
 c3 = cells['DFNFQ0']
 c4 = cells['DFNRB0']
 c5 = cells['DFNRQ0']

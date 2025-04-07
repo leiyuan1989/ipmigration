@@ -4,8 +4,7 @@ track_num = 6
 
 
 pt = Patterns()
-pt.load_route_data(6)
-pt.pattern_routing()
+pt.pattern_routing(6)
 
 pr1 = pt.pattern_route_dict['FCROSS_1']    
 pr2 = pt.pattern_route_dict['FCROSS_4']  

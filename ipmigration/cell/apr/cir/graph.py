@@ -295,6 +295,7 @@ class RouteGraph(nx.Graph):
             G_copy.remove_nodes_from(nodes)
             for node in adj_nodes:    
                 G_copy.add_edge(node,k,cost=1)
+
         return G_copy
             
     def gen_routing_signals(self, route_nets, routing_graph):
@@ -437,6 +438,7 @@ class PatternGraph(nx.Graph):
         G = copy.deepcopy(self)
         l = 1
         r = G.max_col
+        G.max_col = r+1
         
         l_m1 = [t for t in G.nodes if t[0] == l and t[2]==1]
         l_gt = [t for t in G.nodes if t[0] == l and t[2]==0]
@@ -457,13 +459,22 @@ class PatternGraph(nx.Graph):
                         distance = (node1[0] - node2[0]) ** 2 + (node1[1] - node2[1]) ** 2 
                         if distance == 1:
                             G.add_edge(node1, node2, cost=1)
-        
+        m1_nodes = [] 
         for node in r_m1:
             t1,t2,t3 = node
             attr =  {'net':'','loc':(t1+1,t2),'color':'orange'}
             G.add_node((t1+1,t2,t3),**attr)
             G.add_edge(node,(t1+1,t2,t3),cost=1)
- 
+            m1_nodes.append((t1+1,t2,t3))
+        
+        #may have some potential problem for right nodes
+        for node1 in m1_nodes:
+            for node2 in m1_nodes:
+                if node1 != node2:
+                    if not(self.has_edge(node1,node2)):
+                        distance = (node1[0] - node2[0]) ** 2 + (node1[1] - node2[1]) ** 2 
+                        if distance == 1:
+                            G.add_edge(node1, node2, cost=1)
         gt_nodes = []
         for node in l_gt:
             t1,t2,t3 = node
@@ -494,44 +505,44 @@ class PatternGraph(nx.Graph):
             G.nodes[(r+1,t1,t2)]['net'] = net        
         return G
 
-    def add_right_nodes(self,median):
-        max_col = self.max_col
-        self.max_col = max_col+1
-        right_nodes = [t for t in self.nodes if t[0] == max_col and t[2]==1]
-        right_nodes_gt =  [t for t in self.nodes if t[0] == max_col and t[2]==0]
-        for node in right_nodes:
-            t1,t2,t3 = node
-            attr =  {'net':'','loc':(t1+1,t2),'color':'orange'}
-            self.add_node((t1+1,t2,t3),**attr)
-            self.add_edge(node,(t1+1,t2,t3),cost=1)
-        for i in [median-1,median,median+1] :
-            attr1 = {'net':'', 'loc':(max_col+1+0.3, i+0.3),'color':'blue'}
-            attr2 = {'net':'', 'loc':(max_col+1+0.15, i+0.15),'color':'cyan'}
-            self.add_node((max_col+1,i,0),**attr1)
-            self.add_node((max_col+1,i,0.5),**attr2)
-            if (max_col,i,0) in right_nodes_gt:
-                self.add_edge((max_col,i,0),(max_col+1,i,0),cost=3)
+    # def add_right_nodes(self,median):
+    #     max_col = self.max_col
+    #     self.max_col = max_col+1
+    #     right_nodes = [t for t in self.nodes if t[0] == max_col and t[2]==1]
+    #     right_nodes_gt =  [t for t in self.nodes if t[0] == max_col and t[2]==0]
+    #     for node in right_nodes:
+    #         t1,t2,t3 = node
+    #         attr =  {'net':'','loc':(t1+1,t2),'color':'orange'}
+    #         self.add_node((t1+1,t2,t3),**attr)
+    #         self.add_edge(node,(t1+1,t2,t3),cost=1)
+    #     for i in [median-1,median,median+1] :
+    #         attr1 = {'net':'', 'loc':(max_col+1+0.3, i+0.3),'color':'blue'}
+    #         attr2 = {'net':'', 'loc':(max_col+1+0.15, i+0.15),'color':'cyan'}
+    #         self.add_node((max_col+1,i,0),**attr1)
+    #         self.add_node((max_col+1,i,0.5),**attr2)
+    #         if (max_col,i,0) in right_nodes_gt:
+    #             self.add_edge((max_col,i,0),(max_col+1,i,0),cost=3)
             
-            #TODO: if need add ct edge?
-    def add_left_nodes(self,median):
-        right_nodes_gt =  [t for t in self.nodes if t[0] == 1 and t[2]==0]
-        for i in [median-1,median,median+1] :
-            attr1 = {'net':'', 'loc':(0+0.3, i+0.3),'color':'blue'}
-            attr2 = {'net':'', 'loc':(0+0.15, i+0.15),'color':'cyan'}
-            self.add_node((0,i,0),**attr1)
-            self.add_node((0,i,0.5),**attr2)
-            self.add_edge((0,i,0),(0,i,0.5),cost=3)   
-            self.add_edge((0,i,0.5),(0,i,1),cost=3)   
+    #         #TODO: if need add ct edge?
+    # def add_left_nodes(self,median):
+    #     right_nodes_gt =  [t for t in self.nodes if t[0] == 1 and t[2]==0]
+    #     for i in [median-1,median,median+1] :
+    #         attr1 = {'net':'', 'loc':(0+0.3, i+0.3),'color':'blue'}
+    #         attr2 = {'net':'', 'loc':(0+0.15, i+0.15),'color':'cyan'}
+    #         self.add_node((0,i,0),**attr1)
+    #         self.add_node((0,i,0.5),**attr2)
+    #         self.add_edge((0,i,0),(0,i,0.5),cost=3)   
+    #         self.add_edge((0,i,0.5),(0,i,1),cost=3)   
             
             
-            if (1,i,0) in right_nodes_gt:
-                self.add_edge((0,i,0),(1,i,0),cost=3)            
+    #         if (1,i,0) in right_nodes_gt:
+    #             self.add_edge((0,i,0),(1,i,0),cost=3)            
 
-        self.add_edge((0,median-1,0),(0,median,0),cost=3)   
-        self.add_edge((0,median,0),(0,median+1,0),cost=3) 
+    #     self.add_edge((0,median-1,0),(0,median,0),cost=3)   
+    #     self.add_edge((0,median,0),(0,median+1,0),cost=3) 
     
     
-    def gen_routing_graph(self):
+    def gen_routing_graph(self,io_pins,m2_pins):
         G_copy = copy.deepcopy(self)
     
         for k,v in self.pt_connected.items():
@@ -555,20 +566,30 @@ class PatternGraph(nx.Graph):
             G_copy.remove_nodes_from(nodes)
             for node in adj_nodes:    
                 G_copy.add_edge(node,k,cost=1)
+        G_copy.remove_pins(io_pins)
+        G_copy.remove_pins(m2_pins)
         return G_copy
             
-    def gen_route_nets(self, route_nets):
+    def gen_route_nets(self,route_nets):
         signals = []
-        pins = []
+        signals_names = []
+        io_pins = {}
+        pw_pins = {'VDD':[], 'VSS':[]}
         for k,v in route_nets.items():
-            if k !='VDD' and k !='VSS':
+            if k == 'VDD':
+                pw_pins['VDD'].append(v)
+            elif k == 'VSS':
+                pw_pins['VSS'].append(v)
+            else:
                 if len(v)>1:
                     signals.append(set(v))
+                    signals_names.append(k)
                 else:
                     if len(v)==1:
                         if v[0][2] == 0: #pin
-                            pins.append(v[0])        
-        return signals, pins  
+                            io_pins[k] = v[0]  
+
+        return signals, signals_names, io_pins, pw_pins
     
     def remove_pins(self, pins):
         self.remove_nodes_from(pins)
@@ -591,7 +612,18 @@ class PatternGraph(nx.Graph):
         pos = nx.get_node_attributes(self, 'loc')
         grid_columns = max([t[0] for t in self.nodes])
         
-        colors = [self.nodes[node]['color'] for node in self.nodes()]
+        m2_modes = []
+        for t in m2_paths:
+            m2_modes.append(tuple(t[0]))
+            m2_modes.append(tuple(t[1]))
+        
+        # colors = [self.nodes[node]['color'] for node in self.nodes()]
+        colors = []
+        for node in self.nodes():
+            if node in m2_modes:
+                colors.append('black')
+            else:
+                colors.append(self.nodes[node]['color'] )
 
         plt.figure(figsize=(2*grid_columns, 12))
     
