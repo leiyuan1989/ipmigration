@@ -45,15 +45,436 @@ class M2_Tracks(Instance):
             self.data[self.tech.M2].append(box)
 #      
 class M1_Rails(Instance):
-    def __init__(self,cells,left,right):
-        super().__init__(cells.tech)
-        self.vdd_box   = Box([left, cells.rail_vdd.p1, right, cells.rail_vdd.p2] )
-        self.vss_box   = Box([left, cells.rail_vss.p1, right, cells.rail_vss.p2] )
-        self.border_box = Box([left, cells.rail_vss.c , right, cells.rail_vdd.c]  )
-        self.data[self.tech.M1] =[self.vdd_box,self.vss_box]
-        self.data[self.tech.BORDER] = [self.border_box]
+    def __init__(self,tech,left,right):
+        super().__init__(tech)
+        vdd_box   = Box([left, tech.rail_vdd.p1, right, tech.rail_vdd.p2] )
+        vss_box   = Box([left, tech.rail_vss.p1, right, tech.rail_vss.p2] )
+        border_box = Box([left, tech.rail_vss.c , right, tech.rail_vdd.c]  )
+        self.data[tech.M1] =[vdd_box,vss_box]
+        self.data[tech.BORDER] = [border_box]
+        self.border_box = border_box
 
-#
+class NPWELL(Instance):
+    def __init__(self,tech,cfgs,border):
+        super().__init__(tech)
+        
+        SP_box = Box([border.l - cfgs.np_ext_border,
+                      tech.middle,
+                      border.r + cfgs.np_ext_border,
+                      border.t + cfgs.np_ext_border])
+        
+        NW_box = Box([ SP_box.l - cfgs.nw_ext_np,
+                      tech.middle,
+                      SP_box.r + cfgs.nw_ext_np,
+                      SP_box.t + cfgs.nw_ext_np])     
+        
+        SN_box = Box([border.l - cfgs.np_ext_border,
+                            border.b - cfgs.np_ext_border,
+                            border.r + cfgs.np_ext_border,
+                            tech.middle])     
+        self.data[tech.SP] = [SP_box]
+        self.data[tech.NW] = [NW_box]
+        self.data[tech.SN] = [SN_box]
+class M1_Route(Instance):
+    def __init__(self, tech, m1_edges, net_loc, w, eol_nodes):
+        #end_type dict of end of line ct, with direction and end line type
+        super().__init__(tech)
+        #w1 min gt width; w2 cg ct width; w3 mos width
+        self.data['M1'] = []
+        # self.nodes = []
+        
+        h_w = int(0.5*w)    
+
+        for i, net in enumerate(m1_edges):
+            if len(m1_edges[net]) > 0: 
+                for p1, p2 in m1_edges[net]:
+                    # self.nodes.append(p1)
+                    # self.nodes.append(p2)
+                    di = edge_direction(p1,p2)
+                    x1,y1 = net_loc[p1]
+                    x2,y2 = net_loc[p2]
+   
+                    
+                    box =  Box([min(x1,x2)-h_w, 
+                                min(y1,y2)-h_w,  
+                                max(x1,x2)+h_w, 
+                                max(y1,y2)+h_w])
+                    
+                    t_eol = tech.CT_E_M1_END.v
+                    self.data['M1'].append(box)
+                    #TDDO left for end of line 
+                    for eol_p in [p1,p2]:
+                        if eol_p in eol_nodes:
+                            di = eol_nodes[eol_p]
+                            x1,y1  = net_loc[eol_p]
+                            if di == 'ew':
+                                eol_box = Box([x1-tech.CT_W.hv-t_eol, y1-tech.CT_W.hv,
+                                               x1+tech.CT_W.hv+t_eol, y1+tech.CT_W.hv])
+             
+                            self.data['M1'].append(eol_box)
+                        
+
+class M2_Route(Instance):
+    def __init__(self, tech, m2_edges, net_loc):
+        #end_type dict of end of line ct, with direction and end line type
+        super().__init__(tech)
+        #w1 min gt width; w2 cg ct width; w3 mos width
+        self.data['M2'] = []
+        # self.nodes = []
+        
+        h_w = tech.M2_W.hv + tech.V1_E_M_END.v   
+        ext= tech.V1_E_M_END.v +tech.M2_W.hv
+        for i, net in enumerate(m2_edges):
+            p1, p2 = m2_edges[net]
+            p1 = (p1[0],p1[1])
+            p2 = (p2[0],p2[1])
+            x1,y1 = net_loc[p1]
+            x2,y2 = net_loc[p2]
+   
+                
+            box =  Box([min(x1,x2)-ext, 
+                        min(y1,y2)-h_w,  
+                        max(x1,x2)+ext, 
+                        max(y1,y2)+h_w])
+            self.data['M2'].append(box)       
+ 
+
+class GT_Route(Instance):
+    def __init__(self, tech, gt_edges, net_loc, w, draw_data):
+        super().__init__(tech)
+        self.data['GT'] = []
+        h_w = int(0.5*w)
+        for i, net in enumerate(gt_edges):
+            if len(gt_edges[net]) > 0: 
+                for p1, p2 in gt_edges[net]:
+                    x1,y1 = net_loc[p1]
+                    x2,y2 = net_loc[p2]
+                    if p1[0] == p2[0]:
+                        if draw_data[p1[0]]['is_gt']:
+                            w_l = []
+                            if draw_data[p1[0]]['P']:
+                                w_l.append(draw_data[p1[0]]['P'].L)
+                            if draw_data[p1[0]]['N']:
+                                w_l.append(draw_data[p1[0]]['N'].L)
+                            h_w2 = int(0.5*max(w_l))   
+                            box =  Box([min(x1,x2)-h_w2, 
+                                        min(y1,y2)-h_w,  
+                                        max(x1,x2)+h_w2, 
+                                        max(y1,y2)+h_w])
+                            self.data['GT'].append(box) 
+                        else:
+                            box =  Box([min(x1,x2)-h_w, 
+                                        min(y1,y2)-h_w,  
+                                        max(x1,x2)+h_w, 
+                                        max(y1,y2)+h_w])
+                            self.data['GT'].append(box)  
+                    else:
+                            
+                        box =  Box([min(x1,x2)-h_w, 
+                                    min(y1,y2)-h_w,  
+                                    max(x1,x2)+h_w, 
+                                    max(y1,y2)+h_w])
+                        
+                        self.data['GT'].append(box) 
+
+class Pin_Nodes(Instance):
+    def __init__(self, tech, pins , node_loc):
+        super().__init__(tech)
+        self.data['GT'] = []
+        self.data['CT'] = []
+        self.data['M1'] = []
+        h_w1 = tech.CT_W.hv
+        v_w1 = tech.CT_W.hv
+        
+        h_w2 = tech.GT_CT_W.hv
+        v_w2 = tech.GT_CT_W.hv
+        
+        for node in pins:
+            x, y = node_loc[node]
+            box1 =  Box([x-h_w1, y-v_w1, x+h_w1, y+v_w1])
+            box2 =  Box([x-h_w2, y-v_w2, x+h_w2, y+v_w2])
+            self.data['CT'].append(box1)
+            self.data['GT'].append(box2)
+            self.data['M1'].append(box2)
+            
+            
+class CT_Nodes(Instance):
+    def __init__(self, tech, gt_cts, aa_cts, node_loc):
+        super().__init__(tech)
+        self.data['GT'] = []
+        self.data['CT'] = []
+        h_w1 = tech.CT_W.hv
+        v_w1 = tech.CT_W.hv
+        
+        h_w2 = tech.GT_CT_W.hv
+        v_w2 = tech.GT_CT_W.hv
+        
+        for node in gt_cts:
+            x, y = node_loc[node]
+            box1 =  Box([x-h_w1, y-v_w1, x+h_w1, y+v_w1])
+            box2 =  Box([x-h_w2, y-v_w2, x+h_w2, y+v_w2])
+            self.data['CT'].append(box1)
+            self.data['GT'].append(box2)
+
+        for node in aa_cts:
+            x, y = node_loc[node]
+            box1 =  Box([x-h_w1, y-v_w1, x+h_w1, y+v_w1])
+            self.data['CT'].append(box1)  
+
+
+class V1_Nodes(Instance):
+    #if 2 vias are needed
+    def __init__(self, tech, v1_pins, node_loc):
+        super().__init__(tech)
+        self.data['V1'] = []
+        w = tech.V1_W.hv
+
+    
+        for node in v1_pins:
+            x, y = node_loc[(node[0],node[1])]
+            box =  Box([x-w, y-w, x+w, y+w])
+
+            self.data['V1'].append(box)
+            # self.data['GT'].append(box2)
+
+
+
+
+class GT_AA(Instance):
+    #TODO: need revise for future more vmodes
+    def __init__(self, tech, draw_data, gt_cts,aa_cts,pw_pins, node_loc, pattern_router):
+        super().__init__(tech)
+        tp = pattern_router.track_num-1
+        mu = pattern_router.median_u
+        md = pattern_router.median_d
+        dn = 0
+        dn = tech.gt_dn_rg.p1 + tech.GT_X_AA.v
+        tp = tech.gt_up_rg.p2 - tech.GT_X_AA.v
+        self.data['GT'] = []
+        self.data['AA'] = []
+        self.data['CT'] = []
+        self.data['M1'] = []
+        
+        for col,attr in draw_data.items():
+            if attr['is_gt']:
+                if attr['P']:
+                    L = attr['P'].L
+                    W = attr['P'].W
+                    h_l = int(0.5*L)
+                    x,bottom = node_loc[(col,mu)]
+                    box1 =  Box([x-h_l, 
+                                bottom,  
+                                x+h_l, 
+                                tech.gt_up_rg.p2])
+                    
+                    box2 =  Box([x-h_l, 
+                                tp-W,  
+                                x+h_l, 
+                                tp])
+                    
+                    self.data['GT'].append(box1) 
+                    self.data['AA'].append(box2) 
+                if attr['N']:
+                    L = attr['N'].L
+                    W = attr['N'].W
+                    h_l = int(0.5*L)
+                    x,top = node_loc[(col,md)]
+                    box1 =  Box([x-h_l, 
+                                tech.gt_dn_rg.p1,  
+                                x+h_l, 
+                                top])
+                    box2 =  Box([x-h_l, 
+                                dn,  
+                                x+h_l, 
+                                dn+W])
+                        
+                    self.data['GT'].append(box1) 
+                    self.data['AA'].append(box2) 
+            else:
+                aa_ct_p = [tuple(t) for t in aa_cts if t[0]==col and t[1]>=mu]
+                aa_ct_n = [tuple(t) for t in aa_cts if t[0]==col and t[1]<=md]
+                pw_ct_p = [(t[0],t[1]) for t in pw_pins['VDD'][0] if t[0]==col]
+                pw_ct_n = [(t[0],t[1]) for t in pw_pins['VSS'][0] if t[0]==col]
+  
+                sd_x,_ = node_loc[(col,0)]
+                if attr['P']:
+                    top_loc = tp
+                    l_d = draw_data[col-1]['P']
+                    r_d = draw_data[col+1]['P']
+
+                    if l_d and r_d:
+                        sd_x_l,_ = node_loc[(col-1,0)] 
+                        sd_x_r,_ = node_loc[(col+1,0)] 
+                        W1 = l_d.W
+                        W2 = r_d.W 
+                        box1 = Box([sd_x_l,top_loc-W1,sd_x,top_loc])  
+                        box2 = Box([sd_x,top_loc-W2,sd_x_r,top_loc])   
+                        self.data['AA'].append(box1)  
+                        self.data['AA'].append(box2) 
+                    elif l_d:
+                        sd_x_l,_ = node_loc[(col-1,0)] 
+                        sd_x_r = sd_x + tech.CT_E_AA.v + tech.CT_W.hv
+                        W1 = l_d.W
+                        box1 = Box([sd_x_l,top_loc-W1,sd_x_r,top_loc])   
+                        self.data['AA'].append(box1)  
+                    elif r_d:
+                        sd_x_r,_ = node_loc[(col+1,0)] 
+                        sd_x_l = sd_x - tech.CT_E_AA.v - tech.CT_W.hv
+                        W1 = r_d.W
+                        box1 = Box([sd_x_l,top_loc-W1,sd_x_r,top_loc])   
+                        self.data['AA'].append(box1)  
+                    
+                    if aa_ct_p:
+                        x,y = node_loc[aa_ct_p[0]]
+                        w = tech.CT_E_AA.v + tech.CT_W.hv
+                        box1 =  Box([x-w,y-w,x+w,tp])
+                        self.data['AA'].append(box1)  
+                    if pw_ct_p:
+                        x,y = node_loc[pw_ct_p[0]]
+                        w = tech.CT_W.hv
+                        ext = tech.CT_E_AA.v
+                        box1 = Box([x-w,tech.ct_up_rg.p1,x+w,tech.ct_up_rg.p2])
+                        w = tech.CT_W.hv + tech.CT_E_AA.v 
+                        ext = tech.CT_E_AA.v
+                        box2 = Box([x-w,tp,x+w,tech.ct_up_rg.p2 + ext])
+                        
+                        
+                        self.data['CT'].append(box1) 
+                        self.data['M1'].append(box1)
+                        self.data['AA'].append(box2)
+                        
+                        
+                
+                if attr['N']:
+                    down_loc = dn
+                    l_d = draw_data[col-1]['N']
+                    r_d = draw_data[col+1]['N']
+
+                    if l_d and r_d:
+                        sd_x_l,_ = node_loc[(col-1,0)] 
+                        sd_x_r,_ = node_loc[(col+1,0)] 
+                        W1 = l_d.W
+                        W2 = r_d.W 
+                        box1 = Box([sd_x_l,down_loc,sd_x,down_loc+W1])  
+                        box2 = Box([sd_x,down_loc,sd_x_r,down_loc+W2])   
+                        self.data['AA'].append(box1)  
+                        self.data['AA'].append(box2) 
+                    elif l_d:
+                        sd_x_l,_ = node_loc[(col-1,0)] 
+                        sd_x_r = sd_x + tech.CT_E_AA.v + tech.CT_W.hv
+                        W1 = l_d.W
+                        box1 = Box([sd_x_l,down_loc,sd_x_r,down_loc+W1])   
+                        self.data['AA'].append(box1)  
+                    elif r_d:
+                        sd_x_r,_ = node_loc[(col+1,0)] 
+                        sd_x_l = sd_x - tech.CT_E_AA.v - tech.CT_W.hv
+                        W1 = r_d.W
+                        box1 = Box([sd_x_l,down_loc,sd_x_r,down_loc+W1])   
+                        self.data['AA'].append(box1)                      
+                    if aa_ct_n:
+                        x,y = node_loc[aa_ct_n[0]]
+                        w = tech.CT_E_AA.v + tech.CT_W.hv
+                        box1 =  Box([x-w,dn,x+w,y+w])
+                        self.data['AA'].append(box1)  
+                        
+                    if pw_ct_n:
+                        x,y = node_loc[pw_ct_n[0]]
+                        w = tech.CT_W.hv
+                        ext = tech.CT_E_AA.v
+                        box1 = Box([x-w,tech.ct_dn_rg.p1,x+w,tech.ct_dn_rg.p2])
+                        w = tech.CT_W.hv + tech.CT_E_AA.v 
+                        ext = tech.CT_E_AA.v
+                        box2 = Box([x-w,tech.ct_dn_rg.p1 - ext,x+w,dn])
+                        
+                        self.data['CT'].append(box1) 
+                        self.data['M1'].append(box1)
+                        self.data['AA'].append(box2)                  
+                        
+                    
+                    
+                #     L = attr['P'].L
+                #     W = attr['P'].W
+                #     h_l = int(0.5*L)
+                #     x,bottom = node_loc[(col,mu)]
+                #     box1 =  Box([x-h_l, 
+                #                 bottom,  
+                #                 x+h_l, 
+                #                 tech.gt_up_rg.p2])
+                    
+                #     box2 =  Box([x-h_l, 
+                #                 tp-W,  
+                #                 x+h_l, 
+                #                 tp])
+                    
+                #     self.data['GT'].append(box1) 
+                #     self.data['AA'].append(box2) 
+                # if attr['N']:
+                #     L = attr['N'].L
+                #     W = attr['N'].W
+                #     h_l = int(0.5*L)
+                #     x,top = node_loc[(col,md)]
+                #     box1 =  Box([x-h_l, 
+                #                 tech.gt_dn_rg.p1,  
+                #                 x+h_l, 
+                #                 top])
+                #     box2 =  Box([x-h_l, 
+                #                 dn,  
+                #                 x+h_l, 
+                #                 dn+W])
+                        
+                #     self.data['GT'].append(box1) 
+                #     self.data['AA'].append(box2) 
+                
+        
+        
+        
+        # self.x = x
+        # self.w = mos.W
+        # self.l = mos.L
+        # # self.net = net
+
+        # self.data['GT'] = []
+        # self.data['AA'] = []
+        
+        # gt_h_range = Range(x, self.l)
+
+        # self.GT_box = Box([gt_h_range.p1, gt_v_range.p1, gt_h_range.p2, gt_v_range.p2 ])
+        #    # b7 = Box([p1,w,h,'c'],name='b7') 
+        # if mos.T == 'P':
+        #     self.AA_box = Box([gt_h_range.p1, aa_range.p1, gt_h_range.p2, aa_range.p1 + self.w])
+        # else:
+        #     self.AA_box = Box([gt_h_range.p1, aa_range.p2 - self.w, gt_h_range.p2, aa_range.p2])
+            
+        # # self.AA_box = self.GT_box.copy()
+
+
+        # self.data['GT'].append(self.GT_box)
+        # self.data['AA'].append(self.AA_box)
+
+
+
+class AA_SD(Instance):
+    def __init__(self, tech, draw_data, aa_cts, pw_pins):        
+        super().__init__(tech)
+        self.data['AA'] = []
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -85,59 +506,13 @@ class CT_GT(Instance):
         self.data['GT'].append(self.GT_box)
         self.data['CT'].append(self.CT_box)
 
-class CT_Nodes(Instance):
-    def __init__(self, tech, gt_cts, aa_cts, node_loc, nodes_attr):
-        super().__init__(tech)
-        self.data['GT'] = []
-        self.data['CT'] = []
-        h_w1 = tech.CT_W.hv
-        v_w1 = tech.CT_W.hv
-        
-        h_w2 = tech.GT_CT_W.hv
-        v_w2 = tech.GT_CT_W.hv
-        
-        for node in gt_cts:
-            x, y = node_loc[node]
-            box1 =  Box([x-h_w1, y-v_w1, x+h_w1, y+v_w1])
-            box2 =  Box([x-h_w2, y-v_w2, x+h_w2, y+v_w2])
-            self.data['CT'].append(box1)
-            self.data['GT'].append(box2)
-
-        for node in aa_cts:
-            x, y = node_loc[node]
-            box1 =  Box([x-h_w1, y-v_w1, x+h_w1, y+v_w1])
-            self.data['CT'].append(box1)  
 
 
         # self.data['AA'] = [self.AA_box]
         
 
 #        
-class GT_AA(Instance):
-    def __init__(self, tech, x, gt_v_range, aa_range, mos):
-        super().__init__(tech)
-        self.x = x
-        self.w = mos.W
-        self.l = mos.L
-        # self.net = net
 
-        self.data['GT'] = []
-        self.data['AA'] = []
-        
-        gt_h_range = Range(x, self.l)
-
-        self.GT_box = Box([gt_h_range.p1, gt_v_range.p1, gt_h_range.p2, gt_v_range.p2 ])
-           # b7 = Box([p1,w,h,'c'],name='b7') 
-        if mos.T == 'P':
-            self.AA_box = Box([gt_h_range.p1, aa_range.p1, gt_h_range.p2, aa_range.p1 + self.w])
-        else:
-            self.AA_box = Box([gt_h_range.p1, aa_range.p2 - self.w, gt_h_range.p2, aa_range.p2])
-            
-        # self.AA_box = self.GT_box.copy()
-
-
-        self.data['GT'].append(self.GT_box)
-        self.data['AA'].append(self.AA_box)
 
 
 class EdgeRoute(Instance):
@@ -193,66 +568,18 @@ class EdgeRoute(Instance):
 
 
 
-class M1_Route(Instance):
-    def __init__(self, tech, m1_edges, matrix, w, eol_nodes):
-        #end_type dict of end of line ct, with direction and end line type
-        super().__init__(tech)
-        #w1 min gt width; w2 cg ct width; w3 mos width
-        self.data['M1'] = []
-        # self.nodes = []
-        
-        h_w = int(0.5*w)    
+ 
 
-        for i, net in enumerate(m1_edges):
-            if len(m1_edges[net]) > 0: 
-                for p1, p2 in m1_edges[net]:
-                    # self.nodes.append(p1)
-                    # self.nodes.append(p2)
-                    di = edge_direction(p1,p2)
-                
-                    x1,y1 = matrix[p1[0]][p1[1]-1]
-                    x2,y2 = matrix[p2[0]][p2[1]-1]
+       
+   
                     
-                    box =  Box([min(x1,x2)-h_w, 
-                                min(y1,y2)-h_w,  
-                                max(x1,x2)+h_w, 
-                                max(y1,y2)+h_w])
-                    
-                    t_eol = tech.CT_E_M1_END.v
-                    #TDDO left for end of line 
-                    if p1 in eol_nodes:
-                        di  = eol_nodes[p1]
-                        if di == 'e':
-                            eol_box = Box([x1-tech.CT_W.h_v-t_eol, y1-tech.CT_W.h_v,
-                                           x1+tech.CT_W.h_v, y1+tech.CT_W.h_v])
-                        elif di == 'w':
-                            eol_box = Box([x1-tech.CT_W.h_v, y1-tech.CT_W.h_v,
-                                           x1+tech.CT_W.h_v+t_eol, y1+tech.CT_W.h_v])                            
-                        else:
-                            eol_box = Box([x1-tech.CT_W.h_v-t_eol, y1-tech.CT_W.h_v,
-                                           x1+tech.CT_W.h_v+t_eol, y1+tech.CT_W.h_v])
-                        self.data['M1'].append(eol_box)
-                        
-                    if p2 in eol_nodes:
-                        di  = eol_nodes[p2]
-                        if di == 'e':
-                            eol_box = Box([x2-tech.CT_W.h_v-t_eol, y2-tech.CT_W.h_v,
-                                           x2+tech.CT_W.h_v, y2+tech.CT_W.h_v])
-                        elif di == 'w':
-                            eol_box = Box([x2-tech.CT_W.h_v, y2-tech.CT_W.h_v,
-                                           x2+tech.CT_W.h_v+t_eol, y2+tech.CT_W.h_v])                            
-                        else:
-                            eol_box = Box([x2-tech.CT_W.h_v-t_eol, y2-tech.CT_W.h_v,
-                                           x2+tech.CT_W.h_v+t_eol, y2+tech.CT_W.h_v])
-                        self.data['M1'].append(eol_box)
-                    
-                    self.data['M1'].append(box)
+                  
                     
         # self.nodes = list(set(self.nodes))
 
 
 #
-class AA_SD(Instance):
+class AA_SD_bk(Instance):
     def __init__(self, tech, mos_type, x, left_gt, right_gt, matrix, ct_aa_nodes):
         #ct num: -1: all, 1.2.3... num of cts 
         #not enough

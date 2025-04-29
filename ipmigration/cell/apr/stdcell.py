@@ -4,23 +4,12 @@
 @author: leiyuan
 """
 import os
-import json
 import copy
 from ipmigration.cell.apr.cir.decompose import DeCKT
 from ipmigration.cell.apr.pr.pattern_placer import Placer
-from ipmigration.cell.apr.cir.graph import RouteGraph
-from ipmigration.cell.apr.tech import VMode
-from ipmigration.cell.apr.pr.smt_router import MIPGraphRouter
-from ipmigration.cell.apr.pr.analog_router import AnalogRouter1
-from ipmigration.cell.apr.io.route_loader import load_routing_expertise,save_routing_expertise,list_to_tuple
 from ipmigration.cell.apr.utils.utils import concatenate_images
-from ipmigration.cell.apr.cir.patterns import PatternRouter
-
-
-
-
-from  ipmigration.cell.apr.lyt.instance import GT_AA, CT_GT, CT_Nodes, EdgeRoute ,AA_SD,POWER
-
+from ipmigration.cell.apr.cir.patterns import PatternRouter,PatternDrawer
+from ipmigration.cell.apr.lyt.instance import M1_Rails,NPWELL
 
 class StdCell:
     def __init__(self, ckt, tech, cfgs, patterns,route_db):
@@ -32,7 +21,7 @@ class StdCell:
         self.route_path = []
         
         self.route_db = route_db
-
+        
         
     def run(self,top_layout,db_layers):
        
@@ -108,7 +97,7 @@ class StdCell:
                                       load=[routed_edges, io_pins, pw_pins, m2_edges,v1_pins],
                                       savefig = save_fig_path) 
                     self.route_path.append(save_fig_path)
-                    p.pr_router = pt_router
+                    p.pt_router = pt_router
                 else:
                     print('  %s is not found in RouteDB! Route by Router'%(p.pattern_name))
                     route_rst = False
@@ -123,7 +112,7 @@ class StdCell:
                                    routed_edges, io_pins, pw_pins, m2_edges,v1_pins, save=True)
                             route_rst = True
                             self.route_path.append(save_fig_path)
-                            p.pr_router = pt_router
+                            p.pt_router = pt_router
                             break
                     if not(route_rst):
                         l_nodes_o = copy.deepcopy(l_nodes)
@@ -146,7 +135,7 @@ class StdCell:
                                            routed_edges, io_pins, pw_pins, m2_edges, v1_pins, save=True)
                                     route_rst = True
                                     self.route_path.append(save_fig_path)
-                                    p.pr_router = pt_router
+                                    p.pt_router = pt_router
                                     break
                             if route_rst:
                                 break
@@ -169,13 +158,19 @@ class StdCell:
 
     
     def detail_pr(self):
-        cfgs = self.cfgs
-        tech = self.tech
         #init db layout and cell and shapes of cell, then we can use insert function.
+        x = self.cfgs.cell_offset_x + self.tech.CT_E_AA.v + self.tech.CT_W.hv 
+        x = self.cfgs.cell_offset_x #revise to up if is_start is used in future
+        for i, pattern in enumerate(self.queue): 
+            is_start = True if i == 0 else False 
 
-        x =  cfgs.cell_offset_x + tech.CT_E_AA.v + tech.CT_W.hv        
-        for i, pattern in enumerate(self.queue):   
-            pattern.draw(x)       
+            pt_drawer = PatternDrawer(pattern, self)
+            x = pt_drawer.run(x,is_start)
+            pt_drawer.draw()
+      
+            pattern.pt_drawer = pt_drawer
+        self.post_process(right= x)
+       
 
             # if i != len(structs_queue)-1:
             #     if not(struct.struct_ckt_name in merge_structs()):
@@ -344,62 +339,37 @@ class StdCell:
         
 
    
-    def post_process(self, ckt, right, left=0, m2_tracks=False):
+    def post_process(self, right, left=0, m2_tracks=False):
         #TODO add merge shapes
-        
+        self.data = []
         
         #draw power ground rail
-        m1_rails  = M1_Rails(self, left, right)
-        m1_rails.draw(ckt)
-        ckt.border = m1_rails.border_box
+        m1_rails  = M1_Rails(self.tech, left, right)
+        self.data.append(m1_rails.data)
+      
         
-        if m2_tracks:
-            m2_tracks = M2_Tracks(self, left, right)
-            m2_tracks.draw(ckt)
+        # if m2_tracks:
+        #     m2_tracks = M2_Tracks(self, left, right)
+        #     m2_tracks.draw(ckt)
         
-        #border and diffusion
-        border = ckt.border
-        ckt.SP_box = Box([border.l - self.np_ext_border,
-                           self.middle,
-                           border.r + self.np_ext_border,
-                           border.t + self.np_ext_border])
-        
-        ckt.NW_box = Box([ ckt.SP_box.l - self.nw_ext_np,
-                           self.middle,
-                           ckt.SP_box.r + self.nw_ext_np,
-                           ckt.SP_box.t + self.nw_ext_np])     
-        
-        ckt.SN_box = Box([border.l - self.np_ext_border,
-                           border.b - self.np_ext_border,
-                           border.r + self.np_ext_border,
-                           self.middle])      
-        
-        ckt.db_shapes[self.tech.NW].insert( ckt.NW_box.to_dbBox())
-        ckt.db_shapes[self.tech.SP].insert( ckt.SP_box.to_dbBox())
-        ckt.db_shapes[self.tech.SN].insert( ckt.SN_box.to_dbBox())    
-    
-    def draw(self, ckt):
-        for k,v in self.data.items():
-            for layer in v:    
-                for box in v[layer]:
-                    ckt.db_shapes[layer].insert(box.to_dbBox())
+        # #border and diffusion
+        npwell = NPWELL(self.tech,self.cfgs,m1_rails.border_box)
+        self.data.append(npwell.data)
+        self.draw()
 
     
-
-
-    def col_space(self,pattern, start_x, nodes_attr, tech ):
-        x_axis = []
-        for i in range(pattern.max_col+1):
-            x_axis.append(start_x + 366*i)
-        #return list of detail axis
-        return x_axis
-
-
-    def draw(self,pattern):
-        for v in pattern.data:
+    def draw(self):
+        for v in self.data:
             for layer in v:    
                 for box in v[layer]:
                     self.db_shapes[layer].insert(box.to_dbBox())
+
+    
+
+
+
+
+
 
 
 

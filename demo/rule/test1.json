@@ -1,0 +1,5 @@
+{
+  "model": "deepseek-r1:32b",
+  "prompt": "who are you?",
+  "format": "json"
+}

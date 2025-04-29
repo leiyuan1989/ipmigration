@@ -86,7 +86,8 @@ class ASCell:
                     side_nodes_statistics+=cell.side_nodes_statistics
                     
                     success.append(cell)
-                #     break
+            #     break
+            # break
         self.success = success
         self.gen_gds()     
         statis_path = os.path.join(self.cfgs.output_dir, 'side_nodes_statistics.txt')
@@ -95,81 +96,22 @@ class ASCell:
 
 
 
-
-
-    def run_bk(self,file, app = None):
-        self.time_record = {}
-        time_s = time.time()
-        
-        logger.info('ascell-> Begin processing tech%s @ %s'%(self.tech.tech_name, time.asctime()))
-        
-        self.le = lego.LEGO(self.args.pin_align_file)
-        self.le.run(self.tech.tech_name, self.args.model_file, self.args.netlist)
-        self.le.pass_rate()
-        self.ckt_dict = self.le.ckt_dict
-        # print('Fail cells:', self.le.fail_l[self.tech.tech_name])  some error here
-        time_s,_ = timer(time_s, 'Circuits deconstruction use')
-        
-        #le.ckt_dict
-        
-        count = 0
-        ckts_collection = {}    
-        
-        #for test
-        if len(self.args.test_ckts) >0:
-            for ckt_name,ckt in self.le.ckts_collection.items():  
-                if ckt_name in self.args.test_ckts:
-                    ckts_collection[ckt_name] = ckt        
-        else:
-            ckts_collection = self.le.ckts_collection
-        
-        
-        for ckt_name,ckt in ckts_collection.items():
-            if ckt.de:
-                #TODO add process time
-                logger.info('@'*60)
-                logger.info('Begin processing circuit %s'%(ckt_name))
-                
-                if app:
-                    text = 'Begin processing circuit %s \n'%(ckt_name)
-                    app.text_box.insert(tk.END,  time.asctime() +'\n') 
-                    app.text_box.insert(tk.END, text)   
-                    app.root.update_idletasks()
-                
-                time_s = time.time()
-                result, msg = self.apr(ckt, file)
-                
-                if not(result):
-                    #TODO log
-                    logger.info('Error 02! Circuit %s netlist cannot be APR: %s!'%(ckt_name,msg))
-                else:
-                    logger.info('Success! Circuit %s'%(ckt_name))
-                    
-                    if app:
-                        text = 'Success! Circuit %s \n'%(ckt_name)
-                        app.text_box.insert(tk.END,  time.asctime() +'\n') 
-                        app.text_box.insert(tk.END, text)
-                        
-                        app.progress['value'] += 10
-                        app.root.update_idletasks()
-                    
-                
-                time_s, time_used = timer(time_s, 'Time used: ')
-                self.time_record[self.tech.tech_name +'->' + ckt_name] = time_used   
-            else: 
-                logger.info('Error 01! Circuit %s netlist cannot be processed!'%(ckt_name))
-            
-
-        self.output_gds()
-        self.data_file.close()  
-   
-        
-
-
-
-
-
     def gen_gds(self):
+        #merge
+   
+        layout = self.layout
+        work_layer = layout.layer()
+        for li in layout.layer_indexes():
+          for ci in layout.each_top_cell():
+             c=layout.cell(ci)
+             mergeReg = db.Region(c.begin_shapes_rec(li))
+             mergeReg.merge()
+             c.shapes(work_layer).insert(mergeReg)
+          layout.clear_layer(li)   # clears all cells
+          layout.swap_layers(li, work_layer)     # move work_layer in place of the layer li
+
+        #end merge
+        
         self.layout.dbu = self.db_unit * 1e6 # 0.001 micro 
         # Write GDS.
         gds_file_name = 'top.gds'
@@ -177,7 +119,7 @@ class ASCell:
         logger.info("Write GDS: %s", gds_out_path)
         self.layout.write(gds_out_path)        
         
-        
+
         
 def save_side_nodes_statistics(path, side_nodes_statistics):
     with open(path, 'w', encoding='utf-8') as file:

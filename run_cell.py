@@ -24,10 +24,14 @@ runfile('demo/cell_apr/rule/extract_rule.py',wdir='./')
 args.input = 'demo/cell_apr/setting_c110.csv'
 
 cfgs  = cfg.Cfg(args.input, args.log_level)
-# cfgs.io_offset
-# if EXTRACT_PIN:
-#     from ipmigration.cell.apr.cir.netlist import Netlist
-#     Netlist.extract_pins(cfgs.model_file, cfgs.netlist, cfgs.output_dir  )
+
+#TODO
+'''
+1. More db
+2. db with fast index
+3. text add
+4. pin align
+'''
 
 
 tech  = Tech(cfgs)
@@ -44,7 +48,7 @@ c6 = cells['DFSCRQ0']
 c7 = cells['SDANRQ0']
 c8 = cells['SDNFB0']
 c9 = cells['LANLB0']
-
-pattern = c1.queue[3]
+p0 = c2.queue[0]
+p1 = c2.queue[1]
 # app = App(ascell)
 # app.run(data,args)

@@ -273,11 +273,12 @@ class Tech(object):
             median1 = num // 2
             median2 = median1 - 1
             median = median2
+            self.middle = int(0.5*(self.M1_tracks[median2].c + self.M1_tracks[median1].c))
         else:
             median1 = num // 2
             median2 = median1 - 1
             median = median1
-        
+            self.middle = self.M1_tracks[median1].c 
         self.median  = median
         self.median1 = median1
         self.median2 = median2       
@@ -625,8 +626,48 @@ class DR(object):
     def hv(self):
         return int(0.5*self.value)
 
-
 def place_rectangles(height, h, s):
+    # 先计算理论上最多能放的长方形数量
+    max_possible_n = 0
+    while True:
+        total_height_needed = max_possible_n * h + (max_possible_n + 1) * s
+        if total_height_needed > height:
+            break
+        max_possible_n += 1
+    # 确定实际能放置的长方形数量
+    n = max_possible_n - 1
+    if n < 0:
+        print("给定的总高度无法放置任何长方形。")
+        return []
+    # 计算所有长方形占用的总高度
+    total_rect_height = n * h
+    # 计算至少需要的间距总长度，n 个长方形有 n + 1 个间距
+    min_gap_space = (n + 1) * s
+    # 计算剩余可用于分配额外间距的空间
+    remaining_space = height - total_rect_height - min_gap_space
+    positions = []
+    if n % 2 == 1:  # 长方形数量为奇数
+        mid_index = n // 2
+        current_height = s
+        for i in range(n):
+            if i == mid_index:
+                current_height += remaining_space
+            positions.append(current_height)
+            current_height += h + s
+    else:  # 长方形数量为偶数
+        mid_index1 = n // 2 - 1
+        mid_index2 = n // 2
+        current_height = s
+        for i in range(n):
+            if i == mid_index1:
+                current_height += remaining_space // 2
+            elif i == mid_index2:
+                current_height += remaining_space - remaining_space // 2
+            positions.append(current_height)
+            current_height += h + s
+    return positions
+
+def place_rectangles_bk(height, h, s):
     # 先计算理论上最多能放的长方形数量
     max_possible_n = 0
     while True:
