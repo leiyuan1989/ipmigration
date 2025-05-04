@@ -1,0 +1,7 @@
+layer,layer_def,dr,category,description,symbol,value
+TB,N-Well,TB.a,Width,: Minimum NW width must be  >= 0.8um  ,>=,0.8 um  
+TB,N-Well,TB.b1.1,Spacing,: Min space between two NW with different potential must be  >=  1.53 um  ,>=,1.53 um  
+TB,N-Well,TB.b.2,Spacing,: Min space between two NW with same potential must be  >=  0.8 um  ,>=,0.8 um  
+TB,N-Well,TB.c,Width,: Min width of an NW region not connect to most positive power supply must be  >= 1.784 um  ,>=,1.784 um  
+TB,N-Well,TB.d,Area,: Min area of NW must be  >= 4.0 um2  ,>=,4.0 um2  
+TB,N-Well,TB.e,Restrictions,": TO is not allowed to placed ,  if the space between two NW less than 0.96um  ",<,0.96 um  

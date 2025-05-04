@@ -1,0 +1,10 @@
+layer,prop,defination
+NW ,drawing ,N-Well
+AA,drawing ,Active
+GT,drawing ,Poly
+SP,drawing ,P+ implant
+SN,drawing ,N+ implant
+CT ,drawing ,Contact
+M1 ,drawing ,Metal 1
+V1,drawing ,Via1
+M2,drawing ,Metal2

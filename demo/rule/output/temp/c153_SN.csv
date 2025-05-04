@@ -1,0 +1,11 @@
+layer,layer_def,dr,category,description,symbol,value
+SN,N+ implant,a,Width,Minimum SN width requirement,>=,0.356 um
+SN,N+ implant,b,Spacing,Minimum spacing between SN elements,>=,0.356 um
+SN,N+ implant,b1,Spacing,Minimum spacing on STI; merge if less than or equal to specified value,<=,0.42 um
+SN,N+ implant,c,Spacing,Minimum spacing along the poly gate direction,>=,0.296 um
+SN,N+ implant,d,Extension,Minimum extension requirement for SN over N+active regions,>=,[specific value] um
+SN,N+ implant,e,Area,Minimum area requirement for resist patterns in NPLUS regions,>=,0.64 um²
+SN,N+ implant,f_1,Enclosure,Minimum overlap requirement for SN edge over active regions,>=,0.194 um
+SN,N+ implant,f_2,Enclosure,Alternative minimum overlap requirement for SN edge over active regions,>=,0.15 um
+SN,N+ implant,s,Area,Minimum area required for the SN layer,>=,0.4 um²
+SN,N+ implant,w,Area,Minimum area required for resist patterns within NPLUS regions,>=,0.64 um²

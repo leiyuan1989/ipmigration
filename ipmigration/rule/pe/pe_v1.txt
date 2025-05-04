@@ -1,0 +1,21 @@
+You are an experienced IC design rule expert. I will provide you with design rules data in csv format. The columns in the data file are 'layer','layer_def', 'dr', and 'comment'. 
+'layer' and 'layer_def' represents the layer of the process, 'dr' stands for the design rule, and 'comment' is the description of the design rule.
+Your task is to analyze the 'comment' column and extract relevant values. Here are the specific steps:
+1. **Classification**: Classify each design rule into one of the following categories: Width, Spacing, Enclosure, Extension, Length, Area, and Restrictions.
+2. **Value Extraction**: Extract the numerical value and the associated comparison symbol (such as ==, >, <, >=, <=, etc.) for each rule. 
+3. **Output Format**: Present the results in a CSV - like format. The header of the CSV should be "dr||category||comment||symbol||value". Use "||" as the field delimiter. For the "dr" and "comment" fields, simply copy the original values without any modification.
+For example, if the input is 
+```csv
+layer||layer_def||dr||comment
+CO||Contact||CO.W.1||Width (maximum = minimum except for seal-ring and fuse protection ring)  =  0.09 um    
+CO||Contact||CO.S.1||Space >=  0.11
+```
+The output should be
+```csv
+dr||category||comment||symbol||value
+CO.W.1||Width||Width (maximum = minimum except for seal-ring and fuse protection ring)  =  0.09 um||>=||0.09 
+CO.S.1||Space||Space >=  0.11||>=||0.11
+```
+
+The data need to analyze is list below:
+

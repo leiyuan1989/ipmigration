@@ -8,13 +8,13 @@
 
 import os
 import re
+import csv
 import logging
 import collections
 import pandas as pd#'2.0.3'
 import numpy as np #version '1.26.4'
-# import spacy #'3.7.5'
+from ollama import Client
 
-from ipmigration.rule.apis.llmapi import API
 
 logger = logging.getLogger(__name__)
 
@@ -24,7 +24,6 @@ def str2float(val):
     return float(numstr) * unit_multipliers[unit] if unit is not None else float(numstr)
 
         
-
 DEBUG = True
 DEBUG = False
 unit_multipliers = {
@@ -76,23 +75,22 @@ keywords = ['#DEFINE', '#IFDEF', '#ELSE', '#ENDIF', '#IFNDEF',
 
 
 class RuleFile:
-    def __init__(self, tech_name,  cal_file, save_dir, tech_align_file, dr_template,kws_file,log_level,llm_api):       
-        self.log_level = log_level
+    def __init__(self, tech_name, drc_deck, layer_def, client_host,
+                       save_dir, drs, log_level):       
         self.format = "svrf"
         self.tvf_rules = None
-        
         self.tech_name = tech_name
-        self.dir_path = os.path.dirname(cal_file)
-
-        self.read_dr_template(dr_template)
-        self.read_tech_align(tech_align_file)
-        self.read_kws_file(kws_file)
+        self.dir_path = os.path.dirname(drc_deck)
+        self.read_layer_def(layer_def)
+        if drs:
+            self.read_drs(drs)
+        self.log_level = log_level
         self.save_dir = save_dir
-        self.llm = llm_api
-        
-        
-        self.preprocess(cal_file)
-                
+        self.client_host = client_host
+        self.pe = 'ipmigration/rule/pe/pe_v1.txt'
+        self.model = 'deepseek-r1:32b'
+        self.preprocess(drc_deck)
+                    
     
     def preprocess(self, file):
         file_name = os.path.basename(file)
@@ -137,7 +135,7 @@ class RuleFile:
         self.cache = [t.strip() for t in text.splitlines() if t.strip()]
 
 
-        if self.log_level=="DEBUG":
+        if self.log_level == 'DEBUG':
             f = open(os.path.join(temp_dir,file_name + '_clean'),'w')
             f.write(text)
             f.close()
@@ -401,12 +399,6 @@ class RuleFile:
 
         return svrf_text,rulecheck_dic
 
-
-
-
-
-
-
     def pop_data(self):
         if len(self.cache) == 0:
             return False, None, None, None
@@ -425,7 +417,7 @@ class RuleFile:
                     return True,'EXPR', line, None
                 elif '{bracket}' in line:
                     rule_name = line.split('{')[0].strip()
-                    for layer in self.layer_match_r:
+                    for layer in self.layers:
                         if rule_name.startswith(layer):
                             return True, 'RULE', rule_name, None   
                     #not in layer list or others
@@ -436,17 +428,15 @@ class RuleFile:
                     #raise ValueError
 
     def extract_rules(self):
-        self.cal_rules = {t:[] for t in self.layer_list}
+        self.cal_rules = {t:[] for t in self.layers}
         self.layer_name2cal = {} #name to number
         self.layer_cal2name = {} #number to name
         self.layer_name2gds = {} #name to gds
         self.defined = {}
         self.variables = {}        
-        self.if_define = False
-        
+        self.if_define = False        
         self.ignore = False
-        
-        # count= {}
+
         if self.tvf_rules:
             for i,v in self.tvf_rules.items():
                 for layer in self.layer_match_r:
@@ -471,9 +461,9 @@ class RuleFile:
             if not(self.ignore):
                 if token_type == 'RULE':
                     # print('test1:',self.variables)
-                    rule = RuleCheck(token, self.bracket_dic[token], self.kws_map, self.variables)
+                    rule = RuleCheck(token, self.bracket_dic[token], self.variables)
                     if rule.layer:
-                        if rule.layer in self.layer_list:
+                        if rule.layer in self.layers:
                             # print('test',rule.name, rule.comment)
                             # comments = rule.process_comments()
                             if rule.comment: #not density
@@ -558,24 +548,122 @@ class RuleFile:
         #extract and process rules of select layer     
 
         data =[]
-        for rule_layer,rules in self.cal_rules.items():
+        df = pd.DataFrame(columns=['layer','layer_def', 'dr', 'comment'])
+        for layer,rules in self.cal_rules.items():
             if len(rules)>0:
-                rules_dict = {}
-
                 for rule in rules:
-                    rules_dict[rule.name] = rule.comment
+                    data = [layer,self.layers[layer],rule.name,rule.comment]
+                    df.loc[len(df)] = data
+        self.bracket_dic = {}
+        self.cal_rules = {}#clear cache
+        self.dr_df = df
+        self.parse_data(df)
+
+        
+        
+        # print(df)
                 # print(rules_dict) 
-                ers = self.llm.response(rules_dict)   
-                # print('test1:',ers)
-                assert len(ers) != 0, 'llm may not work!'
-                for er in ers[1:]:
-                    if len(er) == 4:
-                        data.append({'Layer':rule_layer,'Rule':er[0],'Category':er[1],'Description':er[2],'Value':er[3]})
+        #         ers = self.llm.response(rules_dict)   
+        #         # print('test1:',ers)
+        #         assert len(ers) != 0, 'llm may not work!'
+        #         for er in ers[1:]:
+        #             if len(er) == 4:
+        #                 data.append({'Layer':rule_layer,'Rule':er[0],'Category':er[1],'Description':er[2],'Value':er[3]})
+        #             else:
+        #                 print("Warning: Rule not extracted:", er)
+        # df = pd.DataFrame(columns=['Layer','Rule','Category','Description','Value'],data=data)
+        # self.extracted_file = os.path.join(self.save_dir, self.file_name + '_extract_rules.csv')
+        # df.to_csv(self.extracted_file)
+        
+    def parse_data(self,df):
+        with open(self.pe,'r') as f:
+            prompt = f.read()
+        
+        self.extracted_dr = []
+        client = Client(host=self.client_host)
+        for layer in self.layers:
+            layer_data = []
+            csv_string='layer||layer_def||dr||comment\n'
+            df_layer = df[df.layer==layer]
+            for i,r in df_layer.iterrows():
+                csv_string += '%s||%s||%s||%s\n'%(r.layer,r.layer_def,r.dr,r.comment)
+            
+            csv_string = '\n```csv'+csv_string+'\n```'
+            messages = [
+                        {"role": "user", "content": prompt},
+                        {"role": "user", "content": csv_string},
+                        ]
+
+            response = client.chat(self.model, messages)
+            answer = response.message.content.split('</think>')[-1]
+            csv_text = self.reflection(answer,messages,client)
+            if csv_text != 'error':
+                csv_data = self.extract_csv_data(csv_text)
+                for data in csv_data:
+                    if len(data) == 5:
+                        self.extracted_dr.append([layer,self.layers[layer]]+data)
+                        layer_data.append([layer,self.layers[layer]]+data)
                     else:
-                        print("Warning: Rule not extracted:", er)
-        df = pd.DataFrame(columns=['Layer','Rule','Category','Description','Value'],data=data)
-        self.extracted_file = os.path.join(self.save_dir, self.file_name + '_extract_rules.csv')
-        df.to_csv(self.extracted_file)
+                        print("Warning!",data)
+                    
+               # dr||category||comment||symbol||value     
+            columns = ['layer','layer_def','dr','category','description','symbol','value']
+            layer_df = pd.DataFrame(columns=columns,data=layer_data)    
+            layer_file = os.path.join(self.save_dir,self.tech_name + '_' + layer + '.csv')
+            layer_df.to_csv(layer_file, index=False)
+                
+            
+            
+            # print('$$$\n',csv_text)
+
+
+        
+    def reflection(self,answer,messages,client):
+        if '```csv' in answer and 'dr||category||comment||symbol||value' in answer:
+            csv_data = answer.split('```csv')[-1].split('```')[0]
+            return csv_data
+        else:
+            for i in range(5):#max num
+                print('^^Begin %d reflection'%i)
+
+                messages.append({"role": "assistant", "content": answer})
+                messages.append({"role": "user", "content": "now ```csv must in answer, and dr||category||comment||symbol||value must in answer"})
+                # print(messages)
+                response = client.chat(self.model, messages)
+                answer = response.message.content.split('</think>')[-1]
+                print(answer)
+                if '```csv' in answer:
+                    csv_data = answer.split('```csv')[-1].split('```')[0]
+                    return csv_data
+            return 'error'
+    
+    # @staticmethod
+    # def csv_to_list(csv_lines):
+    #     # 检测分隔符
+    #     if '||' in data:
+    #         delimiter = '||'
+    #     else:
+    #         delimiter = ','
+    #     lines = data.split('\n')
+    #     reader = csv.reader(lines, delimiter=delimiter)
+    #     return list(reader)   
+    
+    def extract_csv_data(self,csv_text):
+        csv_lines = [t for t in csv_text.splitlines() if t]
+        if '||' in csv_text:
+            delimiter = '||'
+        else:
+            delimiter = ','
+    
+        result = []
+        for line in csv_lines:
+            result.append(line.split(delimiter))
+        csv_data = list(result)[1:]
+        
+        return csv_data
+        
+        
+        
     def read_LAYER(self,token):
         '''
         desprecated
@@ -661,32 +749,15 @@ class RuleFile:
             
         
         
-    def read_tech_align(self, tech_align_file):
-        assert os.path.exists(tech_align_file), "layer align file is not exist"
+    def read_layer_def(self, file):
+        assert os.path.exists(file), "layer align file is not exist"
         
-        df = pd.read_csv(tech_align_file,index_col=0)
+        df = pd.read_csv(file)
+        self.layers = {}
+        for i,r in df.iterrows():
+            self.layers[r['layer'].strip()] = r['defination'].strip()
         
-        layer_n = self.tech_name +'_ln'
-        layer_p = self.tech_name +'_lp'
         
-        assert layer_n in df.columns, "No %s (layer name) found in %s"%(layer_n, tech_align_file)
-        assert layer_p in df.columns, "No %s (layer purpose) found in %s"%(layer_n, tech_align_file)
-        
-        #clear blank in csv data
-        ascell_layers = [t.strip() for t in df.index.tolist()] 
-        tech_layers_n = [t.strip() for t in df[layer_n].tolist()] 
-        tech_layers_p = [t.strip() for t in df[layer_p].tolist()] 
-        
-        layer_match = {t1:(t2,t3) for t1,t2,t3 in zip(ascell_layers,tech_layers_n,tech_layers_p)}
-        
-        self.layer_match = {} #cell to calibre
-        
-        for layer in self.layer_list:
-            assert layer in ascell_layers, 'layer %s not found in csv index!'%(layer)
-            self.layer_match[layer] = layer_match[layer]        
-        self.layer_match_r = {v[0]: k for k, v in  self.layer_match.items()} # calibre to cell
-
-
 
     def read_dr_template(self,dr_template):
         self.rules = {}
@@ -751,9 +822,8 @@ class RuleFile:
         #generate 
 
 class RuleCheck:
-    def __init__(self, name, data, kws_map, variables):
+    def __init__(self, name, data, variables):
         self.name = name
-        self.kws_map = kws_map
         self.comment = []
         self.rules = []
         self.layer = ''
@@ -772,12 +842,7 @@ class RuleCheck:
             logger.DEBUG('warning %s not a regular rule name!'%(name))
             # raise ValueError(name)
 
-        if self.layer in self.kws_map[0]:
-            self.layer = self.kws_map[0][self.layer]
-        else:
-            self.layer =  ''
-        
-        
+    
         for line in data.split('\n'):
             line = line.strip()
             if line:
@@ -831,17 +896,9 @@ class RuleCheck:
                     
                     if ',' in comment: #?
                         comment = comment.replace(',', ' , ') 
-                    
-
-                    #replace multi-word kws
-                    for kw in self.kws_map[2]:
-                        if kw in comment:
-                            comment = comment.replace(kw, self.kws_map[2][kw])
                 
-                    valid_comment += comment + '  '
-                
+                    valid_comment += comment + '  '                
         self.comment = valid_comment    
-        
         # return valid_comment      
 
     '''
@@ -899,11 +956,8 @@ class RuleCheck:
 
         return valid_comment       
     '''         
-                    
-                   
-                
-
-    
+    '''
+    deprecated
     def extract_value(self,comment):
         # print(comment)
         symbols = ['>=','<=','==','>','<','is']
@@ -929,12 +983,11 @@ class RuleCheck:
                     return  comment_t.strip().split(), next_word, float(word), 'NUM'
         
         return comment, '', '', ''
-
+    '''
 
 
 
     def __repr__(self):
-        
         return self.name + str(self.comment) 
 
 

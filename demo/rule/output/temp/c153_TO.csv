@@ -1,0 +1,15 @@
+layer,layer_def,dr,category,description,symbol,value
+TO,Active,TO.a.1,Width,: Min active width for interconnect must be  >= 0.186um ,>=,0.186  
+TO,Active,TO.b.1,Width,: Active width for NMOS must be  >=  0.186 um ,>=,0.186  
+TO,Active,TO.b.2,Width,: Active width for PMOS must be  >=  0.186 um ,>=,0.186  
+TO,Active,TO.c,Spacing,: Min spacing of TO must be  >= 0.238um ,>=,0.238  
+TO,Active,TO.d,Extension,: Min extension from NW edge to an NW pick-up must be  >= 0.102um ,>=,0.102  
+TO,Active,TO.e.2,Spacing,: Min spacing of NW edge to an N+active outside NW(5v) must be  >= 0.45um ,>=,0.45  
+TO,Active,TO.f.2,Spacing,: Min spacing of NW edge to an P+active inside NW(5v) must be  >= 0.45um ,>=,0.45  
+TO,Active,TO.g,Spacing,: Min spacing of NW edge to an P+active(PW pick-up)   outside NW must be  >= 0.102um ,>=,0.102  
+TO,Active,TO.h.1,Spacing,: Min spacing of poly edge to the edeg of butted diffusion active must be  >= 0.272um ,>=,0.272  
+TO,Active,TO.h.2,Spacing,: Min spacing of poly edge to the edeg of butted diffusion active must be  >= 0.272um ,>=,0.272  
+TO,Active,TO.i,Spacing,: Min spacing of NW pick-up must be >=  [Value not explicitly stated in the comment],-,-  
+TO,Active,TO.j,Area,: Active area must be >= 0.2um² ,>=,0.2  
+TO,Active,TO.k,Length,: Length and width must be less than 60um ,<,60  
+TO,Active,TO.l,Restriction,: active not doped is not allowed ,-,-  

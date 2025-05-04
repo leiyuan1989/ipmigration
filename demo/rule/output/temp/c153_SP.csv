@@ -1,0 +1,11 @@
+layer,layer_def,dr,category,description,symbol,value
+SP,P+ implant,SP.a,Width,: Min width must be  >= 0.356 ,>=,0.356  
+SP,P+ implant,SP.b,Spacing,: Min space of SP must be  >= 0.356 ,>=,0.356  
+SP,P+ implant,SP.b1,Spacing,:Min SP space on STI  <= 0.42um must be merge ,<=,0.42  
+SP,P+ implant,SP.c,Spacing,: Min spacing of SP to a N+ active outside NW must be  >= 0.22 ,>=,0.22  
+SP,P+ implant,SP.d,Spacing,: Min spacing of SP to a N+ pick-up active(non-butted active) must be >= 0.084um  if the distance between N+active and NW >= 0.43um ,>=,0.084  
+SP,P+ implant,SP.e,Spacing,: Min spacing of SP to a N+ pick-up active(non-butted active) must be >= 0.152um  if the distance between N+active and NW < 0.43um ,>=,0.152  
+SP,P+ implant,SP.f_1,Extension,: Min overlap from SP edge to an active must be  >= 0.194um ,>=,0.194  
+SP,P+ implant,SP.f_2,Extension,: Min overlap from SP edge to an active must be  >= 0.194um ,>=,0.194  
+SP,P+ implant,SP.s,Area,: Min SP area  >= 0.4um2 ,>=,0.4  
+SP,P+ implant,SP.w,Area,: Min resist pattern area within PPLUS region must be  >= 0.64um2 ,>=,0.64  

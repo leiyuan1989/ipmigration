@@ -1,0 +1,10 @@
+layer,prop,defination
+TB,drawing ,N-Well
+TO,drawing ,Active
+GT,drawing ,Poly
+SP,drawing ,P+ implant
+SN,drawing ,N+ implant
+W1,drawing ,Contact
+A1,drawing ,Metal 1
+SI,drawing ,SAB salicide
+AT,drawing ,Top metal
