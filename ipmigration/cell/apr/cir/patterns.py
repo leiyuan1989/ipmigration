@@ -21,7 +21,7 @@ pt_list = ['FCROSS_4','PCROSS_2','INV']
 class Patterns:
     def __init__(self):
         model = 'ipmigration/cell/apr/cir/pattern_cdl/model.cdl'
-        netlist = 'ipmigration/cell/apr/cir/pattern_cdl/patterns.cdl'
+        netlist = 'ipmigration/cell/apr/cir/pattern_cdl/patterns.cir'
 
         
         self.ckt_dict = {}

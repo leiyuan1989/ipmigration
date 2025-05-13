@@ -9,14 +9,14 @@ import logging
 import os
 import time
 
-logger = logging.getLogger(__name__)
+
 
 class Cfg:
     def __init__(self,input_file,log_level='INFO'):
         self.input_file = input_file
         self.load_input(input_file)
         set_logger(self.output_dir, self.tech_name, log_level)
-        logger.info('cfgs: ' +str(self.__dict__))
+        # logger.info('cfgs: ' +str(self.__dict__))
     def load_input(self,file):
         df = pd.read_csv(file)
         cfg_dict = {r['setting']:r['value'] for i,r in df.iterrows()}
@@ -87,6 +87,7 @@ def set_logger(save_dir, tech_name, log_level):
                         level=log_level,
                         filemode='w',
                         filename=log_file)
-        
+    print('logging file is:',log_file) 
+    logger = logging.getLogger(__name__)
     logger.info("************Create Cell Apr: %s Logger************"%(tech_name))
         

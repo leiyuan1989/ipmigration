@@ -17,30 +17,16 @@ class StdCell:
         self.tech = tech
         self.cfgs = cfgs
         self.patterns= patterns
-        # self.route_data_path = route_data_path
         self.route_path = []
-        
         self.route_db = route_db
         
-        
     def run(self,top_layout,db_layers):
-       
         result = self.global_pr()
-        # print(result, self.route_path )
         if result:
-            save_fig_path = os.path.join(self.cfgs.output_dir,'route','%s.png'%(self.ckt.name))
-            concatenate_images(self.route_path, save_fig_path)
-            
-            #detail pr
             self.init_layout(top_layout,db_layers)
-            result = self.detail_pr()
-        #     add text
-        # if result:
-        #     pass
-            # self.post_process()
-            
-        
-        
+            # save_fig_path = os.path.join(self.cfgs.output_dir,'route','%s.png'%(self.ckt.name))
+            # concatenate_images(self.route_path, save_fig_path)
+            # result = self.detail_pr()        
         return result
     
     def init_layout(self,top_layout,db_layers):
@@ -57,9 +43,22 @@ class StdCell:
                             self.tech.tech_name, 
                             self.cfgs.output_dir)
         result = self.de_ckt.run()
-                
+        
+        if result:  
+            print(self.de_ckt.sub_ckts.keys())
+            pat_placer = Placer(self.de_ckt.sub_ckts)
+            queue = pat_placer.find_opt_perm(self.ckt.ckt_type)
+            
+            
+            return 1
+        else:
+            print('------------------Decompose Failed: %s------------------'%(self.ckt.name))
+            return 0      
+        
+        
         self.side_nodes_statistics = []
         if result:  
+            #netlist decomposition sucessfully
             pat_placer = Placer(self.de_ckt.sub_ckts)
             queue = pat_placer.find_opt_perm(self.ckt.ckt_type)
             self.queue = [self.de_ckt.sub_ckts[t] for t in queue]
