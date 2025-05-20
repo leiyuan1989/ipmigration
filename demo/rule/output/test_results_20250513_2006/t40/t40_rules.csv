@@ -1,0 +1,59 @@
+layer,layer_def,dr,description,category,symbol,value
+NW,N-Well,NW.W.1,Width  >=  0.34  ,Width,>=,0.34
+NW,N-Well,NW.S.1,Space  >=  0.34  ,Spacing,>=,0.34
+NW,N-Well,NW.S.2,Space of two NW1V with different potentials (*)  >=  0.8  ,Spacing,>=,0.8
+NW,N-Well,NW.S.3,NW1V space to NW2V with different potentials (*)  >=  1  ,Spacing,>=,1
+NW,N-Well,NW.S.4,Space of two NW2V with different potentials (*)  >=  1  ,Spacing,>=,1
+NW,N-Well,NW.S.5,Space to PW STRAP  >=  0.08  ,Spacing,>=,0.08
+NW,N-Well,NW.S.6,Space to N+ ACTIVE (except NW resistor)  >=  0.08  ,Spacing,>=,0.08
+NW,N-Well,NW.S.6.1,Space to N+ ACTIVE [at least one edge at each corner] (except NW resistor)  >=  0.16  ,Spacing,>=,0.16
+NW,N-Well,NW.S.7,Space to {N+ ACTIVE interact with OD2}  >=  0.22  ,Spacing,>=,0.22
+NW,N-Well,NW.EN.1,Enclosure of NW STRAP (except NW resistor)  >=  0.08  ,Enclosure,>=,0.08
+NW,N-Well,NW.EN.2,Enclosure of P+ ACTIVE  >=  0.08  ,Enclosure,>=,0.08
+NW,N-Well,NW.EN.2.1,Enclosure of P+ ACTIVE [at least one edge at each corner]  >=  0.16  ,Enclosure,>=,0.16
+NW,N-Well,NW.EN.3,Enclosure of {P+ ACTIVE interact with OD2}  >=  0.22  ,Enclosure,>=,0.22
+NW,N-Well,NW.A.1,Area  >=  0.64  ,Area,>=,0.64
+NW,N-Well,NW.A.2,Enclosed area  >=  0.64  ,Area,>=,0.64
+PP,P+ implant,PP.W.1,Width  >=  0.18  ,Width,>=,0.18
+PP,P+ implant,PP.S.1,Space  >=  0.18  ,Spacing,>=,0.18
+PP,P+ implant,PP.S.2,Space to N+ACTIVE (non-butted)  >=  0.08  ,Spacing,>=,0.08
+PP,P+ implant,PP.S.4,Space to NW STRAP (non-butted)  >=  0.02  ,Spacing,>=,0.02
+PP,P+ implant,PP.S.5,{PP edge on OD} space to NMOS GATE  >=  0.23  ,Spacing,>=,0.23
+PP,P+ implant,PP.S.6,Butted PW STRAP space to PO in the same OD [the butted N+ ACTIVE extending   <  J1  <  0.13 um]  >=  0.23  ,Spacing,>=,0.23
+PP,P+ implant,PP.S.7,Space to N-type unsilicided OD/PO resistor  >=  0.14  ,Spacing,>=,0.14
+PP,P+ implant,PP.EN.1,{NP OR PP} enclosure of PO (except DPO)  >=  0.11  ,Enclosure,>=,0.11
+PP,P+ implant,PP.EX.1,Extension on P+ACTIVE  >=  0.08  ,Extension,>=,0.08
+PP,P+ implant,PP.EX.2,Extension on PW STRAP (except sealring(162;2))  >=  0.02  ,Extension,>=,0.02
+PP,P+ implant,PP.EX.3,Extension on P-type unsilicided OD/PO resistor  >=  0.14  ,Extension,>=,0.14
+PP,P+ implant,PP.EX.4,{PP edge on OD} extension on PMOS GATE  >=  0.23  ,Extension,>=,0.23
+PP,P+ implant,PP.O.1,Overlap of OD  >=  0.10  ,Area,>=,0.10
+PP,P+ implant,PP.A.1,Area  >=  0.11  ,Area,>=,0.11
+PP,P+ implant,PP.A.2,Enclosed area  >=  0.11  ,Enclosed Area,>=,0.11
+PP,P+ implant,PP.A.3,Area of butted PW STRAP  >=  0.021  ,Area,>=,0.021
+PP,P+ implant,PP.R.1,PP must fully cover {PMOS GATE SIZING 0.08 um}  >=  0.08  ,Restrictions,>=,0.08
+PP,P+ implant,PP.R.2,Overlap of NP is not allowed.  ,Restrictions,,
+PP,P+ implant,PP.L.1,45-degree edge length 0.5  ,Length,=,0.5
+NP,N+ implant,NP.W.1,Width  >=  0.18  ,Width,>=,0.18
+NP,N+ implant,NP.S.1,Space  >=  0.18  ,Spacing,>=,0.18
+NP,N+ implant,NP.S.2,Space to P+ACTIVE (non-butted)  >=  0.08  ,Spacing,>=,0.08
+NP,N+ implant,NP.S.4,Space to PW STRAP (non-butted)  >=  0.02  ,Spacing,>=,0.02
+NP,N+ implant,NP.S.5,{NP edge on OD} space to PMOS GATE  >=  0.23  ,Spacing,>=,0.23
+NP,N+ implant,NP.S.6,Butted NW STRAP space to PO in the same OD [the butted P+ ACTIVE extending   <  J1  <  0.13 um]  >=  0.23  ,Spacing,>=,0.23
+NP,N+ implant,NP.S.7,Space to P-type unsilicided OD/PO resistor  >=  0.14  ,Spacing,>=,0.14
+NP,N+ implant,NP.EX.1,Extension on N+ACTIVE (except NWROD)  >=  0.08  ,Extension,>=,0.08
+NP,N+ implant,NP.EX.2,Extension on NW STRAP (except NWROD)  >=  0.02  ,Extension,>=,0.02
+NP,N+ implant,NP.EX.3,Extension on N-type unsilicided OD/PO resistor  >=  0.14  ,Extension,No symbol provided in comment,
+NP,N+ implant,NP.EX.4,{NP edge on OD} extension on NMOS GATE  >=  0.23  ,Extension,No symbol provided in comment,
+CO,Contact,CO.W.1,Width (maximum  =  minimum) (Except butted CO in SRAM (186;0) region only)  =  0.06  ,Width,==,0.06 
+CO,Contact,CO.S.1,Space (Except SRAM (186;0) region)  >=  0.08  ,Spacing,>=,0.08 
+CO,Contact,CO.S.2,Space to 3-neighboring CO (distance  <  0.11 um) (Except SRAM (186;0) region)  >=  0.10  ,Spacing,<,0.11 
+CO,Contact,CO.S.3,Space to GATE (Overlap of GATE is not allowed) [space  >=  0.035 um is allowed inside SRAM word line driver covered by layer 186;5 or 186;4] (Except SRAM (186;0) region)  >=  0.04  ,Spacing,>=,0.10 
+CO,Contact,CO.S.4,{CO inside PO} space to OD (Except SRAM (186;0) region)  >=  0.05  ,Spacing,<,0.11 
+CO,Contact,CO.S.5,{CO inside OD} space to I/O GATE  >=  0.08  ,Spacing,>=,0.10 
+CO,Contact,CO.EN.1,Enclosure by OD (Except SRAM (186;0) region)  >=  0.01  ,Enclosure,==,0.06 
+M1,Metal 1,M1.W.1,Width  >=  0.07  ,Metal,>=,0.07
+M1,Metal 1,M1.W.2,"Width of 45-degree bent M1. (Please make sure the vertex of 45 degree pattern is on 0.005 um grid (refer to the guideline ,  G.6gU ,  in section 3.7))  >=  0.17  ",Metal,>=,0.07
+M1,Metal 1,M1.W.3,Maximum width (This check doesn't include the sealring (162;2) region)  <=  4.50  ,Metal,>=,0.07
+M1,Metal 1,M1.W.4,Width of M1 metal line in outer seal ring  ==  2.0  ,Metal,==,2.0
+M1,Metal 1,M1.W.5,Width of M1 metal line in inner seal ring  ==  6.0  ,Metal,==,6.0
+M1,Metal 1,M1.W.6,Width of M1 metal line in SLDB  ==  0.5  ,Metal,==,0.5

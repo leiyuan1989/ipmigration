@@ -1,0 +1,484 @@
+
+-----------------------s40:NW----------------------------
+
+**input**: rule:NW_1, comment:NW minimum width(parallel side to side width ,  The INST connected area apply SRAM design rule) is 0.33  
+**ouput**: {'classification': 'Width', 'symbol': '=', 'value': '0.33'}
+**input**: rule:NW_3, comment:Minimum space between two NW regions at the same net (with run length  >  0) is 0.33.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.33'}
+**input**: rule:NW_4, comment:Minimum space between two NW regions at different net is 0.60  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.60'}
+**input**: rule:NW_7, comment:NW minimum area is 0.70  
+**ouput**: {'classification': 'Area', 'symbol': '==', 'value': '0.70'}
+**input**: rule:NW_8, comment:NW minimum enclosed area is 0.70  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.70'}
+**input**: rule:NW_9, comment:NW minimum space to N+AA (enclosure by TG or DG) is 0.22  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.22'}
+**input**: rule:NW_10, comment:NW enclosure of P+AA (enclosed by TG or DG)is 0.22  
+**ouput**: {'classification': 'Enclosure', 'symbol': '=', 'value': '0.22'}
+**input**: rule:NW_11, comment:N+AA adjacent both two edges space opposite to NW is  >= 0.16. Both of two adjacent edges space to NW smaller than rule value is not permitted.  In schematic rule check method ,  E  =  0.08 ,  D = 0.16  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:NW_12, comment:NW enclosure opposite of P+AA adjacent both two edges is  >=  0.16. Both of two adjacent edges enclosed by NW smaller than rule value is not permitted.  In schematic rule check method ,  E  =  0.08 ,  D = 0.16  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:NW_13, comment:N+AA Minimum enclosure by NW is 0.08 ,  excluding LDMOS area.Waive ((AA interact RESNW) and SN)  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:NW_14, comment:Minimum Space between NW and N+AA inside PW is 0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:NW_15, comment:P+AA minimum enclosure by NW is 0.08 ,  excluding LDMOS area.  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:NW_16, comment:Minimum Space between NW and P+AA inside PW is 0.08 ,  excluding LDMOS area.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+
+-----------------------s40:AA----------------------------
+
+**input**: rule:AA_1, comment:AA minimum width(The INST connected area apply SRAMdesign rule) is 0.06  
+**ouput**: {'classification': 'Width', 'symbol': 'N/A', 'value': '0.06'}
+**input**: rule:AA_1a, comment:AA minimum width of NMOS/PMOS for 0.9/1.1/1.2V transistor is 0.12  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.12'}
+**input**: rule:AA_2, comment:AA (enclosure by TG or DG) minimum width of NMOS/PMOS for 1.8/2.5v transistor is 0.32  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.32'}
+**input**: rule:AA_4a, comment:AA minimum space  is 0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:AA_4b_4c, comment:The space between two AA with gate along source/drain direction is  >= 0.1  ,  if one of AA width (W2)  >=  0.14um ,  and AA to AA run length Y1 >= 0.14um  The space between two AA with gate along gate poly direction is  >= 0.1 ,  if one of AA width (W3) >= 0.14um ,  and AA to AA run length Y2  >= 0.14um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.1'}
+**input**: rule:AA_4d, comment:Space between two AAs inside (DG OR TG) is 0.15  
+**ouput**: {'classification': 'Spacing', 'symbol': 'N/A', 'value': '0.15'}
+**input**: rule:AA_9, comment:AA minimum area except floating AA is 0.02  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:AA_9a, comment:AA minimum area at floating AA is 0.015  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.015'}
+**input**: rule:AA_10, comment:DG ,  TG or core transistors mixed in the same AA are prohibited  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:AA_11, comment:It is not allow if N+AA/P+AA crossing the NW ,  excluding LDMOS area.waive the AA interact with RESNW  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:AA_12, comment:AA channel width of NMOS/PMOS for 0.9/1.1/1.2V transistor is  <= 50. Waive transistor inside VARMOS  
+**ouput**: {'classification': 'Width', 'symbol': '<=', 'value': '50'}
+**input**: rule:AA_13, comment:AA minimum enclosed area(um2) is 0.045  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.045'}
+**input**: rule:AA_14_a, comment:For area excluding (DG or TG) ,  AA density (including dummy)is 25%. Density check window size  200um*200um with step size  100um.  Waive RESNW ,  LOGO ,  seal ring(MARKS) areas  DRC check with the said window size and rule number and highlight as X. Y  =  X not (DG or TG) ,  Z =  (Y area)/(100*100)  If Z  >  25% ,  highlight Y for AA density inside of Y that cannot meet of rule value requirement.  
+**ouput**: {'classification': 'Area', 'symbol': '>', 'value': '25'}
+**input**: rule:AA_14_b, comment:For area excluding (DG or TG) ,  AA density (including dummy)is 80%. Density check window size  200um*200um with step size  100um.  Waive RESNW ,  LOGO ,  seal ring(MARKS) areas  DRC check with the said window size and rule number and highlight as X. Y  =  X not (DG or TG) ,  Z =  (Y area)/(100*100)  If Z  >  25% ,  highlight Y for AA density inside of Y that cannot meet of rule value requirement.  
+**ouput**: {'classification': 'Area', 'symbol': '>', 'value': '25'}
+**input**: rule:AA_14a_a, comment:For area in of (DG or TG) ,  AA density (including dummy). Density check window size  200um*200um with step size 100um  DRC check with the said window size and rule number and highlight as X.  Y  =  X and (DG or TG) ,  Z =  (Y area)/(100*100)  If Z  >  25% ,  highlight Y for AA density inside of Y outside of rule value requirement  
+**ouput**: {'classification': 'Area', 'symbol': '>', 'value': '25'}
+**input**: rule:AA_14a_b, comment:For area in of (DG or TG) ,  AA density (including dummy). Density check window size  200um*200um ,  step size  100um	Min  25% Max  90%  DRC check with the said window size and rule number and highlight as X.  Y  =  X and (DG or TG)  Highlight AA density inside of Y outside of rule value requires  
+**parse_error**: 
+
+Here are two JSON objects representing the constraints from the given design rule description:
+
+1. The minimum density requirement:
+```json
+{
+  "classification": "Area",
+  "symbol": ">=",
+  "value": 25
+}
+```
+
+2. The maximum density requirement:
+```json
+{
+  "classification": "Area",
+  "symbol": "<=",
+  "value": 90
+}
+```
+
+Each JSON object captures one of the constraints specified in the rule description, ensuring both minimum and maximum density requirements are clearly represented.
+**input**: rule:AA_15a, comment:AA density overlap by DUMBA min. is 20%. Density check window size  200um*200um ,  step size  100um  
+**ouput**: {'classification': 'Restrictions', 'symbol': '>=', 'value': '20'}
+**input**: rule:AA_15b, comment:AA density overlap by DUMBA max. is 80%. Density check window size  200um*200um ,  step size  100um  
+**ouput**: {'classification': 'Area', 'symbol': '<=', 'value': '80'}
+**input**: rule:AA_16, comment:Bent 45 degree AA width is  >=  0.16  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:AA_17, comment:45 degree AA space to parallel AA is  >= 0.16  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:AA_18, comment:AA space for of U shape (notch) is  >= 0.15. Waive for extrusion E  <=  0.03  or U shape bottom AA width W0  >  0.08um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.15'}
+**input**: rule:AA_19, comment:AA must be fully covered by (SN OR SP).  Waive the violations inside (AA INTERACT RESNW )  
+**ouput**: {'classification': 'Enclosure', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:AA_C_1, comment:Maximum containing rectangle of HDA is 250*250  
+**parse_error**: 
+
+The rule specifies a maximum dimension for the containing rectangle of HDA. Since it mentions "Maximum", this implies an upper limit on the size of the rectangle. Therefore, each dimension must not exceed 250 units.
+
+**Answer:**  
+Classification: Area  
+Symbol: "<="  
+Value: 250
+**input**: rule:AA_C_3, comment:Maximum containing rectangle of LDA is 50*50  
+**ouput**: {'classification': 'Area', 'symbol': 'N/A', 'value': '50'}
+**input**: rule:AA_C_4, comment:Maximum containing rectangle of MDA is 125*125  
+**ouput**: {'classification': 'Area', 'symbol': '=', 'value': '125'}
+**input**: rule:AA_C_5, comment:Minimum space between gate and minimum 50*50um LDA is 20  Waive if the gate channel length  >=  0.06um  
+**parse_error**: 
+
+```json
+{
+  "classification": "Spacing",
+  "numerical_values": [
+    {
+      "value": "20",
+      "symbol": ">="
+    }
+  ],
+  "additional_constraints": "Waived if gate channel length is >= 0.06um"
+}
+```
+
+-----------------------s40:GT----------------------------
+
+**input**: rule:GT_1a, comment:Gate minimum channel length for 0.9/1.1/1.2V N/P MOS transistors (std ,  high ,  or low VT) is 0.04  SRGT_1 ,  Gate minimum length is 0.04  
+**ouput**: {'classification': 'Length', 'symbol': '=', 'value': '0.04'}
+**input**: rule:GT_1b, comment:GATE minimum channel length for 1.8V N/P MOS transistors is 0.15  
+**ouput**: {'classification': 'Length', 'symbol': '>=', 'value': '0.15'}
+**input**: rule:GT_1c, comment:GATE minimum channel length for 2.5V N/P MOS transistors is 0.27  
+**ouput**: {'classification': 'Length', 'symbol': '>=', 'value': '0.27'}
+**input**: rule:GT_1d, comment:Gate minimum channel length for 2.5V overdrive 3.3V NMOS transistors is 0.55  
+**ouput**: {'classification': 'Length', 'symbol': '>=', 'value': '0.55'}
+**input**: rule:GT_1e, comment:Gate minimum channel length for 2.5V overdrive 3.3V PMOS transistors is 0.44  
+**ouput**: {'classification': 'Length', 'symbol': '>=', 'value': '0.44'}
+**input**: rule:GT_1fg, comment:Gate minimum channel length for 2.5V underdrive 1.8V NMOS transistors is 0.24  Gate minimum length for 2.5V underdrive 1.8V PMOS transistors is 0.24  
+**ouput**: {'classification': 'Length', 'symbol': 'N/A', 'value': '0.24'}
+**input**: rule:GT_1h, comment:Gate channel length for 1.8V underdrive 1.5V N/P MOS transistors	0.125  
+**ouput**: {'classification': 'Length', 'symbol': 'N/A', 'value': '0.125'}
+**input**: rule:GT_2a, comment:Poly minimum width is 0.04  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.04'}
+**input**: rule:GT_2b_R, comment:Non-floating poly outside of (extend AA W >=  2.5um) region minimum width is 0.06 ,  This rule is not applicable for GT interacting with EFUSE(81;2).  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '2.5'}
+**input**: rule:GT_3, comment:Space between two poly is 0.1  
+**ouput**: {'classification': 'Spacing', 'symbol': '=', 'value': '0.1'}
+**input**: rule:GT_3c, comment:GT to GT space if one GT s width  >  0.12um is  >= 0.15 ,  parallel run length of the two GT  >  0.14um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.15'}
+**input**: rule:GT_4, comment:Space between AA and poly on field oxide is 0.03  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.03'}
+**input**: rule:GT_5, comment:Extension of AA outside of GATE is 0.06 ,  excluding LDMOS and within inductor area(layer INDMY)  
+**ouput**: {'classification': 'Extension', 'symbol': '=', 'value': '0.06'}
+**input**: rule:GT_6, comment:Extension of poly outside of AA to form poly end-cap is 0.09. Waive within LDBK area  
+**ouput**: {'classification': 'Extension', 'symbol': 'N/A', 'value': '0.09'}
+**input**: rule:GT_6a_R, comment:Extension E of GT outside of AA to form poly end-cap is 0.11.  The GT to L shape AA(in the same MOS) space S  <  0.1um.  The L shape AA height h  >  0.02um.  
+**parse_error**: 
+
+To address the problem, we need to analyze the given design rule description, identify each sub-rule, and extract the most relevant one for classification. The primary focus is on extracting the main rule mentioned first.
+
+**Step-by-Step Explanation:**
+
+1. **Identify Sub-Rules:** The description contains three separate rules:
+   - Extension E = 0.11
+   - Space S < 0.1um
+   - Height h > 0.02um
+
+2. **Determine Primary Classification:** Since the first sub-rule is about extension, we classify this as 'Extension'.
+
+3. **Extract Relevant Values and Symbols:** The most relevant numerical value here is 0.11 with an '=' symbol.
+
+**Answer:**
+
+```json
+{
+  "category": "Extension",
+  "value": 0.11,
+  "symbol": "="
+}
+```
+**input**: rule:GT_7, comment:(poly_end with length  <  0.120) minimum space to (poly_end with length  <  0.120)  (head to head space)  with run length  >  0 must be is 0.1.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.1'}
+**input**: rule:GT_8, comment:(poly_end with length  <  0.120) minimum space to poly (head to side) must be  >  0.1  , This rule is not applicable for SRAM region check.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>', 'value': '0.1'}
+**input**: rule:GT_8a, comment:Space between GT line end to line (Dh) or GT line to line (Ds) when the layout structures meet the conditions of below  (Waive the GT small extrusion F < 0.04um)  1. GT line end definition  GT width W < 0.065um  2. Runlength of GT line to line or GT line to end  E1 >= -0.03um  3. Any one edge distance from the corner of the two edges  K1  < 0.065um  Any one of Dh or Ds meet this rule value is ok.  This rule is not applicable for SRAM region check.	 	0.11  
+**ouput**: {'classification': 'Spacing', 'symbol': '<', 'value': '0.065'}
+**input**: rule:GT_10, comment:For GT channel length  >=  0.06 ,  minimum gate space to (GT or GTDUM) is 0.13  PFET gate minimum space over AA is 0.13  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.13'}
+**input**: rule:GT_17, comment:minimum area is 0.012  SR ,  minimum area is 0.012  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.012'}
+**input**: rule:GT_18, comment:poly minimum enclosed area is 0.040  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.040'}
+**input**: rule:GT_19, comment:(GT AND AA) area GTAA.  GTAA enclose 200x200um area.  Maximum area for GTAA (um2) 50000  
+**ouput**: {'classification': 'Area', 'symbol': '<=', 'value': '50000'}
+**input**: rule:GT_20l, comment:Poly min. density in whole chip is 15%  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.15'}
+**input**: rule:GT_20h, comment:Poly max. density in whole chip is 40%  
+**ouput**: {'classification': 'Area', 'symbol': '<=', 'value': '40'}
+**input**: rule:GT_20bl, comment:Poly min. density overlap by DUMBP is 15%  
+**ouput**: {'classification': 'Area', 'symbol': '==', 'value': '15'}
+**input**: rule:GT_20bh, comment:Poly max. density overlap by DUMBP is 40%  
+**ouput**: {'classification': 'Area', 'symbol': '<=', 'value': '40'}
+**input**: rule:GT_20c, comment:Poly density (including dummy) excluding (DG or TG)is 10% ,  check window 100x100um with step 50um.  DRC check with the said window size and rule number and highlight as X.  Y  =  X not (DG or TG)  ,  Z =  (Y area)/(100*100)  If Z  >  25% ,  highlight Y for GT density inside of Y smaller than rule value  
+**ouput**: {'classification': 'Area', 'symbol': '>', 'value': '25'}
+**input**: rule:GT_20d, comment:Poly density (including dummy) in (DG or TG)is 5% ,  check window 100x100um with step 50um.  DRC check with the said window size and rule number and highlight as X.  Y  =  X and (DG or TG)  ,  Z =  (Y area)/(100*100)  If Z  >  25% ,  highlight Y for GT density inside of Y smaller than rule value  
+**ouput**: {'classification': 'Area', 'symbol': '>', 'value': '25'}
+**input**: rule:GT_21, comment:No bent GATE (45 or 135 degree) on AA are allowed  All gate patterns on AA have to be orthogonal to AA edge  and SR  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:GT_22, comment:GT must be enclosed by (SN or SP) except the MOM ,  GTFUSE and  (HRP AND GT). Exclude floating GT  
+**ouput**: {'classification': 'Enclosure', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:GT_24, comment:L-shaped GT minimum space to AA is 0.04  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.04'}
+**input**: rule:GT_25, comment:L-shape AA minimum space to poly(in same transistor) is 0.03  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.03'}
+**input**: rule:GT_26, comment:All memory cell transistor(transistors within INST layer) ,  gate GT direction should be unidirectional in one chip.  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:GT_27, comment:Bent 45 deg GT min width is 0.16  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:GT_28, comment:The space between two bent 45 degree GTs is 0.16  
+**parse_error**: 
+
+To determine the classification, comparison symbol, and numerical value for the given rule about spacing between two bent 45-degree GTs, we analyze the information provided:
+
+- **Classification**: The rule discusses the space between two objects, so it is classified under "Spacing."
+- **Comparison Symbol**: The rule states "is 0.16" without specifying any operator like ">=", "<=", or "==". Since no comparison symbol is explicitly mentioned, we set this as "N/A."
+- **Numerical Value**: The specific value provided in the rule is "0.16," so we extract this as the numerical value.
+
+**Answer:**
+
+Classification: Spacing  
+Symbol: N/A  
+Value: 0.16  
+
+The final answer is:
+
+Classification: \boxed{Spacing}  
+Symbol: \boxed{N/A}  
+Value: \boxed{0.16}
+
+-----------------------s40:SP----------------------------
+
+**input**: rule:SP_1, comment:SP minimum width(with run length  >  0) is 0.18  
+**parse_error**: 
+
+The extracted information from the text "minimum width of 0.18 mm" is:
+
+- **Value:** 0.18
+- **Unit:** mm
+- **Symbol:** >=
+
+This is inferred because the term "minimum" implies that the value should be at least 0.18, hence the ">=" symbol.
+**input**: rule:SP_2, comment:Minimum space between two SP(with run length  >  0) is 0.18  Merge if the space is less than 0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.18'}
+**input**: rule:SP_3a, comment:Minimum space between SP and N+AA in PW (run length  >  0.1um) is 0.08 ,  excpet AA resistor  
+**ouput**: {'classification': 'Spacing', 'symbol': '=', 'value': '0.08'}
+**input**: rule:SP_3b, comment:Minimum space between SP and N+AA in PW (run length  <=  0.1um) is 0.05 ,  excpet AA resistor  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.05'}
+**input**: rule:SP_4, comment:Minimum space between SP and N+ pick-up AA is 0.02  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:SP_6, comment:SP minimum extension outside of poly gate for PMOS is 0.16  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:SP_7a, comment:Minimum space between SP and S/D direction N-channel poly gate is 0.16  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:SP_7b, comment:Minimum space between SP and non-S/D direction N-channel poly gate is 0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:SP_7c, comment:A butted N+ pick-up AA space to PMOS gate in the same AA is  >=  0.23  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.23'}
+**input**: rule:SP_8c, comment:A butted N+ pick-up AA (in L shape AA) space to PMOS gate in the same AA is  >= 0.23 ,  when this butted N+ pick-up AA extrusion   0  <  h  <  0.1um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.23'}
+**input**: rule:SP_9, comment:Space between a SP and a N+AA or N+POLY resistor (SN AND ((RESAA AND AA) OR (RESP1 AND GT))is 0.16  
+**ouput**: {'classification': 'Spacing', 'symbol': 'N/A', 'value': '0.16'}
+**input**: rule:SP_10, comment:P+AA minimum enclosure by SP((not include pick up AA) is 0.08  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:SP_12, comment:SP enclosure of P+ pickup AA is 0.02  
+**ouput**: {'classification': 'Enclosure', 'symbol': 'N/A', 'value': '0.02'}
+**input**: rule:SP_14, comment:P+ AA resistor or P+Poly resistor minimum enclosure by SP is 0.18  The resistor here  (SP AND ((RESAA AND AA) OR (RESP1 AND GT))  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.18'}
+**input**: rule:SP_15, comment:SP and AA minimum overlap is 0.10  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.10'}
+**input**: rule:SP_16, comment:SP minimum area include the connected area within INST is 0.11  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:SP_SN_17, comment:SN and SP overlap is forbidden  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:SP_18, comment:Minimum enclosed area of SP is 0.11  
+**ouput**: {'classification': 'Area', 'symbol': '==', 'value': '0.11'}
+**input**: rule:SP_20a, comment:P+ butted AA in P-well area(the area interact with CT)is 0.03  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.03'}
+**input**: rule:SP_21, comment:N+ butted AA in NW contact extension of SP is 0.08  
+**ouput**: {'classification': 'Extension', 'symbol': '=', 'value': '0.08'}
+**input**: rule:SP_21a, comment:N+ butted AA in NW area(the area interact with CT)  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+
+-----------------------s40:SN----------------------------
+
+**input**: rule:SN_1, comment:SN minimum width(run length  >  0) is 0.18  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.18'}
+**input**: rule:SN_2, comment:Minimum space between two SN (with run length  >  0) is 0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.18'}
+**input**: rule:SN_3a, comment:Minimum space between SN and P+AA in NW (run length  >  0.1um) is 0.08 , except AA resistor(RESAA AND AA)  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:SN_3b, comment:Minimum space between SN and P+AA in NW (run length  <=  0.10um) is 0.05 ,  except AA resistor(RESAA AND AA)  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.05'}
+**input**: rule:SN_4, comment:Minimum space between SN and P+ pick-up AA is 0.02  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:SN_6, comment:SN minimum extension outside of poly gate for NMOS along source drain direction is 0.16  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:SN_7a, comment:Minimum space between SN and S/D driection P-channel poly gate is 0.16  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:SN_7b, comment:Minimum space between SN and Non-S/D driection P-channel poly gate is 0.08 (outside of SRAM(INST area))  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:SN_7c, comment:A butted P+ pick-up AA space to NMOS gate in the same AA is  >= 0.23  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.23'}
+**input**: rule:SN_8c, comment:A butted P+ pick-up AA (in L shape AA) space to NMOS gate in the same AA is  >= 0.23 ,  when this butted P+ pick-up AA extrusion   0  <  h  <  0.1um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.23'}
+**input**: rule:SN_9, comment:Minimum space between a SN and a P-type resistor is 0.16 (SP AND ((RESAA AND AA) OR (RESP1 AND GT))  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:SN_10, comment:N+AA minimum enclosure by SN(not include pick up AA) is 0.08 Waive for (AA interact RESNW)  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:SN_12, comment:N+ pickup AA minimum enclosure by SN is 0.02 Waive for (AA interact RESNW)  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:SN_14, comment:N+AA resistor or N+POLY resistor minimum enclosure by SN is 0.18. The resistor here  (SN AND ((RESAA AND AA) OR (RESP1 AND GT))  
+**ouput**: {'classification': 'Enclosure', 'symbol': '==', 'value': '0.18'}
+**input**: rule:SN_15, comment:SN and AA minimum overlap is 0.10  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.10'}
+**input**: rule:SN_16, comment:SN minimum area include the connected area within INST is 0.11  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:SN_18, comment:Minimum enclosed area of SN is 0.11  
+**ouput**: {'classification': 'Area', 'symbol': '==', 'value': '0.11'}
+**input**: rule:SN_21, comment:AA butted p-well contact minimum extension of SN is 0.08  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:SN_22, comment:SN minimum width and length if the area touch with gate  
+**ouput**: {'classification': 'Length', 'symbol': 'N/A', 'value': 'N/A'}
+
+-----------------------s40:CT----------------------------
+
+**input**: rule:CT_1, comment:CT.1	Fixed CT size (square shape)is 0.06.  
+**ouput**: {'classification': 'Area', 'symbol': '==', 'value': '0.06'}
+**input**: rule:CT.1a, comment:Non-square CT only allowed inside of [EFUSE ,  seal ring(MARKS) ,  SRAM(INST)]  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:CT_2, comment:Minimum space between two contacts is 0.080  SR ,  Minimum space between two contacts is 0.080  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.080'}
+**input**: rule:CT_2a, comment:Minimum space between two contacts on different net is 0.11  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:CT_3, comment:CT array minimum space to CT array for run length  >  0.34 um is 0.11  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:CT_3a, comment:Minimum space between two contacts in CT array is 0.08  contact array is larger or equal to 4x4 CT.  Two contact regions whose space is within 0.12um at same M1 are considered to be in the same array.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:CT_4, comment:Minimum space between AA region and contact overlap poly is 0.040  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.040'}
+**input**: rule:CT_5, comment:0.9/1.1/1.2V device minimum space between gate region and contact overlap AA is 0.040  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.040'}
+**input**: rule:CT_5a, comment:1.8/2.5V device minimum space between gate(enclosure by TG or DG) to contact overlap AA is 0.080  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.080'}
+**input**: rule:CT_6abd, comment:CT must be within AA (if CT touchs AA) ,  and must meet rule (CT.6a or (CT.6b ,  CT.6c)) and CT.6d.  CT.6 CT.6a ,  CT.6b ,  CT.6c and CT.6d are not applicable for CT interacts with EFUSE(81;2)  The CT here is interacted with M1 and AA intersection.  CT enclosure by AA (four sides)  >= 0.01  CT enclosure by AA (exclude pick-up AA) for two opposite sides when either opposite sides < 0.01um ,   >= 0.005um  >= 0.03  CT enclosure by AA  >= 0.005  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.03'}
+**input**: rule:CT_6acd, comment:CT enclosure by AA (four sides)  >= 0.01  CT enclosure by pick-up AA for two opposite sides when either opposite sides < 0.01um ,   >= 0.005um. >= 0.02  CT enclosure by AA   >= 0.005  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.01'}
+**input**: rule:CT_7ab, comment:CT must be within poly  per M1 and poly intersection containing a CT ,  must meet rule CT.7a or CT.7b  Minimum CT enclosure by poly is 0.01  Minimum CT enclosure by poly for two opposite sides is 0.02 when the either two opposite sides <= 0.01um ,   >= 0um ,  except EFUSE.  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.01'}
+**input**: rule:CT_8, comment:Minimum CT(on AA) enclosure by SP is 0.03  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.03'}
+**input**: rule:CT_9, comment:Minimum CT(on AA) enclosure by SN is 0.03  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.03'}
+**input**: rule:CT_10, comment:CT overlap (gate or (STI not GT)) region is forbidden.  Waive the CT overlap gate in (LOGO ,  INDMY ,  MOMDMY).  Waive the CT overlap STI for (CT straddles STI in INST). Waive rectangle CT in ( INST or EFUSE) violation of this rule.  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:CT_11, comment:It is not allowed that (CT not outside AA) touches or straddles on (SN or SP) edge  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:CT_12, comment:Non-salicided contacts are not allowed  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:CT_19_R, comment:Recommend to have redundant CT to prevent high contact resistance  On the resistor connection.  Gate  Source/Drain ,  and poly  For large transistor ,  spread the CT necessary for current all over the S/D area.  DRC highlight single CT connection  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+
+-----------------------s40:M1----------------------------
+
+**input**: rule:M1_1, comment:M1 minimum width is 0.07  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.07'}
+**input**: rule:M1_2, comment:M1 maximum width is 4.5  
+**ouput**: {'classification': 'Width', 'symbol': '<=', 'value': '4.5'}
+**input**: rule:M1_3, comment:M1 minimum space is 0.07  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.07'}
+**input**: rule:M1_4, comment:M1 minimum area (The INST connected area apply SRAM design rule) is 0.0196  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.0196'}
+**input**: rule:M1_5, comment:M1 minimum enclosed area is 0.2  
+**parse_error**: 
+
+The rule specifies the minimum enclosed area for M1 as 0.2, but it doesn't explicitly use a comparison operator like ">=", "<", etc. Therefore, based on the user's instructions:
+
+- **Classification:** Area
+- **Symbol:** N/A (since there is no explicit comparison symbol)
+- **Value:** 0.2
+
+Thus, the final answer is:
+
+```json
+{
+  "classification": "Area",
+  "symbol": "N/A",
+  "value": 0.2
+}
+```
+**input**: rule:M1_6, comment:Minimum space between two length  >  0.3 parallel metal lines  with both metal line width is  >  0.22 is 0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:M1_6a, comment:Minimum space between two length  >  0.6 parallel metal lines  with one or both metal line width is  >  0.7 is 0.12  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.12'}
+**input**: rule:M1_6b, comment:Minimum space between two length  >  0.6 parallel metal lines with one metal  line width is  >  0.22 and other metal line width is  > 0.7um is 0.14  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.14'}
+**input**: rule:M1_6c, comment:Minimum space between two length  >  1.5 parallel metal lines with  one or both metal line width is  > 1.5um is 0.3  
+**ouput**: {'classification': 'Spacing', 'symbol': '>', 'value': '0.3'}
+**input**: rule:M1_7, comment:CT must be within M1  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:M1_7bc_AA, comment:per (AA NOT GT) and M1 intersection containing a CT must meet rule M1.7b or M1.7c  M1 minimum overlap past CT for two opposite sides with the other two sides  >= 0um is 0.025  Or all 4 sides with enlcosure of 0.015 is also correct.  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.025'}
+**input**: rule:M1_7bc_GT, comment:per Poly and M1 intersection containing a CT must meet rule M1.7b or M1.7c  M1 minimum overlap past CT for two opposite sides with the other two sides  >= 0um is 0.025  Or all 4 sides with enlcosure of 0.015 is also correct.  
+**parse_error**: 
+
+```json
+{
+  "classification": "Enclosure",
+  "symbol": "==",
+  "value": 0.015
+}
+```
+**input**: rule:M1_7e, comment:CT minimum enclosure by M1 (M1 width  >  0.7um) is 0.03um.  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.03'}
+Traceback (most recent call last):
+  File "/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/run_rule.py", line 34, in <module>
+    rf.extract_rules()
+  File "/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/ipmigration/rule/svrf_reader.py", line 559, in extract_rules
+    self.parse_data(df)
+  File "/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/ipmigration/rule/svrf_reader.py", line 599, in parse_data
+    response = client.chat(self.model, messages)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/ollama/_client.py", line 333, in chat
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/ollama/_client.py", line 178, in _request
+    return cls(**self._request_raw(*args, **kwargs).json())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/ollama/_client.py", line 118, in _request_raw
+    r = self._client.request(*args, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

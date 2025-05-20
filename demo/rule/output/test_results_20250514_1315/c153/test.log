@@ -1,0 +1,217 @@
+
+-----------------------c153:TB----------------------------
+
+**input**: rule:TB.a, comment:Minimum NW width must be  >= 0.8um  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.8'}
+**input**: rule:TB.b1.1, comment:Min space between two NW with different potential must be  >=  1.53 um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '1.53'}
+**input**: rule:TB.b.2, comment:Min space between two NW with same potential must be  >=  0.8 um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.8'}
+**input**: rule:TB.c, comment:Min width of an NW region not connect to most positive power supply must be  >= 1.784 um  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '1.784'}
+**input**: rule:TB.d, comment:Min area of NW must be  >= 4.0 um2  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '4.0'}
+**input**: rule:TB.e, comment:TO is not allowed to placed ,  if the space between two NW less than 0.96um  
+**ouput**: {'classification': 'Spacing', 'symbol': '<', 'value': '0.96'}
+
+-----------------------c153:TO----------------------------
+
+**input**: rule:TO.a.1, comment:Min active width for interconnect must be  >= 0.186um  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.186'}
+**input**: rule:TO.b.1, comment:Active width for NMOS must be  >=  0.186 um  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.186'}
+**input**: rule:TO.b.2, comment:Active width for PMOS must be  >=  0.186 um  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.186'}
+**input**: rule:TO.c, comment:Min spacing of TO must be  >= 0.238um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.238'}
+**input**: rule:TO.d, comment:Min extension from NW edge to an NW pick-up must be  >= 0.102um  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.102'}
+**input**: rule:TO.e.2, comment:Min spacing of NW edge to an N+active outside NW(5v) must be  >= 0.45um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.45'}
+**input**: rule:TO.f.2, comment:Min spacing of NW edge to an P+active inside NW(5v) must be  >= 0.45um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.45'}
+**input**: rule:TO.g, comment:Min spacing of NW edge to an P+active(PW pick-up)  outside NW must be  >= 0.102um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.102'}
+**input**: rule:TO.h.1, comment:Min spacing of poly edge to the edeg of butted diffusion active must be  >= 0.272um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.272'}
+**input**: rule:TO.h.2, comment:Min spacing of poly edge to the edeg of butted diffusion active must be  >= 0.272um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.272'}
+**input**: rule:TO.i, comment:Min spacing of N+active to P+active for butted diffusion active must be  >= 0  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0'}
+**input**: rule:TO.j, comment:One segment of the consecutive SN/SP edge of a butted  diffusion active should be longer than 0.326um  
+**ouput**: {'classification': 'Length', 'symbol': '>', 'value': '0.326'}
+**input**: rule:TO.k, comment:When NW and PW pick-up are put head-to-head across the boundary of the well ,  the spacing of N-pick-up to P-pick-up should be 0.304um in order to meet the implant rules  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.304'}
+**input**: rule:TO.l, comment:Min active area of a stand-along region must be  >= 0.2um2  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.2'}
+**input**: rule:TO.m, comment:Min active area of butted diffusion must be  >= 0.13um2  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.13'}
+**input**: rule:TO.n, comment:Length and width should be less than 60um  
+**ouput**: {'classification': 'Length', 'symbol': '<', 'value': '60'}
+**input**: rule:TO.note, comment:active not doped is not allowed  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+
+-----------------------c153:GT----------------------------
+
+**input**: rule:GT.a.1, comment:Min width for interconnects must be  >= 0.18um  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.18'}
+**input**: rule:GT.a.2, comment:Min width for gate of HVNMOS(5.0V) must be  >= 0.5um  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.5'}
+**input**: rule:GT.a.3, comment:Min width for gate of HVPMOS(5.0V) must be  >= 0.42um  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.42'}
+**input**: rule:GT.b.1, comment:Min spacing between two GT region must be  >= 0.212um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.212'}
+**input**: rule:GT.b.2, comment:Min spacing between two GT regions with contact on active area must be >= 0.318um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.318'}
+**input**: rule:GT.b.3, comment:Min spacing between two GT regions without contact on active area must be >= 0.25um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.25'}
+**input**: rule:GT.c, comment:Min extension of poly end cap must be  >= 0.186um  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.186'}
+**input**: rule:GT.d, comment:Min extension from active to GT must be  >= 0.27um  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.27'}
+**input**: rule:GT.e, comment:Min spacing of poly to active must be  >= 0.084um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.084'}
+**input**: rule:GT.f, comment:1  Max length of salicide poly on SAB between two contacts must  <= 50um when poly width is less than or equal to 0.24um  2  Max length of salicide poly on SAB between one contact and poly line end must  <= 50um when poly width is less than or equal to 0.24um  
+**ouput**: {'classification': 'Length', 'symbol': '<=', 'value': '50'}
+**input**: rule:GT.g1, comment:Min GT width for NMOS channel length which has 45 degree bent on TO must be  >= 0.54um  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.54'}
+**input**: rule:GT.g2, comment:Min GT width for PMOS channel length which has 45 degree bent on TO must be  >= 0.46um  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.46'}
+**input**: rule:GT.g3, comment:Min GT width for channel length which has 45 degree bent on field oxide must be  >= 0.26um  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.26'}
+**input**: rule:GT.h, comment:GT must enter the TO region perpendicularly(horizontal or vertical direction).  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:GT.i.1, comment:90 degree bend on active region is not allowed  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:GT.i.2, comment:90 degree bend on active region is not allowed  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:GT.k, comment:Min space between poly interconnects with one or both poly width and length  are greater than 0.28um and 0.5um respectively must be  >= 0.22um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.22'}
+
+-----------------------c153:SP----------------------------
+
+**input**: rule:SP.a, comment:Min width must be  >= 0.356  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.356'}
+**input**: rule:SP.b, comment:Min space of SP must be  >= 0.356  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.356'}
+**input**: rule:SP.b1, comment:Min SP space on STI  <= 0.42um must be merge  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.42'}
+**input**: rule:SP.c, comment:Min spacing of SP to a N+ active outside NW must be  >= 0.22  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.22'}
+**input**: rule:SP.d, comment:Min spacing of SP to a N+ pick-up active(non-butted active) must be >= 0.084um  if the distance between N+active and NW >= 0.43um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.084'}
+**input**: rule:SP.e, comment:Min spacing of SP to a N+ pick-up active(non-butted active) must be >= 0.152um  if the distance between N+active and NW < 0.43um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.152'}
+**input**: rule:SP.f_1, comment:Min overlap from SP edge to an active must be  >= 0.194um  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.194'}
+**input**: rule:SP.f_2, comment:Min overlap from SP edge to an active must be  >= 0.17um  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.17'}
+**input**: rule:SP.g, comment:Min extension of a SP region over P+active region must be  >= 0.152um  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.152'}
+**input**: rule:SP.h, comment:Min space of a SP edge to a N-channel poly gate must be  >= 0.238um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.238'}
+**input**: rule:SP.i, comment:Min extension of a SP region to a P-channel poly gate must be  >= 0.4um  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.4'}
+**input**: rule:SP.j, comment:Min extension of a SP region beyond a P+ pick-up active must be  >= 0.02um  if the distance between P+active and NW  >= 0.43um  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:SP.k, comment:Min extension of a SP region beyond a P+ pick-up active must be  >= 0.152um  if the distance between P+active and NW  < 0.43um  1. To obey this rule and "c" simultaneously ,  the minimum space  between N+ pick-up active and P+ active should be increased to 0.372um  2. To obey this rule and "e" simultaneously ,  the minimum space  between N+ pick-up active and P+ active should be increased to 0.304um  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.152'}
+**input**: rule:SP.l.1, comment:Min extension of SP region beyond a resistor poly msut be  >= 0.152um  SAB poly without SN or SP implant is not allowed.  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.152'}
+**input**: rule:SP.m, comment:Min space from a SP edge to a N-channel poly gate along the  direction of poly gate must be  >= 0.254um.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.254'}
+**input**: rule:SP.n, comment:Min extension of a SP region over P+active along the  direction of poly gate must be  >= 0.296um.  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.296'}
+**input**: rule:SP.s, comment:Min SP area  >= 0.4um2  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.4'}
+**input**: rule:SP.w, comment:Min resist pattern area within PPLUS region must be  >= 0.64um2  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.64'}
+
+-----------------------c153:SN----------------------------
+
+**input**: rule:SN.a, comment:Min SN width must be  >= 0.356  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.356'}
+**input**: rule:SN.b, comment:Min SN space must be  >= 0.356  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.356'}
+**input**: rule:SN.b1, comment:Min SN space on STI  <= 0.42um must be merge  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.42'}
+**input**: rule:SN.c, comment:Min spacing of SN to a P+ active inside NW must be  >= 0.22  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.22'}
+**input**: rule:SN.d, comment:Min spacing of SN to a P+ pick-up active(non-butted active) must be >= 0.084um  if the distance between P+active and NW >= 0.43um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.084'}
+**input**: rule:SN.e, comment:Min spacing of SN to a P+ pick-up active(non-butted active) must be >= 0.152um  if the distance between P+active and NW < 0.43um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.152'}
+**input**: rule:SN.f_1, comment:Min overlap from SN edge to an active must be  >= 0.194um  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.194'}
+**input**: rule:SN.f_2, comment:Min overlap from SN edge to an active must be  >= 0.17um  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.17'}
+**input**: rule:SN.g, comment:Min extension of a SN region over N+active region must be  >= 0.152um  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.152'}
+**input**: rule:SN.h, comment:Min space of a SN edge to a P-channel poly gate must be  >= 0.238um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.238'}
+**input**: rule:SN.i, comment:Min extension of a SN region to a N-channel poly gate must be  >= 0.45um  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.45'}
+**input**: rule:SN.j, comment:Min extension of a SN region beyond a N+ pick-up active must be  >= 0.02um  if the distance between N+active and PW  >= 0.43um  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:SN.k, comment:Min extension of a SN region beyond a N+ pick-up active must be  >= 0.152um  if the distance between N+active and PW  < 0.43um  1. To obey this rule and "c" simultaneously ,  the minimum space  between N+ pick-up active and P+ active should be increased to 0.372um  2. To obey this rule and "e" simultaneously ,  the minimum space  between N+ pick-up active and P+ active should be increased to 0.304um  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.152'}
+**input**: rule:SN.l.1, comment:Min extension of SN region beyond a resistor poly msut be  >= 0.152um  SAB poly without SN or SP implant is not allowed.  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.152'}
+**input**: rule:SN.m, comment:Min space from a SN region over P+active along the  direction of poly gate must be  >= 0.31um.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.31'}
+**input**: rule:SN.n, comment:Min extension of a SN region over N+active along the  direction of poly gate must be  >= 0.296um.  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.296'}
+**input**: rule:SN.s, comment:Min SN area  >= 0.4um2  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.4'}
+**input**: rule:SN.w, comment:Min resist pattern area within NPLUS region must be  >= 0.64um2  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.64'}
+
+-----------------------c153:W1----------------------------
+
+**input**: rule:W1.a, comment:Min&Max Contact size must be  ==  0.186um  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.186'}
+**input**: rule:W1.b, comment:Min W1 to W1 space must be  >=  0.212um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.212'}
+**input**: rule:W1.c, comment:Min space when the row and column numbers are both greater than 3 in the contact array must be  >=  0.238um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.238'}
+**input**: rule:W1.d, comment:Min space of poly contact to active edge must be  >=  0.144um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.144'}
+**input**: rule:W1.e, comment:Min space of poly gate to contact on active must be  >=  0.14um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.14'}
+**input**: rule:W1.f, comment:Min enclosure of active beyond contact must be  >=  0.07um  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.07'}
+**input**: rule:W1.g, comment:Min enclosure of poly beyond contact must be  >=  0.07um  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.07'}
+**input**: rule:W1.h, comment:Min enclosure of P+active beyond contact must be  >=  0.102um  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.102'}
+**input**: rule:W1.i, comment:Min enclosure of N+active beyond contact must be  >=  0.102um  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.102'}
+**input**: rule:W1.j, comment:Contact on poly gate region is forbidden.  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:W1.k, comment:Contact on active is not allowed to locate on the boundary of SN and SP.  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:W1.m, comment:W1 without the cover of (GATE or ACT) is not allowed.  
+**ouput**: {'classification': 'Enclosure', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:W1.note, comment:W1 on the body of any resistor is not allowed.  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+
+-----------------------c153:A1----------------------------
+
+**input**: rule:A1.a, comment:Min A1 width must be  >= 0.194um  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.194'}
+**input**: rule:A1.b, comment:Min A1 space must be  >= 0.194um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.194'}
+**input**: rule:A1.c_d, comment:A1.c  Min enclosure of A1 region over contact region must be  >= 0.004um  A1.d  Min enclosure of A1 line end region beyond contact region must be  >= 0.05um  (when contact at 90 degree corner , one side of metal enclosure must be considered as line end region).  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.004'}
+**input**: rule:A1.e, comment:Minimum space between M1 lines with one or both metal line width  and length are greater than 10um is 0.476um  The minimum space must be maintained between a metal line and a  small piece of metal( < 10) that is connected to the wide metal  within 1.0um range from the wide metal  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.476'}
+**input**: rule:A1.g, comment:Min A1 area must be  >= 0.2um2  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.2'}
+
+-----------------------c153:SI----------------------------
+
+No design rule data for layer SI
+
+-----------------------c153:AT----------------------------
+
+No design rule data for layer AT

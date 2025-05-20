@@ -1,0 +1,123 @@
+design rule,layer,layer description,rule description,classification,symbol,value
+NW_offgrid,NW,N-Well,Drawn NW off-grid  ,Restrictions,N/A,N/A
+NW_1,NW,N-Well,Min NW width is 0.36  ,Width,=,0.36
+NW_2,NW,N-Well,Min NW width for NW resistor is 1.6  ,Width,==,1.6
+NW_3,NW,N-Well,Min Space between 1.0/1.2V NWs at the same nets is 0.36  ,Spacing,=,0.36
+NW_4,NW,N-Well,Min Space between 1.0/1.2V NWs at different nets is 0.47  ,Spacing,==,0.47
+NW_5,NW,N-Well,Min Space between 1.0/1.2V and 1.8/2.5/3.3V NWs at the same nets is 0.47  ,Spacing,>=,0.47
+NW_6,NW,N-Well,Min Space between 1.0/1.2V NW and 1.8/2.5/3.3V NW at different nets is 0.72  ,Spacing,==,0.72
+NW_7a,NW,N-Well,Min Space between 1.8/2.5/3.3V NWs at same nets is 0.47  ,Spacing,==,0.47
+NW_7b,NW,N-Well,Min Space between 1.8/2.5/3.3V NW is 0.72 at different nets is 0.72.  ,Spacing,>=,0.72
+NW_8,NW,N-Well,Min NW area is 0.3  ,Area,==,0.3
+AA_offgrid,AA,Active,Drawn AA off-grid  ,Restrictions,N/A,N/A
+AA_1,AA,Active,Min Width of interconnect AA is 0.08  ,Width,>=,0.08
+AA_2a,AA,Active,Min AA width for 1.0/1.2V NMOS/PMOS transistors is 0.11  ,Width,==,0.11
+AA_2b,AA,Active,Min AA width for 1.8/2.5/3.3V NMOS/PMOS transistors is 0.21  ,Width,>=,0.21
+AA_3a,AA,Active,Min Space between two AAs in the same well is 0.10  ,Spacing,>=,0.10
+AA_3b,AA,Active,Min Space between AAs with one or both AA width greater than 0.15um in the same well is 0.11  ,Spacing,>=,0.11
+AA_4,AA,Active,Min N+AA enclosed by NW is 0.12  ,Enclosure,>=,0.12
+AA_5,AA,Active,Min Space between NW and N+AA inside PW is 0.15  ,Spacing,>=,0.15
+AA_6,AA,Active,Min P+AA enclosed by NW is 0.15  ,Enclosure,>=,0.15
+AA_7,AA,Active,Space between NW and P+AA inside PW is 0.12  ,Spacing,==,0.12
+AA_8,AA,Active,Min AA area is 0.038  ,Area,==,0.038
+AA_9,AA,Active,"Min Space between N+AA ,  which is not enclosed by DNW ,  and NW which encloses a DNW is 0.32  ",Spacing,==,0.32
+AA_10a_Min,AA,Active,Min Local AA density (including dummy AA) in 200umX200um window with step size 100um is 19%.  ,Area,===,19
+AA_10a_Max,AA,Active,Max Local AA density (including dummy AA) in 200umX200um window with step size 100um is 90%.  ,Area,<=,90
+AA_10b_Min_R,AA,Active,Min Global AA density for fully chip (including dummy AA) is 23%  NOTICE  It is a recommended rule.  ,Area,>=,23
+AA_10b_Max_R,AA,Active,Max Global AA density for fully chip (including dummy AA) is 75%  NOTICE  It is a recommended rule.  ,Area,<=,75
+AA_10c_R,AA,Active,"Min AA density inside of dummy block area is 23% , while the area of dummy block layer is larger than 2500um2 (50umX50um)  NOTICE  It is a recommended rule.  ",Area,>=,23
+GT_offgrid,GT,Poly,Drawn GT off-grid  ,Restrictions,N/A,N/A
+GT_1a,GT,Poly,Min Channel length for 1.0/1.2V NMOS /PMOS transistors is 0.06  ,Length,=,0.06
+GT_1b,GT,Poly,Min Channel length for 1.8V NMOS/PMOS transistors is 0.20  ,Length,>=,0.20
+GT_2,GT,Poly,Min Width of interconnect poly is 0.06  ,Width,==,0.06
+GT_3a,GT,Poly,Min Space between two GTs is 0.12  ,Spacing,N/A,N/A
+GT_3b,GT,Poly,"Min Space between two GTs is 0.16 when one or both GT width is  >=  0.4um , and the run length of two GTs is  >= 0.5um.  ",Spacing,>=,0.16
+GT_3c_R,GT,Poly,Min Recommended space between GTs on the same AA is 0.19  NOTICE  It is a recommended rule.  ,Spacing,>=,0.19
+GT_3d_R,GT,Poly,Min Recommended space between GTs on the same AA inside TG is 0.24  NOTICE  It is a recommended rule.  ,Spacing,>=,0.24
+GT_4,GT,Poly,Space between AA and GT on field oxide is 0.05  ,Spacing,N/A,0.05
+GT_5,GT,Poly,Min Extension of AA outside of GT(not include dummy AA and dummy Poly) is 0.115  ,Extension,>=,0.115
+GT_6,GT,Poly,Min Extension of poly end-cap outside of AA (not including dummy AA and dummy poly) is 0.14  ,Extension,>=,0.14
+GT_7a_Min,GT,Poly,Min GT density is 7%  ,Area,==,7
+GT_7a_Max,GT,Poly,Max. GT density is 70%  ,Area,>=,70
+GT_7b_Min_R,GT,Poly,Min Global GT density for fully chip (including dummy) is 10%  NOTICE  It is a recommended rule.  ,Area,>=,10
+GT_7b_Max_R,GT,Poly,Max Global GT density for fully chip (including dummy) is 45%  NOTICE  It is a recommended rule.  ,Area,>=,45
+GT_7c_R,GT,Poly,"Min GT density inside of dummy block area is 10% ,  while the area of dummy block layer is larger than 2500um2 (50X50um).  NOTICE  It is a recommended rule.  ",Area,>=,10
+GT_8,GT,Poly,No bent GT on AA is allowed.All GT patterns on AA have to be orthogonal to AA edage.  ,Restrictions,N/A,N/A
+GT_9a,GT,Poly,SN extension outside of poly resistor is 0.16  ,Extension,N/A,0.16
+GT_9b,GT,Poly,SP extension outside of poly resistor is 0.16  ,Extension,==,0.16
+GT_10a,GT,Poly,Space between NLL/NLH/SN and a P- type poly resistor is 0.16  ,Spacing,N/A,0.16
+GT_10b,GT,Poly,Space between PLL/PLH/SP and a N- type poly resistor is 0.16  ,Spacing,=,0.16
+GT_11,GT,Poly,"GT is enclosed by SN and/or SP ,  except MOM and HRPDMY area (when checking the rule ,  size down the HRPDMY by 0.3um along the current direction).  ",Enclosure,N/A,N/A
+GT_12,GT,Poly,SN and SP overlap on GT is not allowed  ,Restrictions,N/A,N/A
+GT_13,GT,Poly,Min GT area is 0.038.  ,Area,===,0.038
+SP_offgrid,SP,P+ implant,Drawn SP off-grid  ,Restrictions,N/A,N/A
+SP_1,SP,P+ implant,Min SP width is 0.18  ,Width,>=,0.18
+SP_2,SP,P+ implant,Min Space between two SP is 0.18  ,Spacing,>=,0.18
+SP_3,SP,P+ implant,Min Space between SP and N+AA inside PW is 0.10  ,Spacing,>=,0.10
+SP_4,SP,P+ implant,Min Space between SP and N+ AA inside NW is 0.02  ,Spacing,>=,0.02
+SP_5,SP,P+ implant,Min Space between SP and NMOS gate along source/drain direction is 0.24  ,Spacing,>=,0.24
+SP_6_8,SP,P+ implant,"Min SP extension outside of PMOS gate along source/drain direction is 0.24  Min SP extension outside of PMOS AA along gate poly length direction is 0.16 ,  if the distance to the related poly is less than or equal to 0.20um  ",Extension,<=,0.20
+SP_7,SP,P+ implant,"Min SP extension outside of PMOS AA along gate poly length direction is 0.12 ,  if the distance to the related poly is larger than 0.2um  ",Extension,>=,0.12
+SP_9,SP,P+ implant,Min P+AA enclosure by SP in PW is 0.02  ,Enclosure,==,0.02
+SP_10,SP,P+ implant,Min Overlap of SP and AA is 0.09  ,Enclosure,N/A,0.09
+SP_11,SP,P+ implant,Min SP area is 0.100  ,Area,>=,0.100
+SP_12,SP,P+ implant,Min Space between SP and butted N+AA (except SRAM area) is 0  ,Spacing,==,0
+SP_13,SP,P+ implant,No SN and SP overlap is allowed  ,Restrictions,N/A,N/A
+SN_offgrid,SN,N+ implant,Drawn SN off-grid  ,Restrictions,N/A,N/A
+SN_1,SN,N+ implant,Min SN width is 0.18  ,Width,>=,0.18
+SN_2,SN,N+ implant,Min Space between two SN is 0.18  ,Spacing,>=,0.18
+SN_3,SN,N+ implant,Min Space between SN and P+AA inside NW is 0.10  ,Spacing,>=,0.10
+SN_4,SN,N+ implant,Min Space between SN and P+ pickup AA inside PW is 0.02  ,Spacing,>=,0.02
+SN_5,SN,N+ implant,Min Space between SN and PMOS gate along source/drain direction is 0.24  ,Spacing,>=,0.24
+SN_6_8,SN,N+ implant,"Min SN extension outside of NMOS gate along source/drain direction is 0.24  Min SN extension outside of NMOS AA along gate poly length direction is 0.16 ,  if the distance to the related poly is less than or equal to 0.20um  ",Extension,>=,0.24
+SN_7,SN,N+ implant,"Min SN extension outside of NMOS AA along gate poly length direction 0.12 ,  if the distance to the related poly is larger than 0.20um  ",Extension,>=,0.12
+SN_9,SN,N+ implant,Min N+AA enclosured by by SN in NW is 0.02  ,Enclosure,>=,0.02
+SN_10,SN,N+ implant,Min Overlap of SN and AA is 0.09  ,Enclosure,==,0.09
+SN_11,SN,N+ implant,Min SN area is 0.100  ,Area,>=,0.100
+SN_12,SN,N+ implant,Min Space between SN and butted P+AA (except SRAM area) is 0  ,Spacing,>=,0
+CT_offgrid,CT,Contact,Drawn CT off-grid  ,Restrictions,N/A,N/A
+CT_1,CT,Contact,Fixed contact size (square shape except rectangular CT in SRAM and EFUSE area) is 0.09  ,Width,N/A,0.09
+CT_2a,CT,Contact,Min Space between two contacts is 0.11  ,Spacing,>=,0.11
+CT_2b,CT,Contact,Min Space between two contacts  is 0.13 in case contact array is larger or equal to 4x4  Two contact regions whose space is within 0.15 are considered to be in the same array  ,Spacing,>=,0.13
+CT_3,CT,Contact,Min Space between AA and contact on poly is 0.065  ,Spacing,>=,0.065
+CT_4a,CT,Contact,Min Space between poly to diffusion contact for 1.0/1.2V is 0.05  ,Spacing,N/A,0.05
+CT_4b,CT,Contact,Min Space between poly and contact on AA for 1.8/2.5/3.3V is 0.09  ,Spacing,==,0.09
+CT_5,CT,Contact,Min CT enclosure by AA for CT landed on AA is 0.015  ,Enclosure,N/A,0.015
+CT_6,CT,Contact,Min CT enclosure by poly for CT landed on poly is 0.01  ,Enclosure,==,0.01
+CT_7a_7b,CT,Contact,Min M1 enclosure of CT is 0.00  Min M1 enclosure of CT when M1 enclosure on one or both perpendicular directions  <  0.025um is 0.025  ,Enclosure,<,0.025
+CT_9,CT,Contact,CT is not allowed to land on gate  ,Restrictions,N/A,N/A
+CT_10,CT,Contact,CT should land on salicided surface (except MARKG/MARKS covered areas)  ,Restrictions,N/A,N/A
+M1_offgrid,M1,Metal 1,Drawn M1 off-grid  ,Restrictions,N/A,N/A
+M1_1,M1,Metal 1,Min M1 width is 0.09  ,Width,>=,0.09
+M1_2a,M1,Metal 1,Min Space between two M1 is 0.09  ,Spacing,>=,0.09
+M1_2b,M1,Metal 1,"Min Space between two M1s is 0.16 when one or both M1 width or length  >= 1um ,  and the run length of two M1s is  >= 2um  ",Spacing,>=,0.16
+M1_2c,M1,Metal 1,"Min Space between two M1s is 0.5 when one or both M1 width or length  >=  5um ,  and run length of two M1s is  >=  2um  ",Spacing,>=,0.5
+M1_3,M1,Metal 1,Max M1 width is 12.  ,Width,>=,12
+M1_4,M1,Metal 1,Min M1 area is 0.027  ,Area,>=,0.027
+M1_5,M1,Metal 1,Min Enclosed dielectric area by M1 is 0.13  ,Area,>=,0.13
+M1_6al,M1,Metal 1,M1 density (including dummy) in 200umX200um window with step size 100um is  >=  18% and  <=  80%.  INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking  ,Area,>=,18
+M1_6b,M1,Metal 1,Max M1 density (including dummy) in 50umX50um window with step size 25um is 90%  ,Area,<=,90
+M1_6c,M1,Metal 1,The max difference between M1 density in 200umX200um with step size 200um and those of the adjacent checking windows (including dummy) is 40%.  INDMY/MARKG/MARKF/MARKS covered areas are excluded for this rule checking  ,Area,<=,40
+M1_6d,M1,Metal 1,Min M1 density (including dummy) in 25umX25um window with step size 12.5um is 12%.  INDMY/MARKG/MARKS covered areas are excluded for this rule checking  ,Area,N/A,12
+M1_6e_max_R,M1,Metal 1,M1 average density inside the dummy block area in 25umX25um window with step size 12.5um is  >=  12% and  <=  90% when the dummy block area  >=  25umX25um.  INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking.  Device sensitive areas can be waived.  NOTICE  It is a recommended rule.  ,Area,>=,12
+M1_7_a,M1,Metal 1,"Min Space between metal lines with one or both are 45 degree ,  and the bending metal length >= 0.5um is 0.105  (the area with 0.1um distance from bending point need not follow this rule)  ",Spacing,>=,0.105
+M1_7_b,M1,Metal 1,"Min Space between metal lines with one or both are 45 degree ,  and the bending metal length >= 0.5um is 0.105  (the area with 0.1um distance from bending point need not follow this rule)  ",Spacing,>=,0.5
+V1_offgrid,V1,Via1,Drawn V1 off-grid  ,Restrictions,N/A,N/A
+V1_1,V1,Via1,Fixed V1 size(square shape) is 0.09  ,Width,==,0.09
+V1_2a,V1,Via1,Min Space between two V1 is 0.11  ,Spacing,>=,0.11
+V1_2b,V1,Via1,Min Space between V1s when array equal to or greater than 4*4 is 0.13  Two via regions whose space is  <  0.15um are considered to be in the same array.  ,Spacing,>=,0.13
+V1_5a_5b,V1,Via1,Min M2 enclosure of V1 is 0.005  Min M2 Enclosure of V1 when M2 enclosure on one or both perpendicular directions  <  0.02um is 0.02  ,Enclosure,<,0.02
+V1_10,V1,Via1,Minimum Space between two neighbor V1s (different net and run length > 0) is 0.13um.  ,Spacing,>=,0.13
+V1_11_12_R,V1,Via1,There should be at least two V1s in the M1and M2 intersection area when either or both M1 and M2 width  >=  0.5um  There should be at least two V1s in the M1and M2 intersection area when either or both M1 and M2 is  connected with metal line of width >= 0.5um and space between V1 and wider metal edge  < 0.5um  NOTICE  It is a recommended rule.  ,Restrictions,>=,0.5
+M2_offgrid,M2,Metal2,Drawn M2 off-grid  ,Restrictions,N/A,N/A
+M2_1,M2,Metal2,Min Mn width is 0.10  ,Width,>=,0.10
+M2_2a,M2,Metal2,Min Space between two Mns is 0.10  ,Spacing,=,0.10
+M2_2c,M2,Metal2,"Min Space between two Mns when one or both Mn width or length  >=  5um ,  and the run length of two Mns is  >=  2um  ",Spacing,N/A,N/A
+M2_3,M2,Metal2,Max M2 width is 12.  Metal line greater than this width will comply slot rules.  ,Width,<=,12
+M2_4,M2,Metal2,Min Mn area is 0.035  ,Area,==,0.035
+M2_5,M2,Metal2,Min Enclosed dielectric area by Mn is 0.12  ,Enclosure,>=,0.12
+M2_6ah,M2,Metal2,Mn density (including dummy) in 200umX200um window with step size 100um is  >=  18% and  <=  80%.  INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking  ,Area,>=,18%
+M2_6b,M2,Metal2,Max Mn density (including dummy) in 50umX50um window with step size 25um is 90%.  ,Area,<=,90
+M2_6c,M2,Metal2,The max difference between Mn density in 200umX200um with step size 200um and those of the adjacent checking windows (including dummy) is 40%  INDMY/MARKG/MARKF/MARKS covered areas are excluded for this rule checking  ,Area,==,40
+M2_6d,M2,Metal2,Minimum Mn density (including dummy) in 25umX25um window with step size 12.5um is 12%  INDMY/MARKG/MARKS covered areas are excluded for this rule checking  ,Area,>=,12
+M2_6e_min_R,M2,Metal2,Average density for Mn inside the dummy block area in 25umX25um window with step size 12.5um is  >=  12% and  <=  90% when the dummy block area  >=  25umX25um.  INDMY/MARKF/MARKG/MARKS covered areas are excluded from this rule checking.  Device sensitive areas can be waived.  NOTICE  It is a recommended rule.  ,Area,>=,12

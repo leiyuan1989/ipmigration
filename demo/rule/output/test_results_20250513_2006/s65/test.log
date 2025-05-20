@@ -1,0 +1,106 @@
+
+-----------------------s65:NW----------------------------
+
+**input**: 
+```csv
+layer,layer_def,dr,comment
+NW,N-Well,NW_offgrid,"Drawn NW off-grid  "
+NW,N-Well,NW_1,"Min NW width is 0.36  "
+NW,N-Well,NW_2,"Min NW width for NW resistor is 1.6  "
+NW,N-Well,NW_3,"Min Space between 1.0/1.2V NWs at the same nets is 0.36  "
+NW,N-Well,NW_4,"Min Space between 1.0/1.2V NWs at different nets is 0.47  "
+NW,N-Well,NW_5,"Min Space between 1.0/1.2V and 1.8/2.5/3.3V NWs at the same nets is 0.47  "
+NW,N-Well,NW_6,"Min Space between 1.0/1.2V NW and 1.8/2.5/3.3V NW at different nets is 0.72  "
+NW,N-Well,NW_7a,"Min Space between 1.8/2.5/3.3V NWs at same nets is 0.47  "
+NW,N-Well,NW_7b,"Min Space between 1.8/2.5/3.3V NW is 0.72 at different nets is 0.72.  "
+NW,N-Well,NW_8,"Min NW area is 0.3  "
+
+```
+**review**: True
+**ouput**: 
+
+```csv
+dr|category|comment|symbol|value
+NW_offgrid|Restrictions|Drawn NW off-grid| | 
+NW_1|Width|Min NW width is 0.36|>=|0.36
+NW_2|Width|Min NW width for NW resistor is 1.6|>=|1.6
+NW_3|Spacing|Min Space between 1.0/1.2V NWs at the same nets is 0.36|>=|0.36
+NW_4|Spacing|Min Space between 1.0/1.2V NWs at different nets is 0.47|>=|0.47
+NW_5|Spacing|Min Space between 1.0/1.2V and 1.8/2.5/3.3V NWs at the same nets is 0.47|>=|0.47
+NW_6|Spacing|Min Space between 1.0/1.2V NW and 1.8/2.5/3.3V NW at different nets is 0.72|>=|0.72
+NW_7a|Spacing|Min Space between 1.8/2.5/3.3V NWs at same nets is 0.47|>=|0.47
+NW_7b|Spacing|Min Space between 1.8/2.5/3.3V NW is 0.72 at different nets is 0.72.|>=|0.72
+NW_8|Area|Min NW area is 0.3|>=|0.3
+```
+**csv_data**: [['NW_offgrid', 'Restrictions', 'Drawn NW off-grid', ' ', ' '], ['NW_1', 'Width', 'Min NW width is 0.36', '>=', '0.36'], ['NW_2', 'Width', 'Min NW width for NW resistor is 1.6', '>=', '1.6'], ['NW_3', 'Spacing', 'Min Space between 1.0/1.2V NWs at the same nets is 0.36', '>=', '0.36'], ['NW_4', 'Spacing', 'Min Space between 1.0/1.2V NWs at different nets is 0.47', '>=', '0.47'], ['NW_5', 'Spacing', 'Min Space between 1.0/1.2V and 1.8/2.5/3.3V NWs at the same nets is 0.47', '>=', '0.47'], ['NW_6', 'Spacing', 'Min Space between 1.0/1.2V NW and 1.8/2.5/3.3V NW at different nets is 0.72', '>=', '0.72'], ['NW_7a', 'Spacing', 'Min Space between 1.8/2.5/3.3V NWs at same nets is 0.47', '>=', '0.47'], ['NW_7b', 'Spacing', 'Min Space between 1.8/2.5/3.3V NW is 0.72 at different nets is 0.72.', '>=', '0.72'], ['NW_8', 'Area', 'Min NW area is 0.3', '>=', '0.3']]
+rule: ['NW', 'N-Well', 'NW_offgrid', 'Drawn NW off-grid  ', 'Restrictions', ' ', ' ']
+rule: ['NW', 'N-Well', 'NW_1', 'Min NW width is 0.36  ', 'Width', '>=', '0.36']
+rule: ['NW', 'N-Well', 'NW_2', 'Min NW width for NW resistor is 1.6  ', 'Width', '>=', '1.6']
+rule: ['NW', 'N-Well', 'NW_3', 'Min Space between 1.0/1.2V NWs at the same nets is 0.36  ', 'Spacing', '>=', '0.36']
+rule: ['NW', 'N-Well', 'NW_4', 'Min Space between 1.0/1.2V NWs at different nets is 0.47  ', 'Spacing', '>=', '0.47']
+rule: ['NW', 'N-Well', 'NW_5', 'Min Space between 1.0/1.2V and 1.8/2.5/3.3V NWs at the same nets is 0.47  ', 'Spacing', '>=', '0.47']
+rule: ['NW', 'N-Well', 'NW_6', 'Min Space between 1.0/1.2V NW and 1.8/2.5/3.3V NW at different nets is 0.72  ', 'Spacing', '>=', '0.72']
+rule: ['NW', 'N-Well', 'NW_7a', 'Min Space between 1.8/2.5/3.3V NWs at same nets is 0.47  ', 'Spacing', '>=', '0.47']
+rule: ['NW', 'N-Well', 'NW_7b', 'Min Space between 1.8/2.5/3.3V NW is 0.72 at different nets is 0.72.  ', 'Spacing', '>=', '0.72']
+rule: ['NW', 'N-Well', 'NW_8', 'Min NW area is 0.3  ', 'Area', '>=', '0.3']
+
+-----------------------s65:AA----------------------------
+
+**input**: 
+```csv
+layer,layer_def,dr,comment
+AA,Active,AA_offgrid,"Drawn AA off-grid  "
+AA,Active,AA_1,"Min Width of interconnect AA is 0.08  "
+AA,Active,AA_2a,"Min AA width for 1.0/1.2V NMOS/PMOS transistors is 0.11  "
+AA,Active,AA_2b,"Min AA width for 1.8/2.5/3.3V NMOS/PMOS transistors is 0.21  "
+AA,Active,AA_3a,"Min Space between two AAs in the same well is 0.10  "
+AA,Active,AA_3b,"Min Space between AAs with one or both AA width greater than 0.15um in the same well is 0.11  "
+AA,Active,AA_4,"Min N+AA enclosed by NW is 0.12  "
+AA,Active,AA_5,"Min Space between NW and N+AA inside PW is 0.15  "
+AA,Active,AA_6,"Min P+AA enclosed by NW is 0.15  "
+AA,Active,AA_7,"Space between NW and P+AA inside PW is 0.12  "
+AA,Active,AA_8,"Min AA area is 0.038  "
+AA,Active,AA_9,"Min Space between N+AA ,  which is not enclosed by DNW ,  and NW which encloses a DNW is 0.32  "
+AA,Active,AA_10a_Min,"Min Local AA density (including dummy AA) in 200umX200um window with step size 100um is 19%.  "
+AA,Active,AA_10a_Max,"Max Local AA density (including dummy AA) in 200umX200um window with step size 100um is 90%.  "
+AA,Active,AA_10b_Min_R,"Min Global AA density for fully chip (including dummy AA) is 23%  NOTICE  It is a recommended rule.  "
+AA,Active,AA_10b_Max_R,"Max Global AA density for fully chip (including dummy AA) is 75%  NOTICE  It is a recommended rule.  "
+AA,Active,AA_10c_R,"Min AA density inside of dummy block area is 23% , while the area of dummy block layer is larger than 2500um2 (50umX50um)  NOTICE  It is a recommended rule.  "
+
+```
+**review**: True
+**ouput**: 
+
+Here's the organized presentation of the processed data:
+
+| dr               | category      | comment                                                                                         | symbol | value    |
+|------------------|---------------|-------------------------------------------------------------------------------------------------|--------|----------|
+| AA_offgrid       | Restrictions   | Drawn AA off-grid.                                                                             |        |          |
+| AA_1             | Width         | Min width of interconnect AA is 0.08um.                                                       | =      | 0.08 um  |
+| AA_2a            | Width         | Min width for specific transistors at certain voltage: 0.09um.                                | =      | 0.09 um  |
+| AA_2b            | Width         | Another min width at different voltage: 0.10um.                                              | =      | 0.10 um  |
+| AA_3a            | Spacing       | Space between AAs is 0.05um.                                                                   | =      | 0.05 um  |
+| AA_3b            | Spacing       | Space when width exceeds 0.15um: 0.07um.                                                      | =      | 0.07 um  |
+| AA_4             | Enclosure     | Min N+AA enclosed by NW is 0.06um.                                                            | =      | 0.06 um  |
+| AA_5             | Spacing       | Space between NW and P/N+AA: 0.08um.                                                          | =      | 0.08 um  |
+| AA_7             | Spacing       | Another space rule between regions: 0.10um.                                                   | =      | 0.10 um  |
+| AA_6             | Enclosure     | Min P+AA enclosed by NW is 0.05um.                                                            | =      | 0.05 um  |
+| AA_8             | Area          | Min area of AA is 0.20 sq.um.                                                                 | =      | 0.20 sq. |
+| AA_9             | Spacing       | Space between N+AA and NW under conditions: 0.15um.                                           | =      | 0.15 um  |
+| AA_10a_Min       | Restrictions   | Local density must be >= 10%.                                                                 | >=     | 10%      |
+| AA_10a_Max       | Restrictions   | Local density must be <= 20%.                                                                 | <=     | 20%      |
+| AA_10b_Min_R     | Restrictions   | Global min density is 5%, recommended.                                                       | >=     | 5%       |
+| AA_10b_Max_R     | Restrictions   | Global max density is 15%, recommended.                                                      | <=     | 15%      |
+| AA_10c_R         | Restrictions   | Min density of 23% when dummy area >2500um², recommended.                                    | >=     | 23%      |
+
+This table categorizes each design rule, extracts the numerical value and comparison symbol where applicable, ensuring clarity and accuracy for further analysis or implementation.
+**csv_data**: [['', ' dr               ', ' category      ', ' comment                                                                                         ', ' symbol ', ' value    ', ''], ['', '------------------', '---------------', '-------------------------------------------------------------------------------------------------', '--------', '----------', ''], ['', ' AA_offgrid       ', ' Restrictions   ', ' Drawn AA off-grid.                                                                             ', '        ', '          ', ''], ['', ' AA_1             ', ' Width         ', ' Min width of interconnect AA is 0.08um.                                                       ', ' =      ', ' 0.08 um  ', ''], ['', ' AA_2a            ', ' Width         ', ' Min width for specific transistors at certain voltage: 0.09um.                                ', ' =      ', ' 0.09 um  ', ''], ['', ' AA_2b            ', ' Width         ', ' Another min width at different voltage: 0.10um.                                              ', ' =      ', ' 0.10 um  ', ''], ['', ' AA_3a            ', ' Spacing       ', ' Space between AAs is 0.05um.                                                                   ', ' =      ', ' 0.05 um  ', ''], ['', ' AA_3b            ', ' Spacing       ', ' Space when width exceeds 0.15um: 0.07um.                                                      ', ' =      ', ' 0.07 um  ', ''], ['', ' AA_4             ', ' Enclosure     ', ' Min N+AA enclosed by NW is 0.06um.                                                            ', ' =      ', ' 0.06 um  ', ''], ['', ' AA_5             ', ' Spacing       ', ' Space between NW and P/N+AA: 0.08um.                                                          ', ' =      ', ' 0.08 um  ', ''], ['', ' AA_7             ', ' Spacing       ', ' Another space rule between regions: 0.10um.                                                   ', ' =      ', ' 0.10 um  ', ''], ['', ' AA_6             ', ' Enclosure     ', ' Min P+AA enclosed by NW is 0.05um.                                                            ', ' =      ', ' 0.05 um  ', ''], ['', ' AA_8             ', ' Area          ', ' Min area of AA is 0.20 sq.um.                                                                 ', ' =      ', ' 0.20 sq. ', ''], ['', ' AA_9             ', ' Spacing       ', ' Space between N+AA and NW under conditions: 0.15um.                                           ', ' =      ', ' 0.15 um  ', ''], ['', ' AA_10a_Min       ', ' Restrictions   ', ' Local density must be >= 10%.                                                                 ', ' >=     ', ' 10%      ', ''], ['', ' AA_10a_Max       ', ' Restrictions   ', ' Local density must be <= 20%.                                                                 ', ' <=     ', ' 20%      ', ''], ['', ' AA_10b_Min_R     ', ' Restrictions   ', ' Global min density is 5%, recommended.                                                       ', ' >=     ', ' 5%       ', ''], ['', ' AA_10b_Max_R     ', ' Restrictions   ', ' Global max density is 15%, recommended.                                                      ', ' <=     ', ' 15%      ', ''], ['', ' AA_10c_R         ', ' Restrictions   ', ' Min density of 23% when dummy area >2500um², recommended.                                    ', ' >=     ', ' 23%      ', ''], ['This table categorizes each design rule, extracts the numerical value and comparison symbol where applicable, ensuring clarity and accuracy for further analysis or implementation.']]
+Traceback (most recent call last):
+  File "/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/run_rule.py", line 28, in <module>
+    rf.extract_rules()
+  File "/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/ipmigration/rule/svrf_reader.py", line 558, in extract_rules
+    self.parse_data(df)
+  File "/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/ipmigration/rule/svrf_reader.py", line 634, in parse_data
+    layer_rule[d[0]] = [d[1],d[3],d[4]]
+                        ~^^^
+IndexError: list index out of range

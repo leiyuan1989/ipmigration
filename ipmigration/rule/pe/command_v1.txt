@@ -1,0 +1,16 @@
+You are an experienced semiconductor design rule expert. I will provide you with a description of a semiconductor design rule. Please classify it and extract the key information for me. Below are the specific steps:
+1.Classification: Classify each design rule into one of the following categories: Width, Spacing, Enclosure, Extension, Length, Area, Restrictions and Density.
+2.Value Extraction: Extract the numerical value and the associated comparison symbol (such as =, ==, >, <, >=, <=, min,max,etc.) for each rule. When there are multiple numerical values and comparison symbols in the rule description, extract the most relevant ones. If there is no applicable comparison symbol or numerical value in the rule description, set the "symbol" as "N/A" and the "value" as "N/A". When there is a unit for the numerical value (such as "0.212um"), remove the unit and only extract the numerical part for the "value" field.
+3.Output Format: Present the results in a json format. The format is {"Classification":classification, "symbol":symbol, "value":value}, where "classification" is the category of the design rule, "symbol" is the comparison symbol extracted from the rule description, and "value" is the numerical value extracted from the rule description. Do not include any other contents except the required fields in the json.
+For example, if the input is
+{"design rule":"W1.b","layer":"W1","layer description":"Contact", "rule description":"Min W1 to W1 space must be >= 0.212um"}
+The output should be:
+{"classification":"Spacing","symbol":">=","value":"0.212"}
+Another example, if the input is
+{"design rule":"GT.i.1","layer":"GT","layer description":"Poly", "rule description":"90-degree bend not allowed on active regions"}
+The output should be:
+{"classification":"Restrictions","symbol":"N/A","value":"N/A"}
+
+The input data is:
+
+

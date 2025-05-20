@@ -1,0 +1,1130 @@
+#DEFINE thickmetal2_process
+#DEFINE tt_thickness_35k
+#DEFINE CHECK_SlotRule_C
+#DEFINE CHECK_PAD_OPENING_Rule
+LAYOUT PATH "CELLNAME.gds"
+LAYOUT PRIMARY "CELLNAME"
+LAYOUT SYSTEM GDS2
+DRC RESULTS DATABASE "CELLNAME.db" ASCII
+DRC MAXIMUM RESULTS ALL
+DRC MAXIMUM VERTEX ALL
+DRC SUMMARY REPORT "result.summary" REPLACE HIER
+DRC CHECK TEXT ALL
+DRC CELL NAME NO
+VIRTUAL CONNECT COLON NO
+VIRTUAL CONNECT REPORT NO
+PRECISION 1000
+RESOLUTION 1
+TEXT DEPTH PRIMARY
+VIRTUAL CONNECT NAME VDD? vdd? gnd? GND?
+FLAG NONSIMPLE YES
+FLAG OFFGRID YES
+FLAG ACUTE YES
+FLAG SKEW YES
+offgrid_check {bracket}
+ortho_45_check {bracket}
+PORT LAYER TEXT 121 122 126 230 1179 1180
+LAYER empty 999
+LAYER A1 1000
+LAYER MAP 7 DATATYPE 0 1000
+LAYER A1_text 1001
+LAYER MAP 121 TEXTTYPE 0 1001
+TEXT LAYER A1_text
+LAYER A1SLOT_slot 1002
+LAYER MAP 136 DATATYPE 3 1002
+LAYER AT 1015
+LAYER MAP 94 DATATYPE 0 1015
+LAYER AT_text 1016
+LAYER MAP 126 TEXTTYPE 0 1016
+TEXT LAYER AT_text
+LAYER ATSLOT_slot 1017
+LAYER MAP 133 DATATYPE 3 1017
+LAYER MTT 1018
+LAYER MAP 86 DATATYPE 0 1018
+LAYER MTT_text 1019
+LAYER MAP 126 TEXTTYPE 0 1019
+TEXT LAYER MTT_text
+LAYER MTTSLOT_slot 1020
+LAYER MAP 130 DATATYPE 3 1020
+LAYER W1 1021
+LAYER MAP 6 DATATYPE 0 1021
+LAYER WT 1026
+LAYER MAP 93 DATATYPE 0 1026
+LAYER TB 1027
+LAYER MAP 1 DATATYPE 0 1027
+LAYER TO 1028
+LAYER MAP 2 DATATYPE 0 1028
+LAYER GT 1029
+LAYER MAP 3 DATATYPE 0 1029
+LAYER SP 1030
+LAYER MAP 4 DATATYPE 0 1030
+LAYER SN 1031
+LAYER MAP 5 DATATYPE 0 1031
+LAYER CP 1032
+LAYER MAP 10 DATATYPE 0 1032
+LAYER HV 1033
+LAYER MAP 17 DATATYPE 0 1033
+LAYER SE 1034
+LAYER MAP 46 DATATYPE 0 1034
+LAYER SI 1035
+LAYER MAP 25 DATATYPE 0 1035
+LAYER DN 1036
+LAYER MAP 55 DATATYPE 0 1036
+LAYER PWB 1037
+LAYER MAP 31 DATATYPE 0 1037
+LAYER MN 1038
+LAYER MAP 45 DATATYPE 0 1038
+LAYER MP 1039
+LAYER MAP 24 DATATYPE 0 1039
+LAYER PD 1040
+LAYER MAP 44 DATATYPE 0 1040
+LAYER HR 1041
+LAYER MAP 33 DATATYPE 0 1041
+LAYER MCT 1042
+LAYER MAP 78 DATATYPE 0 1042
+LAYER PI 1043
+LAYER MAP 34 DATATYPE 0 1043
+LAYER FUSE 1044
+LAYER MAP 81 DATATYPE 0 1044
+LAYER PSUB2 1045
+LAYER MAP 150 DATATYPE 1 1045
+LAYER RES_TO_mark 1046
+LAYER MAP 161 DATATYPE 1 1046
+LAYER RES_PY_mark 1047
+LAYER MAP 162 DATATYPE 1 1047
+LAYER RES_M1_mark 1048
+LAYER MAP 163 DATATYPE 1 1048
+LAYER RES_M2_mark 1049
+LAYER MAP 164 DATATYPE 1 1049
+LAYER RES_M3_mark 1050
+LAYER MAP 165 DATATYPE 1 1050
+LAYER RES_M4_mark 1051
+LAYER MAP 166 DATATYPE 1 1051
+LAYER RES_M5_mark 1052
+LAYER MAP 167 DATATYPE 1 1052
+LAYER RES_MT_mark 1053
+LAYER MAP 168 DATATYPE 1 1053
+LAYER RES_HR_mark 1054
+LAYER MAP 169 DATATYPE 1 1054
+LAYER VARMARK 1055
+LAYER MAP 105 DATATYPE 1 1055
+LAYER RES_NW_mark 1056
+LAYER MAP 112 DATATYPE 1 1056
+LAYER EXCL 1057
+LAYER MAP 118 DATATYPE 1 1057
+LAYER SCRIBE 1058
+LAYER MAP 60 DATATYPE 0 1058
+LAYER MCTM2 1059
+LAYER MAP 151 DATATYPE 156 1059
+LAYER BJT_mark 1060
+LAYER MAP 115 DATATYPE 1 1060
+LAYER INDUM_mark 1061
+LAYER MAP 117 DATATYPE 1 1061
+LAYER ESD_mark 1062
+LAYER MAP 180 DATATYPE 1 1062
+LAYER ESD2_mark 1400
+LAYER MAP 180 DATATYPE 6 1400
+LAYER TODUM 1063
+LAYER MAP 148 DATATYPE 2 1063
+LAYER GTDUM 1064
+LAYER MAP 149 DATATYPE 2 1064
+LAYER A1DUM 1065
+LAYER MAP 170 DATATYPE 2 1065
+LAYER ATDUM 1070
+LAYER MAP 175 DATATYPE 2 1070
+LAYER MTTDUM 1071
+LAYER MAP 176 DATATYPE 2 1071
+LAYER LMARK 1072
+LAYER MAP 101 DATATYPE 1 1072
+LAYER LOGO 1073
+LAYER MAP 103 DATATYPE 1 1073
+LAYER RNDMY 1074
+LAYER MAP 155 DATATYPE 1 1074
+LAYER RPDMY 1075
+LAYER MAP 156 DATATYPE 1 1075
+LAYER DA1BLK_ori 1076
+LAYER MAP 7 DATATYPE 5 1076
+LAYER DATBLK_ori 1083
+LAYER MAP 94 DATATYPE 5 1083
+LAYER DTTBLK_ori 1084
+LAYER MAP 86 DATATYPE 5 1084
+LAYER DUMBM_mark 1097
+LAYER MAP 157 DATATYPE 1 1097
+LAYER DUMBP_mark 1098
+LAYER MAP 158 DATATYPE 1 1098
+LAYER DUMBA_mark 1099
+LAYER MAP 159 DATATYPE 1 1099
+LAYER DIODE_mark 1100
+LAYER MAP 113 DATATYPE 1 1100
+LAYER VARJUN_mark 1101
+LAYER MAP 179 DATATYPE 1 1101
+LAYER NODMF_mark 1102
+LAYER MAP 160 DATATYPE 1 1102
+LAYER CAP_mark 1103
+LAYER MAP 114 DATATYPE 1 1103
+LAYER MOM_mark 1104
+LAYER MAP 114 DATATYPE 6 1104
+LAYER MOM_ter 1105
+LAYER MAP 114 DATATYPE 7 1105
+LAYER MT 1106
+LAYER MAP 78 DATATYPE 2 1106
+LAYER DIODE_ISO 1107
+LAYER MAP 113 DATATYPE 2 1107
+LAYER VTSRAM_mark 1108
+LAYER MAP 182 DATATYPE 1 1108
+LAYER TB_txt 1179
+LAYER MAP 1 TEXTTYPE 20 1179
+TEXT LAYER TB_txt
+LAYER PT_txt 1180
+LAYER MAP 11 TEXTTYPE 20 1180
+TEXT LAYER PT_txt
+bulk=EXTENT
+chip=SIZE bulk BY 1.0
+#IFDEF CHECK_SRAM_EXCL
+EXCL_N  = bulk NOT chip
+#ELSE
+EXCL_N  = COPY EXCL
+#ENDIF
+all_to=OR TO TODUM
+all_gt=OR GT GTDUM
+all_a1=OR A1 A1DUM
+all_at=OR AT ATDUM
+all_mtt=OR MTT MTTDUM
+DA1BLK=DA1BLK_ori OR DUMBM_mark
+DATBLK=DATBLK_ori OR DUMBM_mark
+DTTBLK=DTTBLK_ori OR DUMBM_mark
+A1SLOT_slot_drc=COPY A1SLOT_slot
+ATSLOT_slot_drc=COPY ATSLOT_slot
+MTTSLOT_slot_drc=COPY MTTSLOT_slot
+TB_drc=COPY TB
+SN_drc=COPY SN
+SP_drc=COPY SP
+TO_drc=COPY TO
+CP_drc=COPY CP
+GT_drc=COPY GT
+SE_drc=COPY SE
+SI_drc=COPY SI
+W1_drc=COPY W1
+WT_drc=COPY WT
+A1_drc=COPY all_a1
+AT_drc=COPY all_at
+MTT_drc=COPY all_mtt
+DN_drc=COPY DN
+PWB_drc=COPY PWB
+MN_drc=COPY MN
+MP_drc=COPY MP
+PD_drc=COPY PD
+HR_drc=COPY HR
+MCT_drc=COPY MCT
+MT_drc=COPY MT
+PI_drc=COPY PI
+FUSE_drc=COPY FUSE
+psub01=SIZE PSUB2 BY 0.1
+PSUB2_cut=NOT psub01 PSUB2
+big_chip_to=AREA bulk >=62500
+big_chip_metal=AREA bulk >=2500
+nwella=OR TB_drc PSUB2_cut
+pwell=NOT bulk nwella
+gt_res=INTERACT GT_drc RES_PY_mark
+to_res=INTERACT TO_drc RES_TO_mark
+ndiff=AND SN_drc TO_drc
+pdiff=AND SP_drc TO_drc
+tb_conn=COPY TB_drc
+w1_and_gt=AND GT_drc W1_drc
+w1_to=AND TO_drc W1_drc
+nsd=(NOT ndiff GT_drc) NOT RES_TO_mark
+ntap=AND TB_drc nsd
+nsdg=NOT ndiff ntap
+psd=(NOT pdiff GT_drc) NOT RES_TO_mark
+ptap=NOT pdiff TB_drc
+psdg=NOT pdiff ptap
+w1_and_nsd=AND W1_drc nsd
+w1_and_psd=AND W1_drc psd
+butt_ndiff=TOUCH ndiff pdiff
+butt_pdiff=TOUCH pdiff ndiff
+gt_not_bjt=NOT GT_drc BJT_mark
+pgate=AND gt_not_bjt pdiff
+ngate=AND gt_not_bjt ndiff
+gate=OR ngate pgate
+imp_reg=OR SN_drc SP_drc
+tb_res=NOT OUTSIDE TB_drc RES_NW_mark
+polymark=OR RES_PY_mark RES_HR_mark
+gt_conn=NOT gt_not_bjt polymark
+gt_bjt=AND BJT_mark GT_drc
+gt_bjt_hole=HOLES gt_bjt INNER
+a1_conn1=NOT A1_drc A1SLOT_slot_drc
+a1_conn=NOT a1_conn1 RES_M1_mark
+w1_pad=INSIDE W1_drc CP_drc
+wt_pad=INSIDE WT_drc CP_drc
+at_conn1=NOT AT_drc ATSLOT_slot_drc
+at_conn=NOT at_conn1 RES_MT_mark
+tt_conn1=NOT MTT_drc MTTSLOT_slot_drc
+tt_conn2=NOT tt_conn1 RES_MT_mark
+tt_conn=NOT tt_conn2 INDUM_mark
+var_ndiff=INTERACT ntap VARMARK
+aa=HOLES TB_drc
+nw_Hole=NOT aa TB_drc
+dn_enc_nwHole=ENCLOSE DN_drc nw_hole
+nwHole_dn=AND dn_enc_nwHole nw_hole
+ndiff_bjt=AND BJT_mark ndiff
+npnemit=AND ndiff_bjt nwHole_dn
+vnpn_e=NOT INTERACT ndiff_bjt gt_bjt_hole
+vnpn_e1=AND npnemit gt_bjt_hole
+vnpn_innerto=INTERACT TO_drc vnpn_e1
+vnpn_dn=INTERACT DN_drc npnemit
+vnpn_emit_sn=INTERACT SN_drc vnpn_innerto
+vnpn_base_sp=INTERACT SP_drc vnpn_innerto
+nwHolw_dn_bjt=AND nwHole_dn BJT_mark
+vnpn_ring1=NOT nwHolw_dn_bjt ndiff
+vnpn_ring2=NOT vnpn_ring1 pdiff
+vnpn_ring=NOT vnpn_ring2 gt_bjt
+vnpn_undoped1=NOT vnpn_innerto SP_drc
+vnpn_undoped=NOT vnpn_undoped1 SN_drc
+to_not_sinw=NOT TO_drc salicres_to
+to_not_qvn=NOT to_not_sinw vnpn_undoped
+to_not_sp=NOT to_not_qvn SP_drc
+to_undoped=NOT to_not_sp SN_drc
+sdgcon=NOT TO_drc gate
+gate_space_to=TOUCH sdgcon gate == 2
+gate_space_to_w1=ENCLOSE gate_space_to w1_to >=1
+gate_space_to_wo_w1=NOT INTERACT gate_space_to w1_to
+gt_without_sab=NOT GT_drc SI_drc
+long_poly=AREA gt_without_sab>0.18*50
+check_gt=INTERACT long_poly w1_and_gt
+check_w1=INTERACT w1_and_gt check_gt
+w1_and_gt_a=SIZE check_w1 BY 25 INSIDE OF check_gt STEP 0.15
+long_poly_a=INTERACT check_gt w1_and_gt_a ==1
+long_poly_b=INTERACT check_gt w1_and_gt_a >1
+w1_and_gt_b=INTERACT w1_and_gt_a long_poly_a
+w1_and_gt_c=SIZE w1_and_gt_b BY 25 INSIDE OF long_poly_a STEP 0.15
+bad_area=OR (long_poly_a NOT w1_and_gt_c) (long_poly_b NOT w1_and_gt_a)
+bad_edge=COIN INSIDE EDGE bad_area GT_drc
+error_region= INTERNAL bad_edge <0.24 ABUT <90 REGION
+gt_err_g1_g2=INTERACT check_gt error_region
+w1_not_gt=NOT W1_drc GT_drc
+w1_not_gt_to=NOT w1_not_gt TO_drc
+exp_a1slot_edge=EXPAND EDGE A1SLOT_slot_drc OUTSIDE BY 0.01
+long_a1slot_edge=LENGTH exp_a1slot_edge >5
+a1slot_length=LENGTH long_a1slot_edge <20
+A1_short_slot=WITH EDGE A1SLOT_slot_drc a1slot_length
+exp_atslot_edge=EXPAND EDGE ATSLOT_slot_drc OUTSIDE BY 0.01
+long_atslot_edge=LENGTH exp_atslot_edge >5
+atslot_length=LENGTH long_atslot_edge <20
+AT_short_slot=WITH EDGE ATSLOT_slot_drc atslot_length
+exp_mttslot_edge=EXPAND EDGE MTTSLOT_slot_drc OUTSIDE BY 0.01
+long_mttslot_edge=LENGTH exp_mttslot_edge >5
+mttslot_length=LENGTH long_mttslot_edge <20
+MTT_short_slot=WITH EDGE MTTSLOT_slot_drc mttslot_length
+cp_or_ctm=OR CP_drc MCTM2
+a1_width35=SIZE A1_drc BY 17.5 UNDEROVER
+a1_width35_noSlot=OUTSIDE a1_width35 A1SLOT_slot_drc
+a1_width35_cp=INTERACT a1_width35_noSlot cp_or_ctm
+rule_SLOT_A1_j=NOT a1_width35_noSlot a1_width35_cp
+at_width35=SIZE AT_drc BY 17.5 UNDEROVER
+at_width35_noSlot=OUTSIDE at_width35 ATSLOT_slot_drc
+at_width35_cp=INTERACT at_width35_noSlot cp_or_ctm
+rule_SLOT_AT_j=NOT at_width35_noSlot at_width35_cp
+tt_width35=SIZE MTT_drc BY 17.5 UNDEROVER
+tt_width35_noSlot=OUTSIDE tt_width35 MTTSLOT_slot_drc
+tt_width35_cp=INTERACT tt_width35_noSlot cp_or_ctm
+rule_SLOT_MTT_j=NOT tt_width35_noSlot tt_width35_cp
+wtcon=OUTSIDE WT_drc mctcap
+wtmct=AND WT_drc mctcap
+#IFDEF metal2_process
+CONNECT at_conn mctcap BY wtmct
+CONNECT at_conn a1_conn BY wtcon
+CONNECT a1_conn gt_conn BY w1_and_gt
+CONNECT a1_conn nsd BY w1_and_nsd
+CONNECT a1_conn psd BY w1_and_psd
+SCONNECT nsd ntap
+SCONNECT ntap tb_conn
+SCONNECT psd ptap
+SCONNECT ptap pwell
+ATTACH AT_text at_conn
+ATTACH A1_text a1_conn
+#ENDIF
+#IFDEF thickmetal2_process
+CONNECT tt_conn mctcap BY wtmct
+CONNECT tt_conn a1_conn BY wtcon
+CONNECT a1_conn gt_conn BY w1_and_gt
+CONNECT a1_conn nsd BY w1_and_nsd
+CONNECT a1_conn psd BY w1_and_psd
+SCONNECT nsd ntap
+SCONNECT ntap tb_conn
+SCONNECT psd ptap
+SCONNECT ptap pwell
+ATTACH MTT_text tt_conn
+ATTACH A1_text a1_conn
+#ENDIF
+ATTACH TB_txt tb_conn
+ATTACH PT_txt pwell
+coldnw=NET tb_conn "?VDD?" "?VCC?"
+hotnw=NOT tb_conn coldnw
+TB.a {bracket}
+TB.b1.1 {bracket}
+TB.b.2 {bracket}
+rnwell_rndmy=RNDMY NOT OUTSIDE tb_res
+rnwell_sn=SN_drc NOT OUTSIDE tb_res
+TB.c {bracket}
+TB.d {bracket}
+TB.e {bracket}
+restb_with_sab=NOT OUTSIDE TB_drc (NOT OUTSIDE RNDMY (NOT OUTSIDE tb_res SI_drc))
+restb_sab_body=AND restb_with_sab RNDMY
+salicres_si=INTERACT SI_drc restb_with_sab
+salicres_w1=INTERACT w1_and_nsd (salicres_si OR (HOLES salicres_si))
+salicres_sn=INTERACT SN_drc salicres_si
+salicres_to=CUT TO_drc salicres_sn
+Nwell_res.a {bracket}
+Nwell_res.b {bracket}
+Nwell_res.c {bracket}
+Nwell_res.d {bracket}
+Nwell_res.e {bracket}
+Nwell_res.f {bracket}
+Nwell_res.g.2 {bracket}
+Nwell_res.h {bracket}
+Nwell_res.i {bracket}
+Nwell_res.j {bracket}
+Nwell_res.k {bracket}
+TO.a.1 {bracket}
+nmos_to_w=INSIDE EDGE gt_not_bjt nsdg
+TO.b.1 {bracket}
+pmos_to_w=INSIDE EDGE gt_not_bjt psdg
+TO.b.2 {bracket}
+TO.c {bracket}
+TO.d {bracket}
+TO.e.2 {bracket}
+TO.f.2 {bracket}
+TO.g {bracket}
+pgate_no_powermos=NOT pgate GT_powermos
+ngate_no_powermos=NOT ngate GT_powermos
+TO.h.1 {bracket}
+TO.h.2 {bracket}
+TO.i {bracket}
+butt_nedge=COINCIDENT EDGE ndiff pdiff
+butt_pedge=COINCIDENT EDGE pdiff ndiff
+TO.j {bracket}
+TO.k {bracket}
+TO.l {bracket}
+TO.m {bracket}
+TO.n {bracket}
+TO.note {bracket}
+to_res_body=TO_drc AND (SI_drc NOT OUTSIDE (AND to_res RES_TO_mark))
+to_sab=TO_drc INTERACT to_res_body
+to_res_si=SI_drc INTERACT to_res_body
+to_not_res=NOT TO_drc to_sab
+w1_and_to=AND W1_drc TO_drc
+TO_res.a {bracket}
+TO_res.b {bracket}
+TO_res.c {bracket}
+TO_res.d {bracket}
+TO_res.e {bracket}
+TO_res.f {bracket}
+TO_res.g {bracket}
+TO_res.h {bracket}
+ngate_l_edge=NOT COINCIDENT INSIDE EDGE ngate_no_powermos TO_drc
+pgate_l_edge=NOT COINCIDENT INSIDE EDGE pgate_no_powermos TO_drc
+gate_space=TOUCH EDGE gate_space_to_w1 gate
+gate_space_wo_w1=TOUCH EDGE gate_space_to_wo_w1 gate
+gt_res_body=(SI_drc NOT OUTSIDE ((AND gt_res RES_PY_mark) AND SI_drc)) and GT_drc
+gt_sab=GT_drc INTERACT gt_res_body
+gt_res_si=SI_drc INTERACT gt_res_body
+gt_not_res=NOT GT_drc gt_sab
+GT.a.1 {bracket}
+GT.a.2 {bracket}
+GT.a.3 {bracket}
+GT.b.1 {bracket}
+GT.b.2 {bracket}
+GT.b.3 {bracket}
+GT.c {bracket}
+GT.d {bracket}
+GT.e {bracket}
+GT.f {bracket}
+bent_ngate=ANGLE ngate == 45
+bent_pgate=ANGLE pgate == 45
+gate_gt=NOT OUTSIDE GT_drc gate
+bent_gate_gt=ANGLE (NOT gate_gt gate) == 45
+GT.g1 {bracket}
+GT.g2 {bracket}
+GT.g3 {bracket}
+GT.h {bracket}
+GT.i.1 {bracket}
+GT.i.2 {bracket}
+gt_wide1=INTERNAL gt_conn <=0.28 REGION SINGULAR ABUT<90
+gt_wide2=NOT gt_conn gt_wide1
+gt_wide3=LENGTH gt_wide2 >0.5
+gt_wide4=gt_wide2 WITH EDGE gt_wide3
+gt_wide=AREA gt_wide4 >0.14
+GT.k {bracket}
+gt_res_body_no_esd=gt_res_body NOT ESD_mark
+#IFDEF CHECK_FOR_VSI_IO_Rule
+GT_res.a {bracket}
+#ELSE
+GT_res.a {bracket}
+#ENDIF
+GT_res.b {bracket}
+GT_res.c {bracket}
+GT_res.d {bracket}
+GT_res.e {bracket}
+GT_res.f {bracket}
+GT_res.g {bracket}
+GT_res.h {bracket}
+GT_res.i {bracket}
+GT_res.l: {bracket}
+nwgro43_a = SIZE TB_drc BY 0.43
+nwgro43_18 = SIZE nwgro43_a BY 0.152
+sp_j_ptap = AND nwgro43_18 ptap
+sp_j_a1 = ENC sp_j_ptap SP_drc < 0.152 ABUT >0<90 OPPOSITE REGION
+sp_j_a2 = ENC sp_j_ptap SP_drc < 0.152 ABUT >0<90 CORNER REGION
+sp_j_a3 = ENC sp_j_ptap SP_drc < 0.152 ABUT >0<90 PROJ==0 REGION
+sp_j_a4 = (SIZE sp_j_a2 BY 0.001) NOT sp_j_ptap
+sp_j_all = (sp_j_a1 OR sp_j_a3) OR sp_j_a4
+sn_e_a1 = EXT sp_j_ptap SN_drc < 0.152 ABUT >0<90 OPPOSITE REGION
+sn_e_a2 = EXT sp_j_ptap SN_drc < 0.152 ABUT >0<90 CORNER REGION
+sn_e_a3 = EXT sp_j_ptap SN_drc < 0.152 ABUT >0<90 PROJ==0 REGION
+sn_e_a4 = (SIZE sn_e_a2 BY 0.001) NOT sp_j_ptap
+sn_e_all = (sn_e_a1 OR sn_e_a3) OR sn_e_a4
+nwshrk43_a = SIZE TB_drc BY -0.43
+nwshrk43_18 = SIZE nwshrk43_a BY -0.152
+sn_j_ntap = NOT ntap nwshrk43_18
+sn_j_a1 = ENC sn_j_ntap SN_drc < 0.152 ABUT >0<90 OPPOSITE REGION
+sn_j_a2 = ENC sn_j_ntap SN_drc < 0.152 ABUT >0<90 CORNER REGION
+sn_j_a3 = ENC sn_j_ntap SN_drc < 0.152 ABUT >0<90 PROJ==0 REGION
+sn_j_a4 = (SIZE sn_j_a2 BY 0.001) NOT sn_j_ntap
+sn_j_all = (sn_j_a1 OR sn_j_a3) OR sn_j_a4
+sp_e_a1 = EXT sn_j_ntap SP_drc < 0.152 ABUT >0<90 OPPOSITE REGION
+sp_e_a2 = EXT sn_j_ntap SP_drc < 0.152 ABUT >0<90 CORNER REGION
+sp_e_a3 = EXT sn_j_ntap SP_drc < 0.152 ABUT >0<90 PROJ==0 REGION
+sp_e_a4 = (SIZE sn_e_a2 BY 0.001) NOT sn_j_ntap
+sp_e_all = (sp_e_a1 OR sp_e_a3) OR sp_e_a4
+SN.a {bracket}
+SN.b {bracket}
+SN.b1 {bracket}
+SN.c {bracket}
+SN.d {bracket}
+SN.e {bracket}
+SN.f_1 {bracket}
+SN.f_2 {bracket}
+SN.g {bracket}
+SN.h {bracket}
+SN.i {bracket}
+SN.j {bracket}
+SN.k {bracket}
+SN.l.1 {bracket}
+to_gate_edge=INSIDE EDGE TO_drc GT_drc
+SN.m {bracket}
+SN.n {bracket}
+SN.s {bracket}
+hrpoly_fake=((((GT_drc AND SP_drc) AND SN_drc) AND SI_drc) AND RES_HR_mark) AND RNDMY
+SN_SP.t {bracket}
+SN.w {bracket}
+SP.a {bracket}
+SP.b {bracket}
+SP.b1 {bracket}
+SP.c {bracket}
+SP.d {bracket}
+SP.e {bracket}
+SP.f_1 {bracket}
+SP.f_2 {bracket}
+SP.g {bracket}
+SP.h {bracket}
+SP.i {bracket}
+SP.j {bracket}
+SP.k {bracket}
+SP.l.1 {bracket}
+SP.m {bracket}
+SP.n {bracket}
+SP.s {bracket}
+SP.w {bracket}
+SAB.a {bracket}
+SAB.b {bracket}
+SAB.c {bracket}
+SAB.d {bracket}
+SAB.e {bracket}
+SAB.f {bracket}
+SAB.g {bracket}
+SAB.h {bracket}
+SAB.i {bracket}
+SAB.j {bracket}
+SAB.k {bracket}
+W1.a {bracket}
+W1.b {bracket}
+W1.c {bracket}
+W1.d {bracket}
+TO_powermos=INTERACT TO_drc GT_powermos
+w1_to_no_powermos=NOT w1_to TO_powermos
+W1.e {bracket}
+W1.f {bracket}
+W1.g {bracket}
+W1.h {bracket}
+W1.i {bracket}
+W1.j {bracket}
+W1.k {bracket}
+W1.m {bracket}
+RES_ALL_mark=((RES_NW_mark OR RES_HR_mark) OR RES_TO_mark) OR RES_PY_mark
+W1.note {bracket}
+A1.a {bracket}
+A1.b {bracket}
+A1.c_d {bracket}
+A1.e {bracket}
+A1.g {bracket}
+WT.a {bracket}
+WT.b {bracket}
+WT.c_d {bracket}
+#IFDEF CHECK_PAD_OPENING_Rule
+#IFDEF CHECK_FOR_VSI_IO_Rule
+CP.a {bracket}
+#ELSE
+CP.a {bracket}
+CP.b.a1 {bracket}
+CP.b.at {bracket}
+CP.b.tt {bracket}
+CP.c.w1 {bracket}
+CP.c.wt {bracket}
+#ENDIF
+CP.f.w1 {bracket}
+CP.g.wt {bracket}
+#ENDIF
+#IFDEF CHECK_SlotRule_C
+m1gu = AND A1_drc a1_width35
+m1ax = A1_drc NOT m1gu
+mtgu = AND AT_drc at_width35
+mtax = AT_drc NOT mtgu
+ttgu = AND MTT_drc tt_width35
+ttax = MTT_drc NOT ttgu
+SLOT.A1.c {bracket}
+#ENDIF
+SLOT.A1.a {bracket}
+SLOT.A1.b {bracket}
+SLOT.A1.d {bracket}
+SLOT.A1.e_f {bracket}
+SLOT.A1.h_i {bracket}
+SLOT.A1.j {bracket}
+DN.a {bracket}
+DN.b {bracket}
+DN.c {bracket}
+DN.d {bracket}
+DN.e {bracket}
+DN.f {bracket}
+PWB.a {bracket}
+PWB.b {bracket}
+ntgate=AND ngate PWB_drc
+PWB.c {bracket}
+PWB.d {bracket}
+PWB.e1 {bracket}
+PWB.e2 {bracket}
+PWB.f {bracket}
+ntdiff=AND ndiff PWB_drc
+PWB.g {bracket}
+PWB.i {bracket}
+PWB.j {bracket}
+ndiff_dio=AND ndiff DIODE_mark
+dnwdio=ENCLOSE TB_drc ndiff_dio
+ddnwpsub_1=INTERACT dnwdio DN_drc
+ddnwpsub_5=INTERACT ddnwpsub_1 PWB
+dnwpw=NOT INTERACT dnwdio DN_drc
+dnwpsub5_l=AND dnwpw PWB_drc
+PWB.l {bracket}
+PWB.m {bracket}
+HR.a {bracket}
+HR.b {bracket}
+HR.c {bracket}
+mospoly=INTERACT GT_drc TO_drc
+HR.d {bracket}
+hrespoly=(GT_drc INTERACT (SI_drc NOT OUTSIDE (GT_drc AND RES_HR_mark))) NOT INTERACT SN_drc
+hrpoly=AND HR_drc hrespoly
+HR.e {bracket}
+hrcont=AND W1_drc hrpoly
+HR.f {bracket}
+HR.g {bracket}
+HR.h {bracket}
+hrsp=ENCLOSE SP_drc hrcont
+hrsab=AND SI_drc HR_drc
+hrsab_sp=AND hrsab hrsp
+HR.i {bracket}
+HR.j {bracket}
+HR.k {bracket}
+HR.l {bracket}
+HR.m {bracket}
+HR.n {bracket}
+HR.o {bracket}
+GT_powermos1=CUT gate SN_drc
+GT_powermos=CUT GT_powermos1 SP_drc
+diff_no_poly=((TO_drc NOT GT_drc) NOT RES_TO_mark) NOT INTERACT RES_NW_mark
+nsd_and_diff_no_poly=nsd AND diff_no_poly
+psd_and_diff_no_poly=psd AND diff_no_poly
+to_butting1=INTERACT nsd_and_diff_no_poly psd_and_diff_no_poly
+to_butting=INTERACT (nsd OR psd) to_butting1
+diff_powermos1=ENCLOSE to_butting nsd >=2
+diff_powermos=INTERACT nsd diff_powermos1
+to_powermos_edge=COINCIDENT OUTSIDE EDGE (diff_powermos NOT INSIDE EXCL) (GT_powermos NOT INSIDE EXCL)
+powermos_n2p1=LENGTH to_powermos_edge == 1.0
+powermos_n3p1=LENGTH to_powermos_edge == 1.5
+gate_powermos_n2p1=WITH EDGE GT_powermos powermos_n2p1
+gate_powermos_n3p1=WITH EDGE GT_powermos powermos_n3p1
+pgate_powermos1=NOT (AND SP_drc gate_powermos_n2p1) RES_HR_mark
+pgate_powermos2=NOT (AND SP_drc gate_powermos_n3p1) RES_HR_mark
+pgate_powermos=OR pgate_powermos1 pgate_powermos2
+ngate_powermos=NOT (AND SN_drc GT_powermos) RES_HR_mark
+mn5_switch_n2p1.a1 {bracket}
+mn5_switch_n3p1.a2 {bracket}
+mn5_switch.b {bracket}
+pgate_powermos_edge=COINCIDENT EDGE (pgate_powermos NOT INSIDE EXCL) (to_butting NOT INSIDE EXCL)
+mn5_switch.c_d {bracket}
+powermos_n2p1_edge1=INTERACT ngate_powermos gate_powermos_n2p1
+powermos_n2p1_edge=COINCIDENT EDGE (powermos_n2p1_edge1 NOT INSIDE EXCL) (to_butting NOT INSIDE EXCL)
+mn5_switch_n2p1.e1 {bracket}
+powermos_n3p1_edge1=INTERACT ngate_powermos gate_powermos_n3p1
+powermos_n3p1_edge=COINCIDENT EDGE (powermos_n3p1_edge1 NOT INSIDE EXCL) (to_butting NOT INSIDE EXCL)
+mn5_switch_n3p1.e2 {bracket}
+to_powermos_check=(INTERACT TO_powermos gate_powermos_n2p1) OR (INTERACT TO_powermos gate_powermos_n3p1)
+mn5_switch.f {bracket}
+gate_powermos_n2p1_width=COINCIDENT OUTSIDE EDGE (to_butting NOT INSIDE EXCL) (gate_powermos_n2p1 NOT INSIDE EXCL)
+mn5_switch_n2p1.g1 {bracket}
+gate_powermos_n3p1_width=COINCIDENT OUTSIDE EDGE (to_butting NOT INSIDE EXCL) (gate_powermos_n3p1 NOT INSIDE EXCL)
+mn5_switch_n3p1.g2 {bracket}
+nwelcon=NOT TB_drc RES_NW_mark
+ndiff_dio_no_esd=NOT INTERACT ndiff_dio SE_drc
+dnpw=NOT ndiff_dio_no_esd nwelcon
+dnpw5=(dnpw NOT MN_drc) NOT PWB_drc
+dnwpw5=NOT dnwpw PWB_drc
+dnwpsub5=AND dnwpw PWB_drc
+dnwpsub5_pwb=INTERACT PWB_drc dnwpsub5
+pdiff_dio=AND pdiff DIODE_mark
+dpnw=AND pdiff_dio nwelcon
+dpnw5=(dpnw NOT MP_drc) NOT DN_drc
+tb_hole=HOLES TB_drc INNER
+dnndiff=AND pdiff DIODE_mark
+ddepdio=ENCLOSE DN_drc dnndiff
+ddnwpw=AND ddepdio tb_hole
+ddnwpw_1=(AND ddepdio tb_hole) NOT TB_drc
+ddnwpw_tb=INTERACT TB_drc ddnwpw
+dnndiff_iso=AND ndiff DIODE_ISO
+ddepdio_iso=ENCLOSE DN_drc dnndiff_iso
+ddnwpw_iso=AND ddepdio_iso tb_hole
+ddnwpw_tb_iso=INTERACT TB_drc ddnwpw_iso
+ddnwpsub_11=DN_drc ENCLOSE dnwdio
+ddnwpsub_55=AND ddnwpsub_11 PWB_drc
+ddnwpsub_55_dn=INTERACT DN_drc ddnwpsub_55
+ddnwpsub_55_pwb=INTERACT PWB_drc ddnwpsub_55
+pwb_nsd=PWB_drc ENCLOSE nsd
+dnppsub_5=dnpw AND pwb_nsd
+dnppsub_5_pwb=INTERACT PWB_drc dnppsub_5
+ddnpwpsub_1=AND ndiff DIODE_mark
+ddnpwpsub_2=DN_drc ENCLOSE ddnpwpsub_1
+ddnpwpsub_3=ddnpwpsub_2 INSIDE TB_drc
+ddnpwpsub_tb=TB_drc INTERACT ddnpwpsub_3
+dnwpw.b{bracket}
+dnwpw.c{bracket}
+dnppsub.b{bracket}
+dnppsub.note{bracket}
+dnwpsub.b{bracket}
+dnwpsub.note{bracket}
+ddnwpsub.b{bracket}
+ddnwpsub.c{bracket}
+ddnwpsub.note{bracket}
+ddnpwpsub.c{bracket}
+dpwdn.b{bracket}
+dpwdn.c{bracket}
+mctcap=INTERACT MCT_drc WT_drc
+#IFDEF metal2_process
+AT.a {bracket}
+AT.b {bracket}
+AT.c12 {bracket}
+at_gt_10=(SIZE AT_drc BY 5 UNDEROVER) COIN EDGE AT_drc
+AT.c3 {bracket}
+AT.c34 {bracket}
+AT.d {bracket}
+AT.g {bracket}
+SLOT.AT.a {bracket}
+SLOT.AT.b {bracket}
+#IFDEF CHECK_SlotRule_C
+SLOT.AT.c {bracket}
+#ENDIF
+SLOT.AT.d {bracket}
+SLOT.AT.e_f {bracket}
+SLOT.AT.g {bracket}
+SLOT.AT.h_i {bracket}
+SLOT.AT.j {bracket}
+#ENDIF
+#IFDEF thickmetal2_process
+#IFDEF tt_thickness_25k
+MTT.a {bracket}
+MTT.b1 {bracket}
+tt_gt_10=SIZE (MTT_drc NOT INDUM_mark) BY 5.0 UNDEROVER
+L68563=AND MTT_drc tt_gt_10
+L3697=COINCIDENT EDGE MTT_drc L68563
+MTT.b2 {bracket}
+MTT.c {bracket}
+indu_mtt=INTERACT MTT_drc INDUM_mark
+not_indu_mtt=NOT INTERACT MTT_drc INDUM_mark
+MTT.d {bracket}
+MTT.e {bracket}
+MTT.f {bracket}
+indum7=SIZE INDUM_mark BY -7
+indm=AND INDUM_mark A1_drc
+indume=COINCIDENT INSIDE EDGE indm INDUM_mark
+inddmya=WITH EDGE INDUM_mark indume <2
+inddmy3=ENCLOSE inddmya A1_drc
+inddmy2=INDUM_mark NOT inddmy3
+MTT.i {bracket}
+forbiden_mtt=(GT_drc OR TO_drc) OR TB_drc
+MTT.j {bracket}
+#ENDIF
+#IFDEF tt_thickness_35k
+MTT.a {bracket}
+MTT.b {bracket}
+tt_gt_10=SIZE (MTT_drc NOT INDUM_mark) BY 5.0 UNDEROVER
+L68563=AND MTT_drc tt_gt_10
+L3697=COINCIDENT EDGE MTT_drc L68563
+MTT.c {bracket}
+MTT_14=SHRINK MTT_drc RIGHT BY 4.999
+MTT_13=SHRINK MTT_14 TOP BY 4.999
+MTT_12=SHRINK MTT_13 LEFT BY 4.999
+MTT_11=SHRINK MTT_12 BOTTOM BY 4.999
+MTT_7=GROW MTT_11 RIGHT BY 4.999
+MTT_8=GROW MTT_7  LEFT BY 4.999
+MTT_9=GROW  MTT_8 TOP BY 4.999
+MTT_10=GROW MTT_9 BOTTOM BY 4.999
+MTT_INTERACT_10=INTERACT MTT_drc MTT_10
+MTT_INTERACT_10_expand=INTERACT MTT_INTERACT_10 MTT_10_expand
+MTT_10_expand=SIZE MTT_10 BY 10.0
+MTT_in_10_expand=MTT_drc AND MTT_10_expand
+MTT.c1 {bracket}
+MTT.d {bracket}
+mtt_gt_10=(SIZE MTT_drc BY 5 UNDEROVER) COIN EDGE MTT_drc
+MTT.e {bracket}
+MTT.f {bracket}
+#ENDIF
+SLOT.MTT.a {bracket}
+SLOT.MTT.b {bracket}
+#IFDEF CHECK_SlotRule_C
+SLOT.MTT.c {bracket}
+#ENDIF
+SLOT.MTT.d {bracket}
+SLOT.MTT.e_f {bracket}
+SLOT.MTT.g {bracket}
+SLOT.MTT.h_i {bracket}
+SLOT.MTT.j {bracket}
+#ENDIF
+#IFNDEF DISABLE_DENSITY
+to_den_exc=((((RES_NW_mark OR FUSE) OR LMARK) OR LOGO) OR INDUM_mark) OR DUMBA_mark
+chip_not_to_exc=NOT big_chip_to to_den_exc
+to_not_exc=NOT all_to to_den_exc
+TODUM.m {bracket}
+TODUM.n {bracket}
+TODUM.o {bracket}
+TODUM.p {bracket}
+GTDUM.k {bracket}
+metal_den_exc=(((FUSE OR LMARK) OR LOGO) OR INDUM_mark) OR DUMBM_mark
+chip_not_metal_exc=NOT big_chip_metal metal_den_exc
+a1_not_exc=(all_a1 NOT A1SLOT_slot) NOT metal_den_exc
+A1DUM.k {bracket}
+A1DUM.o {bracket}
+A1DUM.p {bracket}
+A1DUM.r {bracket}
+A1DUM.m {bracket}
+A1DUM.n {bracket}
+#ENDIF
+#IFDEF metal2_process
+#IFNDEF DISABLE_DENSITY
+#DEFINE gteSwitch1
+#ENDIF
+#ENDIF
+#IFDEF gteSwitch1
+at_not_exc=(all_at NOT ATSLOT_slot) NOT metal_den_exc
+ATDUM.l {bracket}
+ATDUM.o {bracket}
+ATDUM.q {bracket}
+ATTUM.r {bracket}
+ATDUM.m {bracket}
+ATDUM.n {bracket}
+#ENDIF
+#IFDEF thickmetal2_process
+#IFNDEF DISABLE_DENSITY
+#DEFINE gteSwitch2
+#ENDIF
+#ENDIF
+#IFDEF gteSwitch2
+mtt_not_exc=(all_mtt NOT MTTSLOT_slot) NOT metal_den_exc
+MTTDUM.l {bracket}
+MTTDUM.o {bracket}
+MTTDUM.q {bracket}
+MTTUM.r {bracket}
+#IFDEF tt_thickness_25k
+MTTDUM.m {bracket}
+#ENDIF
+#IFDEF tt_thickness_35k
+MTTDUM.m {bracket}
+#ENDIF
+MTTDUM.n {bracket}
+#ENDIF
+#IFNDEF DISABLE_DUMMY
+TODUM.a {bracket}
+ral_todum=NOT DONUT TODUM
+TODUM.b {bracket}
+TODUM.c {bracket}
+TODUM.d {bracket}
+TODUM.e {bracket}
+TODUM.f {bracket}
+TODUM.g {bracket}
+TODUM.h {bracket}
+TODUM.i {bracket}
+TODUM.j {bracket}
+TODUM.k {bracket}
+chip_region=NOT bulk SCRIBE
+TODUM.l {bracket}
+TODUM.q {bracket}
+spl_todum=DONUT TODUM
+spl_TODUM.c {bracket}
+spl_TODUM.d {bracket}
+spl_TODUM.e {bracket}
+spl_TODUM.f {bracket}
+GTDUM.a {bracket}
+GTDUM.b {bracket}
+GTDUM.c {bracket}
+GTDUM.d {bracket}
+GTDUM.e {bracket}
+GTDUM.f {bracket}
+GTDUM.g {bracket}
+GTDUM.h {bracket}
+GTDUM.i {bracket}
+GTDUM.j {bracket}
+GTDUM.m {bracket}
+GTDUM.n {bracket}
+A1DUM.a1 {bracket}
+A1DUM.b {bracket}
+A1DUM.c {bracket}
+A1DUM.d {bracket}
+A1DUM.e {bracket}
+A1DUM.f {bracket}
+A1DUM.g {bracket}
+A1DUM.h {bracket}
+A1DUM.i1 {bracket}
+A1DUM.i2 {bracket}
+A1DUM.j {bracket}
+A1DUM.s {bracket}
+#IFDEF metal2_process
+ATDUM.a1 {bracket}
+ATDUM.b {bracket}
+ATDUM.c {bracket}
+ATDUM.d {bracket}
+ATDUM.e {bracket}
+ATDUM.f {bracket}
+ATDUM.g {bracket}
+ATDUM.h {bracket}
+ATDUM.i1 {bracket}
+ATDUM.i2 {bracket}
+ATDUM.j {bracket}
+ATDUM.s {bracket}
+#ENDIF
+#IFDEF thickmetal2_process
+MTTDUM.a1 {bracket}
+MTTDUM.b {bracket}
+MTTDUM.c {bracket}
+MTTDUM.d {bracket}
+MTTDUM.e {bracket}
+MTTDUM.g {bracket}
+MTTDUM.h {bracket}
+MTTDUM.i {bracket}
+MTTDUM.j1 {bracket}
+MTTDUM.j2 {bracket}
+MTTDUM.j {bracket}
+MTTDUM.s {bracket}
+#ENDIF
+#ENDIF
+Convention_FLT_NW {bracket}
+Convention_BPMO {bracket}
+Convention_NWMO {bracket}
+Convention_PSUB2 {bracket}
+esd_mn_io_gate1=ngate INSIDE (ESD_mark NOT ENCLOSE RES_PY_mark)
+esd_mn_io_gate2=NOT INSIDE esd_mn_io_gate1 DN_drc
+esd_mn_io_gate=esd_mn_io_gate2 INTERACT SI_drc
+esd_mn_io_to=(ndiff ENCLOSE esd_mn_io_gate) AND ESD_mark
+esdmn_io_w=(esd_mn_io_gate NOT INSIDE EXCL) INSIDE EDGE (TO_drc NOT INSIDE EXCL)
+esdmn_l=(esd_mn_io_gate NOT INSIDE EXCL) COIN EDGE (TO_drc NOT INSIDE EXCL)
+esdmn_to_prop=DFM PROPERTY esd_mn_io_to esdmn_io_w overlap abut also multi
+[min_v=336*2/count(esdmn_io_w)]
+esdmn_w_ex=EXPAND EDGE esdmn_io_w OUTSIDE BY 0.001
+esdmn_w_err=DFM PROPERTY esdmn_w_ex esdmn_to_prop esdmn_io_w overlap abut also multi
+[-=length(esdmn_io_w)-property(esdmn_to_prop, min_v)] <0
+esd_mn_io.W1 {bracket}
+esd_mn_io.W2 {bracket}
+esd_mn_io.L {bracket}
+esd_mn_io_sab=SI_drc INTERACT esd_mn_io_gate
+esd_mn_io.S {bracket}
+esd_mn_io_d_check=esd_mn_io_sab AND esd_mn_io_gate
+esd_mn_io.D {bracket}
+esd_mn_io.N {bracket}
+esd_mn_io_source=(esd_mn_io_to NOT GT_drc) NOT INTERACT esd_mn_io_sab
+esd_mn_io_source_cont=W1_drc AND esd_mn_io_source
+esd_mn_io.X {bracket}
+esd_pdiff_hole=HOLES pdiff INNER
+esd_ndiff_hole=HOLES ndiff INNER
+esdmn_pickRing=pdiff TOUCH (esd_pdiff_hole ENCLOSE esd_mn_io_gate)
+esdmn_guardRing=ndiff TOUCH (esd_ndiff_hole ENCLOSE esd_mn_io_gate)
+esd_mn_io.J {bracket}
+esd_mn_pp_gate1=ngate INSIDE (ESD_mark ENCLOSE RES_PY_mark)
+esd_mn_pp_gate2=NOT INSIDE esd_mn_pp_gate1 DN_drc
+esd_mn_pp_gate=esd_mn_pp_gate2 INTERACT SI_drc
+esd_mn_pp_to=(ndiff ENCLOSE esd_mn_pp_gate) AND ESD_mark
+esdmn_pp_w=(esd_mn_pp_gate NOT INSIDE EXCL) INSIDE EDGE (TO_drc NOT INSIDE EXCL)
+esdmn_pp_l=(esd_mn_pp_gate NOT INSIDE EXCL) COIN EDGE (TO_drc NOT INSIDE EXCL)
+esdmn_to_pp_5v_prop=DFM PROPERTY esd_mn_pp_to esdmn_pp_w overlap abut also multi
+[min_v=840*2/count(esdmn_pp_w)]
+esdmn_pp_w_ex=EXPAND EDGE esdmn_pp_w OUTSIDE BY 0.001
+esdmn_pp_w_5v_err=DFM PROPERTY esdmn_pp_w_ex esdmn_to_pp_5v_prop esdmn_pp_w overlap abut also multi
+[-=length(esdmn_pp_w)-property(esdmn_to_pp_5v_prop, min_v)] <0
+esd_mn_pp.W1 {bracket}
+esd_mn_pp.W2 {bracket}
+esd_mn_pp.L {bracket}
+esd_mn_pp_sab=SI_drc INTERACT esd_mn_pp_gate
+esd_mn_pp.S {bracket}
+esd_mn_pp_d_check=esd_mn_pp_sab AND esd_mn_pp_gate
+esd_mn_PP.D {bracket}
+esd_mn_pp.N {bracket}
+esd_mn_pp_source=(esd_mn_pp_to NOT GT_drc) NOT INTERACT esd_mn_pp_sab
+esd_mn_pp_source_cont=W1_drc AND esd_mn_pp_source
+esd_mn_pp.X {bracket}
+esdmn_pp_pickRing=pdiff TOUCH (esd_pdiff_hole ENCLOSE esd_mn_pp_gate)
+esdmn_pp_guardRing=ndiff TOUCH (esd_ndiff_hole ENCLOSE esd_mn_pp_gate)
+esd_mn_pp.J {bracket}
+esd_mn_pp_res1=AND gt_res_body RES_PY_mark
+esd_mn_pp_res2=INSIDE esd_mn_pp_res1 ESD_mark
+esd_mn_pp_res=NOT INSIDE esd_mn_pp_res2 DN_drc
+esd_mn_pp_res_l=esd_mn_pp_res COINCIDENT EDGE GT_drc
+esd_mn_pp_res_w=esd_mn_pp_res INSIDE EDGE GT_drc
+esd_mn_pp.R1{bracket}
+esd_mn_pp.R2{bracket}
+esd_mp_io_gate1=pgate INSIDE (ESD_mark NOT ENCLOSE RES_PY_mark)
+esd_mp_io_gate=esd_mp_io_gate1 INTERACT SI_drc
+esd_mp_io_to=(pdiff ENCLOSE esd_mp_io_gate) AND ESD_mark
+esdmp_io_w=(esd_mp_io_gate NOT INSIDE EXCL) INSIDE EDGE (TO_drc NOT INSIDE EXCL)
+esdmp_l=(esd_mp_io_gate NOT INSIDE EXCL) COIN EDGE (TO_drc NOT INSIDE EXCL)
+esdmp_to_prop=DFM PROPERTY esd_mp_io_to esdmp_io_w overlap abut also multi
+[min_v=504*2/count(esdmp_io_w)]
+esdmp_w_ex=EXPAND EDGE esdmp_io_w OUTSIDE BY 0.001
+esdmp_w_err=DFM PROPERTY esdmp_w_ex esdmp_to_prop esdmp_io_w overlap abut also multi
+[-=length(esdmp_io_w)-property(esdmp_to_prop, min_v)] <0
+esd_mp_io.W1 {bracket}
+esd_mp_io.W2 {bracket}
+esd_mp_io.L {bracket}
+esd_mp_io_sab=SI_drc INTERACT esd_mp_io_gate
+esd_mp_io.S {bracket}
+esd_mp_io_d_check=esd_mp_io_sab AND esd_mp_io_gate
+esd_mp_io.D {bracket}
+esd_mp_io.N {bracket}
+esd_mp_io_source=(esd_mp_io_to NOT GT_drc) NOT INTERACT esd_mp_io_sab
+esd_mp_io_source_cont=W1_drc AND esd_mp_io_source
+esd_mp_io.X {bracket}
+esdmp_io_pickRing=pdiff TOUCH (esd_pdiff_hole ENCLOSE esd_mp_io_gate)
+esdmp_io_guardRing=ndiff TOUCH (esd_ndiff_hole ENCLOSE esd_mp_io_gate)
+esd_mp_io.J {bracket}
+esd_mn_iso_io_gate1=ngate INSIDE (ESD_mark NOT ENCLOSE RES_PY_mark)
+esd_mn_iso_io_gate2=INSIDE esd_mn_iso_io_gate1 DN_drc
+esd_mn_iso_io_gate=esd_mn_iso_io_gate2 INTERACT SI_drc
+esd_mn_iso_io_to=(ndiff ENCLOSE esd_mn_iso_io_gate) AND ESD_mark
+esdmn_iso_io_w=(esd_mn_iso_io_gate NOT INSIDE EXCL) INSIDE EDGE (TO_drc NOT INSIDE EXCL)
+esdmn_iso_io_l=(esd_mn_iso_io_gate NOT INSIDE EXCL) COIN EDGE (TO_drc NOT INSIDE EXCL)
+esdmn_iso_io_to_prop=DFM PROPERTY esd_mn_iso_io_to esdmn_iso_io_w overlap abut also multi
+[min_v=336*2/count(esdmn_iso_io_w)]
+esdmn_iso_io_w_ex=EXPAND EDGE esdmn_iso_io_w OUTSIDE BY 0.001
+esdmn_iso_io_w_err=DFM PROPERTY esdmn_iso_io_w_ex esdmn_iso_io_to_prop esdmn_iso_io_w overlap abut also multi
+[-=length(esdmn_iso_io_w)-property(esdmn_iso_io_to_prop, min_v)] <0
+esd_mn_iso_io.W1 {bracket}
+esd_mn_iso_io.W2 {bracket}
+esd_mn_iso_io.L {bracket}
+esd_mn_iso_io_sab=SI_drc INTERACT esd_mn_iso_io_gate
+esd_mn_iso_io.S {bracket}
+esd_mn_iso_io_d_check=esd_mn_iso_io_sab AND esd_mn_iso_io_gate
+esd_mn_iso_io.D {bracket}
+esd_mn_iso_io.N {bracket}
+esd_mn_iso_io_source=(esd_mn_iso_io_to NOT GT_drc) NOT INTERACT esd_mn_iso_io_sab
+esd_mn_iso_io_source_cont=W1_drc AND esd_mn_iso_io_source
+esd_mn_iso_io.X {bracket}
+esdmn_iso_io_pickRing=pdiff TOUCH (esd_pdiff_hole ENCLOSE esd_mn_iso_io_gate)
+esdmn_iso_io_guardRing=ndiff TOUCH (esd_ndiff_hole ENCLOSE esd_mn_iso_io_gate)
+esd_mn_iso_io.J {bracket}
+esdmn_iso_io_dn=INTERACT DN_drc esd_mn_iso_io_gate
+esdmn_iso_io_tb1=INTERACT tb_hole esd_mn_iso_io_gate
+esdmn_iso_io_tb=TB_drc TOUCH esdmn_iso_io_tb1
+esd_mn_iso_io.m1{bracket}
+esd_mn_iso_io.b2{bracket}
+esd_mn_iso_pp_gate1=ngate INSIDE (ESD_mark ENCLOSE RES_PY_mark)
+esd_mn_iso_pp_gate2=INSIDE esd_mn_iso_pp_gate1 DN_drc
+esd_mn_iso_pp_gate=esd_mn_iso_pp_gate2 INTERACT SI_drc
+esd_mn_iso_pp_to=(ndiff ENCLOSE esd_mn_iso_pp_gate) AND ESD_mark
+esdmn_iso_pp_w=(esd_mn_iso_pp_gate NOT INSIDE EXCL) INSIDE EDGE (TO_drc NOT INSIDE EXCL)
+esdmn_iso_pp_l=(esd_mn_iso_pp_gate NOT INSIDE EXCL) COIN EDGE (TO_drc NOT INSIDE EXCL)
+esdmn_iso_pp_to_prop=DFM PROPERTY esd_mn_iso_pp_to esdmn_iso_pp_w overlap abut also multi
+[min_v=840*2/count(esdmn_iso_pp_w)]
+esdmn_iso_pp_w_ex=EXPAND EDGE esdmn_iso_pp_w OUTSIDE BY 0.001
+esdmn_iso_pp_w_err=DFM PROPERTY esdmn_iso_pp_w_ex esdmn_iso_pp_to_prop esdmn_iso_pp_w overlap abut also multi
+[-=length(esdmn_iso_pp_w)-property(esdmn_iso_pp_to_prop, min_v)] <0
+esd_mn_iso_pp.W1 {bracket}
+esd_mn_iso_pp.W2 {bracket}
+esd_mn_iso_pp.L {bracket}
+esd_mn_iso_pp_sab=SI_drc INTERACT esd_mn_iso_pp_gate
+esd_mn_iso_pp.S {bracket}
+esd_mn_iso_pp_d_check=esd_mn_iso_pp_sab AND esd_mn_iso_pp_gate
+esd_mn_iso_pp.D {bracket}
+esd_mn_iso_pp.N {bracket}
+esd_mn_iso_pp_source=(esd_mn_iso_pp_to NOT GT_drc) NOT INTERACT esd_mn_iso_pp_sab
+esd_mn_iso_pp_source_cont=W1_drc AND esd_mn_iso_pp_source
+esd_mn_iso_pp.X {bracket}
+esdmn_iso_pp_pickRing=pdiff TOUCH (esd_pdiff_hole ENCLOSE esd_mn_iso_pp_gate)
+esdmn_iso_pp_guardRing=ndiff TOUCH (esd_ndiff_hole ENCLOSE esd_mn_iso_pp_gate)
+esd_mn_iso_pp.J {bracket}
+esdmn_iso_pp_dn=INTERACT DN_drc esd_mn_iso_pp_gate
+esdmn_iso_pp_tb1=INTERACT tb_hole esd_mn_iso_pp_gate
+esdmn_iso_pp_tb=TB_drc TOUCH esdmn_iso_pp_tb1
+esd_mn_iso_pp.m1{bracket}
+esd_mn_iso_pp.b2{bracket}
+esd_mn_iso_pp_res1=AND gt_res_body RES_PY_mark
+esd_mn_iso_pp_res2=INSIDE esd_mn_iso_pp_res1 ESD_mark
+esd_mn_iso_pp_res=INSIDE esd_mn_iso_pp_res2 DN_drc
+esd_mn_iso_pp_res_l=esd_mn_iso_pp_res COINCIDENT EDGE GT_drc
+esd_mn_iso_pp_res_w=esd_mn_iso_pp_res INSIDE EDGE GT_drc
+esd_mn_iso_pp.R1{bracket}
+esd_mn_iso_pp.R2{bracket}
+VARIABLE mom_a         0.238
+VARIABLE mom_b         0.238
+VARIABLE mom_c         0.5
+VARIABLE mom_d         20
+VARIABLE mom_e         4.2
+VARIABLE mom_f1        0.42
+VARIABLE mom_f2        0.42
+VARIABLE mom_g         105
+VARIABLE mom_i         1000
+VARIABLE mom_j         90
+VARIABLE mom_m         1
+mom_a1=(AND A1_drc MOM_mark) AND NODMF_mark
+mom_a12=COPY mom_a1
+spa_a1=(mom_region INTERACT mom_a1_all) NOT mom_a1_all
+mom_a1_l=INSIDE EDGE (mom_a1 NOT INSIDE EXCL) MOM_mark
+mom_ring1=((HOLES TO_drc INNER) NOT OUTSIDE NODMF_mark) NOT OUTSIDE MOM_mark
+mom_ring_to=TOUCH TO_drc mom_ring1
+mom_ring_a1=A1_drc INTERACT ((A1_drc AND mom_ring_to) AND W1_drc)
+mom.a {bracket}
+mom.b {bracket}
+mom.c {bracket}
+mom.d {bracket}
+mom_region=OR MOM_mark MOM_ter
+mom_region_with_guardring=mom_region OR mom_ring_to
+mom.e {bracket}
+mom_a1_all=(A1_drc INTERACT MOM_mark) AND NODMF_mark
+mom.f1 {bracket}
+mom.f2 {bracket}
+mom.g {bracket}
+mom.i {bracket}
+mom.j {bracket}
+mom.k {bracket}
+mom.m {bracket}
+bad_device_in_iso_ring_1=OR BJT_mark RES_NW_mark
+bad_device_in_iso_ring_2=OR (OR (OR (OR (OR (OR DIODE_mark MCT_drc) MT_drc) MOM_mark) MOM_ter) VTSRAM_mark) CAP_mark
+bad_device_in_iso_ring=OR bad_device_in_iso_ring_1 bad_device_in_iso_ring_2
+dn_noTB=DN_drc NOT TB_drc
+dn_noTB_edge=dn_noTB NOT TOUCH EDGE TB_drc
+dn_isolated_tb=dn_noTB NOT WITH EDGE dn_noTB_edge
+iso_ring=AND dn_isolated_tb DIODE_ISO
+ISO_RING_CHECK_device {bracket}
+ISO_RING_CHECK_ptap {bracket}

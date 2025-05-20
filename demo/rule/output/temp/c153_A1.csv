@@ -1,6 +1,0 @@
-layer,layer_def,dr,category,description,symbol,value
-A1,Metal 1,A1.a,Width,Min A1 width must be >= 0.194um,>=,0.194
-A1,Metal 1,A1.b,Spacing,Min A1 space must be >= 0.194um,>=,0.194
-A1,Metal 1,A1.c_d,Enclosure,"Min enclosure of A1 region over contact region must be >= 0.004um, and another condition for line end regions.",>=,0.004
-A1,Metal 1,A1.e,Spacing,"Minimum space between M1 lines with certain conditions is 0.476um, while small pieces within 1.0um must maintain the same minimum space.",>=,0.476
-A1,Metal 1,A1.g,Area,Min A1 area must be >= 0.2um².,>=,0.2

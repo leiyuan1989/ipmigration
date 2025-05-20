@@ -1,0 +1,267 @@
+
+-----------------------s110:NW----------------------------
+
+**input**: rule:NW_1, comment:  NW width is 0.6  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.6'}
+**input**: rule:NW_2, comment:  NW width for NW resistor is 1.60  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '1.60'}
+**input**: rule:NW_3, comment:  Space between 1.2V/1.5V NWs at same net is 0.60um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.60'}
+**input**: rule:NW_4, comment:  Minimum space between 1.2V/1.5V NWs with different net is 1.0um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '1.0'}
+**input**: rule:NW_4a, comment:  Minimum space between 1.2V/1.5V NW and 2.5V/3.3V NW on different net is 1.2um.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '1.2'}
+**input**: rule:NW_4b, comment:  Minimum space between 2.5V/3.3V NWs on different net is 1.2um.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '1.2'}
+**input**: rule:NW_5, comment:  NW area is 0.92  
+**ouput**: {'classification': 'Area', 'symbol': '==', 'value': '0.92'}
+**input**: rule:NW_6, comment:It is not allowed if N+AA/P+AA straddle on a boundary of the NW except NW resistor region.  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+
+-----------------------s110:AA----------------------------
+
+**input**: rule:AA_1_2, comment:AA width MOS transistors is 0.15 ,  exclude (NW INTERACT OPCBA) ,  SRAM  AA width for interconnect is 0.15 , exclude (NW INTERACT OPCBA) ,  SRAM  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.15'}
+**input**: rule:AA_3, comment:Space between AAs that are on the same well is 0.21 (exclude INDMY region). ,  exclude SRAM region.  
+**parse_error**: 
+
+The classification for the rule "You are an assistant who always follows instructions precisely." is determined by extracting relevant information from the problem statement.
+
+**Step-by-Step Explanation:**
+
+1. **Understanding the Rule:** The instruction sets out that the assistant should follow instructions precisely, which relates to compliance and adherence.
+2. **Classification Identification:** Based on the nature of following instructions strictly, this falls under "Compliance."
+3. **Symbol Extraction:** Since there are no comparison operators (like >=, <=) mentioned, the symbol is not applicable (N/A).
+4. **Value Extraction:** The numerical value isn't provided in this case, so it's also N/A.
+
+**Answer:**
+
+classification: Compliance  
+symbol: N/A  
+value: N/A
+**input**: rule:AA_4, comment:N+ AA enclosure by NW except NW resistor region is  >=  0.23 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.23'}
+**input**: rule:AA_5, comment:Space between NW and N+ AA is 0.30 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.30'}
+**input**: rule:AA_6, comment:P+ AA enclosure by NW is 0.30 ,  exclude (NW INTERACT OPCBA) ,  SRAM  
+**ouput**: {'classification': 'Enclosure', 'symbol': '=', 'value': '0.30'}
+**input**: rule:AA_7, comment:Space between NW to P+AA inside PW is 0.23 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.23'}
+**input**: rule:AA_8, comment:AA area is 0.1 (in um2)  
+**ouput**: {'classification': 'Area', 'symbol': '==', 'value': '0.1'}
+**input**: rule:AA_9, comment:Space between N+AA and NW which enclosure a DNW (DRC doesn't flag N+AA inside NW or DNW) is  >=  0.4  DRC waive check when space between DNW to N+AA is  >=  2.6um in same direction.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.4'}
+**input**: rule:AA_10, comment:AA or AADUM pattern is not allowed to straddle on a boundary of NW except NW resistor region.  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:AA_11a, comment:Min. AA density (including dummy AA)is 20%. Density check window size  500um*500um with step size  250um.  Waive RESNW ,  Metal Fuse ,  L Mark ,  LOGO and Inductor.  DRC check with the said window size and rule number and highlight as X. Y  =  X not (RESNW or Metal Fuse or L MARK or LOGO or INDMY) ,  Z =  (Y area)/(250*250)  If Z  >  25% ,  highlight Y for AA density inside of Y that cannot meet of rule value requirement.  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '20'}
+**input**: rule:AA_11b, comment:Max. AA density (including dummy AA)is 80%. Density check window size  500um*500um with step size  250um.  Waive RESNW ,  Metal Fuse ,  L Mark ,  LOGO and Inductor.  DRC check with the said window size and rule number and highlight as X. Y  =  X not (RESNW or Metal Fuse or L MARK or LOGO or INDMY) ,  Z =  (Y area)/(250*250)  If Z  >  25% ,  highlight Y for AA density inside of Y that cannot meet of rule value requirement.  
+**ouput**: {'classification': 'Area', 'symbol': '>', 'value': '25'}
+**input**: rule:AA_12a, comment:AA density (including dummy AA) overlap by DUMBA min. is 20%. Density check window size  500um*500um ,  step size  250um  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '20'}
+**input**: rule:AA_12b, comment:AA density (including dummy AA) overlap by DUMBA max. is 80%. Density check window size  500um*500um ,  step size  250um  
+**ouput**: {'classification': 'Area', 'symbol': '<=', 'value': '80'}
+
+-----------------------s110:GT----------------------------
+
+**input**: rule:GT_1a, comment:GT width for 1.2V/1.5V NMOS/PMOS transistor is 0.13  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.13'}
+**input**: rule:GT_2, comment:Interconnect width is 0.13um  ,  exclude SRAM region  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.13'}
+**input**: rule:GT_3, comment:Space between GTs is 0.18 (exclude INDMY region) ,  exclude SRAM region  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.18'}
+**input**: rule:GT_4, comment:Space between AA and GT on field oxide is 0.07 (exclude INDMY region) ,  (GT INTERACT (GT AND OPCBP))  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.07'}
+**input**: rule:GT_5, comment:Extension of AA outside of GT is 0.23 ,  exclude SRAM region  
+**ouput**: {'classification': 'Extension', 'symbol': 'N/A', 'value': '0.23'}
+**input**: rule:GT_6, comment:Extension of GT outside of AA is 0.17 ,  exclude SRAM region  
+**ouput**: {'classification': 'Extension', 'symbol': 'N/A', 'value': '0.17'}
+**input**: rule:GT_7, comment:GT pattern density is 15%  
+**ouput**: {'classification': 'Area', 'symbol': 'N/A', 'value': '15'}
+**input**: rule:GT_8, comment:No bent GT on AA are allowed. All GT patterns on AA have to be orthogonal to AA edge (exclude INDMY region)  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:GT_9a, comment:NLL extension outside of poly resistor is 0.18  
+**ouput**: {'classification': 'Extension', 'symbol': '==', 'value': '0.18'}
+**input**: rule:GT_9b, comment:NLH extension outside of poly resistor is 0.18  
+**ouput**: {'classification': 'Extension', 'symbol': '==', 'value': '0.18'}
+**input**: rule:GT_9c, comment:SN extension outside of poly resistor is 0.18  
+**ouput**: {'classification': 'Extension', 'symbol': '==', 'value': '0.18'}
+**input**: rule:GT_9d, comment:PLL extension outside of poly resistor is 0.18  
+**ouput**: {'classification': 'Extension', 'symbol': 'N/A', 'value': '0.18'}
+**input**: rule:GT_9e, comment:PLH extension outside of poly resistor is 0.18  
+**ouput**: {'classification': 'Extension', 'symbol': 'N/A', 'value': '0.18'}
+**input**: rule:GT_9f, comment:SP extension outside of poly resistor is 0.18  
+**ouput**: {'classification': 'Extension', 'symbol': 'N/A', 'value': '0.18'}
+**input**: rule:GT_10a, comment:Space between a NLL and a P- type poly resistor is 0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.18'}
+**input**: rule:GT_10b, comment:Space between a NLH and a P- type poly resistor is 0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.18'}
+**input**: rule:GT_10c, comment:Space between a SN and a P- type poly resistor is 0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.18'}
+**input**: rule:GT_10d, comment:Space between a PLL and a N- type poly resistor is 0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.18'}
+**input**: rule:GT_10e, comment:Space between a PLH and a N- type poly resistor is 0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.18'}
+**input**: rule:GT_10f, comment:Space between a SP and a N- type poly resistor is 0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': 'N/A', 'value': '0.18'}
+**input**: rule:GT_11, comment:GT used as MOS gate poly must be enclosed by SN or SP(except HRP resistor region)  
+**ouput**: {'classification': 'Enclosure', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:GT_13_R, comment:For small MOS(channel width  <= 0.3um) ,  Max AA size along channel width direction from the turning point when L-shape or H-shape AA space to GT is  >= 0.07um and  <= 0.08um ,  is 0.075um ,  exclude SRAM region  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.07'}
+**input**: rule:GT_14_R, comment:Space between two CTs on poly (poly width  < 0.24um) to avoid voltage drop is  <=  1.Oum.  
+**ouput**: {'classification': 'Spacing', 'symbol': '<=', 'value': '1.0'}
+**input**: rule:GT_15_R, comment:Poly area is  >=  0.09  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.09'}
+**input**: rule:GT_16_R, comment:Enclosed poly area is  >=  0.15um  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.15'}
+
+-----------------------s110:SP----------------------------
+
+**input**: rule:SP_1, comment:SP width is 0.3 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.3'}
+**input**: rule:SP_2, comment:Space between SNs is 0.3  
+**ouput**: {'classification': 'Spacing', 'symbol': 'N/A', 'value': '0.3'}
+**input**: rule:SP_3, comment:Space between SP and N+ AA inside PW is 0.16 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Spacing', 'symbol': 'N/A', 'value': '0.16'}
+**input**: rule:SP_4, comment:Space between SP and N+ AA inside NW is 0.03 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.03'}
+**input**: rule:SP_5, comment:Space between SP and N-channel poly gate is 0.4 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.4'}
+**input**: rule:SP_6, comment:SP extension outside of PMOS poly gate is 0.4 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Extension', 'symbol': '=', 'value': '0.4'}
+**input**: rule:SP_7, comment:SP extension outside of P+ AA is 0.16 ,  if distance to related poly is  > 0.25 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Extension', 'symbol': '==', 'value': '0.16'}
+**input**: rule:SP_8, comment:SP extension outside of P+ AA is 0.30 ,  if distance to related poly is  < 0.25 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Extension', 'symbol': '==', 'value': '0.30'}
+**input**: rule:SP_9, comment:P+AA enclosure by SP in PW is 0.03  
+**ouput**: {'classification': 'Enclosure', 'symbol': 'N/A', 'value': '0.03'}
+**input**: rule:SP_10, comment:SP and AA overlap is 0.18 ,  exclude (SP INTERACT OPCBA)  
+**ouput**: {'classification': 'Enclosure', 'symbol': '==', 'value': '0.18'}
+**input**: rule:SP_11, comment:SP area is 0.23  
+**ouput**: {'classification': 'Area', 'symbol': '==', 'value': '0.23'}
+**input**: rule:SP_12, comment:No SN and SP overlap is allowed  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+
+-----------------------s110:SN----------------------------
+
+**input**: rule:SN_1, comment:SN width is 0.3 ,  exclude (SN INTERACT OPCBA)  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.3'}
+**input**: rule:SN_2, comment:Space between SNs is 0.3  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.3'}
+**input**: rule:SN_3, comment:Space between SN and P+ AA inside NW is 0.16 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.16'}
+**input**: rule:SN_4, comment:Space between SN and P+ AA inside PW is 0.03  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.03'}
+**input**: rule:SN_4b, comment:Min. space between a SN and a butted P+ AA is 0  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0'}
+**input**: rule:SN_5, comment:SN extension outside of NMOS poly gate is 0.4 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Extension', 'symbol': '=', 'value': '0.4'}
+**input**: rule:SN_6, comment:Space between SN and poly gate for PMOS is 0.4 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.4'}
+**input**: rule:SN_7, comment:SN extension outside of N+ AA is  >=  0.16 ,  if distance to related poly is  > 0.25 except NW resistor region. ,  exclude SRAM region.  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:SN_8, comment:SN extension outside of N+ AA is  >=  0.30 ,  if distance to related poly is  < 0.25 except NW resistor region. ,  exclude SRAM region.  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.30'}
+**input**: rule:SN_9, comment:N+AA enclosure by SN in NW and NWH except NW resistor region is  >=  0.03 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.03'}
+**input**: rule:SN_10, comment:SN and AA overlap is 0.16 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Enclosure', 'symbol': '==', 'value': '0.16'}
+**input**: rule:SN_11, comment:SN area is 0.23  
+**ouput**: {'classification': 'Area', 'symbol': '==', 'value': '0.23'}
+
+-----------------------s110:CT----------------------------
+
+**input**: rule:CT_1, comment:Fixed contact size (edge of a square via) is 0.16 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Length', 'symbol': '==', 'value': '0.16'}
+**input**: rule:CT_2, comment:Space between contacts is 0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.18'}
+**input**: rule:CT_3, comment:Space between AA and contact on poly is 0.12 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.12'}
+**input**: rule:CT_4a, comment:Space between poly and contact on AA for 1.2 and 1.5V is  >=  0.11 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:CT_5, comment:CT enclosure by AA for CT landed on device AA is 0.06 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Enclosure', 'symbol': 'N/A', 'value': '0.06'}
+**input**: rule:CT_5a, comment:CT enclosure by AA for CT landed on pickup AA is 0.05  
+**ouput**: {'classification': 'Enclosure', 'symbol': 'N/A', 'value': '0.05'}
+**input**: rule:CT_6, comment:CT enclosure by poly for CT landed on poly is 0.06 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Enclosure', 'symbol': 'N/A', 'value': '0.06'}
+**input**: rule:CT_7_8, comment:CT enclosure by M1 is  >=  0.00 ,  exclude SRAM region.  CT.8	M1 line end extension outside of CT 	 	0.05	um ,  exclude SRAM region.  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.00'}
+**input**: rule:CT_9, comment:CT is not allowed to land on gate (exclude INDMY region) ,  exclude SRAM region.  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:CT_10, comment:CT can not overlap with SAB layer or (STI NOT GT) region.  ,  exclude SRAM region.  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:CT_12, comment:It's not allowed CT overlap with NW ,  AA ,  Poly or M1 resistor. For NW ,  AA ,  Poly resistor ,  please refer each resistor section definition.  M1 resistor definition  (M1 AND M1R).  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+
+-----------------------s110:M1----------------------------
+
+**input**: rule:M1_1, comment:M1 width is 0.16 ,  exclude SRAM region  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.16'}
+**input**: rule:M1_2, comment:Space between M1s is 0.17 ,  exclude SRAM region  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.17'}
+**input**: rule:M1_3a_R, comment:Space between M1s with one or both M1 width greater than 0.4um is 0.2 ,  when runlength > 1um  
+**ouput**: {'classification': 'Spacing', 'symbol': '=', 'value': '0.2'}
+**input**: rule:M1_3b_R, comment:Space between M1s with one or both M1 width greater than 2um is 0.4  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.4'}
+**input**: rule:M1_3c, comment:Space between M1s with one or both M1 width greater than 10um is 0.5  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.5'}
+**input**: rule:M1_4, comment:M1 area is 0.08  
+**ouput**: {'classification': 'Area', 'symbol': 'N/A', 'value': '0.08'}
+**input**: rule:M1_5, comment:Dielectric area enclosed by M1(um2) is 0.17  
+**ouput**: {'classification': 'Enclosure', 'symbol': '==', 'value': '0.17'}
+**input**: rule:M1_6a, comment:Dummy pattern is required in case M1 density is less than 16%  
+**ouput**: {'classification': 'Restrictions', 'symbol': '<', 'value': '16'}
+**input**: rule:M1_6b, comment:Max. Metal 1 GDS pattern density is 82%  
+**ouput**: {'classification': 'Restrictions', 'symbol': '<=', 'value': '82'}
+**input**: rule:M1_7, comment:Space between metal line and 45 degree bent metal line that are longer than 0.5um is 0.2  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.2'}
+**input**: rule:M1_8, comment:M1.8	Maximum line width allowed. Metal slot rule will apply for a metal with line width greater than this value. DRC skip to check (M1 interact AND with PA pattern).	 	14.00	um  
+**ouput**: {'classification': 'Width', 'symbol': '<=', 'value': '14.00'}
+
+-----------------------s110:V1----------------------------
+
+**input**: rule:V1_1, comment:Fixed V1 size is 0.19 (except FUSE protection ring region).  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.19'}
+**input**: rule:V1_2a, comment:Space between V1s is 0.21um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.21'}
+**input**: rule:V1_2b, comment:Space between V1s within array greater or equal to 4*4 is 0.25  Two via regions whose space is  <=  0.27um are considered to be in the same array  
+**ouput**: {'classification': 'Spacing', 'symbol': '≥', 'value': '0.25um'}
+**input**: rule:V1_4_5_8, comment:V1 enclosure by M1 is 0.005 ,  exclude SRAM region  V1.5	Extension of M1 line end outside of V1	 	0.05	um ,  exclude SRAM region  For V1 enclosed at the 90 degree corner by M1 ,  M1 extension at least along one direction outside V1 is 0.05 ,  exclude SRAM region  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.05'}
+**input**: rule:V1_6_7_9, comment:V1 enclosure by M2 is 0.005 ,  exclude SRAM region.  V1.7	Extension of M2 line end outside of V1	 	0.03	um ,  exclude SRAM region.  For V1 enclosed at the 90 degree corner by M2 ,  M2 extension at least along one direction outside V1 is 0.05 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.005'}
+**input**: rule:V1_11_R, comment:Vis redundancy is recommended wherever layout allows.  No. of via when either or both M1 and M2 width  > 0.9um  
+**ouput**: {'classification': 'Width', 'symbol': '>', 'value': '0.9'}
+**input**: rule:V1_12, comment:It's not allowed V1 overlap with M1 or M2 resistor.  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+
+-----------------------s110:M2----------------------------
+
+**input**: rule:M2_1, comment:M2 width is 0.2  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.2'}
+**input**: rule:M2_2, comment:Space between M2s is 0.2 ,  exclude SRAM region.  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.2'}
+**input**: rule:M2_3a_R, comment:Space between M2s with one or both M2 width greater than 0.4um is 0.25 ,  when runlength > 1um.  
+**parse_error**: 
+
+Classification: Spacing  
+Extracted numerical constraint(s):  
+- Value: 0.25  
+- Operator: N/A
+**input**: rule:M2_3b_R, comment:Space between M2s with one or both M2 width greater than 2um is 0.4  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.4'}
+**input**: rule:M2_3c, comment:Space between M2s with one or both M2 width greater than 10um is 0.5  
+**ouput**: {'classification': 'Spacing', 'symbol': 'N/A', 'value': '0.5'}
+**input**: rule:M2_4, comment:M2 area (in um2) is 0.12  
+**ouput**: {'classification': 'Area', 'symbol': '==', 'value': '0.12'}
+**input**: rule:M2_5, comment:Dielectric area enclosed by M2(um2) is 0.26  
+**ouput**: {'classification': 'Area', 'symbol': '==', 'value': '0.26'}
+**input**: rule:M2_6a, comment:Dummy pattern is required in case M2 density is less than 16%  
+**ouput**: {'classification': 'Restrictions', 'symbol': '<', 'value': '16'}
+**input**: rule:M2_6b, comment:Max. Metal2  GDS pattern density is 82%  
+**ouput**: {'classification': 'Area', 'symbol': '<=', 'value': '82'}
+**input**: rule:M2_7, comment:Space between metal line and 45 degree bent metal line that are longer than 0.5um is 0.22  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.22'}
+**input**: rule:M2_8, comment:Max. M2 width is 15. Metal wider than this size should apply slot .  
+**ouput**: {'classification': 'Width', 'symbol': '<=', 'value': '15'}

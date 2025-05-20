@@ -1,0 +1,85 @@
+
+-----------------------s40:NW----------------------------
+
+**input**: rule:NW_1, comment:NW minimum width(parallel side to side width ,  The INST connected area apply SRAM design rule) is 0.33  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.33'}
+**input**: rule:NW_3, comment:Minimum space between two NW regions at the same net (with run length  >  0) is 0.33.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.33'}
+**input**: rule:NW_4, comment:Minimum space between two NW regions at different net is 0.60  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.60'}
+**input**: rule:NW_7, comment:NW minimum area is 0.70  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.70'}
+**input**: rule:NW_8, comment:NW minimum enclosed area is 0.70  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.70'}
+**input**: rule:NW_9, comment:NW minimum space to N+AA (enclosure by TG or DG) is 0.22  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '22'}
+**input**: rule:NW_10, comment:NW enclosure of P+AA (enclosed by TG or DG)is 0.22  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.22'}
+**input**: rule:NW_11, comment:N+AA adjacent both two edges space opposite to NW is  >= 0.16. Both of two adjacent edges space to NW smaller than rule value is not permitted.  In schematic rule check method ,  E  =  0.08 ,  D = 0.16  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:NW_12, comment:NW enclosure opposite of P+AA adjacent both two edges is  >=  0.16. Both of two adjacent edges enclosed by NW smaller than rule value is not permitted.  In schematic rule check method ,  E  =  0.08 ,  D = 0.16  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:NW_13, comment:N+AA Minimum enclosure by NW is 0.08 ,  excluding LDMOS area.Waive ((AA interact RESNW) and SN)  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:NW_14, comment:Minimum Space between NW and N+AA inside PW is 0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:NW_15, comment:P+AA minimum enclosure by NW is 0.08 ,  excluding LDMOS area.  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.08'}
+Traceback (most recent call last):
+  File "/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/run_rule.py", line 34, in <module>
+    rf.extract_rules()
+  File "/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/ipmigration/rule/svrf_reader.py", line 559, in extract_rules
+    self.parse_data(df)
+  File "/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/ipmigration/rule/svrf_reader.py", line 599, in parse_data
+    response = client.chat(self.model, messages)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/ollama/_client.py", line 333, in chat
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/ollama/_client.py", line 178, in _request
+    return cls(**self._request_raw(*args, **kwargs).json())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/ollama/_client.py", line 118, in _request_raw
+    r = self._client.request(*args, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

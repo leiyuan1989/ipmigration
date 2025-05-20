@@ -1,0 +1,4885 @@
+skew_edge_check++++++++++++++++++++++
+
+@Skew edge check
+DRAWN SKEW }
+NW_offgrid++++++++++++++++++++++
+
+@ Drawn NW off-grid
+OFFGRID NW OFF_GRID
+}
+DNW_offgrid++++++++++++++++++++++
+
+@ Drawn DNW off-grid
+OFFGRID DNW OFF_GRID
+}
+SAB_offgrid++++++++++++++++++++++
+
+@ Drawn SAB off-grid
+OFFGRID SAB OFF_GRID
+}
+AA_offgrid++++++++++++++++++++++
+
+@ Drawn AA off-grid
+OFFGRID AA OFF_GRID
+}
+SN_offgrid++++++++++++++++++++++
+
+@ Drawn SN off-grid
+OFFGRID SN OFF_GRID
+}
+SP_offgrid++++++++++++++++++++++
+
+@ Drawn SP off-grid
+OFFGRID SP OFF_GRID
+}
+GT_offgrid++++++++++++++++++++++
+
+@ Drawn GT off-grid
+OFFGRID GT OFF_GRID
+}
+DG_offgrid++++++++++++++++++++++
+
+@ Drawn DG off-grid
+OFFGRID DG OFF_GRID
+}
+TG_offgrid++++++++++++++++++++++
+
+@ Drawn TG off-grid
+OFFGRID TG OFF_GRID
+}
+CT_offgrid++++++++++++++++++++++
+
+@ Drawn CT off-grid
+OFFGRID CT OFF_GRID
+}
+M1_offgrid++++++++++++++++++++++
+
+@ Drawn M1 off-grid
+OFFGRID M1 OFF_GRID
+}
+V1_offgrid++++++++++++++++++++++
+
+@ Drawn V1 off-grid
+OFFGRID V1 OFF_GRID
+}
+M2_offgrid++++++++++++++++++++++
+
+@ Drawn M2 off-grid
+OFFGRID M2 OFF_GRID
+}
+V2_offgrid++++++++++++++++++++++
+
+@ Drawn V2 off-grid
+OFFGRID V2 OFF_GRID
+}
+M3_offgrid++++++++++++++++++++++
+
+@ Drawn M3 off-grid
+OFFGRID M3 OFF_GRID
+}
+V3_offgrid++++++++++++++++++++++
+
+@ Drawn V3 off-grid
+OFFGRID V3 OFF_GRID
+}
+M4_offgrid++++++++++++++++++++++
+
+@ Drawn M4 off-grid
+OFFGRID M4 OFF_GRID
+}
+V4_offgrid++++++++++++++++++++++
+
+@ Drawn V4 off-grid
+OFFGRID V4 OFF_GRID
+}
+M5_offgrid++++++++++++++++++++++
+
+@ Drawn M5 off-grid
+OFFGRID M5 OFF_GRID
+}
+V5_offgrid++++++++++++++++++++++
+
+@ Drawn V5 off-grid
+OFFGRID V5 OFF_GRID
+}
+M6_offgrid++++++++++++++++++++++
+
+@ Drawn M6 off-grid
+OFFGRID M6 OFF_GRID
+}
+TV1_offgrid++++++++++++++++++++++
+
+@ Drawn TV1 off-grid
+OFFGRID TV1 OFF_GRID
+}
+TM1_offgrid++++++++++++++++++++++
+
+@ Drawn TM1 off-grid
+OFFGRID TM1 OFF_GRID
+}
+TV2_offgrid++++++++++++++++++++++
+
+@ Drawn TV2 off-grid
+OFFGRID TV2 OFF_GRID
+}
+TM2_offgrid++++++++++++++++++++++
+
+@ Drawn TM2 off-grid
+OFFGRID TM2 OFF_GRID
+}
+DNW_1++++++++++++++++++++++
+
+@ Min DNW width is 3
+INT DNW < 3.0 ABUT<90 SINGULAR REGION
+}
+DNW_2++++++++++++++++++++++
+
+@ Min Space between two DNWs is 3.5
+EXT DNW < 3.5 ABUT<90 SINGULAR REGION
+}
+DNW_3++++++++++++++++++++++
+
+@ Min Enclosure of DNW by NW is 1
+ENC DNW NW_DNW < 1 ABUT<90 SINGULAR REGION
+}
+DNW_4++++++++++++++++++++++
+
+@ Min Overlap of NW and DNW is 0.4
+ENC PW_INNW DNW < 0.4 ABUT<90 SINGULAR REGION
+}
+DNW_5++++++++++++++++++++++
+
+@ Min Space between DNW and NW is 2.5
+X = NW NOT COIN EDGE DNW
+EXT X DNW < 2.5 ABUT<90 REGION
+}
+DNW_6_R++++++++++++++++++++++
+
+@ DNW is enclosed by NW
+@NOTICE: It is a recommended rule.
+DNW NOT INSIDE EDGE NW_DNW
+}
+DNW_7_R++++++++++++++++++++++
+
+@ DNW is not allowed in native device region.
+@NOTICE: It is a recommended rule.
+DNW AND PSUB
+}
+AA_1++++++++++++++++++++++
+
+@ Min Width of interconnect AA is 0.08
+INT AA < 0.08 SINGULAR REGION
+INT AADUM < 0.08 REGION
+}
+AA_2a++++++++++++++++++++++
+
+@ Min AA width for 1.0/1.2V NMOS/PMOS transistors is 0.11
+Y = LENGTH GATE_W < 0.11
+(EXPAND EDGE Y INSIDE BY 0.001) NOT INSIDE INST
+}
+AA_2b++++++++++++++++++++++
+
+@ Min AA width for 1.8/2.5/3.3V NMOS/PMOS transistors is 0.21
+X = GATE AND DGTG
+Y = GT COIN EDGE X
+Z = LENGTH Y < 0.21
+(EXPAND EDGE Z INSIDE BY 0.001) NOT INSIDE INST
+}
+AA_3a++++++++++++++++++++++
+
+@ Min Space between two AAs in the same well is 0.10
+EXT AA < 0.10 SINGULAR REGION
+EXT AADUM < 0.10 REGION
+EXT AADUM AAi < 0.10 REGION INSIDE ALSO
+}
+AA_3b++++++++++++++++++++++
+
+@ Min Space between AAs with one or both AA width greater than 0.15um in the same well is 0.11
+X = AA WITH WIDTH > 0.15
+Y = AADUM WITH WIDTH > 0.15
+EXT X AA < 0.11 SINGULAR REGION
+EXT X AADUM < 0.11 SINGULAR REGION
+EXT Y AAi < 0.11 SINGULAR REGION
+EXT Y AADUM < 0.11 SINGULAR REGION
+}
+AA_4++++++++++++++++++++++
+
+@ Min N+AA enclosed by NW is 0.12
+X = ENC (NTAP NOT INTERACT GT) (NW NOT INTERACT RESNW) < 0.12 ABUT<90 SINGULAR REGION
+X NOT INSIDE INST
+}
+AA_5++++++++++++++++++++++
+
+@ Min Space between NW and N+AA inside PW is 0.15
+X = EXT NW NACT < 0.15 ABUT<90 SINGULAR REGION
+X NOT INSIDE INST
+}
+AA_6++++++++++++++++++++++
+
+@ Min P+AA enclosed by NW is 0.15
+X = ENC PACT (NW NOT NWR) < 0.15 ABUT<90 SINGULAR REGION
+X NOT INSIDE INST
+}
+AA_7++++++++++++++++++++++
+
+@ Space between NW and P+AA inside PW is 0.12
+X = EXT (NW NOT NWR) (PTAP NOT INTERACT GT) < 0.12 ABUT<90 SINGULAR REGION
+X NOT INSIDE INST
+}
+AA_8++++++++++++++++++++++
+
+@ Min AA area is 0.038
+X = AREA AA < 0.038
+X NOT INSIDE INST
+AREA AADUM < 0.038
+}
+AA_9++++++++++++++++++++++
+
+@ Min Space between N+AA, which is not enclosed by DNW, and NW which encloses a DNW is 0.32
+X = EXT NACT NW_DNW < 0.320 ABUT<90 SINGULAR REGION
+X NOT DNW
+}
+AA_10a_Min++++++++++++++++++++++
+
+@ Min Local AA density (including dummy AA) in 200umX200um window with step size 100um is 19%.
+DENSITY (AAi OR AADUM) < 0.19 WINDOW 200 STEP 100 BACKUP PRINT density_report_AA10a_min.log
+}
+AA_10a_Max++++++++++++++++++++++
+
+@ Max Local AA density (including dummy AA) in 200umX200um window with step size 100um is 90%.
+DENSITY (AAi OR AADUM) > 0.90 WINDOW 200 STEP 100 BACKUP PRINT density_report_AA10a_max.log
+}
+AA_10b_Min_R++++++++++++++++++++++
+
+@ Min Global AA density for fully chip (including dummy AA) is 23%
+@NOTICE: It is a recommended rule.
+DENSITY (AAi OR AADUM) < 0.23 PRINT density_report_AA10b_min.log
+}
+AA_10b_Max_R++++++++++++++++++++++
+
+@ Max Global AA density for fully chip (including dummy AA) is 75%
+@NOTICE: It is a recommended rule.
+DENSITY (AAi OR AADUM) > 0.75 PRINT density_report_AA10b_max.log
+}
+AA_10c_R++++++++++++++++++++++
+
+@ Min AA density inside of dummy block area is 23%,while the area of dummy block layer is larger than 2500um2 (50umX50um)
+@NOTICE: It is a recommended rule.
+X = AREA (DUMBA OR NODMF) > 2500
+DENSITY (AAi OR AADUM) < 0.23 INSIDE OF LAYER X PRINT density_report_AAn.log
+}
+NW_1++++++++++++++++++++++
+
+@ Min NW width is 0.36
+INT NW < 0.36 ABUT<90 SINGULAR REGION
+}
+NW_2++++++++++++++++++++++
+
+@ Min NW width for NW resistor is 1.6
+INT NWR < 1.60 ABUT<90 SINGULAR REGION
+}
+NW_3++++++++++++++++++++++
+
+@ Min Space between 1.0/1.2V NWs at the same nets is 0.36
+EXT NW < 0.36 ABUT<90 SINGULAR REGION CONNECTED
+EXT NW (NWi INTERACT EXCLU) < 0.36 ABUT<90 SINGULAR REGION CONNECTED
+}
+NW_4++++++++++++++++++++++
+
+@ Min Space between 1.0/1.2V NWs at different nets is 0.47
+EXT LVNW < 0.47 ABUT<90 SINGULAR REGION NOT CONNECTED
+EXT LVNW (LVNWi INTERACT EXCLU) < 0.47 ABUT<90 SINGULAR REGION NOT CONNECTED
+}
+NW_5++++++++++++++++++++++
+
+@ Min Space between 1.0/1.2V and 1.8/2.5/3.3V NWs at the same nets is 0.47
+EXT LVNW HVNW < 0.47 ABUT<90 SINGULAR REGION CONNECTED
+EXT LVNW MVNW < 0.47 ABUT<90 SINGULAR REGION CONNECTED
+}
+NW_6++++++++++++++++++++++
+
+@ Min Space between 1.0/1.2V NW and 1.8/2.5/3.3V NW at different nets is 0.72
+EXT LVNW HVNW < 0.72  ABUT<90 SINGULAR REGION NOT CONNECTED
+EXT LVNW MVNW < 0.72  ABUT<90 SINGULAR REGION NOT CONNECTED
+}
+NW_7a++++++++++++++++++++++
+
+@ Min Space between 1.8/2.5/3.3V NWs at same nets is 0.47
+EXT MVNW < 0.47 ABUT<90 SINGULAR REGION CONNECTED
+EXT HVNW < 0.47 ABUT<90 SINGULAR REGION CONNECTED
+EXT MVNW HVNW < 0.47 ABUT<90 SINGULAR REGION CONNECTED
+}
+NW_7b++++++++++++++++++++++
+
+@ Min Space between 1.8/2.5/3.3V NW is 0.72 at different nets is 0.72.
+EXT MVNW < 0.72 ABUT<90 SINGULAR REGION NOT CONNECTED
+EXT HVNW < 0.72 ABUT<90 SINGULAR REGION NOT CONNECTED
+EXT MVNW HVNW < 0.72 ABUT<90 SINGULAR REGION NOT CONNECTED
+}
+NW_8++++++++++++++++++++++
+
+@ Min NW area is 0.3
+AREA NW < 0.3
+}
+PSUB_1++++++++++++++++++++++
+
+@ Min PSUB width is 0.36
+INT PSUB < 0.36 ABUT<90 SINGULAR REGION
+}
+PSUB_2++++++++++++++++++++++
+
+@ Min 1.0/1.2/1.8/2.5/3.3V native NMOS channel width is 0.5
+X = LENGTH GATE_W < 0.5
+(EXPAND EDGE X INSIDE BY 0.005) AND PSUB
+}
+PSUB_3a++++++++++++++++++++++
+
+@ 1.0/1.2V native NMOS channel length is 0.2
+X = PBGT INSIDE EDGE PBAA
+INT X < 0.20 ABUT<90 REGION
+}
+PSUB_3b++++++++++++++++++++++
+
+@ 1.8V native NMOS channel length is 0.8
+X = PBGT INSIDE EDGE (PBAA INTERACT DG)
+INT X < 0.80 ABUT<90 REGION
+}
+PSUB_3c++++++++++++++++++++++
+
+@ Min 2.5V (or overdrive to 3.3V) native NMOS channel length is 1.0
+X = PBGT INSIDE EDGE (PBAA INTERACT TG)
+INT X < 1.0 ABUT<90 REGION
+}
+PSUB_3d++++++++++++++++++++++
+
+@ Min 3.3V native NMOS channel length is 1.2
+X = PBGT INSIDE EDGE (PBAA INTERACT TG)
+INT X < 1.2 ABUT<90 REGION
+}
+PSUB_4++++++++++++++++++++++
+
+@ Min Space between two PSUBs is 0.36
+EXT PSUB < 0.36 ABUT<90 SINGULAR REGION
+}
+PSUB_5++++++++++++++++++++++
+
+@ Fixed Native NMOS AA enclosure by PSUBs is 0.26
+X = SIZE (PBMOS NOT INTERACT CAPBP) BY 0.26
+Y = PSUB INTERACT PBMOS
+Z = NMOS INTERACT CAPBP
+(XOR X Y) NOT INTERACT Z
+PSUB NOT INTERACT AA
+}
+PSUB_6++++++++++++++++++++++
+
+@ Min Space between PSUB and MOS AA is 0.37
+EXT PSUB MOS < 0.37 ABUT<90 SINGULAR REGION
+}
+PSUB_7++++++++++++++++++++++
+
+@ Min Space between PSUB and NW is 1.2
+EXT PSUB NW < 1.2 ABUT<90 SINGULAR REGION
+}
+PSUB_8++++++++++++++++++++++
+
+@ Min Extension of native NMOS poly gate outside of AA is 0.31
+X = PBAA INSIDE EDGE PBGT
+ENC X PBGT < 0.31 ABUT<90 REGION OPPOSITE
+}
+PSUB_9_R++++++++++++++++++++++
+
+@ PSUB inside, overlapping with, or crossing over a DNW area is not allowed
+@NOTICE: It is a recommended rule.
+PSUB AND DNW
+PSUB COINCIDENT OUTSIDE EDGE DNW
+}
+PSUB_10_R++++++++++++++++++++++
+
+@ PSUB must not overlap NW or PW
+@NOTICE: It is a recommended rule.
+PSUB AND NW
+PSUB AND PW
+}
+PSUB_11_R++++++++++++++++++++++
+
+@ Only one AA pattern is allowed in one PSUB region, except for NMOS capacitors and AAs in INDMY.
+@NOTICE: It is a recommended rule.
+PSUB INTERACT ((AA NOT INTERACT CAPBP) NOT INSIDE INDMY) > 1
+}
+PSUB_12_R++++++++++++++++++++++
+
+@ SP is not allowed to exist in a PSUB region
+@NOTICE: It is a recommended rule.
+SP AND PSUB
+}
+VTNH_1++++++++++++++++++++++
+
+@ Min VTNH width is 0.18
+INT VTNH < 0.18 ABUT<90 REGION
+}
+VTNH_2++++++++++++++++++++++
+
+@ Min Space between two VTNH is 0.18
+EXT VTNH < 0.18 ABUT<90 REGION OPPOSITE
+}
+VTNH_3++++++++++++++++++++++
+
+@ VTNH and PSUB overlap isn't allowed
+AND VTNH PSUB
+}
+VTNH_4++++++++++++++++++++++
+
+@ Min VTNH extension outside of MOS AA along gate poly length direction is 0.12
+X = (NACT AND VTNH) TOUCH EDGE GATE
+Y = ENC X VTNH < 0.12 ABUT<90 REGION OPPOSITE
+Y NOT INSIDE INST
+}
+VTNH_5++++++++++++++++++++++
+
+@ Min Space between VTNH and MOS AA of other device along other device's gate poly length direction is 0.12
+X = NACT TOUCH EDGE (AA INSIDE EDGE GT)
+EXT X VTNH < 0.12 ABUT<90 REGION OPPOSITE
+}
+VTNH_6++++++++++++++++++++++
+
+@ Min VTNH extension outside of gate along S/D direction is 0.185
+X = (GT INSIDE EDGE (NACT AND VTNH)) COIN EDGE GATE
+Y = EXPAND EDGE X OUTSIDE BY 0.185
+Y NOT VTNH
+}
+VTNH_7++++++++++++++++++++++
+
+@ Min Space between VTNH and gate of other device along other device's S/D direction is 0.185
+X = (GT INSIDE EDGE (AA NOT VTNH)) COIN EDGE GATE
+EXT X VTNH < 0.185 ABUT<90 REGION OPPOSITE
+}
+VTNH_8++++++++++++++++++++++
+
+@ Min VTNH area is 0.18
+X = AREA VTNH < 0.18
+X NOT INSIDE INST
+}
+VTPH_1++++++++++++++++++++++
+
+@ Min VTPH width is 0.18
+INT VTPH < 0.18 ABUT<90 REGION
+}
+VTPH_2++++++++++++++++++++++
+
+@ Min Space between two VTPHs is 0.18
+EXT VTPH < 0.18 ABUT<90 REGION OPPOSITE
+}
+VTPH_3++++++++++++++++++++++
+
+@ VTPH and PSUB overlap isn't allowed
+AND VTPH PSUB
+}
+VTPH_4++++++++++++++++++++++
+
+@ Min VTPH extension outside of MOS AA along gate poly length direction is 0.12
+X = (PACT AND VTPH) TOUCH EDGE GATE
+Y = ENC X VTPH < 0.12 ABUT<90 REGION OPPOSITE
+Y NOT INSIDE INST
+}
+VTPH_5++++++++++++++++++++++
+
+@ Min Space between VTPH and MOS AA of other device along other device's gate poly length direction is 0.12
+X = PACT TOUCH EDGE (AA INSIDE EDGE GT)
+EXT X VTPH < 0.12 ABUT<90 REGION OPPOSITE
+}
+VTPH_6++++++++++++++++++++++
+
+@ Min VTPH extension outside of gate along S/D direction is 0.185
+X = (GT INSIDE EDGE (PACT AND VTPH)) COIN EDGE GATE
+Y = EXPAND EDGE X OUTSIDE BY 0.185
+Y NOT VTPH
+}
+VTPH_7++++++++++++++++++++++
+
+@ Min Space between VTPH and gate of other device along other device's S/D direction is 0.185
+X = (GT INSIDE EDGE AA) COIN EDGE GATE
+EXT X VTPH < 0.185 ABUT<90 REGION OPPOSITE
+}
+VTPH_8++++++++++++++++++++++
+
+@ Min VTPH area is 0.18
+X = AREA VTPH < 0.18
+X NOT INSIDE INST
+}
+LVN_1++++++++++++++++++++++
+
+@ Min LVN width is 0.18
+INT LVN < 0.18 ABUT<90 REGION
+}
+LVN_2++++++++++++++++++++++
+
+@ Min Space between LVNs is 0.18
+EXT LVN < 0.18 ABUT<90 REGION OPPOSITE
+}
+LVN_3++++++++++++++++++++++
+
+@ Min LVN and PSUB overlap isn't allowed
+AND LVN PSUB
+}
+LVN_4++++++++++++++++++++++
+
+@ Min LVN extension outside of MOS AA along gate poly length direction is 0.12
+X = (NACT AND LVN) TOUCH EDGE GATE
+ENC X LVN < 0.12 ABUT<90 REGION OPPOSITE
+}
+LVN_5++++++++++++++++++++++
+
+@ Min Space between LVN and MOS AA of other device along other device's gate poly length direction is 0.12
+X = NACT TOUCH EDGE (AA INSIDE EDGE GT)
+EXT X LVN < 0.12 ABUT<90 REGION OPPOSITE
+}
+LVN_6++++++++++++++++++++++
+
+@ LVN extension outside of gate along S/D direction is 0.185
+X = GT INSIDE EDGE (NACT AND LVN)
+Y = EXPAND EDGE X OUTSIDE BY 0.185
+Y NOT LVN
+}
+LVN_7++++++++++++++++++++++
+
+@ Min Space between LVN and gate poly of other device along other device's S/D direction is 0.185
+X = GT INSIDE EDGE (NACT NOT LVN)
+EXT LVN X < 0.185 ABUT<90 REGION OPPOSITE
+}
+LVN_8++++++++++++++++++++++
+
+@ Min LVN area is 0.18
+AREA LVN < 0.18
+}
+LVP_1++++++++++++++++++++++
+
+@ Min LVP width is 0.18
+INT LVP < 0.18 ABUT<90 REGION
+}
+LVP_2++++++++++++++++++++++
+
+@ Min Space between two LVPs is 0.18
+EXT LVP < 0.18 ABUT<90 REGION OPPOSITE
+}
+LVP_3++++++++++++++++++++++
+
+@ Min LVP and PSUB overlap isn't allowed
+AND LVP PSUB
+}
+LVP_4++++++++++++++++++++++
+
+@ Min LVP extension outside of MOS AA along gate poly length direction is 0.12
+X = (PACT AND LVP) TOUCH EDGE GATE
+ENC X LVP < 0.12 ABUT<90 REGION OPPOSITE
+}
+LVP_5++++++++++++++++++++++
+
+@ Min Space between LVP and MOS AA of other device along other device's gate poly length direction is 0.12
+X = PACT TOUCH EDGE (AA INSIDE EDGE GT)
+EXT X LVP < 0.12 ABUT<90  REGION OPPOSITE
+}
+LVP_6++++++++++++++++++++++
+
+@ Min LVP extension outside of gate along S/D direction is 0.185
+X = GT INSIDE EDGE (PACT AND LVP)
+Y = EXPAND EDGE X OUTSIDE BY 0.185
+Y NOT LVP
+}
+LVP_7++++++++++++++++++++++
+
+@ Min Space between LVP and gate of other device along other device's S/D direction is 0.185
+X = GT INSIDE EDGE (PACT NOT LVP)
+EXT LVP X < 0.185 ABUT<90 REGION OPPOSITE
+}
+LVP_8++++++++++++++++++++++
+
+@ Min LVP area is 0.18
+AREA LVP < 0.18
+}
+DG_1++++++++++++++++++++++
+
+@ Min DG width is 0.46
+INT DG < 0.46 ABUT<90 SINGULAR REGION
+}
+DG_2++++++++++++++++++++++
+
+@ Min Space between two DGs is 0.46, merge if the space is less than 0.46um
+EXT DG < 0.46 ABUT<90 SINGULAR REGION
+}
+DG_3++++++++++++++++++++++
+
+@ Min Enclosure of AA by DG(Except pick-up AA) is 0.25
+ENC MOS DG < 0.25 ABUT<90 SINGULAR REGION
+}
+DG_4++++++++++++++++++++++
+
+@ Min Enclosure of MOS AA by DG along gate poly direction is 0.27
+X = MOS TOUCH EDGE (GATE INSIDE DG)
+ENC X DG < 0.27 ABUT<90 REGION
+}
+DG_5++++++++++++++++++++++
+
+@ Min Space between DG and MOS AA is 0.25
+EXT DG MOS < 0.25 ABUT<90 SINGULAR REGION
+X = (AA AND LDBK) TOUCH ((STIDMY TOUCH GATE) AND LDBK)
+EXT DG X < 0.25 ABUT<90 SINGULAR REGION
+}
+DG_6++++++++++++++++++++++
+
+@ Min Space between DG and 1.2/2.5/3.3 gate along source/drain direction is 0.24
+X = (GT NOT DG) INSIDE EDGE AA
+EXT DG X < 0.24 ABUT<90 REGION INSIDE ALSO
+}
+DG_8++++++++++++++++++++++
+
+@ Min Enclosure of NW beyond DG is 0.46um, set the value to 0 if the enclosure is less than 0.46um
+ENC DG NW > 0 < 0.46 ABUT>0<90 SINGULAR REGION
+}
+DG_9++++++++++++++++++++++
+
+@ Min Space or extension of DG to NW is 0.46um, set the value to 0 if the value is smaller than 0.46um
+ENC NW DG > 0 < 0.46 ABUT>0<90 SINGULAR REGION
+EXT NW DG > 0 < 0.46 ABUT>0<90 SINGULAR REGION
+}
+DG_10++++++++++++++++++++++
+
+@ Min Overlap of DG and NW is 0.46um, set the value to 0 if the value is smaller than 0.46um
+INT DG NW > 0 < 0.46 ABUT>0<90 SINGULAR REGION
+}
+DG_11++++++++++++++++++++++
+
+@ Min Enclosure of DG beyond PSUB, space or extension of PSUB to DG,
+@ overlap of PSUB and DG is 0.32um, set the value to 0 if the value is smaller than 0.32um
+ENC DG PSUB > 0 < 0.32 ABUT>0<90 SINGULAR REGION
+ENC PSUB DG > 0 < 0.32 ABUT>0<90 SINGULAR REGION
+EXT PSUB DG > 0 < 0.32 ABUT>0<90 SINGULAR REGION
+INT DG PSUB > 0 < 0.32 ABUT>0<90 SINGULAR REGION
+}
+DG_12++++++++++++++++++++++
+
+@ Min Enclosure of gate by DG along source/drain direction is 0.33
+X1 = GT IN EDGE AA
+ENC X1 DG < 0.33 ABUT<90  REGION OPPOSITE
+}
+DG_13++++++++++++++++++++++
+
+@ Min Space between DG and 1.0/1.2V gate along source/drain direction is 0.33
+X1 = (GT IN EDGE AA) NOT INSIDE EDGE (DG OR TG)
+EXT X1 DG < 0.33 ABUT<90  REGION OPPOSITE
+}
+TG_1++++++++++++++++++++++
+
+@ Min TG width is 0.46
+INT TG < 0.46 ABUT<90 SINGULAR REGION
+}
+TG_2++++++++++++++++++++++
+
+@ Min Space between two TGs, merge if the space is less than 0.46
+EXT TG < 0.46 ABUT<90 SINGULAR REGION
+}
+TG_3++++++++++++++++++++++
+
+@ Min Enclosure of AA by TG(except pickup AA) is 0.25
+ENC MOS TG < 0.25 ABUT<90 SINGULAR REGION
+X = (STIDMY AND LDBK) INTERACT GT
+Y = AA TOUCH X
+ENC Y TG < 0.25 ABUT<90 SINGULAR REGION
+}
+TG_4++++++++++++++++++++++
+
+@ Min Enclosure of MOS AA by TG along gate poly direction is 0.27
+X = MOS TOUCH EDGE (GATE INSIDE TG)
+ENC X TG < 0.27 ABUT<90 REGION
+}
+TG_5++++++++++++++++++++++
+
+@ Min Space between TG and MOS AA is 0.25
+EXT TG MOS < 0.25 ABUT<90 SINGULAR REGION
+X = (AA AND LDBK) TOUCH ((STIDMY TOUCH GATE) AND LDBK)
+EXT TG X < 0.25 ABUT<90 SINGULAR REGION
+}
+TG_6++++++++++++++++++++++
+
+@ Min Space between TG and 1.2/1.8V gate along S/D direction is 0.24
+X = (GT NOT TG) INSIDE EDGE AA
+EXT TG X < 0.24 ABUT<90 REGION INSIDE ALSO
+}
+TG_7++++++++++++++++++++++
+
+@ Min Space between TG and DG is 0.46
+EXT TG DG < 0.46 ABUT<90 SINGULAR REGION INSIDE ALSO
+}
+TG_9++++++++++++++++++++++
+
+@ Min Enclosure of NW beyond TG is 0.46um, set the value to 0 if the enclosure is less than 0.46um
+ENC TG NW > 0 < 0.46 ABUT>0<90 SINGULAR REGION
+}
+TG_10++++++++++++++++++++++
+
+@ Min Space or extension of TG to NW is 0.46um, set the value to 0 if the value is smaller than 0.46um
+ENC NW TG > 0 < 0.46 ABUT>0<90 SINGULAR REGION
+EXT NW TG > 0 < 0.46 ABUT>0<90 SINGULAR REGION
+}
+TG_11++++++++++++++++++++++
+
+@ Min Overlap of TG and NW is 0.46um, set the value to 0 if the value is smaller than 0.46um
+INT TG NW > 0 < 0.46 ABUT>0<90 SINGULAR REGION
+}
+TG_12++++++++++++++++++++++
+
+@ Min Enclosure of TG beyond PSUB, space or extension of PSUB to TG,
+@ overlap of PSUB and TG is 0.32um, set the value to 0 if the value is smaller than 0.32um
+ENC TG PSUB > 0 < 0.32 ABUT>0<90 SINGULAR REGION
+ENC PSUB TG > 0 < 0.32 ABUT>0<90 SINGULAR REGION
+EXT PSUB TG > 0 < 0.32 ABUT>0<90 SINGULAR REGION
+INT TG PSUB > 0 < 0.32 ABUT>0<90 SINGULAR REGION
+}
+TG_13++++++++++++++++++++++
+
+@ Min Enclosure of gate by TG along source/drain direction is 0.33um
+X1 = GT IN EDGE AA
+ENC X1 TG < 0.33 ABUT<90  REGION OPPOSITE
+}
+TG_14++++++++++++++++++++++
+
+@ Min Space between TG and 1.0/1.2/1.8V gate along source/drain direction is 0.33
+X1 = (GT IN EDGE AA) NOT INSIDE EDGE TG
+EXT X1 TG < 0.33 ABUT<90  REGION OPPOSITE
+}
+GT_1a++++++++++++++++++++++
+
+@ Min Channel length for 1.0/1.2V NMOS /PMOS transistors is 0.06
+X = GT INSIDE EDGE (AA NOT INTERACT (DG OR TG))
+INT X < 0.06 ABUT<90 REGION
+}
+GT_1b++++++++++++++++++++++
+
+@ Min Channel length for 1.8V NMOS/PMOS transistors is 0.20
+X = GT INSIDE EDGE (AA AND DG )
+Y = INT X < 0.20  ABUT<90 REGION
+Y NOT INSIDE INST
+}
+GT_1c++++++++++++++++++++++
+
+@ Min Channel length for 2.5V NMOS/PMOS transistors is 0.28
+X = GT INSIDE EDGE ((AA AND TG) NOT INTERACT UNDEPL)
+Y = INT X < 0.28  ABUT<90 REGION
+Y NOT INSIDE INST
+}
+GT_1d++++++++++++++++++++++
+
+@ Min Channel length for 3.3V NMOS/PMOS transistors is 0.38
+X = GT INSIDE EDGE (AA AND TG)
+Y = INT X < 0.38 ABUT<90 REGION
+Y NOT INSIDE INST
+}
+GT_1e++++++++++++++++++++++
+
+@ Min Channel length for 2.5V NMOS/PMOS transistors (over drive to 3.3V and 4.1V) is 0.50(NMOS) and 0.40(PMOS).
+X = GT INSIDE EDGE ((NACT AND TG) AND OVERPL)
+Y = GT INSIDE EDGE ((PACT AND TG) AND OVERPL)
+Z1 = INT X < 0.50  ABUT<90 REGION
+Z2 = INT Y < 0.40  ABUT<90 REGION
+Z1 NOT INSIDE INST
+Z2 NOT INSIDE INST
+}
+GT_1f++++++++++++++++++++++
+
+@ Min Channel length for 2.5V NMOS/PMOS transistors (under drive to 1.8V)
+X = GT INSIDE EDGE ((AA AND TG) AND UNDEPL)
+Y = INT X < 0.22 ABUT<90 REGION
+Y NOT INSIDE INST
+}
+GT_2++++++++++++++++++++++
+
+@ Min Width of interconnect poly is 0.06
+INT (INTERGT NOT COIN EDGE GATE) < 0.06 ABUT<90 REGION
+INT GTDUM < 0.06 REGION
+}
+GT_3a++++++++++++++++++++++
+
+@ Min Space between two GTs is 0.12
+X = EXT GT < 0.12 SINGULAR REGION
+X NOT INSIDE INST
+EXT GTDUM < 0.12 REGION
+Y = EXT GTDUM GTi < 0.12 REGION INSIDE ALSO
+Y NOT INSIDE INST
+}
+GT_3b++++++++++++++++++++++
+
+@ Min Space between two GTs is 0.16 when one or both GT width is >= 0.4um,and the run length of two GTs is >=0.5um.
+GT_W = WITH WIDTH GT >= 0.4
+GT_S = EXT GT_W (GT OR GTDUM) < 0.16 OPPOSITE REGION PARA ONLY
+GT_LS = LENGTH GT_S >= 0.5
+GT_S WITH EDGE GT_LS
+GTDUM_W = WITH WIDTH GTDUM >= 0.4
+GTDUM_S = EXT GTDUM_W (GTi OR GTDUM) < 0.16 OPPOSITE REGION PARA ONLY
+GTDUM_LS = LENGTH GTDUM_S >= 0.5
+GTDUM_S WITH EDGE GTDUM_LS
+}
+GT_3c_R++++++++++++++++++++++
+
+@ Min Recommended space between GTs on the same AA is 0.19
+@NOTICE: It is a recommended rule.
+X = EXT GT_EMPTY < 0.19 ABUT < 90 SINGULAR REGION CONNECTED
+X NOT INSIDE INST
+}
+GT_3d_R++++++++++++++++++++++
+
+@ Min Recommended space between GTs on the same AA inside TG is 0.24
+@NOTICE: It is a recommended rule.
+X = EXT (GT_EMPTY AND TG) < 0.24 ABUT < 90 SINGULAR REGION CONNECTED
+X NOT INSIDE INST
+}
+GT_4++++++++++++++++++++++
+
+@ Space between AA and GT on field oxide is 0.05
+X = AA INSIDE EDGE GT
+Y = AA NOT COIN EDGE X
+A = EXT Y INTERGT < 0.05 ABUT<90 REGION
+A NOT INSIDE INST
+B = EXT AAi GTDUM < 0.05 REGION INSIDE ALSO
+B NOT INSIDE INST
+C = EXT GTi AADUM < 0.05 REGION INSIDE ALSO
+C NOT INSIDE INST
+}
+GT_5++++++++++++++++++++++
+
+@ Min Extension of AA outside of GT(not include dummy AA and dummy Poly) is 0.115
+X = ENC GT (AA NOT COIN EDGE STIDMY) < 0.115 ABUT<90 REGION OPPOSITE
+(X NOT INSIDE INST) NOT INSIDE INDMY
+}
+GT_6++++++++++++++++++++++
+
+@ Min Extension of poly end-cap outside of AA (not including dummy AA and dummy poly) is 0.14
+X = AA INSIDE EDGE GT
+Y = ENC X GT < 0.14 ABUT<90 opposite REGION
+Z = EXT GT < 0.002 ABUT==90 REGION INTERSECTING ONLY
+(Y NOT TOUCH Z) NOT INSIDE INST
+}
+GT_7a_Min++++++++++++++++++++++
+
+@ Min GT density is 7%
+DENSITY (GTi OR GTDUM) < 0.07 WINDOW 200 STEP 100 BACKUP PRINT density_report_GT7a_min.log
+}
+GT_7a_Max++++++++++++++++++++++
+
+@ Max. GT density is 70%
+DENSITY (GTi OR GTDUM) > 0.70 WINDOW 200 STEP 100 BACKUP PRINT density_report_GT7a_max.log
+}
+GT_7b_Min_R++++++++++++++++++++++
+
+@ Min Global GT density for fully chip (including dummy) is 10%
+@NOTICE: It is a recommended rule.
+DENSITY (GTi OR GTDUM) < 0.10 PRINT density_report_GT7b_min.log
+}
+GT_7b_Max_R++++++++++++++++++++++
+
+@ Max Global GT density for fully chip (including dummy) is 45%
+@NOTICE: It is a recommended rule.
+DENSITY (GTi OR GTDUM) > 0.45 PRINT density_report_GT7b_max.log
+}
+GT_7c_R++++++++++++++++++++++
+
+@ Min GT density inside of dummy block area is 10%, while the area of dummy block layer is larger than 2500um2 (50X50um).
+@NOTICE: It is a recommended rule.
+X = AREA (DUMBP OR NODMF) > 2500
+DENSITY (GTi OR GTDUM) < 0.10 INSIDE OF LAYER X PRINT density_report_GT7c.log
+}
+GT_8++++++++++++++++++++++
+
+@ No bent GT on AA is allowed.All GT patterns on AA have to be orthogonal to AA edage.
+X = EXT GT < 0.005 ABUT INTERSECTING ONLY REGION
+Y = (GT AND AA) TOUCH X
+SIZE Y BY 0.005 UNDEROVER
+}
+GT_9a++++++++++++++++++++++
+
+@ SN extension outside of poly resistor is 0.16
+X = ENC GTR SN < 0.16 ABUT<90 SINGULAR REGION
+X NOT INSIDE INST
+}
+GT_9b++++++++++++++++++++++
+
+@ SP extension outside of poly resistor is 0.16
+X = ENC GTR SP < 0.16 ABUT<90 SINGULAR REGION
+X NOT INSIDE INST
+}
+GT_10a++++++++++++++++++++++
+
+@ Space between NLL/NLH/SN and a P- type poly resistor is 0.16
+X = (GTR AND SP) AND RESP1
+Y1 = EXT NLL X < 0.16 ABUT<90 SINGULAR REGION
+Y1 NOT INSIDE INST
+Y2 = EXT NLH X < 0.16 ABUT<90 SINGULAR REGION
+Y2 NOT INSIDE INST
+Y3 = EXT SN X < 0.16 ABUT<90 SINGULAR REGION
+Y3 NOT INSIDE INST
+}
+GT_10b++++++++++++++++++++++
+
+@ Space between PLL/PLH/SP and a N- type poly resistor is 0.16
+X = (GTR AND SN) AND RESP1
+Y1 = EXT PLL X < 0.16 ABUT<90 SINGULAR REGION
+Y1 NOT INSIDE INST
+Y2 = EXT PLH X < 0.16 ABUT<90 SINGULAR REGION
+Y2 NOT INSIDE INST
+Y3 = EXT SP X < 0.16 ABUT<90 SINGULAR REGION
+Y3 NOT INSIDE INST
+}
+GT_11++++++++++++++++++++++
+
+@ GT is enclosed by SN and/or SP, except MOM and HRPDMY area (when checking the rule, size down the HRPDMY by 0.3um along the current direction).
+HRPR   = GT INTERACT HRPDMY
+HRP_END = SIZE (HRPR NOT HRPDMY) BY 0.3
+GT_MID =( GT INTERACT (HRPDMY OR HRP)) NOT HRP_END
+Y = ((((GT INTERACT CT) NOT GT_MID) NOT SP) NOT SN) NOT INTERACT MOMDMY
+Y NOT INSIDE INST
+}
+GT_12++++++++++++++++++++++
+
+@ SN and SP overlap on GT is not allowed
+(GT AND SN) AND SP
+}
+GT_13++++++++++++++++++++++
+
+@ Min GT area is 0.038.
+X = AREA GT < 0.038
+X NOT INSIDE INST
+AREA GTDUM < 0.038
+}
+ENC_EXTENSION++++++++++++++++++++++
+
+X = GT INSIDE EDGE LAY_ACT
+A = EXPAND EDGE X INSIDE BY ENC_EXTENSION OUTSIDE BY ENC_EXTENSION CORNER FILL
+Y = (GT AND LAY_ACT) COIN EDGE LAY_ACT
+B = EXPAND EDGE Y OUTSIDE BY ENC_GT EXTEND BY ENC_EXTENSION
+C = A OR B
+D = ENC LAY_ACT (LAY_IMP INSIDE EDGE C) < ENC_GT ABUT<90 REGION OPPOSITE
+D NOT INSIDE INST
+E = ENC X LAY_IMP < ENC_SD ABUT<90 REGION OPPOSITE
+E NOT INSIDE INST
+}
+NLL_1++++++++++++++++++++++
+
+@ Min NLL width is 0.18
+INT NLL < 0.18 ABUT<90 SINGULAR REGION
+}
+NLL_2++++++++++++++++++++++
+
+@ Min Space between two NLL is 0.18
+EXT NLL < 0.18 ABUT<90 SINGULAR REGION
+}
+NLL_3++++++++++++++++++++++
+
+@ Min Space between NLL and P+ AA inside NW is 0.10
+X = (PACT NOT PTAP) NOT TOUCH EDGE NLL
+EXT NLL X < 0.10 ABUT<90 REGION
+}
+NLL_4++++++++++++++++++++++
+
+@ Min Space between NLL and P+ AA inside PW is 0.02
+X = PTAP NOT TOUCH EDGE NACT
+EXT NLL X < 0.02 ABUT<90 REGION
+}
+NLL_6_8++++++++++++++++++++++
+
+@ Min NLL extension outside of NMOS GATE along source/drain direction is 0.24
+@ Min NLL extension outside of NMOS AA along gate poly length direction is 0.16, if distance to the related poly is less than or equal to 0.20um
+CMACRO NPLH_68 NLL NACT 0.24 0.16 0.2
+}
+NLL_7++++++++++++++++++++++
+
+@ Min NLL extension outside of NMOS AA along gate poly length direction is 0.12, if distance to the related poly is larger than 0.20um
+X = (NMOS AND NLL) TOUCH EDGE AAEIGT
+ENC X NLL < 0.12 ABUT<90 REGION
+NLL NOT INTERACT SN
+}
+NLL_10++++++++++++++++++++++
+
+@ Min Overlap of NLL and AA is 0.09
+INT NLL AA < 0.09 ABUT<90 SINGULAR REGION
+}
+NLL_11++++++++++++++++++++++
+
+@ Min NLL area is 0.100
+AREA NLL < 0.100
+}
+NLL_12++++++++++++++++++++++
+
+@ Min Space between NLL and butted P+AA (except SRAM area) is 0
+X = AND NLL PACT
+X NOT INSIDE INST
+}
+NLH_1_NLH++++++++++++++++++++++
+
+@ Min NLH width is 0.18
+INT NLH < 0.18 ABUT<90 SINGULAR REGION
+}
+NLH_1_NLHT++++++++++++++++++++++
+
+@ Min NLHT width is 0.18
+INT NLHT < 0.18 ABUT<90 SINGULAR REGION
+}
+NLH_2_NLH++++++++++++++++++++++
+
+@ Min Space between two NLH is 0.18
+EXT NLH < 0.18 ABUT<90 SINGULAR REGION
+}
+NLH_2_NLHT++++++++++++++++++++++
+
+@ Min Space between two NLHT is 0.18
+EXT NLHT < 0.18 ABUT<90 SINGULAR REGION
+}
+NLH_3_NLH++++++++++++++++++++++
+
+@ Min Space between NLH/NLHT and P+ AA inside NW is 0.10
+X = (PACT NOT PTAP) NOT TOUCH EDGE NLH
+EXT NLH X < 0.10 ABUT<90 REGION
+}
+NLH_3_NLHT++++++++++++++++++++++
+
+@ Min Space between NLHT and P+AA inside NW is 0.10
+X = (PACT NOT PTAP) NOT TOUCH EDGE NLHT
+EXT X NLHT < 0.10 ABUT<90 REGION
+}
+NLH_4_NLH++++++++++++++++++++++
+
+@ Min Space between NLH/NLHT and P+ AA inside PW is 0.02
+X = PTAP NOT TOUCH EDGE NACT
+EXT NLH X < 0.02 ABUT<90 REGION
+}
+NLH_4_NLHT++++++++++++++++++++++
+
+@ Min Space between NLH/NLHT and P+ AA inside PW is 0.02
+X = PTAP NOT TOUCH EDGE NACT
+EXT NLHT X < 0.02 ABUT<90 REGION
+}
+NLH_6_8_NLH++++++++++++++++++++++
+
+@ Min NLH/NLHT extension outside of NMOS gate along source/drain direction is 0.24
+@ Min NLH/NLHT extension outside of NMOS AA along gate poly length direction is 0.16, if distance to the related poly is less than or equal to 0.20um
+CMACRO NPLH_68 NLH NACT 0.24 0.16 0.2
+}
+NLH_6_8_NLHT++++++++++++++++++++++
+
+@ Min NLH/NLHT extension outside of NMOS gate along source/drain direction is 0.24
+@ Min NLH/NLHT extension outside of NMOS AA along gate poly length direction is 0.16, if distance to the related poly is less than or equal to 0.20um
+CMACRO NPLH_68 NLHT NACT_NOT_LDBK 0.24 0.16 0.2
+}
+NLH_7_NLH++++++++++++++++++++++
+
+@ Min NLH extension outside of NMOS AA along gate poly length direction is 0.12,
+@ if distance to the related poly is larger than 0.20um
+X = (NMOS AND NLH) TOUCH EDGE AAEIGT
+ENC X NLH < 0.12 ABUT<90 REGION
+NLH NOT INTERACT SN
+}
+NLH_7_NLHT++++++++++++++++++++++
+
+@ Min NLHT extension outside of NMOS AA along gate poly length direction is 0.12,
+@ if distance to the related poly is larger than 0.20um
+X = (NMOS AND NLHT) TOUCH EDGE AAEIGT
+ENC X NLHT < 0.12 ABUT<90 REGION
+NLHT NOT INTERACT SN
+}
+NLH_10_NLH++++++++++++++++++++++
+
+@ Min Overlap of NLH/NLHT and AA is 0.09
+INT NLH AA < 0.09 ABUT<90 SINGULAR REGION
+}
+NLH_10_NLHT++++++++++++++++++++++
+
+@ Min Overlap of NLH/NLHT and AA is 0.09
+INT NLHT AA < 0.09 ABUT<90 SINGULAR REGION
+}
+NLH_11_NLH++++++++++++++++++++++
+
+@ Min NLH area is 0.100
+AREA NLH < 0.100
+}
+NLH_11_NLHT++++++++++++++++++++++
+
+@ Min NLHT area is 0.100
+AREA NLHT < 0.100
+}
+NLH_12_NLH++++++++++++++++++++++
+
+@ Min Space between NLH/NLHT and butted P+AA(except SRAM area) is 0
+X = NLH AND PACT
+X NOT INSIDE INST
+}
+NLH_12_NLHT++++++++++++++++++++++
+
+@ @ Min Space between NLH/NLHT and butted P+AA(except SRAM area) is 0
+X = NLHT AND PACT
+X NOT INSIDE INST
+}
+PLL_1++++++++++++++++++++++
+
+@ Min PLL width is 0.18
+INT PLL < 0.18 ABUT<90 SINGULAR REGION
+}
+PLL_2++++++++++++++++++++++
+
+@ Min Space between two PLL is 0.18
+EXT PLL < 0.18 ABUT<90 SINGULAR REGION
+}
+PLL_3++++++++++++++++++++++
+
+@ Min Space between PLL and N+ AA inside PW is 0.10
+X = (NACT NOT NTAP) NOT TOUCH EDGE PLL
+EXT PLL X < 0.10 ABUT<90 REGION
+}
+PLL_4++++++++++++++++++++++
+
+@ Min Space between PLL and N+ AA inside NW is 0.02
+X = NTAP NOT TOUCH EDGE PACT
+EXT PLL X < 0.02 ABUT<90 REGION
+}
+PLL_6_8++++++++++++++++++++++
+
+@ Min PLL extension outside of PMOS gate along source/drain direction is 0.24.
+@ Min PLL extension outside of PMOS AA along gate poly length direction is 0.16, if distance to the related poly is less than or equal to 0.20um
+CMACRO NPLH_68 PLL PACT 0.24 0.16 0.2
+}
+PLL_7++++++++++++++++++++++
+
+@ Min PLL extension outside of PMOS AA along gate poly length direction is 0.12,
+@ if distance to the related poly is larger than 0.20um
+X = (PMOS AND PLL) TOUCH EDGE AAEIGT
+ENC X PLL < 0.12 ABUT<90 REGION
+PLL NOT INTERACT SP
+}
+PLL_10++++++++++++++++++++++
+
+@ Min Overlap of PLL and AA is 0.09
+INT PLL AA < 0.09 ABUT<90 SINGULAR REGION
+}
+PLL_11++++++++++++++++++++++
+
+@ Min PLL area is 0.100
+AREA PLL < 0.100
+}
+PLL_12++++++++++++++++++++++
+
+@ Min Space between PLL and butted N+AA (except SRAM area) is 0.
+X = PLL AND NACT
+X NOT INSIDE INST
+}
+PLH_1_PLH++++++++++++++++++++++
+
+@ Min PLH width is 0.18
+INT PLH < 0.18 ABUT<90 SINGULAR REGION
+}
+PLH_1_PLHT++++++++++++++++++++++
+
+@ Min PLHT width is 0.18
+INT PLHT < 0.18 ABUT<90 SINGULAR REGION
+}
+PLH_2_PLH++++++++++++++++++++++
+
+@ Min Space between two PLL is 0.18
+EXT PLH < 0.18 ABUT<90 SINGULAR REGION
+}
+PLH_2_PLHT++++++++++++++++++++++
+
+@ Min Space between two PLHT is 0.18
+EXT PLHT < 0.18 ABUT<90 SINGULAR REGION
+}
+PLH_3_PLH++++++++++++++++++++++
+
+@ Min Space between PLH and N+AA inside PW is 0.10
+X = (NACT NOT NTAP) NOT TOUCH EDGE PLH
+EXT PLH X < 0.10 ABUT<90 REGION
+}
+PLH_3_PLHT++++++++++++++++++++++
+
+@ Min Space between PLHT and N+AA inside PW is 0.10
+X = (NACT NOT NTAP) NOT TOUCH EDGE PLHT
+EXT PLHT X < 0.10 ABUT<90 REGION
+}
+PLH_4_PLH++++++++++++++++++++++
+
+@ Min Space between PLH/PLHT and N+ AA inside N well is 0.02
+X = NTAP NOT TOUCH EDGE PACT
+EXT PLH X < 0.02 ABUT<90 REGION
+}
+PLH_4_PLHT++++++++++++++++++++++
+
+@ Min Space between PLH/PLHT and N+ AA inside N well is 0.02
+X = NTAP NOT TOUCH EDGE PACT
+EXT PLHT X < 0.02 ABUT<90 REGION
+}
+PLH_6_8_PLH++++++++++++++++++++++
+
+@ Min PLH/PLHT extension outside of PMOS gate along source/drain direction is 0.24
+@ Min PLH/PLHT extension outside of PMOS AA along gate poly length direction, if distance to the related poly is less than or equal to 0.20um is 0.16
+CMACRO NPLH_68 PLH PACT 0.24 0.16 0.2
+}
+PLH_6_8_PLHT++++++++++++++++++++++
+
+@ Min PLH/PLHT extension outside of PMOS gate along source/drain direction is 0.24
+@ Min PLH/PLHT extension outside of PMOS AA along gate poly length direction, if distance to the related poly is less than or equal to 0.20um is 0.16
+CMACRO NPLH_68 PLHT PACT_NOT_LDBK 0.24 0.16 0.2
+}
+PLH_7_PLH++++++++++++++++++++++
+
+@ Min PLH extension outside of PMOS AA along gate poly length direction is 0.12,
+@ if distance to the related poly is larger than 0.20um
+X = (PMOS AND PLH) TOUCH EDGE AAEIGT
+ENC X PLH < 0.12 ABUT<90 REGION
+PLH NOT INTERACT SP
+}
+PLH_7_PLHT++++++++++++++++++++++
+
+@ Min PLHT extension outside of PMOS AA along gate poly length direction is 0.12,
+@ if distance to the related poly is larger than 0.20um
+X = (PMOS AND PLHT) TOUCH EDGE AAEIGT
+ENC X PLHT < 0.12 ABUT<90 REGION
+PLHT NOT INTERACT SP
+}
+PLH_10_PLH++++++++++++++++++++++
+
+@ Min Overlap of PLH/PLHT and AA is 0.09
+INT PLH AA < 0.09 ABUT<90 SINGULAR REGION
+}
+PLH_10_PLHT++++++++++++++++++++++
+
+@ Min Overlap of PLH/PLHT and AA is 0.09
+INT PLHT AA < 0.09 ABUT<90 SINGULAR REGION
+}
+PLH_11_PLH++++++++++++++++++++++
+
+@ Min PLH area is 0.100
+AREA PLH < 0.100
+}
+PLH_11_PLHT++++++++++++++++++++++
+
+@ Min PLHT area is 0.100
+AREA PLHT < 0.100
+}
+PLH_12_PLH++++++++++++++++++++++
+
+@ Min Space between PLH/PLHT and butted N+AA (except SRAM area) is 0
+X = PLH AND NACT
+X NOT INSIDE INST
+}
+PLH_12_PLHT++++++++++++++++++++++
+
+@ Min Space between PLH/PLHT and butted N+AA (except SRAM area) is 0
+X = PLHT AND NACT
+X NOT INSIDE INST
+}
+SN_1++++++++++++++++++++++
+
+@ Min SN width is 0.18
+INT SN < 0.18 ABUT<90 REGION
+}
+SN_2++++++++++++++++++++++
+
+@ Min Space between two SN is 0.18
+EXT SN < 0.18 OPPOSITE ABUT<90 REGION
+}
+SN_3++++++++++++++++++++++
+
+@ Min Space between SN and P+AA inside NW is 0.10
+X = (PACT NOT PTAP) NOT TOUCH EDGE SN
+Y = EXT SN X < 0.10 ABUT<90 REGION
+Y NOT INSIDE INST
+}
+SN_4++++++++++++++++++++++
+
+@ Min Space between SN and P+ pickup AA inside PW is 0.02
+X = PTAP NOT TOUCH EDGE NACT
+Y = X NOT TOUCH EDGE SN
+EXT SN Y < 0.02 ABUT<90 REGION
+}
+SN_5++++++++++++++++++++++
+
+@ Min Space between SN and PMOS gate along source/drain direction is 0.24
+X = GATE_W INSIDE EDGE SP
+Y = EXT X SN < 0.24 ABUT<90 OPPOSITE  REGION
+Y NOT INSIDE INST
+}
+SN_6_8++++++++++++++++++++++
+
+@ Min SN extension outside of NMOS gate along source/drain direction is 0.24
+@ Min SN extension outside of NMOS AA along gate poly length direction is 0.16, if the distance to the related poly is less than or equal to 0.20um
+SN_S = SN NOT INSIDE INST
+NACT_S = NACT NOT INSIDE INST
+CMACRO SNP_68 SN_S NACT_S 0.24 0.16 0.2
+}
+SN_7++++++++++++++++++++++
+
+@ Min SN extension outside of NMOS AA along gate poly length direction 0.12, if the distance to the related poly is larger than 0.20um
+X = NMOS TOUCH EDGE AAEIGT
+Y = ENC X SN < 0.12 ABUT<90 REGION
+Y NOT INSIDE INST
+}
+SN_9++++++++++++++++++++++
+
+@ Min N+AA enclosured by by SN in NW is 0.02
+X = ((NTAP NOT SNNR) NOT COIN EDGE PACT) NOT COIN EDGE SP
+ENC X SN < 0.02 ABUT<90 REGION
+}
+SN_10++++++++++++++++++++++
+
+@ Min Overlap of SN and AA is 0.09
+INT SN AA < 0.09 ABUT >0 <90 SINGULAR REGION
+}
+SN_11++++++++++++++++++++++
+
+@ Min SN area is 0.100
+AREA SN < 0.100
+}
+SN_12++++++++++++++++++++++
+
+@ Min Space between SN and butted P+AA (except SRAM area) is 0
+X = SN AND PACT
+X NOT INSIDE INST
+}
+SP_1++++++++++++++++++++++
+
+@ Min SP width is 0.18
+INT SP < 0.18 ABUT<90 REGION
+}
+SP_2++++++++++++++++++++++
+
+@ Min Space between two SP is 0.18
+EXT SP < 0.18 OPPOSITE ABUT<90 REGION
+}
+SP_3++++++++++++++++++++++
+
+@ Min Space between SP and N+AA inside PW is 0.10
+X = (NACT NOT NTAP) NOT TOUCH EDGE SP
+Y = EXT SP X < 0.10 ABUT<90 REGION
+Y NOT INSIDE INST
+}
+SP_4++++++++++++++++++++++
+
+@ Min Space between SP and N+ AA inside NW is 0.02
+X = NTAP NOT TOUCH EDGE PACT
+Y = X NOT TOUCH EDGE SP
+EXT SP Y < 0.02 ABUT<90 REGION
+}
+SP_5++++++++++++++++++++++
+
+@ Min Space between SP and NMOS gate along source/drain direction is 0.24
+X = GT INSIDE EDGE NACT
+Y = EXT SP X < 0.24 ABUT<90 REGION OPPOSITE
+Y NOT INSIDE INST
+}
+SP_6_8++++++++++++++++++++++
+
+@ Min SP extension outside of PMOS gate along source/drain direction is 0.24
+@ Min SP extension outside of PMOS AA along gate poly length direction is 0.16, if the distance to the related poly is less than or equal to 0.20um
+SP_S = SP NOT INSIDE INST
+PACT_S = PACT NOT INSIDE INST
+CMACRO SNP_68 SP_S PACT_S 0.24 0.16 0.2
+}
+SP_7++++++++++++++++++++++
+
+@ Min SP extension outside of PMOS AA along gate poly length direction is 0.12, if the distance to the related poly is larger than 0.2um
+X = PMOS TOUCH EDGE AAEIGT
+Y = ENC X SP < 0.12 ABUT<90 REGION
+Y NOT INSIDE INST
+}
+SP_9++++++++++++++++++++++
+
+@ Min P+AA enclosure by SP in PW is 0.02
+X = ((PTAP NOT INTERACT NWR) NOT COIN EDGE NACT) NOT COIN EDGE SN
+ENC X SP < 0.02 ABUT<90 REGION
+}
+SP_10++++++++++++++++++++++
+
+@ Min Overlap of SP and AA is 0.09
+INT SP (AA NOT TOUCH EDGE SP) < 0.09 ABUT<90 REGION
+}
+SP_11++++++++++++++++++++++
+
+@ Min SP area is 0.100
+AREA SP < 0.100
+}
+SP_12++++++++++++++++++++++
+
+@ Min Space between SP and butted N+AA (except SRAM area) is 0
+X = SP AND NACT
+X NOT INSIDE INST
+}
+SP_13++++++++++++++++++++++
+
+@ No SN and SP overlap is allowed
+AND SN SP
+}
+SAB_1++++++++++++++++++++++
+
+@ Min SAB width is 0.40um
+INT SAB < 0.40 ABUT<90 SINGULAR REGION
+}
+SAB_2++++++++++++++++++++++
+
+@ Min Space between two SABs is 0.40um
+EXT SAB < 0.40 ABUT<90 SINGULAR REGION
+}
+SAB_3++++++++++++++++++++++
+
+@ Min Extension of AA outside of SAB is 0.2um
+ENC SAB AA < 0.2 ABUT<90 SINGULAR REGION
+}
+SAB_4++++++++++++++++++++++
+
+@ Min Space between SAB and AA is 0.2um
+EXT SAB AA < 0.2 ABUT<90 SINGULAR REGION
+}
+SAB_5++++++++++++++++++++++
+
+@ Min Space between SAB and GT is 0.36,while the GT is on AA
+EXT SAB GATE < 0.36 ABUT<90 SINGULAR REGION
+}
+SAB_6++++++++++++++++++++++
+
+@ Min Extension of SAB outside of poly on field oxide is 0.2
+ENC INTERGT SAB < 0.2 ABUT<90 REGION
+}
+SAB_7++++++++++++++++++++++
+
+@ Min Space between SAB and CT is 0.2
+EXT SAB CT < 0.2 ABUT<90 SINGULAR REGION
+}
+SAB_8++++++++++++++++++++++
+
+@ Min Extension of SAB outside of AA is 0.2
+ENC AA SAB < 0.2 ABUT<90 SINGULAR REGION
+}
+SAB_9++++++++++++++++++++++
+
+@ Min SAB overlap with SN/SP is 0.20
+INT SN SAB < 0.20 ABUT<90 SINGULAR REGION
+INT SP SAB < 0.20 ABUT<90 SINGULAR REGION
+}
+SAB_10++++++++++++++++++++++
+
+@ Min SAB area is 0.5
+AREA SAB < 0.5
+}
+SAB_11++++++++++++++++++++++
+
+@ Min Space between a SAB and poly on field oxide is 0.28
+EXT SAB INTERGT < 0.28 ABUT<90 SINGULAR REGION
+}
+CT_1++++++++++++++++++++++
+
+@ Fixed contact size (square shape except rectangular CT in SRAM and EFUSE area) is 0.09
+X = NOT RECTANGLE ((CT NOT RCT) NOT GCT) == 0.09 BY == 0.09
+X NOT (MARKG OR INST)
+NOT RECTANGLE (RECTANGLE (CTi AND MARKG)) == 0.09 BY == 0.09
+NOT RECTANGLE (RECTANGLE (CTi AND INST) ASPECT == 1) == 0.09 BY == 0.09
+}
+CT_2a++++++++++++++++++++++
+
+@ Min Space between two contacts is 0.11
+X = EXT CT < 0.11 ABUT<90 SINGULAR REGION
+X NOT INSIDE INST
+}
+CT_2b++++++++++++++++++++++
+
+@ Min Space between two contacts  is 0.13 in case contact array is larger or equal to 4x4
+@ Two contact regions whose space is within 0.15 are considered to be in the same array
+X = SIZE CT BY 0.075 OVERUNDER
+Y = SIZE X BY 0.340 UNDEROVER
+Z = CT INSIDE Y
+EXT Z < 0.13 ABUT<90 SINGULAR REGION
+}
+CT_3++++++++++++++++++++++
+
+@ Min Space between AA and contact on poly is 0.065
+EXT CT AA < 0.065 ABUT<90 SINGULAR REGION
+}
+CT_4a++++++++++++++++++++++
+
+@ Min Space between poly to diffusion contact for 1.0/1.2V is 0.05
+X = EXT GATE ACT_CT < 0.05 ABUT<90 SINGULAR REGION
+X NOT INSIDE INST
+}
+CT_4b++++++++++++++++++++++
+
+@ Min Space between poly and contact on AA for 1.8/2.5/3.3V is 0.09
+X = EXT GATE (ACT_CT AND DGTG) < 0.09 ABUT<90 SINGULAR REGION
+X NOT INSIDE INST
+}
+CT_5++++++++++++++++++++++
+
+@ Min CT enclosure by AA for CT landed on AA is 0.015
+X = CT INTERACT AA
+Y = ENC X AA < 0.015 ABUT<90 SINGULAR REGION OUTSIDE ALSO
+Y NOT INSIDE INST
+}
+CT_6++++++++++++++++++++++
+
+@ Min CT enclosure by poly for CT landed on poly is 0.01
+X = CT INTERACT GT
+Y = ENC X GT < 0.01 ABUT<90 SINGULAR REGION OUTSIDE ALSO
+Y NOT INSIDE INST
+}
+CT_7a_7b++++++++++++++++++++++
+
+@ Min M1 enclosure of CT is 0.00
+@ Min M1 enclosure of CT when M1 enclosure on one or both perpendicular directions < 0.025um is 0.025
+X = RECTANGLE ENC (CT NOT TOUCH M1) M1 ABUT<90 OUTSIDE ALSO
+GOOD 0 0.025 OPPOSITE 0 0.025 OPPOSITE
+A = ENC [X] M1 < 0.025 OPPOSITE
+D1 = INT A < 0.01 ABUT==90 INTERSECTING ONLY REGION
+D1 NOT INSIDE INST
+B = CT COIN EDGE M1
+D2 = INT B < 0.01 ABUT==90 REGION
+D2 NOT INSIDE INST
+Y = ENC CT M1 < 0.025 OPPOSITE REGION
+C1 = CT COIN EDGE M1
+C2 = CT COIN EDGE Y
+D3 = INT C1 C2 < 0.01 ABUT==90 REGION
+D3 NOT INSIDE INST
+(CT NOT M1) NOT INSIDE INST
+CT NOT INTERACT M1
+}
+CT_9++++++++++++++++++++++
+
+@ CT is not allowed to land on gate
+((AND GATE CT) NOT INSIDE INST) NOT INSIDE INDMY
+}
+CT_10++++++++++++++++++++++
+
+@ CT should land on salicided surface (except MARKG/MARKS covered areas)
+(AND SAB CT) NOT MARKG
+}
+MTSPA++++++++++++++++++++++
+
+X0_a = MTLAY WITH WIDTH >= MTLEN
+X0 = ENCLOSE RECTANGLE X0_a MTLEN MTWID
+X1 = EXT MTLAY < MTSPA OPPOSITE REGION PARA ONLY
+X2 = LENGTH X1 >= MTLEN
+X3 = X2 TOUCH EDGE X0
+X4_near = EXPAND EDGE X3 OUTSIDE BY MTWID
+X4_far  = (EXPAND EDGE X3 OUTSIDE BY (MTWID + 0.01)) NOT X4_near
+X5 = X4_near NOT MTLAY
+X6_near = EXT X1 X5 < MTWID OPPOSITE REGION
+X6_far  = EXT X4_far X5 < MTWID OPPOSITE REGION
+X7 = (X4_near NOT X5) NOT (X6_near OR X6_far)
+X7_edge = LENGTH (X7 COIN EDGE X1) >= MTLEN
+X7_expand = EXPAND EDGE X7_edge OUTSIDE BY MTSPA
+X8 = (X7_expand AND X1) NOT X5
+X8 INTERACT DUMMY2
+}
+M1_1++++++++++++++++++++++
+
+@ Min M1 width is 0.09
+INT M1 < 0.09 SINGULAR REGION
+INT M1DUM < 0.09 REGION
+}
+M1_2a++++++++++++++++++++++
+
+@ Min Space between two M1 is 0.09
+X = EXT M1 < 0.09 SINGULAR REGION
+X NOT INSIDE INST
+EXT M1i M1DUM < 0.09 SINGULAR REGION INSIDE ALSO
+EXT M1DUM < 0.09 SINGULAR REGION
+}
+M1_2b++++++++++++++++++++++
+
+@ Min Space between two M1s is 0.16 when one or both M1 width or length >=1um, and the run length of two M1s is >=2um
+CMACRO Mn_2b M1ALL 2 1 0.16
+}
+M1_2c++++++++++++++++++++++
+
+@ Min Space between two M1s is 0.5 when one or both M1 width or length >= 5um, and run length of two M1s is >= 2um
+CMACRO Mn_2c M1ALL 2 5 0.5
+}
+M1_3++++++++++++++++++++++
+
+@ Max M1 width is 12.
+(M1 OR M1DUM) WITH WIDTH > 12
+}
+M1_4++++++++++++++++++++++
+
+@ Min M1 area is 0.027
+X = AREA (M1 OR M1DUM) < 0.027
+X NOT INSIDE INST
+}
+M1_5++++++++++++++++++++++
+
+@ Min Enclosed dielectric area by M1 is 0.13
+X = HOLES M1 INNER EMPTY
+AREA X < 0.13
+}
+M1_6al++++++++++++++++++++++
+
+@ M1 density (including dummy) in 200umX200um window with step size 100um is >= 18% and <= 80%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY M1ALL < 0.18 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_M1_6al.log
+(X NOT MARKF) NOT MARKG
+}
+M1_6ah++++++++++++++++++++++
+
+@ M1 density (including dummy) in 200umX200um window with step size 100um is >= 18% and <= 80%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY M1ALL > 0.80 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_M1_6ah.log
+(X NOT MARKF) NOT MARKG
+}
+M1_6b++++++++++++++++++++++
+
+@ Max M1 density (including dummy) in 50umX50um window with step size 25um is 90%
+DENSITY M1ALL > 0.90 WINDOW 50 STEP 25 backup PRINT density_report_M1_6b.log
+}
+M1_6c++++++++++++++++++++++
+
+@ The max difference between M1 density in 200umX200um with step size 200um and those of the adjacent checking windows (including dummy) is 40%.
+@ INDMY/MARKG/MARKF/MARKS covered areas are excluded for this rule checking
+X = DENSITY M1ALL >= 0 WINDOW 200 GRADIENT > 0.4 ABSOLUTE BACKUP INSIDE OF LAYER density_checkarea PRINT density_report_M1_6c.log
+(X NOT MARKF) NOT MARKG
+}
+M1_6d++++++++++++++++++++++
+
+@ Min M1 density (including dummy) in 25umX25um window with step size 12.5um is 12%.
+@ INDMY/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY M1ALL < 0.12 WINDOW 25 STEP 12.5 backup INSIDE OF LAYER density_checkarea PRINT density_report_M1_6d.log
+X NOT MARKG
+}
+M1_6e_min_R++++++++++++++++++++++
+
+@ M1 average density inside the dummy block area in 25umX25um window with step size 12.5um is >= 12% and <= 90% when the dummy block area >= 25umX25um.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking.
+@ Device sensitive areas can be waived.
+@NOTICE: It is a recommended rule.
+X = DENSITY (M1i OR M1DUM) < 0.12 WINDOW 25 STEP 12.5 backup PRINT density_report_M16e_min.log
+Y = ((DUMBM OR M1DUB) OR NODMF) NOT ((INDMY OR MARKF) OR MARKG)
+Z = SIZE Y BY 12.5 UNDEROVER
+X AND Z
+}
+M1_6e_max_R++++++++++++++++++++++
+
+@ M1 average density inside the dummy block area in 25umX25um window with step size 12.5um is >= 12% and <= 90% when the dummy block area >= 25umX25um.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking.
+@ Device sensitive areas can be waived.
+@NOTICE: It is a recommended rule.
+X = DENSITY (M1i OR M1DUM) > 0.90 WINDOW 25 STEP 12.5 backup PRINT density_report_M16e_max.log
+Y = ((DUMBM OR M1DUB) OR NODMF) NOT ((INDMY OR MARKF) OR MARKG)
+Z = SIZE Y BY 12.5 UNDEROVER
+X AND Z
+}
+M1_7_a++++++++++++++++++++++
+
+@ Min Space between metal lines with one or both are 45 degree, and the bending metal length>=0.5um is 0.105
+@ (the area with 0.1um distance from bending point need not follow this rule)
+X = ANGLE M1 == 45
+Y = LENGTH X >= 0.5
+EXT Y < 0.105 REGION
+}
+M1_7_b++++++++++++++++++++++
+
+@ Min Space between metal lines with one or both are 45 degree, and the bending metal length>=0.5um is 0.105
+@ (the area with 0.1um distance from bending point need not follow this rule)
+X = ANGLE M1 == 45
+Y = LENGTH X >= 0.5
+EXT Y M1 < 0.105 REGION CORNER TO EDGE
+}
+V1_1++++++++++++++++++++++
+
+@ Fixed V1 size(square shape) is 0.09
+(NOT RECTANGLE (V1 NOT GV1) == 0.09 BY == 0.09) NOT V1_slot_SG
+}
+V1_2a++++++++++++++++++++++
+
+@ Min Space between two V1 is 0.11
+EXT V1 < 0.11 ABUT<90 SINGULAR REGION
+}
+V1_2b++++++++++++++++++++++
+
+@ Min Space between V1s when array equal to or greater than 4*4 is 0.13
+@ Two via regions whose space is < 0.15um are considered to be in the same array.
+X = SIZE V1 BY 0.074 OVERUNDER
+Y = SIZE X BY 0.340 UNDEROVER
+Z = V1 INSIDE Y
+EXT Z < 0.13 ABUT<90 SINGULAR REGION
+}
+V1_3a_3b++++++++++++++++++++++
+
+@ Min M1 enclosure of V1 is 0.00
+@ Min M1 enclosure of V1 is 0.030 when M1 enclosure on one or both perpendicular directions<0.03um
+X = RECTANGLE ENC (V1 NOT TOUCH M1) M1 ABUT<90 OUTSIDE ALSO
+GOOD 0 0.030 OPPOSITE 0 0.030 OPPOSITE
+A = ENC [X] M1 < 0.030 OPPOSITE
+D1 = INT A < 0.01 ABUT==90 INTERSECTING ONLY REGION
+D1 NOT INSIDE INST
+B = V1 COIN EDGE M1
+D2 = INT B < 0.01 ABUT==90 REGION
+D2 NOT INSIDE INST
+Y = ENC V1 M1 < 0.030 OPPOSITE REGION
+C1 = V1 COIN EDGE M1
+C2 = V1 COIN EDGE Y
+D3 = INT C1 C2 < 0.01 ABUT==90 REGION
+D3 NOT INSIDE INST
+V1 NOT M1
+}
+V1_5a_5b++++++++++++++++++++++
+
+@ Min M2 enclosure of V1 is 0.005
+@ Min M2 Enclosure of V1 when M2 enclosure on one or both perpendicular directions < 0.02um is 0.02
+X = RECTANGLE ENC V1 M2 ABUT<90 OUTSIDE ALSO
+GOOD 0.005 OPPOSITE 0.02 OPPOSITE 0.005 OPPOSITE 0.02 OPPOSITE
+D1 = ENC X M2 < 0.005 ABUT<90 SINGULAR REGION OVERLAP OUTSIDE ALSO
+D1 NOT INSIDE INST
+Y = ENC [X] M2 < 0.02 OPPOSITE
+D2 = INT Y < 0.01 ABUT==90 INTERSECTING ONLY REGION
+D2 NOT INSIDE INST
+V1 NOT M2
+}
+V1_10++++++++++++++++++++++
+
+@ Minimum Space between two neighbor V1s (different net and run length>0) is 0.13um.
+EXT V1 < 0.13 ABUT<90 OPPOSITE REGION NOT CONNECTED
+}
+V1_11_12_R++++++++++++++++++++++
+
+@ There should be at least two V1s in the M1and M2 intersection area when either or both M1 and M2 width >= 0.5um
+@ There should be at least two V1s in the M1and M2 intersection area when either or both M1 and M2 is
+@ connected with metal line of width>=0.5um and space between V1 and wider metal edge <0.5um
+@NOTICE: It is a recommended rule.
+X = SIZE (M1 WITH WIDTH >= 0.5) BY 0.499 INSIDE OF M1 STEP 0.01
+SV1 = V1 INTERACT SV1_metal
+SV1_metal ENCLOSE (((SV1 INTERACT X) NOT LOGO) NOT MARKG)
+Y = SIZE (M2 WITH WIDTH >= 0.5) BY 0.499 INSIDE OF M2 STEP 0.01
+SV1_metal ENCLOSE (((SV1 INTERACT Y) NOT LOGO) NOT MARKG)
+}
+M2_1++++++++++++++++++++++
+
+@ Min Mn width is 0.10
+INT M2 < 0.10 SINGULAR REGION
+INT M2DUM < 0.10 SINGULAR REGION
+}
+M2_2a++++++++++++++++++++++
+
+@ Min Space between two Mns is 0.10
+X = EXT M2 < 0.10 SINGULAR REGION
+X NOT INSIDE INST
+EXT M2i M2DUM < 0.10 SINGULAR REGION INSIDE ALSO
+EXT M2DUM < 0.10 SINGULAR REGION
+}
+M2_2b++++++++++++++++++++++
+
+@ Min Space between two Mns is 0.16 when one or both Mn width or length >= 1um, and the run length of two Mns is >= 2um
+CMACRO Mn_2b M2ALL 2 1 0.16
+}
+M2_2c++++++++++++++++++++++
+
+@ Min Space between two Mns when one or both Mn width or length >= 5um, and the run length of two Mns is >= 2um
+CMACRO Mn_2c M2ALL 2 5 0.5
+}
+M2_3++++++++++++++++++++++
+
+@ Max M2 width is 12.
+@ Metal line greater than this width will comply slot rules.
+(M2 OR M2DUM) WITH WIDTH > 12
+}
+M2_4++++++++++++++++++++++
+
+@ Min Mn area is 0.035
+X = AREA (M2 OR M2DUM) < 0.035
+X NOT INSIDE INST
+}
+M2_5++++++++++++++++++++++
+
+@ Min Enclosed dielectric area by Mn is 0.12
+X = HOLES M2 INNER EMPTY
+AREA X < 0.12
+}
+M2_6al++++++++++++++++++++++
+
+@ Mn density (including dummy) in 200umX200um window with step size 100um is >= 18% and <= 80%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY M2ALL < 0.18 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_M2_6al.log
+(X NOT MARKF) NOT MARKG
+}
+M2_6ah++++++++++++++++++++++
+
+@ Mn density (including dummy) in 200umX200um window with step size 100um is >= 18% and <= 80%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY M2ALL > 0.80 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_M2_6ah.log
+(X NOT MARKF) NOT MARKG
+}
+M2_6b++++++++++++++++++++++
+
+@ Max Mn density (including dummy) in 50umX50um window with step size 25um is 90%.
+DENSITY M2ALL > 0.90 WINDOW 50 STEP 25 backup PRINT density_report_M2_6b.log
+}
+M2_6c++++++++++++++++++++++
+
+@ The max difference between Mn density in 200umX200um with step size 200um and those of the adjacent checking windows (including dummy) is 40%
+@ INDMY/MARKG/MARKF/MARKS covered areas are excluded for this rule checking
+X = DENSITY M2ALL >= 0 WINDOW 200 GRADIENT > 0.4 ABSOLUTE BACKUP INSIDE OF LAYER density_checkarea PRINT density_report_M2_6c.log
+(X NOT MARKF) NOT MARKG
+}
+M2_6d++++++++++++++++++++++
+
+@ Minimum Mn density (including dummy) in 25umX25um window with step size 12.5um is 12%
+@ INDMY/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY M2ALL < 0.12 WINDOW 25 STEP 12.5 backup INSIDE OF LAYER density_checkarea PRINT density_report_M2_6d.log
+X NOT MARKG
+}
+M2_7++++++++++++++++++++++
+
+@ Min Space between metal lines with one or both is 45 degree and the bending length >=0.5um is 0.115
+@ (the area with 0.1um distance from bending point need not follow this rule)
+X = ANGLE M2 == 45
+Y = LENGTH X >= 0.5
+EXT Y < 0.115 REGION
+EXT M2 Y < 0.115 REGION corner to edge
+}
+M2_6e_min_R++++++++++++++++++++++
+
+@ Average density for Mn inside the dummy block area in 25umX25um window with step size 12.5um is >= 12% and <= 90% when the dummy block area >= 25umX25um.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded from this rule checking.
+@ Device sensitive areas can be waived.
+@NOTICE: It is a recommended rule.
+X = DENSITY (M2i OR M2DUM) < 0.12 WINDOW 25 STEP 12.5 backup PRINT density_report_M26e_min.log
+Y = ((DUMBM OR M2DUB) OR NODMF) NOT ((INDMY OR MARKF) OR MARKG)
+Z = SIZE Y BY 12.5 UNDEROVER
+X AND Z
+}
+M2_6e_max_R++++++++++++++++++++++
+
+@ Average density for Mn inside the dummy block area in 25umX25um window with step size 12.5um is >= 12% and <= 90% when the dummy block area >= 25umX25um.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded from this rule checking.
+@ Device sensitive areas can be waived.
+@NOTICE: It is a recommended rule.
+X = DENSITY (M2i OR M2DUM) > 0.90 WINDOW 25 STEP 12.5 backup PRINT density_report_M26e_max.log
+Y = ((DUMBM OR M2DUB) OR NODMF) NOT ((INDMY OR MARKF) OR MARKG)
+Z = SIZE Y BY 12.5 UNDEROVER
+X AND Z
+}
+M3_1++++++++++++++++++++++
+
+@ Min Mn width is 0.10
+INT M3 < 0.10 singular REGION
+INT M3DUM < 0.10 REGION
+}
+M3_2a++++++++++++++++++++++
+
+@ Min Space between two Mns is 0.10
+EXT M3 < 0.10 singular REGION
+EXT M3 M3DUM < 0.10 singular REGION INSIDE ALSO
+EXT M3DUM < 0.10 singular REGION
+}
+M3_2b++++++++++++++++++++++
+
+@ Min Space between two Mns is 0.16 when one or both Mn width or length >= 1um, and the run length of two Mns is >=2um
+CMACRO Mn_2b M3ALL 2 1 0.16
+}
+M3_2c++++++++++++++++++++++
+
+@ Min Space between two Mns is 0.5 when one or both Mn width or length >= 5um, and the run length of two Mns is >= 2um
+CMACRO Mn_2c M3ALL 2 5 0.5
+}
+M3_3++++++++++++++++++++++
+
+@ Max Mn width is 12.
+M3ALL WITH WIDTH > 12
+}
+M3_4++++++++++++++++++++++
+
+@ Min Mn area is 0.035
+AREA M3ALL < 0.035
+}
+M3_5++++++++++++++++++++++
+
+@ Min Enclosed dielectric area by Mn is 0.12
+X = HOLES M3 INNER EMPTY
+AREA X < 0.12
+}
+M3_6al++++++++++++++++++++++
+
+@ Mn density (including dummy) in 200umX200um window with step size 100um is >= 18% and <= 80%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M3i OR M3DUM) < 0.18 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_M3_6al.log
+(X NOT MARKF) NOT MARKG
+}
+M3_6ah++++++++++++++++++++++
+
+@ Mn density (including dummy) in 200umX200um window with step size 100um is >= 18% and <= 80%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M3i OR M3DUM) > 0.80 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_M3_6ah.log
+(X NOT MARKF) NOT MARKG
+}
+M3_6b++++++++++++++++++++++
+
+@ Max Mn density (including dummy) in 50umX50um window with step size 25um is 90%.
+DENSITY (M3i OR M3DUM) > 0.90 WINDOW 50 STEP 25 backup PRINT density_report_M3_6b.log
+}
+M3_6c++++++++++++++++++++++
+
+@ The max difference between Mn density in 200umX200um with step size 200um and those of the adjacent checking windows (including dummy) is 40%
+@ INDMY/MARKG/MARKF/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M3i OR M3DUM) >= 0 WINDOW 200 GRADIENT > 0.4 ABSOLUTE BACKUP INSIDE OF LAYER density_checkarea PRINT density_report_M3_6c.log
+(X NOT MARKF) NOT MARKG
+}
+M3_6d++++++++++++++++++++++
+
+@ Minimum Mn density (including dummy) in 25umX25um window with step size 12.5um is 12%
+@ INDMY/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M3i OR M3DUM) < 0.12 WINDOW 25 STEP 12.5 backup INSIDE OF LAYER density_checkarea PRINT density_report_M3_6d.log
+X NOT MARKG
+}
+M3_7++++++++++++++++++++++
+
+@ Min Space between metal lines with one or both is 45 degree and the bending length >=0.5um is 0.115
+@ (the area with 0.1um distance from bending point need not follow this rule)
+X = ANGLE M3 == 45
+Y = LENGTH X >= 0.5
+EXT Y < 0.115 REGION
+EXT M3 Y <0.115 corner to edge
+}
+M3_6e_min_R++++++++++++++++++++++
+
+@ Average density for Mn inside the dummy block area in 25umX25um window with step size 12.5um is >= 12% and <= 90% when the dummy block area >= 25umX25um.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded from this rule checking.
+@ Device sensitive areas can be waived.
+@NOTICE: It is a recommended rule.
+X = DENSITY (M3i OR M3DUM) < 0.12 WINDOW 25 STEP 12.5 backup PRINT density_report_M3nl.log
+Y = ((DUMBM OR M3DUB) OR NODMF) NOT ((INDMY OR MARKF) OR MARKG)
+Z = SIZE Y BY 12.5 UNDEROVER
+X AND Z
+}
+M3_6e_max_R++++++++++++++++++++++
+
+@ Average density for Mn inside the dummy block area in 25umX25um window with step size 12.5um is >= 12% and <= 90% when the dummy block area >= 25umX25um.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded from this rule checking.
+@ Device sensitive areas can be waived.
+@NOTICE: It is a recommended rule.
+X = DENSITY (M3i OR M3DUM) > 0.90 WINDOW 25 STEP 12.5 backup PRINT density_report_M3nh.log
+Y = ((DUMBM OR M3DUB) OR NODMF) NOT ((INDMY OR MARKF) OR MARKG)
+Z = SIZE Y BY 12.5 UNDEROVER
+X AND Z
+}
+M4_1++++++++++++++++++++++
+
+@ Min Mn width is 0.10
+INT M4 < 0.10 SINGULAR REGION
+INT M4DUM < 0.10 SINGULAR REGION
+}
+M4_2a++++++++++++++++++++++
+
+@ Min Space between two Mns is 0.10
+EXT M4 < 0.10 SINGULAR REGION
+EXT M4 M4DUM < 0.10 SINGULAR REGION
+EXT M4DUM < 0.10 SINGULAR REGION
+}
+M4_2b++++++++++++++++++++++
+
+@ Min Space between two Mns is 0.16 when one or both Mn width or length >= 1um, and the run length of two Mns is >=2um
+CMACRO Mn_2b M4ALL 2 1 0.16
+}
+M4_2c++++++++++++++++++++++
+
+@ Min Space between two Mns is 0.5 when one or both Mn width or length >= 5um, and the run length of two Mns is >= 2um
+CMACRO Mn_2c M4ALL 2 5 0.5
+}
+M4_3++++++++++++++++++++++
+
+@ Max Mn width is 12.
+M4ALL WITH WIDTH > 12
+}
+M4_4++++++++++++++++++++++
+
+@ Min Mn area is 0.035
+AREA M4ALL < 0.035
+}
+M4_5++++++++++++++++++++++
+
+@ Min Enclosed dielectric area by Mn is 0.12
+X = HOLES M4 INNER EMPTY
+AREA X < 0.12
+}
+M4_6al++++++++++++++++++++++
+
+@ Mn density (including dummy) in 200umX200um window with step size 100um is >= 18% and <= 80%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M4i OR M4DUM) < 0.18 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_M4_6al.log
+(X NOT MARKF) NOT MARKG
+}
+M4_6ah++++++++++++++++++++++
+
+@ Mn density (including dummy) in 200umX200um window with step size 100um is >= 18% and <= 80%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M4i OR M4DUM) > 0.80 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_M4_6ah.log
+(X NOT MARKF) NOT MARKG
+}
+M4_6b++++++++++++++++++++++
+
+@ Max Mn density (including dummy) in 50umX50um window with step size 25um is 90%.
+DENSITY (M4i OR M4DUM) > 0.90 WINDOW 50 STEP 25 backup PRINT density_report_M4_6b.log
+}
+M4_6c++++++++++++++++++++++
+
+@ The max difference between Mn density in 200umX200um with step size 200um and those of the adjacent checking windows (including dummy) is 40%
+@ INDMY/MARKG/MARKF/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M4i OR M4DUM) >= 0 WINDOW 200 GRADIENT > 0.4 ABSOLUTE BACKUP INSIDE OF LAYER density_checkarea PRINT density_report_M4_6c.log
+(X NOT MARKF) NOT MARKG
+}
+M4_6d++++++++++++++++++++++
+
+@ Minimum Mn density (including dummy) in 25umX25um window with step size 12.5um is 12%
+@ INDMY/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M4i OR M4DUM) < 0.12 WINDOW 25 STEP 12.5 backup INSIDE OF LAYER density_checkarea PRINT density_report_M4_6d.log
+X NOT MARKG
+}
+M4_7++++++++++++++++++++++
+
+@ Min Space between metal lines with one or both is 45 degree and the bending length >=0.5um is 0.115
+@ (the area with 0.1um distance from bending point need not follow this rule)
+X = ANGLE M4 == 45
+Y = LENGTH X >= 0.5
+EXT Y < 0.115 REGION
+EXT M4 Y < 0.115 CORNER TO EDGE
+}
+M4_6e_min_R++++++++++++++++++++++
+
+@ Average density for Mn inside the dummy block area in 25umX25um window with step size 12.5um is >= 12% and <= 90% when the dummy block area >= 25umX25um.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded from this rule checking.
+@ Device sensitive areas can be waived.
+@NOTICE: It is a recommended rule.
+X = DENSITY (M4i OR M4DUM) < 0.12 WINDOW 25 STEP 12.5 backup PRINT density_report_M4nl.log
+Y = ((DUMBM OR M4DUB) OR NODMF) NOT ((INDMY OR MARKF) OR MARKG)
+Z = SIZE Y BY 12.5 UNDEROVER
+X AND Z
+}
+M4_6e_max_R++++++++++++++++++++++
+
+@ Average density for Mn inside the dummy block area in 25umX25um window with step size 12.5um is >= 12% and <= 90% when the dummy block area >= 25umX25um.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded from this rule checking.
+@ Device sensitive areas can be waived.
+@NOTICE: It is a recommended rule.
+X = DENSITY (M4i OR M4DUM) > 0.90 WINDOW 25 STEP 12.5 backup PRINT density_report_M4nh.log
+Y = ((DUMBM OR M4DUB) OR NODMF) NOT ((INDMY OR MARKF) OR MARKG)
+Z = SIZE Y BY 12.5 UNDEROVER
+X AND Z
+}
+M5_1++++++++++++++++++++++
+
+@ Min Mn width is 0.10
+INT M5 < 0.10 SINGULAR REGION
+INT M5DUM < 0.10 SINGULAR REGION
+}
+M5_2a++++++++++++++++++++++
+
+@ Min Space between two Mns is 0.10
+EXT M5 < 0.10 SINGULAR REGION
+EXT M5 M5DUM < 0.10 SINGULAR REGION
+EXT M5DUM < 0.10 SINGULAR REGION
+}
+M5_2b++++++++++++++++++++++
+
+@ Min Space between two Mns is 0.16 when one or both Mn width or length >= 1um, and the run length of two Mns is >=2um
+CMACRO Mn_2b M5ALL 2 1 0.16
+}
+M5_2c++++++++++++++++++++++
+
+@ Min Space between two Mns is 0.5 when one or both Mn width or length >= 5um, and the run length of two Mns is >= 2um
+CMACRO Mn_2c M5ALL 2 5 0.5
+}
+M5_3++++++++++++++++++++++
+
+@ Max Mn width is 12.
+M5ALL WITH WIDTH > 12
+}
+M5_4++++++++++++++++++++++
+
+@ Min Mn area is 0.035
+AREA M5ALL < 0.035
+}
+M5_5++++++++++++++++++++++
+
+@ Min Enclosed dielectric area by Mn is 0.12
+X = HOLES M5 INNER EMPTY
+AREA X < 0.12
+}
+M5_6al++++++++++++++++++++++
+
+@ Mn density (including dummy) in 200umX200um window with step size 100um is >= 18% and <= 80%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M5i OR M5DUM) < 0.18 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_M5_6al.log
+(X NOT MARKF) NOT MARKG
+}
+M5_6ah++++++++++++++++++++++
+
+@ Mn density (including dummy) in 200umX200um window with step size 100um is >= 18% and <= 80%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M5i OR M5DUM) > 0.80 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_M5_6ah.log
+(X NOT MARKF) NOT MARKG
+}
+M5_6b++++++++++++++++++++++
+
+@ Max Mn density (including dummy) in 50umX50um window with step size 25um is 90%.
+DENSITY (M5i OR M5DUM) > 0.90 WINDOW 50 STEP 25 backup PRINT density_report_M5_6b.log
+}
+M5_6c++++++++++++++++++++++
+
+@ The max difference between Mn density in 200umX200um with step size 200um and those of the adjacent checking windows (including dummy) is 40%
+@ INDMY/MARKG/MARKF/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M5i OR M5DUM) >= 0 WINDOW 200 GRADIENT > 0.4 ABSOLUTE BACKUP INSIDE OF LAYER density_checkarea PRINT density_report_M5_6c.log
+(X NOT MARKF) NOT MARKG
+}
+M5_6d++++++++++++++++++++++
+
+@ Minimum Mn density (including dummy) in 25umX25um window with step size 12.5um is 12%
+@ INDMY/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M5i OR M5DUM) < 0.12 WINDOW 25 STEP 12.5 backup INSIDE OF LAYER density_checkarea PRINT density_report_M5_6d.log
+X NOT MARKG
+}
+M5_7++++++++++++++++++++++
+
+@ Min Space between metal lines with one or both is 45 degree and the bending length >=0.5um is 0.115
+@ (the area with 0.1um distance from bending point need not follow this rule)
+X = ANGLE M5 == 45
+Y = LENGTH X >= 0.5
+EXT Y < 0.115 REGION
+EXT M5 Y < 0.115 CORNER TO EDGE
+}
+M5_6e_min_R++++++++++++++++++++++
+
+@ Average density for Mn inside the dummy block area in 25umX25um window with step size 12.5um is >= 12% and <= 90% when the dummy block area >= 25umX25um.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded from this rule checking.
+@ Device sensitive areas can be waived.
+@NOTICE: It is a recommended rule.
+X = DENSITY (M5i OR M5DUM) < 0.12 WINDOW 25 STEP 12.5 backup PRINT density_report_M5nl.log
+Y = ((DUMBM OR M5DUB) OR NODMF) NOT ((INDMY OR MARKF) OR MARKG)
+Z = SIZE Y BY 12.5 UNDEROVER
+X AND Z
+}
+M5_6e_max_R++++++++++++++++++++++
+
+@ Average density for Mn inside the dummy block area in 25umX25um window with step size 12.5um is >= 12% and <= 90% when the dummy block area >= 25umX25um.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded from this rule checking.
+@ Device sensitive areas can be waived.
+@NOTICE: It is a recommended rule.
+X = DENSITY (M5i OR M5DUM) > 0.90 WINDOW 25 STEP 12.5 backup PRINT density_report_M5nh.log
+Y = ((DUMBM OR M5DUB) OR NODMF) NOT ((INDMY OR MARKF) OR MARKG)
+Z = SIZE Y BY 12.5 UNDEROVER
+X AND Z
+}
+M6_1++++++++++++++++++++++
+
+@ Min Mn width is 0.10
+INT M6 < 0.10 SINGULAR REGION
+INT M6DUM < 0.10 SINGULAR REGION
+}
+M6_2a++++++++++++++++++++++
+
+@ Min Space between two Mns is 0.10
+EXT M6 < 0.10 SINGULAR REGION
+EXT M6 M6DUM < 0.10 SINGULAR REGION
+EXT M6DUM < 0.10 SINGULAR REGION
+}
+M6_2b++++++++++++++++++++++
+
+@ Min Space between two Mns is 0.16 when one or both Mn width or length >= 1um, and the run length of two Mns is >=2um
+CMACRO Mn_2b M6ALL 2 1 0.16
+}
+M6_2c++++++++++++++++++++++
+
+@ Min Space between two Mns is 0.5 when one or both Mn width or length >= 5um, and the run length of two Mns is >= 2um
+CMACRO Mn_2c M6ALL 2 5 0.5
+}
+M6_3++++++++++++++++++++++
+
+@ Max Mn width is 12.
+M6ALL WITH WIDTH > 12
+}
+M6_4++++++++++++++++++++++
+
+@ Min Mn area is 0.035
+AREA M6ALL < 0.035
+}
+M6_5++++++++++++++++++++++
+
+@ Dielectric area enclosed by Mn is 0.12
+X = HOLES M6 INNER EMPTY
+AREA X < 0.12
+}
+M6_6al++++++++++++++++++++++
+
+@ Mn density (including dummy) in 200umX200um window with step size 100um is >= 18% and <= 80%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M6i OR M6DUM) < 0.18 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_M6_6al.log
+(X NOT MARKF) NOT MARKG
+}
+M6_6ah++++++++++++++++++++++
+
+@ Mn density (including dummy) in 200umX200um window with step size 100um is >= 18% and <= 80%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M6i OR M6DUM) > 0.80 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_M6_6ah.log
+(X NOT MARKF) NOT MARKG
+}
+M6_6b++++++++++++++++++++++
+
+@ Max Mn density (including dummy) in 50umX50um window with step size 25um is 90%.
+DENSITY (M6i OR M6DUM) > 0.90 WINDOW 50 STEP 25 backup PRINT density_report_M6_6b.log
+}
+M6_6c++++++++++++++++++++++
+
+@ The max difference between Mn density in 200umX200um with step size 200um and those of the adjacent checking windows (including dummy) is 40%
+@ INDMY/MARKG/MARKF/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M6i OR M6DUM) >= 0 WINDOW 200 GRADIENT > 0.4 ABSOLUTE BACKUP INSIDE OF LAYER density_checkarea PRINT density_report_M6_6c.log
+(X NOT MARKF) NOT MARKG
+}
+M6_6d++++++++++++++++++++++
+
+@ Minimum Mn density (including dummy) in 25umX25um window with step size 12.5um is 12%
+@ INDMY/MARKG/MARKS covered areas are excluded for this rule checking
+X = DENSITY (M6i OR M6DUM) < 0.12 WINDOW 25 STEP 12.5 backup INSIDE OF LAYER density_checkarea PRINT density_report_M6_6d.log
+X NOT MARKG
+}
+M6_7++++++++++++++++++++++
+
+@ Min Space between metal lines with one or both is 45 degree and the bending length >=0.5um is 0.115
+@ (the area with 0.1um distance from bending point need not follow this rule)
+X = ANGLE M6 == 45
+Y = LENGTH X >= 0.5
+EXT Y < 0.115 REGION
+EXT Y M6 < 0.115 REGION CORNER TO EDGE
+}
+M6_6e_min_R++++++++++++++++++++++
+
+@ Average density for Mn inside the dummy block area in 25umX25um window with step size 12.5um is >= 12% and <= 90% when the dummy block area >= 25umX25um.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded from this rule checking.
+@ Device sensitive areas can be waived.
+@NOTICE: It is a recommended rule.
+X = DENSITY (M6i OR M6DUM) < 0.12 WINDOW 25 STEP 12.5 backup PRINT density_report_M6nl.log
+Y = ((DUMBM OR M6DUB) OR NODMF) NOT ((INDMY OR MARKF) OR MARKG)
+Z = SIZE Y BY 12.5 UNDEROVER
+X AND Z
+}
+M6_6e_max_R++++++++++++++++++++++
+
+@ Average density for Mn inside the dummy block area in 25umX25um window with step size 12.5um is >= 12% and <= 90% when the dummy block area >= 25umX25um.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded from this rule checking.
+@ Device sensitive areas can be waived.
+@NOTICE: It is a recommended rule.
+X = DENSITY (M6i OR M6DUM) > 0.90 WINDOW 25 STEP 12.5 backup PRINT density_report_M6nh.log
+Y = ((DUMBM OR M6DUB) OR NODMF) NOT ((INDMY OR MARKF) OR MARKG)
+Z = SIZE Y BY 12.5 UNDEROVER
+X AND Z
+}
+V2_1++++++++++++++++++++++
+
+@ Fixed Vn size (square shape) is 0.09
+(NOT RECTANGLE (V2 NOT GV2) == 0.09 BY == 0.09) NOT V2_slot_SG
+}
+V2_2a++++++++++++++++++++++
+
+@ Space between two V2 is 0.11
+EXT V2 < 0.11 ABUT<90 SINGULAR REGION
+}
+V2_2b++++++++++++++++++++++
+
+@ Space between V2s when array equal to or greater than 4*4 is 0.13.
+@ Two via regions whose space is < 0.15um are considered to be in the same array.
+X = SIZE V2 BY 0.074 OVERUNDER
+Y = SIZE X BY 0.340 UNDEROVER
+Z = V2 INSIDE Y
+EXT Z < 0.13 ABUT<90 SINGULAR REGION
+}
+V2_3a_3b++++++++++++++++++++++
+
+@ Min Mn enclosure of Vn is 0.005
+@ Min Mn enclosure of Vn  is 0.030 when Mn enclosure on one or both perpendicular directions<0.03um
+X = RECTANGLE ENC V2 M2 ABUT<90 OUTSIDE ALSO
+GOOD 0.005 OPPOSITE 0.030 OPPOSITE 0.005 OPPOSITE 0.030 OPPOSITE
+ENC X M2 < 0.005 ABUT<90 SINGULAR REGION OVERLAP OUTSIDE ALSO
+Y = ENC [X] M2 < 0.030 OPPOSITE
+INT Y < 0.005 ABUT==90 INTERSECTING ONLY REGION
+V2 NOT M2
+}
+V2_5a_5b++++++++++++++++++++++
+
+@ Min Mn+1 enclsoure of Vn is 0.005
+@ Min Mn+1 enclosure of Vn  is 0.02 when Mn enclosure on one or both perpendicular directions<0.02um
+X = RECTANGLE ENC V2 M3 ABUT<90 OUTSIDE ALSO
+GOOD 0.005 OPPOSITE 0.02 OPPOSITE 0.005 OPPOSITE 0.02 OPPOSITE
+ENC X M3 < 0.005 ABUT<90 SINGULAR REGION OVERLAP OUTSIDE ALSO
+Y = ENC [X] M3 < 0.02 OPPOSITE
+INT Y < 0.01 ABUT==90 INTERSECTING ONLY REGION
+V2 NOT M3
+}
+V2_10++++++++++++++++++++++
+
+@ Minimum Space between two neighbor Vns (different net and run length>0) is 0.13um.
+EXT V2 < 0.13 ABUT<90 OPPOSITE REGION NOT CONNECTED
+}
+V2_11_12_R++++++++++++++++++++++
+
+@ There should be at least two Vns in the Mn and Mn+1 intersection area when either or both Mn and Mn+1 with width >= 0.5um
+@ There should be at least two Vns in the Mn and Mn+1 intersection area when either or both Mn and Mn+1
+@ connected with metal line of width>=0.5um and space between Vn and wider metal edge <0.5um
+@NOTICE: It is a recommended rule.
+X = SIZE (M2 WITH WIDTH >= 0.5) BY 0.499 INSIDE OF M2 STEP 0.01
+SV2 = V2 INTERACT SV2_metal
+SV2_metal ENCLOSE (((SV2 INTERACT X) NOT LOGO) NOT MARKG)
+Y = SIZE (M3 WITH WIDTH >= 0.5) BY 0.499 INSIDE OF M3 STEP 0.01
+SV2_metal ENCLOSE (((SV2 INTERACT Y) NOT LOGO) NOT MARKG)
+}
+V3_1++++++++++++++++++++++
+
+@ Fixed Vn size (square shape) is 0.09
+(NOT RECTANGLE (V3 NOT GV3) == 0.09 BY == 0.09) NOT V3_slot_SG
+}
+V3_2a++++++++++++++++++++++
+
+@ @ Min Space between two Vns is 0.11
+EXT V3 < 0.11 ABUT<90 SINGULAR REGION
+}
+V3_2b++++++++++++++++++++++
+
+@ Min Space between Vns when array equal to or greater than 4*4 is 0.13.
+@ Two via regions whose space is < 0.15um are considered to be in the same array.
+X = SIZE V3 BY 0.074 OVERUNDER
+Y = SIZE X BY 0.340 UNDEROVER
+Z = V3 INSIDE Y
+EXT Z < 0.13 ABUT<90 SINGULAR REGION
+}
+V3_3a_3b++++++++++++++++++++++
+
+@ Min Mn enclosure of Vn is 0.005
+@ Min Mn enclosure of Vn  is 0.030 when Mn enclosure on one or both perpendicular directions<0.03um
+X = RECTANGLE ENC V3 M3 ABUT<90 OUTSIDE ALSO
+GOOD 0.005 OPPOSITE 0.030 OPPOSITE 0.005 OPPOSITE 0.030 OPPOSITE
+ENC X M3 < 0.005 ABUT<90 SINGULAR REGION OVERLAP OUTSIDE ALSO
+Y = ENC [X] M3 < 0.030 OPPOSITE
+INT Y < 0.005 ABUT==90 INTERSECTING ONLY REGION
+V3 NOT M3
+}
+V3_5a_5b++++++++++++++++++++++
+
+@ Min Mn+1 enclsoure of Vn is 0.005
+@ Min Mn+1 enclosure of Vn  is 0.02 when Mn enclosure on one or both perpendicular directions<0.02um
+X = RECTANGLE ENC V3 M4 ABUT<90 OUTSIDE ALSO
+GOOD 0.005 OPPOSITE 0.02 OPPOSITE 0.005 OPPOSITE 0.02 OPPOSITE
+ENC X M4 < 0.005 ABUT<90 SINGULAR REGION OVERLAP OUTSIDE ALSO
+Y = ENC [X] M4 < 0.02 OPPOSITE
+INT Y < 0.005 ABUT==90 INTERSECTING ONLY REGION
+V3 NOT M4
+}
+V3_10++++++++++++++++++++++
+
+@ Minimum Space between two neighbor Vns (different net and run length>0) is 0.13um.
+X1 = EXT V3 < 0.13 ABUT<90 OPPOSITE REGION NOT CONNECTED
+X1 NOT INSIDE INST
+}
+V3_11_12_R++++++++++++++++++++++
+
+@ There should be at least two Vns in the Mn and Mn+1 intersection area when either or both Mn and Mn+1 with width >= 0.5um
+@ There should be at least two Vns in the Mn and Mn+1 intersection area when either or both Mn and Mn+1
+@ connected with metal line of width>=0.5um and space between Vn and wider metal edge <0.5um
+@NOTICE: It is a recommended rule.
+X = SIZE (M3 WITH WIDTH >= 0.5) BY 0.499 INSIDE OF M3 STEP 0.01
+SV3 = V3 INTERACT SV3_metal
+SV3_metal ENCLOSE (((SV3 INTERACT X) NOT LOGO) NOT MARKG)
+Y = SIZE (M4 WITH WIDTH >= 0.5) BY 0.499 INSIDE OF M4 STEP 0.01
+SV3_metal ENCLOSE (((SV3 INTERACT Y) NOT LOGO) NOT MARKG)
+}
+V4_1++++++++++++++++++++++
+
+@ Fixed Vn size (square shape) is 0.09
+(NOT RECTANGLE (V4 NOT GV4) == 0.09 BY == 0.09) NOT V4_slot_SG
+}
+V4_2a++++++++++++++++++++++
+
+@ Min Space between two Vns is 0.11
+EXT V4 < 0.11 ABUT<90 SINGULAR REGION
+}
+V4_2b++++++++++++++++++++++
+
+@ Min Space between Vns when array equal to or greater than 4*4 is 0.13.
+@ Two via regions whose space is < 0.15um are considered to be in the same array.
+X = SIZE V4 BY 0.074 OVERUNDER
+Y = SIZE X BY 0.340 UNDEROVER
+Z = V4 INSIDE Y
+EXT Z < 0.13 ABUT<90 SINGULAR REGION
+}
+V4_3a_3b++++++++++++++++++++++
+
+@ Min Mn enclosure of Vn is 0.005
+@ Min Mn enclosure of Vn  is 0.030 when Mn enclosure on one or both perpendicular directions<0.03um
+X = RECTANGLE ENC V4 M4 ABUT<90 OUTSIDE ALSO
+GOOD 0.005 OPPOSITE 0.030 OPPOSITE 0.005 OPPOSITE 0.030 OPPOSITE
+ENC X M4 < 0.005 ABUT<90 SINGULAR REGION OVERLAP OUTSIDE ALSO
+Y = ENC [X] M4 < 0.030 OPPOSITE
+INT Y < 0.005 ABUT==90 INTERSECTING ONLY REGION
+V4 NOT M4
+}
+V4_5a_5b++++++++++++++++++++++
+
+@ Min Mn+1 enclsoure of Vn is 0.005
+@ Min Mn+1 enclosure of Vn  is 0.02 when Mn enclosure on one or both perpendicular directions<0.02um
+X = RECTANGLE ENC V4 M5 ABUT<90 OUTSIDE ALSO
+GOOD 0.005 OPPOSITE 0.02 OPPOSITE 0.005 OPPOSITE 0.02 OPPOSITE
+ENC X M5 < 0.005 ABUT<90 SINGULAR REGION OVERLAP OUTSIDE ALSO
+Y = ENC [X] M5 < 0.02 OPPOSITE
+INT Y < 0.005 ABUT==90 INTERSECTING ONLY REGION
+V4 NOT M5
+}
+V4_10++++++++++++++++++++++
+
+@ Minimum Space between two neighbor Vns (different net and run length>0) is 0.13um.
+X1 = EXT V4 < 0.13 ABUT<90 OPPOSITE REGION NOT CONNECTED
+X1 NOT INSIDE INST
+}
+V4_11_12_R++++++++++++++++++++++
+
+@ There should be at least two Vns in the Mn and Mn+1 intersection area when either or both Mn and Mn+1 with width >= 0.5um
+@ There should be at least two Vns in the Mn and Mn+1 intersection area when either or both Mn and Mn+1
+@ connected with metal line of width>=0.5um and space between Vn and wider metal edge <0.5um
+@NOTICE: It is a recommended rule.
+X = SIZE (M4 WITH WIDTH >= 0.5) BY 0.499 INSIDE OF M4 STEP 0.01
+SV4 = V4 INTERACT SV4_metal
+SV4_metal ENCLOSE (((SV4 INTERACT X) NOT LOGO) NOT MARKG)
+Y = SIZE (M5 WITH WIDTH >= 0.5) BY 0.499 INSIDE OF M5 STEP 0.01
+SV4_metal ENCLOSE (((SV4 INTERACT Y) NOT LOGO) NOT MARKG)
+}
+V5_1++++++++++++++++++++++
+
+@ Fixed Vn size (square shape) is 0.09
+(NOT RECTANGLE (V5 NOT GV5) == 0.09 BY == 0.09) NOT V5_slot_SG
+}
+V5_2a++++++++++++++++++++++
+
+@ Min Space between two Vns is 0.11
+EXT V5 < 0.11 ABUT<90 SINGULAR REGION
+}
+V5_2b++++++++++++++++++++++
+
+@ Min Space between Vns when array equal to or greater than 4*4 is 0.13.
+@ Two via regions whose space is < 0.15um are considered to be in the same array.
+X = SIZE V5 BY 0.074 OVERUNDER
+Y = SIZE X BY 0.340 UNDEROVER
+Z = V5 INSIDE Y
+EXT Z < 0.13 ABUT<90 SINGULAR REGION
+}
+V5_3a_3b++++++++++++++++++++++
+
+@ Min Mn enclosure of Vn is 0.005
+@ Min Mn enclosure of Vn  is 0.030 when Mn enclosure on one or both perpendicular directions<0.03um
+X = RECTANGLE ENC V5 M5 ABUT<90 OUTSIDE ALSO
+GOOD 0.005 OPPOSITE 0.030 OPPOSITE 0.005 OPPOSITE 0.030 OPPOSITE
+ENC X M5 < 0.005 ABUT<90 SINGULAR REGION OVERLAP OUTSIDE ALSO
+Y = ENC [X] M5 < 0.030 OPPOSITE
+INT Y < 0.005 ABUT==90 INTERSECTING ONLY REGION
+V5 NOT M5
+}
+V5_5a_5b++++++++++++++++++++++
+
+@ Min Mn+1 enclsoure of Vn is 0.005
+@ Min Mn+1 enclosure of Vn  is 0.02 when Mn enclosure on one or both perpendicular directions<0.02um
+X = RECTANGLE ENC V5 M6 ABUT<90 OUTSIDE ALSO
+GOOD 0.005 OPPOSITE 0.02 OPPOSITE 0.005 OPPOSITE 0.02 OPPOSITE
+ENC X M6 < 0.005 ABUT<90 SINGULAR REGION OVERLAP OUTSIDE ALSO
+Y = ENC [X] M6 < 0.02 OPPOSITE
+INT Y < 0.005 ABUT==90 INTERSECTING ONLY REGION
+V5 NOT M6
+}
+V5_10++++++++++++++++++++++
+
+@ Minimum Space between two neighbor Vns (different net and run length>0) is 0.13um.
+X1 = EXT V5 < 0.13 ABUT<90 OPPOSITE REGION NOT CONNECTED
+X1 NOT INSIDE INST
+}
+V5_11_12_R++++++++++++++++++++++
+
+@ There should be at least two Vns in the Mn and Mn+1 intersection area when either or both Mn and Mn+1 with width >= 0.5um
+@ There should be at least two Vns in the Mn and Mn+1 intersection area when either or both Mn and Mn+1
+@ connected with metal line of width>=0.5um and space between Vn and wider metal edge <0.5um
+@NOTICE: It is a recommended rule.
+X = SIZE (M5 WITH WIDTH >= 0.5) BY 0.499 INSIDE OF M5 STEP 0.01
+SV5 = V5 INTERACT SV5_metal
+SV5_metal ENCLOSE (((SV5 INTERACT X) NOT LOGO) NOT MARKG)
+Y = SIZE (M6 WITH WIDTH >= 0.5) BY 0.499 INSIDE OF M6 STEP 0.01
+SV5_metal ENCLOSE (((SV5 INTERACT Y) NOT LOGO) NOT MARKG)
+}
+TV1_1++++++++++++++++++++++
+
+@ Fixed TV1 size (square shape) is 0.36
+(NOT RECTANGLE (TV1 NOT GTV1) == 0.36 BY == 0.36) NOT MARKG
+NOT RECTANGLE (RECTANGLE (TV1 AND MARKG)) == 0.36 BY == 0.36
+}
+TV1_2a++++++++++++++++++++++
+
+@ Min Space between two TV1s is 0.34
+EXT TV1 < 0.34 ABUT<90 SINGULAR REGION
+}
+TV1_2b_R++++++++++++++++++++++
+
+@ Min Space between TV1s within array greater or equal to 3x3 (Two via regions whose space is <= 0.56um are considered to be in the same array) is 0.5
+@NOTICE: It is a recommended rule.
+X = SIZE TV1 BY 0.28 OVERUNDER
+Y = SIZE X BY 0.855 UNDEROVER
+Z = TV1 INSIDE Y
+EXT Z < 0.5 ABUT < 90 SINGULAR REGION
+}
+TV1_3a_3b++++++++++++++++++++++
+
+@ Min Mn enclosure of TV1 (Mn is Metal layer directly underneath TV1) is 0.01
+@ Min Mn enclosure of TV1 is 0.05 when Mn enclosure on one or both perpendicular directions< 0.05um (Mn is Metal layer directly underneath TV1)
+X = RECTANGLE ENC TV1 M6 ABUT<90 OUTSIDE ALSO
+GOOD 0.01 OPPOSITE 0.05 OPPOSITE 0.01 OPPOSITE 0.05 OPPOSITE
+ENC X M6 < 0.01 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO
+Y = ENC [X] M6 < 0.05 OPPOSITE
+INT Y < 0.01 ABUT==90 INTERSECTING ONLY
+TV1 NOT M6
+}
+TV1_5++++++++++++++++++++++
+
+@ Min TM1 enclosure of TV1 (four directions) is 0.02
+ENC TV1 TM1 < 0.02 ABUT < 90 SINGULAR REGION OUTSIDE ALSO
+}
+TM1_1++++++++++++++++++++++
+
+@ Min TM1 width is 0.40
+INT TM1 < 0.40 SINGULAR REGION
+INT TM1DUM < 0.40 REGION
+}
+TM1_2a++++++++++++++++++++++
+
+@ Min Space between two TM1s is 0.40
+EXT TM1 < 0.40 SINGULAR REGION
+EXT TM1 TM1DUM < 0.40 REGION
+EXT TM1DUM < 0.40 REGION
+}
+TM1_2b++++++++++++++++++++++
+
+@ Min Space between two TM1s is 0.5 when one or both TM1 width or length  2um, and the run length of two TM1s is >= 2um
+CMACRO Mn_2b TM1ALL 2 2 0.5
+}
+TM1_3++++++++++++++++++++++
+
+@ Min TM1 area is 0.40
+AREA TM1ALL < 0.40
+}
+TM1_4++++++++++++++++++++++
+
+@ Min Enclosed dielectic area by TM1 is 0.6
+X = HOLES TM1 INNER EMPTY
+AREA X < 0.6
+}
+TM1_5++++++++++++++++++++++
+
+@ Min TM1 width is 20
+@ (Top metal bond pad application can be waived.)
+X = TM1ALL WITH WIDTH > 20
+X NOT INTERACT PA
+}
+TM1_6a++++++++++++++++++++++
+
+@ TM1 density (including dummy) in 200umX200um window with step size 100um is >= 20% and <= 85%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking.
+@ (Top metal bond pad areas can be waived.)
+X = DENSITY (TM1i OR TM1DUM) < 0.20 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_TM1a_6a.log
+Y = (MARKF OR MARKG) OR PA
+X NOT Y
+}
+TM1_6a_PA++++++++++++++++++++++
+
+@ TM1 density (including dummy) in 200umX200um window with step size 100um is >= 20% and <= 85%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking.
+@ (Top metal bond pad areas can be waived.)
+@ This rule checks PA area. It can be waived.
+X = DENSITY (TM1i OR TM1DUM) < 0.20 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_TM1a_6a_PA.log
+X AND PA
+}
+TM1_6b++++++++++++++++++++++
+
+@ TM1 density (including dummy) in 200umX200um window with step size 100um is >= 20% and <= 85%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking.
+@ (Top metal bond pad areas can be waived.)
+X = DENSITY (TM1i OR TM1DUM) > 0.85 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_TM1a_6b.log
+Y = (MARKF OR MARKG) OR PA
+X NOT Y
+}
+TM1_6b_PA++++++++++++++++++++++
+
+@ TM1 density (including dummy) in 200umX200um window with step size 100um is >= 20% and <= 85%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking.
+@ (Top metal bond pad areas can be waived.)
+@ This rule checks PA area. It can be waived.
+X = DENSITY (TM1i OR TM1DUM) > 0.85 WINDOW 200 STEP 100 backup INSIDE OF LAYER density_checkarea PRINT density_report_TM1a_6b_PA.log
+X AND PA
+}
+TV2_1++++++++++++++++++++++
+
+@ Fixed TV2 size (square shape) is 0.36
+(NOT RECTANGLE (TV2 NOT GTV2) == 0.36 BY == 0.36) NOT MARKG
+NOT RECTANGLE (RECTANGLE (TV2 AND MARKG)) == 0.36 BY == 0.36
+}
+TV2_2a++++++++++++++++++++++
+
+@ Min Space between two TV2s is 0.34
+EXT TV2 < 0.34 ABUT<90 SINGULAR REGION
+}
+TV2_2b_R++++++++++++++++++++++
+
+@ Min Recommended space between TV2s within array greater or equal to 3x3 (Two via regions whose space is <=0.56um are considered to be in the same array) is 0.5
+@NOTICE: It is a recommended rule.
+X = SIZE TV2 BY 0.28 OVERUNDER
+Y = SIZE X BY 0.855 UNDEROVER
+Z = TV2 INSIDE Y
+EXT Z < 0.5 ABUT < 90 SINGULAR REGION
+}
+TV2_3a_3b++++++++++++++++++++++
+
+@ Min TM1 enclosure of TV2 is 0.01
+@ Min TM1 enclosure of TV2 is 0.05 when TM1 enclosure on one or both perpendicular directions < 0.05um
+X = RECTANGLE ENC TV2 TM1 ABUT<90 OUTSIDE ALSO
+GOOD 0.01 OPPOSITE 0.05 OPPOSITE 0.01 OPPOSITE 0.05 OPPOSITE
+ENC X TM1 < 0.01 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO
+Y = ENC [X] TM1 < 0.05 OPPOSITE
+INT Y < 0.01 ABUT==90 INTERSECTING ONLY
+TV2 NOT TM1
+}
+TV2_5++++++++++++++++++++++
+
+@ Min TV2 enclosure by TM2 (four directions) is 0.02
+ENC TV2 TM2 < 0.02 ABUT < 90 SINGULAR REGION OUTSIDE ALSO
+}
+TM2_1++++++++++++++++++++++
+
+@ Min TM2 width is 0.40
+INT TM2 < 0.40 SINGULAR REGION
+INT TM2DUM < 0.40 REGION
+}
+TM2_2a++++++++++++++++++++++
+
+@ Min Space between TM2s is 0.40
+EXT TM2 < 0.40 SINGULAR REGION
+EXT TM2 TM2DUM < 0.40 REGION
+EXT TM2DUM < 0.40 REGION
+}
+TM2_2b++++++++++++++++++++++
+
+@ Min Space between two TM2s when one or both TM2 width or length >= 2um, and the run length of two TM2s is >= 2um is 0.5
+CMACRO Mn_2b TM2ALL 2 2 0.5
+}
+TM2_3++++++++++++++++++++++
+
+@ Min TM2 area is 0.40
+AREA TM2ALL < 0.40
+}
+TM2_4++++++++++++++++++++++
+
+@ Min Enclosed dielectic area by TM2 is 0.6
+X = HOLES TM2 INNER EMPTY
+AREA X < 0.6
+}
+TM2_5++++++++++++++++++++++
+
+@ Max TM2 width is 30
+@ Top metal bondpads can be waived.
+X = TM2ALL WITH WIDTH > 30.00
+X NOT INTERACT PA
+}
+TM2_7a++++++++++++++++++++++
+
+@ TM2 density (including dummy) in 400umX400um window with step size 200um is >= 20% and <= 85%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking.
+@ Top metal bond pad areas can be waived.
+X = DENSITY (TM2i OR TM2DUM) < 0.20 WINDOW 400 STEP 200 backup INSIDE OF LAYER density_checkarea PRINT density_report_TM2a.log
+Y = (INDMY OR MARKF) OR MARKG
+X NOT Y
+}
+TM2_7b++++++++++++++++++++++
+
+@ TM2 density (including dummy) in 400umX400um window with step size 200um is >= 20% and <= 85%.
+@ INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking.
+@ Top metal bond pad areas can be waived.
+X = DENSITY (TM2i OR TM2DUM) > 0.85 WINDOW 400 STEP 200 backup INSIDE OF LAYER density_checkarea PRINT density_report_TM2b.log
+Y = (INDMY OR MARKF) OR MARKG
+X NOT Y
+}
+UTV2_1++++++++++++++++++++++
+
+@ Fixed UTV2 size (square shape) is 0.36
+(NOT RECTANGLE (TV2 NOT GTV2) == 0.36 BY == 0.36) NOT MARKG
+NOT RECTANGLE (RECTANGLE (TV2 AND MARKG)) == 0.36 BY == 0.36
+}
+UTV2_2a++++++++++++++++++++++
+
+@ Min Space between two UTV2s is 0.34
+EXT TV2 < 0.34 ABUT<90 SINGULAR REGION
+}
+UTV2_2b_R++++++++++++++++++++++
+
+@ Recommended space between UTV2s is 0.5 when array equal to or greater than 4x4.
+@ (Two via regions whose space is <=0.56um are considered to be in the same array.)
+@NOTICE: It is a recommended rule.
+X = SIZE TV2 BY 0.28 OVERUNDER
+Y = SIZE X BY 1.22 UNDEROVER
+Z = TV2 INSIDE Y
+EXT Z < 0.5 ABUT < 90 SINGULAR REGION
+}
+UTV2_3_4++++++++++++++++++++++
+
+@ Min TM1 enclosure of UTV2 (TM1 is replaced with STM1 if 2X STM1 is used under UTV2) is 0.01
+@ Min TM1enclosure of UTV2 is 0.05 when TM1 enclosure on perpendicular directions < 0.05um (TM1 is replaced with STM1 if 2X STM1 is used under UTV2)
+X = RECTANGLE ENC TV2 TM1 ABUT<90 OUTSIDE ALSO
+GOOD 0.01 OPPOSITE 0.05 OPPOSITE 0.01 OPPOSITE 0.05 OPPOSITE
+ENC X TM1 < 0.01 ABUT<90 SINGULAR OVERLAP OUTSIDE ALSO
+Y = ENC [X] TM1 < 0.05 OPPOSITE
+INT Y < 0.01 ABUT==90 INTERSECTING ONLY
+TV2 NOT TM1
+}
+UTV2_5++++++++++++++++++++++
+
+@ Min MTT2 enclosure of UTV2 (four directions) is 0.3
+ENC TV2 TM2 < 0.3 ABUT < 90 SINGULAR REGION OUTSIDE ALSO
+}
+MTT2_1++++++++++++++++++++++
+
+@ Min MTT2 metal width is 1.50
+INT TM2 < 1.50 SINGULAR REGION
+INT TM2DUM < 1.50 SINGULAR REGION
+}
+MTT2_2a++++++++++++++++++++++
+
+@ Min Space between MTT2s is 1.5
+EXT TM2 < 1.50 SINGULAR REGION
+EXT TM2 TM2DUM < 1.50 SINGULAR REGION
+EXT TM2DUM < 1.50 SINGULAR REGION
+}
+MTT2_2b++++++++++++++++++++++
+
+@ Min Space between two MTT2s  is 2.0 when one or both MTT2 width or length >= 16um, and the run length of two MTT2s >2um
+CMACRO Mn_2c TM2ALL 2.001 16 2
+}
+MTT2_5++++++++++++++++++++++
+
+@ Min Space between an Inductor MTT2 and other MTT2 is 30
+EXT (TM2 AND INDMY) (TM2 NOT INDMY) < 30 OPPOSITE REGION
+}
+MTT2_6++++++++++++++++++++++
+
+@ Min Metal area (in um2) is 8.00
+AREA TM2ALL < 8.00
+}
+MTT2_7++++++++++++++++++++++
+
+@ Min Enclosed dielectic area by MTT2s is 6.0
+X = HOLES TM2 INNER EMPTY
+AREA X < 6.0
+}
+MTT2_8++++++++++++++++++++++
+
+@ Max TTM width is 50
+X = TM2ALL WITH WIDTH > 50
+X NOT INTERACT PA
+}
+MTT2_9a++++++++++++++++++++++
+
+@ Max. MTT2 density (including dummy) in 400umX400um window with step size 200um is 70%
+DENSITY (TM2i OR TM2DUM) > 0.70 WINDOW 400 STEP 200 backup PRINT density_report_MTT2_9a.log
+}
+MTT2_9b++++++++++++++++++++++
+
+@ Max MTT2 pattern density on the whole chip (including dummy patterns) is 55%
+DENSITY (TM2i OR TM2DUM) > 0.55 PRINT density_report_MTT2_9b.log
+}
+MTT2_9c_R++++++++++++++++++++++
+
+@ Recommend the average MTT2 density of whole chip is larger than 20% (including dummy patterns), otherwise SMIC would help to add dummy patterns.
+@NOTICE: It is a recommended rule.
+DENSITY (TM2i OR TM2DUM) < 0.2 PRINT density_report_MTT2_9c.log
+}
+MTT2_10++++++++++++++++++++++
+
+@ Both active and passive devices inside Inductor region are not allowed
+Metal_res = ((((((M1R OR M2R) OR M3R) OR M4R) OR M5R) OR M6R) OR TM1R) OR TM2R
+X = ((((((DSTR OR DMPNP) OR MOMDMY) OR VARJUN) OR RESP1) OR RESAA) OR RESNW) OR Metal_res
+AND X INDMY
+}
+MTT2_12++++++++++++++++++++++
+
+@ MTT2 Inductor area must by covered by "INDMY" and the enclosure by "INDMY" is >= 15
+ENC (TM2 INTERACT INDMY) INDMY < 15 OPPOSITE REGION OUTSIDE ALSO
+}
+PA_1++++++++++++++++++++++
+
+@ Min PA enclosure by TM2 or other metal layer directly underneath PA is 1.0
+ENC PA TM2 < 1.00 ABUT<90 SINGULAR REGION OUTSIDE ALSO
+}
+PA_2++++++++++++++++++++++
+
+@ Min PA width and length is 3.0
+INT PA < 3 ABUT<90 SINGULAR REGION
+}
+PA_3++++++++++++++++++++++
+
+@ Min Space between two PA is 3.0
+EXT PA < 3 ABUT<90 SINGULAR REGION
+}
+PA_1_R++++++++++++++++++++++
+
+@ Min PA enclosure by TM2 or other metal layer directly underneath PA is 1.5
+@NOTICE: It is a recommended rule.
+ENC PA TM2 < 1.50 ABUT<90 SINGULAR REGION OUTSIDE ALSO
+}
+PA_2_R++++++++++++++++++++++
+
+@ Min PA width and length (suggest to consult with package vendor) is 55
+@NOTICE: It is a recommended rule.
+INT PA < 55.0 OPPOSITE REGION PARA ONLY
+}
+PA_3_R++++++++++++++++++++++
+
+@ Min Space between two PA is 5.0
+@NOTICE: It is a recommended rule.
+EXT PA < 5.0 ABUT<90 SINGULAR REGION
+}
+RDV_1++++++++++++++++++++++
+
+@ Min RDL via enclosure by RDL (except fuse, seal ring and guard ring design) is 1.5
+X = ENC (RDLVIA NOT RDV_Fuse) RDL < 1.50 ABUT<90 SINGULAR REGION OVERLAP OUTSIDE ALSO
+(X NOT LOGO) NOT MARKG
+}
+RDV_2++++++++++++++++++++++
+
+@ Min RDL Via width and length (except fuse, seal ring and guard ring design) is 3.0
+INT ((RDLVIA NOT RDV_Fuse) NOT MARKG) < 3 ABUT<90 SINGULAR REGION
+}
+RDV_3++++++++++++++++++++++
+
+@ Min Space between two RDL vias is 3.0
+EXT (RDLVIA NOT RDV_Fuse) < 3 ABUT<90 SINGULAR REGION
+}
+RDV_4++++++++++++++++++++++
+
+@ Min RDL via enclosure by TM2 or other metal layer directly underneath PA1 (except seal ring and guard ring design) is 1.0
+X = ENC (RDLVIA NOT RDV_Fuse) TM2 < 1.00 ABUT<90 SINGULAR REGION OVERLAP OUTSIDE ALSO
+(X NOT LOGO) NOT MARKG
+}
+RDV_5++++++++++++++++++++++
+
+@ Min Space between RDV via and PA is 5.0
+EXT RDLVIA PA < 5 ABUT<90 SINGULAR REGION
+}
+RDL_1++++++++++++++++++++++
+
+@ Min RDL Width (except fuse design) is 3.0
+INT (RDL NOT ALFUSE) < 3.0 ABUT<90 SINGULAR REGION
+}
+RDL_2a++++++++++++++++++++++
+
+@ Min Space between two RDLs is 2.0
+EXT RDL < 2.0 ABUT<90 SINGULAR REGION
+}
+RDL_2b++++++++++++++++++++++
+
+@ Min Space between two RDLs with one or both RDL width larger than 10um is 3.0
+X = RDL WITH WIDTH > 10
+EXT X <3.0 ABUT<90 SINGULAR REGION
+}
+RDL_3++++++++++++++++++++++
+
+@ Min Space between RDL and L mark window is 10
+EXT RDL LOGO < 10 ABUT<90 SINGULAR REGION
+}
+RDL_4++++++++++++++++++++++
+
+@ Minimum space between RDL and Fuse area (marked by MARKF) is 10
+EXT RDL MARKF < 10 ABUT<90 SINGULAR REGION
+}
+ALPA_1++++++++++++++++++++++
+
+@ PA opening without ALPA patterns above landed on TM2 is not allowed. Min ALPA patterns enclosure of PA is 1.5
+ENC PA ALPA < 1.5 ABUT<90 SINGULAR REGION OUTSIDE ALSO
+}
+ALPA_2++++++++++++++++++++++
+
+@ Min Space between ALPA patterns is 2
+EXT ALPA < 2 ABUT<90 SINGULAR REGION
+}
+ALPA_3++++++++++++++++++++++
+
+@ Min Space between Al patterns of width larger than 35um and Fuse window edge is 50
+X = ALPA WITH WIDTH > 35
+EXT X FUSE < 50 ABUT<90 SINGULAR REGION
+}
+RDLPA2_1++++++++++++++++++++++
+
+@ Min RDL PA2 width is 10 (suggest to consult with package vendor)
+INT RDLPA2 < 10 ABUT<90 SINGULAR REGION
+}
+RDLPA2_2++++++++++++++++++++++
+
+@ Min Space between two RDL PA2 is 5 (suggest to consult with package vendor)
+EXT RDLPA2 < 5 ABUT<90 SINGULAR REGION
+}
+RDLPA2_3++++++++++++++++++++++
+
+@ Min RDL enclosure of PA2 is 1.5
+ENC RDLPA2 RDL < 1.5 ABUT<90 SINGULAR REGION
+}
+RDLPA2_4++++++++++++++++++++++
+
+@ Minimum Space between RDLPA2 and RDL via (except fuse and guard ring/seal ring design) Via is 1um.
+X = EXT RDLPA2 (RDLVIA NOT RDV_Fuse) < 1 ABUT<90 SINGULAR REGION
+X NOT MARKG
+}
+RDLPA2_5++++++++++++++++++++++
+
+@ RDL Via is not allowed to overlap with RDLPA2.
+X = (RDLVIA NOT RDV_Fuse) NOT MARKG
+X AND RDLPA2
+}
+BD_1++++++++++++++++++++++
+
+@ Min Border layer enclosure of layout patterns (all chip design) is 0.37
+ENC BD_EXTENT_OTHER BORDER < 0.37 ABUT<90 SINGULAR
+}
+BD_2++++++++++++++++++++++
+
+@ Min Border layer enclosure of DNW is 6
+ENC DNW BORDER < 6 ABUT<90 SINGULAR REGION
+}
+BD_3++++++++++++++++++++++
+
+@ BORDER layer must enclose all chip layout pattern
+COPY BD_OTHER_OUTSIDE
+}
+SRAA_2a++++++++++++++++++++++
+
+@ Min Channel width for 1.0/1.2V NMOS/PMOS transistors is 0.085
+Y = LENGTH GATE_W < 0.085
+(EXPAND EDGE Y INSIDE BY 0.001) AND INST
+}
+SRAA_4++++++++++++++++++++++
+
+@ Min N+AA enclosure by NW is 0.055
+X = ENC NTAP (NW NOT INTERACT RESNW) < 0.055 ABUT<90 SINGULAR REGION
+X AND INST
+}
+SRAA_5++++++++++++++++++++++
+
+@ Min Space between NW and N+AA is 0.06
+X = EXT NW NACT < 0.06 ABUT<90 SINGULAR REGION
+X AND INST
+}
+SRAA_6++++++++++++++++++++++
+
+@ Min P+AA enclosed by NW is 0.06
+X = ENC PACT (NW NOT NWR) < 0.06 ABUT<90 SINGULAR REGION
+X AND INST
+}
+SRAA_7++++++++++++++++++++++
+
+@ Min Space between NW and P+AA inside PW is 0.11
+X = EXT NW PTAP < 0.11 ABUT<90 SINGULAR REGION
+X AND INST
+}
+SRAA_8++++++++++++++++++++++
+
+@ Min AA area is 0.029
+X = AREA AA < 0.029
+X AND INST
+}
+SRVTNH_4++++++++++++++++++++++
+
+@ Min VTNH extension outside of NMOS AA along gate poly length direction is 0.065
+X = (NACT AND VTNH) TOUCH EDGE GATE
+Y = ENC X VTNH < 0.065 ABUT<90 REGION OPPOSITE
+Y AND INST
+}
+SRVTNH_8++++++++++++++++++++++
+
+@ Min VTNH area is 0.11
+X = AREA VTNH < 0.11
+X AND INST
+}
+SRVTPH_4++++++++++++++++++++++
+
+@ Min VTPH extension outside of PMOS AA along gate poly length direction is 0.065
+X = (PACT AND VTPH) TOUCH EDGE GATE
+Y = ENC X VTPH < 0.065 ABUT<90 REGION OPPOSITE
+Y AND INST
+}
+SRVTPH_8++++++++++++++++++++++
+
+@ Min VTPH area is 0.11
+X = AREA VTPH < 0.11
+X AND INST
+}
+SRGT_3a1++++++++++++++++++++++
+
+@ Min Space between GTs with the run length >0.12um is 0.12
+END_END = EXT [POLYEND] < 0.12 OPPOSITE
+X = (EXT [GT] < 0.12 OPPOSITE) NOT COIN EDGE END_END
+Y = LENGTH X > 0.12
+Y INSIDE EDGE INST
+}
+SRGT_3a2++++++++++++++++++++++
+
+@ Min Space between GTs with the run lenght > 0.025 and <= 0.12um is 0.107
+END_END = EXT [POLYEND] < 0.107 OPPOSITE
+X = (EXT [GT] < 0.107 OPPOSITE) NOT COIN EDGE END_END
+Y = LENGTH X > 0.025 <= 0.12
+Y INSIDE EDGE INST
+}
+SRGT_3a3++++++++++++++++++++++
+
+@ Min Space between GTs with the run lenght <= 0.025um is 0.06
+END_END = EXT [POLYEND] < 0.06 OPPOSITE
+X = (EXT [GT] < 0.06 OPPOSITE) NOT COIN EDGE END_END
+Y = LENGTH X <= 0.025
+Y INSIDE EDGE INST
+}
+SRGT_3c++++++++++++++++++++++
+
+@ Min Space between GTs on the same AA is 0.12
+X = EXT GT_EMPTY < 0.12 ABUT < 90 SINGULAR REGION CONNECTED
+X AND INST
+}
+SRGT_3d++++++++++++++++++++++
+
+@ Min Space between poly line end to end is 0.105
+X = EXT POLYEND < 0.105 OPPOSITE REGION EXCLUDE SHIELDED
+X AND INST
+}
+SRGT_4a++++++++++++++++++++++
+
+@ Min Space between AA and GT on field oxide with the length > 0.04 is 0.05.
+X = AA INSIDE EDGE GT
+Y = AA NOT COIN EDGE X
+A = EXT [Y] INTERGT < 0.05 OPPOSITE
+B = LENGTH A > 0.04
+B INSIDE EDGE INST
+}
+SRGT_4b++++++++++++++++++++++
+
+@ Min Space between AA and GT on field oxide with the run length <= 0.04 is 0.032.
+X = AA INSIDE EDGE GT
+Y = AA NOT COIN EDGE X
+A = EXT [Y] INTERGT < 0.032 OPPOSITE
+B = LENGTH A <=0.04
+B INSIDE EDGE INST
+}
+SRGT_5a++++++++++++++++++++++
+
+@ Min Extension of AA outside of GT with run length > 0.15 (not include dummy AA and dummy Poly) is 0.095.
+X = ENC [GT] AA < 0.095 OPPOSITE
+Y = LENGTH X > 0.15
+Y INSIDE EDGE INST
+}
+SRGT_5b++++++++++++++++++++++
+
+@ Min Extension of AA outside of GT with run length >0.015 and <=0.04 (not include dummy AA and dummy Poly) is 0.077.
+X = ENC [GT] AA < 0.077 OPPOSITE
+Y = LENGTH X > 0.015 <=0.04
+Y INSIDE EDGE INST
+}
+SRGT_5c++++++++++++++++++++++
+
+@ Min Extension of AA outside of GT with run length > 0.04 and <= 0.15 (not include dummy AA and dummy Poly) is 0.077.
+X = ENC [GT] AA < 0.077 OPPOSITE
+Y = LENGTH X > 0.04 <= 0.15
+Z = (GT AND AA) NOT GATE
+L = ENC [Z] AA <= 0.01 OPPOSITE
+M = LENGTH L > 0.04 <= 0.15
+(Y NOT COIN EDGE M) INSIDE EDGE INST
+}
+SRGT_6++++++++++++++++++++++
+
+@ Min Extension of gate poly end-cap outside of AA (not include dummy AA and dummy Poly)  is 0.068
+X = GATE COIN EDGE AA
+Y = ENC X GT < 0.068 ABUT<90 REGION
+Y AND INST
+}
+SRSN_3a++++++++++++++++++++++
+
+@ Min Space between SN and P+AA inside NW with the run length > 0.055 is 0.065
+X = (PACT NOT PTAP) NOT TOUCH EDGE SN
+Y = EXT [SN] X < 0.065 OPPOSITE
+A = LENGTH Y > 0.055
+A INSIDE EDGE INST
+}
+SRSN_3b++++++++++++++++++++++
+
+@ Min Space between SN and P+AA inside NW with the run length <=0.055 is 0.06
+X = (PACT NOT PTAP) NOT TOUCH EDGE SN
+Y = EXT [SN] X < 0.06 OPPOSITE
+A = LENGTH Y <= 0.055
+A INSIDE EDGE INST
+}
+SRSN_5++++++++++++++++++++++
+
+@ Min Space between SN and PMOS gate along source/drain direction is 0.219
+X = GATE_W INSIDE EDGE SP
+Y = EXT X SN < 0.219 ABUT<90 REGION OPPOSITE
+Y AND INST
+}
+SRSN_6++++++++++++++++++++++
+
+@ Min SN extension outside of poly gate along source/drain direction for NMOS is 0.214
+X = GATE_W INSIDE EDGE SN
+Y = ENC X SN < 0.214 ABUT<90 REGION OPPOSITE
+Y AND INST
+}
+SRSN_7a_8a++++++++++++++++++++++
+
+@ Min SN extension outside of NMOS AA along gate poly length direction with the run length >0.055um is 0.065, if the distance to the related poly is > 0.20um
+@ Min SN extension outside of NMOS AA along gate poly length direction with the run length >0.055um is 0.065, if the distance to the related poly is <= 0.20um
+AAEIGT  = AA INSIDE EDGE GT
+X = NMOS TOUCH EDGE AAEIGT
+Y = ENC X [SN] < 0.065 OPPOSITE
+A = LENGTH Y > 0.055
+A INSIDE EDGE INST
+}
+SRSN_7b_8b++++++++++++++++++++++
+
+@ Min SN extension outside of NMOS AA along gate poly length direction with the run length <=0.055um is 0.06, if the distance to the related poly is > 0.20um
+@ Min SN extension outside of NMOS AA along gate poly length direction with the run length <=0.055um is 0.06, if the distance to the related poly is <= 0.20um
+AAEIGT  = AA INSIDE EDGE GT
+X = NMOS TOUCH EDGE AAEIGT
+Y = ENC X [SN] < 0.06 OPPOSITE
+A = LENGTH Y <= 0.055
+A INSIDE EDGE INST
+}
+SRSP_3a++++++++++++++++++++++
+
+@ Min Space between SP and N+AA inside PW with the run length > 0.055 is 0.065
+X = (NACT NOT NTAP) NOT TOUCH EDGE SP
+Y = EXT [SP] X < 0.065 OPPOSITE
+A = LENGTH Y > 0.055
+A INSIDE EDGE INST
+}
+SRSP_3b++++++++++++++++++++++
+
+@ Min Space between SP and N+AA inside PW with the run length <=0.055 is 0.06
+X = (NACT NOT NTAP) NOT TOUCH EDGE SP
+Y = EXT [SP] X < 0.06 OPPOSITE
+A = LENGTH Y <= 0.055
+A INSIDE EDGE INST
+}
+SRSP_5++++++++++++++++++++++
+
+@ Min Space between SP and NMOS gate along source/drain direction is 0.219
+X = GATE_W INSIDE EDGE SN
+Y = EXT X SP < 0.219 ABUT<90 REGION OPPOSITE
+Y AND INST
+}
+SRSP_6++++++++++++++++++++++
+
+@ Min SP extension outside of PMOS gate along source/drain direction is 0.214
+X = (GT INSIDE EDGE PACT) COIN EDGE GATE
+Y = ENC X SP < 0.214 ABUT<90 REGION OPPOSITE
+Y AND INST
+}
+SRSP_7a_8a++++++++++++++++++++++
+
+@ Min SP extension outside of PMOS AA along gate poly length direction with the run length >0.055um is 0.065, if the distance to the related poly is > 0.20um
+@ Min SP extension outside of PMOS AA along gate poly length direction with the run length >0.055um is 0.065, if the distance to the related poly is > 0.20um
+AAEIGT  = AA INSIDE EDGE GT
+X = PMOS TOUCH EDGE AAEIGT
+Y = ENC X [SP] < 0.065 OPPOSITE
+A = LENGTH Y > 0.055
+A INSIDE EDGE INST
+}
+SRSP_7b_8b++++++++++++++++++++++
+
+@ Min SP extension outside of PMOS AA along gate poly length direction with the run length <=0.055um is 0.06, if the distance to the related poly is > 0.20um
+@ Min SP extension outside of PMOS AA along gate poly length direction with the run length <=0.055um is 0.06, if the distance to the related poly is <= 0.20um
+AAEIGT  = AA INSIDE EDGE GT
+X = PMOS TOUCH EDGE AAEIGT
+Y = ENC X [SP] < 0.06 OPPOSITE
+A = LENGTH Y <= 0.055
+A INSIDE EDGE INST
+}
+SRCT_2a1++++++++++++++++++++++
+
+@ Min Space between contacts (runlength > 0.02) is 0.11
+X = EXT [CT] < 0.11 OPPOSITE
+Y = LENGTH X > 0.02
+Y INSIDE EDGE INST
+}
+SRCT_2a2++++++++++++++++++++++
+
+@ Min Space between contacts (runlength <=0.02) is 0.09
+X = EXT [CT] < 0.09 OPPOSITE
+Y = LENGTH X <= 0.02
+Y INSIDE EDGE INST
+}
+SRCT_4a++++++++++++++++++++++
+
+@ Min Space between poly and contact on AA for 1.0V/1.2V is 0.038
+X = EXT GT ACT_CT < 0.038 ABUT<90 SINGULAR REGION
+(X NOT DGTG) AND INST
+}
+SRCT_6++++++++++++++++++++++
+
+@ Min CT enclosure by poly for CT landed on poly (exclude rectangular CT) is 0
+(SCT_SR INTERACT GT) NOT GT
+}
+SRCT_7++++++++++++++++++++++
+
+@ Min M1 enclosure of CT (four directions, exclude rectangular CT) is 0
+SCT_SR NOT M1
+}
+SRCT_9++++++++++++++++++++++
+
+@ Square CT is not allowed to land on gate
+X = AND GATE (RECTANGLE CT ASPECT == 1)
+X AND INST
+}
+SRCT_101b++++++++++++++++++++++
+
+@ Min Rectangular CT width is 0.08
+INT RCT_SR < 0.08 ABUT<90 SINGULAR REGION
+}
+SRCT_101c++++++++++++++++++++++
+
+@ Min Rectangular CT overlap AA area is 0.01
+X = RCT_SR AND AA
+AREA X < 0.01
+}
+SRCT_101d++++++++++++++++++++++
+
+@ Min Rectangular CT overlap poly is 0.073
+INT RCT_SR GT < 0.073 ABUT<90 SINGULAR REGION
+}
+SRCT_101e++++++++++++++++++++++
+
+@ Min Rectangular CT overlap poly area is 0.006
+X = AND RCT_SR GT
+AREA X < 0.006
+}
+SRCT_101f++++++++++++++++++++++
+
+@ Min Rectangular CT overlap M1 area is 0.017
+X = AND RCT_SR M1
+AREA X < 0.017
+}
+SRCT_101g++++++++++++++++++++++
+
+@ Min Poly extension outside of rectangular CT is -0.008
+X = GT AND RCT_SR
+Y = CT ENCLOSE X
+Z = CONVEX EDGE X == 2
+M = Z NOT COIN EDGE Y
+L = CONVEX EDGE M ANGLE1 > 0 ANGLE2 > 0
+ENC (L) Y <= 0.008 OPPOSITE
+}
+SRCT_101h++++++++++++++++++++++
+
+@ Max Rectangular CT extension outside of poly (without AA overlap) is 0.02
+X = GT AND RCT_SR
+Y = CT ENCLOSE X
+Z = CONVEX EDGE X == 2
+M = Z NOT COIN EDGE Y
+L = CONVEX EDGE M ANGLE1 == 0 ANGLE2 >= 0
+H = ENC (L) Y <= 0.02 OPPOSITE
+H NOT INSIDE EDGE AA
+}
+SRCT_101i++++++++++++++++++++++
+
+@ Min M1 enclosure of rectangular CT is -0.032
+X = M1 INSIDE EDGE RCT_SR
+Y = EXPAND EDGE X OUTSIDE BY 0.032
+Z = (M1 WITH EDGE X) OR Y
+(RCT_SR INTERACT Z) NOT Z
+}
+SRM1_2a1++++++++++++++++++++++
+
+@ Min Space between M1s	 with the run length>0.26um is 0.09
+X = EXT [M1] < 0.09 OPPOSITE
+Y = LENGTH X > 0.26
+Y INSIDE EDGE INST
+}
+SRM1_2a2++++++++++++++++++++++
+
+@ Min Space between two M1s with the run length >=0.09um and <=0.26um is 0.08
+X = EXT [M1] < 0.08 OPPOSITE
+Y = LENGTH X >= 0.09 <= 0.26
+Y INSIDE EDGE INST
+}
+SRM1_2a3++++++++++++++++++++++
+
+@ Min Space between two M1s with the run length <0.09um is 0.075
+X = EXT [M1] < 0.075 OPPOSITE
+Y = LENGTH X < 0.09
+Y INSIDE EDGE INST
+}
+SRM1_4++++++++++++++++++++++
+
+@ Min M1 area is 0.019
+X = AREA M1 < 0.019
+X AND INST
+}
+SRM1_101++++++++++++++++++++++
+
+@ Min Space between M1 and adjacent CT with run length >0 is 0.082
+X = EXT M1_SRE CT_SRE < 0.114 ABUT<90 REGION OPPOSITE EXTENDED 0.032 MEASURE ALL NOT CONNECTED
+X AND INST
+}
+SRM1_102++++++++++++++++++++++
+
+@ Min Space between M1 and adjacent V1 with run length >0.03 is 0.087
+X = EXT M1_SRE [V1_SRE] < 0.087 ABUT<90 OPPOSITE MEASURE ALL NOT CONNECTED
+Y = LENGTH X > 0.03
+Y INSIDE EDGE INST
+}
+SRV1_3a++++++++++++++++++++++
+
+@ Min M1 enclosure of V1 (four directions) is 0
+(V1 NOT M1) AND INST
+}
+SRV1_5a++++++++++++++++++++++
+
+@ Min M2 enclosure of V1 (four directions) is 0
+(V1 NOT M2) AND INST
+}
+SRM2_2a1++++++++++++++++++++++
+
+@ Min Space between two M2s with the run length >=0.25um is 0.10
+X = EXT [M2] < 0.10 OPPOSITE
+Y = LENGTH X >= 0.25
+Y INSIDE EDGE INST
+}
+SRM2_2a2++++++++++++++++++++++
+
+@ Min Space between two M2s with the run length >=0.02um and <0.25um is 0.095
+X = EXT [M2] < 0.095 OPPOSITE
+Y = LENGTH X >= 0.02 < 0.25
+Y INSIDE EDGE INST
+}
+SRM2_2a3++++++++++++++++++++++
+
+@ Min Space between two M2s with the run length <0.02um is 0.09
+X = EXT [M2] < 0.09 OPPOSITE
+Y = LENGTH X < 0.02
+Y INSIDE EDGE INST
+}
+SRM2_4++++++++++++++++++++++
+
+@ Min M2 area is 0.03
+X = AREA (M2 OR M2DUM) < 0.03
+X NOT OUTSIDE INST
+}
+RESAA_2++++++++++++++++++++++
+
+@ For AA resistor, make sure the AA be covered by SAB and implanted by either SN or SP.
+@NOTICE: It is a guidelines rule.
+X = AAR INTERACT SAB
+X NOT (SN OR SP)
+}
+RESAA_3++++++++++++++++++++++
+
+@ Dummy layer RESAA is drawn to block LDD implant in the resistor area according to LOTA table.
+@NOTICE: It is a guidelines rule.
+X = RESAA INTERACT SAB
+AND NLL X
+AND NLH X
+AND PLL X
+AND PLH X
+AND NLHT X
+AND PLHT X
+}
+RESAA_4++++++++++++++++++++++
+
+@Dog-bone design at the end of AA resistor for contact pick-up is not suggested
+@NOTICE: It is a guidelines rule.
+X = AAR INTERACT SAB
+CONVEX EDGE X ==1
+}
+RESAA_5a++++++++++++++++++++++
+
+@ Min Space between AA resistors area and other implant region is 0.2
+@NOTICE: It is a guidelines rule.
+X = SN NOT INTERACT RESAA
+EXT X AAR_SA < 0.2 ABUT<90 REGION
+}
+RESAA_5b++++++++++++++++++++++
+
+@ Min Space between AA resistors area and other implant region is 0.2
+@NOTICE: It is a guidelines rule.
+X = SP NOT INTERACT RESAA
+EXT X AAR_SA < 0.2 ABUT<90 REGION
+}
+RESAA_5c++++++++++++++++++++++
+
+@ Min Space between AA resistors area and other implant region is 0.2
+@NOTICE: It is a guidelines rule.
+X = NW NOT INTERACT RESAA
+EXT X AAR_SA < 0.2 ABUT<90 REGION
+}
+RESAA_5d++++++++++++++++++++++
+
+@ Min Space between AA resistors area and other implant region is 0.2
+@NOTICE: It is a guidelines rule.
+X = VTNH NOT INTERACT RESAA
+EXT X AAR_SA < 0.2 ABUT<90 REGION
+}
+RESAA_5e++++++++++++++++++++++
+
+@ Min Space between AA resistors area and other implant region is 0.2
+@NOTICE: It is a guidelines rule.
+X = VTPH NOT INTERACT RESAA
+EXT X AAR_SA < 0.2 ABUT<90 REGION
+}
+RESAA_5f++++++++++++++++++++++
+
+@ Min Space between AA resistors area and other implant region is 0.2
+@NOTICE: It is a guidelines rule.
+X = LVN NOT INTERACT RESAA
+EXT X AAR_SA < 0.2 ABUT<90 REGION
+}
+RESAA_5g++++++++++++++++++++++
+
+@ Min Space between AA resistors area and other implant region is 0.2
+@NOTICE: It is a guidelines rule.
+X = LVP NOT INTERACT RESAA
+EXT X AAR_SA < 0.2 ABUT<90 REGION
+}
+RESAA_5h++++++++++++++++++++++
+
+@ Min Space between AA resistors area and other implant region is 0.2
+@NOTICE: It is a guidelines rule.
+X = NPR1 NOT INTERACT RESAA
+EXT X AAR_SA < 0.2 ABUT<90 REGION
+}
+RESAA_5i++++++++++++++++++++++
+
+@ Min Space between AA resistors area and other implant region is 0.2
+@NOTICE: It is a guidelines rule.
+X = ESD1 NOT INTERACT RESAA
+EXT X AAR_SA < 0.2 ABUT<90 REGION
+}
+RESAA_5j++++++++++++++++++++++
+
+@ Min Space between AA resistors area and other implant region is 0.2
+@NOTICE: It is a guidelines rule.
+X = HRP NOT INTERACT RESAA
+EXT X AAR_SA < 0.2 ABUT<90 REGION
+}
+RESAA_6++++++++++++++++++++++
+
+@ Extension of RESAA outside of AA min.distance is 0.2um
+@NOTICE: It is a guidelines rule.
+ENC AAR_SA RESAA < 0.2 ABUT<90 SINGULAR REGION
+}
+RESAA_7++++++++++++++++++++++
+
+@ AA SAB resistors with SP must be inside NW
+((AAR INTERACT SAB) AND SP) NOT NW
+}
+RESAA_8++++++++++++++++++++++
+
+@For Non-SAB AA resistor, two sides of RESAA must be along the CT edge
+@NOTICE: It is a guidelines rule.
+X = CT AND AAR_NS
+Y = (RESAA NOT INTERACT SAB) INSIDE EDGE AA
+Y NOT TOUCH EDGE X
+}
+RESAA_9++++++++++++++++++++++
+
+@ Fixed Space between SAB and CT is 0.2
+@NOTICE: It is a guidelines rule.
+X = AAR INTERACT SAB
+Y = CT AND X
+(SIZE Y BY 0.2) NOT TOUCH AAR_SA
+}
+RESAA_10++++++++++++++++++++++
+
+@ Min SP/SN enclosure of AA resistor is 0.16um.
+@NOTICE: It is a guidelines rule.
+X = SP OR SN
+ENC (AA AND RESAA) X < 0.16 ABUT<90 SINGULAR REGION
+}
+RESNWAA_1++++++++++++++++++++++
+
+@ Minimum NW-Resistor width is 1.6um.
+@NOTICE: It is a guidelines rule.
+INT ((NWR NOT ENCLOSE SN) NOT IN EDGE SN) < 1.6 ABUT<90 REGION
+}
+RESNWAA_2++++++++++++++++++++++
+
+@ Minimum AA enclosure of NW-Resistor is 0.3um.
+@NOTICE: It is a guidelines rule.
+ENC (NWR NOT SN) AA < 0.3 ABUT<90 SINGULAR REGION
+}
+RESNWAA_3++++++++++++++++++++++
+
+@ Minimum SAB enclosure of AA is 0.2um.
+@NOTICE: It is a guidelines rule.
+X = AA ENCLOSE NWR
+ENC X SAB < 0.2 ABUT<90 SINGULAR REGION
+}
+RESNWAA_4++++++++++++++++++++++
+
+@ Minimum NW enclosure of CT is 0.2um.
+@NOTICE: It is a guidelines rule.
+ENC (CT AND (HOLES SAB)) (NWR NOT SAB) < 0.2 ABUT<90 SINGULAR REGION
+}
+RESNWAA_5++++++++++++++++++++++
+
+@ Minimum enclosure of SAB beyond related NW is 0.2um.
+@NOTICE: It is a guidelines rule.
+X1 = HOLES SAB
+X2 = SAB TOUCH X1
+ENC NWR X1 < 0.2 ABUT<90 SINGULAR REGION
+ENC NWR X2 < 0.2 ABUT<90 SINGULAR REGION
+((NWR INTERACT X1) NOT X1) NOT SAB
+}
+RESNWAA_7++++++++++++++++++++++
+
+@ Fixed Space between RESNW and silicided CT area is 0.2um.
+@NOTICE: It is a guidelines rule.
+X = HOLES (SAB INTERACT RESNW)
+(SIZE X BY 0.2) NOT TOUCH RESNW
+}
+RESNWAA_8++++++++++++++++++++++
+
+@ Minimum Space between NW of NW resistors and un-related implant region is 0.6um.
+@NOTICE: It is a guidelines rule.
+X = NWR INTERACT (HOLES SAB)
+EXT X (NW NOT INTERACT NWR) < 0.6 ABUT<90 SINGULAR REGION
+EXT X (VTNH NOT INTERACT NWR) < 0.6 ABUT<90 SINGULAR REGION
+EXT X (VTPH NOT INTERACT NWR) < 0.6 ABUT<90 SINGULAR REGION
+EXT X (LVN NOT INTERACT NWR) < 0.6 ABUT<90 SINGULAR REGION
+EXT X (LVP NOT INTERACT NWR) < 0.6 ABUT<90 SINGULAR REGION
+EXT X (SN NOT INTERACT NWR) < 0.6 ABUT<90 SINGULAR REGION
+EXT X (SP NOT INTERACT NWR) < 0.6 ABUT<90 SINGULAR REGION
+EXT X (NPR1 NOT INTERACT NWR) < 0.6 ABUT<90 SINGULAR REGION
+EXT X (ESD1 NOT INTERACT NWR) < 0.6 ABUT<90 SINGULAR REGION
+EXT X (HRP NOT INTERACT NWR) < 0.6 ABUT<90 SINGULAR REGION
+}
+RESNWAA_9++++++++++++++++++++++
+
+@ Minimum extension of RESNW outside of AA is 0.2um.
+@NOTICE: It is a guidelines rule.
+ENC AA (RESNW INTERACT SAB) < 0.2 ABUT<90 SINGULAR REGION
+}
+RESNWAA_10++++++++++++++++++++++
+
+@ SAB must cover NW resistor except CT area
+@NOTICE: It is a guidelines rule.
+X = RESNW ENCLOSE (RESNW AND AA)
+Y = (SAB OR (HOLES SAB)) INTERACT X
+Y NOT ENCLOSE (RESNW AND NW)
+}
+RESNWAA_11++++++++++++++++++++++
+
+@ Fixed Space between RESNW and CT is 0.4
+@NOTICE: It is a guidelines rule.
+X = RESNW ENCLOSE (RESNW AND AA)
+Y = CT AND (AA INTERACT X)
+(SIZE Y BY 0.4) NOT TOUCH X
+}
+RESNWST_1++++++++++++++++++++++
+
+@ Minimum NWSTI resitor width is 1.6um.
+@NOTICE: It is a guidelines rule.
+INT NWRSTI < 1.6 ABUT<90 SINGULAR REGION
+}
+RESNWST_2++++++++++++++++++++++
+
+@ Minimum space between NWSTI resistor and adjacent AA is 0.5um.
+@NOTICE: It is a guidelines rule.
+EXT NWRSTI AA < 0.5 ABUT<90 SINGULAR REGION
+}
+RESNWST_3++++++++++++++++++++++
+
+@ Minimum CT enclosed by silicided AA is 0.2um.
+@NOTICE: It is a guidelines rule.
+X = CT AND NWRSTI
+Y = AA INTERACT X
+ENC X Y < 0.2 ABUT<90 SINGULAR REGION
+}
+RESNWST_4++++++++++++++++++++++
+
+@ Minimum SN implant area enclosure of silicided AA is 0.15um.
+@NOTICE: It is a guidelines rule.
+X = AA AND NWRSTI
+Y = SN INTERACT NWRSTI
+ENC X Y < 0.15 ABUT<90 SINGULAR REGION
+}
+RESNWST_5++++++++++++++++++++++
+
+@ Minimum enclosure of NW to silicided AA area is 0.2um.
+@NOTICE: It is a guidelines rule.
+X = AA AND NWRSTI
+Y = NW INTERACT NWRSTI
+ENC X Y < 0.2 ABUT<90 SINGULAR REGION
+}
+RESNWST_6++++++++++++++++++++++
+
+@ Minimum space of RESNW to silicided AA area is 0.
+@NOTICE: It is a guidelines rule.
+X = RESNW INTERACT NWRSTI
+AND X AA
+}
+RESNWST_7++++++++++++++++++++++
+
+@ RESNW must not overlap with dummy pattern and other implant layers(except NW) in the resistor area
+@ RESNWAA_6 has been covered by these codes
+@NOTICE: It is a guidelines rule.
+(RESNW INTERACT SN) AND AADUM
+(RESNW INTERACT SN) AND GTDUM
+RESNW AND VTNH
+RESNW AND VTPH
+RESNW AND LVN
+RESNW AND LVP
+RESNW AND SP
+RESNW AND NPR1
+RESNW AND ESD1
+RESNW AND HRP
+}
+RESNWST_8++++++++++++++++++++++
+
+@ Min Extension of RESNW outside of NW is 0.2
+@NOTICE: It is a guidelines rule.
+ENC NW RESNW < 0.2 ABUT < 90 SINGULAR REGION
+}
+RESNWST_9++++++++++++++++++++++
+
+@ No silicide is allowed on NWSTI resistor except for CT area.
+@NOTICE: It is a guidelines rule.
+X = SIZE (NWR AND AA) BY -0.01
+(RESNW NOT INTERACT X) AND SAB
+}
+RESP1_1++++++++++++++++++++++
+
+@ Min Width of poly resistor is 0.4, and is suggested poly resistor square number(length/width ratio) >=1 for stable Rs.
+@NOTICE: It is a guidelines rule.
+X = SAB INTERACT RESP1
+Y = GT AND (SAB AND RESP1)
+L = INSIDE EDGE GT X
+W = INSIDE EDGE X GT
+INT L < 0.4 OPPOSITE REGION
+}
+RESP1_2++++++++++++++++++++++
+
+@ For poly resistor, make sure the poly be covered by SAB and implanted by either SN or SP
+@NOTICE: It is a guidelines rule.
+X = GTR INTERACT SAB
+X NOT (SN OR SP)
+}
+RESP1_3++++++++++++++++++++++
+
+@ Dummy layer RESP1 is drawn to block LDD implant in the resistor area according to LOTA table.
+@NOTICE: It is a guidelines rule.
+X = RESP1 INTERACT GTR_SA
+AND NLL X
+AND NLH X
+AND PLL X
+AND PLH X
+AND PLHT X
+AND NLHT X
+}
+RESP1_4++++++++++++++++++++++
+
+@Dog-bone design at the end of poly resistor for contact pick-up is not suggested
+@NOTICE: It is a guidelines rule.
+X = GTR INTERACT SAB
+CONVEX EDGE X ==1
+}
+RESP1_5a++++++++++++++++++++++
+
+@ Min Space between poly resistors and un-related implant region (follow GT.10 rule) is 0.16um
+@NOTICE: It is a guidelines rule.
+X = SP NOT INTERACT RESP1
+EXT X GTR_SA < 0.16 ABUT<90 SINGULAR REGION
+}
+RESP1_5b++++++++++++++++++++++
+
+@ Min Space between poly resistors and un-related implant region (follow GT.10 rule) is 0.16um
+@NOTICE: It is a guidelines rule.
+X = SN NOT INTERACT RESP1
+EXT X GTR_SA < 0.16 ABUT<90 SINGULAR REGION
+}
+RESP1_5c++++++++++++++++++++++
+
+@ Min Space between poly resistors and un-related implant region (follow GT.10 rule) is 0.16um
+@NOTICE: It is a guidelines rule.
+X = ESD1 NOT INTERACT RESP1
+EXT X GTR_SA < 0.16 ABUT<90 SINGULAR REGION
+}
+RESP1_5d++++++++++++++++++++++
+
+@ Min Space between poly resistors and un-related implant region (follow GT.10 rule) is 0.16um
+@NOTICE: It is a guidelines rule.
+X = HRP NOT INTERACT RESP1
+EXT X GTR_SA < 0.16 ABUT<90 SINGULAR REGION
+}
+RESP1_5e++++++++++++++++++++++
+
+@ Min Space between poly resistors and un-related implant region (follow GT.10 rule) is 0.16um
+@NOTICE: It is a guidelines rule.
+X = NPR1 NOT INTERACT RESP1
+EXT X GTR_SA < 0.16 ABUT<90 SINGULAR REGION
+}
+RESP1_6++++++++++++++++++++++
+
+@ Extension of RESP1 outside of Poly min.distance is 0.2
+@NOTICE: It is a guidelines rule.
+ENC GTR_SA RESP1 < 0.2 ABUT >0 <90 SINGULAR REGION
+}
+RESP1_7++++++++++++++++++++++
+
+@For Non-SAB Poly resistor, two sides of RESP1 must be along the CT edge
+@NOTICE: It is a guidelines rule.
+X = CT AND GTR_NS
+Y = (RESP1 NOT INTERACT SAB) INSIDE EDGE GT
+Y NOT TOUCH EDGE X
+}
+RESP1_8++++++++++++++++++++++
+
+@ Min Extension of SAB outside of poly resistor area(follow SAB.6 rule) is 0.2
+@NOTICE: It is a guidelines rule.
+ENC GTR SAB < 0.2 ABUT < 90 SINGULAR REGION
+}
+RESP1_9++++++++++++++++++++++
+
+@ Fixed Space between SAB and CT is 0.2
+@NOTICE: It is a guidelines rule.
+X = GTR INTERACT SAB
+Y = CT AND X
+(SIZE Y BY 0.2) NOT TOUCH GTR_SA
+}
+RESP1_10++++++++++++++++++++++
+
+@ Min Enclosure of SP/SN outside of a Poly resistor area (following GT.9 rule) is 0.16
+@NOTICE: It is a guidelines rule.
+X = RESP1 AND GT
+ENC X SN < 0.16 ABUT < 90 SINGULAR REGION
+ENC X SP < 0.16 ABUT < 90 SINGULAR REGION
+}
+EFU_1_2++++++++++++++++++++++
+
+@ Width of E-Fuse function area fixed size is 0.06
+@ Length of E-Fuse function area fixed size is 0.24
+@NOTICE: It is a guidelines rule.
+X = COIN EDGE EFU_BO GTFUSE
+INT X < 0.24 ABUT<90 REGION
+NOT RECTANGLE EFU_BO == 0.06 BY == 0.24
+}
+EFU_3++++++++++++++++++++++
+
+@ CT enclosure by poly in E-fuse area is fixed size 0.05um, except in the 45 degree link.
+@NOTICE: It is a guidelines rule.
+X1 = GTFUSE TOUCH EDGE EFU_BO
+X2 = EXPAND EDGE X1 OUTSIDE BY 0.4 EXTEND BY 0.4
+X3 = SIZE RCT BY 0.1 OVERUNDER
+X4 = (EFU NOT X2) NOT X3
+X_WIDE = SIZE X4 BY 0.025 UNDEROVER
+X_NARROW = INT X4 < 0.05 ABUT<90 SINGULAR REGION
+(X_WIDE OR X_NARROW) NOT GTFUSE
+}
+EFU_4++++++++++++++++++++++
+
+@ Space between two rectangular contacts (RCT) is exactly 0.16um.
+@NOTICE: It is a guidelines rule.
+X = SIZE RCT BY 0.1 OVERUNDER
+Y = X NOT RCT
+Y WITH WIDTH > 0.16
+EXT RCT < 0.16 ABUT<90 SINGULAR REGION
+}
+EFU_5_6++++++++++++++++++++++
+
+@ Length of RCT is 0.30
+@ Width of RCT is 0.09
+@NOTICE: It is a guidelines rule.
+NOT RECTANGLE RCT == 0.30 BY == 0.09
+}
+EFU_7++++++++++++++++++++++
+
+@ Use 2x2 RCT array for E-Fuse poly contact.
+@ If RCT size or space is wrong, then it would also cause this kind of violation.
+@NOTICE: It is a guidelines rule.
+X = SIZE RCT BY 0.1 OVERUNDER
+NOT RECTANGLE X == 0.34 BY == 0.76
+}
+EFU_8++++++++++++++++++++++
+
+@ Angle of poly taper head (degree) is 45 degree
+@NOTICE: It is a guidelines rule.
+ANGLE EFU > 0 < 45
+ANGLE EFU > 45 < 90
+}
+EFU_10++++++++++++++++++++++
+
+@ GTFUSE is needed to identify E-Fuse function area.
+@NOTICE: It is a guidelines rule.
+EFU NOT INTERACT GTFUSE
+}
+EFU_11++++++++++++++++++++++
+
+@ EFUSE is needed to identify E-Fuse area.
+@NOTICE: It is a guidelines rule.
+GTFUSE NOT EFUSE
+}
+HRP_1++++++++++++++++++++++
+
+@ Min Width of HRP is 0.21
+@NOTICE: It is a guidelines rule.
+INT HRP < 0.21 ABUT < 90 SINGULAR REGION
+}
+HRP_2++++++++++++++++++++++
+
+@Min Space between two HRP is 0.21
+@NOTICE: It is a guidelines rule.
+EXT HRP < 0.21 ABUT < 90 SINGULAR REGION
+}
+HRP_4++++++++++++++++++++++
+
+@ Min HRP enclosure of high resistance poly is 0.2
+@NOTICE: It is a guidelines rule.
+ENC GT_HRP HRP < 0.20 ABUT SINGULAR REGION
+}
+HRP_5_6++++++++++++++++++++++
+
+@ Minimum clearance from HRP region to Polygate of NMOS/PMOS is 0.16
+@NOTICE: It is a guidelines rule.
+GT_MOS = GT INTERACT GATE
+EXT HRP GT_MOS < 0.16 ABUT SINGULAR REGION
+}
+HRP_7++++++++++++++++++++++
+
+@ Minimum and maximum P+ implant for pickup overlap with SAB is 0.30
+@NOTICE: It is a guidelines rule.
+SP_HRP = SP INTERACT HRP
+SAB_HRP = SAB INTERACT HRP
+X = SP_HRP AND SAB_HRP
+INT X < 0.30 ABUT<90 SINGULAR REGION
+SIZE X BY 0.15 UNDEROVER
+}
+HRP_8++++++++++++++++++++++
+
+@ Minimum extension from SAB region beyond a poly resistor region is 0.22
+@NOTICE: It is a guidelines rule.
+ENC GT_HRP SAB < 0.22 ABUT<90 SINGULAR REGION
+}
+HRP_9++++++++++++++++++++++
+
+@ Minimum width of Poly region for high resistance poly resistor is 2.00
+@NOTICE: It is a guidelines rule.
+X = HR_GT NOT COIN EDGE SP
+INT X < 2.0 OPPOSITE REGION
+}
+HRP_10++++++++++++++++++++++
+
+@ Dummy layer "HRPDMY" is needed for DRC for high resistance Poly region
+@NOTICE: It is a guidelines rule.
+SAB_HRP = SAB INTERACT HRP
+SAB_HRP NOT INTERACT HRPDMY
+}
+HRP_11++++++++++++++++++++++
+
+@ (SN, SP) layers are not allowed in the HRPDMY region (when checking the rule, size down the HRPDMY by 0.3um along the current direction)
+@NOTICE: It is a guidelines rule.
+HRPR    = GT INTERACT HRP
+HRP_END = SIZE (HRPR NOT HRPDMY) BY 0.3
+HRP_MID = HRPR NOT HRP_END
+(SN OR SP) AND HRP_MID
+}
+HRP_12++++++++++++++++++++++
+
+@ HRPDMY edge should align with SAB edge.
+@NOTICE: It is a guidelines rule.
+SAB_AND_HRP = (SAB INTERACT HRP) AND GT
+DMY_AND_HRP = HRPDMY AND GT
+SAB_AND_HRP XOR DMY_AND_HRP
+}
+HRP_14++++++++++++++++++++++
+
+@ Fixed Space between SAB and CT in HRP region is 0.2
+@NOTICE: It is a guidelines rule.
+X = HRP INTERACT SAB
+Y = CT AND X
+(SIZE Y BY 0.2) NOT TOUCH (SAB INTERACT HRP)
+}
+LD_1a++++++++++++++++++++++
+
+@ Min. LDMOS gate length is 0.48
+@NOTICE: It is a guidelines rule.
+INT LDNGATE < 0.48 ABUT<90 SINGULAR REGION
+INT LDPGATE < 0.48 ABUT<90 SINGULAR REGION
+}
+LD_2++++++++++++++++++++++
+
+@ Dummy layer STIDMY is required for LDMOS transistor field plate area.
+@ Fixed STI width for LDMOS transistor drain side field plate is 0.11
+@NOTICE: It is a guidelines rule.
+INT STIDMY < 0.11 ABUT<90 SINGULAR REGION
+STIDMY ENCLOSE (SIZE STIDMY BY -0.11/2)
+}
+LD_3++++++++++++++++++++++
+
+@ Fixed Overlap of NW and LDNMOS gate is 0.20
+@NOTICE: It is a guidelines rule.
+INT NW LDNGATE < 0.20 ABUT<90 SINGULAR REGION
+(LDNGATE AND NW) ENCLOSE (SIZE (LDNGATE AND NW) BY -0.10)
+}
+LD_4++++++++++++++++++++++
+
+@ Fixed Overlap of PW and LDPMOS gate is 0.20
+@NOTICE: It is a guidelines rule.
+ENC NW LDPGATE < 0.20 ABUT<90 SINGULAR REGION
+(LDPGATE NOT NW) ENCLOSE (SIZE (LDPGATE NOT NW) BY -0.10)
+}
+LD_5a++++++++++++++++++++++
+
+@ Min. channel width for LDMOS transistors is 2
+@NOTICE: It is a guidelines rule.
+INT (LDAA IN EDGE GT) < 2 ABUT<90 REGION
+}
+LD_6++++++++++++++++++++++
+
+@ Min Space between one LDMOS gate poly to another LDMOS gate poly on source side is 0.27
+@NOTICE: It is a guidelines rule.
+X = GT INSIDE EDGE LDAA
+EXT X < 0.27 REGION
+}
+LD_7++++++++++++++++++++++
+
+@ Min NW or PW extension outside of LDMOS AA along gate poly length direction is 0.25
+@NOTICE: It is a guidelines rule.
+X1 = LDAA TOUCH EDGE STIDMY
+X2 = INT X1 LDAA < 0.005 ABUT REGION INTERSECTING ONLY
+X3 = (LDAA TOUCH EDGE X2) NOT COIN EDGE X1
+ENC X3 NW < 0.25 ABUT < 90 REGION
+EXT X3 NW < 0.25 ABUT < 90 REGION
+}
+LD_8a++++++++++++++++++++++
+
+@ Min Space between LDMOS source side AA and pickup AA along source/drain direction is 0.6
+@NOTICE: It is a guidelines rule.
+X1 = LDAA TOUCH EDGE GT
+X2 = INT X1 LDAA < 0.005 ABUT REGION INTERSECTING ONLY
+X3 = (LDAA TOUCH EDGE X2) OR EDGE X1
+X4 = (LDAA WITH EDGE X3) NOT COIN EDGE X3
+EXT X4 (PTAP OR NTAP) < 0.6 ABUT < 90 REGION
+}
+LD_8b++++++++++++++++++++++
+
+@ Min Space between LDMOS source side AA and pickup AA along gate poly direction is 0.9
+@NOTICE: It is a guidelines rule.
+X1 = LDAA TOUCH EDGE GT
+X2 = INT X1 LDAA < 0.005 ABUT REGION INTERSECTING ONLY
+X3 = (LDAA TOUCH EDGE X2) NOT TOUCH EDGE X1
+EXT X3 (PTAP OR NTAP) < 0.9 ABUT < 90 REGION
+}
+LD_9++++++++++++++++++++++
+
+@ GT to STI drain side field plate overlap is 0
+@NOTICE: It is a guidelines rule.
+GT AND STIDMY
+(STIDMY AND LDBK) NOT TOUCH GT
+}
+LD_10++++++++++++++++++++++
+
+@ LDMOS block layer (LDBK) is used to identify LDMOS function area.
+@ Min LDBK extension outside of MOSAA is 0.4.
+@NOTICE: It is a guidelines rule.
+X1 = LDAA TOUCH STIDMY
+ENC X1 LDBK < 0.4 ABUT < 90 SINGULAR REGION
+}
+LD_11++++++++++++++++++++++
+
+@ STIDMY enclosure LDMOS drain side field plate is 0
+@NOTICE: It is a guidelines rule.
+X = STIDMY AND LDAA
+Y = STIDMY NOT TOUCH (LDAA NOT GT)
+X OR Y
+}
+LD_12++++++++++++++++++++++
+
+@ Min CT to GT space on LDMOS at source side is 0.11
+@NOTICE: It is a guidelines rule.
+X =  CT AND (LDAA INTERACT GT)
+EXT X GT < 0.11 ABUT < 90 SINGULAR REGION
+}
+SRCK_1++++++++++++++++++++++
+
+@ Fixed CT slot width is 0.09
+@NOTICE: It is a guidelines rule.
+X = INT CTS < 0.089 ABUT<90 SINGULAR REGION
+Y = CTS WITH WIDTH > 0.091
+X OR Y
+}
+SRCK_2++++++++++++++++++++++
+
+@ Fixed Vn slot width (n=1~7) is 0.09
+@NOTICE: It is a guidelines rule.
+V1_NARROW = INT V1S < 0.089 ABUT<90 SINGULAR REGION
+V2_NARROW = INT V2S < 0.089 ABUT<90 SINGULAR REGION
+V3_NARROW = INT V3S < 0.089 ABUT<90 SINGULAR REGION
+V4_NARROW = INT V4S < 0.089 ABUT<90 SINGULAR REGION
+V5_NARROW = INT V5S < 0.089 ABUT<90 SINGULAR REGION
+V1_WIDE = V1S WITH WIDTH > 0.091
+V2_WIDE = V2S WITH WIDTH > 0.091
+V3_WIDE = V3S WITH WIDTH > 0.091
+V4_WIDE = V4S WITH WIDTH > 0.091
+V5_WIDE = V5S WITH WIDTH > 0.091
+VN_NARROW = ((V1_NARROW OR V2_NARROW) OR (V3_NARROW OR V4_NARROW)) OR V5_NARROW
+VN_WIDE = ((V1_WIDE OR V2_WIDE) OR (V3_WIDE OR V4_WIDE)) OR V5_WIDE
+VN_NARROW OR VN_WIDE
+}
+SRCK_3++++++++++++++++++++++
+
+@ TV slot (option a) width is >= 0.25 and <= 0.36
+@NOTICE: It is a guidelines rule.
+TV1S NOT WITH WIDTH >= 0.25 <= 0.36
+TV2S NOT WITH WIDTH >= 0.25 <= 0.36
+}
+SRCK_4++++++++++++++++++++++
+
+@ TV slot (option b) width is >= 0.19 and <= 0.20
+@NOTICE: It is a guidelines rule.
+TV1S NOT WITH WIDTH >= 0.19 <= 0.2
+TV2S NOT WITH WIDTH >= 0.19 <= 0.2
+}
+SRCK_5++++++++++++++++++++++
+
+@ Minimum space between contact slots is 1.2
+@NOTICE: It is a guidelines rule.
+EXT CTS_SL < 1.2 ABUT < 90 SINGULAR REGION
+}
+SRCK_6++++++++++++++++++++++
+
+@ Minimum space between via slots is 1.2
+@NOTICE: It is a guidelines rule.
+EXT V1S_SL < 1.2 ABUT < 90 SINGULAR REGION
+EXT V2S_SL < 1.2 ABUT < 90 SINGULAR REGION
+EXT V3S_SL < 1.2 ABUT < 90 SINGULAR REGION
+EXT V4S_SL < 1.2 ABUT < 90 SINGULAR REGION
+EXT V5S_SL < 1.2 ABUT < 90 SINGULAR REGION
+}
+SRCK_7++++++++++++++++++++++
+
+@ Minimum space between TV slots is 1.2
+@NOTICE: It is a guidelines rule.
+EXT TV1S_SL < 1.2 ABUT < 90 SINGULAR REGION
+EXT TV2S_SL < 1.2 ABUT < 90 SINGULAR REGION
+}
+SRCK_8++++++++++++++++++++++
+
+@ Minimum space between square contact and contact slot is 0.4
+@NOTICE: It is a guidelines rule.
+EXT CTS_SL CTS_SQ < 0.4 ABUT < 90 SINGULAR REGION
+}
+SRCK_9++++++++++++++++++++++
+
+@ Minimum space between square via and via slot is 0.4
+@NOTICE: It is a guidelines rule.
+EXT V1S_SL V1S_SQ < 0.4 ABUT < 90 SINGULAR REGION
+EXT V2S_SL V2S_SQ < 0.4 ABUT < 90 SINGULAR REGION
+EXT V3S_SL V3S_SQ < 0.4 ABUT < 90 SINGULAR REGION
+EXT V4S_SL V4S_SQ < 0.4 ABUT < 90 SINGULAR REGION
+EXT V5S_SL V5S_SQ < 0.4 ABUT < 90 SINGULAR REGION
+}
+SRCK_10++++++++++++++++++++++
+
+@ Minimum space between square TV and TV slot is 0.38
+@NOTICE: It is a guidelines rule.
+EXT TV1S_SL TV1S_SQ < 0.38 ABUT < 90 SINGULAR REGION
+EXT TV2S_SL TV2S_SQ < 0.38 ABUT < 90 SINGULAR REGION
+}
+SRCK_11++++++++++++++++++++++
+
+@ V1 (both square via and slot patterns) enclosure by M1 in MARKS covered areas is 0.09
+@NOTICE: It is a guidelines rule.
+ENC V1S M1S < 0.09 ABUT < 90 SINGULAR REGION
+}
+SRCK_12++++++++++++++++++++++
+
+@ Vn (both square via and slot patterns) enclosure by Mn in MARKS covered areas (n=2~7) is 0.09
+@NOTICE: It is a guidelines rule.
+ENC V2S M2S < 0.09 ABUT < 90 SINGULAR REGION
+ENC V3S M3S < 0.09 ABUT < 90 SINGULAR REGION
+ENC V4S M4S < 0.09 ABUT < 90 SINGULAR REGION
+ENC V5S M5S < 0.09 ABUT < 90 SINGULAR REGION
+}
+SRCK_13++++++++++++++++++++++
+
+@ Vn (both square via and slot patterns)enclosure by Mn+1 in MARKS covered areas (n=2~7) is 0.09
+@NOTICE: It is a guidelines rule.
+ENC V1S M2S < 0.09 ABUT < 90 SINGULAR REGION
+ENC V2S M3S < 0.09 ABUT < 90 SINGULAR REGION
+ENC V3S M4S < 0.09 ABUT < 90 SINGULAR REGION
+ENC V4S M5S < 0.09 ABUT < 90 SINGULAR REGION
+ENC V5S M6S < 0.09 ABUT < 90 SINGULAR REGION
+}
+SRCK_14++++++++++++++++++++++
+
+@ TV1/TV2 (both square via and slot patterns) enclosure by TM1/TM2 in MARKS covered areas is 0.09
+@NOTICE: It is a guidelines rule.
+ENC TV1S TM1S < 0.09 ABUT < 90 SINGULAR REGION
+ENC TV2S TM2S < 0.09 ABUT < 90 SINGULAR REGION
+}
+SRCK_15++++++++++++++++++++++
+
+@ TV1/TV2 (both square via and slot patterns) enclosure by Mn in MARKS covered areas (Mn presents metal layer right beneath TV1/TV2) is 0.09
+@NOTICE: It is a guidelines rule.
+ENC TV1S M6S < 0.09 ABUT < 90 SINGULAR REGION
+ENC TV2S TM1S < 0.09 ABUT < 90 SINGULAR REGION
+}
+SRCK_17++++++++++++++++++++++
+
+@ Min Isolation distance between active patterns (AA/GT/METAL/RDL) and internal metal ring edge is 10
+@NOTICE: It is a guidelines rule.
+EXT (AA NOT INSIDE MARKS) MS_RING_INNER < 10 ABUT < 90 SINGULAR REGION
+EXT (GT NOT INSIDE MARKS) MS_RING_INNER < 10 ABUT < 90 SINGULAR REGION
+EXT MA_ALL MS_RING_INNER < 10 ABUT < 90 SINGULAR REGION
+EXT (RDL NOT INSIDE MARKS) MS_RING_INNER < 10 ABUT < 90 SINGULAR REGION
+}
+SRCK_18++++++++++++++++++++++
+
+@ No patterns (AA/GT/METAL/RDL) are allowed inside isolation areas
+@NOTICE: It is a guidelines rule.
+AND ISOLATION AA
+AND ISOLATION GT
+AND ISOLATION M_ALL
+AND ISOLATION RDL
+}
+SRCK_19++++++++++++++++++++++
+
+@ No AA/GT/Metal dummy patterns are allowed MARKS covered areas.
+@NOTICE: It is a guidelines rule.
+AND MARKS AADUM
+AND MARKS GTDUM
+AND MARKS MDUM_ALL
+}
+SRCK_20++++++++++++++++++++++
+
+@ Metal ring structures must be comprised of AA, CT and all metal layers and all via layers up to the last copper metal.
+@ The structures must be continuous and connected to ground bus.
+@NOTICE: It is a guidelines rule.
+X = NET AREA RATIO MARKS TM2S_RING TV2S TM1S_RING TV1S M6S_RING V5S M5S_RING V4S M4S_RING V3S M3S_RING V2S M2S_RING V1S M1S_RING CTS AAS > 0
+[!!(AREA(TM2S_RING))* !!(AREA(TV2S))*!!(AREA(TM1S_RING))*!!(AREA(TV1S))*!!(AREA(M6S_RING))*!!(AREA(V5S))
+*!!(AREA(M5S_RING))*!!(AREA(V4S))*!!(AREA(M4S_RING))*!!(AREA(V3S))*!!(AREA(M3S_RING))*!!(AREA(V2S))*!!(AREA(M2S_RING))*!!(AREA(V1S))*!!(AREA(M1S_RING))*!!(AREA(CTS))
+*!!(AREA(AAS))]
+MARKS NOT X
+Y = NET AREA RATIO RDLS_RING RDLVIAS TM2S_RING > 0 [!!(AREA(TM2S_RING))* !!(AREA(RDLVIAS))*!!(AREA(RDLS_RING))]
+(MARKS ENCLOSE RDLS_RING) NOT ENCLOSE Y
+Z = NET AREA RATIO  RDLVIAS RDLS_RING TM2S_RING > 0 [!!(AREA(TM2S_RING))* !!(AREA(RDLVIAS))*!!(AREA(RDLS_RING))]
+(MARKS ENCLOSE RDLVIAS) NOT ENCLOSE Z
+}
+SRCK_21++++++++++++++++++++++
+
+@ Min Passivation slot width ("RDL via" is recommended as drawing layer) in MARKS covered areas is 2
+@NOTICE: It is a guidelines rule.
+INT RDLVIAS < 2 ABUT < 90 SINGULAR REGION
+}
+SRCK_22++++++++++++++++++++++
+
+@ Min Passivation slot  (RDL via) enclosure by Al pattern (RDL) in MARKS covered areas is 1
+@NOTICE: It is a guidelines rule.
+ENC RDLVIAS RDL < 1 ABUT < 90 SINGULAR REGION
+}
+SRCK_23++++++++++++++++++++++
+
+@ Min Passivation slot (RDL via) enclosure by TM2 in MARKS covered areas is 0.5
+@NOTICE: It is a guidelines rule.
+ENC RDLVIAS TM2 < 0.5 ABUT < 90 SINGULAR REGION
+}
+GR_1++++++++++++++++++++++
+
+@ Fixed CT slot width in guard ring is 0.09
+@NOTICE: It is a guidelines rule.
+X = INT CTG < 0.089 ABUT<90 SINGULAR REGION
+Y = CTG WITH WIDTH > 0.091
+X OR Y
+}
+GR_2++++++++++++++++++++++
+
+@ Fixed Vn slot width (n=1~7) in guard ring is 0.09
+@NOTICE: It is a guidelines rule.
+V1_NARROW = INT V1G < 0.089 ABUT<90 SINGULAR REGION
+V2_NARROW = INT V2G < 0.089 ABUT<90 SINGULAR REGION
+V3_NARROW = INT V3G < 0.089 ABUT<90 SINGULAR REGION
+V4_NARROW = INT V4G < 0.089 ABUT<90 SINGULAR REGION
+V5_NARROW = INT V5G < 0.089 ABUT<90 SINGULAR REGION
+V1_WIDE = V1G WITH WIDTH > 0.091
+V2_WIDE = V2G WITH WIDTH > 0.091
+V3_WIDE = V3G WITH WIDTH > 0.091
+V4_WIDE = V4G WITH WIDTH > 0.091
+V5_WIDE = V5G WITH WIDTH > 0.091
+VN_NARROW = ((V1_NARROW OR V2_NARROW) OR (V3_NARROW OR V4_NARROW)) OR V5_NARROW
+VN_WIDE = ((V1_WIDE OR V2_WIDE) OR (V3_WIDE OR V4_WIDE)) OR V5_WIDE
+VN_NARROW OR VN_WIDE
+}
+GR_3a++++++++++++++++++++++
+
+@ TV slot (option a) width in guard ring is >= 0.25 and <= 0.36
+@NOTICE: It is a guidelines rule.
+TV1G NOT WITH WIDTH >= 0.25 <= 0.36
+TV2G NOT WITH WIDTH >= 0.25 <= 0.36
+}
+GR_3b++++++++++++++++++++++
+
+@ TV slot (option b) width in guard ring is >= 0.19 and <= 0.20
+@NOTICE: It is a guidelines rule.
+TV1G NOT WITH WIDTH >= 0.19 <= 0.2
+TV2G NOT WITH WIDTH >= 0.19 <= 0.2
+}
+GR_4++++++++++++++++++++++
+
+@ Minimum space between contact slots in guard ring is 1.2
+@NOTICE: It is a guidelines rule.
+EXT CTG_SL < 1.2 ABUT < 90 SINGULAR REGION
+}
+GR_5++++++++++++++++++++++
+
+@ Minimum space between via slots in guard ring is 1.2
+@NOTICE: It is a guidelines rule.
+EXT V1G_SL < 1.2 ABUT < 90 SINGULAR REGION
+EXT V2G_SL < 1.2 ABUT < 90 SINGULAR REGION
+EXT V3G_SL < 1.2 ABUT < 90 SINGULAR REGION
+EXT V4G_SL < 1.2 ABUT < 90 SINGULAR REGION
+EXT V5G_SL < 1.2 ABUT < 90 SINGULAR REGION
+}
+GR_6++++++++++++++++++++++
+
+@ Minimum space between TV slots in guard ring is 1.2
+@NOTICE: It is a guidelines rule.
+EXT TV1G_SL < 1.2 ABUT < 90 SINGULAR REGION
+EXT TV2G_SL < 1.2 ABUT < 90 SINGULAR REGION
+}
+GR_7++++++++++++++++++++++
+
+@ Minimum space between square contact and contact slot in guard ring is 0.4
+@NOTICE: It is a guidelines rule.
+EXT CTG_SL CTG_SQ < 0.4 ABUT < 90 SINGULAR REGION
+}
+GR_8++++++++++++++++++++++
+
+@ Minimum space between square via and via slot in guard ring is 0.4
+@NOTICE: It is a guidelines rule.
+EXT V1G_SL V1G_SQ < 0.4 ABUT < 90 SINGULAR REGION
+EXT V2G_SL V2G_SQ < 0.4 ABUT < 90 SINGULAR REGION
+EXT V3G_SL V3G_SQ < 0.4 ABUT < 90 SINGULAR REGION
+EXT V4G_SL V4G_SQ < 0.4 ABUT < 90 SINGULAR REGION
+EXT V5G_SL V5G_SQ < 0.4 ABUT < 90 SINGULAR REGION
+}
+GR_9++++++++++++++++++++++
+
+@ Minimum space between square TV and TV slot in guard ring is 0.38
+@NOTICE: It is a guidelines rule.
+EXT TV1G_SL TV1G_SQ < 0.38 ABUT < 90 SINGULAR REGION
+EXT TV2G_SL TV2G_SQ < 0.38 ABUT < 90 SINGULAR REGION
+}
+GR_10++++++++++++++++++++++
+
+@ Min V1 (both square via and slot patterns) enclosure by M1 in guard ring is 0.09
+@NOTICE: It is a guidelines rule.
+ENC V1G M1G < 0.09 ABUT < 90 SINGULAR REGION
+}
+GR_11++++++++++++++++++++++
+
+@ Min Vn (both square via and slot patterns) enclosure by Mn in guard ring (n=2~7) is 0.09
+@NOTICE: It is a guidelines rule.
+ENC V2G M2G < 0.09 ABUT < 90 SINGULAR REGION
+ENC V3G M3G < 0.09 ABUT < 90 SINGULAR REGION
+ENC V4G M4G < 0.09 ABUT < 90 SINGULAR REGION
+ENC V5G M5G < 0.09 ABUT < 90 SINGULAR REGION
+}
+GR_12++++++++++++++++++++++
+
+@ Min Vn (both square via and slot patterns) enclosure by Mn+1 in guard ring (n=2~7) is 0.09
+@NOTICE: It is a guidelines rule.
+ENC V1G M2G < 0.09 ABUT < 90 SINGULAR REGION
+ENC V2G M3G < 0.09 ABUT < 90 SINGULAR REGION
+ENC V3G M4G < 0.09 ABUT < 90 SINGULAR REGION
+ENC V4G M5G < 0.09 ABUT < 90 SINGULAR REGION
+ENC V5G M6G < 0.09 ABUT < 90 SINGULAR REGION
+}
+GR_13++++++++++++++++++++++
+
+@ Min TV1/TV2 (both square via and slot patterns) enclosure by TM1/TM2 in guard ring is 0.09
+@NOTICE: It is a guidelines rule.
+ENC TV1G TM1G < 0.09 ABUT < 90 SINGULAR REGION
+ENC TV2G TM2G < 0.09 ABUT < 90 SINGULAR REGION
+}
+GR_14++++++++++++++++++++++
+
+@ Min TV1/TV2 (both square via and slot patterns) enclosure by Mn in guard ring (Mn presents metal layer right beneath TV1/TV2) is 0.09
+@NOTICE: It is a guidelines rule.
+ENC TV1G M6G < 0.09 ABUT < 90 SINGULAR REGION
+ENC TV2G TM1G < 0.09 ABUT < 90 SINGULAR REGION
+}
+GR_16++++++++++++++++++++++
+
+@ Min Isolation space between active patterns (AA/GT/METAL/RDL) and internal metal ring edge is 1
+@NOTICE: It is a guidelines rule.
+EXT (AA NOT INSIDE MARKGi) MG_RING_INNER < 1 ABUT < 90 SINGULAR REGION
+EXT (GT NOT INSIDE MARKGi) MG_RING_INNER < 1 ABUT < 90 SINGULAR REGION
+EXT MA_ALL_G MG_RING_INNER < 1 ABUT < 90 SINGULAR REGION
+EXT (RDL NOT INSIDE MARKGi) MG_RING_INNER < 1 ABUT < 90 SINGULAR REGION
+}
+GR_17++++++++++++++++++++++
+
+@ No dummy patterns (AA/GT/METAL/RDL) are allowed inside isolation areas
+@NOTICE: It is a guidelines rule.
+AND MARKGi AADUM
+AND MARKGi GTDUM
+AND MARKGi MDUM_ALL
+}
+GR_18++++++++++++++++++++++
+
+@ Min Passivation slot width ("RDL via" is recommended as drawing layer) in guard ring is 2
+@NOTICE: It is a guidelines rule.
+INT RDLVIAG < 2 ABUT < 90 SINGULAR REGION
+}
+GR_19++++++++++++++++++++++
+
+@ Min Passivation slot  (RDL via) enclosure by Al pattern (RDL) in guard ring is 1
+@NOTICE: It is a guidelines rule.
+ENC RDLVIAG RDL < 1 ABUT < 90 SINGULAR REGION
+}
+GR_20++++++++++++++++++++++
+
+@ Min Passivation slot (RDL via) enclosure by TM2 in guard ring is 0.5
+@NOTICE: It is a guidelines rule.
+ENC RDLVIAG TM2 < 0.5 ABUT < 90 SINGULAR REGION
+}
+ALF_1++++++++++++++++++++++
+
+@ AL fuse element width is 0.8
+@NOTICE: It is a guidelines rule.
+NOT ENCLOSE RECTANGLE ALFUSE 0.8 4
+}
+ALF_2++++++++++++++++++++++
+
+@ AL fuse element length is 4.0
+@NOTICE: It is a guidelines rule.
+ALFUSE NOT WITH EDGE Al_fuse_1 >= 2
+RDLVIA_1 = RDLVIA INTERACT ALFUSE
+X = EXT RDLVIA_1 < 5.2 ABUT<90 SINGULAR REGION OPPOSITE
+(X INTERACT ALFUSE == 1) NOT TM2
+}
+ALF_3++++++++++++++++++++++
+
+@ Space between AL fuse elements is 4.0
+@NOTICE: It is a guidelines rule.
+EXT Alfuse_edge < 4.0 ABUT<90 REGION
+EXT Alfuse_edge_1 < 4.0 ABUT<90 REGION
+}
+ALF_4++++++++++++++++++++++
+
+@ Space between fuse edge and p-well edge is 8.0
+@NOTICE: It is a guidelines rule.
+EXT ALFUSE NW < 8.0 ABUT<90 REGION
+}
+ALF_5++++++++++++++++++++++
+
+@ AL fuse must be connected to GT through stacked via/contact
+@NOTICE: It is a guidelines rule.
+GT_FUSE = GT INTERACT Stack_Vn
+X = ALFUSE INTERACT GT_FUSE == 2
+ALFUSE NOT X
+}
+ALF_7++++++++++++++++++++++
+
+@ No AA/Poly/Metal dummy patterns are allowed in Fuse area covered by MARKF
+@NOTICE: It is a guidelines rule.
+AADUM AND MARKF
+GTDUM AND MARKF
+M1DUM AND MARKF
+M2DUM AND MARKF
+M3DUM AND MARKF
+M4DUM AND MARKF
+M5DUM AND MARKF
+M6DUM AND MARKF
+TM1DUM AND MARKF
+TM2DUM AND MARKF
+}
+SV_1++++++++++++++++++++++
+
+@ CT enclosure by GT is 0.145
+@NOTICE: It is a guidelines rule.
+ENC CTFUSE GT < 0.145 ABUT<90 SINGULAR OUTSIDE ALSO
+}
+SV_2++++++++++++++++++++++
+
+@ CT enclosure by M1 is 0.145
+@NOTICE: It is a guidelines rule.
+ENC CTFUSE M1 < 0.145 ABUT<90 SINGULAR OUTSIDE ALSO
+}
+SV_3++++++++++++++++++++++
+
+@ Vn enclosure by Mn or Mn+1 for stacked via is 0.145
+@NOTICE: It is a guidelines rule.
+ENC V1FUSE M1 < 0.145 ABUT<90 SINGULAR OUTSIDE ALSO
+ENC V1FUSE M2 < 0.145 ABUT<90 SINGULAR OUTSIDE ALSO
+ENC V2FUSE M2 < 0.145 ABUT<90 SINGULAR OUTSIDE ALSO
+ENC V2FUSE M3 < 0.145 ABUT<90 SINGULAR OUTSIDE ALSO
+ENC V3FUSE M3 < 0.145 ABUT<90 SINGULAR OUTSIDE ALSO
+ENC V3FUSE M4 < 0.145 ABUT<90 SINGULAR OUTSIDE ALSO
+ENC V4FUSE M4 < 0.145 ABUT<90 SINGULAR OUTSIDE ALSO
+ENC V4FUSE M5 < 0.145 ABUT<90 SINGULAR OUTSIDE ALSO
+ENC V5FUSE M5 < 0.145 ABUT<90 SINGULAR OUTSIDE ALSO
+ENC V5FUSE M6 < 0.145 ABUT<90 SINGULAR OUTSIDE ALSO
+}
+SV_4++++++++++++++++++++++
+
+@ TV1/TV2 enclosure by TM1/TM2 for stacked via is 0.10
+@NOTICE: It is a guidelines rule.
+ENC TV1FUSE TM1 < 0.10 ABUT<90 SINGULAR OUTSIDE ALSO
+ENC TV2FUSE TM1 < 0.10 ABUT<90 SINGULAR OUTSIDE ALSO
+ENC TV2FUSE TM2 < 0.10 ABUT<90 SINGULAR OUTSIDE ALSO
+}
+SV_5++++++++++++++++++++++
+
+@ TV1 enclosure by Mn for stack via is 0.10
+@NOTICE: It is a guidelines rule.
+ENC TV1FUSE M6 < 0.10 ABUT<90 SINGULAR OUTSIDE ALSO
+}
+SV_6++++++++++++++++++++++
+
+@ RDL via enclosure by TM for stack via is 0.60
+@NOTICE: It is a guidelines rule.
+ENC RDLVF TM2 < 0.60 ABUT<90 SINGULAR OUTSIDE ALSO
+}
+SV_7++++++++++++++++++++++
+
+@ RDL via enclosure by RDL for stacked via is 0.60
+@NOTICE: It is a guidelines rule.
+ENC RDLVF RDL < 0.60 ABUT<90 SINGULAR OUTSIDE ALSO
+}
+SV_8++++++++++++++++++++++
+
+@ RDL via width and length is 1.5
+@NOTICE: It is a guidelines rule.
+INT RDLVF < 1.5 ABUT<90 SINGULAR REGION
+}
+Fuse_1_2++++++++++++++++++++++
+
+@ Fuse window width is 5.0, length is 20.0
+@NOTICE: It is a guidelines rule.
+NOT ENCLOSE RECTANGLE (FUSE AND MARKF) 5 20
+}
+Fuse_3++++++++++++++++++++++
+
+@ Space between fuse window and protection ring is 1.50
+@NOTICE: It is a guidelines rule.
+EXT FUSE GM1 < 1.50 ABUT<90 SINGULAR REGION
+EXT FUSE GM2 < 1.50 ABUT<90 SINGULAR REGION
+EXT FUSE GM3 < 1.50 ABUT<90 SINGULAR REGION
+EXT FUSE GM4 < 1.50 ABUT<90 SINGULAR REGION
+EXT FUSE GM5 < 1.50 ABUT<90 SINGULAR REGION
+EXT FUSE GM6 < 1.50 ABUT<90 SINGULAR REGION
+EXT FUSE GTM1 < 1.50 ABUT<90 SINGULAR REGION
+EXT FUSE GTM2 < 1.50 ABUT<90 SINGULAR REGION
+EXT FUSE GRDL < 1.50 ABUT<90 SINGULAR REGION
+}
+Fuse_4++++++++++++++++++++++
+
+@ Space between fuse edge and fuse window is 3.5
+@NOTICE: It is a guidelines rule.
+ENC Alfuse_edge FUSE < 3.5 ABUT<90 REGION
+ENC Alfuse_edge_1 FUSE < 3.5 ABUT<90 REGION
+}
+Mark_1++++++++++++++++++++++
+
+@ L mark minimum width is 10.0
+@NOTICE: It is a guidelines rule.
+INT LMARK < 10.0 ABUT<90 SINGULAR REGION
+}
+Mark_2++++++++++++++++++++++
+
+@ L mark maximum width is 20.0
+@NOTICE: It is a guidelines rule.
+LMARK WITH WIDTH > 20.0
+}
+Mark_4++++++++++++++++++++++
+
+@ L mark maximum length is 50.0
+@NOTICE: It is a guidelines rule.
+LENGTH LMARK >50
+}
+Mark_5++++++++++++++++++++++
+
+@ Minimum space between L mark and FUSE window is 10.0
+@NOTICE: It is a guidelines rule.
+ENC LMARK FUSE < 10.0 ABUT<90 SINGULAR REGION
+}
+Mark_6++++++++++++++++++++++
+
+@ Minimum space between FUSE window and protection ring is 1.5
+@NOTICE: It is a guidelines rule.
+EXT FUSE Stack_MR < 1.50 ABUT<90 SINGULAR REGION
+}
+AADUMCK_1++++++++++++++++++++++
+
+@ AADUM width for interconnect is 0.08 (AA.1)
+@ Space between AADUM that are on the same well is 0.10 (AA.3a)
+@ Space between AADUM with one or both AA width greater than 0.15um that are on the same well is 0.11(AA.3b)
+@ AADUM area is 0.038 (AA.8)
+@ Minimum space between dummy AA2 and NW edge (DUMNW) is 0.3um.(AADUM.19)
+@ Minimum space between dummy AA2 and GTFUSE is 3.2um.(AADUM.21)
+@ AADUM cross NW is not allow.(AADUM.26)
+INT AADUM < 0.08 REGION
+EXT AADUM < 0.10 REGION
+Y = AADUM WITH WIDTH > 0.15
+EXT Y AADUM < 0.11 SINGULAR REGION
+AREA AADUM < 0.038
+EXT AADUM NWi < 0.3 ABUT < 90 REGION
+ENC AADUM NWi < 0.3 ABUT < 90 REGION
+EXT AADUM GTFUSE < 3.2 ABUT < 90 REGION INSIDE ALSO
+AADUM CUT NWi
+}
+AADUMCK_2++++++++++++++++++++++
+
+@ Space between AADUM and AA that are on the same well is 0.10 (AA.3a)
+@ Space between AADUM and AA with one or both AA width greater than 0.15um that are on the same well is 0.11(AA.3b)
+Y = EXT AADUM AAi < 0.10 REGION INSIDE ALSO
+Y NOT INSIDE INST
+C = AA WITH WIDTH > 0.15
+Z = AADUM WITH WIDTH > 0.15
+B = EXT C AADUM < 0.11 SINGULAR REGION
+B NOT INSIDE INST
+EXT Z AAi < 0.11 SINGULAR REGION
+}
+AADUMCK_3++++++++++++++++++++++
+
+@ Space between AADUM and GT on field oxide is 0.05 (GT.4)
+EXT AADUM (GTi NOT AAi) < 0.05 REGION INSIDE ALSO
+}
+AADUMCK_4++++++++++++++++++++++
+
+@ AA dummy patterns cannot touch AA main patterns
+AADUM INTERACT AAi
+}
+AADUMCK_5_6++++++++++++++++++++++
+
+@ No AA dummy pattern is allowed to inside RESAA/RESNW/RESP1/VARMOS/MARKG/MARKF/MARKS covered areas.
+@ Space between dummy AA and RESAA/RESNW/RESP1/VARMOS/MARKG/MARKF/MARKS layers is 0.4.
+EXT AADUM RESAA < 0.4 REGION INSIDE ALSO
+EXT AADUM RESNW < 0.4 REGION INSIDE ALSO
+EXT AADUM RESP1 < 0.4 REGION INSIDE ALSO
+EXT AADUM MARKF < 0.4 REGION INSIDE ALSO
+EXT AADUM MARKG < 0.4 REGION INSIDE ALSO
+EXT AADUM MARKS < 0.4 REGION INSIDE ALSO
+EXT AADUM VARMOS < 0.4 REGION INSIDE ALSO
+}
+GTDUMCK_1++++++++++++++++++++++
+
+@ Interconnect GTDUM width is 0.06um.(GT.2)
+@ Space between two GTDUMs is 0.12.(GT.3a)
+@ Space between two parallel GTDUMs(parallel area length is >=0.5um)with one or both line parallel area width is >= 0.4, min. space is 0.16(GT.3b)
+@ Minimum space between dummy poly2 and GTFUSE is 3.24um.(PODUM.21)
+@ No dummy poly pattern is allowed to exist above AA circuit pattern (not including dummy AA).(PODUM.24)
+@ Poly dummy is either adding overlap with AA dummy or on STI.(PODUM.25)
+INT GTDUM < 0.06 REGION
+EXT GTDUM < 0.12 REGION
+GTDUM_W = WITH WIDTH GTDUM >= 0.4
+GTDUM_S = EXT GTDUM_W GTDUM < 0.16 OPPOSITE REGION PARA ONLY
+GTDUM_LS = LENGTH GTDUM_S >= 0.5
+GTDUM_S WITH EDGE GTDUM_LS
+EXT GTDUM GTFUSE < 3.24 REGION INSIDE ALSO
+GTDUM AND AA
+(GTDUM INTERACT AADUM) NOT AADUM
+}
+GTDUMCK_2++++++++++++++++++++++
+
+@ Space between GTDUM and GT is 0.12.(GT.3a)
+@ Space between two parallel GTDUM and GT (parallel area length is >=0.5um)with one or both line parallel area width is >= 0.4, min. space is 0.16(GT.3b)
+EXT GTDUM GTi < 0.12 REGION INSIDE ALSO
+GT_W = WITH WIDTH GT >= 0.4
+GT_S = EXT GT_W GTDUM < 0.16 OPPOSITE REGION PARA ONLY
+GT_LS = LENGTH GT_S >= 0.5
+(GT_S WITH EDGE GT_LS) NOT INSIDE INST
+GTDUM_W = WITH WIDTH GTDUM >= 0.4
+GTDUM_S = EXT GTDUM_W GTi < 0.16 OPPOSITE REGION PARA ONLY
+GTDUM_LS = LENGTH GTDUM_S >= 0.5
+GTDUM_S WITH EDGE GTDUM_LS
+}
+GTDUMCK_3++++++++++++++++++++++
+
+@ Space between AA and GTDUM on field oxide is 0.05.(GT.4)
+EXT AAi GTDUM < 0.05 REGION INSIDE ALSO
+}
+GTDUMCK_4++++++++++++++++++++++
+
+@ GT dummy patterns cannot touch GT main patterns
+GTDUM TOUCH EDGE GTi
+}
+GTDUMCK_5_6++++++++++++++++++++++
+
+@ No dummy pattern is allowed to inside RESAA/RESNW/RESP1/MARKF/MARKG/MARKS/VARMOS covered areas.
+@ Space between dummy poly2 and RESAA/RESNW/RESP1/MARKF/MARKG/MARKS/VARMOS layers is 0.44.
+EXT GTDUM RESAA < 0.44 REGION INSIDE ALSO
+EXT GTDUM RESNW < 0.44 REGION INSIDE ALSO
+EXT GTDUM RESP1 < 0.44 REGION INSIDE ALSO
+EXT GTDUM MARKF < 0.44 REGION INSIDE ALSO
+EXT GTDUM MARKG < 0.44 REGION INSIDE ALSO
+EXT GTDUM MARKS < 0.44 REGION INSIDE ALSO
+EXT GTDUM VARMOS < 0.44 REGION INSIDE ALSO
+}
+MnDUMCK_1_2++++++++++++++++++++++
+
+@ M1DUM width is 0.09(M1.1)
+@ Space between two M1DUM is 0.09(M1.2a)
+@ Space between two (M1DUM or M1i) having run length >=2um with one or both M1DUM width orlength >=1um is 0.16(M1.2b)
+@ Space between two (M1DUM or M1i) having run length >=2um with one or both M1DUM width orlength >=5um is 0.50(M1.2c)
+@ Max M1DUM line width allowed is 12(M1.3)
+@ M1DUM area is 0.027(M1.4)
+@ Dielectric area enclosure by M1DUM is 0.13.(M1.5)
+INT M1DUM < 0.09 REGION
+EXT M1DUM < 0.09 SINGULAR REGION
+CMACRO Mn_2b_DUM M1ALL M1DUM 2 1 0.16
+CMACRO Mn_2c_DUM M1ALL M1DUM 2 5 0.5
+M1DUM WITH WIDTH > 12
+AREA M1DUM < 0.027
+X = HOLES M1DUM
+AREA X < 0.13
+}
+MnDUMCK_3_4++++++++++++++++++++++
+
+@ MnDUM (n=2~8) width is 0.10(Mn.1)
+@ Space between two MnDUM (n=2~8) is 0.10(Mn.2a)
+@ Space between two (MnDUM (n=2~8) or Mni) having run length >=2um with one or both MnDUM width orlength >=1um is 0.16(Mn.2b)
+@ Space between two (MnDUM (n=2~8) or Mni) having run length >=2um with one or both MnDUM width orlength >=5um is 0.50(M1.2c)
+@ Max MnDUM (n=2~8) line width allowed is 12(Mn.3)
+@ MnDUM (n=2~8) area is 0.035(Mn.4)
+@ Dielectric area enclosure by MnDUM (n=2~8) is 0.12.(Mn.5)
+INT M2DUM < 0.10 REGION
+INT M3DUM < 0.10 REGION
+INT M4DUM < 0.10 REGION
+INT M5DUM < 0.10 REGION
+INT M6DUM < 0.10 REGION
+INT M7DUM < 0.10 REGION
+INT M8DUM < 0.10 REGION
+EXT M2DUM < 0.10 SINGULAR REGION
+EXT M3DUM < 0.10 SINGULAR REGION
+EXT M4DUM < 0.10 SINGULAR REGION
+EXT M5DUM < 0.10 SINGULAR REGION
+EXT M6DUM < 0.10 SINGULAR REGION
+EXT M7DUM < 0.10 SINGULAR REGION
+EXT M8DUM < 0.10 SINGULAR REGION
+CMACRO Mn_2b_DUM M2ALL M2DUM 2 1 0.16
+CMACRO Mn_2c_DUM M2ALL M2DUM 2 5 0.5
+CMACRO Mn_2b_DUM M3ALL M3DUM 2 1 0.16
+CMACRO Mn_2c_DUM M3ALL M3DUM 2 5 0.5
+CMACRO Mn_2b_DUM M4ALL M4DUM 2 1 0.16
+CMACRO Mn_2c_DUM M4ALL M4DUM 2 5 0.5
+CMACRO Mn_2b_DUM M5ALL M5DUM 2 1 0.16
+CMACRO Mn_2c_DUM M5ALL M5DUM 2 5 0.5
+CMACRO Mn_2b_DUM M6ALL M6DUM 2 1 0.16
+CMACRO Mn_2c_DUM M6ALL M6DUM 2 5 0.5
+M7ALL = M7i OR M7DUM
+CMACRO Mn_2b_DUM M7ALL M7DUM 2 1 0.16
+CMACRO Mn_2c_DUM M7ALL M7DUM 2 5 0.5
+M8ALL = M8i OR M8DUM
+CMACRO Mn_2b_DUM M8ALL M8DUM 2 1 0.16
+CMACRO Mn_2c_DUM M8ALL M8DUM 2 5 0.5
+M2DUM WITH WIDTH > 12
+M3DUM WITH WIDTH > 12
+M4DUM WITH WIDTH > 12
+M5DUM WITH WIDTH > 12
+M6DUM WITH WIDTH > 12
+M7DUM WITH WIDTH > 12
+M8DUM WITH WIDTH > 12
+AREA M2DUM < 0.035
+AREA M3DUM < 0.035
+AREA M4DUM < 0.035
+AREA M5DUM < 0.035
+AREA M6DUM < 0.035
+AREA M7DUM < 0.035
+AREA M8DUM < 0.035
+A = HOLES M2DUM
+AREA A < 0.12
+B = HOLES M3DUM
+AREA B < 0.12
+C = HOLES M4DUM
+AREA C < 0.12
+D = HOLES M5DUM
+AREA D < 0.12
+E = HOLES M6DUM
+AREA E < 0.12
+F = HOLES M7DUM
+AREA F < 0.12
+G = HOLES M8DUM
+AREA G < 0.12
+}
+MnDUMCK_5++++++++++++++++++++++
+
+@ MnDUM (n=1~8) metal can not be interacted with Mn metal design patterns.
+M1DUM INTERACT M1
+M2DUM INTERACT M2
+M3DUM INTERACT M3
+M4DUM INTERACT M4
+M5DUM INTERACT M5
+M6DUM INTERACT M6
+M7DUM INTERACT M7
+M8DUM INTERACT M8
+}
+MnDUMCK_6++++++++++++++++++++++
+
+@ MnDUM (n=1~8) patterns are not allowed inside MARKF, MARKG and MARKS covered areas.
+M1DUM AND ((MARKF OR MARKG) OR MARKS)
+M2DUM AND ((MARKF OR MARKG) OR MARKS)
+M3DUM AND ((MARKF OR MARKG) OR MARKS)
+M4DUM AND ((MARKF OR MARKG) OR MARKS)
+M5DUM AND ((MARKF OR MARKG) OR MARKS)
+M6DUM AND ((MARKF OR MARKG) OR MARKS)
+M7DUM AND ((MARKF OR MARKG) OR MARKS)
+M8DUM AND ((MARKF OR MARKG) OR MARKS)
+}
+TM1DUMCK_1_2++++++++++++++++++++++
+
+@ TM1DUM width is 0.40(TM1.1)
+@ Space between two TM1s or TM1DUMs  is 0.40.(TM1.2a)
+@ Space between two TM1s or TM1DUMs having parallel segment >=2um with one or both width >=2um is 0.50um (TM1.2b)
+@ TM1DUM area is 0.40.(TM1.3)
+@ Dielectric area enclosed by TM1DUM is 0.6 (TM1.4)
+INT TM1DUM < 0.40 REGION
+EXT TM1DUM < 0.40 REGION
+EXT TM1 TM1DUM < 0.40 REGION
+CMACRO Mn_2b_DUM TM1ALL TM1DUM 2 2 0.5
+AREA TM1DUM < 0.40
+X = HOLES TM1DUM
+AREA X < 0.6
+}
+TM1DUMCK_3++++++++++++++++++++++
+
+@ TM1DUM  metal can not be interacted with TM1 metal design patterns.
+TM1DUM INTERACT TM1
+}
+TM1DUMCK_4++++++++++++++++++++++
+
+@ TM1DUM  patterns are not allowed inside MARKF, MARKG and MARKS covered areas.
+TM1DUM AND ((MARKF OR MARKG) OR MARKS)
+}
+STM1DUMCK_1_2++++++++++++++++++++++
+
+@ STM1DM width is 0.20 (STM1.1)
+@ Space between two STM1DMs or STM1 is 0.20 (STM1.2a)
+@ Space between two TM1s having parallel segment >=0.4um with one or both width >=0.4um is 0.25um (STM1.2b)
+@ Space between two TM1s having parallel segment >=2um with one or both width >=2um is 0.40um (STM1.2c)
+@ Space between two TM1s having parallel segment >=2um with one or both width >=10um is 0.50um (STM1.2d)
+@ STM1DM area is 0.12(STM1.3)
+@ Dielectric area enclosed by STM1DM is 0.26 (STM1.4)
+@ STM1DM Max. width allowed is 20 (STM1.5)
+@ Space between STM1DM metal line with one or both are 45 degree bent metal line is 0.22 (STM1.7)
+INT STM1DM < 0.20 SINGULAR REGION
+EXT STM1DM < 0.20 SINGULAR REGION
+EXT STM1DM STM1 < 0.20 SINGULAR REGION
+STM1ALL = STM1 OR STM1DM
+CMACRO Mn_2b_DUM STM1ALL STM1DM 0.4 0.4 0.25
+CMACRO Mn_2b_DUM STM1ALL STM1DM 2 2 0.4
+CMACRO Mn_2c_DUM STM1ALL STM1DM 2 10 0.5
+AREA STM1DM < 0.12
+X = HOLES STM1DM
+AREA X < 0.26
+Y = STM1DM WITH WIDTH > 20.00
+Y NOT INTERACT PA
+Z = ANGLE STM1DM == 45
+EXT Z STM1DM < 0.22 REGION
+EXT Z STM1DM < 0.22 CORNER TO EDGE
+A = ANGLE STM1DM == 45
+EXT A STM1 < 0.22 REGION
+EXT A STM1 < 0.22 CORNER TO EDGE
+B = ANGLE STM1 == 45
+EXT B STM1DM < 0.22 REGION
+EXT B STM1DM < 0.22 CORNER TO EDGE
+}
+STM1DUMCK_3++++++++++++++++++++++
+
+@ STM1DM  metal can not be interacted with STM1 metal design patterns.
+STM1DM INTERACT STM1
+}
+STM1DUMCK_4++++++++++++++++++++++
+
+@ STM1DM  patterns are not allowed inside MARKF, MARKG and MARKS covered areas.
+STM1DM AND ((MARKF OR MARKG) OR MARKS)
+}
+TM2DUMCK_1_2++++++++++++++++++++++
+
+@ TM2DUM width  is 1.50 (MTT2.1)
+@ Min space between TM2DUM is 1.50 (MTT2.2a)
+@ Space between two TM2s or TM2DUMs having parallel segment larger than 2um with one or both width >=16um is 2.0 (MTT2.2b)
+@ Space between an inductor TM2DUM and other TM2DUM is 30 (MTT2.5)
+@ Min Metal area TM2DUM is 8.00 (MTT2.6)
+@ Dielectric area enclosed by TM2DUM is 6.0 (MTT2.7)
+INT TM2DUM < 1.50 SINGULAR REGION
+EXT TM2 TM2DUM < 1.50 SINGULAR REGION
+EXT TM2DUM < 1.50 SINGULAR REGION
+CMACRO Mn_2c_DUM TM2ALL TM2DUM 2.001 16 2
+EXT (TM2DUM AND INDMY) (TM2DUM NOT INDMY) < 30 OPPOSITE REGION
+AREA TM2DUM < 8.00
+X = HOLES TM2DUM
+AREA X < 6.0
+}
+TM2DUMCK_3++++++++++++++++++++++
+
+@ TM2DUM  metal can not be interacted with TM2 metal design patterns.
+TM2DUM INTERACT TM2
+}
+TM2DUMCK_4++++++++++++++++++++++
+
+@ TM2DUM  patterns are not allowed inside MARKF, MARKG and MARKS covered areas.
+TM2DUM AND ((MARKF OR MARKG) OR MARKS)
+}
+STM2DUMCK_1_2++++++++++++++++++++++
+
+@ STM2DM width is 0.20 (STM2.1)
+@ Space between two STM2s or STM2DM is 0.20 (STM2.2a)
+@ Space between two STM2s or STM2DM having parallel segment >=0.4um with one or both width >=0.4um is 0.25um (STM2.2b)
+@ Space between two STM2s or STM2DM having parallel segment >=2um with one or both width >=2um is 0.40um (STM2.2c)
+@ Space between two STM2s or STM2DM having parallel segment >=2um with one or both width >=10um is 0.50um (STM2.2d)
+@ STM2DM area is 0.12 (STM2.3)
+@ Dielectric area enclosed by STM2DM is 0.26 (STM2.4)
+@ STM2DM Max. width allowed is 30. Top metal bondpads can be waived(STM2.5)
+@ Space between STM2DM metal line with one or both are 45 degree bent metal line is 0.22 (STM2.6)
+INT STM2DM < 0.20 SINGULAR REGION
+EXT STM2 STM2DM < 0.20 SINGULAR REGION
+EXT STM2DM < 0.20 SINGULAR REGION
+STM2ALL = STM2 OR STM2DM
+CMACRO Mn_2b_DUM STM2ALL STM2DM 0.4 0.4 0.25
+CMACRO Mn_2b_DUM STM2ALL STM2DM 2 2 0.4
+CMACRO Mn_2c_DUM STM2ALL STM2DM 2 10 0.5
+AREA STM2DM < 0.12
+X = HOLES STM2DM
+AREA X < 0.26
+Y = STM2DM WITH WIDTH > 30.00
+Y NOT INTERACT PA
+Z = ANGLE STM2DM == 45
+EXT Z STM2DM < 0.22 REGION
+EXT Z STM2DM < 0.22 CORNER TO EDGE
+}
+STM2DUMCK_3++++++++++++++++++++++
+
+@ STM2DM  metal can not be interacted with STM2 metal design patterns.
+STM2DM INTERACT STM2
+}
+STM2DUMCK_4++++++++++++++++++++++
+
+@ STM2DM  patterns are not allowed inside MARKF, MARKG and MARKS covered areas.
+STM2DM AND ((MARKF OR MARKG) OR MARKS)
+}
+Convention_latchup.a++++++++++++++++++++++
+
+@Latchup.Guidance.3_a : Maximum space from any point within Source/Drain region to the nearest pickup AA region inside the same well for I/O and internal circuits.
+A = INT NTAPi < 0.005 ABUT INTERSECTING ONLY REGION
+B = (NTAPi INTERACT A) NOT A
+C = INT B < 0.001 ABUT INTERSECTING ONLY REGION
+D = (B INTERACT C) NOT C
+NW_MINUS_NTAP = SIZE D BY 30 INSIDE OF NWi STEP 0.38
+X = PMOS1 AND NWi
+OUTSIDE EDGE X NW_MINUS_NTAP
+}
+Convention_latchup.b++++++++++++++++++++++
+
+@Latchup.Guidance.3_b : Maximum space from any point within Source/Drain region to the nearest pickup AA region inside the same well for I/O and internal circuits
+A = INT PTAPi < 0.005 ABUT INTERSECTING ONLY REGION
+B = (PTAPi INTERACT A) NOT A
+C = INT B < 0.001 ABUT INTERSECTING ONLY REGION
+D = (B INTERACT C) NOT C
+PW_MINUS_PTAP = SIZE D BY 30 INSIDE OF PW STEP 0.38
+X = NMOS1 AND PW
+OUTSIDE EDGE X PW_MINUS_PTAP
+}

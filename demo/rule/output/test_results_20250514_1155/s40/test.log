@@ -1,0 +1,149 @@
+
+-----------------------s40:NW----------------------------
+
+**input**: rule:NW_1, comment:NW minimum width(parallel side to side width ,  The INST connected area apply SRAM design rule) is 0.33  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.33'}
+**input**: rule:NW_3, comment:Minimum space between two NW regions at the same net (with run length  >  0) is 0.33.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.33'}
+**input**: rule:NW_4, comment:Minimum space between two NW regions at different net is 0.60  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.60'}
+**input**: rule:NW_7, comment:NW minimum area is 0.70  
+**ouput**: {'classification': 'Area', 'symbol': 'N/A', 'value': '0.70'}
+**input**: rule:NW_8, comment:NW minimum enclosed area is 0.70  
+**ouput**: {'classification': 'Area', 'symbol': '==', 'value': '0.70'}
+**input**: rule:NW_9, comment:NW minimum space to N+AA (enclosure by TG or DG) is 0.22  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.22'}
+**input**: rule:NW_10, comment:NW enclosure of P+AA (enclosed by TG or DG)is 0.22  
+**ouput**: {'classification': 'Enclosure', 'symbol': 'N/A', 'value': '0.22'}
+**input**: rule:NW_11, comment:N+AA adjacent both two edges space opposite to NW is  >= 0.16. Both of two adjacent edges space to NW smaller than rule value is not permitted.  In schematic rule check method ,  E  =  0.08 ,  D = 0.16  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:NW_12, comment:NW enclosure opposite of P+AA adjacent both two edges is  >=  0.16. Both of two adjacent edges enclosed by NW smaller than rule value is not permitted.  In schematic rule check method ,  E  =  0.08 ,  D = 0.16  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:NW_13, comment:N+AA Minimum enclosure by NW is 0.08 ,  excluding LDMOS area.Waive ((AA interact RESNW) and SN)  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:NW_14, comment:Minimum Space between NW and N+AA inside PW is 0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.08'}
+**input**: rule:NW_15, comment:P+AA minimum enclosure by NW is 0.08 ,  excluding LDMOS area.  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:NW_16, comment:Minimum Space between NW and P+AA inside PW is 0.08 ,  excluding LDMOS area.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+
+-----------------------s40:AA----------------------------
+
+**input**: rule:AA_1, comment:AA minimum width(The INST connected area apply SRAMdesign rule) is 0.06  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.06'}
+**input**: rule:AA_1a, comment:AA minimum width of NMOS/PMOS for 0.9/1.1/1.2V transistor is 0.12  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.12'}
+**input**: rule:AA_2, comment:AA (enclosure by TG or DG) minimum width of NMOS/PMOS for 1.8/2.5v transistor is 0.32  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.32'}
+**input**: rule:AA_4a, comment:AA minimum space  is 0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:AA_4b_4c, comment:The space between two AA with gate along source/drain direction is  >= 0.1  ,  if one of AA width (W2)  >=  0.14um ,  and AA to AA run length Y1 >= 0.14um  The space between two AA with gate along gate poly direction is  >= 0.1 ,  if one of AA width (W3) >= 0.14um ,  and AA to AA run length Y2  >= 0.14um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.1'}
+**input**: rule:AA_4d, comment:Space between two AAs inside (DG OR TG) is 0.15  
+**ouput**: {'classification': 'Spacing', 'symbol': '===', 'value': '0.15'}
+**input**: rule:AA_9, comment:AA minimum area except floating AA is 0.02  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:AA_9a, comment:AA minimum area at floating AA is 0.015  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.015'}
+**input**: rule:AA_10, comment:DG ,  TG or core transistors mixed in the same AA are prohibited  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:AA_11, comment:It is not allow if N+AA/P+AA crossing the NW ,  excluding LDMOS area.waive the AA interact with RESNW  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:AA_12, comment:AA channel width of NMOS/PMOS for 0.9/1.1/1.2V transistor is  <= 50. Waive transistor inside VARMOS  
+**ouput**: {'classification': 'Width', 'symbol': '<=', 'value': '50'}
+**input**: rule:AA_13, comment:AA minimum enclosed area(um2) is 0.045  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.045'}
+**input**: rule:AA_14_a, comment:For area excluding (DG or TG) ,  AA density (including dummy)is 25%. Density check window size  200um*200um with step size  100um.  Waive RESNW ,  LOGO ,  seal ring(MARKS) areas  DRC check with the said window size and rule number and highlight as X. Y  =  X not (DG or TG) ,  Z =  (Y area)/(100*100)  If Z  >  25% ,  highlight Y for AA density inside of Y that cannot meet of rule value requirement.  
+**ouput**: {'classification': 'Area', 'symbol': '>', 'value': '0.25'}
+**input**: rule:AA_14_b, comment:For area excluding (DG or TG) ,  AA density (including dummy)is 80%. Density check window size  200um*200um with step size  100um.  Waive RESNW ,  LOGO ,  seal ring(MARKS) areas  DRC check with the said window size and rule number and highlight as X. Y  =  X not (DG or TG) ,  Z =  (Y area)/(100*100)  If Z  >  25% ,  highlight Y for AA density inside of Y that cannot meet of rule value requirement.  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.8'}
+**input**: rule:AA_14a_a, comment:For area in of (DG or TG) ,  AA density (including dummy). Density check window size  200um*200um with step size 100um  DRC check with the said window size and rule number and highlight as X.  Y  =  X and (DG or TG) ,  Z =  (Y area)/(100*100)  If Z  >  25% ,  highlight Y for AA density inside of Y outside of rule value requirement  
+**ouput**: {'classification': 'Area', 'symbol': '>', 'value': '25'}
+**input**: rule:AA_14a_b, comment:For area in of (DG or TG) ,  AA density (including dummy). Density check window size  200um*200um ,  step size  100um	Min  25% Max  90%  DRC check with the said window size and rule number and highlight as X.  Y  =  X and (DG or TG)  Highlight AA density inside of Y outside of rule value requires  
+
+
+To address the problem of representing both minimum and maximum constraints for the density check in a single design rule while adhering to the output format constraints, we can structure the JSON objects separately for each condition. Each condition (minimum and maximum) will be represented by its own JSON object under the same classification.
+
+**Step-by-Step Explanation:**
+
+1. **Classification Identification**: The design rule pertains to an area check due to the density percentage constraints.
+2. **Extracting Constraints**: The rule specifies a minimum density of 25% (>=25) and a maximum density of 90% (<=90).
+3. **Separate Representation**: Each constraint is represented as a separate JSON object under the same classification.
+
+**JSON Output:**
+
+```json
+[
+  {
+    "classification": "Area",
+    "symbol": ">=",
+    "value": 25
+  },
+  {
+    "classification": "Area",
+    "symbol": "<=",
+    "value": 90
+  }
+]
+```
+
+This approach ensures both constraints are clearly captured, adhering to the specified output format.
+Traceback (most recent call last):
+  File "/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/run_rule.py", line 34, in <module>
+    rf.extract_rules()
+  File "/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/ipmigration/rule/svrf_reader.py", line 559, in extract_rules
+    self.parse_data(df)
+  File "/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/ipmigration/rule/svrf_reader.py", line 599, in parse_data
+    response = client.chat(self.model, messages)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/ollama/_client.py", line 333, in chat
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/ollama/_client.py", line 178, in _request
+    return cls(**self._request_raw(*args, **kwargs).json())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/ollama/_client.py", line 118, in _request_raw
+    r = self._client.request(*args, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/icdesign/ams/ip_migration/tools/anaconda3/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

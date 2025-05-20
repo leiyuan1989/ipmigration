@@ -1,0 +1,222 @@
+design rule,layer,layer description,rule description,classification,symbol,value
+NW.W.1,NW,N-Well,Width  >=  0.34  ,Width,>=,0.34
+NW.S.1,NW,N-Well,Space  >=  0.34  ,Spacing,>=,0.34
+NW.S.2,NW,N-Well,Space of two NW1V with different potentials (*)  >=  0.8  ,Spacing,>=,0.8
+NW.S.3,NW,N-Well,NW1V space to NW2V with different potentials (*)  >=  1  ,Spacing,>=,1
+NW.S.4,NW,N-Well,Space of two NW2V with different potentials (*)  >=  1  ,Spacing,>=,1
+NW.S.5,NW,N-Well,Space to PW STRAP  >=  0.08  ,Spacing,>=,0.08
+NW.S.6,NW,N-Well,Space to N+ ACTIVE (except NW resistor)  >=  0.08  ,Spacing,>=,0.08
+NW.S.6.1,NW,N-Well,Space to N+ ACTIVE [at least one edge at each corner] (except NW resistor)  >=  0.16  ,Spacing,>=,0.16
+NW.S.7,NW,N-Well,Space to {N+ ACTIVE interact with OD2}  >=  0.22  ,Spacing,>=,0.22
+NW.EN.1,NW,N-Well,Enclosure of NW STRAP (except NW resistor)  >=  0.08  ,Enclosure,>=,0.08
+NW.EN.2,NW,N-Well,Enclosure of P+ ACTIVE  >=  0.08  ,Enclosure,>=,0.08
+NW.EN.2.1,NW,N-Well,Enclosure of P+ ACTIVE [at least one edge at each corner]  >=  0.16  ,Enclosure,>=,0.16
+NW.EN.3,NW,N-Well,Enclosure of {P+ ACTIVE interact with OD2}  >=  0.22  ,Enclosure,>=,0.22
+NW.A.1,NW,N-Well,Area  >=  0.64  ,Area,>=,0.64
+NW.A.2,NW,N-Well,Enclosed area  >=  0.64  ,Enclosure,>=,0.64
+OD.W.1,OD,Active,Width  >=  0.06  ,Width,>=,0.06
+OD.W.2,OD,Active,Channel width of core device  >=  0.12  ,Width,>=,0.12
+OD.W.2.1,OD,Active,"Maximum channel width of core NMOS device for GS and LPG G device  <=  10 (This rule doesn't include the NT_N ,  SR_ESD ,  VAR)  ",Width,<=,10
+OD.W.2.2,OD,Active,"Maximum channel width for core PMOS device for GS  <=  1.5 (This rule doesn't include the NT_N ,  SR_ESD ,  VAR)  ",Width,<=,1.5
+OD.W.3,OD,Active,Channel width of MOS [for I/O device]  >=  0.32  ,Width,>=,0.32
+OD.W.4,OD,Active,Min. width of 45 degree bent OD 0.17 um  ,Width,>=,0.17
+OD.S.1,OD,Active,Space  >=  0.08  ,Spacing,>=,0.08
+OD.S.2,OD,Active,Space (inside OD2)  >=  0.15 um  ,Spacing,>=,0.15
+OD.S.3,OD,Active,Space to OD [width  >  0.12 um] if the parallel length  >=  0.14 um (P)  >=  0.10  ,Spacing,>=,0.14
+OD.S.3.1,OD,Active,Space to OD [width  >  0.12 um] if the parallel length  >=  0.14 um (P1) in PO gate direction  >=  0.11  ,Spacing,>,0.12
+OD.S.4,OD,Active,Space to 45-degree bent OD  >=  0.17  ,Spacing,>=,0.17
+OD.S.5,OD,Active,Space between two segments of a U-shape or an O-shape OD (notch only)  >=  0.15  ,Spacing,>=,0.15
+OD.A.1,OD,Active,Area (This check doesn't include the patterns filling 0.06 um x 0.26 um rectangular tile)  >=  0.035  ,Area,>=,0.035
+OD.A.2,OD,Active,Area [with all of edge length  <  0.21 um]  >=  0.055  ,Area,>=,0.055
+OD.A.3,OD,Active,Enclosed area  >=  0.04  ,Area,>=,0.04
+OD.A.4,OD,Active,Enclosed area [with all of inner edge length  <  0.21 um]  >=  0.077  ,Area,>=,0.077
+OD.A.5,OD,Active,Maximum ACTIVE area sum of ((checking Area INTERACT PO) NOT (PO OR SR_DPO)) in same checking Area  <=  300. Checking area is defined by size 0.22um in S/D direction and 0.08um in endcap direction from gate  ,Area,<=,300
+OD.L.1,OD,Active,"Length of active with width  <  0.12 um ,  connected to butted strap  <=  0.4 um  ",Length,<=,0.4
+OD.L.2,OD,Active,Max. OD length between 2 CO or CO to OD line end when OD width  <=  0.12 um  60.0 um  ,Length,<=,60.0
+OD.R.1,OD,Active,OD must be fully covered by {NP OR PP} except for {(DOD OR SR_DOD) OR NWDMY}  ,Enclosure,N/A,N/A
+OD.DN.1,OD,Active,{OD OR DOD} density across full chip  >=  25%  ,Density,>=,25
+OD.DN.1.1,OD,Active,{OD OR DOD} density across full chip  <=  75%  ,Density,<=,75
+OD.DN.2,OD,Active,Min. OD density over window 150 step 75  >=  20%  ,Density,>=,20
+OD.DN.2.2,OD,Active,Max. OD density over window 150 step 75  <=  90%  ,Density,<=,90
+OD.DN.2.1,OD,Active,Max. OD density over window 150 step 75  <=  80% in core  ,Density,<=,80
+OD.DN.3,OD,Active,Min. OD density over window 150 step 75  >=  20% (within ODBLK)  ,Density,>=,20
+OD.DN.3.2,OD,Active,Max. OD density over window 150 step 75  <=  90% (within ODBLK)  ,Density,<=,90
+OD.DN.3.1,OD,Active,Max. OD density over window 150 step 75  <=  80% in core (within ODBLK)  ,Density,<=,80
+PO.W.1,PO,Poly,Width  >=  0.04  ,Width,>=,0.04
+PO.W.2,PO,Poly,"Channel length of 2.5V MOS (for 2.5V overdrive to 3.3V ,  please refer to section OD25_33 Layout Rules)  >=  0.27  ",Length,>=,0.27
+PO.W.3,PO,Poly,Channel length of 3.3V MOS  >=  0.42 um  ,Length,>=,0.42
+PO.W.4,PO,Poly,"Channel length of 1.8 V MOS (For 2.5V underdrive to 1.8V ,  please refer to section OD25_18 Layout Rules. For 1.8V underdrive to 1.5V ,  please refer to section OD18_15 Layout Rules.)  >=  0.15  ",Length,>=,0.15
+PO.W.7,PO,Poly,"Width of 45-degree FIELD PO (except PO fuse element ,  POFUSE ,  156;0). (Please make sure the vertex of 45 degree pattern is on 5nm grid (refer to the rule ,  G.6U ,  in section 3.7))  >=  0.17  ",Width,>=,0.17
+PO.S.1,PO,Poly,Space  >=  0.10  ,Spacing,>=,0.10
+PO.S.3,PO,Poly,{GATE inside OD2} space in the same OD  >=  0.22  ,Spacing,>=,0.22
+PO.S.4,PO,Poly,FIELD PO space to OD (except CSRDMY (166;0) region)  >=  0.03  ,Spacing,>=,0.03
+PO.S.4.1,PO,Poly,Gate space [L-shape OD and L-shape PO enclosed area  <  0.0121 um2 ]  >=  0.11  ,Spacing,>=,0.11
+PO.S.6.1,PO,Poly,L-shape PO space to OD when PO and OD are in the same MOS [L-shape PO length  >  0.06 um (R1) and L-shape PO length  <=  0.1 um (R1)]  >=  0.05  ,Spacing,>=,0.05
+PO.S.7,PO,Poly,"Space if at least one {PO OR SR_DPO} width  >  0.12 um ,  and the {PO OR SR_DPO} parallel run length  >  0.14 um (individual projection).  >=  0.16  ",Spacing,>=,0.16
+PO.S.9,PO,Poly,Space [in same RPO]  >=  0.18  ,Spacing,>=,0.18
+PO.S.10,PO,Poly,"Space at {PO OR SR_DPO} line-end (W  < 0.07 um (Q1)) in a dense-line-end configuration  If {PO OR SR_DPO} has parallel run length with opposite {PO OR SR_DPO} (measured with T1  =  0.035 um extension) along 2 adjacent edges of {PO OR SR_DPO} [any one edge  <  Q1 distance from the corner of the two edges] ,  then one of the space (S1 or S2) needs to be at least this value (This check doesn't include small jog with edge length  <  0.04 um (R))  >=  0.11  ",Spacing,>=,0.11
+PO.S.15,PO,Poly,"Large PO to gate [channel length  <=  0.08 um] space. The large PO is defined as PO area  >=  630 um2 and interact with regions of density  >  70% in window 30 um x 30 um ,  stepping 15 um. DPO will be excluded from density check. 1.0  ",Spacing,<=,0.08
+PO.S.16,PO,Poly,Space to 45-degree bent {PO OR SR_DPO}  >=  0.17  ,Spacing,>=,0.17
+PO.EX.1,PO,Poly,Extension on OD (end-cap)  >=  0.09  ,Extension,>=,0.09
+PO.EX.2,PO,Poly,OD extension on PO  >=  0.09  ,Extension,>=,0.09
+PO.EX.3,PO,Poly,Extension on OD (end-cap) when the PO to L-shape OD (in the same MOS) space  <  0.1 um. (This check doesn't include ACTIVE jog  <=  0.02 um.)  >=  0.11  ,Extension,>=,0.11
+PO.L.1,PO,Poly,"Maximum PO length between two contacts ,  as well as the length from any point inside PO gate to nearest CO when the PO width <  0.08 um.(This check doesn't include ESD protection devices.)  <=  18  ",Length,<=,18
+PO.A.1,PO,Poly,Area (This check doesn't include the pattern filling0.04 um x 0.3 um rectangular tile)  >=  0.022  ,Area,>=,0.022
+PO.A.2,PO,Poly,Area [with all of edge length <  0.21 um]  >=  0.055  ,Area,>=,0.055
+PO.A.3,PO,Poly,Enclosed area  >=  0.04  ,Area,>=,0.04
+PO.A.4,PO,Poly,Enclosed area [with all of inner edge length <  0.21 um]  >=  0.077  ,Area,>=,0.077
+PO.DN.1,PO,Poly,Min. POLY density across full chip 14%  ,Density,>=,14
+PO.DN.1.1,PO,Poly,Max. poly density across full chip 40%  ,Density,<=,40
+PO.DN.2,PO,Poly,{OD OR DOD OR PO OR DPO } local density (minimun) over window 20um x 20um stepping 10um  >=  0.1%  ,Density,>=,0.1
+PO.DN.3,PO,Poly,"PO density within POBLK. (except {RFDMY AND RFIP_DMY} ,  MOMDMY(155;21)) 14%  ",Density,N/A,14
+PO.R.1,PO,Poly,GATE must be a rectangle orthogonal to grid. (Both bent GATE and gate with jog are not allowed). (Except CSRDMY region)  ,Restrictions,N/A,N/A
+PO.R.4,PO,Poly,PO intersecting OD must form two or more diffusions. (Except CSRDMY region)  ,Restrictions,>=,2
+PO.R.7_V,PO,Poly,Poly gates of all SRAM cells (50;0 OR 186;0) must be uni-directional in a chip. (This check doesn't include the regions covered by layer 49 (RODMY) and RAM1TDMY (160;0)) Chips on MPW or shuttles may be rotated due to this rule  ,Restrictions,N/A,N/A
+PO.R.7_H,PO,Poly,Poly gates of all SRAM cells (50;0 OR 186;0) must be uni-directional in a chip. (This check doesn't include the regions covered by layer 49 (RODMY) and RAM1TDMY (160;0)) Chips on MPW or shuttles may be rotated due to this rule  ,Restrictions,N/A,N/A
+PO.R.6,PO,Poly,"H-gate that fulfills the following conditions at the same time is not allowed. [inner space  <  0.43 um (U) ,  channel length  <  0.10 um (V) ,  interconnect PO width  <  0.25 um (W) ,  and interconnect PO length  >  0.065 um(X)]  ",Restrictions,N/A,N/A
+PO.R.8,PO,Poly,It is prohibited for Floating Gate if the effective source/drain is not connected together  ,Restrictions,N/A,N/A
+PO.R.8.SRAM,PO,Poly,It is prohibited for Floating Gate if the effective source/drain is not connected together  ,Restrictions,N/A,N/A
+PO.S.2_SkipBoundary,PO,Poly,The poly gate space range to neighboring {PO OR SR_DPO} [for channel length  <  0.06um]. It allows the violation with length ratio  <  30% on one side and one segment. The length ratio  =  violation length / device width. The 0.12 ~ 0.125 are not shrinkable. This rule is for poly gate CDU control (Except SRAM (186;0) region)  =  0.12 ~ 0.22 or 0.32  ,Spacing,<,30
+PO.S.2.1,PO,Poly,Gate space [either one channel length  >=  0.06 ]  >=  0.14  ,Spacing,>=,0.14
+PO.S.2.1.1__PO.EX.2.1,PO,Poly,Maximum OD extension on the edge gate [channel length >=  0.08 ] and gate space [either one channel length  >=  0.08 ] in core device regions  <=  0.32 . This check doesn't include the regions covered by SR_ESD.  ,Extension,<=,0.32
+PP.W.1,PP,P+ implant,Width  >=  0.18  ,Width,>=,0.18
+PP.S.1,PP,P+ implant,Space  >=  0.18  ,Spacing,>=,0.18
+PP.S.2,PP,P+ implant,Space to N+ACTIVE (non-butted)  >=  0.08  ,Spacing,>=,0.08
+PP.S.4,PP,P+ implant,Space to NW STRAP (non-butted)  >=  0.02  ,Spacing,>=,0.02
+PP.S.5,PP,P+ implant,{PP edge on OD} space to NMOS GATE  >=  0.23  ,Spacing,>=,0.23
+PP.S.6,PP,P+ implant,Butted PW STRAP space to PO in the same OD [the butted N+ ACTIVE extending   <  J1  <  0.13 um]  >=  0.23  ,Spacing,>=,0.23
+PP.S.7,PP,P+ implant,Space to N-type unsilicided OD/PO resistor  >=  0.14  ,Spacing,>=,0.14
+PP.EN.1,PP,P+ implant,{NP OR PP} enclosure of PO (except DPO)  >=  0.11  ,Enclosure,>=,0.11
+PP.EX.1,PP,P+ implant,Extension on P+ACTIVE  >=  0.08  ,Extension,>=,0.08
+PP.EX.2,PP,P+ implant,Extension on PW STRAP (except sealring(162;2))  >=  0.02  ,Extension,>=,0.02
+PP.EX.3,PP,P+ implant,Extension on P-type unsilicided OD/PO resistor  >=  0.14  ,Extension,>=,0.14
+PP.EX.4,PP,P+ implant,{PP edge on OD} extension on PMOS GATE  >=  0.23  ,Extension,>=,0.23
+PP.O.1,PP,P+ implant,Overlap of OD  >=  0.10  ,Enclosure,>=,0.10
+PP.A.1,PP,P+ implant,Area  >=  0.11  ,Area,>=,0.11
+PP.A.2,PP,P+ implant,Enclosed area  >=  0.11  ,Area,>=,0.11
+PP.A.3,PP,P+ implant,Area of butted PW STRAP  >=  0.021  ,Area,>=,0.021
+PP.R.1,PP,P+ implant,PP must fully cover {PMOS GATE SIZING 0.08 um}  >=  0.08  ,Enclosure,>=,0.08
+PP.R.2,PP,P+ implant,Overlap of NP is not allowed.  ,Restrictions,N/A,N/A
+PP.L.1,PP,P+ implant,45-degree edge length 0.5  ,Extension,N/A,0.5
+NP.W.1,NP,N+ implant,Width  >=  0.18  ,Width,>=,0.18
+NP.S.1,NP,N+ implant,Space  >=  0.18  ,Spacing,>=,0.18
+NP.S.2,NP,N+ implant,Space to P+ACTIVE (non-butted)  >=  0.08  ,Spacing,>=,0.08
+NP.S.4,NP,N+ implant,Space to PW STRAP (non-butted)  >=  0.02  ,Spacing,>=,0.02
+NP.S.5,NP,N+ implant,{NP edge on OD} space to PMOS GATE  >=  0.23  ,Spacing,>=,0.23
+NP.S.6,NP,N+ implant,Butted NW STRAP space to PO in the same OD [the butted P+ ACTIVE extending   <  J1  <  0.13 um]  >=  0.23  ,Spacing,>=,0.23
+NP.S.7,NP,N+ implant,Space to P-type unsilicided OD/PO resistor  >=  0.14  ,Spacing,>=,0.14
+NP.EX.1,NP,N+ implant,Extension on N+ACTIVE (except NWROD)  >=  0.08  ,Extension,>=,0.08
+NP.EX.2,NP,N+ implant,Extension on NW STRAP (except NWROD)  >=  0.02  ,Extension,>=,0.02
+NP.EX.3,NP,N+ implant,Extension on N-type unsilicided OD/PO resistor  >=  0.14  ,Extension,>=,0.14
+NP.EX.4,NP,N+ implant,{NP edge on OD} extension on NMOS GATE  >=  0.23  ,Extension,>=,0.23
+NP.O.1,NP,N+ implant,Overlap of OD  >=  0.10  ,Enclosure,>=,0.10
+NP.A.1,NP,N+ implant,Area  >=  0.11  ,Area,>=,0.11
+NP.A.2,NP,N+ implant,Enclosed area  >=  0.11  ,Area,>=,0.11
+NP.A.3,NP,N+ implant,Area of butted NW STRAP  >=  0.021  ,Area,>=,0.021
+NP.R.1,NP,N+ implant,NP must fully cover {NMOS GATE SIZING 0.08 um}  >=  0.08  ,Enclosure,>=,0.08
+NP.L.1,NP,N+ implant,45-degree edge length 0.5  ,Length,N/A,0.5
+CO.W.1,CO,Contact,Width (maximum  =  minimum) (Except butted CO in SRAM (186;0) region only)  =  0.06  ,Width,=,0.06
+CO.S.1,CO,Contact,Space (Except SRAM (186;0) region)  >=  0.08  ,Spacing,>=,0.08
+CO.S.2,CO,Contact,Space to 3-neighboring CO (distance  <  0.11 um) (Except SRAM (186;0) region)  >=  0.10  ,Spacing,>=,0.10
+CO.S.2.1,CO,Contact,Space [different net] (Except SRAM (186;0) region)  >=  0.11  ,Spacing,>=,0.11
+CO.S.3,CO,Contact,Space to GATE (Overlap of GATE is not allowed) [space  >=  0.035 um is allowed inside SRAM word line driver covered by layer 186;5 or 186;4] (Except SRAM (186;0) region)  >=  0.04  ,Spacing,>=,0.04
+CO.S.4,CO,Contact,{CO inside PO} space to OD (Except SRAM (186;0) region)  >=  0.05  ,Spacing,>=,0.05
+CO.S.5,CO,Contact,{CO inside OD} space to I/O GATE  >=  0.08  ,Spacing,>=,0.08
+CO.S.5.1,CO,Contact,{CO inside drain side OD} space to HVD GATE  =  0.6  ,Spacing,=,0.6
+CO.S.6,CO,Contact,Space to butted PP/NP edge on OD (overlap of NP/PP boundary on OD is not allowed.)  >=  0.04  ,Spacing,>=,0.04
+CO.EN.1,CO,Contact,Enclosure by OD (Except SRAM (186;0) region)  >=  0.01  ,Enclosure,>=,0.01
+CO.EN.1.1_CO.EN.1.3,CO,Contact,"Enclosure by OD [at least two opposite sides]  >=  0.03 or [four sides]  >=  ^CO_EN_1_3 ,  do not check butted contact  ",Enclosure,>=,0.03
+CO.EN.1.2,CO,Contact,Enclosure by OD for STRAP NOT VAR [at least two opposite sides]  >=  0.02  ,Enclosure,>=,0.02
+CO.EN.0,CO,Contact,"Enclosure by PO is defined by either {CO.EN.2 and CO.EN.3} or {CO.EN.5 and CO.EN.6} ,  that is enclosure by poly must meet either 10/20/10/20nm or 5/30/15/30nm  ",Enclosure,min,"10,20,10,20,5,30,15,30"
+CO.W.2,CO,Contact,Width of CO bar. CO bar is only allowed in seal ring and SLDB.  ==  0.06  ,Width,==,0.06
+M1.W.1,M1,Metal 1,Width  >=  0.07  ,Width,>=,0.07
+M1.W.2,M1,Metal 1,"Width of 45-degree bent M1. (Please make sure the vertex of 45 degree pattern is on 0.005 um grid (refer to the guideline ,  G.6gU ,  in section 3.7))  >=  0.17  ",Width,>=,0.17
+M1.W.3,M1,Metal 1,Maximum width (This check doesn't include the sealring (162;2) region)  <=  4.50  ,Width,<=,4.50
+M1.S.1,M1,Metal 1,Space  >=  0.07  ,Spacing,>=,0.07
+M1.S.2,M1,Metal 1,Min. Metal space (for W >  0.17 um & parallel length  >  0.27 um)  >=  0.08 um  ,Spacing,>=,0.08
+M1.S.2.1,M1,Metal 1,Min. Metal space (for W >  0.24 um & parallel length  >  0.27 um)  >=  0.12 um  ,Spacing,>=,0.12
+M1.S.2.2,M1,Metal 1,Min. Metal space (for W >  0.31 um & parallel length  >  0.4 um)  >=  0.14 um  ,Spacing,>=,0.14
+M1.S.2.3,M1,Metal 1,Min. Metal space (for W >  0.62 um & parallel length  >  0.62 um)  >=  0.21 um  ,Spacing,>=,0.21
+M1.S.3,M1,Metal 1,Min. Metal space (for W >  1.5 um & parallel length  >  1.5 um)  >=  0.5 um  ,Spacing,>=,0.5
+M1.S.5,M1,Metal 1,"If M1 has parallel run length with opposite M1 along two adjacent edges of M1 [any one edge  <  0.09 Q  =  0.07 um and its opposite extension <  0.025 distance from the corner of the two edges of M1] ,  then one of the space (S1 or S2) to opposite M1 must be  >=  0.08 um.  ",Spacing,>=,0.08
+M1.S.6,M1,Metal 1,Space to 45-degree bent M1  >=  0.17  ,Spacing,>=,0.17
+M1.S.1.1,M1,Metal 1,Space [any one of Mx connect to  >  3.3V and  <=  5V net]  >=  0.09  ,Spacing,>=,0.09
+M1.S.8.2,M1,Metal 1,"Space to neighboring {VIAx-1 or VIAx} [either VIAx-1 ,  VIAx or Mx connects to  >  3.3V and  <=  5V net]  >=  0.18  ",Spacing,>=,0.18
+M1.S.8,M1,Metal 1,"Space to VIA1 [different net ,  either VIA1 or M1 connects to 1.8V ~ 3.3V net] 0.1  ",Spacing,>=,0.1
+M1.S.9,M1,Metal 1,This rule is to check Metal (A) space to neighboring VIA1 [either VIA1 or M1 connects to  > 3.3V and  <=  5V net]. DRC methodology to find Metal (A) Find a edge (B) of metal line end [edge length  <=  0.12um] Run length (C) from edge (B) inside metal  >=  0.13um Jog length (D)  <=  0.01um within 0.13um run length Extend 0.06um outside from edge (B) to form a polygon metal (A) Metal (A) is defined if conditions 1~4 are all satisfied.  >=  0.15  ,Spacing,>=,0.13
+M1.S.8.1,M1,Metal 1,"Space to VIA1 [different net ,  either VIA1 or M1 connects to  >=  1.5V and  <  1.8V net] 0.08  ",Spacing,>=,0.08
+M1.EN.1,M1,Metal 1,"Enclosure of CO  >=  0.00 ,  do not check butted contact in SRAM  ",Enclosure,>=,0.00
+M1.EN.2__M1.EN.3__M1.EN.3.1__M1.EN.3.2,M1,Metal 1,"Enclosure of CO [at least two opposite sides]  >=  ^M1_EN_2 ,  or [four sides]  >=  ^M1_EN_3 ,  or [four sides]  >=  0.005 with [at least two opposite sides]  >=  0.025  ",Enclosure,>=,0.005
+M1.EN.4,M1,Metal 1,Enclosure of CO [M1 width  >  0.7 um] (except CSRDMY (166;0) region)  >=  0.03  ,Enclosure,>=,0.03
+M1.EN.5,M1,Metal 1,"Enclosure of CO [metal width  >=  0.11um ,  space  <  0.08 um and parallel run length  >  0.27 um] (This check doesn't include two or more COs resent in the metal intersection)  >=  0.015  ",Enclosure,>=,0.015
+M1.A.1,M1,Metal 1,Area (Except SRAM (186;0) region)  >=  0.0215  ,Area,>=,0.0215
+M1.A.2,M1,Metal 1,Area [with all of edge length <  0.17 um]. (This check doesn't include the patterns filling 0.07 um x 0.17 um rectangular tile) (Except SRAM (186;0) region)  >=  0.055  ,Area,>=,0.055
+M1.A.3,M1,Metal 1,Enclosed area  >=  0.2  ,Area,>=,0.2
+M1.DN.1,M1,Metal 1,"Minimum local density [window 125.0 um x 125.0 um ,  stepping 62.5 um]  >=  0.1  ",Density,>=,0.1
+M1.DN.1.1,M1,Metal 1,"Maximum local density [window 125.0 um x 125.0 um ,  stepping 62.5 um]  <=  0.85  ",Density,<=,0.85
+M1.DN.4,M1,Metal 1,"The metal density difference between any two neighboring checking windows including DM1EXCL [window 200.0 um x 200.0 um ,  stepping 200.0 um]   <=  0.5  ",Density,<=,0.5
+M1.DN.6,M1,Metal 1,"Metal Desnsity  >=  ^M1_DN_6. All condition-A ,  Condition-B ,  and Condition-C must be followed.  (1) Condition-A  Metal density [window 80.0 um x 80.0 um ,  stepping 40.0 um]  >=  0.01  (2) Condition-B  Maximum area of merged low density windows [window 10.0 um x 10.0 um ,  stepping 5.0 um  <  ^M1_DN_6]  <=  6400.0 um2 ,  except merged low density windows width  <=  30.0 um  (3) Condition-C  Maximum area of merged low density windows [window 10.0 um x 10.0 um ,  stepping 5.0 um  <  ^M1_DN_6]  <=  18000.0 um2  1. The following special regions are excluded while the density checking  Chip corner triangle empty areas if sealring is added by tsmc.  LOWMEDN  2. This rule is applied while the width of (checking window NOT above excluding region)  >=  40.0 um for condition-A and  >=  5.0 um for both condition-B/condition-C  ",Density,>=,0.01
+M1.R.2,M1,Metal 1,Metal(pin) layers must be drawn only interact with one relative Metal(drawing) layers  ,Restrictions,N/A,N/A
+M1.W.4,M1,Metal 1,Width of M1 metal line in outer seal ring  ==  2.0  ,Width,==,2.0
+M1.W.5,M1,Metal 1,Width of M1 metal line in inner seal ring  ==  6.0  ,Width,==,6.0
+M1.W.6,M1,Metal 1,Width of M1 metal line in SLDB  ==  0.5  ,Width,==,0.5
+VIA1.W.1,VIA1,Via1,"Width (maximum  =  minimum) (Except sealring (162 , 2) and {VIAx bar INSIDE {LOWMEDN NOT (LOWMEDN SIZING -4 um)}} region)  =  0.07  ",Width,=,0.07
+VIA1.S.1,VIA1,Via1,Space  >=  0.07  ,Spacing,>=,0.07
+VIA1.S.1.1,VIA1,Via1,Space [any one of VIAx connect to  >  3.3V and  <=  5V different net]  >=  0.2  ,Spacing,>=,0.2
+VIA1.S.2,VIA1,Via1,Space to 3-neighboring VIAx (distance  <  0.098 um)  >=  0.09  ,Spacing,>=,0.09
+VIA1.S.3,VIA1,Via1,Space to neighboring VIAx [different net]  >=  0.095  ,Spacing,>=,0.095
+VIA1.S.3.1,VIA1,Via1,Space to neighboring VIAx [different net and common parallel run length  >  0 um]  >=  0.11  ,Spacing,>=,0.11
+VIA1.EN.1,VIA1,Via1,Enclosure by Mx or M1  >=  0.00  ,Enclosure,>=,0.00
+VIA1.EN.2__VIA1.EN.4__VIA1.EN.4.1,VIA1,Via1,"Enclosure by M1 [at least two opposite sides]  >=  ^VIA1_EN_2 ,  or [four sides]  >=  0.01 with [at least two opposite sides]  >=  0.02  ",Enclosure,>=,0.01
+VIA1.EN.3.1,VIA1,Via1,"VIA1 Enclosure by M1 [metal width  >=  0.11 um ,  space  <  0.08 um and parallel run length  >  0.27 um] (This check doesn't include two or more via1 present in the metal intersection)  >=  0.015  ",Enclosure,>=,0.015
+VIA1.R.2__VIA1.R.3,VIA1,Via1,"When M1 or M2 width  >  0.21 um ,  more than one VIA1 is required.  2 vias spacing should be  <=  0.14 um or 4 vias spacing should be  <=  0.63 um  When M1 or M2 width  >  0.55 um ,  more than three VIA1 is required.  4 vias spacing should be  <=  0.14 um or 9 vias spacing should be  <=  0.83 um  not check SRAM region  ",Spacing,>=,0.21
+VIA1.R.4.M1,VIA1,Via1,At least two VIAx must be used for a connection that is  <=  1.14 um (D) away from a metal plate (either Mx or Mx+1) with length  >  0.21 um (L) and width  >  0.21 um (W). (It is allowed to use one VIAx for a connection that is  >  1.14 um (D) away from a metal plate (either Mx or Mx+1) with length  >  0.21 um (L) and width  >  0.21 um (W).)  ,Spacing,>=,0.21
+VIA1.R.4.M2,VIA1,Via1,At least two VIAx must be used for a connection that is  <=  1.14 um (D) away from a metal plate (either Mx or Mx+1) with length  >  0.21 um (L) and width  >  0.21 um (W). (It is allowed to use one VIAx for a connection that is  >  1.14 um (D) away from a metal plate (either Mx or Mx+1) with length  >  0.21 um (L) and width  >  0.21 um (W)).  ,Restrictions,>=,1.14
+VIA1.R.5.M1,VIA1,Via1,At least two VIAx must be used for a connection that is  <=  2.8 um (D) away from a metal plate (either Mx or Mx+1) with length  >  1.4 um (L) and width  >  1.4 um (W). (It is allowed to use one VIAx for a connection that is  >  2.8 um (D) away from a metal plate (either Mx or Mx+1) with length >  1.4 um (L) and width  >  1.4 um (W)).  ,Restrictions,>=,2.8
+VIA1.R.5.M2,VIA1,Via1,At least two VIAx must be used for a connection that is  <=  2.8 um (D) away from a metal plate (either Mx or Mx+1) with length  >  1.4 um (L) and width  >  1.4 um (W). (It is allowed to use one VIAx for a connection that is  >  2.8 um (D) away from a metal plate (either Mx or Mx+1) with length >  1.4 um (L) and width  >  1.4 um (W)).  ,Restrictions,<=,2.8
+VIA1.R.6.M1,VIA1,Via1,At least two VIAx must be used for a connection that is  <=  7.1 um (D) away from a metal plate (either Mx or Mx+1) with length  >  7.0 um (L) and width  >  2.1 um (W). (It is allowed to use one VIAx for a connection that is  >  7.1 um (D) away from a metal plate (either Mx or Mx+1) with length >  7.0 um (L) and width  >  2.1 um (W)).  ,Restrictions,<=,7.1
+VIA1.R.6.M2,VIA1,Via1,At least two VIAx must be used for a connection that is  <=  7.1 um (D) away from a metal plate (either Mx or Mx+1) with length  >  7.0 um (L) and width  >  2.1 um (W). (It is allowed to use one VIAx for a connection that is  >  7.1 um (D) away from a metal plate (either Mx or Mx+1) with length >  7.0 um (L) and width  >  2.1 um (W)).  ,Restrictions,<=,7.1
+VIA1.R.12,VIA1,Via1,"VIA1 connected to DM1 ,  DM1_O ,  DM2 ,  DM2_O is not allowed  ",Restrictions,N/A,N/A
+VIA1.W.6,VIA1,Via1,Width of VIAx bar in protection ring  =  0.07  ,Width,=,0.07
+VIA1.S.7,VIA1,Via1,Space of VIAx bar in LOWMEDN to VIAx hole  >=  0.365  ,Spacing,>=,0.365
+VIA1.S.8,VIA1,Via1,Space of VIAx bar in LOWMEDN  >=  0.74  ,Spacing,>=,0.74
+VIA1.EN.8,VIA1,Via1,VIAx bar enclosure by M1/Mx in LOWMEDN  >=  0.21  ,Enclosure,>=,0.21
+VIA1.W.2__VIA1.W.4,VIA1,Via1,Width of VIA1 bar of sealring/SLDB  =  0.5  ,Width,=,0.5
+VIA1.W.3__VIA1.W.5,VIA1,Via1,Width of VIA1 hole of sealring/SLDB  =  0.07  ,Width,=,0.07
+VIA1.EN.5,VIA1,Via1,Enclosure of VIA1 bar by M1 of seal ring  >=  0.21  ,Enclosure,>=,0.21
+VIA1.EN.6,VIA1,Via1,Enclosure of VIA1 hole by M1 of seal ring  >=  0.22  ,Enclosure,>=,0.22
+VIA1.EN.7,VIA1,Via1,Enclosure of VIA1 hole by M1 of SLDB  >=  0.015  ,Enclosure,>=,0.015
+VIA1.S.4,VIA1,Via1,Space of VIA1 hole in seal ring.  >=  0.35  ,Spacing,>=,0.35
+VIA1.S.5,VIA1,Via1,Space of VIA1 hole to VIAx bar in seal ring.  >=  0.365  ,Spacing,>=,0.365
+VIA1.S.6,VIA1,Via1,Space of VIA1 hole in SLDB. >=  0.35  ,Spacing,>=,0.35
+M2.W.1,M2,Metal 2,Width  >=  0.07  ,Width,>=,0.07
+M2.W.2,M2,Metal 2,"Width of 45-degree bent Mx. (Please make sure the vertex of 45 degree pattern is on 0.005 um grid (refer to the guideline ,  G.6gU ,  in section 3.7))  >=  0.17  ",Width,>=,0.17
+M2.W.3,M2,Metal 2,"Maximum width  <=  4.5 um ,  exclude sealring  ",Width,<=,4.5
+M2.S.1,M2,Metal 2,Space  >=  0.07  ,Spacing,>=,0.07
+M2.S.2,M2,Metal 2,Min. Metal space (for W >  0.17 um & parallel length  >  0.27 um)  >=  0.1 um  ,Spacing,>=,0.1
+M2.S.2.1,M2,Metal 2,Min. Metal space (for W >  0.24 um & parallel length  >  0.27 um)  >=  0.12 um  ,Spacing,>=,0.12
+M2.S.2.2,M2,Metal 2,Min. Metal space (for W >  0.31 um & parallel length  >  0.4 um)  >=  0.15 um  ,Spacing,>=,0.15
+M2.S.2.3,M2,Metal 2,Min. Metal space (for W >  0.62 um & parallel length  >  0.62 um)  >=  0.21 um  ,Spacing,>=,0.21
+M2.S.3,M2,Metal 2,Min. Metal space (for W >  1.5 um & parallel length  >  1.5 um)  >=  0.5 um  ,Spacing,>=,0.5
+M2.S.5,M2,Metal 2,"Space at Mx line-end (W  <  0.10 um (Q)) in a dense-line-end configuration  If Mx has parallel run length with opposite Mx (measured with T  =  0.035 um extension) along 2 adjacent edges of Mx [any one edge  < Q distance from the corner of the two edges] ,  then one of the space (S1 or S2) needs to be at least this value (This check doesn't include small jog with edge length  <  0.07 um(R)) ( except SRAM (186;0) region)  >=  0.10  ",Spacing,>=,0.10
+M2.S.5.1,M2,Metal 2,"Space at Mx line-end (W < Q = ^M2_S_5_1_W) in a dense-line-end configuration.If Mx has parallel run length with opposite Mx (measured with 0.035 (T) extension) along two adjacent edges of Mx [any one edge  <  0.1 (W) from the corner of the two edges of Mx] ,  and Mx enclosure of VIAx-1  <  0.05 at line-end ,  then one of the space (S1 or S2) must be  >=  0.12 um.  ",Spacing,>=,0.12
+M2.S.6,M2,Metal 2,Space to 45-degree bent Mx  >=  0.17  ,Spacing,>=,0.17
+M2.S.1.1,M2,Metal 2,Space [any one of Mx connect to  >  3.3V and  <=  5V net]  >=  0.09  ,Spacing,>=,0.09
+M2.S.8.2,M2,Metal 2,"Space to neighboring {VIAx-1 or VIAx} [either VIAx-1 ,  VIAx or Mx connects to  >  3.3V and  <=  5V net]  >=  0.18  ",Spacing,>=,0.18
+M2.S.8,M2,Metal 2,"Space to {VIAx-1 OR VIAx} [different net ,  any one of VIAx-1 ,  VIAx or Mx connects to 1.8V ~ 3.3V net] 0.1  ",Spacing,>=,0.1
+M2.S.8.1,M2,Metal 2,"Space to {VIAx-1 OR VIAx} [different net ,  any one of VIAx-1 ,  VIAx or Mx connects to  >=  1.5V and  <  1.8V net] 0.08  ",Spacing,=,0.08
+M2.S.9,M2,Metal 2,This rule is to check Metal (A) space to neighboring VIAx [either VIAx or Mx connects to  > 3.3V and  <=  5V net]. DRC methodology to find Metal (A) Find a edge (B) of metal line end [edge length  <=  0.12um] Run length (C) from edge (B) inside metal  >=  0.13um Jog length (D)  <=  0.01um within 0.13um run length Extend 0.06um outside from edge (B) to form a polygon metal (A) Metal (A) is defined if conditions 1~4 are all satisfied.  >=  0.15  ,Spacing,>=,0.15
+M2.EN.1,M2,Metal 2,Enclosure of VIAx-1  >=  0.00  ,Enclosure,>=,0.00
+M2.EN.2__M2.EN.3__M2.EN.3.1,M2,Metal 2,"Enclosure of VIAx-1 [at least two opposite sides]  >=  ^M2_EN_2 ,  or [four sides]  >=  0.01 with [at least two opposite sides]  >=  0.02  ",Enclosure,>=,0.02
+M2.A.1,M2,Metal 2,Area ( except SRAM (186;0) region)  >=  0.027  ,Area,>=,0.027
+M2.A.2,M2,Metal 2,Area [with all of edge length <  0.17 um] (This check doesn't include the patterns filling 0.07 um x 0.17 um rectangular tile) ( except SRAM (186;0) region)  >=  0.06  ,Area,>=,0.06
+M2.A.3,M2,Metal 2,Enclosed area  >=  0.2  ,Enclosure,>=,0.2
+M2.DN.1,M2,Metal 2,"Minimum local density [window 125.0 um x 125.0 um ,  stepping 62.5 um]  >=  0.1  ",Density,>=,0.1
+M2.DN.1.1,M2,Metal 2,"Maximum local density [window 125.0 um x 125.0 um ,  stepping 62.5 um]  <=  0.85  ",Density,<=,0.85
+M2.DN.4,M2,Metal 2,"The metal density difference between any two neighboring checking windows including DM2EXCL [window 200.0 um x 200.0 um ,  stepping 200.0 um]   <=  0.5  ",Density,<=,0.5
+M2.DN.6,M2,Metal 2,"Metal Desnsity  >=  ^M2_DN_6. All condition-A ,  Condition-B ,  and Condition-C must be followed.  (1) Condition-A  Metal density [window 80.0 um x 80.0 um ,  stepping 40.0 um]  >=  0.01  (2) Condition-B  Maximum area of merged low density windows [window 10.0 um x 10.0 um ,  stepping 5.0 um  <  ^M2_DN_6]  <=  6400.0 um2 ,  except merged low density windows width  <=  30.0 um  (3) Condition-C  Maximum area of merged low density windows [window 10.0 um x 10.0 um ,  stepping 5.0 um  <  ^M2_DN_6]  <=  18000.0 um2  1. The following special regions are excluded while the density checking  Chip corner triangle empty areas if sealring is added by tsmc.  LOWMEDN  2. This rule is applied while the width of (checking window NOT above excluding region)  >=  40.0 um for condition-A and  >=  5.0 um for both condition-B/condition-C  ",Density,>=,0.01
+M2.R.3,M2,Metal 2,Metal(pin) layers must be drawn only interact with one relative Metal(drawing) layers  ,Restrictions,N/A,N/A
+M2.EN.4,M2,Metal 2,Enclosure of VIAx-1 bar in LOWMEDN  >=  0.21  ,Enclosure,>=,0.21
+M2.W.4,M2,Metal 2,Width of M2 metal line in outer seal ring  ==  2.0  ,Width,==,2.0
+M2.W.5,M2,Metal 2,Width of M2 metal line in inner seal ring  ==  6.0  ,Width,==,6.0
+M2.W.6,M2,Metal 2,Width of M2 metal line in SLDB  ==  0.5  ,Width,==,0.5

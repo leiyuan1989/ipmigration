@@ -1,0 +1,413 @@
+
+-----------------------s65:NW----------------------------
+
+**input**: rule:NW_offgrid, comment:Drawn NW off-grid  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:NW_1, comment:Min NW width is 0.36  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.36'}
+**input**: rule:NW_2, comment:Min NW width for NW resistor is 1.6  
+**ouput**: {'classification': 'Width', 'symbol': 'min', 'value': '1.6'}
+**input**: rule:NW_3, comment:Min Space between 1.0/1.2V NWs at the same nets is 0.36  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.36'}
+**input**: rule:NW_4, comment:Min Space between 1.0/1.2V NWs at different nets is 0.47  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.47'}
+**input**: rule:NW_5, comment:Min Space between 1.0/1.2V and 1.8/2.5/3.3V NWs at the same nets is 0.47  
+**ouput**: {'classification': 'Spacing', 'symbol': '=', 'value': '0.47'}
+**input**: rule:NW_6, comment:Min Space between 1.0/1.2V NW and 1.8/2.5/3.3V NW at different nets is 0.72  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.72'}
+**input**: rule:NW_7a, comment:Min Space between 1.8/2.5/3.3V NWs at same nets is 0.47  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.47'}
+**input**: rule:NW_7b, comment:Min Space between 1.8/2.5/3.3V NW is 0.72 at different nets is 0.72.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.72'}
+**input**: rule:NW_8, comment:Min NW area is 0.3  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.3'}
+
+-----------------------s65:AA----------------------------
+
+**input**: rule:AA_offgrid, comment:Drawn AA off-grid  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:AA_1, comment:Min Width of interconnect AA is 0.08  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:AA_2a, comment:Min AA width for 1.0/1.2V NMOS/PMOS transistors is 0.11  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:AA_2b, comment:Min AA width for 1.8/2.5/3.3V NMOS/PMOS transistors is 0.21  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.21'}
+**input**: rule:AA_3a, comment:Min Space between two AAs in the same well is 0.10  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.10'}
+**input**: rule:AA_3b, comment:Min Space between AAs with one or both AA width greater than 0.15um in the same well is 0.11  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:AA_4, comment:Min N+AA enclosed by NW is 0.12  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.12'}
+**input**: rule:AA_5, comment:Min Space between NW and N+AA inside PW is 0.15  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.15'}
+**input**: rule:AA_6, comment:Min P+AA enclosed by NW is 0.15  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.15'}
+**input**: rule:AA_7, comment:Space between NW and P+AA inside PW is 0.12  
+**ouput**: {'classification': 'Spacing', 'symbol': '==', 'value': '0.12'}
+**input**: rule:AA_8, comment:Min AA area is 0.038  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.038'}
+**input**: rule:AA_9, comment:Min Space between N+AA ,  which is not enclosed by DNW ,  and NW which encloses a DNW is 0.32  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.32'}
+**input**: rule:AA_10a_Min, comment:Min Local AA density (including dummy AA) in 200umX200um window with step size 100um is 19%.  
+**ouput**: {'classification': 'Density', 'symbol': '=', 'value': '19'}
+**input**: rule:AA_10a_Max, comment:Max Local AA density (including dummy AA) in 200umX200um window with step size 100um is 90%.  
+**ouput**: {'classification': 'Density', 'symbol': 'max', 'value': '90'}
+**input**: rule:AA_10b_Min_R, comment:Min Global AA density for fully chip (including dummy AA) is 23%  NOTICE  It is a recommended rule.  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '23'}
+**input**: rule:AA_10b_Max_R, comment:Max Global AA density for fully chip (including dummy AA) is 75%  NOTICE  It is a recommended rule.  
+**ouput**: {'classification': 'Density', 'symbol': '<=', 'value': '75'}
+**input**: rule:AA_10c_R, comment:Min AA density inside of dummy block area is 23% , while the area of dummy block layer is larger than 2500um2 (50umX50um)  NOTICE  It is a recommended rule.  
+**ouput**: {'classification': 'Density', 'symbol': '=', 'value': '23'}
+
+-----------------------s65:GT----------------------------
+
+**input**: rule:GT_offgrid, comment:Drawn GT off-grid  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:GT_1a, comment:Min Channel length for 1.0/1.2V NMOS /PMOS transistors is 0.06  
+**ouput**: {'classification': 'Length', 'symbol': 'min', 'value': '0.06'}
+**input**: rule:GT_1b, comment:Min Channel length for 1.8V NMOS/PMOS transistors is 0.20  
+**ouput**: {'classification': 'Length', 'symbol': '>=', 'value': '0.20'}
+**input**: rule:GT_2, comment:Min Width of interconnect poly is 0.06  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.06'}
+**input**: rule:GT_3a, comment:Min Space between two GTs is 0.12  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.12'}
+**input**: rule:GT_3b, comment:Min Space between two GTs is 0.16 when one or both GT width is  >=  0.4um , and the run length of two GTs is  >= 0.5um.  
+**ouput**: {'classification': 'Spacing', 'symbol': '=', 'value': '0.16'}
+**input**: rule:GT_3c_R, comment:Min Recommended space between GTs on the same AA is 0.19  NOTICE  It is a recommended rule.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.19'}
+**input**: rule:GT_3d_R, comment:Min Recommended space between GTs on the same AA inside TG is 0.24  NOTICE  It is a recommended rule.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.24'}
+**input**: rule:GT_4, comment:Space between AA and GT on field oxide is 0.05  
+**ouput**: {'classification': 'Spacing', 'symbol': 'N/A', 'value': '0.05'}
+**input**: rule:GT_5, comment:Min Extension of AA outside of GT(not include dummy AA and dummy Poly) is 0.115  
+**ouput**: {'classification': 'Extension', 'symbol': '==', 'value': '0.115'}
+**input**: rule:GT_6, comment:Min Extension of poly end-cap outside of AA (not including dummy AA and dummy poly) is 0.14  
+**ouput**: {'classification': 'Extension', 'symbol': '=', 'value': '0.14'}
+**input**: rule:GT_7a_Min, comment:Min GT density is 7%  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '7'}
+**input**: rule:GT_7a_Max, comment:Max. GT density is 70%  
+**ouput**: {'classification': 'Density', 'symbol': 'max', 'value': '70'}
+**input**: rule:GT_7b_Min_R, comment:Min Global GT density for fully chip (including dummy) is 10%  NOTICE  It is a recommended rule.  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '10'}
+**input**: rule:GT_7b_Max_R, comment:Max Global GT density for fully chip (including dummy) is 45%  NOTICE  It is a recommended rule.  
+**ouput**: {'classification': 'Density', 'symbol': '<=', 'value': '45'}
+**input**: rule:GT_7c_R, comment:Min GT density inside of dummy block area is 10% ,  while the area of dummy block layer is larger than 2500um2 (50X50um).  NOTICE  It is a recommended rule.  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '10'}
+**input**: rule:GT_8, comment:No bent GT on AA is allowed.All GT patterns on AA have to be orthogonal to AA edage.  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:GT_9a, comment:SN extension outside of poly resistor is 0.16  
+**ouput**: {'classification': 'Extension', 'symbol': '=', 'value': '0.16'}
+**input**: rule:GT_9b, comment:SP extension outside of poly resistor is 0.16  
+**ouput**: {'classification': 'Extension', 'symbol': 'N/A', 'value': '0.16'}
+**input**: rule:GT_10a, comment:Space between NLL/NLH/SN and a P- type poly resistor is 0.16  
+**ouput**: {'classification': 'Spacing', 'symbol': '=', 'value': '0.16'}
+**input**: rule:GT_10b, comment:Space between PLL/PLH/SP and a N- type poly resistor is 0.16  
+**ouput**: {'classification': 'Spacing', 'symbol': '=', 'value': '0.16'}
+**input**: rule:GT_11, comment:GT is enclosed by SN and/or SP ,  except MOM and HRPDMY area (when checking the rule ,  size down the HRPDMY by 0.3um along the current direction).  
+**ouput**: {'classification': 'Enclosure', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:GT_12, comment:SN and SP overlap on GT is not allowed  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:GT_13, comment:Min GT area is 0.038.  
+**ouput**: {'classification': 'Area', 'symbol': '=', 'value': '0.038'}
+
+-----------------------s65:SP----------------------------
+
+**input**: rule:SP_offgrid, comment:Drawn SP off-grid  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:SP_1, comment:Min SP width is 0.18  
+**ouput**: {'classification': 'Width', 'symbol': 'min', 'value': '0.18'}
+**input**: rule:SP_2, comment:Min Space between two SP is 0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.18'}
+**input**: rule:SP_3, comment:Min Space between SP and N+AA inside PW is 0.10  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.10'}
+**input**: rule:SP_4, comment:Min Space between SP and N+ AA inside NW is 0.02  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:SP_5, comment:Min Space between SP and NMOS gate along source/drain direction is 0.24  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.24'}
+**input**: rule:SP_6_8, comment:Min SP extension outside of PMOS gate along source/drain direction is 0.24  Min SP extension outside of PMOS AA along gate poly length direction is 0.16 ,  if the distance to the related poly is less than or equal to 0.20um  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.24'}
+**input**: rule:SP_7, comment:Min SP extension outside of PMOS AA along gate poly length direction is 0.12 ,  if the distance to the related poly is larger than 0.2um  
+**ouput**: {'classification': 'Extension', 'symbol': '=', 'value': '0.12'}
+**input**: rule:SP_9, comment:Min P+AA enclosure by SP in PW is 0.02  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:SP_10, comment:Min Overlap of SP and AA is 0.09  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.09'}
+**input**: rule:SP_11, comment:Min SP area is 0.100  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.100'}
+**input**: rule:SP_12, comment:Min Space between SP and butted N+AA (except SRAM area) is 0  
+**ouput**: {'classification': 'Spacing', 'symbol': '=', 'value': '0'}
+**input**: rule:SP_13, comment:No SN and SP overlap is allowed  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+
+-----------------------s65:SN----------------------------
+
+**input**: rule:SN_offgrid, comment:Drawn SN off-grid  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:SN_1, comment:Min SN width is 0.18  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.18'}
+**input**: rule:SN_2, comment:Min Space between two SN is 0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.18'}
+**input**: rule:SN_3, comment:Min Space between SN and P+AA inside NW is 0.10  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.10'}
+**input**: rule:SN_4, comment:Min Space between SN and P+ pickup AA inside PW is 0.02  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:SN_5, comment:Min Space between SN and PMOS gate along source/drain direction is 0.24  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.24'}
+**input**: rule:SN_6_8, comment:Min SN extension outside of NMOS gate along source/drain direction is 0.24  Min SN extension outside of NMOS AA along gate poly length direction is 0.16 ,  if the distance to the related poly is less than or equal to 0.20um  
+**parse_error**: 
+
+```json
+{
+  "classification": "Extension",
+  "symbol": ">=",
+  "value": 0.24
+}
+```
+**input**: rule:SN_7, comment:Min SN extension outside of NMOS AA along gate poly length direction 0.12 ,  if the distance to the related poly is larger than 0.20um  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.12'}
+**input**: rule:SN_9, comment:Min N+AA enclosured by by SN in NW is 0.02  
+**ouput**: {'classification': 'Enclosure', 'symbol': 'min', 'value': '0.02'}
+**input**: rule:SN_10, comment:Min Overlap of SN and AA is 0.09  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.09'}
+**input**: rule:SN_11, comment:Min SN area is 0.100  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.100'}
+**input**: rule:SN_12, comment:Min Space between SN and butted P+AA (except SRAM area) is 0  
+**ouput**: {'classification': 'Spacing', 'symbol': 'N/A', 'value': '0'}
+
+-----------------------s65:CT----------------------------
+
+**input**: rule:CT_offgrid, comment:Drawn CT off-grid  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:CT_1, comment:Fixed contact size (square shape except rectangular CT in SRAM and EFUSE area) is 0.09  
+**ouput**: {'classification': 'Area', 'symbol': 'N/A', 'value': '0.09'}
+**input**: rule:CT_2a, comment:Min Space between two contacts is 0.11  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:CT_2b, comment:Min Space between two contacts  is 0.13 in case contact array is larger or equal to 4x4  Two contact regions whose space is within 0.15 are considered to be in the same array  
+**ouput**: {'classification': 'Spacing', 'symbol': '=', 'value': '0.13'}
+**input**: rule:CT_3, comment:Min Space between AA and contact on poly is 0.065  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.065'}
+**input**: rule:CT_4a, comment:Min Space between poly to diffusion contact for 1.0/1.2V is 0.05  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.05'}
+**input**: rule:CT_4b, comment:Min Space between poly and contact on AA for 1.8/2.5/3.3V is 0.09  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.09'}
+**input**: rule:CT_5, comment:Min CT enclosure by AA for CT landed on AA is 0.015  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.015'}
+**input**: rule:CT_6, comment:Min CT enclosure by poly for CT landed on poly is 0.01  
+**ouput**: {'classification': 'Enclosure', 'symbol': 'min', 'value': '0.01'}
+**input**: rule:CT_7a_7b, comment:Min M1 enclosure of CT is 0.00  Min M1 enclosure of CT when M1 enclosure on one or both perpendicular directions  <  0.025um is 0.025  
+**ouput**: {'classification': 'Enclosure', 'symbol': '<', 'value': '0.025'}
+**input**: rule:CT_9, comment:CT is not allowed to land on gate  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:CT_10, comment:CT should land on salicided surface (except MARKG/MARKS covered areas)  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+
+-----------------------s65:M1----------------------------
+
+**input**: rule:M1_offgrid, comment:Drawn M1 off-grid  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:M1_1, comment:Min M1 width is 0.09  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.09'}
+**input**: rule:M1_2a, comment:Min Space between two M1 is 0.09  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.09'}
+**input**: rule:M1_2b, comment:Min Space between two M1s is 0.16 when one or both M1 width or length  >= 1um ,  and the run length of two M1s is  >= 2um  
+**ouput**: {'classification': 'Spacing', 'symbol': '=', 'value': '0.16'}
+**input**: rule:M1_2c, comment:Min Space between two M1s is 0.5 when one or both M1 width or length  >=  5um ,  and run length of two M1s is  >=  2um  
+**parse_error**: 
+
+The rule specifies spacing between two M1s as 0.5 when certain conditions are met. The critical condition is whether the width or length of each M1 is at least 5um, which triggers the spacing requirement. Therefore:
+
+Classification: Spacing  
+Symbol: >=  
+Value: 5  
+
+Answer: The classification is Spacing with symbol ">=" and value 5.
+
+$\boxed{\text{Spacing}, \geq, 5}$
+**input**: rule:M1_3, comment:Max M1 width is 12.  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '12'}
+**input**: rule:M1_4, comment:Min M1 area is 0.027  
+**ouput**: {'classification': 'Area', 'symbol': '==', 'value': '0.027'}
+**input**: rule:M1_5, comment:Min Enclosed dielectric area by M1 is 0.13  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.13'}
+**input**: rule:M1_6al, comment:M1 density (including dummy) in 200umX200um window with step size 100um is  >=  18% and  <=  80%.  INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '18%'}
+**input**: rule:M1_6ah, comment:M1 density (including dummy) in 200umX200um window with step size 100um is  >=  18% and  <=  80%.  INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '18'}
+**input**: rule:M1_6b, comment:Max M1 density (including dummy) in 50umX50um window with step size 25um is 90%  
+**ouput**: {'classification': 'Density', 'symbol': '<=', 'value': '90'}
+**input**: rule:M1_6c, comment:The max difference between M1 density in 200umX200um with step size 200um and those of the adjacent checking windows (including dummy) is 40%.  INDMY/MARKG/MARKF/MARKS covered areas are excluded for this rule checking  
+**ouput**: {'classification': 'Density', 'symbol': '<=', 'value': '40'}
+**input**: rule:M1_6d, comment:Min M1 density (including dummy) in 25umX25um window with step size 12.5um is 12%.  INDMY/MARKG/MARKS covered areas are excluded for this rule checking  
+**ouput**: {'classification': 'Density', 'symbol': '=', 'value': '12'}
+**input**: rule:M1_6e_min_R, comment:M1 average density inside the dummy block area in 25umX25um window with step size 12.5um is  >=  12% and  <=  90% when the dummy block area  >=  25umX25um.  INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking.  Device sensitive areas can be waived.  NOTICE  It is a recommended rule.  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '12'}
+**input**: rule:M1_6e_max_R, comment:M1 average density inside the dummy block area in 25umX25um window with step size 12.5um is  >=  12% and  <=  90% when the dummy block area  >=  25umX25um.  INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking.  Device sensitive areas can be waived.  NOTICE  It is a recommended rule.  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '12%'}
+**input**: rule:M1_7_a, comment:Min Space between metal lines with one or both are 45 degree ,  and the bending metal length >= 0.5um is 0.105  (the area with 0.1um distance from bending point need not follow this rule)  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.5'}
+**input**: rule:M1_7_b, comment:Min Space between metal lines with one or both are 45 degree ,  and the bending metal length >= 0.5um is 0.105  (the area with 0.1um distance from bending point need not follow this rule)  
+**ouput**: {'classification': 'Spacing', 'symbol': '=', 'value': '0.105'}
+
+-----------------------s65:V1----------------------------
+
+**input**: rule:V1_offgrid, comment:Drawn V1 off-grid  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:V1_1, comment:Fixed V1 size(square shape) is 0.09  
+**ouput**: {'classification': 'Width', 'symbol': 'N/A', 'value': '0.09'}
+**input**: rule:V1_2a, comment:Min Space between two V1 is 0.11  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:V1_2b, comment:Min Space between V1s when array equal to or greater than 4*4 is 0.13  Two via regions whose space is  <  0.15um are considered to be in the same array.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.13'}
+**input**: rule:V1_3a_3b, comment:Min M1 enclosure of V1 is 0.00  Min M1 enclosure of V1 is 0.030 when M1 enclosure on one or both perpendicular directions < 0.03um  
+**ouput**: {'classification': 'Enclosure', 'symbol': '<', 'value': '0.03'}
+**input**: rule:V1_5a_5b, comment:Min M2 enclosure of V1 is 0.005  Min M2 Enclosure of V1 when M2 enclosure on one or both perpendicular directions  <  0.02um is 0.02  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:V1_10, comment:Minimum Space between two neighbor V1s (different net and run length > 0) is 0.13um.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.13'}
+**input**: rule:V1_11_12_R, comment:There should be at least two V1s in the M1and M2 intersection area when either or both M1 and M2 width  >=  0.5um  There should be at least two V1s in the M1and M2 intersection area when either or both M1 and M2 is  connected with metal line of width >= 0.5um and space between V1 and wider metal edge  < 0.5um  NOTICE  It is a recommended rule.  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+
+-----------------------s65:M2----------------------------
+
+**input**: rule:M2_offgrid, comment:Drawn M2 off-grid  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:M2_1, comment:Min Mn width is 0.10  
+**ouput**: {'classification': 'Width', 'symbol': '=', 'value': '0.10'}
+**input**: rule:M2_2a, comment:Min Space between two Mns is 0.10  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.10'}
+**input**: rule:M2_2b, comment:Min Space between two Mns is 0.16 when one or both Mn width or length  >=  1um ,  and the run length of two Mns is  >=  2um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:M2_2c, comment:Min Space between two Mns when one or both Mn width or length  >=  5um ,  and the run length of two Mns is  >=  2um  
+**ouput**: {'classification': 'Spacing', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:M2_3, comment:Max M2 width is 12.  Metal line greater than this width will comply slot rules.  
+**ouput**: {'classification': 'Width', 'symbol': '=', 'value': '12'}
+**input**: rule:M2_4, comment:Min Mn area is 0.035  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.035'}
+**input**: rule:M2_5, comment:Min Enclosed dielectric area by Mn is 0.12  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.12'}
+**input**: rule:M2_6al, comment:Mn density (including dummy) in 200umX200um window with step size 100um is  >=  18% and  <=  80%.  INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking  
+**parse_error**: 
+
+To address the problem of representing multiple conditions (both minimum and maximum density) in a single JSON output while adhering to the expected structure, we can create a JSON object that includes both conditions. Each condition will be represented with its own symbol and value.
+
+Here is the step-by-step explanation:
+
+1. **Identify the classification**: The primary classification for this rule is "Density".
+2. **Extract the symbols and values**: The two conditions are density should be greater than or equal to 18% (`>=`, `18`) and less than or equal to 80% (`<=`, `80`).
+3. **Structure the JSON**: To include both conditions, we can add each condition as a separate key-value pair within the JSON object.
+
+The final JSON output would look like this:
+
+```json
+{
+  "classification": "Density",
+  "symbol1": ">=",
+  "value1": "18",
+  "symbol2": "<=",
+  "value2": "80"
+}
+```
+
+This structure allows both conditions to be clearly represented within a single JSON object, providing all necessary information about the density requirements.
+**input**: rule:M2_6ah, comment:Mn density (including dummy) in 200umX200um window with step size 100um is  >=  18% and  <=  80%.  INDMY/MARKF/MARKG/MARKS covered areas are excluded for this rule checking  
+**parse_error**: 
+
+The density constraint for the design rule M2_6ah requires the density to be within a specific range. The lower bound of 18% and the upper bound of 80% are both critical for ensuring compliance with this rule.
+
+```json
+[
+    {
+        "classification": "Density",
+        "symbol": ">=",
+        "value": 18
+    },
+    {
+        "classification": "Density",
+        "symbol": "<=",
+        "value": 80
+    }
+]
+```
+
+Step-by-step explanation:
+
+1. **Identify the design rule and its constraints**: The given design rule M2_6ah specifies a density constraint with two bounds: >=18% and <=80%.
+
+2. **Determine the relevant classification**: Both constraints pertain to density, so the classification for each is "Density".
+
+3. **Extract each numerical value and corresponding symbol**: 
+   - The first condition is 18% with the operator ">=", which means greater than or equal to.
+   - The second condition is 80% with the operator "<=", meaning less than or equal to.
+
+4. **Structure each as a separate JSON object**: Since each constraint has its own symbol and value, they are represented as two distinct JSON objects within an array.
+
+5. **Output the result**: The final output includes both constraints, ensuring that any system utilizing this data can enforce both the minimum and maximum density requirements.
+**input**: rule:M2_6b, comment:Max Mn density (including dummy) in 50umX50um window with step size 25um is 90%.  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '90'}
+**input**: rule:M2_6c, comment:The max difference between Mn density in 200umX200um with step size 200um and those of the adjacent checking windows (including dummy) is 40%  INDMY/MARKG/MARKF/MARKS covered areas are excluded for this rule checking  
+**ouput**: {'classification': 'Density', 'symbol': '=', 'value': '40'}
+**input**: rule:M2_6d, comment:Minimum Mn density (including dummy) in 25umX25um window with step size 12.5um is 12%  INDMY/MARKG/MARKS covered areas are excluded for this rule checking  
+**ouput**: {'classification': 'Density', 'symbol': '=', 'value': '12'}
+**input**: rule:M2_7, comment:Min Space between metal lines with one or both is 45 degree and the bending length  >= 0.5um is 0.115  (the area with 0.1um distance from bending point need not follow this rule)  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.115'}
+**input**: rule:M2_6e_min_R, comment:Average density for Mn inside the dummy block area in 25umX25um window with step size 12.5um is  >=  12% and  <=  90% when the dummy block area  >=  25umX25um.  INDMY/MARKF/MARKG/MARKS covered areas are excluded from this rule checking.  Device sensitive areas can be waived.  NOTICE  It is a recommended rule.  
+**parse_error**: 
+
+To address the problem of extracting relevant numerical conditions from the given statement about average density, we need to identify both the lower and upper bounds mentioned in the text.
+
+**Step-by-Step Explanation:**
+
+1. **Read the Statement:** The problem states that "the average density must be >=12% and <=90%."
+
+2. **Identify Numerical Conditions:** 
+   - The first condition is a minimum threshold: average density should be greater than or equal to 12%. This translates to the symbol ">=" and the value "12%".
+   - The second condition specifies a maximum limit: average density should not exceed 90%, which corresponds to the symbol "<=" and the value "90%".
+
+3. **Representation:** Each numerical condition is captured as a separate JSON object, each containing a symbol and its corresponding value.
+
+**Final Answer:**
+
+\boxed{
+  [
+    {
+      "symbol": ">=",
+      "value": "12%"
+    },
+    {
+      "symbol": "<=",
+      "value": "90%"
+    }
+  ]
+}
+**input**: rule:M2_6e_max_R, comment:Average density for Mn inside the dummy block area in 25umX25um window with step size 12.5um is  >=  12% and  <=  90% when the dummy block area  >=  25umX25um.  INDMY/MARKF/MARKG/MARKS covered areas are excluded from this rule checking.  Device sensitive areas can be waived.  NOTICE  It is a recommended rule.  
+**parse_error**: 
+
+The problem involves analyzing a single design rule regarding density constraints. The rule specifies two conditions: the density must be at least 12% and no more than 90%. Each condition is represented separately due to the output format's limitations.
+
+Step-by-step explanation:
+
+1. **Identify Classification**: The rule pertains to "Density".
+2. **Extract Constraints**: There are two constraints:
+   - Density should be greater than or equal to 12%.
+   - Density should be less than or equal to 90%.
+
+Since the output format allows only one symbol and value per JSON object, each constraint is presented separately.
+
+JSON objects:
+
+```json
+[
+    {
+        "classification": "Density",
+        "symbol": ">=",
+        "value": 12
+    },
+    {
+        "classification": "Density",
+        "symbol": "<=",
+        "value": 90
+    }
+]
+```
+
+These two entries together represent the complete density constraint from the original rule.

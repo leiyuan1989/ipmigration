@@ -1,0 +1,2 @@
+Please determine whether the output result by the large model meets the following requirements: [Present the results in a CSV - like format (```csv in text). The header of the CSV must be in the exact order of "dr|category|comment|symbol|value", and use "|" as the field delimiter.] Answer with Yes or No, and do not answer anything else. The following is the output result:
+

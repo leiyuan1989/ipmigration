@@ -1,0 +1,2603 @@
+offgrid_check++++++++++++++++++++++
+
+@ Grid violation
+DRAWN OFFGRID
+}
+ortho_45_check++++++++++++++++++++++
+
+@ Orthogonal and 45 degree violation
+DRAWN SKEW
+}
+TB.a++++++++++++++++++++++
+
+@TB.a: Minimum NW width must be >=0.8um
+L1001=INTERNAL TB_drc <0.8 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+TB.b1.1++++++++++++++++++++++
+
+@TB.b1.1: Min space between two NW with different potential must be >= 1.53 um
+L1001=EXTERNAL tb_conn <1.53 REGION NOT CONNECTED SINGULAR SPACE
+NOT INSIDE L1001 EXCL
+}
+TB.b.2++++++++++++++++++++++
+
+@TB.b.2: Min space between two NW with same potential must be >= 0.8 um
+L1001=EXTERNAL tb_conn <0.8 REGION CONNECTED SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+TB.c++++++++++++++++++++++
+
+@TB.c: Min width of an NW region not connect to most positive power supply must be >=1.784 um
+L1001=INTERNAL hotnw <1.784 REGION SINGULAR ABUT<90
+L1002=((NOT INTERACT  L1001 RES_NW_mark) NOT INTERACT rnwell_rndmy) NOT INTERACT rnwell_sn
+NOT INSIDE L1002 EXCL
+}
+TB.d++++++++++++++++++++++
+
+@TB.d: Min area of NW must be >=4.0 um2
+AREA TB_drc <4.0
+}
+TB.e++++++++++++++++++++++
+
+@TB.e: TO is not allowed to placed, if the space between two NW less than 0.96um
+L1001=EXT tb_conn <=0.96 REGION OPPOSITE
+L1002=AND L1001 TO_drc
+NOT INSIDE L1002 EXCL
+}
+Nwell_res.a++++++++++++++++++++++
+
+@Nwell_res.a: Min extension of NW by active must be >=0.85um
+L1001=ENCLOSURE tb_res salicres_to <0.85 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+Nwell_res.b++++++++++++++++++++++
+
+@Nwell_res.b: Min extension of cont by salicide NW region must be >=0.254um
+L1001=ENCLOSURE salicres_w1 restb_with_sab <0.254 REGION SINGULAR ABUT<90 OVERLAP
+NOT INSIDE L1001 EXCL
+}
+Nwell_res.c++++++++++++++++++++++
+
+@Nwell_res.c: Min spacing between SAB and related NW region must be >=0.254um
+L1001=EXTERNAL salicres_si tb_res <0.254 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+Nwell_res.d++++++++++++++++++++++
+
+@Nwell_res.d: Min extension of active by related SAB region must be >=0.186um
+L1001=ENCLOSURE salicres_to salicres_si <0.186 REGION SINGULAR ABUT<90
+fill_salicres_si=(HOLES salicres_si) OR salicres_si
+L1002=NOT salicres_to fill_salicres_si
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+Nwell_res.e++++++++++++++++++++++
+
+@Nwell_res.e: Min overlap between SN and SAB in NW region must be >=0.34um
+L1001=INTERNAL salicres_sn salicres_si <0.34 REGION SINGULAR ABUT<90
+X=HOLES salicres_si INNER
+L1002=X NOT salicres_sn
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+Nwell_res.f++++++++++++++++++++++
+
+@Nwell_res.f: Min sapcing between cont and SAB in NW region must be >=0.254um
+L1001=EXTERNAL salicres_w1 salicres_si <0.254 REGION SINGULAR ABUT<90 OVERLAP
+NOT INSIDE L1001 EXCL
+}
+Nwell_res.g.2++++++++++++++++++++++
+
+@Nwell_res.g: Min sapcing of NW resistor must be >=1.8um
+L1001=EXTERNAL restb_sab_body <1.8 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+Nwell_res.h++++++++++++++++++++++
+
+@Nwell_res.h: Min width of NW resistor must be >=1.7um
+L1001=INTERNAL tb_res <1.7 REGION SINGULAR ABUT<90
+L1002=INTERNAL (TB_drc NOT OUTSIDE rnwell_sn) <1.7 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+Nwell_res.i++++++++++++++++++++++
+
+@Nwell_res.i:Min extension of SN beyond TO for Nwell resistor under STI must be >=0.152um
+L1001=ndiff INTERACT (tb_res NOT INTERACT SI_drc)
+L1002=ENC L1001 SN_drc <0.152 REGION SINGULAR ABUT<90 OVERLAP
+NOT INSIDE L1002 EXCL
+}
+Nwell_res.j++++++++++++++++++++++
+
+@Nwell_res.j:Min clearance from NWDMY to TB must be >=0.254 um
+L1001=(tb_res NOT INTERACT SI_drc) NOT RES_NW_mark
+L1002=(tb_res AND RES_NW_mark) TOUCH EDGE L1001
+L1003=(tb_res AND RES_NW_mark) WITH EDGE L1002 !=2
+L1004=ENC (tb_res NOT INTERACT SI_drc) RES_NW_mark <0.254 REGION SINGULAR ABUT<90
+NOT INSIDE L1003 EXCL
+NOT INSIDE L1004 EXCL
+}
+Nwell_res.k++++++++++++++++++++++
+
+@Nwell_res.k: LDD,SN and SP is not allowed in NW resistor region
+AND restb_sab_body SP_drc
+AND restb_sab_body SN_drc
+}
+TO.a.1++++++++++++++++++++++
+
+@TO.a.1: Min active width for interconnect must be >=0.186um
+L1001=INTERNAL TO_drc <0.186 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+TO.b.1++++++++++++++++++++++
+
+@TO.b.1: Active width for NMOS must be >= 0.186 um
+L1001=INSIDE EDGE (gt_not_bjt NOT INSIDE EXCL) (nsdg NOT INSIDE EXCL)
+PATH LENGTH (INSIDE EDGE (gt_not_bjt NOT INSIDE EXCL) (nsdg NOT INSIDE EXCL)) <0.186
+}
+TO.b.2++++++++++++++++++++++
+
+@TO.b.2: Active width for PMOS must be >= 0.186 um
+PATH LENGTH (INSIDE EDGE (gt_not_bjt NOT INSIDE EXCL) (psdg NOT INSIDE EXCL)) <0.186
+}
+TO.c++++++++++++++++++++++
+
+@TO.c: Min spacing of TO must be >=0.238um
+L1001=EXTERNAL TO_drc < 0.238 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+TO.d++++++++++++++++++++++
+
+@TO.d: Min extension from NW edge to an NW pick-up must be >=0.102um
+L1001=ENCLOSURE (ndiff NOT salicres_to) TB_drc <0.102 REGION SINGULAR ABUT<90
+((ndiff NOT salicres_to) CUT TB_drc) NOT TB_drc
+NOT INSIDE L1001 EXCL
+}
+TO.e.2++++++++++++++++++++++
+
+@TO.e.2: Min spacing of NW edge to an N+active outside NW(5v) must be >=0.45um
+A = ndiff NOT INSIDE TB_drc
+X = A NOT salicres_to
+L1001=EXT X TB_drc < 0.45 SINGULAR ABUT<90 REGION
+NOT INSIDE L1001 EXCL
+X CUT TB_drc
+}
+TO.f.2++++++++++++++++++++++
+
+@TO.f.2: Min spacing of NW edge to an P+active inside NW(5v) must be >=0.45um
+L1001=ENCLOSURE pdiff TB_drc <0.45 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+CUT pdiff TB_drc
+}
+TO.g++++++++++++++++++++++
+
+@TO.g: Min spacing of NW edge to an P+active(PW pick-up)
+@ outside NW must be >=0.102um
+L1001=EXTERNAL TB_drc ptap <0.102 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+TO.h.1++++++++++++++++++++++
+
+@TO.h.1: Min spacing of poly edge to the edeg of butted diffusion active must be >=0.272um
+L1001=EXTERNAL ngate_no_powermos butt_pdiff <0.272 REGION ABUT<90
+NOT INSIDE L1001 EXCL
+}
+TO.h.2++++++++++++++++++++++
+
+@TO.h.2: Min spacing of poly edge to the edeg of butted diffusion active must be >=0.272um
+L1001=EXTERNAL pgate_no_powermos butt_ndiff <0.272 REGION ABUT<90
+NOT INSIDE L1001 EXCL
+}
+TO.i++++++++++++++++++++++
+
+@TO.i: Min spacing of N+active to P+active for butted diffusion active must be >=0
+AND ndiff pdiff
+}
+TO.j++++++++++++++++++++++
+
+@TO.j: One segment of the consecutive SN/SP edge of a butted
+@ diffusion active should be longer than 0.326um
+A = LENGTH butt_pedge >= 0.326
+B = EXPAND EDGE butt_pedge
+INSIDE BY 0.001
+EXTEND BY 0.001
+L1001=B NOT WITH EDGE A
+C = LENGTH butt_nedge >= 0.326
+D = EXPAND EDGE butt_nedge
+INSIDE BY 0.001
+EXTEND BY 0.001
+L1002=D NOT WITH EDGE C
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+TO.k++++++++++++++++++++++
+
+@TO.k: When NW and PW pick-up are put head-to-head across the boundary of the well,
+@ the spacing of N-pick-up to P-pick-up should be 0.304um in order to meet the implant rules
+L1001=EXTERNAL ntap ptap <0.304 ABUT<90 SINGULAR REGION
+NOT INSIDE L1001 EXCL
+}
+TO.l++++++++++++++++++++++
+
+@TO.l: Min active area of a stand-along region must be >=0.2um2
+AREA TO_drc <0.2
+}
+TO.m++++++++++++++++++++++
+
+@TO.m: Min active area of butted diffusion must be >=0.13um2
+AREA butt_ndiff <0.13
+AREA butt_pdiff <0.13
+}
+TO.n++++++++++++++++++++++
+
+@TO.n: Length and width should be less than 60um
+SIZE TO_drc BY 30.0 UNDEROVER
+}
+TO.note++++++++++++++++++++++
+
+@TO.note: active not doped is not allowed
+COPY to_undoped
+}
+TO_res.a++++++++++++++++++++++
+
+@TO_res.a: Min width of active res must be >=1.0um
+L1001=INTERNAL to_res_body <1.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+TO_res.b++++++++++++++++++++++
+
+@TO_res.b: The separation from SAB to contact on TO must be >=0.15um
+L1001=EXTERNAL to_res_si w1_and_to <0.15 REGION SINGULAR ABUT<90
+AND to_res_si w1_and_to
+NOT INSIDE L1001 EXCL
+}
+TO_res.c++++++++++++++++++++++
+
+@TO_res.c: Min spacing of active resistor to unrelated SAB must be >=0.254um
+L1001=EXTERNAL to_sab SI_drc<0.254 REGION SINGULAR ABUT>0<90 MEASURE ALL
+NOT INSIDE L1001 EXCL
+}
+TO_res.d++++++++++++++++++++++
+
+@TO_res.d: Min spacing of active resistor to unrelated implant region must be >=0.22um
+L1001=EXTERNAL to_sab imp_reg<0.22 REGION SINGULAR ABUT<90 MEASURE ALL
+NOT INSIDE L1001 EXCL
+}
+TO_res.e++++++++++++++++++++++
+
+@TO_res.e: The overlap of SAB to active resistor must be >=0.186um
+L1001=ENCLOSURE to_sab to_res_si <0.186 REGION SINGULAR ABUT<90
+L1002=to_sab NOT to_res_body
+L1003=to_res_body TOUCH EDGE L1002
+L1004=to_res_body WITH EDGE L1003 >2
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1004 EXCL
+}
+TO_res.f++++++++++++++++++++++
+
+@TO_res.f: The extension of active resistor to contact must be >=0.07um
+L1001=ENCLOSURE w1_and_to to_sab<0.07 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+TO_res.g++++++++++++++++++++++
+
+@TO_res.g: The extension of N+ or P+ diffusion to active resistor must be >=0.152um
+L1001=ENCLOSURE to_sab SN_drc <0.152 REGION SINGULAR ABUT<90
+L1002=ENCLOSURE to_sab SP_drc <0.152 REGION SINGULAR ABUT<90
+(SI_drc AND to_res_body) NOT imp_reg
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+TO_res.h++++++++++++++++++++++
+
+@TO_res.h: Min spacing of active resistor to unrelated poly must be >=0.51um
+L1001=EXTERNAL to_sab GT_drc <0.51 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+GT.a.1++++++++++++++++++++++
+
+@GT.a.1: Min width for interconnects must be >=0.18um
+L1001=INTERNAL GT_drc <0.18 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+GT.a.2++++++++++++++++++++++
+
+@GT.a.2: Min width for gate of HVNMOS(5.0V) must be >=0.5um
+L1001=INTERNAL ngate_l_edge <0.5 REGION ABUT<90
+NOT INSIDE L1001 EXCL
+}
+GT.a.3++++++++++++++++++++++
+
+@GT.a.3: Min width for gate of HVPMOS(5.0V) must be >=0.42um
+L1001=INTERNAL pgate_l_edge <0.42 REGION ABUT<90
+NOT INSIDE L1001 EXCL
+}
+GT.b.1++++++++++++++++++++++
+
+@GT.b.1: Min spacing between two GT region must be >=0.212um
+L1001=EXTERNAL GT_drc <0.212 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+GT.b.2++++++++++++++++++++++
+
+@GT.b.2: Min spacing between two GT regions with contact on active area must be>=0.318um
+L1001=INTERNAL gate_space <0.318 PARA ONLY OPPOSITE REGION
+NOT INSIDE L1001 EXCL
+}
+GT.b.3++++++++++++++++++++++
+
+@GT.b.3: Min spacing between two GT regions without contact on active area must be>=0.25um
+L1001=INTERNAL gate_space_wo_w1 <0.25 PARA ONLY OPPOSITE REGION
+NOT INSIDE L1001 EXCL
+}
+GT.c++++++++++++++++++++++
+
+@GT.c: Min extension of poly end cap must be >=0.186um
+L1001=ENCLOSURE TO_drc GT_drc <0.186 REGION ABUT<90
+NOT INSIDE L1001 EXCL
+}
+GT.d++++++++++++++++++++++
+
+@GT.d: Min extension from active to GT must be >=0.27um
+L1001=ENCLOSURE GT_drc TO_drc <0.27 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+GT.e++++++++++++++++++++++
+
+@GT.e: Min spacing of poly to active must be >=0.084um
+L1001=EXTERNAL GT_drc TO_drc <0.084 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+GT.f++++++++++++++++++++++
+
+@GT.f1: Max length of salicide poly on SAB between two contacts must <=50um when poly width is less than or equal to 0.24um
+@GT.f2: Max length of salicide poly on SAB between one contact and poly line end must <=50um when poly width is less than or equal to 0.24um
+NOT INSIDE  gt_err_g1_g2 EXCL
+}
+GT.g1++++++++++++++++++++++
+
+@GT.g1: Min GT width for NMOS channel length which has 45 degree bent on TO must be >=0.54um
+L1001=INTERNAL bent_ngate < 0.54 ABUT<90 REGION
+NOT INSIDE L1001 EXCL
+}
+GT.g2++++++++++++++++++++++
+
+@GT.g2: Min GT width for PMOS channel length which has 45 degree bent on TO must be >=0.46um
+L1001=INTERNAL bent_pgate < 0.46 ABUT<90 REGION
+NOT INSIDE L1001 EXCL
+}
+GT.g3++++++++++++++++++++++
+
+@GT.g3: Min GT width for channel length which has 45 degree bent on field oxide must be >=0.26um
+L1001=INTERNAL bent_gate_gt < 0.26 ABUT<90 REGION
+NOT INSIDE L1001 EXCL
+}
+GT.h++++++++++++++++++++++
+
+@GT.h:GT must enter the TO region perpendicularly(horizontal or vertical direction).
+L1001=ENC gate TO_drc <0.01 REGION ABUT==90 INTERSECTING ONLY
+L1002=COINCIDENT EDGE gate TO_drc
+L1003=EXPAND EDGE L1002 INSIDE BY 0.001
+L1003 NOT TOUCH L1001 ==2
+}
+GT.i.1++++++++++++++++++++++
+
+@GT.i.1: 90 degree bend on active region is not allowed
+INTERNAL (INSIDE EDGE gt_not_bjt nsdg) <0.001 ABUT == 90 REGION
+EXTERNAL (INSIDE EDGE gt_not_bjt nsdg) <0.001 ABUT == 90 REGION
+}
+GT.i.2++++++++++++++++++++++
+
+@GT.i.2: 90 degree bend on active region is not allowed
+INTERNAL (INSIDE EDGE gt_not_bjt psdg) <0.001 ABUT == 90 REGION
+EXTERNAL (INSIDE EDGE gt_not_bjt psdg) <0.001 ABUT == 90 REGION
+}
+GT.k++++++++++++++++++++++
+
+@GT.k: Min space between poly interconnects with one or both poly width and length
+@are greater than 0.28um and 0.5um respectively must be >=0.22um
+L1001=EXTERNAL gt_wide gt_conn <0.22 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+GT_res.a++++++++++++++++++++++
+
+@GT_res.a: Min width of poly res must be >=1.0um
+L1001=INTERNAL gt_res_body_no_esd <1.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+GT_res.b++++++++++++++++++++++
+
+@GT_res.b: The separation from SAB to contact on poly must be >=0.15um
+L1001=EXTERNAL gt_res_si w1_and_gt <0.15 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+AND gt_res_si w1_and_gt
+}
+GT_res.c++++++++++++++++++++++
+
+@GT_res.c: Min spacing of poly resistor to unrelated SAB must be >=0.254um
+L1001=EXTERNAL gt_sab SI_drc<0.254 REGION SINGULAR ABUT>0<90 MEASURE ALL
+NOT INSIDE L1001 EXCL
+}
+GT_res.d++++++++++++++++++++++
+
+@GT_res.d: Min spacing of poly resistor to unrelated implant region must be >=0.22um
+L1001=EXTERNAL gt_sab imp_reg<0.22 REGION SINGULAR ABUT<90 MEASURE ALL
+NOT INSIDE L1001 EXCL
+}
+GT_res.e++++++++++++++++++++++
+
+@GT_res.e: The overlap of SAB to poly resistor must be >=0.186um
+L1001=ENCLOSURE gt_sab gt_res_si <0.186 REGION SINGULAR ABUT<90
+L1002=gt_sab NOT gt_res_body
+L1003=gt_res_body TOUCH EDGE L1002
+L1004=gt_res_body WITH EDGE L1003 >2
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1004 EXCL
+}
+GT_res.f++++++++++++++++++++++
+
+@GT_res.f: The extension of poly resistor to contact must be >=0.084um
+L1001=ENCLOSURE w1_and_gt gt_sab<0.084 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+GT_res.g++++++++++++++++++++++
+
+@GT_res.g: The extension of N+ or P+ diffusion to poly resistor must be >=0.152um
+L1001=ENCLOSURE gt_sab SN_drc <0.152 REGION SINGULAR ABUT<90
+L1002=ENCLOSURE gt_sab SP_drc <0.152 REGION SINGULAR ABUT<90
+gt_sab NOT imp_reg
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+GT_res.h++++++++++++++++++++++
+
+@GT_res.h: Min spacing of poly or active resistor to unrelated poly must be >=0.51um
+L1001=EXTERNAL gt_sab gt_not_res <0.51 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+GT_res.i++++++++++++++++++++++
+
+@GT_res.i: Min spacing of poly resistor to poly resistor must be >=0.34um
+L1001=EXTERNAL gt_res_body <0.34 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+GT_res.l:++++++++++++++++++++++
+
+@GT_res.l: Poly resistor laid on ACT area is not recommended
+AND gt_res_body TO_drc
+}
+SN.a++++++++++++++++++++++
+
+@SN.a: Min SN width must be >=0.356
+L1001=INTERNAL SN_drc <0.356 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SN.b++++++++++++++++++++++
+
+@SN.b: Min SN space must be >=0.356
+L1001=EXTERNAL SN_drc <0.356 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SN.b1++++++++++++++++++++++
+
+@SN.b1:Min SN space on STI <=0.42um must be merge
+L1001=EXT SN_drc <0.42 REGION
+L1002=L1001 OUTSIDE (TO_drc OR GT_drc)
+NOT INSIDE L1002 EXCL
+}
+SN.c++++++++++++++++++++++
+
+@SN.c: Min spacing of SN to a P+ active inside NW must be >=0.22
+L1001=EXT SN_drc psdg < 0.22 ABUT >0<90 REGION
+X = EXT SN_drc [psdg] < 0.001 ABUT == 0
+Y = EXPAND EDGE X OUTSIDE BY 0.001
+L1002=Y NOT INTERACT ndiff
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+SN.d++++++++++++++++++++++
+
+@SN.d: Min spacing of SN to a P+ pick-up active(non-butted active) must be>=0.084um
+@if the distance between P+active and NW>=0.43um
+L1001=EXTERNAL SN_drc ptap <0.084 ABUT>0<90 REGION
+NOT INSIDE L1001 EXCL
+}
+SN.e++++++++++++++++++++++
+
+@SN.e: Min spacing of SN to a P+ pick-up active(non-butted active) must be>=0.152um
+@if the distance between P+active and NW<0.43um
+sn_e_check = COIN OUTSIDE EDGE (sn_e_all NOT INSIDE EXCL) sp_j_ptap
+INSIDE EDGE sn_e_check nwgro43_a
+}
+SN.f_1++++++++++++++++++++++
+
+@SN.f_1: Min overlap from SN edge to an active must be >=0.194um
+L1001=(SN_drc INSIDE EDGE TO_drc) NOT TOUCH EDGE SP_drc
+L1002=INTERNAL L1001 TO_drc <0.194 REGION ABUT>0<90
+NOT INSIDE L1002 EXCL
+}
+SN.f_2++++++++++++++++++++++
+
+@SN.f_2: Min overlap from SN edge to an active must be >=0.17um
+L1001=(SN_drc INSIDE EDGE TO_drc) TOUCH EDGE SP_drc
+L1002=INTERNAL L1001 TO_drc <0.17 REGION ABUT>0<90
+NOT INSIDE L1002 EXCL
+}
+SN.g++++++++++++++++++++++
+
+@SN.g: Min extension of a SN region over N+active region must be >=0.152um
+X = ((nsdg NOT salicres_sn) NOT vnpn_emit_sn) NOT COIN EDGE pdiff
+L1001=ENC X SN_drc < 0.152 ABUT<90 REGION
+NOT INSIDE L1001 EXCL
+}
+SN.h++++++++++++++++++++++
+
+@SN.h: Min space of a SN edge to a P-channel poly gate must be >=0.238um
+EXTERNAL SN_drc (INSIDE EDGE (gt_not_bjt NOT INSIDE EXCL) (psdg NOT INSIDE EXCL)) <0.238 REGION ABUT<90
+}
+SN.i++++++++++++++++++++++
+
+@SN.i: Min extension of a SN region to a N-channel poly gate must be >=0.45um
+ENCLOSURE (INSIDE EDGE (gt_not_bjt NOT INSIDE EXCL) (nsdg NOT INSIDE EXCL)) SN_drc <0.45 REGION ABUT<90
+}
+SN.j++++++++++++++++++++++
+
+@SN.j: Min extension of a SN region beyond a N+ pick-up active must be >=0.02um
+@ if the distance between N+active and PW >=0.43um
+A=NOT ntap salicres_to
+L1001=ENCLOSURE A SN_drc <0.02 ABUT>0<90 SINGULAR REGION
+X = ENC [A] SN_drc < 0.001 ABUT == 0
+Y = EXPAND EDGE X OUTSIDE BY 0.001
+L1002=Y NOT INTERACT pdiff
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+SN.k++++++++++++++++++++++
+
+@SN.k: Min extension of a SN region beyond a N+ pick-up active must be >=0.152um
+@ if the distance between N+active and PW <0.43um
+@ 1. To obey this rule and "c" simultaneously, the minimum space
+@ between N+ pick-up active and P+ active should be increased to 0.372um
+@ 2. To obey this rule and "e" simultaneously, the minimum space
+@ between N+ pick-up active and P+ active should be increased to 0.304um
+sn_j_check = COIN OUTSIDE EDGE (sn_j_all NOT INSIDE EXCL) sn_j_ntap
+OUTSIDE EDGE sn_j_check nwshrk43_a}
+SN.l.1++++++++++++++++++++++
+
+@SN.l.1: Min extension of SN region beyond a resistor poly msut be >=0.152um
+@SAB poly without SN or SP implant is not allowed.
+L1001=ENCLOSURE gt_res SN_drc <0.152 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SN.m++++++++++++++++++++++
+
+@SN.m: Min space from a SN region over P+active along the
+@direction of poly gate must be >=0.31um.
+L1001=EXTERNAL SN_drc to_gate_edge <0.31 REGION ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SN.n++++++++++++++++++++++
+
+@SN.n: Min extension of a SN region over N+active along the
+@direction of poly gate must be >=0.296um.
+L1001=ENCLOSURE to_gate_edge SN_drc <0.296 REGION ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SN.s++++++++++++++++++++++
+
+@SN.s: Min SN area >=0.4um2
+AREA SN_drc <0.4
+}
+SN_SP.t++++++++++++++++++++++
+
+@SN_SP.t: SN is not allowed to overlap to SP.
+L1001=AND SN_drc SP_drc
+NOT INTERACT L1001 hrpoly_fake
+}
+SN.w++++++++++++++++++++++
+
+@SN.w: Min resist pattern area within NPLUS region must be >=0.64um2
+AREA (ndiff AND RES_TO_mark) <0.64
+}
+SP.a++++++++++++++++++++++
+
+@SP.a: Min width must be >=0.356
+L1001=INTERNAL SP_drc <0.356 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SP.b++++++++++++++++++++++
+
+@SP.b: Min space of SP must be >=0.356
+L1001=EXTERNAL SP_drc <0.356 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SP.b1++++++++++++++++++++++
+
+@SP.b1:Min SP space on STI <=0.42um must be merge
+L1001=EXT SP_drc <0.42 REGION
+L1002=L1001 OUTSIDE (TO_drc OR GT_drc)
+NOT INSIDE L1002 EXCL
+}
+SP.c++++++++++++++++++++++
+
+@SP.c: Min spacing of SP to a N+ active outside NW must be >=0.22
+X = NOT TOUCH EDGE nsdg SP_drc
+L1001=EXT (SP_drc NOT vnpn_base_sp) X < 0.22 ABUT<90 REGION
+NOT INSIDE L1001 EXCL
+}
+SP.d++++++++++++++++++++++
+
+@SP.d: Min spacing of SP to a N+ pick-up active(non-butted active) must be>=0.084um
+@if the distance between N+active and NW>=0.43um
+L1001=EXTERNAL SP_drc ntap <0.084 ABUT>0<90 REGION
+NOT INSIDE L1001 EXCL
+}
+SP.e++++++++++++++++++++++
+
+@SP.e: Min spacing of SP to a N+ pick-up active(non-butted active) must be>=0.152um
+@if the distance between N+active and NW<0.43um
+sp_e_check = COIN OUTSIDE EDGE (sp_e_all NOT INSIDE EXCL) sn_j_ntap
+OUTSIDE EDGE sp_e_check nwshrk43_a
+}
+SP.f_1++++++++++++++++++++++
+
+@SP.f_1: Min overlap from SP edge to an active must be >=0.194um
+L1001=(SP_drc INSIDE EDGE TO_drc) NOT TOUCH EDGE SN_drc
+L1002=INTERNAL L1001 TO_drc <0.194 REGION ABUT>0<90
+NOT INSIDE L1002 EXCL
+}
+SP.f_2++++++++++++++++++++++
+
+@SP.f_2: Min overlap from SP edge to an active must be >=0.17um
+L1001=(SP_drc INSIDE EDGE TO_drc) TOUCH EDGE SN_drc
+L1002=INTERNAL L1001 TO_drc <0.17 REGION ABUT>0<90
+NOT INSIDE L1002 EXCL
+}
+SP.g++++++++++++++++++++++
+
+@SP.g: Min extension of a SP region over P+active region must be >=0.152um
+L1001=ENCLOSURE psdg SP_drc < 0.152 SINGULAR ABUT >0<90 REGION
+Y = ENCLOSURE [psdg] SP_drc <0.001 ABUT == 0
+Z = EXPAND EDGE Y OUTSIDE BY 0.001
+L1002=Z NOT INSIDE ndiff
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+SP.h++++++++++++++++++++++
+
+@SP.h: Min space of a SP edge to a N-channel poly gate must be >=0.238um
+EXTERNAL SP_drc (INSIDE EDGE (gt_not_bjt NOT INSIDE EXCL) (nsdg NOT INSIDE EXCL)) <0.238 REGION ABUT<90
+}
+SP.i++++++++++++++++++++++
+
+@SP.i: Min extension of a SP region to a P-channel poly gate must be >=0.4um
+ENCLOSURE (INSIDE EDGE (gt_not_bjt NOT INSIDE EXCL) (psdg NOT INSIDE EXCL)) SP_drc <0.4 REGION ABUT<90
+}
+SP.j++++++++++++++++++++++
+
+@SP.j: Min extension of a SP region beyond a P+ pick-up active must be >=0.02um
+@ if the distance between P+active and NW >=0.43um
+L1001=ENCLOSURE ptap SP_drc <0.02 ABUT>0<90 SINGULAR REGION
+X = ENC [ptap] SP_drc < 0.001 ABUT == 0
+Y = EXPAND EDGE X OUTSIDE BY 0.001
+L1002=(Y NOT INTERACT ndiff) NOT INTERACT vnpn_undoped
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+SP.k++++++++++++++++++++++
+
+@SP.k: Min extension of a SP region beyond a P+ pick-up active must be >=0.152um
+@ if the distance between P+active and NW <0.43um
+@ 1. To obey this rule and "c" simultaneously, the minimum space
+@ between N+ pick-up active and P+ active should be increased to 0.372um
+@ 2. To obey this rule and "e" simultaneously, the minimum space
+@ between N+ pick-up active and P+ active should be increased to 0.304um
+sp_j_check = COIN OUTSIDE EDGE (sp_j_all NOT EXCL) sp_j_ptap
+INSIDE EDGE sp_j_check nwgro43_a
+}
+SP.l.1++++++++++++++++++++++
+
+@SP.l.1: Min extension of SP region beyond a resistor poly msut be >=0.152um
+@SAB poly without SN or SP implant is not allowed.
+L1001=ENCLOSURE gt_res SP_drc <0.152 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SP.m++++++++++++++++++++++
+
+@SP.m: Min space from a SP edge to a N-channel poly gate along the
+@direction of poly gate must be >=0.254um.
+L1001=EXTERNAL SP_drc to_gate_edge <0.254 REGION ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SP.n++++++++++++++++++++++
+
+@SP.n: Min extension of a SP region over P+active along the
+@direction of poly gate must be >=0.296um.
+L1001=ENCLOSURE to_gate_edge SP_drc <0.296 REGION ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SP.s++++++++++++++++++++++
+
+@SP.s: Min SP area >=0.4um2
+AREA SP_drc <0.4
+}
+SP.w++++++++++++++++++++++
+
+@SP.w: Min resist pattern area within PPLUS region must be >=0.64um2
+AREA (pdiff AND RES_TO_mark) <0.64
+}
+SAB.a++++++++++++++++++++++
+
+@SAB.a: Min width of SAB must be >=0.356um
+L1001=INTERNAL SI_drc <0.356 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SAB.b++++++++++++++++++++++
+
+@SAB.b: Min space of SAB must be >=0.356um
+L1001=EXTERNAL SI_drc <0.356 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SAB.c++++++++++++++++++++++
+
+@SAB.c: Min space of SAB to unrelated diffusion must be >=0.186um
+L1001=EXTERNAL SI_drc TO_drc <0.186 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SAB.d++++++++++++++++++++++
+
+@SAB.d: Min space of SAB to contact must be >=0.15um
+L1001=EXTERNAL SI_drc W1_drc <0.15 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+AND SI_drc W1_drc
+}
+SAB.e++++++++++++++++++++++
+
+@SAB.e: Min space of SAB to poly on diffusion must be >=0.238um
+L1001=EXTERNAL SI_drc (GT_drc INSIDE EDGE TO_drc) <0.238 REGION ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SAB.f++++++++++++++++++++++
+
+@SAB.f: Min space of SAB over related diffusion must be >=0.186um
+L1001=ENCLOSURE TO_drc SI_drc <0.186 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SAB.g++++++++++++++++++++++
+
+@SAB.g: Min extension of diffusion over related SAB must be >=0.186um
+L1001=ENCLOSURE SI_drc TO_drc <0.186 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SAB.h++++++++++++++++++++++
+
+@SAB.h: Min extension of SAB over related poly on STI must be >=0.186um
+L1001=ENCLOSURE gt_sab SI_drc <0.186 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SAB.i++++++++++++++++++++++
+
+@SAB.i: Min extension of SAB over related poly on STI must be >=0.254um
+L1001=EXTERNAL SI_drc (GT_drc NOT INTERACT TO_drc) <0.254 REGION SINGULAR ABUT<90 MEASURE ALL
+NOT INSIDE L1001 EXCL
+}
+SAB.j++++++++++++++++++++++
+
+@SAB.j: Min area of SAB must be >=1.7um
+AREA SI_drc <1.7
+}
+SAB.k++++++++++++++++++++++
+
+@SAB.k: Contacts on SAB are not allowed
+AND W1_drc SI_drc
+}
+W1.a++++++++++++++++++++++
+
+@W1.a: Min&Max Contact size must be == 0.186um
+L1001=NOT RECTANGLE W1_drc ==0.186 BY ==0.186 ORTHOGONAL ONLY
+NOT INSIDE L1001 EXCL
+}
+W1.b++++++++++++++++++++++
+
+@W1.b: Min W1 to W1 space must be >= 0.212um
+L1001=EXTERNAL W1_drc <0.212 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+W1.c++++++++++++++++++++++
+
+@W1.c: Min space when the row and column numbers are both greater than 3 in the contact array must be >= 0.238um
+A = SIZE W1_drc BY 0.256/2 OVERUNDER
+B = SIZE A BY 0.6 UNDEROVER
+C = B INTERACT W1_drc >= 16
+D = W1_drc INTERACT C
+EXT (D NOT INSIDE EXCL) < 0.238
+}
+W1.d++++++++++++++++++++++
+
+@W1.d: Min space of poly contact to active edge must be >= 0.144um
+L1001=EXTERNAL w1_and_gt TO_drc <0.144 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+W1.e++++++++++++++++++++++
+
+@W1.e: Min space of poly gate to contact on active must be >= 0.14um
+L1001=EXTERNAL w1_to_no_powermos gate <0.14 REGION SINGULAR ABUT<90
+L1002=EXTERNAL w1_to_no_powermos gt_bjt <0.14 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+W1.f++++++++++++++++++++++
+
+@W1.f: Min enclosure of active beyond contact must be >= 0.07um
+L1001=ENCLOSURE w1_to TO_drc <0.07 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+W1.g++++++++++++++++++++++
+
+@W1.g: Min enclosure of poly beyond contact must be >= 0.07um
+L1001=ENCLOSURE w1_and_gt gt_not_bjt <0.07 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+W1.h++++++++++++++++++++++
+
+@W1.h: Min enclosure of P+active beyond contact must be >= 0.102um
+L1001=EXTERNAL w1_to_no_powermos butt_pedge <0.102 REGION ABUT<90
+NOT INSIDE L1001 EXCL
+}
+W1.i++++++++++++++++++++++
+
+@W1.i: Min enclosure of N+active beyond contact must be >= 0.102um
+L1001=EXTERNAL w1_to_no_powermos butt_nedge <0.102 REGION ABUT<90
+NOT INSIDE L1001 EXCL
+}
+W1.j++++++++++++++++++++++
+
+@W1.j: Contact on poly gate region is forbidden.
+AND W1_drc gate
+}
+W1.k++++++++++++++++++++++
+
+@W1.k: Contact on active is not allowed to locate on the boundary of SN and SP.
+CUT w1_to_no_powermos SN_drc
+CUT w1_to_no_powermos SP_drc
+}
+W1.m++++++++++++++++++++++
+
+@W1.m: W1 without the cover of (GATE or ACT) is not allowed.
+COPY w1_not_gt_to
+}
+W1.note++++++++++++++++++++++
+
+@W1.note:W1 on the body of any resistor is not allowed.
+W1_drc AND RES_ALL_mark
+}
+A1.a++++++++++++++++++++++
+
+@A1.a: Min A1 width must be >=0.194um
+L1001=INTERNAL A1_drc <0.194 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+A1.b++++++++++++++++++++++
+
+@A1.b: Min A1 space must be >=0.194um
+L1001=EXTERNAL A1_drc <0.194 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+A1.c_d++++++++++++++++++++++
+
+@A1.c: Min enclosure of A1 region over contact region must be >=0.004um
+@A1.d: Min enclosure of A1 line end region beyond contact region must be >=0.05um
+@(when contact at 90 degree corner,one side of metal enclosure must be considered as line end region).
+X = RECTANGLE ENC W1_drc A1_drc ABUT<90  OUTSIDE ALSO
+GOOD 0.004 OPPOSITE 0.05 OPPOSITE 0.004 OPPOSITE 0.05 OPPOSITE
+ENC (X NOT INSIDE EXCL) A1_drc < 0.004 ABUT<90 SINGULAR OVERLAP
+NOT W1_drc A1_drc
+Y = ENC [X] (A1_drc NOT INSIDE EXCL) < 0.05 OPPOSITE
+INT Y < 0.01 ABUT==90 INTERSECTING ONLY
+}
+A1.e++++++++++++++++++++++
+
+@A1.e: Minimum space between M1 lines with one or both metal line width
+@ and length are greater than 10um is 0.476um
+@ The minimum space must be maintained between a metal line and a
+@ small piece of metal(<10) that is connected to the wide metal
+@ within 1.0um range from the wide metal
+A1_S5 = SHRINK (SHRINK (SHRINK (SHRINK a1_conn RIGHT BY 4.999) LEFT BY 4.999) TOP BY 4.999) BOTTOM BY 4.999
+A1_G5 = GROW (GROW (GROW (GROW A1_S5 RIGHT BY 4.999) LEFT BY 4.999) TOP BY 4.999) BOTTOM BY 4.999
+A1_Wide = A1_G5 AND a1_conn
+A1_Exp = SIZE A1_Wide BY 1 INSIDE OF a1_conn STEP 0.137
+A1_Branch = A1_Exp NOT A1_Wide
+A1_Branch_edge = A1_Branch COIN INSIDE EDGE a1_conn
+A1_Check = a1_conn AND (SIZE A1_Exp BY 0.476)
+A1_Else = A1_Check NOT INTERACT A1_Exp
+A1_Extend = A1_Check NOT A1_Exp
+A1_WideC = STAMP A1_Wide BY a1_conn
+A1_ElseC = STAMP A1_Check BY a1_conn
+L1001=EXT A1_WideC A1_ElseC < 0.476 ABUT >0 <89.5 NOT CONNECTED REGION
+L1002=EXT A1_Branch_edge A1_Else < 0.476 ABUT >0 <89.5 OPPOSITE REGION
+L1003=EXT A1_Branch_edge A1_Else < 0.476 ABUT >0 <89.5 CORNER REGION
+L1004=EXT A1_Branch_edge A1_Else < 0.476 ABUT >0 <89.5 PROJ==0 REGION
+A = EXT A1_Exp < 0.476 ABUT > 0 < 89.5 SPACE REGION
+L1005=A NOT INTERACT A1_Extend
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+NOT INSIDE L1003 EXCL
+NOT INSIDE L1004 EXCL
+NOT INSIDE L1005 EXCL
+}
+A1.g++++++++++++++++++++++
+
+@A1.g: Min A1 area must be >=0.2um2
+AREA A1_drc <0.2
+}
+WT.a++++++++++++++++++++++
+
+@WT.a Min&Max WT size must be == 0.238um
+L1001=NOT RECTANGLE WT_drc ==0.238 BY ==0.238 ORTHOGONAL ONLY
+NOT INSIDE L1001 EXCL_N
+}
+WT.b++++++++++++++++++++++
+
+@WT.b Min WT space must be >= 0.238um
+L1001=EXTERNAL WT_drc <0.238 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL_N
+}
+WT.c_d++++++++++++++++++++++
+
+@WT.c: Min enclosure of A1 region beyond WT must be >=0um
+@WT.d: Min enclosure of A1 line end beyond WT must be >=0.06um
+X = RECTANGLE ENC WT_drc A1_drc ABUT<90  OUTSIDE ALSO
+GOOD 0 0.06 OPPOSITE 0 0.06 OPPOSITE
+NOT WT_drc A1_drc
+Y = ENC [X] (A1_drc NOT INSIDE EXCL_N) < 0.06 OPPOSITE ABUT<90
+INT Y < 0.001 ABUT==90 INTERSECTING ONLY
+}
+CP.a++++++++++++++++++++++
+
+@CP.a: Min PAD opening must be >=50x50um
+L1001=INTERNAL CP_drc <50 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+CP.b.a1++++++++++++++++++++++
+
+@CP.b.a1: Min&Max extension of A1 beyond PAD >=2um
+L1001=ENCLOSURE CP_drc A1_drc <2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+CP.b.at++++++++++++++++++++++
+
+@CP.b.at: Min&Max extension of AT beyond PAD >=2um
+L1001=ENCLOSURE CP_drc AT_drc <2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+CP.b.tt++++++++++++++++++++++
+
+@CP.b.tt: Min&Max extension of MTT beyond PAD >=2um
+L1001=ENCLOSURE CP_drc MTT_drc <2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+CP.c.w1++++++++++++++++++++++
+
+@CP.c.w1: Min enclosure of Via1 beyond PAD must be >=2.55um
+L1001=ENCLOSURE w1_pad CP_drc <2.55 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+CP.c.wt++++++++++++++++++++++
+
+@CP.c.wt: Min enclosure of Via5 beyond PAD must be >=2.55um
+L1001=ENCLOSURE wt_pad CP_drc <2.55 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+CP.f.w1++++++++++++++++++++++
+
+@CP.f.w1: Min spacing of Via1 in PAD must be >=0.382um
+L1001=EXTERNAL w1_pad <0.382 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+CP.g.wt++++++++++++++++++++++
+
+@CP.g.wt: Min space of WT in PAD must be >=0.296um
+L1001=EXTERNAL wt_pad <0.296 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SLOT.A1.c++++++++++++++++++++++
+
+@SLOT.A1.c: Minimum width of a metal1 line which is connected to wide metal1 line must be >=10um.
+L34090= COINCIDENT OUTSIDE EDGE (m1ax NOT INSIDE EXCL) (m1gu NOT INSIDE EXCL)
+LENGTH L34090 <10
+}
+SLOT.A1.a++++++++++++++++++++++
+
+@SLOT.A1.a: Minimum width of an open slot must be >=2.0m
+L1001=INTERNAL A1SLOT_slot_drc <2.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SLOT.A1.b++++++++++++++++++++++
+
+@SLOT.A1.b: Maximum width of an open slot must be <=5.0m
+L1001=SIZE A1SLOT_slot_drc BY 2.5 UNDEROVER
+NOT INSIDE L1001 EXCL
+}
+SLOT.A1.d++++++++++++++++++++++
+
+@SLOT.A1.d: Minimum length of an open slot must be >=20.0m
+L1001=COPY A1_short_slot
+NOT INSIDE L1001 EXCL
+}
+SLOT.A1.e_f++++++++++++++++++++++
+
+@SLOT.A1.e_f: Minimum spacing between any two parallel open slots must be >=10.0m
+L1001=EXTERNAL A1SLOT_slot_drc <10.0 REGION SINGULAR PARA ONLY OPPOSITE
+NOT INSIDE L1001 EXCL
+}
+SLOT.A1.h_i++++++++++++++++++++++
+
+@SLOT.A1.h_i: Minimum clearance between two any open slot to the inner/outer metal edge must be <=10.0m
+L1001=ENCLOSURE A1SLOT_slot_drc A1_drc <10 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SLOT.A1.j++++++++++++++++++++++
+
+@SLOT.A1.j: Maximum Metal1 width without sloting must be <=35.0m
+L1001=COPY rule_SLOT_A1_j
+NOT INSIDE L1001 EXCL
+}
+DN.a++++++++++++++++++++++
+
+@DN.a: Min width of DNW must be >=2.55um
+L1001=INTERNAL DN_drc <2.55 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+DN.b++++++++++++++++++++++
+
+@DN.b: Min spacing of DNW to DNW must be >=4.25um
+L1001=EXTERNAL DN_drc <4.25 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+DN.c++++++++++++++++++++++
+
+@DN.c: Min spacing of DNW to unrelated NW must be >=2.974um
+L1001=EXTERNAL DN_drc TB_drc <2.974 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+DN.d++++++++++++++++++++++
+
+@DN.d: Min overlap of NW beyond DNW must be >=1.7um
+L1001=INTERNAL DN_drc TB_drc <1.7 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+DN.e++++++++++++++++++++++
+
+@DN.e: Min extension of NW beyond DNW must be >=1.274um
+L1001=ENCLOSURE DN_drc TB_drc <1.274 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+DN.f++++++++++++++++++++++
+
+@DN.f: Min spacing of PPLUS ACT to DNW must be >=1.274um
+L1001=EXTERNAL pdiff DN_drc <1.274 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+CUT pdiff DN_drc
+}
+PWB.a++++++++++++++++++++++
+
+@PWB.a: Min width of PWBLK must be >=0.8um
+L1001=INTERNAL PWB_drc <0.8 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+PWB.b++++++++++++++++++++++
+
+@PWB.b: Min spacing of PWBLK to PWBLK must be >=0.8um
+L1001=EXTERNAL PWB_drc <0.8 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+PWB.c++++++++++++++++++++++
+
+@PWB.c: Min channle length for 5v native NMOS must be >=2.5um
+lntgate18=COINCIDENT EDGE (ntgate NOT INSIDE EXCL) TO_drc
+LENGTH lntgate18 <2.5
+}
+PWB.d++++++++++++++++++++++
+
+@PWB.d: Min spacing of PWBLK to ACT must be >=0.442um
+L1001=EXTERNAL PWB_drc TO_drc <0.442 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+PWB.e1++++++++++++++++++++++
+
+@PWB.e1: Min and Max extension of PWB beyond TO for Native mos must be ==0.26um
+L1001=PWB INTERACT ngate
+L1002=NOT L1001 TO_drc
+L1003=SIZE L1002 BY 0.13 UNDEROVER
+L1004=INTERNAL L1002 <0.26 REGION SINGULAR ABUT<90
+NOT INSIDE L1003 EXCL
+NOT INSIDE L1004 EXCL
+}
+PWB.e2++++++++++++++++++++++
+
+@PWB.e2: Min extension of PWBLK beyond ACT must be >=0.26um
+L1001=ENCLOSURE TO_drc PWB_drc <0.26 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+CUT TO_drc PWB_drc
+}
+PWB.f++++++++++++++++++++++
+
+@PWB.f: Min spacing of PWBLK to NW must be >=1.41um
+L1001=EXTERNAL PWB_drc TB_drc<1.41 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+PWB.g++++++++++++++++++++++
+
+@PWB.g: Min extension of Gate beyond the ACT of native NMOS device(end-cap) must be >=0.296um
+L1001=ENCLOSURE ntdiff GT_drc<0.296 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+PWB.i++++++++++++++++++++++
+
+@PWB.i: Only one active is allowed to put in PWBLK region
+L1001=ENCLOSE PWB_drc TO_drc >1
+NOT INSIDE L1001 EXCL
+}
+PWB.j++++++++++++++++++++++
+
+@PWB.j: A P+ active is not allowed to put in PWBLK region
+L1001=AND PWB_drc pdiff
+NOT INSIDE L1001 EXCL
+}
+PWB.l++++++++++++++++++++++
+
+@PWB.l: PWBLK overlap TB is not allowed
+L1001=AND PWB_drc TB_drc
+NOT INTERACT L1001 (OR ddnwpsub_5 dnwpsub5_l)
+}
+PWB.m++++++++++++++++++++++
+
+@PWB.m: PWBLK overlap DNW is not allowed
+L1001=AND PWB_drc DN_drc
+L1002=NOT INTERACT L1001 ddnwpsub_5
+NOT INSIDE L1002 EXCL
+}
+HR.a++++++++++++++++++++++
+
+@HR.a: Min width of HR must be >=0.374um
+L1001=INTERNAL HR_drc <0.374 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+HR.b++++++++++++++++++++++
+
+@HR.b: Min spacing of HR to HR must be >=0.374um
+L1001=EXTERNAL HR_drc <0.374 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+HR.c++++++++++++++++++++++
+
+@HR.c: Min spacing of HR to ACT must be >=0.254um
+L1001=EXTERNAL HR_drc TO_drc <0.254 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+HR.d++++++++++++++++++++++
+
+@HR.d: Min spacing of HR to unrelated Gate must be >=0.272um
+L1001=EXTERNAL HR_drc mospoly <0.272 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+HR.e++++++++++++++++++++++
+
+@HR.e: Min spacing of unrelated PPLUS or NPLUS to poly resistor with HR must be >=0.254um
+L1001=EXTERNAL imp_reg hrpoly <0.254 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+HR.f++++++++++++++++++++++
+
+@HR.f: Min and max spacing of SAB to W1 must be ==0.15um
+L1002=EXTERNAL hrcont SI_drc <0.15 REGION SINGULAR ABUT<90 OVERLAP
+L1001=(SIZE SI_drc BY 0.15) AND hrpoly
+L1003=NOT TOUCH hrcont L1001
+hrcont CUT SI_drc
+NOT INSIDE L1002 EXCL
+NOT INSIDE L1003 EXCL
+}
+HR.g++++++++++++++++++++++
+
+@HR.g: Min spacing of HR resistor to HR resistor must be >=0.34um
+L1001=EXTERNAL hrpoly <0.34 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+HR.h++++++++++++++++++++++
+
+@HR.h: Min extension of HR beyond HR resistor must be >=0.254um
+L1001=ENCLOSURE hrpoly HR_drc <0.254 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+hrespoly NOT INSIDE HR_drc
+}
+HR.i++++++++++++++++++++++
+
+@HR.i: Min and max overlap of PPLUS and SAB in HR region must be ==0.186um
+L1001=INTERNAL hrsab_sp <0.186 REGION SINGULAR ABUT<90
+L46448=SIZE hrsab_sp BY -0.093
+L1002=SIZE L46448 BY 0.093
+TOUCH hrsp hrsab
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+HR.j++++++++++++++++++++++
+
+@HR.j: Min extension of PPLUS beyond poly GT must be >=0.152um
+L1002=ENCLOSURE hrpoly SP_drc <0.152 REGION SINGULAR ABUT<90
+NOT INSIDE L1002 EXCL
+L1001=hrespoly NOT (SI_drc NOT OUTSIDE HR_drc)
+L1003=L1001 NOT INSIDE (SP_drc NOT OUTSIDE HR_drc)
+NOT INSIDE L1003 EXCL
+}
+HR.k++++++++++++++++++++++
+
+@HR.k: Min extension of SAB beyond HR resistor in width direction must be >=0.238um
+L1003=ENCLOSURE hrpoly SI_drc <0.238 REGION SINGULAR ABUT<90
+L1001=hrpoly NOT (hrpoly AND SI_drc)
+L1002=(hrpoly AND SI_drc) TOUCH EDGE L1001
+L1004=(hrpoly AND SI_drc) WITH EDGE L1002 >2
+NOT INSIDE L1003 EXCL
+NOT INSIDE L1004 EXCL
+}
+HR.l++++++++++++++++++++++
+
+@HR.lMin width of GT used as poly HR must be >=1.0um
+L1001=INT (GT_drc INTERACT RES_HR_mark) <1.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+HR.m++++++++++++++++++++++
+
+@HR.m: Min area of HR must be >=0.38um2
+AREA HR_drc <0.38
+}
+HR.n++++++++++++++++++++++
+
+@HR.n: Overlap of NPLUS and HR is not allowed
+INTERACT HR_drc SN_drc
+}
+HR.o++++++++++++++++++++++
+
+@HR.o: Overlap of ACT and HR is not allowed
+INTERACT HR_drc TO_drc
+}
+mn5_switch_n2p1.a1++++++++++++++++++++++
+
+@mn5_switch_n2p1 channel length ==0.5um
+@mn5_switch_n2p1 channel length ==0.6um
+gate_powermos_n2p1_check1=NOT OUTSIDE EDGE (TO_powermos NOT INSIDE EXCL) (gate_powermos_n2p1 NOT INSIDE EXCL)
+gate_powermos_n2p1_check2=LENGTH gate_powermos_n2p1_check1 !=0.5
+LENGTH gate_powermos_n2p1_check2 !=0.6
+}
+mn5_switch_n3p1.a2++++++++++++++++++++++
+
+@mn5_switch_n3p1 channel length ==0.6um
+L1001=INTERNAL gate_powermos_n3p1 <0.6 REGION SINGULAR ABUT<90
+L46475=SIZE gate_powermos_n3p1 BY -0.3
+L1002=SIZE L46475 BY 0.3
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+mn5_switch.b++++++++++++++++++++++
+
+@Min and max overlap of GT and SP must be == 0.2um
+L1001=INTERNAL pgate_powermos <0.2 REGION SINGULAR ABUT<90
+L46475=SIZE pgate_powermos BY -0.1
+L1002=SIZE L46475 BY 0.1
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+mn5_switch.c_d++++++++++++++++++++++
+
+@Min and max SP width at the inside must be == 0.5um
+@SP and TO overlap at two sides
+LENGTH pgate_powermos_edge !=0.5
+}
+mn5_switch_n2p1.e1++++++++++++++++++++++
+
+@SP to SP space for channel length 0.5um must be ==1.0um
+diff_powermos_check=LENGTH to_powermos_edge !=1.0
+LENGTH diff_powermos_check !=1.5
+LENGTH powermos_n2p1_edge !=1.0
+}
+mn5_switch_n3p1.e2++++++++++++++++++++++
+
+@SP to SP space for channel length 0.5um must be ==1.5um
+diff_powermos_check=LENGTH to_powermos_edge !=1.0
+LENGTH diff_powermos_check !=1.5
+LENGTH powermos_n3p1_edge !=1.5
+}
+mn5_switch.f++++++++++++++++++++++
+
+@SP extension TO at two side >=0.31um
+L1001=ENC to_powermos_check SP_drc < 0.31  REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+mn5_switch_n2p1.g1++++++++++++++++++++++
+
+@Channel width must be >= 3.5um <=300um
+LENGTH gate_powermos_n2p1_width < 3.5
+LENGTH gate_powermos_n2p1_width > 300.0
+}
+mn5_switch_n3p1.g2++++++++++++++++++++++
+
+@Channel width must be >= 4.5um <=300um
+LENGTH gate_powermos_n3p1_width < 4.5
+LENGTH gate_powermos_n3p1_width > 300.0
+}
+dnwpw.b++++++++++++++++++++++
+
+@Min extension of TB beyond NTO must be >= 0.45 um
+L1001=ENCLOSURE ndiff dnwpw5 < 0.45 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+dnwpw.c++++++++++++++++++++++
+
+@Min space of TB and PTO must be >= 0.35 um
+L1001=EXT dnwpw5 pdiff < 0.35 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+dnppsub.b++++++++++++++++++++++
+
+@Min extension of PWB beyond NTO must be >= 1.6 um
+L1001=ENCLOSURE ndiff dnppsub_5_pwb < 1.6 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+dnppsub.note++++++++++++++++++++++
+
+@Need draw DUMBA layer to prevent adding dummy active on diode region, DUMBA is same as PWB.
+NOT dnppsub_5_pwb DUMBA_mark
+}
+dnwpsub.b++++++++++++++++++++++
+
+@Min extension of PWB beyond TB must be >= 2.5 um
+L1001=ENCLOSURE TB_drc dnwpsub5_pwb < 2.5 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+dnwpsub.note++++++++++++++++++++++
+
+@Need draw DUMBA layer to prevent adding dummy active on diode region, DUMBA is same as PWB.
+NOT dnwpsub5_pwb DUMBA_mark
+}
+ddnwpsub.b++++++++++++++++++++++
+
+@Min extension of DN beyond TB must be >= 1 um
+L1001=ENCLOSURE TB_drc ddnwpsub_55_dn < 1 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+ddnwpsub.c++++++++++++++++++++++
+
+@Min extension of PWB beyond DN must be >= 3 um
+L1001=ENCLOSURE DN_drc ddnwpsub_55_pwb < 3 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+ddnwpsub.note++++++++++++++++++++++
+
+@Need draw DUMBA layer to prevent adding dummy active on diode region, DUMBA is same as PWB.
+NOT ddnwpsub_55_pwb DUMBA_mark
+}
+ddnpwpsub.c++++++++++++++++++++++
+
+@Min space of PTO and TB must be >= 0.35 um
+L1001=EXT ddnpwpsub_tb pdiff < 0.35 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+dpwdn.b++++++++++++++++++++++
+
+@Min space of PTO and TB must be >= 0.35 um
+L1001=EXT ddnwpw_tb pdiff < 0.35 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+L1002=EXT ddnwpw_tb_iso pdiff < 0.35 REGION SINGULAR ABUT<90
+NOT INSIDE L1002 EXCL
+}
+dpwdn.c++++++++++++++++++++++
+
+@Min extension of TB beyond NTO must be >= 0.45 um
+L1001=ENCLOSURE ndiff ddnwpw_tb < 0.45 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+L1002=ENCLOSURE ndiff ddnwpw_tb_iso < 0.45 REGION SINGULAR ABUT<90
+NOT INSIDE L1002 EXCL
+}
+AT.a++++++++++++++++++++++
+
+@AT.a: Min AT width must be >=0.42um
+L1001=INTERNAL AT_drc <0.42 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL_N
+}
+AT.b++++++++++++++++++++++
+
+@AT.b: Min AT space if both metal width<10um must be >=0.42um
+L1001=EXTERNAL AT_drc <0.42 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL_N
+}
+AT.c12++++++++++++++++++++++
+
+@AT.c1: Min enclosure of AT region over WT region must be >=0.07um
+@AT.c2: Min enclosure of AT line end region beyond WT region must be >=0.1um
+@(when via2 at 90 degree corner,one side of metal enclosure must be considered as line end region).
+X = RECTANGLE ENC WT_drc AT_drc ABUT<90  OUTSIDE ALSO
+GOOD 0.07 OPPOSITE 0.1 OPPOSITE 0.07 OPPOSITE 0.1 OPPOSITE
+ENC (X NOT INSIDE EXCL_N) AT_drc < 0.07 ABUT<90 SINGULAR OVERLAP OPPOSITE
+NOT WT_drc AT_drc
+Y = ENC [X] (AT_drc NOT INSIDE EXCL_N) < 0.1 OPPOSITE
+INT Y < 0.01 ABUT==90 INTERSECTING ONLY
+}
+AT.c3++++++++++++++++++++++
+
+@AT.c3: Min enclosure of AT beyond WT,when the width of AT is large the 10um
+@must be >=0.084um
+L1001=ENCLOSURE WT_drc at_gt_10 <0.084 ABUT<90 REGION
+NOT INSIDE L1001 EXCL_N
+}
+AT.c34++++++++++++++++++++++
+
+@AT.c3: When the width of AT is large the 10um, min enclosure of AT region over WT region must be >=0.084um
+@AT.c4: When the width of AT is large the 10um, min enclosure of AT line end region beyond WT region must be >=0.1um
+@(when via2 at 90 degree corner,one side of metal enclosure must be considered as line end region).
+X = RECTANGLE ENC WT_drc AT_drc ABUT<90  OUTSIDE ALSO
+GOOD 0.084 OPPOSITE 0.1 OPPOSITE 0.084 OPPOSITE 0.1 OPPOSITE
+ENC (X NOT INSIDE EXCL_N) at_gt_10 < 0.084 ABUT<90 OPPOSITE
+Y = ENC [X] (AT_drc NOT INSIDE EXCL_N) < 0.1 OPPOSITE
+INT Y < 0.01 ABUT==90 INTERSECTING ONLY
+}
+AT.d++++++++++++++++++++++
+
+@AT.d: Minimum space between Top metal lines with one or both metal line width
+@ and length are greater than 10um is 0.510um
+@ The minimum space must be maintained between a metal line and a
+@ small piece of metal(<10) that is connected to the wide metal
+@ within 1.0um range from the wide metal
+AT_S5 = SHRINK (SHRINK (SHRINK (SHRINK at_conn RIGHT BY 4.999) LEFT BY 4.999) TOP BY 4.999) BOTTOM BY 4.999
+AT_G5 = GROW (GROW (GROW (GROW AT_S5 RIGHT BY 4.999) LEFT BY 4.999) TOP BY 4.999) BOTTOM BY 4.999
+AT_Wide = AT_G5 AND at_conn
+AT_Exp = SIZE AT_Wide BY 1 INSIDE OF at_conn STEP 0.296
+AT_Branch = AT_Exp NOT AT_Wide
+AT_Branch_edge = AT_Branch COIN INSIDE EDGE at_conn
+AT_Check = at_conn AND (SIZE AT_Exp BY 0.51)
+AT_Else = AT_Check NOT INTERACT AT_Exp
+AT_Extend = AT_Check NOT AT_Exp
+AT_WideC = STAMP AT_Wide BY at_conn
+AT_ElseC = STAMP AT_Check BY at_conn
+L1001=EXT AT_WideC AT_ElseC < 0.51 ABUT >0 <89.5 NOT CONNECTED REGION
+L1002=EXT AT_Branch_edge AT_Else < 0.51 ABUT >0 <89.5 OPPOSITE REGION
+L1003=EXT AT_Branch_edge AT_Else < 0.51 ABUT >0 <89.5 CORNER REGION
+L1004=EXT AT_Branch_edge AT_Else < 0.51 ABUT >0 <89.5 PROJ==0 REGION
+A = EXT AT_Exp < 0.51 ABUT > 0 < 89.5 SPACE REGION
+L1005=A NOT INTERACT AT_Extend
+NOT INSIDE L1001 EXCL_N
+NOT INSIDE L1002 EXCL_N
+NOT INSIDE L1003 EXCL_N
+NOT INSIDE L1004 EXCL_N
+NOT INSIDE L1005 EXCL_N
+}
+AT.g++++++++++++++++++++++
+
+@AT.g: Min area of Mn island is 0.56um2 for 8K AT
+AREA AT_drc <0.56
+}
+SLOT.AT.a++++++++++++++++++++++
+
+@SLOT.AT.a: Minimum width of an open slot must be >=2.0m
+L1001=INTERNAL ATSLOT_slot_drc <2.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SLOT.AT.b++++++++++++++++++++++
+
+@SLOT.AT.b: Maximum width of an open slot must be <=5.0m
+L1001=SIZE ATSLOT_slot_drc BY 2.5 UNDEROVER
+NOT INSIDE L1001 EXCL
+}
+SLOT.AT.c++++++++++++++++++++++
+
+@SLOT.AT.c: Minimum width of a metal2 line which is connected to wide metal6 line must be >=10um.
+L34095= COINCIDENT OUTSIDE EDGE (mtax NOT INSIDE EXCL) (mtgu NOT INSIDE EXCL)
+LENGTH L34095 <10
+}
+SLOT.AT.d++++++++++++++++++++++
+
+@SLOT.AT.d: Minimum length of an open slot must be >=20.0m
+L1001=COPY AT_short_slot
+NOT INSIDE L1001 EXCL
+}
+SLOT.AT.e_f++++++++++++++++++++++
+
+@SLOT.AT.e_f: Minimum spacing between any two parallel open slots must be >=10.0m
+L1001=EXTERNAL ATSLOT_slot_drc <10.0 REGION SINGULAR PARA ONLY OPPOSITE
+NOT INSIDE L1001 EXCL
+}
+SLOT.AT.g++++++++++++++++++++++
+
+@SLOT.AT.g: Minimum clearance between two slots in neighbor layers must be >=2.0m
+L1001=EXTERNAL A1SLOT_slot_drc ATSLOT_slot_drc<2.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+AND A1SLOT_slot_drc ATSLOT_slot_drc
+}
+SLOT.AT.h_i++++++++++++++++++++++
+
+@SLOT.AT.h_i: Minimum clearance between two any open slot to the inner/outer metal edge must be <=10.0m
+L1001=ENCLOSURE ATSLOT_slot_drc AT_drc <10 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SLOT.AT.j++++++++++++++++++++++
+
+@SLOT.AT.j: Maximum Top metal width without sloting must be <=35.0m
+L1001=COPY rule_SLOT_AT_j
+NOT INSIDE L1001 EXCL
+}
+MTT.a++++++++++++++++++++++
+
+@MTT.a: Min width of MTT must be >=2um.
+L1001=INTERNAL (MTT_drc INTERACT INDUM_mark) <2 REGION SINGULAR
+L1002=INTERNAL (MTT_drc NOT INTERACT INDUM_mark) <2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL_N
+NOT INSIDE L1002 EXCL_N
+}
+MTT.b1++++++++++++++++++++++
+
+@MTT.b1: Min spacing of MTT to MTT must be >=1.2um.
+@if the width of both metals less than 10um
+L1001=EXTERNAL tt_conn1 <1.2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL_N
+}
+MTT.b2++++++++++++++++++++++
+
+@MTT.b2: Min spacing of MTT to MTT must be >=2.55um
+@if the width and length of one metal both larger than 10um.
+L1001=EXTERNAL L3697 MTT_drc < 2.55 REGION ABUT<90
+NOT INSIDE L1001 EXCL_N
+}
+MTT.c++++++++++++++++++++++
+
+@MTT.c: Min spacing of MTT to MTT must be >=2.55um
+@if the width and length of one metal both larger than 10um.
+L1001=EXTERNAL L3697 MTT_drc < 2.55 REGION ABUT<90
+NOT INSIDE L1001 EXCL_N
+}
+MTT.d++++++++++++++++++++++
+
+@MTT.d: Min enclosure of MTT beyond WT must be >=0.5 um
+L1001=ENC WT_drc MTT_drc <0.5 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL_N
+NOT WT_drc MTT_drc
+}
+MTT.e++++++++++++++++++++++
+
+@MTT.e: Min enclosure of MTT beyond WT,when the width of MTT is large the 10um
+@must be >=2.5um
+L1001=ENCLOSURE WT_drc mtt_gt_10 <2.5 ABUT<90 REGION
+NOT INSIDE L1001 EXCL_N
+}
+MTT.f++++++++++++++++++++++
+
+@MTT.f: Min area of MTT island is 6um2.
+AREA MTT_drc < 6
+}
+MTT.i++++++++++++++++++++++
+
+@MTT.i: No via and metal layers inside INDDMY region are allowed expect
+@ underpass via and metal interconnect of inductor.
+AND indum7 A1_drc
+AND INDUM_mark W1_drc
+AND inddmy2 A1_drc
+}
+MTT.j++++++++++++++++++++++
+
+@MTT.j: Both active and passive device inside INDDMY region are not allowed.
+AND forbiden_mtt INDUM_mark
+}
+MTT.b++++++++++++++++++++++
+
+@MTT.b: Min spacing of MTT to MTT must be >=2um.
+@if the width of both metals less than 10um
+L1001=EXTERNAL tt_conn1 <2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL_N
+}
+MTT.c1++++++++++++++++++++++
+
+@MTT.c1: Ror PR shrink issue,when the width of metal S1 equal or larger than 10um,
+@in the range of 10um beyond each side of S1,if there is metal L1 connected with S1,
+@minimum space between unralated metal L2 and L1/S1 must be >= 2.55 um
+EXTERNAL MTT_in_10_expand  MTT_INTERACT_10_expand< 2.55 REGION ABUT<90
+}
+SLOT.MTT.a++++++++++++++++++++++
+
+@SLOT.MTT.a: Minimum width of an open slot must be >=2.0um
+L1001=INTERNAL MTTSLOT_slot_drc <2.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SLOT.MTT.b++++++++++++++++++++++
+
+@SLOT.MTT.b: Maximum width of an open slot must be <=5.0um
+L1001=SIZE MTTSLOT_slot_drc BY 2.5 UNDEROVER
+NOT INSIDE L1001 EXCL
+}
+SLOT.MTT.c++++++++++++++++++++++
+
+@SLOT.MTT.c: Minimum width of a metal2 line which is connected to wide metal2 line must be >=10um.
+L34096= COINCIDENT OUTSIDE EDGE (ttax NOT INSIDE EXCL) (ttgu NOT INSIDE EXCL)
+LENGTH L34096 <10
+}
+SLOT.MTT.d++++++++++++++++++++++
+
+@SLOT.MTT.d: Minimum length of an open slot must be >=20.0um
+L1001=COPY MTT_short_slot
+NOT INSIDE L1001 EXCL
+}
+SLOT.MTT.e_f++++++++++++++++++++++
+
+@SLOT.MTT.e_f: Minimum spacing between any two parallel open slots must be >=10.0um
+L1001=EXTERNAL MTTSLOT_slot_drc <10.0 REGION SINGULAR PARA ONLY OPPOSITE
+NOT INSIDE L1001 EXCL
+}
+SLOT.MTT.g++++++++++++++++++++++
+
+@SLOT.MTT.g: Minimum clearance between two slots in neighbor layers must be >=2.0um
+L1001=EXTERNAL A1SLOT_slot_drc MTTSLOT_slot_drc<2.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+AND A1SLOT_slot_drc MTTSLOT_slot_drc
+}
+SLOT.MTT.h_i++++++++++++++++++++++
+
+@SLOT.MTT.h_i: Minimum clearance between two any open slot to the inner/outer metal edge must be <=10.0m
+L1001=ENCLOSURE MTTSLOT_slot_drc MTT_drc <10 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+SLOT.MTT.j++++++++++++++++++++++
+
+@SLOT.MTT.j: Maximum MTT width without sloting must be <=35.0m
+L1001=COPY rule_SLOT_MTT_j
+NOT INSIDE L1001 EXCL
+}
+TODUM.m++++++++++++++++++++++
+
+@TODUM.m: Min local density of (TO or DTO) across full chip must be >=20%.
+@ if the chip area >=62500um2
+DENSITY to_not_exc chip_not_to_exc >0<0.2 WINDOW 200 STEP 100 BACKUP PRINT density_report_DTO_n.log
+[AREA(to_not_exc)/AREA(chip_not_to_exc)]
+}
+TODUM.n++++++++++++++++++++++
+
+@TODUM.n: Max density of (TO or DTO) across full chip must be <=80%.
+@ if the chip area >=62500um2
+DENSITY to_not_exc chip_not_to_exc >0.8 WINDOW 200 STEP 100 BACKUP PRINT density_report_DTO_o.log
+[AREA(to_not_exc)/AREA(chip_not_to_exc)]
+}
+TODUM.o++++++++++++++++++++++
+
+@TODUM.o: Min density of (TO or DTO) across full chip must be >=25%.
+DENSITY all_to >0<0.25 PRINT density_report_DTO_p.log
+}
+TODUM.p++++++++++++++++++++++
+
+@TODUM.p: Max density of (TO or DTO) across full chip must be <=75%.
+DENSITY all_to >0.75 PRINT density_report_DTO_q.log
+}
+GTDUM.k++++++++++++++++++++++
+
+@GTDUM.k: Minimum poly pattern density must be greater than 15%.
+@ If not, please add the dummy pattern on the STI region.
+DENSITY all_gt >0<0.15 PRINT density_report_DGT_n.log
+}
+A1DUM.k++++++++++++++++++++++
+
+@A1DUM.k: Min local density of (Ax or DAx) for A1-An(n<6) must be >=30%
+DENSITY a1_not_exc chip_not_metal_exc >0<0.3 WINDOW 200 STEP 100 BACKUP PRINT density_report_DA1_k.log
+[AREA(a1_not_exc)/AREA(chip_not_metal_exc)]
+}
+A1DUM.o++++++++++++++++++++++
+
+@A1DUM.o: Max local density of (Ax or DAx)must be <=80%
+DENSITY a1_not_exc chip_not_metal_exc >0.8 WINDOW 200 STEP 100 BACKUP PRINT density_report_DA1_o.log
+[AREA(a1_not_exc)/AREA(chip_not_metal_exc)]
+}
+A1DUM.p++++++++++++++++++++++
+
+@A1DUM.p: Min metal local density within DAxBLK for(A1-An)(n<6) must be >=30%
+DENSITY A1 DA1BLK >0<0.3 WINDOW 200 STEP 100 BACKUP PRINT density_report_DA1_p.log
+[AREA(A1)/AREA(DA1BLK)]
+}
+A1DUM.r++++++++++++++++++++++
+
+@A1DUM.r: Max metal local density within DAxBLK must be <=80%
+DENSITY A1 DA1BLK >0.8 WINDOW 200 STEP 100 BACKUP PRINT density_report_DA1_r.log
+[AREA(A1)/AREA(DA1BLK)]
+}
+A1DUM.m++++++++++++++++++++++
+
+@A1DUM.m:Min density of (An to AnDUM) across full chip must be >=30%
+DENSITY (all_a1 NOT A1SLOT_slot) >0 <0.3 PRINT density_report_DA1_m.log
+}
+A1DUM.n++++++++++++++++++++++
+
+@A1DUM.n:Max density of (An to AnDUM) across full chip must be <=70%
+DENSITY (all_a1 NOT A1SLOT_slot) >0.7 PRINT density_report_DA1_n.log
+}
+ATDUM.l++++++++++++++++++++++
+
+@ATDUM.l: Min local density of (AT or DAT) or (TT or DTT)must be >=30%
+DENSITY at_not_exc chip_not_metal_exc >0<0.3 WINDOW 200 STEP 100 BACKUP PRINT density_report_DAT_l.log
+[AREA(at_not_exc)/AREA(chip_not_metal_exc)]
+}
+ATDUM.o++++++++++++++++++++++
+
+@ATDUM.o: Max local density of (Ax or DAx)must be <=80%
+DENSITY at_not_exc chip_not_metal_exc >0.8 WINDOW 200 STEP 100 BACKUP PRINT density_report_DAT_o.log
+[AREA(at_not_exc)/AREA(chip_not_metal_exc)]
+}
+ATDUM.q++++++++++++++++++++++
+
+@ATDUM.q: Min metal local density within DAxBLK for AT or TT must be >=30%
+DENSITY AT DATBLK >0<0.3 WINDOW 200 STEP 100 BACKUP PRINT density_report_DAT_q.log
+[AREA(AT)/AREA(DATBLK)]
+}
+ATTUM.r++++++++++++++++++++++
+
+@ATDUM.r: Max metal local density within DAxBLK must be <=80%
+DENSITY AT DATBLK >0.8 WINDOW 200 STEP 100 BACKUP PRINT density_report_DAT_r.log
+[AREA(AT)/AREA(DATBLK)]
+}
+ATDUM.m++++++++++++++++++++++
+
+@ATDUM.m:Min density of (An to AnDUM) across full chip must be >=30%
+DENSITY (all_at NOT ATSLOT_slot) >0 <0.3 PRINT density_report_DAT_m.log
+}
+ATDUM.n++++++++++++++++++++++
+
+@ATDUM.n:Max density of (An to AnDUM) across full chip must be <=70%
+DENSITY (all_at NOT ATSLOT_slot) >0.7 PRINT density_report_DAT_n.log
+}
+MTTDUM.l++++++++++++++++++++++
+
+@MTTDUM.l: Min local density of (AT or DAT) or (TT or DTT)must be >=30%
+DENSITY mtt_not_exc chip_not_metal_exc >0<0.3 WINDOW 200 STEP 100 BACKUP PRINT density_report_DMTT_l.log
+[AREA(mtt_not_exc)/AREA(chip_not_metal_exc)]
+}
+MTTDUM.o++++++++++++++++++++++
+
+@MTTDUM.o: Max local density of (Ax or DAx)must be <=80%
+DENSITY mtt_not_exc chip_not_metal_exc >0.8 WINDOW 200 STEP 100 BACKUP PRINT density_report_DMTT_o.log
+[AREA(mtt_not_exc)/AREA(chip_not_metal_exc)]
+}
+MTTDUM.q++++++++++++++++++++++
+
+@MTTDUM.q: Min metal local density within DAxBLK for AT or TT must be >=30%
+DENSITY MTT DTTBLK >0<0.3 WINDOW 200 STEP 100 BACKUP PRINT density_report_DMTT_q.log
+[AREA(MTT)/AREA(DTTBLK)]
+}
+MTTUM.r++++++++++++++++++++++
+
+@MTTDUM.r: Max metal local density within DAxBLK must be <=80%
+DENSITY MTT DTTBLK >0.8 WINDOW 200 STEP 100 BACKUP PRINT density_report_DMTT_r.log
+[AREA(MTT)/AREA(DTTBLK)]
+}
+MTTDUM.m++++++++++++++++++++++
+
+@MTTDUM.m:Min density of (An to AnDUM) across full chip must be >=40%
+DENSITY (all_mtt NOT MTTSLOT_slot) >0 <0.4 PRINT density_report_DMTT_m.log
+}
+MTTDUM.n++++++++++++++++++++++
+
+@MTTDUM.n:Max density of (An to AnDUM) across full chip must be <=70%
+DENSITY (all_mtt NOT MTTSLOT_slot) >0.7 PRINT density_report_DMTT_n.log
+}
+TODUM.a++++++++++++++++++++++
+
+@TODUM.a: Min width of TODUM must be >=2.0um
+L1001=INT TODUM < 2.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+TODUM.b++++++++++++++++++++++
+
+@TODUM.b: Min space of TODUM must be >=1.2um
+L1001=EXT ral_todum < 1.2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+TODUM.c++++++++++++++++++++++
+
+@TODUM.c: Min clearance from DTO to TO(overlap is not allowed) must be >=1.2um
+L1001=EXT TODUM TO < 1.2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT TODUM TO
+}
+TODUM.d++++++++++++++++++++++
+
+@TODUM.d: Min clearance from DTO to GT(overlap is not allowed) must be >=1.2um
+L1001=EXT TODUM GT < 1.2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT TODUM GT
+}
+TODUM.e++++++++++++++++++++++
+
+@TODUM.e: Min clearance from DTO to TB(overlap is not allowed) must be >=0.6um
+L1001=EXT TODUM TB < 0.6 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+CUT TODUM TB
+}
+TODUM.f++++++++++++++++++++++
+
+@TODUM.f: Min clearance from DTO to FU(metal fuse)(overlap is not allowed) must be >=1.2um
+L1001=EXT TODUM FUSE < 1.2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT TODUM FUSE
+}
+TODUM.g++++++++++++++++++++++
+
+@TODUM.g: Min clearance from DTO to NWBLK(overlap is not allowed) must be >=1.2um
+L1001=EXT TODUM RES_NW_mark < 1.2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT TODUM RES_NW_mark
+}
+TODUM.h++++++++++++++++++++++
+
+@TODUM.h: Min clearance from DTO to NODMF(overlap is not allowed) must be >=0um
+L1001=AND TODUM NODMF_mark
+NOT INSIDE L1001 EXCL
+}
+TODUM.i++++++++++++++++++++++
+
+@TODUM.i: Min clearance from DTO to INDDMY(inductor)(overlap is not allowed) must be >=1.2um
+L1001=EXT TODUM INDUM_mark < 1.2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT TODUM INDUM_mark
+}
+TODUM.j++++++++++++++++++++++
+
+@TODUM.j: Min clearance from DTO to DUMBA(overlap is not allowed) must be >=1.2um
+L1001=EXT ral_todum DUMBA_mark < 1.2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT ral_todum DUMBA_mark
+}
+TODUM.k++++++++++++++++++++++
+
+@TODUM.k: Min extension of TB beyond DTO must be >=0.6um
+L1001=ENC TODUM TB < 0.6 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+TODUM.l++++++++++++++++++++++
+
+@TODUM.l: Min extension of chip edge beyond DTO must be >=2.5um
+L1001=NOT TODUM (SIZE chip_region BY -2.5)
+NOT INSIDE L1001 EXCL
+}
+TODUM.q++++++++++++++++++++++
+
+@TODUM.q:TODUM only shape allowed are square or rectangular
+L1001=NOT RECTANGLE ral_todum
+NOT INSIDE L1001 EXCL
+}
+spl_TODUM.c++++++++++++++++++++++
+
+@spl_TODUM.c:Min width active dummy ring must be >=5.0 um
+L1001=INT spl_todum <5.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+spl_TODUM.d++++++++++++++++++++++
+
+@spl_TODUM.d:Min and Max space between active dummy ring must be ==1.0 um
+L1001=HOLES TODUM INNER
+L1002=(TOUCH spl_todum L1001) OR L1001
+L1003=EXT spl_todum <1.0 REGION SINGULAR ABUT<90
+L1004=EXPAND EDGE L1002 OUTSIDE BY 1.0
+L1005=NOT TOUCH L1004 spl_todum ==2
+NOT INSIDE L1003 EXCL
+NOT INSIDE L1005 EXCL
+}
+spl_TODUM.e++++++++++++++++++++++
+
+@spl_TODUM.e:Min space from active dummy ring to functional active must be >=2.0 um
+L1001=EXT spl_todum TO_drc <2.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+spl_TODUM.f++++++++++++++++++++++
+
+@spl_TODUM.f:Min sapce from active dummy ring to dummy active exclude layer(overlap is not allowd) must be >=0.0 um
+L1001=(DUMBA_mark OR NODMF_mark) AND spl_todum
+NOT INSIDE L1001 EXCL
+}
+GTDUM.a++++++++++++++++++++++
+
+@GTDUM.a: Min width of DGT must be >=0.6um
+L1001=INT GTDUM <0.6 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+GTDUM.b++++++++++++++++++++++
+
+@GTDUM.b: Min space of DGT must be >=0.3um
+L1001=EXT GTDUM <0.3 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+GTDUM.c++++++++++++++++++++++
+
+@GTDUM.c: Min clearance from DGT to TO(overlap is not allowed) must be >=1.2um
+L1001=EXT GTDUM TO <1.2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT GTDUM TO
+}
+GTDUM.d++++++++++++++++++++++
+
+@GTDUM.d: Min clearance from DGT to GT(overlap is not allowed) must be >=1.2um
+L1001=EXT GTDUM GT <1.2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT GTDUM GT
+}
+GTDUM.e++++++++++++++++++++++
+
+@GTDUM.e: Min clearance from DGT to FU(overlap is not allowed) must be >=1.2um
+L1001=EXT GTDUM FUSE <1.2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT GTDUM FUSE
+}
+GTDUM.f++++++++++++++++++++++
+
+@GTDUM.f: Min clearance from DGT to NODMF(overlap is not allowed) must be >=0um
+L1001=AND GTDUM NODMF_mark
+NOT INSIDE L1001 EXCL
+}
+GTDUM.g++++++++++++++++++++++
+
+@GTDUM.g: Min clearance from DGT to INDDMY(overlap is not allowed) must be >=1.2um
+L1001=EXT GTDUM INDUM_mark <1.2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT GTDUM INDUM_mark
+}
+GTDUM.h++++++++++++++++++++++
+
+@GTDUM.h: Min clearance from DGT to DTO(overlap is not allowed) must be >=0.3um
+L1001=EXT GTDUM TODUM <0.3 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT GTDUM TODUM
+}
+GTDUM.i++++++++++++++++++++++
+
+@GTDUM.i: Min extension of chip edge beyond DGT must be >=2.5um
+L1001=NOT GTDUM (SIZE chip_region BY -2.5)
+NOT INSIDE L1001 EXCL
+}
+GTDUM.j++++++++++++++++++++++
+
+@GTDUM.j: Min clearance from DGT to DUMBP(overlap is not allowed) must be >=1.2um
+L1001=EXT GTDUM DUMBP_mark <1.2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT GTDUM DUMBP_mark
+}
+GTDUM.m++++++++++++++++++++++
+
+@GTDUM.m:GTDUM only shape allowed are square or rectangular
+L1001=NOT RECTANGLE GTDUM
+NOT INSIDE L1001 EXCL
+}
+GTDUM.n++++++++++++++++++++++
+
+@GTDUM.n: Min area of DGT must be >=1.2um
+L1001=AREA GTDUM <1.2
+NOT INSIDE L1001 EXCL
+}
+A1DUM.a1++++++++++++++++++++++
+
+@A1DUM.a1: Min width of A1DUM must be >=0.4um
+L1001=INTERNAL A1DUM <0.4 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+A1DUM.b++++++++++++++++++++++
+
+@A1DUM.b: Min space of A1DUM must be <=0.4um
+L1001=EXTERNAL A1DUM <0.4 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+A1DUM.c++++++++++++++++++++++
+
+@A1DUM.c: Min clearance from A1DUM to A1(Overlap is not allowed) must be <=0.6um
+L1001=EXTERNAL A1DUM A1 <0.6 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT A1DUM A1
+}
+A1DUM.d++++++++++++++++++++++
+
+@A1DUM.d: Min clearance from A1DUM to FU (metal fuse)(Overlap is not allowed) must be <=5.0um
+L1001=EXTERNAL A1DUM FUSE <5.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT A1DUM FUSE
+}
+A1DUM.e++++++++++++++++++++++
+
+@A1DUM.e: Min clearance from A1DUM to NODMF (metal fuse)(Overlap is not allowed) must be <=0um
+L1001=AND A1DUM NODMF_mark
+NOT INSIDE L1001 EXCL
+}
+A1DUM.f++++++++++++++++++++++
+
+@A1DUM.f: Min clearance from A1DUM to INDDMY (inductor)(Overlap is not allowed) must be <=18.0um
+L1001=EXTERNAL A1DUM INDUM_mark <18.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT A1DUM INDUM_mark
+}
+A1DUM.g++++++++++++++++++++++
+
+@A1DUM.g: Min clearance from A1DUM to CTDMY (MIM Capacotor)(Overlap is not allowed) must be <=1.5um
+L1001=EXTERNAL A1DUM MCTM2 <1.5 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT A1DUM MCTM2
+}
+A1DUM.h++++++++++++++++++++++
+
+@A1DUM.h: Min extension of chip edge beyond A1DUM must be <=2.5um
+L1001=NOT A1DUM (SIZE chip_region BY -2.5)
+NOT INSIDE L1001 EXCL
+}
+A1DUM.i1++++++++++++++++++++++
+
+@A1DUM.i1: Min area of A1DUM must be >=0.36um2
+L1001=AREA A1DUM <0.36
+NOT INSIDE L1001 EXCL
+}
+A1DUM.i2++++++++++++++++++++++
+
+@A1DUM.i2: Max area of A1DUM must be <=80um2
+L1001=AREA A1DUM >80
+NOT INSIDE L1001 EXCL
+}
+A1DUM.j++++++++++++++++++++++
+
+@A1DUM.j: Min clearance from DAx to DAxBLK(Dummy metal block)(overlap is not allowed) must be >=0.6
+L1001=EXT A1DUM DA1BLK <0.6 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT A1DUM DA1BLK
+}
+A1DUM.s++++++++++++++++++++++
+
+@A1DUM.s:A1DUM only shape allowed are square or rectangular
+L1001=NOT RECTANGLE A1DUM
+NOT INSIDE L1001 EXCL
+}
+ATDUM.a1++++++++++++++++++++++
+
+@ATDUM.a1: Min width of ATDUM must be >=0.8um
+L1001=INTERNAL ATDUM <0.8 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+ATDUM.b++++++++++++++++++++++
+
+@ATDUM.b: Min space of ATDUM must be <=0.8um
+L1001=EXTERNAL ATDUM <0.8 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+ATDUM.c++++++++++++++++++++++
+
+@ATDUM.c: Min clearance from ATDUM to AT(Overlap is not allowed) must be <=0.6um
+L1001=EXTERNAL ATDUM AT <0.6 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT ATDUM AT
+}
+ATDUM.d++++++++++++++++++++++
+
+@ATDUM.d: Min clearance from ATDUM to FU (metal fuse)(Overlap is not allowed) must be <=5.0um
+L1001=EXTERNAL ATDUM FUSE <5.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT ATDUM FUSE
+}
+ATDUM.e++++++++++++++++++++++
+
+@ATDUM.e: Min clearance from ATDUM to NODMF (metal fuse)(Overlap is not allowed) must be <=0um
+L1001=AND ATDUM NODMF_mark
+NOT INSIDE L1001 EXCL
+}
+ATDUM.f++++++++++++++++++++++
+
+@ATDUM.f: Min clearance from ATDUM to INDDMY (inductor)(Overlap is not allowed) must be <=18.0um
+L1001=EXTERNAL ATDUM INDUM_mark <18.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT ATDUM INDUM_mark
+}
+ATDUM.g++++++++++++++++++++++
+
+@ATDUM.g: Min clearance from ATDUM to CTDMY (MIM Capacotor)(Overlap is not allowed) must be <=1.5um
+L1001=EXTERNAL ATDUM MCTM2 <1.5 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT ATDUM MCTM2
+}
+ATDUM.h++++++++++++++++++++++
+
+@ATDUM.h: Min extension of chip edge beyond ATDUM must be <=2.5um
+L1001=NOT ATDUM (SIZE chip_region BY -2.5)
+NOT INSIDE L1001 EXCL
+}
+ATDUM.i1++++++++++++++++++++++
+
+@ATDUM.i1: Min area of ATDUM must be >=0.8um2
+L1001=AREA ATDUM <0.8
+NOT INSIDE L1001 EXCL
+}
+ATDUM.i2++++++++++++++++++++++
+
+@ATDUM.i2: Max area of ATDUM must be <=160um2
+L1001=AREA ATDUM >160
+NOT INSIDE L1001 EXCL
+}
+ATDUM.j++++++++++++++++++++++
+
+@ATDUM.j: Min clearance from DAx to DAxBLK(Dummy metal block)(overlap is not allowed) must be >=0.6
+L1001=EXT ATDUM DATBLK <0.6 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT ATDUM DATBLK
+}
+ATDUM.s++++++++++++++++++++++
+
+@ATDUM.s:ATDUM only shape allowed are square or rectangular
+L1001=NOT RECTANGLE ATDUM
+NOT INSIDE L1001 EXCL
+}
+MTTDUM.a1++++++++++++++++++++++
+
+@MTTDUM.a1: Min width of MTTDUM must be >=3.0um
+L1001=INTERNAL MTTDUM <3.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+MTTDUM.b++++++++++++++++++++++
+
+@MTTDUM.b: Min space of MTTDUM must be <=3.0um
+L1001=EXTERNAL MTTDUM <3.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+MTTDUM.c++++++++++++++++++++++
+
+@MTTDUM.c: Min clearance from MTTDUM to TT(Overlap is not allowed) must be <=3.0um
+L1001=EXTERNAL MTTDUM MTT <3.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT MTTDUM MTT
+}
+MTTDUM.d++++++++++++++++++++++
+
+@MTTDUM.d: Min clearance from MTTDUM to FU (metal fuse)(Overlap is not allowed) must be <=5.0um
+L1001=EXTERNAL MTTDUM FUSE <5.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT MTTDUM FUSE
+}
+MTTDUM.e++++++++++++++++++++++
+
+@MTTDUM.e: Min clearance from MTTDUM to NODMF (metal fuse)(Overlap is not allowed) must be <=0um
+L1001=AND MTTDUM NODMF_mark
+NOT INSIDE L1001 EXCL
+}
+MTTDUM.g++++++++++++++++++++++
+
+@MTTDUM.g: Min clearance from MTTDUM to INDDMY (inductor)(Overlap is not allowed) must be <=18.0um
+L1001=EXTERNAL MTTDUM INDUM_mark <18.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT MTTDUM INDUM_mark
+}
+MTTDUM.h++++++++++++++++++++++
+
+@MTTDUM.h: Min clearance from MTTDUM to CTDMY (MIM Capacotor)(Overlap is not allowed) must be <=1.5um
+L1001=EXTERNAL MTTDUM MCTM2 <1.5 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT MTTDUM MCTM2
+}
+MTTDUM.i++++++++++++++++++++++
+
+@MTTDUM.i: Min extension of chip edge beyond MTTDUM must be <=2.5um
+L1001=NOT MTTDUM (SIZE chip_region BY -2.5)
+NOT INSIDE L1001 EXCL
+}
+MTTDUM.j1++++++++++++++++++++++
+
+@MTTDUM.j1: Min area of MTTDUM must be >=9.0 um2
+L1001=AREA MTTDUM <9.0
+NOT INSIDE L1001 EXCL
+}
+MTTDUM.j2++++++++++++++++++++++
+
+@MTTDUM.j2: Max area of MTTDUM must be <=600um2
+L1001=AREA MTTDUM >600
+NOT INSIDE L1001 EXCL
+}
+MTTDUM.j++++++++++++++++++++++
+
+@MTTDUM.j: Min clearance from DAx to DAxBLK(Dummy metal block)(overlap is not allowed) must be >=0.6
+L1001=EXT MTTDUM DTTBLK <0.6 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+INTERACT MTTDUM DTTBLK
+}
+MTTDUM.s++++++++++++++++++++++
+
+@MTTDUM.s:MTTDUM only shape allowed are square or rectangular
+L1001=NOT RECTANGLE MTTDUM
+NOT INSIDE L1001 EXCL
+}
+Convention_FLT_NW++++++++++++++++++++++
+
+@ NW without N+ pick up
+TB_drc NOT INTERACT ntap
+}
+Convention_BPMO++++++++++++++++++++++
+
+@ Pmos in PW
+AND pgate_no_powermos pwell
+}
+Convention_NWMO++++++++++++++++++++++
+
+@ Nmos in NW
+L1001=AND (ngate NOT INTERACT CAP_mark) TB_drc
+NOT INSIDE L1001 EXCL
+}
+Convention_PSUB2++++++++++++++++++++++
+
+@ ptap cannot cut PSUB2
+L1001=ptap CUT PSUB2
+NOT INSIDE L1001 EXCL
+}
+esd_mn_io.W1++++++++++++++++++++++
+
+@Every fingers width should be the same, 20um~60um
+LENGTH esdmn_io_w <20
+LENGTH esdmn_io_w >60 <999
+L1001=NOT RECTANGLE esd_mn_io_to
+NOT INSIDE L1001 EXCL
+}
+esd_mn_io.W2++++++++++++++++++++++
+
+@Total fingers width must be >=336um
+(esdmn_w_err NOT INSIDE EXCL) coin edge (esd_mn_io_gate NOT INSIDE EXCL)
+}
+esd_mn_io.L++++++++++++++++++++++
+
+@Channel length must be >=0.7 um
+LENGTH esdmn_l <0.7
+}
+esd_mn_io.S++++++++++++++++++++++
+
+@Min clearance from SI to GT must be >=1.5 um
+L1001=ENC esdmn_io_w esd_mn_io_sab <1.5 REGION ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_io.D++++++++++++++++++++++
+
+@Min SI overlap GT must be >=0.05 um
+L1001=INT esd_mn_io_d_check <0.05 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_io.N++++++++++++++++++++++
+
+@Minimum extension from drain SI to drain TO in Width direction must be >=1.5 um
+L1001=INT esd_mn_io_sab esd_mn_io_to <1.5 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_io.X++++++++++++++++++++++
+
+@Min source side contact to GT space must be >=0.5 um
+L1001=EXT esd_mn_io_source_cont esd_mn_io_gate <0.5 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_io.J++++++++++++++++++++++
+
+@Min space between P+ pickup ring TO in width TB duard ring TO must be >=1.0 um
+L1001=EXT esdmn_pickRing esdmn_guardRing <1.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_pp.W1++++++++++++++++++++++
+
+@Every fingers width should be the same, 20um~60um
+LENGTH esdmn_pp_w <20
+LENGTH esdmn_pp_w >60 <999
+L1001=NOT RECTANGLE esd_mn_pp_to
+NOT INSIDE L1001 EXCL
+}
+esd_mn_pp.W2++++++++++++++++++++++
+
+@Total fingers width must be >=840um
+(esdmn_pp_w_5v_err NOT INSIDE EXCL) coin edge (esd_mn_pp_gate NOT INSIDE EXCL)
+}
+esd_mn_pp.L++++++++++++++++++++++
+
+@Channel length must be >=0.7 umdrc
+LENGTH esdmn_pp_l <0.7
+}
+esd_mn_pp.S++++++++++++++++++++++
+
+@Min clearance from SI to GT must be >=1.5 um
+L1001=(ENC esdmn_pp_w esd_mn_pp_sab <1.5 REGION ABUT<90) NOT INTERACT ESD2_mark
+NOT INSIDE L1001 EXCL
+}
+esd_mn_PP.D++++++++++++++++++++++
+
+@Min SI overlap GT must be >=0.05 um
+L1001=INT esd_mn_pp_d_check <0.05 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_pp.N++++++++++++++++++++++
+
+@@Minimum extension from drain SI to drain TO in Width direction must be >=1.5 um
+L1001=(INT esd_mn_pp_sab esd_mn_pp_to <1.5 REGION SINGULAR ABUT<90) NOT INTERACT ESD2_mark
+NOT INSIDE L1001 EXCL
+}
+esd_mn_pp.X++++++++++++++++++++++
+
+@Min source side contact to GT space must be >=0.5 um
+L1001=EXT esd_mn_pp_source_cont esd_mn_pp_gate <0.5 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_pp.J++++++++++++++++++++++
+
+@Min space between P+ pickup ring TO in width TB duard ring TO must be >=1.0 um
+L1001=EXT esdmn_pp_pickRing esdmn_pp_guardRing <1.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_pp.R1++++++++++++++++++++++
+
+@Min length must be >=16 um
+LENGTH esd_mn_pp_res_l <16
+}
+esd_mn_pp.R2++++++++++++++++++++++
+
+@Min length must be >=0.5 um
+LENGTH esd_mn_pp_res_w <0.5
+}
+esd_mp_io.W1++++++++++++++++++++++
+
+@Every fingers width should be the same, 20um~60um
+LENGTH esdmp_io_w <20
+LENGTH esdmp_io_w >60 <999
+L1001=NOT RECTANGLE esd_mp_io_to
+NOT INSIDE L1001 EXCL
+}
+esd_mp_io.W2++++++++++++++++++++++
+
+@Total fingers width must be >=504um
+(esdmp_w_err NOT INSIDE EXCL) coin edge (esd_mp_io_gate NOT INSIDE EXCL)
+}
+esd_mp_io.L++++++++++++++++++++++
+
+@Channel length must be >=0.7 um
+LENGTH esdmp_l <0.7
+}
+esd_mp_io.S++++++++++++++++++++++
+
+@Min clearance from SI to GT must be >=1.5 um
+L1001=ENC esdmp_io_w esd_mp_io_sab <1.5 REGION ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mp_io.D++++++++++++++++++++++
+
+@Min SI overlap GT must be >=0.05 um
+L1001=INT esd_mp_io_d_check <0.05 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mp_io.N++++++++++++++++++++++
+
+@Min clearance from SI to TO must be >=1.5 um
+L1001=INT esd_mp_io_sab esd_mp_io_to <1.5 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mp_io.X++++++++++++++++++++++
+
+@Min source side contact to GT space must be >=0.5 um
+L1001=EXT esd_mp_io_source_cont esd_mp_io_gate <0.5 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mp_io.J++++++++++++++++++++++
+
+@Min space between P+ pickup ring TO in width TB duard ring TO must be >=1.0 um
+L1001=EXT esdmp_io_pickRing esdmp_io_guardRing <1.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_io.W1++++++++++++++++++++++
+
+@Every fingers width should be the same, 20um~60um
+LENGTH esdmn_iso_io_w <20
+LENGTH esdmn_iso_io_w >60 <999
+L1001=NOT RECTANGLE esd_mn_iso_io_to
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_io.W2++++++++++++++++++++++
+
+@Total fingers width must be >=336um
+(esdmn_iso_io_w_err NOT INSIDE EXCL) coin edge (esd_mn_iso_io_gate NOT INSIDE EXCL)
+}
+esd_mn_iso_io.L++++++++++++++++++++++
+
+@Channel length must be >=0.7 umdrc
+LENGTH esdmn_iso_io_l <0.7
+}
+esd_mn_iso_io.S++++++++++++++++++++++
+
+@Min clearance from SI to GT must be >=1.5 um
+L1001=(ENC esdmn_iso_io_w esd_mn_iso_io_sab <1.5 REGION ABUT<90) NOT INTERACT ESD2_mark
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_io.D++++++++++++++++++++++
+
+@Min SI overlap GT must be >=0.05 um
+L1001=INT esd_mn_iso_io_d_check <0.05 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_io.N++++++++++++++++++++++
+
+@@Minimum extension from drain SI to drain TO in Width direction must be >=1.5 um
+L1001=(INT esd_mn_iso_io_sab esd_mn_iso_io_to <1.5 REGION SINGULAR ABUT<90) NOT INTERACT ESD2_mark
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_io.X++++++++++++++++++++++
+
+@Min source side contact to GT space must be >=0.75 um
+L1001=EXT esd_mn_iso_io_source_cont esd_mn_iso_io_gate <0.75 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_io.J++++++++++++++++++++++
+
+@Min space between P+ pickup ring TO in width TB duard ring TO >=2.0 um
+L1001=EXT esdmn_iso_io_pickRing esdmn_iso_io_guardRing <2.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_io.m1++++++++++++++++++++++
+
+@Min extension of DN to TB must be >= 1
+L1001=ENC esdmn_iso_io_tb esdmn_iso_io_dn < 1 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_io.b2++++++++++++++++++++++
+
+@Min extension from TB to TO must be >=0.5
+L1001=ENC esdmn_iso_io_guardRing esdmn_iso_io_tb < 0.5 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_pp.W1++++++++++++++++++++++
+
+@Every fingers width should be the same, 20um~60um
+LENGTH esdmn_iso_pp_w <20
+LENGTH esdmn_iso_pp_w >60 <999
+L1001=NOT RECTANGLE esd_mn_iso_pp_to
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_pp.W2++++++++++++++++++++++
+
+@Total fingers width must be >=840um
+(esdmn_iso_pp_w_err NOT INSIDE EXCL) coin edge (esd_mn_iso_pp_gate NOT INSIDE EXCL)
+}
+esd_mn_iso_pp.L++++++++++++++++++++++
+
+@Channel length must be >=0.7 umdrc
+LENGTH esdmn_iso_pp_l <0.7
+}
+esd_mn_iso_pp.S++++++++++++++++++++++
+
+@Min clearance from SI to GT must be >=1.5 um
+L1001=(ENC esdmn_iso_pp_w esd_mn_iso_pp_sab <1.5 REGION ABUT<90) NOT INTERACT ESD2_mark
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_pp.D++++++++++++++++++++++
+
+@Min SI overlap GT must be >=0.05 um
+L1001=INT esd_mn_iso_pp_d_check <0.05 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_pp.N++++++++++++++++++++++
+
+@@Minimum extension from drain SI to drain TO in Width direction must be >=1.5 um
+L1001=(INT esd_mn_iso_pp_sab esd_mn_iso_pp_to <1.5 REGION SINGULAR ABUT<90) NOT INTERACT ESD2_mark
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_pp.X++++++++++++++++++++++
+
+@Min source side contact to GT space must be >=0.75 um
+L1001=EXT esd_mn_iso_pp_source_cont esd_mn_iso_pp_gate <0.75 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_pp.J++++++++++++++++++++++
+
+@Min space between P+ pickup ring TO in width TB duard ring TO >=2.0 um
+L1001=EXT esdmn_iso_pp_pickRing esdmn_iso_pp_guardRing <2.0 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_pp.m1++++++++++++++++++++++
+
+@Min extension of DN to TB must be >= 1
+L1001=ENC esdmn_iso_pp_tb esdmn_iso_pp_dn < 1 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_pp.b2++++++++++++++++++++++
+
+@Min extension from TB to TO must be >=0.5
+L1001=ENC esdmn_iso_pp_guardRing esdmn_iso_pp_tb < 0.5 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+esd_mn_iso_pp.R1++++++++++++++++++++++
+
+@Min length must be >=16 um
+LENGTH esd_mn_iso_pp_res_l <16
+}
+esd_mn_iso_pp.R2++++++++++++++++++++++
+
+@Min length must be >=0.5 um
+LENGTH esd_mn_iso_pp_res_w <0.5
+}
+mom.a++++++++++++++++++++++
+
+@Min and Max width of A1/An finger must be == ^mom_a um
+L1001=INTERNAL mom_a1 < mom_a REGION SINGULAR ABUT<90
+L10011=SIZE mom_a1 BY mom_a/2 UNDEROVER
+NOT INSIDE L1001 EXCL
+NOT INSIDE L10011 EXCL
+}
+mom.b++++++++++++++++++++++
+
+@Min and Max space of A1/An finger must be == ^mom_b um
+L1001=INTERNAL spa_a1 < mom_b REGION SINGULAR ABUT<90
+L10011=SIZE spa_a1 BY mom_b/2 UNDEROVER
+NOT INSIDE L1001 EXCL
+NOT INSIDE L10011 EXCL
+}
+mom.c++++++++++++++++++++++
+
+@Min width for metal strip on two terminals must be >= ^mom_c um
+L1001=INTERNAL MOM_ter < (mom_b+mom_c) REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+mom.d++++++++++++++++++++++
+
+@Min length of A1/An finger must be >= ^mom_d um
+LENGTH mom_a1_l < mom_d
+}
+mom.e++++++++++++++++++++++
+
+@Min space from MOM to unrelated metal must be >= ^mom_e um
+L1001=EXTERNAL ((A1_drc NOT INTERACT mom_region) NOT mom_ring_a1) mom_region < mom_e REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+mom.f1++++++++++++++++++++++
+
+@If use guard ring, Min clearance from MOM A1/An to guard ring metal must be >= ^mom_f1 um
+L1001=EXTERNAL mom_a1_all mom_ring_a1 < mom_f1 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+mom.f2++++++++++++++++++++++
+
+@If use guard ring, Min clearance from MOM to guard ring TO must be >= ^mom_f2 um
+L1001=EXTERNAL mom_a1_all mom_ring_to < mom_f2 REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+}
+mom.g++++++++++++++++++++++
+
+@Min MOM finger number must be >=105
+L1001=MOM_mark INTERACT mom_a1 <105
+NOT INSIDE L1001 EXCL
+}
+mom.i++++++++++++++++++++++
+
+@Min MOM capacitance area is 1000um2
+L1001=AREA MOM_mark <1000
+NOT INSIDE L1001 EXCL
+}
+mom.j++++++++++++++++++++++
+
+@ Max area of a single MOM cell is 10000um2, If size greater than 10000um2
+@ than either of two side should not be greater than ^mom_j
+L1001=AREA (MOM_mark NOT INSIDE EXCL) > 10000
+L1002=LENGTH L1001 < mom_j
+NOT WITH EDGE L1001 L1002
+}
+mom.k++++++++++++++++++++++
+
+@Both the active and passive device under MOM region are not allowed
+L1001=AND TO_drc mom_region
+L1002=AND GT_drc mom_region
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+mom.m++++++++++++++++++++++
+
+@All dummy pattern is not allowed in MOM region,
+@MOM need covered by mark layer NODMF,and Min NODMF enclosure of MOM metal must be >= ^mom_m um
+L1001=NOT mom_region NODMF_mark
+L1002=ENCLOSURE mom_region NODMF_mark < mom_m REGION SINGULAR ABUT<90
+NOT INSIDE L1001 EXCL
+NOT INSIDE L1002 EXCL
+}
+ISO_RING_CHECK_device++++++++++++++++++++++
+
+@ Only mn5/mp5/poly resistor/N+ or P+ diffusion resistor can be used in ISO ring
+DIODE_ISO AND bad_device_in_iso_ring
+}
+ISO_RING_CHECK_ptap++++++++++++++++++++++
+
+@ ISO RING without P+ pick up
+iso_ring NOT INTERACT ptap
+}

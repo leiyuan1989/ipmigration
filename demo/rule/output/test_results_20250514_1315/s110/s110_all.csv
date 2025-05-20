@@ -1,0 +1,109 @@
+design rule,layer,layer description,rule description,classification,symbol,value
+NW_1,NW,N-Well,  NW width is 0.6  ,Width,==,0.6
+NW_2,NW,N-Well,  NW width for NW resistor is 1.60  ,Width,==,1.60
+NW_3,NW,N-Well,  Space between 1.2V/1.5V NWs at same net is 0.60um  ,Spacing,>=,0.60
+NW_4,NW,N-Well,  Minimum space between 1.2V/1.5V NWs with different net is 1.0um  ,Spacing,>=,1.0
+NW_4a,NW,N-Well,  Minimum space between 1.2V/1.5V NW and 2.5V/3.3V NW on different net is 1.2um.  ,Spacing,>=,1.2
+NW_4b,NW,N-Well,  Minimum space between 2.5V/3.3V NWs on different net is 1.2um.  ,Spacing,>=,1.2
+NW_5,NW,N-Well,  NW area is 0.92  ,Area,==,0.92
+NW_6,NW,N-Well,It is not allowed if N+AA/P+AA straddle on a boundary of the NW except NW resistor region.  ,Restrictions,N/A,N/A
+AA_1_2,AA,Active,"AA width MOS transistors is 0.15 ,  exclude (NW INTERACT OPCBA) ,  SRAM  AA width for interconnect is 0.15 , exclude (NW INTERACT OPCBA) ,  SRAM  ",Width,==,0.15
+AA_4,AA,Active,"N+ AA enclosure by NW except NW resistor region is  >=  0.23 ,  exclude SRAM region.  ",Enclosure,>=,0.23
+AA_5,AA,Active,"Space between NW and N+ AA is 0.30 ,  exclude SRAM region.  ",Spacing,==,0.30
+AA_6,AA,Active,"P+ AA enclosure by NW is 0.30 ,  exclude (NW INTERACT OPCBA) ,  SRAM  ",Enclosure,=,0.30
+AA_7,AA,Active,"Space between NW to P+AA inside PW is 0.23 ,  exclude SRAM region.  ",Spacing,>=,0.23
+AA_8,AA,Active,AA area is 0.1 (in um2)  ,Area,==,0.1
+AA_9,AA,Active,Space between N+AA and NW which enclosure a DNW (DRC doesn't flag N+AA inside NW or DNW) is  >=  0.4  DRC waive check when space between DNW to N+AA is  >=  2.6um in same direction.  ,Spacing,>=,0.4
+AA_10,AA,Active,AA or AADUM pattern is not allowed to straddle on a boundary of NW except NW resistor region.  ,Restrictions,N/A,N/A
+AA_11a,AA,Active,"Min. AA density (including dummy AA)is 20%. Density check window size  500um*500um with step size  250um.  Waive RESNW ,  Metal Fuse ,  L Mark ,  LOGO and Inductor.  DRC check with the said window size and rule number and highlight as X. Y  =  X not (RESNW or Metal Fuse or L MARK or LOGO or INDMY) ,  Z =  (Y area)/(250*250)  If Z  >  25% ,  highlight Y for AA density inside of Y that cannot meet of rule value requirement.  ",Area,>=,20
+AA_11b,AA,Active,"Max. AA density (including dummy AA)is 80%. Density check window size  500um*500um with step size  250um.  Waive RESNW ,  Metal Fuse ,  L Mark ,  LOGO and Inductor.  DRC check with the said window size and rule number and highlight as X. Y  =  X not (RESNW or Metal Fuse or L MARK or LOGO or INDMY) ,  Z =  (Y area)/(250*250)  If Z  >  25% ,  highlight Y for AA density inside of Y that cannot meet of rule value requirement.  ",Area,>,25
+AA_12a,AA,Active,"AA density (including dummy AA) overlap by DUMBA min. is 20%. Density check window size  500um*500um ,  step size  250um  ",Area,>=,20
+AA_12b,AA,Active,"AA density (including dummy AA) overlap by DUMBA max. is 80%. Density check window size  500um*500um ,  step size  250um  ",Area,<=,80
+GT_1a,GT,Poly,GT width for 1.2V/1.5V NMOS/PMOS transistor is 0.13  ,Width,==,0.13
+GT_2,GT,Poly,"Interconnect width is 0.13um  ,  exclude SRAM region  ",Width,==,0.13
+GT_3,GT,Poly,"Space between GTs is 0.18 (exclude INDMY region) ,  exclude SRAM region  ",Spacing,==,0.18
+GT_4,GT,Poly,"Space between AA and GT on field oxide is 0.07 (exclude INDMY region) ,  (GT INTERACT (GT AND OPCBP))  ",Spacing,==,0.07
+GT_5,GT,Poly,"Extension of AA outside of GT is 0.23 ,  exclude SRAM region  ",Extension,N/A,0.23
+GT_6,GT,Poly,"Extension of GT outside of AA is 0.17 ,  exclude SRAM region  ",Extension,N/A,0.17
+GT_7,GT,Poly,GT pattern density is 15%  ,Area,N/A,15
+GT_8,GT,Poly,No bent GT on AA are allowed. All GT patterns on AA have to be orthogonal to AA edge (exclude INDMY region)  ,Restrictions,N/A,N/A
+GT_9a,GT,Poly,NLL extension outside of poly resistor is 0.18  ,Extension,==,0.18
+GT_9b,GT,Poly,NLH extension outside of poly resistor is 0.18  ,Extension,==,0.18
+GT_9c,GT,Poly,SN extension outside of poly resistor is 0.18  ,Extension,==,0.18
+GT_9d,GT,Poly,PLL extension outside of poly resistor is 0.18  ,Extension,N/A,0.18
+GT_9e,GT,Poly,PLH extension outside of poly resistor is 0.18  ,Extension,N/A,0.18
+GT_9f,GT,Poly,SP extension outside of poly resistor is 0.18  ,Extension,N/A,0.18
+GT_10a,GT,Poly,Space between a NLL and a P- type poly resistor is 0.18  ,Spacing,==,0.18
+GT_10b,GT,Poly,Space between a NLH and a P- type poly resistor is 0.18  ,Spacing,==,0.18
+GT_10c,GT,Poly,Space between a SN and a P- type poly resistor is 0.18  ,Spacing,==,0.18
+GT_10d,GT,Poly,Space between a PLL and a N- type poly resistor is 0.18  ,Spacing,==,0.18
+GT_10e,GT,Poly,Space between a PLH and a N- type poly resistor is 0.18  ,Spacing,>=,0.18
+GT_10f,GT,Poly,Space between a SP and a N- type poly resistor is 0.18  ,Spacing,N/A,0.18
+GT_11,GT,Poly,GT used as MOS gate poly must be enclosed by SN or SP(except HRP resistor region)  ,Enclosure,N/A,N/A
+GT_13_R,GT,Poly,"For small MOS(channel width  <= 0.3um) ,  Max AA size along channel width direction from the turning point when L-shape or H-shape AA space to GT is  >= 0.07um and  <= 0.08um ,  is 0.075um ,  exclude SRAM region  ",Spacing,>=,0.07
+GT_14_R,GT,Poly,Space between two CTs on poly (poly width  < 0.24um) to avoid voltage drop is  <=  1.Oum.  ,Spacing,<=,1.0
+GT_15_R,GT,Poly,Poly area is  >=  0.09  ,Area,>=,0.09
+GT_16_R,GT,Poly,Enclosed poly area is  >=  0.15um  ,Area,>=,0.15
+SP_1,SP,P+ implant,"SP width is 0.3 ,  exclude SRAM region.  ",Width,==,0.3
+SP_2,SP,P+ implant,Space between SNs is 0.3  ,Spacing,N/A,0.3
+SP_3,SP,P+ implant,"Space between SP and N+ AA inside PW is 0.16 ,  exclude SRAM region.  ",Spacing,N/A,0.16
+SP_4,SP,P+ implant,"Space between SP and N+ AA inside NW is 0.03 ,  exclude SRAM region.  ",Spacing,==,0.03
+SP_5,SP,P+ implant,"Space between SP and N-channel poly gate is 0.4 ,  exclude SRAM region.  ",Spacing,==,0.4
+SP_6,SP,P+ implant,"SP extension outside of PMOS poly gate is 0.4 ,  exclude SRAM region.  ",Extension,=,0.4
+SP_7,SP,P+ implant,"SP extension outside of P+ AA is 0.16 ,  if distance to related poly is  > 0.25 ,  exclude SRAM region.  ",Extension,==,0.16
+SP_8,SP,P+ implant,"SP extension outside of P+ AA is 0.30 ,  if distance to related poly is  < 0.25 ,  exclude SRAM region.  ",Extension,==,0.30
+SP_9,SP,P+ implant,P+AA enclosure by SP in PW is 0.03  ,Enclosure,N/A,0.03
+SP_10,SP,P+ implant,"SP and AA overlap is 0.18 ,  exclude (SP INTERACT OPCBA)  ",Enclosure,==,0.18
+SP_11,SP,P+ implant,SP area is 0.23  ,Area,==,0.23
+SP_12,SP,P+ implant,No SN and SP overlap is allowed  ,Restrictions,N/A,N/A
+SN_1,SN,N+ implant,"SN width is 0.3 ,  exclude (SN INTERACT OPCBA)  ",Width,==,0.3
+SN_2,SN,N+ implant,Space between SNs is 0.3  ,Spacing,==,0.3
+SN_3,SN,N+ implant,"Space between SN and P+ AA inside NW is 0.16 ,  exclude SRAM region.  ",Spacing,==,0.16
+SN_4,SN,N+ implant,Space between SN and P+ AA inside PW is 0.03  ,Spacing,==,0.03
+SN_4b,SN,N+ implant,Min. space between a SN and a butted P+ AA is 0  ,Spacing,==,0
+SN_5,SN,N+ implant,"SN extension outside of NMOS poly gate is 0.4 ,  exclude SRAM region.  ",Extension,=,0.4
+SN_6,SN,N+ implant,"Space between SN and poly gate for PMOS is 0.4 ,  exclude SRAM region.  ",Spacing,>=,0.4
+SN_7,SN,N+ implant,"SN extension outside of N+ AA is  >=  0.16 ,  if distance to related poly is  > 0.25 except NW resistor region. ,  exclude SRAM region.  ",Extension,>=,0.16
+SN_8,SN,N+ implant,"SN extension outside of N+ AA is  >=  0.30 ,  if distance to related poly is  < 0.25 except NW resistor region. ,  exclude SRAM region.  ",Extension,>=,0.30
+SN_9,SN,N+ implant,"N+AA enclosure by SN in NW and NWH except NW resistor region is  >=  0.03 ,  exclude SRAM region.  ",Enclosure,>=,0.03
+SN_10,SN,N+ implant,"SN and AA overlap is 0.16 ,  exclude SRAM region.  ",Enclosure,==,0.16
+SN_11,SN,N+ implant,SN area is 0.23  ,Area,==,0.23
+CT_1,CT,Contact,"Fixed contact size (edge of a square via) is 0.16 ,  exclude SRAM region.  ",Length,==,0.16
+CT_2,CT,Contact,Space between contacts is 0.18  ,Spacing,==,0.18
+CT_3,CT,Contact,"Space between AA and contact on poly is 0.12 ,  exclude SRAM region.  ",Spacing,>=,0.12
+CT_4a,CT,Contact,"Space between poly and contact on AA for 1.2 and 1.5V is  >=  0.11 ,  exclude SRAM region.  ",Spacing,>=,0.11
+CT_5,CT,Contact,"CT enclosure by AA for CT landed on device AA is 0.06 ,  exclude SRAM region.  ",Enclosure,N/A,0.06
+CT_5a,CT,Contact,CT enclosure by AA for CT landed on pickup AA is 0.05  ,Enclosure,N/A,0.05
+CT_6,CT,Contact,"CT enclosure by poly for CT landed on poly is 0.06 ,  exclude SRAM region.  ",Enclosure,N/A,0.06
+CT_7_8,CT,Contact,"CT enclosure by M1 is  >=  0.00 ,  exclude SRAM region.  CT.8	M1 line end extension outside of CT 	 	0.05	um ,  exclude SRAM region.  ",Enclosure,>=,0.00
+CT_9,CT,Contact,"CT is not allowed to land on gate (exclude INDMY region) ,  exclude SRAM region.  ",Restrictions,N/A,N/A
+CT_10,CT,Contact,"CT can not overlap with SAB layer or (STI NOT GT) region.  ,  exclude SRAM region.  ",Restrictions,N/A,N/A
+CT_12,CT,Contact,"It's not allowed CT overlap with NW ,  AA ,  Poly or M1 resistor. For NW ,  AA ,  Poly resistor ,  please refer each resistor section definition.  M1 resistor definition  (M1 AND M1R).  ",Restrictions,N/A,N/A
+M1_1,M1,Metal 1,"M1 width is 0.16 ,  exclude SRAM region  ",Width,==,0.16
+M1_2,M1,Metal 1,"Space between M1s is 0.17 ,  exclude SRAM region  ",Spacing,==,0.17
+M1_3a_R,M1,Metal 1,"Space between M1s with one or both M1 width greater than 0.4um is 0.2 ,  when runlength > 1um  ",Spacing,=,0.2
+M1_3b_R,M1,Metal 1,Space between M1s with one or both M1 width greater than 2um is 0.4  ,Spacing,>=,0.4
+M1_3c,M1,Metal 1,Space between M1s with one or both M1 width greater than 10um is 0.5  ,Spacing,==,0.5
+M1_4,M1,Metal 1,M1 area is 0.08  ,Area,N/A,0.08
+M1_5,M1,Metal 1,Dielectric area enclosed by M1(um2) is 0.17  ,Enclosure,==,0.17
+M1_6a,M1,Metal 1,Dummy pattern is required in case M1 density is less than 16%  ,Restrictions,<,16
+M1_6b,M1,Metal 1,Max. Metal 1 GDS pattern density is 82%  ,Restrictions,<=,82
+M1_7,M1,Metal 1,Space between metal line and 45 degree bent metal line that are longer than 0.5um is 0.2  ,Spacing,==,0.2
+M1_8,M1,Metal 1,M1.8	Maximum line width allowed. Metal slot rule will apply for a metal with line width greater than this value. DRC skip to check (M1 interact AND with PA pattern).	 	14.00	um  ,Width,<=,14.00
+V1_1,V1,Via1,Fixed V1 size is 0.19 (except FUSE protection ring region).  ,Width,==,0.19
+V1_2a,V1,Via1,Space between V1s is 0.21um  ,Spacing,>=,0.21
+V1_2b,V1,Via1,Space between V1s within array greater or equal to 4*4 is 0.25  Two via regions whose space is  <=  0.27um are considered to be in the same array  ,Spacing,≥,0.25um
+V1_4_5_8,V1,Via1,"V1 enclosure by M1 is 0.005 ,  exclude SRAM region  V1.5	Extension of M1 line end outside of V1	 	0.05	um ,  exclude SRAM region  For V1 enclosed at the 90 degree corner by M1 ,  M1 extension at least along one direction outside V1 is 0.05 ,  exclude SRAM region  ",Extension,>=,0.05
+V1_6_7_9,V1,Via1,"V1 enclosure by M2 is 0.005 ,  exclude SRAM region.  V1.7	Extension of M2 line end outside of V1	 	0.03	um ,  exclude SRAM region.  For V1 enclosed at the 90 degree corner by M2 ,  M2 extension at least along one direction outside V1 is 0.05 ,  exclude SRAM region.  ",Enclosure,>=,0.005
+V1_11_R,V1,Via1,Vis redundancy is recommended wherever layout allows.  No. of via when either or both M1 and M2 width  > 0.9um  ,Width,>,0.9
+V1_12,V1,Via1,It's not allowed V1 overlap with M1 or M2 resistor.  ,Restrictions,N/A,N/A
+M2_1,M2,Metal2,M2 width is 0.2  ,Width,==,0.2
+M2_2,M2,Metal2,"Space between M2s is 0.2 ,  exclude SRAM region.  ",Spacing,==,0.2
+M2_3b_R,M2,Metal2,Space between M2s with one or both M2 width greater than 2um is 0.4  ,Spacing,==,0.4
+M2_3c,M2,Metal2,Space between M2s with one or both M2 width greater than 10um is 0.5  ,Spacing,N/A,0.5
+M2_4,M2,Metal2,M2 area (in um2) is 0.12  ,Area,==,0.12
+M2_5,M2,Metal2,Dielectric area enclosed by M2(um2) is 0.26  ,Area,==,0.26
+M2_6a,M2,Metal2,Dummy pattern is required in case M2 density is less than 16%  ,Restrictions,<,16
+M2_6b,M2,Metal2,Max. Metal2  GDS pattern density is 82%  ,Area,<=,82
+M2_7,M2,Metal2,Space between metal line and 45 degree bent metal line that are longer than 0.5um is 0.22  ,Spacing,==,0.22
+M2_8,M2,Metal2,Max. M2 width is 15. Metal wider than this size should apply slot .  ,Width,<=,15

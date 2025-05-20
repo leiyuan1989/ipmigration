@@ -9,7 +9,6 @@
 import os
 import re
 import collections
-import json
 import pandas as pd#'2.0.3'
 import numpy as np #version '1.26.4'
 import ollama
@@ -577,98 +576,78 @@ class RuleFile:
     def parse_data(self,df):
         with open(self.command,'r') as f:
             command = f.read()
+
         
         self.extracted_dr = []
+
         all_data = []
+
+
         client = Client(host=self.client_host)
         for layer in self.layers:
             print('\n-----------------------%s:%s----------------------------\n'%(self.tech_name,layer))
             layer_data = []
+            csv_string='layer,layer_def,dr,comment\n'
             df_layer = df[df.layer==layer]
             if len(df_layer) ==0:
                 print('No design rule data for layer %s'%(layer))
             else:
                 for i,r in df_layer.iterrows():
-                    data = {"design rule":r.dr,"layer":r.layer,"layer description":r.layer_def, "rule description":r.comment}
+                    csv_string += '%s,%s,%s,"%s"\n'%(r.layer,r.layer_def,r.dr,r.comment)
+                
+                csv_string = '\n```csv\n'+csv_string+'\n```'
+                messages = [
+                            {"role": "user", "content": command},
+                            {"role": "user", "content": csv_string},
+                            ]
 
-                    messages = [
-                                {"role": "user", "content": command},
-                                {"role": "user", "content": str(data)},
-                                ]
-
-                    response = client.chat(self.model, messages)
-                    response_content,answer = self.extract_response(response)
+                response = client.chat(self.model, messages)
+                response_content,answer = self.extract_response(response)
         
-                    print('**input**: rule:%s, comment:%s'%(r.dr,r.comment))
-                    # print('**ouput**:',answer)
-                    try:
-                        result = self.extract_jsons(answer)[0]
-                        data['classification'] = result['classification']
-                        data['symbol'] = result['symbol']
-                        data['value'] = result['value']
-                        if self.output_mode  == 'single':
-                            all_data.append(data)
+                print('**input**:',csv_string)
+                # print('**ouput**:',answer)
+                review_result,review_content, review_message= self.reflection(answer)
+                print('**review**:',review_result)
+
+                if review_result:
+                    csv_text = answer
+                else:
+                    print("**begin revise**: ")
+                    # messages.append({"role": "assistant", "content": answer})
+                    # messages.append(review_message)
+                    # messages.append({"role": "user", "content": review_content})
+                    review_result,answer= self.revision(messages)
+                    if review_result:
+                        csv_text = answer
+                    else:
+                        print("**begin 2nd revise**: ")
+                        review_result,answer= self.revision(messages)
+                        if review_result:
+                            csv_text = answer
                         else:
-                            layer_data.append(data)
-                        print('**ouput**:',result)
-                    except:
-                        print('**parse_error**:', answer)
-                        #TODO: There are no problems encountered so far, but issues may arise, and the reflection module needs to be updated according to specific problems.
-                        # raise ValueError()
-        
-            if self.output_mode  == 'split':
-                layer_file = os.path.join(self.save_dir,self.tech_name + '_' + layer + '.csv')
-                layer_df = pd.DataFrame(layer_data)
-                layer_df.to_csv(layer_file, index=False)
-           
-        
-        if self.output_mode  == 'single':
-            layers_file = os.path.join(self.save_dir,self.tech_name + '_all.csv')
-            layers_df = pd.DataFrame(all_data)
-            layers_df.to_csv(layers_file, index=False)       
-            
-            
-                # layer_df = pd.DataFrame(columns=columns,data=all_data)    
-                # layer_file = os.path.join(self.save_dir,self.tech_name + '_rules.csv')
-                # layer_df.to_csv(layer_file, index=False)
-                # review_result,review_content, review_message= self.reflection(answer)
-                # print('**review**:',review_result)
+                            csv_text = ''
+                print('**ouput**:',csv_text)
+                csv_data = self.extract_csv_data(csv_text)
+                print('**csv_data**:',csv_data)
+                layer_rule = {}
+                for d in csv_data:
+                    layer_rule[d[0]] = [d[1],d[3],d[4]]
+                for i,r in df_layer.iterrows():
+                    if r.dr in layer_rule:
+                        rule_t,rule_s,rule_v = layer_rule[r.dr]
+                        rule_data = [r.layer,r.layer_def,r.dr,r.comment,rule_t,rule_s,rule_v]
 
-                # if review_result:
-                #     csv_text = answer
-                # else:
-                #     print("**begin revise**: ")
-                #     # messages.append({"role": "assistant", "content": answer})
-                #     # messages.append(review_message)
-                #     # messages.append({"role": "user", "content": review_content})
-                #     review_result,answer= self.revision(messages)
-                #     if review_result:
-                #         csv_text = answer
-                #     else:
-                #         print("**begin 2nd revise**: ")
-                #         review_result,answer= self.revision(messages)
-                #         if review_result:
-                #             csv_text = answer
-                #         else:
-                #             csv_text = ''
-                # print('**ouput**:',csv_text)
-                # csv_data = self.extract_csv_data(csv_text)
-                # print('**csv_data**:',csv_data)
-                # layer_rule = {}
-                # for d in csv_data:
-                #     layer_rule[d[0]] = [d[1],d[3],d[4]]
-                # for i,r in df_layer.iterrows():
-                #     if r.dr in layer_rule:
-                #         rule_t,rule_s,rule_v = layer_rule[r.dr]
-                #         rule_data = [r.layer,r.layer_def,r.dr,r.comment,rule_t,rule_s,rule_v]
-
-                #         print('rule:',rule_data)
-                #         #layer_file = os.path.join(self.save_dir,self.tech_name + '_' + layer + '.csv')
-                #         all_data.append(rule_data)
-                #     else:
-                #         #TODO: may have some rules are missed
-                #         pass
-  
+                        print('rule:',rule_data)
+                        #layer_file = os.path.join(self.save_dir,self.tech_name + '_' + layer + '.csv')
+                        all_data.append(rule_data)
+                    else:
+                        #TODO: may have some rules are missed
+                        pass
+        #TODO: final review and N/A review
+        columns = ['layer','layer_def','dr','description','category','symbol','value']
+        layer_df = pd.DataFrame(columns=columns,data=all_data)    
+        layer_file = os.path.join(self.save_dir,self.tech_name + '_rules.csv')
+        layer_df.to_csv(layer_file, index=False)
     @staticmethod
     def extract_response(response):           
         if isinstance(response, ollama._types.ChatResponse):
@@ -680,23 +659,6 @@ class RuleFile:
             response_content = "<think>NA</think>NA"
         answer = response_content.split('</think>')[-1]           
         return response_content,answer
-    @staticmethod
-    def extract_jsons(text):
-        pattern = r'\{[\s]*"classification":\s*"[^"]+",[\s]*"symbol":\s*"[^"]+",[\s]*"value":\s*"[^"]+"[\s]*\}'
-        json_strings = re.findall(pattern, text, re.DOTALL)
-        # print(json_strings)
-        results = []
-        for json_str in json_strings:
-            try:
-                # 解析JSON字符串
-                obj = json.loads(json_str)
-                results.append(obj)
-            except json.JSONDecodeError:
-                print(f"Json Error: {json_str}")
-        
-        return results
-    
-    
     def reflection(self, text):
         with open(self.review,'r') as f:
             review = f.read()

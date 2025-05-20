@@ -1,0 +1,45 @@
+layer,layer_def,dr,description,category,symbol,value
+NW,N-Well,NW_1,"NW minimum width(parallel side to side width ,  The INST connected area apply SRAM design rule) is 0.33  ",Width,>=,0.33
+NW,N-Well,NW_3,Minimum space between two NW regions at the same net (with run length  >  0) is 0.33.  ,Spacing,>=,0.33
+NW,N-Well,NW_4,Minimum space between two NW regions at different net is 0.60  ,Spacing,>=,0.60
+NW,N-Well,NW_7,NW minimum area is 0.70  ,Area,>=,0.70
+NW,N-Well,NW_8,NW minimum enclosed area is 0.70  ,Area,>=,0.70
+NW,N-Well,NW_9,NW minimum space to N+AA (enclosure by TG or DG) is 0.22  ,Enclosure,>=,0.22
+NW,N-Well,NW_10,NW enclosure of P+AA (enclosed by TG or DG)is 0.22  ,Enclosure,>=,0.22
+NW,N-Well,NW_11,"N+AA adjacent both two edges space opposite to NW is  >= 0.16. Both of two adjacent edges space to NW smaller than rule value is not permitted.  In schematic rule check method ,  E  =  0.08 ,  D = 0.16  ",Spacing,>=,0.16
+NW,N-Well,NW_12,"NW enclosure opposite of P+AA adjacent both two edges is  >=  0.16. Both of two adjacent edges enclosed by NW smaller than rule value is not permitted.  In schematic rule check method ,  E  =  0.08 ,  D = 0.16  ",Enclosure,>=,0.16
+NW,N-Well,NW_13,"N+AA Minimum enclosure by NW is 0.08 ,  excluding LDMOS area.Waive ((AA interact RESNW) and SN)  ",Enclosure,>=,0.22
+NW,N-Well,NW_14,Minimum Space between NW and N+AA inside PW is 0.08  ,Enclosure,>=,0.22
+SP,P+ implant,SP_1,SP minimum width(with run length  >  0) is 0.18  ,Width,>=,0.18 
+SP,P+ implant,SP_2,Minimum space between two SP(with run length  >  0) is 0.18  Merge if the space is less than 0.18  ,Spacing,>=,0.18 
+SP,P+ implant,SP_4,Minimum space between SP and N+ pick-up AA is 0.02  ,Enclosure,N/A,N/A
+SP,P+ implant,SP_6,SP minimum extension outside of poly gate for PMOS is 0.16  ,Length,N/A,N/A
+SP,P+ implant,SP_9,Space between a SP and a N+AA or N+POLY resistor (SN AND ((RESAA AND AA) OR (RESP1 AND GT))is 0.16  ,Enclosure,>=,0.03 
+SP,P+ implant,SP_10,P+AA minimum enclosure by SP((not include pick up AA) is 0.08  ,Enclosure,>=,0.08 
+SN,N+ implant,SN_1,SN minimum width(run length  >  0) is 0.18  ,Width,>=,0.18 
+SN,N+ implant,SN_2,Minimum space between two SN (with run length  >  0) is 0.18  ,Spacing,>=,0.18
+SN,N+ implant,SN_3a,"Minimum space between SN and P+AA in NW (run length  >  0.1um) is 0.08 , except AA resistor(RESAA AND AA)  ",Spacing,>=,0.08 
+SN,N+ implant,SN_3b,"Minimum space between SN and P+AA in NW (run length  <=  0.10um) is 0.05 ,  except AA resistor(RESAA AND AA)  ",Spacing,>=,0.05
+SN,N+ implant,SN_4,Minimum space between SN and P+ pick-up AA is 0.02  ,Spacing,>=,0.02
+SN,N+ implant,SN_6,SN minimum extension outside of poly gate for NMOS along source drain direction is 0.16  ,Extension,,
+SN,N+ implant,SN_7a,Minimum space between SN and S/D driection P-channel poly gate is 0.16  ,Spacing,>=,0.16
+SN,N+ implant,SN_7b,Minimum space between SN and Non-S/D driection P-channel poly gate is 0.08 (outside of SRAM(INST area))  ,Spacing,>=,0.08 
+SN,N+ implant,SN_7c,A butted P+ pick-up AA space to NMOS gate in the same AA is  >= 0.23  ,Spacing,>=,0.08
+SN,N+ implant,SN_8c,"A butted P+ pick-up AA (in L shape AA) space to NMOS gate in the same AA is  >= 0.23 ,  when this butted P+ pick-up AA extrusion   0  <  h  <  0.1um  ",Extension,>=,0.08 
+SN,N+ implant,SN_9,Minimum space between a SN and a P-type resistor is 0.16 (SP AND ((RESAA AND AA) OR (RESP1 AND GT))  ,Spacing,>=,0.02
+SN,N+ implant,SN_10,N+AA minimum enclosure by SN(not include pick up AA) is 0.08 Waive for (AA interact RESNW)  ,Enclosure,>=,0.08 
+SN,N+ implant,SN_12,N+ pickup AA minimum enclosure by SN is 0.02 Waive for (AA interact RESNW)  ,Enclosure,>=,0.02
+SN,N+ implant,SN_14,N+AA resistor or N+POLY resistor minimum enclosure by SN is 0.18. The resistor here  (SN AND ((RESAA AND AA) OR (RESP1 AND GT))  ,Enclosure,>=,0.16 
+SN,N+ implant,SN_15,SN and AA minimum overlap is 0.10  ,Overlap,>=,0.08
+SN,N+ implant,SN_16,SN minimum area include the connected area within INST is 0.11  ,Area,>=,0.11 
+SN,N+ implant,SN_18,Minimum enclosed area of SN is 0.11  ,Area,>=,0.11
+SN,N+ implant,SN_21,AA butted p-well contact minimum extension of SN is 0.08  ,Extension,>=,0.08 
+SN,N+ implant,SN_22,SN minimum width and length if the area touch with gate  ,Unclassified,,
+M2,Metal2,M2_1,M2 minimum width is 0.07  ,Width,>=,0.07
+M2,Metal2,M2_2,M2 maximum width is 4.5  ,Spacing,>=,0.07
+M2,Metal2,M2_3,M2 minimum space is 0.07  ,Enclosure,>=,0.05
+M2,Metal2,M2_4,M2 minimum area(The INST connected area apply SRAM design rule) is 0.0196  ,Extension,<,0.05
+M2,Metal2,M2_5,M2 minimum enclosed area is 0.2  ,Length,>=,0.17
+M2,Metal2,M2_6,Minimum space between two length  >  0.3 parallel metal lines  with  both metal line width is  >  0.22 is 0.10  ,Spacing,>=,0.17
+M2,Metal2,M2_11,"Space between Vn-1 (Vn-1 is enclosed by Mn[A]) to neighbouring metal line Mn[B] ,  when the layout structures meet the following conditions  1.	Mn[A] line end definition  line width W  < 0.1um.  2.	Vn-1 enclosure by Mn[A] line end  E  <  0.05um  3.	The parallel run length of Mn[A] and Mn[B] E1  >= -0.03um  4.	Space between Mn[A] to the neighbouring parallel metal line  Ds < 0.08um;  5.	Any one edge distance from the corner of the two edges of Mn[A]  K1  < 0.095um  At least one Vn-1 in the Mn[A] and Mn-1 intersection meet this rule is ok.  This rule is not applicable for SRAM region DRC check.	 	0.12  ",Spacing,>=,0.12
+M2,Metal2,M2_12,"Minimum Mn to Mn space S at Mn line-end 0.1. Width W  <  0.1um . The minimum space can be line end head to other Mn or line end side to other M1.  Rule check  S  >=  (Dh or Ds ).  E1  = 0.03 ,  K1 = 0.095  ,  Dh = Ds = 0.1 in the illustration.  Outside of SRAM(INST) area.  Waive extrusion F  <  0.07.  Waive the violation for MOM (within MOMDMY).  ",Spacing,>=,0.07

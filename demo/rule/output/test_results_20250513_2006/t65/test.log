@@ -1,0 +1,138 @@
+
+-----------------------t65:NW----------------------------
+
+**input**: 
+```csv
+layer,layer_def,dr,comment
+NW,N-Well,NW.W.1,"Width  >=  0.47 um  "
+NW,N-Well,NW.S.1,"Space  >=  0.47 um  "
+NW,N-Well,NW.S.2,"Space of two NW1V with different potentials  >=  1.0 um  "
+NW,N-Well,NW.S.3,"NW1V space to NW2V with different potentials  >=  1.2 um  "
+NW,N-Well,NW.S.4,"Space of two NW2V with different potentials  >=  NW2V 1.2 um  "
+NW,N-Well,NW.S.5,"Space to PW STRAP  >=  0.16 um  "
+NW,N-Well,NW.S.6,"Space to N+active except dummy TCD region  >=  0.16 um  "
+NW,N-Well,NW.S.7,"Space to (N+active interact OD2)  >=  0.31 um  "
+NW,N-Well,NW.EN.1,"Enclosure of NW STRAP  >=  0.16 um  "
+NW,N-Well,NW.EN.2,"Enclosure of P+active  >=  0.16 um  "
+NW,N-Well,NW.EN.3,"ENClosure of (P+active interact with OD2)  >=  0.31 um  "
+NW,N-Well,NW.A.1,"Area  >=  0.64 um2  "
+NW,N-Well,NW.A.2,"Enclosed Area  >=  0.64 um2  "
+NW,N-Well,NW.A.3,"Area (one of edge length  <  0.8 um)  >=  1.0 um2  "
+NW,N-Well,NW.A.4,"Enclosed Area (one of the enclosed edge length  <  0.8 um)  >=  1.0 um2  "
+NW,N-Well,NW.S.1.SRM_SRAMDMY,"Spacing between NW along the boundary of SRM and SRAMDMY  "
+
+```
+**review**: False
+**begin revise**: 
+**ouput**: 
+
+```csv
+dr|category|comment|symbol|value
+NW.W.1|Width|Width  >=  0.47 um  |>=|0.47 um
+NW.S.1|Spacing|Space  >=  0.47 um  |>=|0.47 um
+NW.S.2|Spacing|Space of two NW1V with different potentials  >=  1.0 um  |>=|1.0 um
+NW.S.3|Spacing|NW1V space to NW2V with different potentials  >=  1.2 um  |>=|1.2 um
+NW.S.4|Spacing|Space of two NW2V with different potentials  >=  NW2V 1.2 um  |>=|1.2 um
+NW.S.5|Spacing|Space to PW STRAP  >=  0.16 um  |>=|0.16 um
+NW.S.6|Spacing|Space to N+active except dummy TCD region  >=  0.16 um  |>=|0.16 um
+NW.S.7|Spacing|Space to (N+active interact OD2)  >=  0.31 um  |>=|0.31 um
+NW.EN.1|Enclosure|Enclosure of NW STRAP  >=  0.16 um  |>=|0.16 um
+NW.EN.2|Enclosure|Enclosure of P+active  >=  0.16 um  |>=|0.16 um
+NW.EN.3|Enclosure|ENClosure of (P+active interact with OD2)  >=  0.31 um  |>=|0.31 um
+NW.A.1|Area|Area  >=  0.64 um2  |>=|0.64 um2
+NW.A.2|Area|Enclosed Area  >=  0.64 um2  |>=|0.64 um2
+NW.A.3|Area|Area (one of edge length  <  0.8 um)  >=  1.0 um2  |>=|1.0 um2
+NW.A.4|Area|Enclosed Area (one of edge length < 0.8 um)  >=  1.0 um2  |>=|1.0 um2
+NW.S.8|Spacing|Space between NW layers without specified value ||
+```
+**csv_data**: [['NW.W.1', 'Width', 'Width  >=  0.47 um  ', '>=', '0.47 um'], ['NW.S.1', 'Spacing', 'Space  >=  0.47 um  ', '>=', '0.47 um'], ['NW.S.2', 'Spacing', 'Space of two NW1V with different potentials  >=  1.0 um  ', '>=', '1.0 um'], ['NW.S.3', 'Spacing', 'NW1V space to NW2V with different potentials  >=  1.2 um  ', '>=', '1.2 um'], ['NW.S.4', 'Spacing', 'Space of two NW2V with different potentials  >=  NW2V 1.2 um  ', '>=', '1.2 um'], ['NW.S.5', 'Spacing', 'Space to PW STRAP  >=  0.16 um  ', '>=', '0.16 um'], ['NW.S.6', 'Spacing', 'Space to N+active except dummy TCD region  >=  0.16 um  ', '>=', '0.16 um'], ['NW.S.7', 'Spacing', 'Space to (N+active interact OD2)  >=  0.31 um  ', '>=', '0.31 um'], ['NW.EN.1', 'Enclosure', 'Enclosure of NW STRAP  >=  0.16 um  ', '>=', '0.16 um'], ['NW.EN.2', 'Enclosure', 'Enclosure of P+active  >=  0.16 um  ', '>=', '0.16 um'], ['NW.EN.3', 'Enclosure', 'ENClosure of (P+active interact with OD2)  >=  0.31 um  ', '>=', '0.31 um'], ['NW.A.1', 'Area', 'Area  >=  0.64 um2  ', '>=', '0.64 um2'], ['NW.A.2', 'Area', 'Enclosed Area  >=  0.64 um2  ', '>=', '0.64 um2'], ['NW.A.3', 'Area', 'Area (one of edge length  <  0.8 um)  >=  1.0 um2  ', '>=', '1.0 um2'], ['NW.A.4', 'Area', 'Enclosed Area (one of edge length < 0.8 um)  >=  1.0 um2  ', '>=', '1.0 um2'], ['NW.S.8', 'Spacing', 'Space between NW layers without specified value ', '', '']]
+rule: ['NW', 'N-Well', 'NW.W.1', 'Width  >=  0.47 um  ', 'Width', '>=', '0.47 um']
+rule: ['NW', 'N-Well', 'NW.S.1', 'Space  >=  0.47 um  ', 'Spacing', '>=', '0.47 um']
+rule: ['NW', 'N-Well', 'NW.S.2', 'Space of two NW1V with different potentials  >=  1.0 um  ', 'Spacing', '>=', '1.0 um']
+rule: ['NW', 'N-Well', 'NW.S.3', 'NW1V space to NW2V with different potentials  >=  1.2 um  ', 'Spacing', '>=', '1.2 um']
+rule: ['NW', 'N-Well', 'NW.S.4', 'Space of two NW2V with different potentials  >=  NW2V 1.2 um  ', 'Spacing', '>=', '1.2 um']
+rule: ['NW', 'N-Well', 'NW.S.5', 'Space to PW STRAP  >=  0.16 um  ', 'Spacing', '>=', '0.16 um']
+rule: ['NW', 'N-Well', 'NW.S.6', 'Space to N+active except dummy TCD region  >=  0.16 um  ', 'Spacing', '>=', '0.16 um']
+rule: ['NW', 'N-Well', 'NW.S.7', 'Space to (N+active interact OD2)  >=  0.31 um  ', 'Spacing', '>=', '0.31 um']
+rule: ['NW', 'N-Well', 'NW.EN.1', 'Enclosure of NW STRAP  >=  0.16 um  ', 'Enclosure', '>=', '0.16 um']
+rule: ['NW', 'N-Well', 'NW.EN.2', 'Enclosure of P+active  >=  0.16 um  ', 'Enclosure', '>=', '0.16 um']
+rule: ['NW', 'N-Well', 'NW.EN.3', 'ENClosure of (P+active interact with OD2)  >=  0.31 um  ', 'Enclosure', '>=', '0.31 um']
+rule: ['NW', 'N-Well', 'NW.A.1', 'Area  >=  0.64 um2  ', 'Area', '>=', '0.64 um2']
+rule: ['NW', 'N-Well', 'NW.A.2', 'Enclosed Area  >=  0.64 um2  ', 'Area', '>=', '0.64 um2']
+rule: ['NW', 'N-Well', 'NW.A.3', 'Area (one of edge length  <  0.8 um)  >=  1.0 um2  ', 'Area', '>=', '1.0 um2']
+rule: ['NW', 'N-Well', 'NW.A.4', 'Enclosed Area (one of the enclosed edge length  <  0.8 um)  >=  1.0 um2  ', 'Area', '>=', '1.0 um2']
+
+-----------------------t65:OD----------------------------
+
+**input**: 
+```csv
+layer,layer_def,dr,comment
+OD,Active,OD.W.1,"Width  >=  0.08  "
+OD,Active,OD.W.2,"Width of MOS ( <=  1.2V) [for core device]  >=  0.12  "
+OD,Active,OD.W.3,"Width of MOS ( >  1.2V to  <=  3.3V) [for I/O device]  >=  0.4  "
+OD,Active,OD.W.4,"Width of 45 degree bent OD Please make sure the vertex of 45 degree pattern is on 5nm grid (refer to the guideline ,  G.6gU ,  in section 3.7)  >=  0.18  "
+OD,Active,OD.S.1,"Space  >=  0.11  "
+OD,Active,OD.S.2,"Space (inside OD2)  >=  0.18  "
+OD,Active,OD.S.3,"Space of two ODs (width (W)  >  0.15 m) ,  if the parallel length (L)  >=  0.2 m  >=  0.13  "
+OD,Active,OD.S.3.1,"Space to OD (width (W)  >  0.15 m) ,  if the parallel length (L)  >=  0.2 m  >=  0.125  "
+OD,Active,OD.S.4,"Space to 45-degree bent OD  >=  0.18  "
+OD,Active,OD.S.5,"Space between two segments of a U-shape or an O-shape OD (notch only)  >=  0.18  "
+OD,Active,OD.A.1,"Area  >=  0.054  "
+OD,Active,OD.A.2,"Enclosed area  >=  0.085  "
+OD,Active,OD.L.1,"Maximum length of {ACTIVE (source) [width  <  0.15 m] interacts with butted_STRAP}  <=  0.5  "
+OD,Active,OD.L.2,"Maximum OD length [OD width is  <  0.15 m] between two contacts as well as between one contact and the OD line end  <=  25  "
+OD,Active,OD.R.1,"OD must be fully covered by {NP OR PP} except for {DOD OR NWDMY}  "
+OD,Active,OD.DN.1L,"{OD OR DOD} density across full chip  >=  25%  "
+OD,Active,OD.DN.1H,"{OD OR DOD} density across full chip  <=  75%  "
+OD,Active,OD.DN.2L,"Min. OD density over window 150 step 75  >=  20%  "
+OD,Active,OD.DN.2H_IO,"Max. OD density over window 150 step 75  <=  90%  "
+OD,Active,OD.DN.2H_CORE,"Max. OD density over window 150 step 75  <=  80% in core  "
+OD,Active,OD.DN.3L,"Min. OD density over window 150 step 75  >=  20% (within ODBLK)  "
+OD,Active,OD.DN.3H_IO,"Max. OD density over window 150 step 75  <=  90% (within ODBLK)  "
+OD,Active,OD.DN.3H_CORE,"Max. OD density over window 150 step 75  <=  80% in core (within ODBLK)  "
+OD,Active,OD.S.1.SRM_SRAMDMY,"Spacing between OD along the boundary of SRM and SRAMDMY  "
+
+```
+**review**: True
+**ouput**: 
+
+Here is the organized classification and extraction of the design rules from the provided data:
+
+| DR Identifier | Category      | Comment Summary                          | Symbol  | Value   |
+|---------------|---------------|-----------------------------------------|---------|---------|
+| OD.W.1        | Width         | Minimum width                           | >=      | 0.08    |
+| OD.W.2        | Width         | MOS width condition                     | >=      | 0.12    |
+| OD.W.3        | Width         | MOS width at higher voltage            | >=      | 0.4     |
+| OD.W.4        | Width         | Bent OD alignment                       | >=      | 0.18    |
+| OD.S.1        | Spacing       | General spacing                         | >=      | 0.11    |
+| OD.S.2        | Spacing       | Inside OD2                              | >=      | 0.18    |
+| OD.S.3        | Spacing       | Between two ODs with conditions         | >=      | 0.13    |
+| OD.S.3.1      | Spacing       | Specific spacing condition              | >=      | 0.125   |
+| OD.S.4        | Spacing       | To bent OD                              | >=      | 0.18    |
+| OD.S.5        | Spacing       | In U/O-shape structures                 | >=      | 0.18    |
+| OD.A.1        | Area          | Minimum enclosed area                   | >=      | 0.054   |
+| OD.A.2        | Enclosure     | Enclosed area requirement               | >=      | 0.085   |
+| OD.L.1        | Length        | Maximum length between contacts         | <=      | 0.5     |
+| OD.L.2        | Length        | Maximum OD length                       | <=      | 25      |
+| OD.R.1        | Restrictions   | Coverage requirement                    | N/A     | N/A     |
+| OD.DN.1L      | Restrictions   | Minimum density                         | >=      | 25%     |
+| OD.DN.1H      | Restrictions   | Maximum density                         | <=      | 75%     |
+| OD.DN.2L      | Restrictions   | Min density over window                | >=      | 20%     |
+| OD.DN.2H_IO   | Restrictions   | Max density for IO region              | <=      | 90%     |
+| OD.DN.2H_CORE | Restrictions   | Max density in core                    | <=      | 80%     |
+| OD.DN.3L      | Restrictions   | Min density within ODBLK               | >=      | 20%     |
+| OD.DN.3H_IO   | Restrictions   | Max density for IO region in ODBLK     | <=      | 90%     |
+| OD.DN.3H_CORE | Restrictions   | Max density in core within ODBLK       | <=      | 80%     |
+| OD.S.1.SRM    | Spacing       | SRM and SRAMDMY spacing                | N/A     | N/A     |
+
+This table categorizes each design rule, extracts the relevant numerical values and symbols where applicable, and handles cases without specific values by marking them as 'N/A'.
+**csv_data**: [['', ' DR Identifier ', ' Category      ', ' Comment Summary                          ', ' Symbol  ', ' Value   ', ''], ['', '---------------', '---------------', '-----------------------------------------', '---------', '---------', ''], ['', ' OD.W.1        ', ' Width         ', ' Minimum width                           ', ' >=      ', ' 0.08    ', ''], ['', ' OD.W.2        ', ' Width         ', ' MOS width condition                     ', ' >=      ', ' 0.12    ', ''], ['', ' OD.W.3        ', ' Width         ', ' MOS width at higher voltage            ', ' >=      ', ' 0.4     ', ''], ['', ' OD.W.4        ', ' Width         ', ' Bent OD alignment                       ', ' >=      ', ' 0.18    ', ''], ['', ' OD.S.1        ', ' Spacing       ', ' General spacing                         ', ' >=      ', ' 0.11    ', ''], ['', ' OD.S.2        ', ' Spacing       ', ' Inside OD2                              ', ' >=      ', ' 0.18    ', ''], ['', ' OD.S.3        ', ' Spacing       ', ' Between two ODs with conditions         ', ' >=      ', ' 0.13    ', ''], ['', ' OD.S.3.1      ', ' Spacing       ', ' Specific spacing condition              ', ' >=      ', ' 0.125   ', ''], ['', ' OD.S.4        ', ' Spacing       ', ' To bent OD                              ', ' >=      ', ' 0.18    ', ''], ['', ' OD.S.5        ', ' Spacing       ', ' In U/O-shape structures                 ', ' >=      ', ' 0.18    ', ''], ['', ' OD.A.1        ', ' Area          ', ' Minimum enclosed area                   ', ' >=      ', ' 0.054   ', ''], ['', ' OD.A.2        ', ' Enclosure     ', ' Enclosed area requirement               ', ' >=      ', ' 0.085   ', ''], ['', ' OD.L.1        ', ' Length        ', ' Maximum length between contacts         ', ' <=      ', ' 0.5     ', ''], ['', ' OD.L.2        ', ' Length        ', ' Maximum OD length                       ', ' <=      ', ' 25      ', ''], ['', ' OD.R.1        ', ' Restrictions   ', ' Coverage requirement                    ', ' N/A     ', ' N/A     ', ''], ['', ' OD.DN.1L      ', ' Restrictions   ', ' Minimum density                         ', ' >=      ', ' 25%     ', ''], ['', ' OD.DN.1H      ', ' Restrictions   ', ' Maximum density                         ', ' <=      ', ' 75%     ', ''], ['', ' OD.DN.2L      ', ' Restrictions   ', ' Min density over window                ', ' >=      ', ' 20%     ', ''], ['', ' OD.DN.2H_IO   ', ' Restrictions   ', ' Max density for IO region              ', ' <=      ', ' 90%     ', ''], ['', ' OD.DN.2H_CORE ', ' Restrictions   ', ' Max density in core                    ', ' <=      ', ' 80%     ', ''], ['', ' OD.DN.3L      ', ' Restrictions   ', ' Min density within ODBLK               ', ' >=      ', ' 20%     ', ''], ['', ' OD.DN.3H_IO   ', ' Restrictions   ', ' Max density for IO region in ODBLK     ', ' <=      ', ' 90%     ', ''], ['', ' OD.DN.3H_CORE ', ' Restrictions   ', ' Max density in core within ODBLK       ', ' <=      ', ' 80%     ', ''], ['', ' OD.S.1.SRM    ', ' Spacing       ', ' SRM and SRAMDMY spacing                ', ' N/A     ', ' N/A     ', ''], ["This table categorizes each design rule, extracts the relevant numerical values and symbols where applicable, and handles cases without specific values by marking them as 'N/A'."]]
+Traceback (most recent call last):
+  File "/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/run_rule.py", line 28, in <module>
+    rf.extract_rules()
+  File "/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/ipmigration/rule/svrf_reader.py", line 558, in extract_rules
+    self.parse_data(df)
+  File "/data/icdesign/ams/ip_migration/users/leiyuan/ipmigration/ipmigration/rule/svrf_reader.py", line 634, in parse_data
+    layer_rule[d[0]] = [d[1],d[3],d[4]]
+                        ~^^^
+IndexError: list index out of range

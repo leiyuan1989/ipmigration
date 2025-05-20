@@ -1,0 +1,574 @@
+
+-----------------------t40:NW----------------------------
+
+**input**: rule:NW.W.1, comment:Width  >=  0.34  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.34'}
+**input**: rule:NW.S.1, comment:Space  >=  0.34  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.34'}
+**input**: rule:NW.S.2, comment:Space of two NW1V with different potentials (*)  >=  0.8  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.8'}
+**input**: rule:NW.S.3, comment:NW1V space to NW2V with different potentials (*)  >=  1  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '1'}
+**input**: rule:NW.S.4, comment:Space of two NW2V with different potentials (*)  >=  1  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '1'}
+**input**: rule:NW.S.5, comment:Space to PW STRAP  >=  0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:NW.S.6, comment:Space to N+ ACTIVE (except NW resistor)  >=  0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:NW.S.6.1, comment:Space to N+ ACTIVE [at least one edge at each corner] (except NW resistor)  >=  0.16  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:NW.S.7, comment:Space to {N+ ACTIVE interact with OD2}  >=  0.22  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.22'}
+**input**: rule:NW.EN.1, comment:Enclosure of NW STRAP (except NW resistor)  >=  0.08  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:NW.EN.2, comment:Enclosure of P+ ACTIVE  >=  0.08  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:NW.EN.2.1, comment:Enclosure of P+ ACTIVE [at least one edge at each corner]  >=  0.16  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:NW.EN.3, comment:Enclosure of {P+ ACTIVE interact with OD2}  >=  0.22  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.22'}
+**input**: rule:NW.A.1, comment:Area  >=  0.64  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.64'}
+**input**: rule:NW.A.2, comment:Enclosed area  >=  0.64  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.64'}
+
+-----------------------t40:OD----------------------------
+
+**input**: rule:OD.W.1, comment:Width  >=  0.06  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.06'}
+**input**: rule:OD.W.2, comment:Channel width of core device  >=  0.12  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.12'}
+**input**: rule:OD.W.2.1, comment:Maximum channel width of core NMOS device for GS and LPG G device  <=  10 (This rule doesn't include the NT_N ,  SR_ESD ,  VAR)  
+**ouput**: {'classification': 'Width', 'symbol': '<=', 'value': '10'}
+**input**: rule:OD.W.2.2, comment:Maximum channel width for core PMOS device for GS  <=  1.5 (This rule doesn't include the NT_N ,  SR_ESD ,  VAR)  
+**ouput**: {'classification': 'Width', 'symbol': '<=', 'value': '1.5'}
+**input**: rule:OD.W.3, comment:Channel width of MOS [for I/O device]  >=  0.32  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.32'}
+**input**: rule:OD.W.4, comment:Min. width of 45 degree bent OD 0.17 um  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.17'}
+**input**: rule:OD.S.1, comment:Space  >=  0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:OD.S.2, comment:Space (inside OD2)  >=  0.15 um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.15'}
+**input**: rule:OD.S.3, comment:Space to OD [width  >  0.12 um] if the parallel length  >=  0.14 um (P)  >=  0.10  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.14'}
+**input**: rule:OD.S.3.1, comment:Space to OD [width  >  0.12 um] if the parallel length  >=  0.14 um (P1) in PO gate direction  >=  0.11  
+**ouput**: {'classification': 'Spacing', 'symbol': '>', 'value': '0.12'}
+**input**: rule:OD.S.4, comment:Space to 45-degree bent OD  >=  0.17  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.17'}
+**input**: rule:OD.S.5, comment:Space between two segments of a U-shape or an O-shape OD (notch only)  >=  0.15  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.15'}
+**input**: rule:OD.A.1, comment:Area (This check doesn't include the patterns filling 0.06 um x 0.26 um rectangular tile)  >=  0.035  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.035'}
+**input**: rule:OD.A.2, comment:Area [with all of edge length  <  0.21 um]  >=  0.055  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.055'}
+**input**: rule:OD.A.3, comment:Enclosed area  >=  0.04  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.04'}
+**input**: rule:OD.A.4, comment:Enclosed area [with all of inner edge length  <  0.21 um]  >=  0.077  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.077'}
+**input**: rule:OD.A.5, comment:Maximum ACTIVE area sum of ((checking Area INTERACT PO) NOT (PO OR SR_DPO)) in same checking Area  <=  300. Checking area is defined by size 0.22um in S/D direction and 0.08um in endcap direction from gate  
+**ouput**: {'classification': 'Area', 'symbol': '<=', 'value': '300'}
+**input**: rule:OD.L.1, comment:Length of active with width  <  0.12 um ,  connected to butted strap  <=  0.4 um  
+**ouput**: {'classification': 'Length', 'symbol': '<=', 'value': '0.4'}
+**input**: rule:OD.L.2, comment:Max. OD length between 2 CO or CO to OD line end when OD width  <=  0.12 um  60.0 um  
+**ouput**: {'classification': 'Length', 'symbol': '<=', 'value': '60.0'}
+**input**: rule:OD.R.1, comment:OD must be fully covered by {NP OR PP} except for {(DOD OR SR_DOD) OR NWDMY}  
+**ouput**: {'classification': 'Enclosure', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:OD.DN.1, comment:{OD OR DOD} density across full chip  >=  25%  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '25'}
+**input**: rule:OD.DN.1.1, comment:{OD OR DOD} density across full chip  <=  75%  
+**ouput**: {'classification': 'Density', 'symbol': '<=', 'value': '75'}
+**input**: rule:OD.DN.2, comment:Min. OD density over window 150 step 75  >=  20%  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '20'}
+**input**: rule:OD.DN.2.2, comment:Max. OD density over window 150 step 75  <=  90%  
+**ouput**: {'classification': 'Density', 'symbol': '<=', 'value': '90'}
+**input**: rule:OD.DN.2.1, comment:Max. OD density over window 150 step 75  <=  80% in core  
+**ouput**: {'classification': 'Density', 'symbol': '<=', 'value': '80'}
+**input**: rule:OD.DN.3, comment:Min. OD density over window 150 step 75  >=  20% (within ODBLK)  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '20'}
+**input**: rule:OD.DN.3.2, comment:Max. OD density over window 150 step 75  <=  90% (within ODBLK)  
+**ouput**: {'classification': 'Density', 'symbol': '<=', 'value': '90'}
+**input**: rule:OD.DN.3.1, comment:Max. OD density over window 150 step 75  <=  80% in core (within ODBLK)  
+**ouput**: {'classification': 'Density', 'symbol': '<=', 'value': '80'}
+
+-----------------------t40:PO----------------------------
+
+**input**: rule:PO.W.1, comment:Width  >=  0.04  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.04'}
+**input**: rule:PO.W.2, comment:Channel length of 2.5V MOS (for 2.5V overdrive to 3.3V ,  please refer to section OD25_33 Layout Rules)  >=  0.27  
+**ouput**: {'classification': 'Length', 'symbol': '>=', 'value': '0.27'}
+**input**: rule:PO.W.3, comment:Channel length of 3.3V MOS  >=  0.42 um  
+**ouput**: {'classification': 'Length', 'symbol': '>=', 'value': '0.42'}
+**input**: rule:PO.W.4, comment:Channel length of 1.8 V MOS (For 2.5V underdrive to 1.8V ,  please refer to section OD25_18 Layout Rules. For 1.8V underdrive to 1.5V ,  please refer to section OD18_15 Layout Rules.)  >=  0.15  
+**ouput**: {'classification': 'Length', 'symbol': '>=', 'value': '0.15'}
+**input**: rule:PO.W.6, comment:Channel length of core device for GS (This check doesn't include the regions covered by layers of NT_N ,  SDI ,  and VAR.)  =  0.04 / 0.045 / 0.05 / 0.06 / 0.07 / 0.08~10  
+**parse_error**: 
+
+The design rule classifies under "Length" with the condition that the channel length must be exactly one of the specified values ranging from 0.04 to 10.
+
+**Step-by-Step Explanation:**
+
+1. **Identify the Classification:** The term "Channel length" falls under the classification of "Length."
+
+2. **Determine the Symbol and Values:** The rule states "= 0.04 / 0.045 / ... / 10," indicating that the channel length must equal any one of these values. This is represented by the symbol "=".
+
+3. **Extract Numerical Values:** Convert the given range into numerical values without units, resulting in "0.04~10" to denote the acceptable range.
+
+**Answer:**
+
+The design rule is classified as:
+
+- Classification: Length
+- Symbol: =
+- Value: 0.04~10
+**input**: rule:PO.W.7, comment:Width of 45-degree FIELD PO (except PO fuse element ,  POFUSE ,  156;0). (Please make sure the vertex of 45 degree pattern is on 5nm grid (refer to the rule ,  G.6U ,  in section 3.7))  >=  0.17  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.17'}
+**input**: rule:PO.S.1, comment:Space  >=  0.10  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.10'}
+**input**: rule:PO.S.3, comment:{GATE inside OD2} space in the same OD  >=  0.22  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.22'}
+**input**: rule:PO.S.4, comment:FIELD PO space to OD (except CSRDMY (166;0) region)  >=  0.03  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.03'}
+**input**: rule:PO.S.4.1, comment:Gate space [L-shape OD and L-shape PO enclosed area  <  0.0121 um2 ]  >=  0.11  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:PO.S.6, comment:L-shape PO space to OD when PO and OD are in the same MOS L-shape PO length (R1)  <=  0.06 um]  >=  0.04  
+**parse_error**: 
+
+The rule specifies the length (R1) of an L-shape in a specific structure must be within 0.04 to 0.06 micrometers.
+
+**Step-by-Step Explanation:**
+
+1. **Understanding the Rule:** The given instruction mentions "L-shape PO space to OD" and refers to R1's length needing to be between 0.04 um and 0.06 um when in contact with OD within the same MOS structure.
+
+2. **Classification Decision:** Since the rule focuses on the dimension (length) of R1, it falls under the Length classification category.
+
+3. **Extracting Values and Symbols:**
+   - Lower Bound: R1 must be greater than or equal to 0.04 um (symbol ">=", value "0.04").
+   - Upper Bound: R1 must be less than or equal to 0.06 um (symbol "<=", value "0.06").
+
+4. **Final Representation:** Given the need for a single JSON object, both bounds are included as separate entries.
+
+**Answer:**
+
+```json
+[
+    {
+        "classification": "Length",
+        "symbol": ">=",
+        "value": 0.04
+    },
+    {
+        "classification": "Length",
+        "symbol": "<=",
+        "value": 0.06
+    }
+]
+```
+
+Each JSON object represents a bound of the length constraint for R1 in the L-shape structure.
+**input**: rule:PO.S.6.1, comment:L-shape PO space to OD when PO and OD are in the same MOS [L-shape PO length  >  0.06 um (R1) and L-shape PO length  <=  0.1 um (R1)]  >=  0.05  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.05'}
+**input**: rule:PO.S.7, comment:Space if at least one {PO OR SR_DPO} width  >  0.12 um ,  and the {PO OR SR_DPO} parallel run length  >  0.14 um (individual projection).  >=  0.16  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.16'}
+**input**: rule:PO.S.9, comment:Space [in same RPO]  >=  0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.18'}
+**input**: rule:PO.S.10, comment:Space at {PO OR SR_DPO} line-end (W  < 0.07 um (Q1)) in a dense-line-end configuration  If {PO OR SR_DPO} has parallel run length with opposite {PO OR SR_DPO} (measured with T1  =  0.035 um extension) along 2 adjacent edges of {PO OR SR_DPO} [any one edge  <  Q1 distance from the corner of the two edges] ,  then one of the space (S1 or S2) needs to be at least this value (This check doesn't include small jog with edge length  <  0.04 um (R))  >=  0.11  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:PO.S.15, comment:Large PO to gate [channel length  <=  0.08 um] space. The large PO is defined as PO area  >=  630 um2 and interact with regions of density  >  70% in window 30 um x 30 um ,  stepping 15 um. DPO will be excluded from density check. 1.0  
+**ouput**: {'classification': 'Spacing', 'symbol': '<=', 'value': '0.08'}
+**input**: rule:PO.S.16, comment:Space to 45-degree bent {PO OR SR_DPO}  >=  0.17  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.17'}
+**input**: rule:PO.EX.1, comment:Extension on OD (end-cap)  >=  0.09  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.09'}
+**input**: rule:PO.EX.2, comment:OD extension on PO  >=  0.09  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.09'}
+**input**: rule:PO.EX.3, comment:Extension on OD (end-cap) when the PO to L-shape OD (in the same MOS) space  <  0.1 um. (This check doesn't include ACTIVE jog  <=  0.02 um.)  >=  0.11  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:PO.L.1, comment:Maximum PO length between two contacts ,  as well as the length from any point inside PO gate to nearest CO when the PO width <  0.08 um.(This check doesn't include ESD protection devices.)  <=  18  
+**ouput**: {'classification': 'Length', 'symbol': '<=', 'value': '18'}
+**input**: rule:PO.A.1, comment:Area (This check doesn't include the pattern filling0.04 um x 0.3 um rectangular tile)  >=  0.022  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.022'}
+**input**: rule:PO.A.2, comment:Area [with all of edge length <  0.21 um]  >=  0.055  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.055'}
+**input**: rule:PO.A.3, comment:Enclosed area  >=  0.04  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.04'}
+**input**: rule:PO.A.4, comment:Enclosed area [with all of inner edge length <  0.21 um]  >=  0.077  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.077'}
+**input**: rule:PO.DN.1, comment:Min. POLY density across full chip 14%  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '14'}
+**input**: rule:PO.DN.1.1, comment:Max. poly density across full chip 40%  
+**ouput**: {'classification': 'Density', 'symbol': '<=', 'value': '40'}
+**input**: rule:PO.DN.2, comment:{OD OR DOD OR PO OR DPO } local density (minimun) over window 20um x 20um stepping 10um  >=  0.1%  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '0.1'}
+**input**: rule:PO.DN.3, comment:PO density within POBLK. (except {RFDMY AND RFIP_DMY} ,  MOMDMY(155;21)) 14%  
+**ouput**: {'classification': 'Density', 'symbol': 'N/A', 'value': '14'}
+**input**: rule:PO.R.1, comment:GATE must be a rectangle orthogonal to grid. (Both bent GATE and gate with jog are not allowed). (Except CSRDMY region)  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:PO.R.4, comment:PO intersecting OD must form two or more diffusions. (Except CSRDMY region)  
+**ouput**: {'classification': 'Restrictions', 'symbol': '>=', 'value': '2'}
+**input**: rule:PO.R.7_V, comment:Poly gates of all SRAM cells (50;0 OR 186;0) must be uni-directional in a chip. (This check doesn't include the regions covered by layer 49 (RODMY) and RAM1TDMY (160;0)) Chips on MPW or shuttles may be rotated due to this rule  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:PO.R.7_H, comment:Poly gates of all SRAM cells (50;0 OR 186;0) must be uni-directional in a chip. (This check doesn't include the regions covered by layer 49 (RODMY) and RAM1TDMY (160;0)) Chips on MPW or shuttles may be rotated due to this rule  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:PO.R.6, comment:H-gate that fulfills the following conditions at the same time is not allowed. [inner space  <  0.43 um (U) ,  channel length  <  0.10 um (V) ,  interconnect PO width  <  0.25 um (W) ,  and interconnect PO length  >  0.065 um(X)]  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:PO.R.8, comment:It is prohibited for Floating Gate if the effective source/drain is not connected together  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:PO.R.8.SRAM, comment:It is prohibited for Floating Gate if the effective source/drain is not connected together  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:PO.S.2, comment:The poly gate space range to neighboring {PO OR SR_DPO} [for channel length  <  0.06um]. It allows the violation with length ratio  <  30% on one side and one segment. The length ratio  =  violation length / device width. The 0.12 ~ 0.125 are not shrinkable. This rule is for poly gate CDU control (Except SRAM (186;0) region)  =  0.12 ~ 0.22 or 0.32  
+**parse_error**: 
+
+To address the problem, we need to extract the most relevant numerical value and its corresponding symbol from the given design rule. The rule states that spacing must be either within the range of 0.12 to 0.22 or exactly 0.32. 
+
+### Approach
+The key steps are:
+1. **Identify Constraints**: The rule specifies two constraints: a range (0.12 ~ 0.22) and an exact value (0.32).
+2. **Extract Relevant Information**: From these, the most restrictive lower bound is 0.12 with a ">=" symbol.
+3. **Format Output**: Present the extracted information in the required JSON format.
+
+### Solution Code
+```json
+{
+  "symbol": ">=",
+  "value": "0.12"
+}
+```
+
+### Explanation
+The solution extracts the lower bound of the spacing constraint, which is 0.12, using the ">=" symbol to indicate that the spacing must be at least this value. This captures the primary constraint effectively within the given format limitations.
+**input**: rule:PO.S.2_SkipBoundary, comment:The poly gate space range to neighboring {PO OR SR_DPO} [for channel length  <  0.06um]. It allows the violation with length ratio  <  30% on one side and one segment. The length ratio  =  violation length / device width. The 0.12 ~ 0.125 are not shrinkable. This rule is for poly gate CDU control (Except SRAM (186;0) region)  =  0.12 ~ 0.22 or 0.32  
+**ouput**: {'classification': 'Spacing', 'symbol': '<', 'value': '30'}
+**input**: rule:PO.S.2.1, comment:Gate space [either one channel length  >=  0.06 ]  >=  0.14  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.14'}
+**input**: rule:PO.S.2.1.1__PO.EX.2.1, comment:Maximum OD extension on the edge gate [channel length >=  0.08 ] and gate space [either one channel length  >=  0.08 ] in core device regions  <=  0.32 . This check doesn't include the regions covered by SR_ESD.  
+**ouput**: {'classification': 'Extension', 'symbol': '<=', 'value': '0.32'}
+
+-----------------------t40:PP----------------------------
+
+**input**: rule:PP.W.1, comment:Width  >=  0.18  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.18'}
+**input**: rule:PP.S.1, comment:Space  >=  0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.18'}
+**input**: rule:PP.S.2, comment:Space to N+ACTIVE (non-butted)  >=  0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:PP.S.4, comment:Space to NW STRAP (non-butted)  >=  0.02  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:PP.S.5, comment:{PP edge on OD} space to NMOS GATE  >=  0.23  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.23'}
+**input**: rule:PP.S.6, comment:Butted PW STRAP space to PO in the same OD [the butted N+ ACTIVE extending   <  J1  <  0.13 um]  >=  0.23  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.23'}
+**input**: rule:PP.S.7, comment:Space to N-type unsilicided OD/PO resistor  >=  0.14  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.14'}
+**input**: rule:PP.EN.1, comment:{NP OR PP} enclosure of PO (except DPO)  >=  0.11  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:PP.EX.1, comment:Extension on P+ACTIVE  >=  0.08  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:PP.EX.2, comment:Extension on PW STRAP (except sealring(162;2))  >=  0.02  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:PP.EX.3, comment:Extension on P-type unsilicided OD/PO resistor  >=  0.14  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.14'}
+**input**: rule:PP.EX.4, comment:{PP edge on OD} extension on PMOS GATE  >=  0.23  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.23'}
+**input**: rule:PP.O.1, comment:Overlap of OD  >=  0.10  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.10'}
+**input**: rule:PP.A.1, comment:Area  >=  0.11  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:PP.A.2, comment:Enclosed area  >=  0.11  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:PP.A.3, comment:Area of butted PW STRAP  >=  0.021  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.021'}
+**input**: rule:PP.R.1, comment:PP must fully cover {PMOS GATE SIZING 0.08 um}  >=  0.08  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:PP.R.2, comment:Overlap of NP is not allowed.  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:PP.L.1, comment:45-degree edge length 0.5  
+**ouput**: {'classification': 'Extension', 'symbol': 'N/A', 'value': '0.5'}
+
+-----------------------t40:NP----------------------------
+
+**input**: rule:NP.W.1, comment:Width  >=  0.18  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.18'}
+**input**: rule:NP.S.1, comment:Space  >=  0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.18'}
+**input**: rule:NP.S.2, comment:Space to P+ACTIVE (non-butted)  >=  0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:NP.S.4, comment:Space to PW STRAP (non-butted)  >=  0.02  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:NP.S.5, comment:{NP edge on OD} space to PMOS GATE  >=  0.23  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.23'}
+**input**: rule:NP.S.6, comment:Butted NW STRAP space to PO in the same OD [the butted P+ ACTIVE extending   <  J1  <  0.13 um]  >=  0.23  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.23'}
+**input**: rule:NP.S.7, comment:Space to P-type unsilicided OD/PO resistor  >=  0.14  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.14'}
+**input**: rule:NP.EX.1, comment:Extension on N+ACTIVE (except NWROD)  >=  0.08  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:NP.EX.2, comment:Extension on NW STRAP (except NWROD)  >=  0.02  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:NP.EX.3, comment:Extension on N-type unsilicided OD/PO resistor  >=  0.14  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.14'}
+**input**: rule:NP.EX.4, comment:{NP edge on OD} extension on NMOS GATE  >=  0.23  
+**ouput**: {'classification': 'Extension', 'symbol': '>=', 'value': '0.23'}
+**input**: rule:NP.O.1, comment:Overlap of OD  >=  0.10  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.10'}
+**input**: rule:NP.A.1, comment:Area  >=  0.11  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:NP.A.2, comment:Enclosed area  >=  0.11  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:NP.A.3, comment:Area of butted NW STRAP  >=  0.021  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.021'}
+**input**: rule:NP.R.1, comment:NP must fully cover {NMOS GATE SIZING 0.08 um}  >=  0.08  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:NP.L.1, comment:45-degree edge length 0.5  
+**ouput**: {'classification': 'Length', 'symbol': 'N/A', 'value': '0.5'}
+
+-----------------------t40:CO----------------------------
+
+**input**: rule:CO.W.1, comment:Width (maximum  =  minimum) (Except butted CO in SRAM (186;0) region only)  =  0.06  
+**ouput**: {'classification': 'Width', 'symbol': '=', 'value': '0.06'}
+**input**: rule:CO.S.1, comment:Space (Except SRAM (186;0) region)  >=  0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:CO.S.2, comment:Space to 3-neighboring CO (distance  <  0.11 um) (Except SRAM (186;0) region)  >=  0.10  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.10'}
+**input**: rule:CO.S.2.1, comment:Space [different net] (Except SRAM (186;0) region)  >=  0.11  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:CO.S.3, comment:Space to GATE (Overlap of GATE is not allowed) [space  >=  0.035 um is allowed inside SRAM word line driver covered by layer 186;5 or 186;4] (Except SRAM (186;0) region)  >=  0.04  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.04'}
+**input**: rule:CO.S.4, comment:{CO inside PO} space to OD (Except SRAM (186;0) region)  >=  0.05  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.05'}
+**input**: rule:CO.S.5, comment:{CO inside OD} space to I/O GATE  >=  0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:CO.S.5.1, comment:{CO inside drain side OD} space to HVD GATE  =  0.6  
+**ouput**: {'classification': 'Spacing', 'symbol': '=', 'value': '0.6'}
+**input**: rule:CO.S.6, comment:Space to butted PP/NP edge on OD (overlap of NP/PP boundary on OD is not allowed.)  >=  0.04  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.04'}
+**input**: rule:CO.EN.1, comment:Enclosure by OD (Except SRAM (186;0) region)  >=  0.01  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.01'}
+**input**: rule:CO.EN.1.1_CO.EN.1.3, comment:Enclosure by OD [at least two opposite sides]  >=  0.03 or [four sides]  >=  ^CO_EN_1_3 ,  do not check butted contact  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.03'}
+**input**: rule:CO.EN.1.2, comment:Enclosure by OD for STRAP NOT VAR [at least two opposite sides]  >=  0.02  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:CO.EN.0, comment:Enclosure by PO is defined by either {CO.EN.2 and CO.EN.3} or {CO.EN.5 and CO.EN.6} ,  that is enclosure by poly must meet either 10/20/10/20nm or 5/30/15/30nm  
+**ouput**: {'classification': 'Enclosure', 'symbol': 'min', 'value': '10,20,10,20,5,30,15,30'}
+**input**: rule:CO.W.2, comment:Width of CO bar. CO bar is only allowed in seal ring and SLDB.  ==  0.06  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.06'}
+
+-----------------------t40:M1----------------------------
+
+**input**: rule:M1.W.1, comment:Width  >=  0.07  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.07'}
+**input**: rule:M1.W.2, comment:Width of 45-degree bent M1. (Please make sure the vertex of 45 degree pattern is on 0.005 um grid (refer to the guideline ,  G.6gU ,  in section 3.7))  >=  0.17  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.17'}
+**input**: rule:M1.W.3, comment:Maximum width (This check doesn't include the sealring (162;2) region)  <=  4.50  
+**ouput**: {'classification': 'Width', 'symbol': '<=', 'value': '4.50'}
+**input**: rule:M1.S.1, comment:Space  >=  0.07  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.07'}
+**input**: rule:M1.S.2, comment:Min. Metal space (for W >  0.17 um & parallel length  >  0.27 um)  >=  0.08 um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:M1.S.2.1, comment:Min. Metal space (for W >  0.24 um & parallel length  >  0.27 um)  >=  0.12 um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.12'}
+**input**: rule:M1.S.2.2, comment:Min. Metal space (for W >  0.31 um & parallel length  >  0.4 um)  >=  0.14 um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.14'}
+**input**: rule:M1.S.2.3, comment:Min. Metal space (for W >  0.62 um & parallel length  >  0.62 um)  >=  0.21 um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.21'}
+**input**: rule:M1.S.3, comment:Min. Metal space (for W >  1.5 um & parallel length  >  1.5 um)  >=  0.5 um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.5'}
+**input**: rule:M1.S.5, comment:If M1 has parallel run length with opposite M1 along two adjacent edges of M1 [any one edge  <  0.09 Q  =  0.07 um and its opposite extension <  0.025 distance from the corner of the two edges of M1] ,  then one of the space (S1 or S2) to opposite M1 must be  >=  0.08 um.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:M1.S.6, comment:Space to 45-degree bent M1  >=  0.17  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.17'}
+**input**: rule:M1.S.1.1, comment:Space [any one of Mx connect to  >  3.3V and  <=  5V net]  >=  0.09  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.09'}
+**input**: rule:M1.S.8.2, comment:Space to neighboring {VIAx-1 or VIAx} [either VIAx-1 ,  VIAx or Mx connects to  >  3.3V and  <=  5V net]  >=  0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.18'}
+**input**: rule:M1.S.8, comment:Space to VIA1 [different net ,  either VIA1 or M1 connects to 1.8V ~ 3.3V net] 0.1  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.1'}
+**input**: rule:M1.S.9, comment:This rule is to check Metal (A) space to neighboring VIA1 [either VIA1 or M1 connects to  > 3.3V and  <=  5V net]. DRC methodology to find Metal (A) Find a edge (B) of metal line end [edge length  <=  0.12um] Run length (C) from edge (B) inside metal  >=  0.13um Jog length (D)  <=  0.01um within 0.13um run length Extend 0.06um outside from edge (B) to form a polygon metal (A) Metal (A) is defined if conditions 1~4 are all satisfied.  >=  0.15  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.13'}
+**input**: rule:M1.S.8.1, comment:Space to VIA1 [different net ,  either VIA1 or M1 connects to  >=  1.5V and  <  1.8V net] 0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.08'}
+**input**: rule:M1.EN.1, comment:Enclosure of CO  >=  0.00 ,  do not check butted contact in SRAM  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.00'}
+**input**: rule:M1.EN.2__M1.EN.3__M1.EN.3.1__M1.EN.3.2, comment:Enclosure of CO [at least two opposite sides]  >=  ^M1_EN_2 ,  or [four sides]  >=  ^M1_EN_3 ,  or [four sides]  >=  0.005 with [at least two opposite sides]  >=  0.025  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.005'}
+**input**: rule:M1.EN.4, comment:Enclosure of CO [M1 width  >  0.7 um] (except CSRDMY (166;0) region)  >=  0.03  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.03'}
+**input**: rule:M1.EN.5, comment:Enclosure of CO [metal width  >=  0.11um ,  space  <  0.08 um and parallel run length  >  0.27 um] (This check doesn't include two or more COs resent in the metal intersection)  >=  0.015  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.015'}
+**input**: rule:M1.A.1, comment:Area (Except SRAM (186;0) region)  >=  0.0215  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.0215'}
+**input**: rule:M1.A.2, comment:Area [with all of edge length <  0.17 um]. (This check doesn't include the patterns filling 0.07 um x 0.17 um rectangular tile) (Except SRAM (186;0) region)  >=  0.055  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.055'}
+**input**: rule:M1.A.3, comment:Enclosed area  >=  0.2  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.2'}
+**input**: rule:M1.DN.1, comment:Minimum local density [window 125.0 um x 125.0 um ,  stepping 62.5 um]  >=  0.1  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '0.1'}
+**input**: rule:M1.DN.1.1, comment:Maximum local density [window 125.0 um x 125.0 um ,  stepping 62.5 um]  <=  0.85  
+**ouput**: {'classification': 'Density', 'symbol': '<=', 'value': '0.85'}
+**input**: rule:M1.DN.4, comment:The metal density difference between any two neighboring checking windows including DM1EXCL [window 200.0 um x 200.0 um ,  stepping 200.0 um]   <=  0.5  
+**ouput**: {'classification': 'Density', 'symbol': '<=', 'value': '0.5'}
+**input**: rule:M1.DN.6, comment:Metal Desnsity  >=  ^M1_DN_6. All condition-A ,  Condition-B ,  and Condition-C must be followed.  (1) Condition-A  Metal density [window 80.0 um x 80.0 um ,  stepping 40.0 um]  >=  0.01  (2) Condition-B  Maximum area of merged low density windows [window 10.0 um x 10.0 um ,  stepping 5.0 um  <  ^M1_DN_6]  <=  6400.0 um2 ,  except merged low density windows width  <=  30.0 um  (3) Condition-C  Maximum area of merged low density windows [window 10.0 um x 10.0 um ,  stepping 5.0 um  <  ^M1_DN_6]  <=  18000.0 um2  1. The following special regions are excluded while the density checking  Chip corner triangle empty areas if sealring is added by tsmc.  LOWMEDN  2. This rule is applied while the width of (checking window NOT above excluding region)  >=  40.0 um for condition-A and  >=  5.0 um for both condition-B/condition-C  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '0.01'}
+**input**: rule:M1.R.2, comment:Metal(pin) layers must be drawn only interact with one relative Metal(drawing) layers  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:M1.W.4, comment:Width of M1 metal line in outer seal ring  ==  2.0  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '2.0'}
+**input**: rule:M1.W.5, comment:Width of M1 metal line in inner seal ring  ==  6.0  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '6.0'}
+**input**: rule:M1.W.6, comment:Width of M1 metal line in SLDB  ==  0.5  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.5'}
+
+-----------------------t40:VIA1----------------------------
+
+**input**: rule:VIA1.W.1, comment:Width (maximum  =  minimum) (Except sealring (162 , 2) and {VIAx bar INSIDE {LOWMEDN NOT (LOWMEDN SIZING -4 um)}} region)  =  0.07  
+**ouput**: {'classification': 'Width', 'symbol': '=', 'value': '0.07'}
+**input**: rule:VIA1.S.1, comment:Space  >=  0.07  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.07'}
+**input**: rule:VIA1.S.1.1, comment:Space [any one of VIAx connect to  >  3.3V and  <=  5V different net]  >=  0.2  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.2'}
+**input**: rule:VIA1.S.2, comment:Space to 3-neighboring VIAx (distance  <  0.098 um)  >=  0.09  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.09'}
+**input**: rule:VIA1.S.3, comment:Space to neighboring VIAx [different net]  >=  0.095  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.095'}
+**input**: rule:VIA1.S.3.1, comment:Space to neighboring VIAx [different net and common parallel run length  >  0 um]  >=  0.11  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.11'}
+**input**: rule:VIA1.EN.1, comment:Enclosure by Mx or M1  >=  0.00  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.00'}
+**input**: rule:VIA1.EN.2__VIA1.EN.4__VIA1.EN.4.1, comment:Enclosure by M1 [at least two opposite sides]  >=  ^VIA1_EN_2 ,  or [four sides]  >=  0.01 with [at least two opposite sides]  >=  0.02  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.01'}
+**input**: rule:VIA1.EN.3.1, comment:VIA1 Enclosure by M1 [metal width  >=  0.11 um ,  space  <  0.08 um and parallel run length  >  0.27 um] (This check doesn't include two or more via1 present in the metal intersection)  >=  0.015  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.015'}
+**input**: rule:VIA1.R.2__VIA1.R.3, comment:When M1 or M2 width  >  0.21 um ,  more than one VIA1 is required.  2 vias spacing should be  <=  0.14 um or 4 vias spacing should be  <=  0.63 um  When M1 or M2 width  >  0.55 um ,  more than three VIA1 is required.  4 vias spacing should be  <=  0.14 um or 9 vias spacing should be  <=  0.83 um  not check SRAM region  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.21'}
+**input**: rule:VIA1.R.4.M1, comment:At least two VIAx must be used for a connection that is  <=  1.14 um (D) away from a metal plate (either Mx or Mx+1) with length  >  0.21 um (L) and width  >  0.21 um (W). (It is allowed to use one VIAx for a connection that is  >  1.14 um (D) away from a metal plate (either Mx or Mx+1) with length  >  0.21 um (L) and width  >  0.21 um (W).)  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.21'}
+**input**: rule:VIA1.R.4.M2, comment:At least two VIAx must be used for a connection that is  <=  1.14 um (D) away from a metal plate (either Mx or Mx+1) with length  >  0.21 um (L) and width  >  0.21 um (W). (It is allowed to use one VIAx for a connection that is  >  1.14 um (D) away from a metal plate (either Mx or Mx+1) with length  >  0.21 um (L) and width  >  0.21 um (W)).  
+**ouput**: {'classification': 'Restrictions', 'symbol': '>=', 'value': '1.14'}
+**input**: rule:VIA1.R.5.M1, comment:At least two VIAx must be used for a connection that is  <=  2.8 um (D) away from a metal plate (either Mx or Mx+1) with length  >  1.4 um (L) and width  >  1.4 um (W). (It is allowed to use one VIAx for a connection that is  >  2.8 um (D) away from a metal plate (either Mx or Mx+1) with length >  1.4 um (L) and width  >  1.4 um (W)).  
+**ouput**: {'classification': 'Restrictions', 'symbol': '>=', 'value': '2.8'}
+**input**: rule:VIA1.R.5.M2, comment:At least two VIAx must be used for a connection that is  <=  2.8 um (D) away from a metal plate (either Mx or Mx+1) with length  >  1.4 um (L) and width  >  1.4 um (W). (It is allowed to use one VIAx for a connection that is  >  2.8 um (D) away from a metal plate (either Mx or Mx+1) with length >  1.4 um (L) and width  >  1.4 um (W)).  
+**ouput**: {'classification': 'Restrictions', 'symbol': '<=', 'value': '2.8'}
+**input**: rule:VIA1.R.6.M1, comment:At least two VIAx must be used for a connection that is  <=  7.1 um (D) away from a metal plate (either Mx or Mx+1) with length  >  7.0 um (L) and width  >  2.1 um (W). (It is allowed to use one VIAx for a connection that is  >  7.1 um (D) away from a metal plate (either Mx or Mx+1) with length >  7.0 um (L) and width  >  2.1 um (W)).  
+**ouput**: {'classification': 'Restrictions', 'symbol': '<=', 'value': '7.1'}
+**input**: rule:VIA1.R.6.M2, comment:At least two VIAx must be used for a connection that is  <=  7.1 um (D) away from a metal plate (either Mx or Mx+1) with length  >  7.0 um (L) and width  >  2.1 um (W). (It is allowed to use one VIAx for a connection that is  >  7.1 um (D) away from a metal plate (either Mx or Mx+1) with length >  7.0 um (L) and width  >  2.1 um (W)).  
+**ouput**: {'classification': 'Restrictions', 'symbol': '<=', 'value': '7.1'}
+**input**: rule:VIA1.R.11, comment:Single VIAx is not allowed for H-shape Mx+1 when all of the following conditions come into existence  1. The Mx+1 has H-shape interact with two metal holes  two metal hole length(L2)  <=  5.0 um and both two metal hole area  <=  5.0 um2 2. The VIAx overlaps on the center metal bar of this H-shape Mx+1 3. The length (L) of the center metal bar  <=  1.0 um and the width of metal bar is  <=  0.21 um.  
+**parse_error**: 
+
+The design rule VIA1.R.11 has four numerical constraints. Each of these constraints uses the "<=" operator and relates to different aspects such as length, area, and width.
+
+```json
+[
+  {
+    "classification": "Restrictions",
+    "symbol": "<=",
+    "value": 5.0
+  },
+  {
+    "classification": "Restrictions",
+    "symbol": "<=",
+    "value": 5.0
+  },
+  {
+    "classification": "Restrictions",
+    "symbol": "<=",
+    "value": 1.0
+  },
+  {
+    "classification": "Restrictions",
+    "symbol": "<=",
+    "value": 0.21
+  }
+]
+```
+**input**: rule:VIA1.R.12, comment:VIA1 connected to DM1 ,  DM1_O ,  DM2 ,  DM2_O is not allowed  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:VIA1.W.6, comment:Width of VIAx bar in protection ring  =  0.07  
+**ouput**: {'classification': 'Width', 'symbol': '=', 'value': '0.07'}
+**input**: rule:VIA1.S.7, comment:Space of VIAx bar in LOWMEDN to VIAx hole  >=  0.365  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.365'}
+**input**: rule:VIA1.S.8, comment:Space of VIAx bar in LOWMEDN  >=  0.74  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.74'}
+**input**: rule:VIA1.EN.8, comment:VIAx bar enclosure by M1/Mx in LOWMEDN  >=  0.21  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.21'}
+**input**: rule:VIA1.W.2__VIA1.W.4, comment:Width of VIA1 bar of sealring/SLDB  =  0.5  
+**ouput**: {'classification': 'Width', 'symbol': '=', 'value': '0.5'}
+**input**: rule:VIA1.W.3__VIA1.W.5, comment:Width of VIA1 hole of sealring/SLDB  =  0.07  
+**ouput**: {'classification': 'Width', 'symbol': '=', 'value': '0.07'}
+**input**: rule:VIA1.EN.5, comment:Enclosure of VIA1 bar by M1 of seal ring  >=  0.21  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.21'}
+**input**: rule:VIA1.EN.6, comment:Enclosure of VIA1 hole by M1 of seal ring  >=  0.22  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.22'}
+**input**: rule:VIA1.EN.7, comment:Enclosure of VIA1 hole by M1 of SLDB  >=  0.015  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.015'}
+**input**: rule:VIA1.S.4, comment:Space of VIA1 hole in seal ring.  >=  0.35  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.35'}
+**input**: rule:VIA1.S.5, comment:Space of VIA1 hole to VIAx bar in seal ring.  >=  0.365  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.365'}
+**input**: rule:VIA1.S.6, comment:Space of VIA1 hole in SLDB. >=  0.35  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.35'}
+
+-----------------------t40:M2----------------------------
+
+**input**: rule:M2.W.1, comment:Width  >=  0.07  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.07'}
+**input**: rule:M2.W.2, comment:Width of 45-degree bent Mx. (Please make sure the vertex of 45 degree pattern is on 0.005 um grid (refer to the guideline ,  G.6gU ,  in section 3.7))  >=  0.17  
+**ouput**: {'classification': 'Width', 'symbol': '>=', 'value': '0.17'}
+**input**: rule:M2.W.3, comment:Maximum width  <=  4.5 um ,  exclude sealring  
+**ouput**: {'classification': 'Width', 'symbol': '<=', 'value': '4.5'}
+**input**: rule:M2.S.1, comment:Space  >=  0.07  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.07'}
+**input**: rule:M2.S.2, comment:Min. Metal space (for W >  0.17 um & parallel length  >  0.27 um)  >=  0.1 um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.1'}
+**input**: rule:M2.S.2.1, comment:Min. Metal space (for W >  0.24 um & parallel length  >  0.27 um)  >=  0.12 um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.12'}
+**input**: rule:M2.S.2.2, comment:Min. Metal space (for W >  0.31 um & parallel length  >  0.4 um)  >=  0.15 um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.15'}
+**input**: rule:M2.S.2.3, comment:Min. Metal space (for W >  0.62 um & parallel length  >  0.62 um)  >=  0.21 um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.21'}
+**input**: rule:M2.S.3, comment:Min. Metal space (for W >  1.5 um & parallel length  >  1.5 um)  >=  0.5 um  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.5'}
+**input**: rule:M2.S.5, comment:Space at Mx line-end (W  <  0.10 um (Q)) in a dense-line-end configuration  If Mx has parallel run length with opposite Mx (measured with T  =  0.035 um extension) along 2 adjacent edges of Mx [any one edge  < Q distance from the corner of the two edges] ,  then one of the space (S1 or S2) needs to be at least this value (This check doesn't include small jog with edge length  <  0.07 um(R)) ( except SRAM (186;0) region)  >=  0.10  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.10'}
+**input**: rule:M2.S.5.1, comment:Space at Mx line-end (W < Q = ^M2_S_5_1_W) in a dense-line-end configuration.If Mx has parallel run length with opposite Mx (measured with 0.035 (T) extension) along two adjacent edges of Mx [any one edge  <  0.1 (W) from the corner of the two edges of Mx] ,  and Mx enclosure of VIAx-1  <  0.05 at line-end ,  then one of the space (S1 or S2) must be  >=  0.12 um.  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.12'}
+**input**: rule:M2.S.6, comment:Space to 45-degree bent Mx  >=  0.17  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.17'}
+**input**: rule:M2.S.1.1, comment:Space [any one of Mx connect to  >  3.3V and  <=  5V net]  >=  0.09  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.09'}
+**input**: rule:M2.S.8.2, comment:Space to neighboring {VIAx-1 or VIAx} [either VIAx-1 ,  VIAx or Mx connects to  >  3.3V and  <=  5V net]  >=  0.18  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.18'}
+**input**: rule:M2.S.8, comment:Space to {VIAx-1 OR VIAx} [different net ,  any one of VIAx-1 ,  VIAx or Mx connects to 1.8V ~ 3.3V net] 0.1  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.1'}
+**input**: rule:M2.S.8.1, comment:Space to {VIAx-1 OR VIAx} [different net ,  any one of VIAx-1 ,  VIAx or Mx connects to  >=  1.5V and  <  1.8V net] 0.08  
+**ouput**: {'classification': 'Spacing', 'symbol': '=', 'value': '0.08'}
+**input**: rule:M2.S.9, comment:This rule is to check Metal (A) space to neighboring VIAx [either VIAx or Mx connects to  > 3.3V and  <=  5V net]. DRC methodology to find Metal (A) Find a edge (B) of metal line end [edge length  <=  0.12um] Run length (C) from edge (B) inside metal  >=  0.13um Jog length (D)  <=  0.01um within 0.13um run length Extend 0.06um outside from edge (B) to form a polygon metal (A) Metal (A) is defined if conditions 1~4 are all satisfied.  >=  0.15  
+**ouput**: {'classification': 'Spacing', 'symbol': '>=', 'value': '0.15'}
+**input**: rule:M2.EN.1, comment:Enclosure of VIAx-1  >=  0.00  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.00'}
+**input**: rule:M2.EN.2__M2.EN.3__M2.EN.3.1, comment:Enclosure of VIAx-1 [at least two opposite sides]  >=  ^M2_EN_2 ,  or [four sides]  >=  0.01 with [at least two opposite sides]  >=  0.02  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.02'}
+**input**: rule:M2.A.1, comment:Area ( except SRAM (186;0) region)  >=  0.027  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.027'}
+**input**: rule:M2.A.2, comment:Area [with all of edge length <  0.17 um] (This check doesn't include the patterns filling 0.07 um x 0.17 um rectangular tile) ( except SRAM (186;0) region)  >=  0.06  
+**ouput**: {'classification': 'Area', 'symbol': '>=', 'value': '0.06'}
+**input**: rule:M2.A.3, comment:Enclosed area  >=  0.2  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.2'}
+**input**: rule:M2.DN.1, comment:Minimum local density [window 125.0 um x 125.0 um ,  stepping 62.5 um]  >=  0.1  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '0.1'}
+**input**: rule:M2.DN.1.1, comment:Maximum local density [window 125.0 um x 125.0 um ,  stepping 62.5 um]  <=  0.85  
+**ouput**: {'classification': 'Density', 'symbol': '<=', 'value': '0.85'}
+**input**: rule:M2.DN.4, comment:The metal density difference between any two neighboring checking windows including DM2EXCL [window 200.0 um x 200.0 um ,  stepping 200.0 um]   <=  0.5  
+**ouput**: {'classification': 'Density', 'symbol': '<=', 'value': '0.5'}
+**input**: rule:M2.DN.6, comment:Metal Desnsity  >=  ^M2_DN_6. All condition-A ,  Condition-B ,  and Condition-C must be followed.  (1) Condition-A  Metal density [window 80.0 um x 80.0 um ,  stepping 40.0 um]  >=  0.01  (2) Condition-B  Maximum area of merged low density windows [window 10.0 um x 10.0 um ,  stepping 5.0 um  <  ^M2_DN_6]  <=  6400.0 um2 ,  except merged low density windows width  <=  30.0 um  (3) Condition-C  Maximum area of merged low density windows [window 10.0 um x 10.0 um ,  stepping 5.0 um  <  ^M2_DN_6]  <=  18000.0 um2  1. The following special regions are excluded while the density checking  Chip corner triangle empty areas if sealring is added by tsmc.  LOWMEDN  2. This rule is applied while the width of (checking window NOT above excluding region)  >=  40.0 um for condition-A and  >=  5.0 um for both condition-B/condition-C  
+**ouput**: {'classification': 'Density', 'symbol': '>=', 'value': '0.01'}
+**input**: rule:M2.R.3, comment:Metal(pin) layers must be drawn only interact with one relative Metal(drawing) layers  
+**ouput**: {'classification': 'Restrictions', 'symbol': 'N/A', 'value': 'N/A'}
+**input**: rule:M2.EN.4, comment:Enclosure of VIAx-1 bar in LOWMEDN  >=  0.21  
+**ouput**: {'classification': 'Enclosure', 'symbol': '>=', 'value': '0.21'}
+**input**: rule:M2.W.4, comment:Width of M2 metal line in outer seal ring  ==  2.0  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '2.0'}
+**input**: rule:M2.W.5, comment:Width of M2 metal line in inner seal ring  ==  6.0  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '6.0'}
+**input**: rule:M2.W.6, comment:Width of M2 metal line in SLDB  ==  0.5  
+**ouput**: {'classification': 'Width', 'symbol': '==', 'value': '0.5'}
