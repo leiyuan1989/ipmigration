@@ -25,7 +25,7 @@ class Tech(object):
         
         self._gen_lyp(cfgs.output_dir)#maybe give user the option to gen it
         
-        self._init_tech(cfgs.rule_file)
+        self._read_rule_align(cfgs.rule_file,cfgs.rule_align)
 
     def _init_layer_name(self):
         self.NW = 'NW' 
@@ -137,9 +137,16 @@ class Tech(object):
             f.write('</layer-properties>\n')      
             
             
-    def _init_tech(self, design_rule_file):
+    def _read_rule_align(self, design_rule_file, rule_align_file):
         #init design rules 
-        df = pd.read_csv(design_rule_file)
+        df = pd.read_csv(rule_align_file)
+        rules = {}
+        dr_df =  pd.read_csv(design_rule_file)
+        for i,r in dr_df.iterrows():
+            rule = r['design rule'].strip()
+            rules[rule] = [r['value'],r['rule description']]
+        
+        
         for i,r in df.iterrows():
             rule = r['rule'].strip()
             layers = [t.strip() for t in r['layer'].split('/')]
@@ -148,14 +155,19 @@ class Tech(object):
                 layer2 = layers[0]
             elif len(layers)>1:
                 layer1 = layers[0]
-                layer2 = layers[0]
+                layer2 = layers[1]
             else:
                 raise ValueError('%s is not a valid layer'%(r['layer']))
             assert layer1 in self.layer_list, 'layer %s is not in layer_list!'%(layer1)
             assert layer2 in self.layer_list, 'layer %s is not in layer_list!'%(layer2)
             
-            value = int(float(r['value'])*1000)
-            note = r['description'].strip()
+            number  = r['number'].strip()
+            if number in rules:
+                value =  int(float(rules[number][0])*1000)
+                note =  rules[number][1]
+            else:
+                value = int(float(number)*1000)        
+                note = r['description'].strip()
             dr = DR(name=rule,layer1=layer1,layer2=layer2,value=value,note=note)
             self.__setattr__(rule,dr)
             
@@ -291,7 +303,7 @@ class Tech(object):
         # AA_n_down = self.net_gt_down.p1 + tech.GT_X_AA.v
         
         #TODO, may extract this to DB
-        self.vmode = {i:VMode(self, i)  for i in range(VMode.total_vmodes)}     
+        # self.vmode = {i:VMode(self, i)  for i in range(VMode.total_vmodes)}     
         
         
             

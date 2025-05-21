@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import time
 import logging
 
 import networkx as nx
@@ -39,7 +40,7 @@ class DeCKT:
     
     def run(self):
         logger.info('%s, %s, %d devices'%(self.tech_name,self.ckt, len(self.ckt.devices)))
-        aux_file = os.path.join(self.output_dir,'aux_netlist.txt')
+        aux_file = os.path.join(self.output_dir,'aux_netlist_%s.txt'%(time.strftime('%m_%d_%H_%M')))
 
         #Sequential logic processing
         if self.init_ckt.ckt_type in ['ff', 'scanff', 'latch', 'clockgate']:

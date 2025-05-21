@@ -24,8 +24,7 @@ class Cfg:
         settings = ['tech_name', 'netlist','output_dir','model_file','mapping_file',
                     'rule_file','layer_align','pins_align','cell_height',
                     'gate_length','v_pin_grid','h_pin_grid','power_rail_width',
-                    'cell_offset_x','np_ext_border','nw_ext_np','gen_cells',
-                    'metal_layers','cost_funcs']
+                    'cell_offset_x','np_ext_border','nw_ext_np','gen_cells','cost_funcs']
         for setting in settings:
             assert setting in cfg_dict, '%s not in input file'%(setting)
         
@@ -36,6 +35,7 @@ class Cfg:
         self.model_file = cfg_dict['model_file']       
         self.mapping_file = cfg_dict['mapping_file']  
         self.rule_file = cfg_dict['rule_file']   
+        self.rule_align = cfg_dict['rule_align']  
         self.layer_align = cfg_dict['layer_align']  
         self.pins_align = cfg_dict['pins_align']  
         self.gen_cells =  [t.strip() for t in cfg_dict['gen_cells'].split()]
@@ -50,7 +50,7 @@ class Cfg:
         self.cell_offset_x = int(cfg_dict['cell_offset_x'])         
         self.np_ext_border = int(cfg_dict['np_ext_border'])  
         self.nw_ext_np = int(cfg_dict['nw_ext_np'])       
-        self.metal_layers = int(cfg_dict['metal_layers'])   
+        # self.metal_layers = int(cfg_dict['metal_layers'])   
       
         #create output dir if not exist
         if not(os.path.exists(self.output_dir)):

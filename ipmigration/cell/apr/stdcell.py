@@ -13,6 +13,7 @@ from ipmigration.cell.apr.lyt.instance import M1_Rails,NPWELL
 
 class StdCell:
     def __init__(self, ckt, tech, cfgs, patterns,route_db):
+        self.name = ckt.name
         self.ckt = ckt
         self.tech = tech
         self.cfgs = cfgs
@@ -21,13 +22,18 @@ class StdCell:
         self.route_db = route_db
         
     def run(self,top_layout,db_layers):
-        result = self.global_pr()
+        result,msg = self.global_pr()
+        
         if result:
             self.init_layout(top_layout,db_layers)
             # save_fig_path = os.path.join(self.cfgs.output_dir,'route','%s.png'%(self.ckt.name))
             # concatenate_images(self.route_path, save_fig_path)
             # result = self.detail_pr()        
-        return result
+        else:
+            pass
+            
+        
+        return result,msg
     
     def init_layout(self,top_layout,db_layers):
         self.db_layout = top_layout.create_cell(self.ckt.name)
@@ -44,16 +50,22 @@ class StdCell:
                             self.cfgs.output_dir)
         result = self.de_ckt.run()
         
+        
         if result:  
             print(self.de_ckt.sub_ckts.keys())
             pat_placer = Placer(self.de_ckt.sub_ckts)
             queue = pat_placer.find_opt_perm(self.ckt.ckt_type)
             
             
-            return 1
+            
+            
+            
+            
+            
+            return 1, "Success"
         else:
             print('------------------Decompose Failed: %s------------------'%(self.ckt.name))
-            return 0      
+            return 0, "Decompose Failed"      
         
         
         self.side_nodes_statistics = []
@@ -61,11 +73,17 @@ class StdCell:
             #netlist decomposition sucessfully
             pat_placer = Placer(self.de_ckt.sub_ckts)
             queue = pat_placer.find_opt_perm(self.ckt.ckt_type)
+            
+            
             self.queue = [self.de_ckt.sub_ckts[t] for t in queue]
             #TODO: Visualization this part with multi-graph
+            
             self.extract_ext_net(self.queue)
+            
             l_nodes_ext = {}
+            
             route_rst = True  
+            
             for loc,p in enumerate(self.queue):
                 name = p.pattern_name
                 p.map_ext_nets()

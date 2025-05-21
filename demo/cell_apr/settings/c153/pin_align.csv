@@ -1,0 +1,18 @@
+type,io,pins,ascell,description
+power_pin,all,VDD VSS VNW VPW,VDD VSS VNW VPW,"power pins,VPW VNW maybe not appear"
+clock_pin,all,CK CKN,CK CKN,clock
+enable_pin,all,G GN,G GN,latch enable(high/low)
+arithmetic,in,A B CI,A B CI,arithmetic gates
+arithmetic,out,S CO,S CO,arithmetic gates
+complex,in,A B C D E F AN BN CN DN EN FN A0 A1 A2 B0 B1 B2 C0 C1 C2 D0 D1 D2 A0N A1N A2N B0N B1N B2N   OE,A B C D E F AN BN CN DN EN FN A0 A1 A2 B0 B1 B2 C0 C1 C2 D0 D1 D2 A0N A1N A2N B0N B1N B2N   OE,complex gates 
+complex,out,Y,Y,complex gates
+multiplex,in,A B C D S0 S1,A B C D S0 S1 ,multiplexers
+multiplex,out,Y,Y,multiplexers
+ff,in,D D0 D1 OE S0 SN RN,D D0 D1 E S0 SN RN,flip flop
+ff,out,Q QN,Q QN,flip flop
+scanff,in,D D0 D1 OE S0 SN RN SI SE,D D0 D1 E S0 SN RN SI SE,scan flip flop
+scanff,out,Q QN,Q QN,scan flip flop
+latch,in,D D0 D1 OE SN RN,D D0 D1 E SN RN,latch
+latch,out,Q QN,Q QN,latch
+clockgate,in,E SE,E SE,clock gating
+clockgate,out,ECK,ECK,clock gating

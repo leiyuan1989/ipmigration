@@ -50,6 +50,7 @@ class ASCell:
         
         self.route_db = RouteDB(self.tech.M1_tracks_num)
         success = []
+        fail = []
         # side_nodes_statistics = []
         
         for cell_type in self.cfgs.gen_cells:
@@ -57,18 +58,15 @@ class ASCell:
                 ckt = self.netlist[ckt_name]
                 cell = StdCell(ckt,self.tech,self.cfgs,self.patterns, self.route_db)
                 self.cells[ckt_name] = cell
-                result = cell.run(self.layout,self.layout_layers)
-                if result:
-                    # side_nodes_statistics+=cell.side_nodes_statistics           
+                result,msg = cell.run(self.layout,self.layout_layers)
+                if result:          
                     success.append(cell)
-            #     break
-            # break
+                else:
+                    fail.append([cell,msg])
+                
         self.success = success
+        self.fail = fail
         self.gen_gds()     
-        # statis_path = os.path.join(self.cfgs.output_dir, 'side_nodes_statistics.txt')
-        # save_side_nodes_statistics(statis_path, side_nodes_statistics)
-   
-
 
 
     def gen_gds(self):

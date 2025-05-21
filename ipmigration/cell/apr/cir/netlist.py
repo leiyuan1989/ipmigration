@@ -82,9 +82,11 @@ class Netlist:
             pins = set(ckt.pins)
             for ckt_type, ckt_clock in zip(CKT_TYPES,CKT_CLOCKS):
                 if pins <= set(pin_map[(ckt_type,'all')].keys()):
+                
                     mapped_pins = [pin_map[(ckt_type,'all')][t] for t in pins]
+                 
                     predict_type = self._classify_ckt(mapped_pins)
-                    
+                    # print(mapped_pins,predict_type)
                     if predict_type == ckt_type:
                         predict_types.append([ckt_type, ckt_clock, mapped_pins])
                     
@@ -99,7 +101,7 @@ class Netlist:
                 ckt_types_di[ckt_type].append(name)
                 self._set_ckt(ckt, ckt_type, input_type, ckt_clock, pin_map)                
             else:#0 
-                print('Warning: %s can not be processed!'%(name),pins)
+                print('Warning: %s can not be processed!'%(name),pins,predict_types)
                 if DEBUG:
                     for ckt_type, ckt_clock in zip(CKT_TYPES,CKT_CLOCKS):
                         if pins <= set(pin_map[(ckt_type,'all')].keys()):
