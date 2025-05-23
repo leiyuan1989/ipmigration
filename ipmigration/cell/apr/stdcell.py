@@ -52,14 +52,7 @@ class StdCell:
         
         
         if result:  
-            print(self.de_ckt.sub_ckts.keys())
-            pat_placer = Placer(self.de_ckt.sub_ckts)
-            queue = pat_placer.find_opt_perm(self.ckt.ckt_type)
-            
-            
-            
-            
-            
+            print(self.de_ckt.sub_ckts.keys())  
             
             
             return 1, "Success"

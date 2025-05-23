@@ -35,12 +35,11 @@ if EXTRACT_PIN:
     nl=Netlist.extract_pins(cfgs.model_file, cfgs.netlist, cfgs.output_dir)
 
 cells = ASCell(cfgs,tech)
-
+cells.run()
 
 
 #test 
 
-# cells.run()
 
 
 # c1 = cells['DFANRQ0']

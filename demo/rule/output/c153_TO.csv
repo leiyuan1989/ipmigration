@@ -1,0 +1,18 @@
+layer,layer_def,dr,category,description,symbol,value
+TO,Active,TO.a.1,Width,: Min active width for interconnect must be  >= 0.186um,>=,0.186
+TO,Active,TO.b.1,Width,: Active width for NMOS must be  >=  0.186 um,>=,0.186
+TO,Active,TO.b.2,Width,: Active width for PMOS must be  >=  0.186 um,>=,0.186
+TO,Active,TO.c,Spacing,: Min spacing of TO must be  >= 0.238um,>=,0.238
+TO,Active,TO.d,Extension,: Min extension from NW edge to an NW pick-up must be  >= 0.102um,>=,0.102
+TO,Active,TO.e.2,Spacing,: Min spacing between NW edge and N+active outside must be  >= 0.45um,>=,0.45
+TO,Active,TO.f.2,Spacing,: Min spacing between NW edge and P+active inside must be  >= 0.45um,>=,0.45
+TO,Active,TO.g,Spacing,: Min spacing from NW edge to P+active pickup outside must be  >= 0.102um,>=,0.102
+TO,Active,TO.h.1,Spacing,: Min spacing between poly edge and diffusion active edges must be  >= 0.102um,>=,0.102
+TO,Active,TO.h.2,Spacing,: Min spacing between poly edge and diffusion active edges must be  >= 0.102um,>=,0.102
+TO,Active,TO.i,Spacing,: Min spacing between N+active and P+active for butted diffusion must be  >= 0um,>=,0
+TO,Active,TO.j,Length,: One segment of the interconnect must be longer than 0.326um,>,0.326
+TO,Active,TO.k,Spacing,: Spacing between N+pickup and P+pickup across the well boundary must be exactly 0.304um,=,0.304
+TO,Active,TO.l,Area,: Min active area must be >= 0.2um²,>=,0.2
+TO,Active,TO.m,Area,: Min active area for internal connections must be >= 0.13um²,>=,0.13
+TO,Active,TO.n,Length,: Length and width of the interconnect must be less than 60um,<,60
+TO,Active,TO.note,Restrictions,: Active layer not doped is not allowed,-,-

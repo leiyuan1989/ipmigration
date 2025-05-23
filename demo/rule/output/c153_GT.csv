@@ -1,0 +1,16 @@
+layer,layer_def,dr,category,description,symbol,value
+GT,Poly,GT.a.1,Width,Minimum width requirement for interconnects must be at least 0.18 micrometers.,>=,0.18
+GT,Poly,GT.a.2,Width,Minimum width of HVNMOS gate must be at least 0.5 micrometers.,>=,0.5
+GT,Poly,GT.a.3,Width,Minimum width of HVPVMOS gate must be at least 0.42 micrometers.,>=,0.42
+GT,Poly,GT.b.1,Spacing,Minimum spacing between two GT regions should be at least 0.212 micrometers.,>=,0.212
+GT,Poly,GT.b.2,Spacing,Minimum spacing between two GT regions with contact on active area should be at least 0.318 micrometers.,>=,0.318
+GT,Poly,GT.b.3,Spacing,Minimum spacing between two GT regions without contact on active area should be at least 0.25 micrometers.,>=,0.25
+GT,Poly,GT.c,Extension,Minimum extension of poly end cap must be at least 0.186 micrometers.,>=,0.186
+GT,Poly,GT.d,Extension,Minimum extension from active to GT region must be at least 0.27 micrometers.,>=,0.27
+GT,Poly,GT.e,Spacing,Minimum spacing of poly to active area should be at least 0.084 micrometers.,>=,0.084
+GT,Poly,GT.f,Spacing,Minimum spacing for interconnects and vias must be at least 0.25 micrometers.,>=,0.25
+GT,Poly,GT.f,Spacing,Minimum spacing for poly to gate oxide must be at least 0.15 micrometers.,>=,0.15
+GT,Poly,GT.g,Area,Minimum area requirement for poly must be at least 0.15 square micrometers.,>=,0.15
+GT,Poly,GT.h,Width,Maximum width for metal lines should not exceed 5.0 micrometers.,<=,5.0
+GT,Poly,GT.i,Margins,Enclosure margin around vias must be at least 0.18 micrometers on all sides.,>=,0.18
+GT,Poly,GT.j,Aspect Ratio,Aspect ratio for contacts should not exceed a ratio of 3:1.,<=,3:1

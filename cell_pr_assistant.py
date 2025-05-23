@@ -4,17 +4,24 @@ import os
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QGraphicsScene, QGraphicsView, 
                              QGraphicsRectItem, QGraphicsLineItem, QMenu, QAction, 
                              QDialog, QVBoxLayout, QHBoxLayout, QLabel, QSpinBox, 
-                             QPushButton, QComboBox, QFileDialog)
+                             QPushButton, QComboBox, QFileDialog,QGraphicsTextItem)
 from PyQt5.QtGui import QPen, QBrush, QColor
 from PyQt5.QtCore import Qt, QPointF
 
 class GridPoint(QGraphicsRectItem):
-    def __init__(self, x, y, size=15):
+    def __init__(self, x, y, size=30):
         super().__init__(x - size/2, y - size/2, size, size)
         self.setFlag(QGraphicsRectItem.ItemIsSelectable)
         self.setBrush(QBrush(Qt.lightGray))
         self.setPen(QPen(Qt.black, 1))
         self.type = "NA"  # NA, CT-AA, CT-GT, GT-AA
+        
+        # 添加标签文本项
+        self.scene = self.scene()
+        self.label = QGraphicsTextItem(self)
+        self.label.setPos(x, y - 10)  # 调整标签位置
+        self.label.setDefaultTextColor(Qt.black)
+        self.label.setPlainText("")
         
     def set_type(self, node_type):
         self.type = node_type
@@ -26,30 +33,44 @@ class GridPoint(QGraphicsRectItem):
             self.setBrush(QBrush(QColor(128, 0, 128)))  # 紫色
         else:  # NA
             self.setBrush(QBrush(Qt.lightGray))
+            
+        # 更新标签样式
+        if node_type != "NA":
+            self.label.setDefaultTextColor(Qt.white)
+        else:
+            self.label.setDefaultTextColor(Qt.black)
+    
+    def set_label(self, text):
+        """设置网格点的标签文本"""
+        self.label.setPlainText(text)
 
 class Connection(QGraphicsLineItem):
     def __init__(self, start_x, start_y, end_x, end_y):
         super().__init__(start_x, start_y, end_x, end_y)
         self.type = "NA"  # NA, M1, GT
-        self.setPen(QPen(Qt.lightGray, 2))
+        self.setPen(QPen(Qt.lightGray, 5))
         
     def set_type(self, conn_type):
         self.type = conn_type
         if conn_type == "M1":
-            self.setPen(QPen(Qt.darkGreen, 2))
+            self.setPen(QPen(Qt.darkGreen, 10))
         elif conn_type == "GT":
-            self.setPen(QPen(Qt.blue, 2))
+            self.setPen(QPen(Qt.blue, 10))
         else:  # NA
-            self.setPen(QPen(Qt.lightGray, 2))
+            self.setPen(QPen(Qt.lightGray, 5))
 
 class RouteScene(QGraphicsScene):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.grid_size = (5, 5)
-        self.cell_size = 50
+        self.cell_size = 150
+        self.edge_size = 30
+        self.node_size = 40
+        
         self.grid_points = {}  # 存储网格点坐标和对象
+        self.grid_points_loc = {}
         self.connections = []  # 存储所有网格边
-        self.current_node_type = "CT-AA"
+        self.current_node_type = "NA"
         self.current_conn_type = "NA"
         
     def set_grid_size(self, rows, cols):
@@ -60,21 +81,25 @@ class RouteScene(QGraphicsScene):
     def create_grid(self):
         rows, cols = self.grid_size
         # 创建网格点
+        node_pos = {}
         for y in range(rows):
             for x in range(cols):
-                pos_x = x * self.cell_size + 50
-                pos_y = y * self.cell_size + 50
-                point = GridPoint(pos_x, pos_y)
+                pos_x = x * self.cell_size + self.edge_size
+                pos_y = y * self.cell_size + self.edge_size
+                point = GridPoint(pos_x, pos_y, self.node_size)
                 self.addItem(point)
                 self.grid_points[(x, y)] = point
+                # 设置标签文本（例如坐标）
+                point.set_label(f"{x},{y}")  # 使用坐标作为标签
+                node_pos[(x,y)]=(pos_x,pos_y)
                 
         # 创建水平连线
         for y in range(rows):
             for x in range(cols - 1):
-                start_x = x * self.cell_size + 50 + 7.5
-                start_y = y * self.cell_size + 50
-                end_x = (x + 1) * self.cell_size + 50 - 7.5
-                end_y = y * self.cell_size + 50
+                start_x = node_pos[(x,y)][0] + int(0.5*self.node_size)
+                start_y = node_pos[(x,y)][1] 
+                end_x =  node_pos[(x+1,y)][0] - int(0.5*self.node_size)
+                end_y =  node_pos[(x,y)][1] 
                 conn = Connection(start_x, start_y, end_x, end_y)
                 self.addItem(conn)
                 self.connections.append(conn)
@@ -82,10 +107,10 @@ class RouteScene(QGraphicsScene):
         # 创建垂直连线
         for y in range(rows - 1):
             for x in range(cols):
-                start_x = x * self.cell_size + 50
-                start_y = y * self.cell_size + 50 + 7.5
-                end_x = x * self.cell_size + 50
-                end_y = (y + 1) * self.cell_size + 50 - 7.5
+                start_x = node_pos[(x,y)][0] 
+                start_y = node_pos[(x,y)][1] + int(0.5*self.node_size)
+                end_x   = node_pos[(x,y)][0]
+                end_y   = node_pos[(x,y+1)][1] - int(0.5*self.node_size)
                 conn = Connection(start_x, start_y, end_x, end_y)
                 self.addItem(conn)
                 self.connections.append(conn)

@@ -1,0 +1,19 @@
+layer,layer_def,dr,category,description,symbol,value
+SP,P+ implant,SP.a,Width,Min width must be  >= 0.356 ,>=,0.356  
+SP,P+ implant,SP.b,Spacing,Min space of SP must be  >= 0.356 ,>=,0.356  
+SP,P+ implant,SP.b1,Spacing,Min SP space on STI <= 0.42um must be merge,<=,0.42  
+SP,P+ implant,SP.c,Spacing,Min spacing of SP to a N+ active outside NW >= 0.22,>=,0.22  
+SP,P+ implant,SP.d,Spacing,Min spacing of SP to a N+ active outside NW >= 0.084um if distance between N+active and NW is >= 0.43um,>=,0.084  
+SP,P+ implant,SP.e,Spacing,Min spacing of SP to a N+ active outside NW >= 0.152um if distance between N+active and NW is < 0.43um,>=,0.152  
+SP,P+ implant,SP.f_1,Enclosure,Min overlap from SP edge to an active region >= 0.08um,>=,0.08  
+SP,P+ implant,SP.f_2,Enclosure,Min overlap from SP edge to an active region >= 0.12um,>=,0.12  
+SP,P+ implant,SP.g,Extension,Min extension of SP over P+active along the direction of poly gate must be >= 0.296um,>=,0.296  
+SP,P+ implant,SP.h,Spacing,Min space from a SP edge to a N-channel poly gate >= 0.238um,>=,0.238  
+SP,P+ implant,SP.i,Extension,Min extension of a SP region over P+active along the direction of poly gate must be >= 0.296um,>=,0.296  
+SP,P+ implant,SP.j,Spacing,Min extension of a SP region over P+active must be >= 0.02um if distance between P+active and NW is >= 0.43um,>=,0.02  
+SP,P+ implant,SP.k,Extension,Min extension of a SP region over P+active must be >= 0.152um if distance between P+active and NW is < 0.43um,>=,0.152  
+SP,P+ implant,SP.l.1,Restrictions,Min SP space on STI <= 0.42um must be merge; SAB poly without SN or SP is not allowed,<=,0.42  
+SP,P+ implant,SP.m,Extension,Min extension of a SP region over P+active along the direction of poly gate must be >= 0.254um,>=,0.254  
+SP,P+ implant,SP.n,Extension,Min extension of a SP region over P+active along the direction of poly gate must be >= 0.296um,>=,0.296  
+SP,P+ implant,SP.s,Area,Min SP area  >= 0.4um2,>=,0.4  
+SP,P+ implant,SP.w,Area,Min resist pattern area within PPLUS region must be  >= 0.64um2,>=,0.64  
