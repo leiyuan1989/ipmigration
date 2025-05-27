@@ -15,6 +15,7 @@ from ipmigration.cell.apr.stdcell import StdCell
 from ipmigration.cell.apr.io.route_loader import RouteDB
 
 logger = logging.getLogger(__name__)
+DEBUG = True
 
 class ASCell:
     def __init__(self, cfgs, tech):
@@ -58,14 +59,26 @@ class ASCell:
                 ckt = self.netlist[ckt_name]
                 cell = StdCell(ckt,self.tech,self.cfgs,self.patterns, self.route_db)
                 self.cells[ckt_name] = cell
-                result,msg = cell.run(self.layout,self.layout_layers)
-                if result:          
-                    success.append(cell)
+                if DEBUG:
+                    result,msg = cell.run(self.layout,self.layout_layers)
+                    if result:          
+                        success.append(cell)
+                    else:
+                        fail.append([cell,msg])
                 else:
-                    fail.append([cell,msg])
-                
+                    try:
+                        result,msg = cell.run(self.layout,self.layout_layers)
+                        if result:          
+                            success.append(cell)
+                        else:
+                            fail.append([cell,msg])
+                    except:
+                        print(cell.name,'run failed')
+                        fail.append([cell,'run failed'])
         self.success = success
         self.fail = fail
+        print('Pass Rate: %d/%d, %.2f%%'%(len(success),len(fail),len(success)*100/(len(fail)+len(success))))
+        
         self.gen_gds()     
 
 

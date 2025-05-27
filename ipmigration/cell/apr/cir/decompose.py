@@ -40,159 +40,27 @@ class DeCKT:
     
     def run(self):
         logger.info('%s, %s, %d devices'%(self.tech_name,self.ckt, len(self.ckt.devices)))
-        aux_file = os.path.join(self.output_dir,'aux_netlist_%s.txt'%(time.strftime('%m_%d_%H_%M')))
+        aux_file = os.path.join(self.output_dir,'DEC_REPORT_%s.txt'%(time.strftime('%m_%d_%H_%M')))
 
+
+        
         #Sequential logic processing
         if self.init_ckt.ckt_type in ['ff', 'scanff', 'latch', 'clockgate']:
-            logger.info('-----%10s: %7s %5s %5s %5s'%(self.ckt.name, self.ckt.ckt_type, str(self.ckt.enable), str(self.ckt.mul_in),self.ckt.se_net))
-            if self.init_ckt.ckt_type == 'clockgate':
-                self.data_net = {'IN1':self.init_ckt.enable_net} 
-            else:
-                self.data_net = {'IN1':self.init_ckt.din_net} 
-            #1. search clock patterns 
-            self.sub_ckts['clk'] = self.search_clk(self.ckt, self.init_ckt )
-            if not(self.sub_ckts['clk']):
-                raise ValueError('CLK patterns are not found in netlist!')
-            else:
-                #remove device                 
-                self.ckt = self.ckt.sub_ckt(self.sub_ckts['clk'].ckt.devices, remove=True)  
-                #set key net c and cn:
-                self.init_ckt.c_net = self.sub_ckts['clk'].net_map['C']
-                self.init_ckt.cn_net = self.sub_ckts['clk'].net_map['CN']
-                self.inv_nets.append(set([self.init_ckt.c_net,self.init_ckt.cn_net]))
+            try:
+                self.sequential_logic_processing()
+                self.out_aux_netlist(aux_file, self.init_ckt, self.ckt, self.sub_ckts)  
+            
+                if len(self.ckt.devices) == 0:
+                    return 1
+                else:
+                    print('-----Decompose Failed (Left Devices): %s-----'%(self.init_ckt.name))
+                    return 0  
                 
-                logger.info('1. clock pattern: %s: %s'%(str(self.sub_ckts['clk']),'clk'))
-            
-            #2. search inputs inv
-            inpins = ['D', 'E' ,'D0','D1','S0','RN','SN','SE','SI']
-            inputs_inv = self.search_inputs_inv(inpins, self.ckt, self.init_ckt)
-            for pin, patterns in inputs_inv.items():
-                #one pin may have multiple inverters
-                for i,pattern in enumerate(patterns):
-                    ckt_name = 'ininv_%s_%d'%(pin,i)
-                    net_name = '%s_N%d_net'%(pin,i)
-                    output_net = pattern.net_map['OUT1']
-                    self.input_nets[pin].append(output_net)
-                    self.sub_ckts[ckt_name] = pattern
-                    self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
-                    self.init_ckt.__setattr__(net_name,output_net)
-                    self.init_ckt.key_nets[net_name] = '%s_N%d'%(pin,i)
-                    logger.info('2. inputs inv pattern: %s: %s'%(str(pattern),ckt_name))
-                    if pin == 'D':
-                        #input D with inverter
-                        self.input_control = True
-                        self.data_net = {'IN1':output_net}
-                    #
-                    if pin=='E' and self.init_ckt.ckt_type=='clockgate':
-                        #input E with inverter
-                        self.input_control = True
-                        self.data_net = {'IN1':output_net}   
-            
-            #3. search output
-            out_patterns, self.to_out_net = self.search_output(self.ckt, self.init_ckt)
-            for pin, pattern in out_patterns.items():
-                ckt_name = 'out_%s'%(pin)
-                self.sub_ckts[ckt_name] = pattern
-                self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
-                logger.info('3. output pattern: %s: %s'%(str(pattern),ckt_name))
-                # self.init_ckt.__setattr__(net_name,output_net)
-                # self.init_ckt.key_nets[net_name] = '%s_N%d'%(pin,i)
-            
-            #4 process inputs that not a single D 
-            #4.1 process input for more than 1 input: mul-d, d with e, e with se,
-            pattern = self.search_multi_inputs(self.ckt, self.init_ckt)
-            if pattern:
-                # print(pattern)
-                ckt_name = 'inputs'
-                self.sub_ckts[ckt_name] = pattern
-                self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
-                logger.info('4.1 inputs(D0 D1 S0/D E/E SE) pattern: %s: %s'%(str(pattern),ckt_name))
-                self.input_control = True
-                self.data_net = {'IN1':pattern.net_map['OUT1']}
-                if 'OUT2' in pattern.net_map:
-                    self.data_net['IN2'] = pattern.net_map['OUT2']
-                
-            #4.2 search_synchronous
-            pattern = self.search_synchronous(self.ckt, self.init_ckt)
-            if pattern:
-                # print(pattern)
-                ckt_name = 'sync'
-                self.sub_ckts[ckt_name] = pattern
-                self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
-                logger.info('4.2 synchronous inputs(D with RN or SN) pattern: %s: %s'%(str(pattern),ckt_name))
-                self.input_control = True
-                self.data_net = {'IN1':pattern.net_map['OUT1']}
-                if 'OUT2' in pattern.net_map:
-                    self.data_net['IN2'] = pattern.net_map['OUT2']
-                    
-            #4.3 process SE and SI
-            if self.init_ckt.ckt_type == 'scanff':
-                pattern = self.search_scanff_inputs(self.ckt, self.init_ckt)
-                if pattern:
-                    # print(pattern)
-                    ckt_name = 'sesi'
-                    self.sub_ckts[ckt_name] = pattern
-                    self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
-                    logger.info('4.3 inputs(D with SE or SI) pattern: %s: %s'%(str(pattern),ckt_name))
-                    self.input_control = True
-                    self.data_net = {'IN1':pattern.net_map['OUT1']}
-                    if 'OUT2' in pattern.net_map:
-                        self.data_net['IN2'] = pattern.net_map['OUT2']
-
-            #5 cross recognization
-            #5.1 first transmission gate
-            pattern,cross1_match = self.search_cross1(self.ckt, self.init_ckt)
-            ckt_name = 'cross1'
-            self.sub_ckts[ckt_name] = pattern
-            self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
-            self.init_ckt.pm0_net = cross1_match['PM0']
-            self.init_ckt.m_net = cross1_match['M']
-            if 'PM1' in cross1_match:
-                self.init_ckt.__setattr__('pm1_net',cross1_match['PM1'])
-                self.init_ckt.key_nets['pm1_net'] = 'PM1'
-            logger.info('5.1 cross1 pattern: %s: %s'%(str(pattern),ckt_name))
-            
-            #5.2 back track1
-            net_match = {'IN0':self.init_ckt.pm0_net,'OUT':self.init_ckt.m_net}
-            if 'PM1' in cross1_match: 
-                net_match['IN1'] = cross1_match['PM1']
-            pattern = self.search_backtrack(self.ckt, self.init_ckt, **net_match)
-            self.sub_ckts['backtrack1'] = pattern
-            self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
-            logger.info('5.2  back track 1 pattern: %s: %s'%(str(pattern),ckt_name))
-            
-            #5.3 cross2
-            if self.init_ckt.ckt_type in ['ff', 'scanff']: 
-                pattern,cross2_match = self.search_cross2(self.ckt, self.init_ckt,M=self.m_net)
-                ckt_name = 'cross2'
-                self.sub_ckts[ckt_name] = pattern
-                self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
-                self.init_ckt.bm0_net = cross2_match['BM0']
-                self.init_ckt.s_net = cross2_match['S']
-                if 'BM1' in cross2_match:
-                    self.init_ckt.__setattr__('bm1_net',cross2_match['BM1'])
-                    self.init_ckt.key_nets['bm1_net'] = 'BM1'
-                logger.info('5.3 cross2 pattern: %s: %s'%(str(pattern),ckt_name))
-                
-                #5.4 back track2
-                net_match = {'IN0':self.init_ckt.bm0_net,'OUT':self.init_ckt.s_net}
-                if 'BM1' in cross2_match: 
-                    net_match['IN1'] = cross2_match['BM1']
-                pattern = self.search_backtrack(self.ckt, self.init_ckt, **net_match)
-                self.sub_ckts['backtrack2'] = pattern
-                self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
-                logger.info('5.4  back track 2 pattern: %s: %s'%(str(pattern),ckt_name))
+            except:
+                print('-----Decompose Failed (Search Error): %s-----'%(self.init_ckt.name))
+                self.out_aux_netlist(aux_file, self.init_ckt, self.ckt, self.sub_ckts)   
+                return 0
     
-            
-            self.out_aux_netlist(aux_file, self.init_ckt, self.ckt, self.sub_ckts)                  
-            if len(self.ckt.devices) == 0:
-                return 1
-            else:
-                print('-------------failed-------------')
-                # raise ValueError
-                return 0  
-               # pattern,cross2_match = 
-            #5.3 cross2 if any
             
             '''
             TODO: Bug: Add a mechanism for checking double parallel connections.
@@ -219,7 +87,150 @@ class DeCKT:
             raise ValueError('%s is not a right circuit type!'%(self.ckt.ckt_type))
         
         return False   
+    
+
+    def sequential_logic_processing(self):
+        logger.info('-----%10s: %7s %5s %5s %5s'%(self.ckt.name, self.ckt.ckt_type, str(self.ckt.enable), str(self.ckt.mul_in),self.ckt.se_net))
+        if self.init_ckt.ckt_type == 'clockgate':
+            self.data_net = {'IN1':self.init_ckt.enable_net} 
+        else:
+            self.data_net = {'IN1':self.init_ckt.din_net} 
+        #1. search clock patterns 
+        self.sub_ckts['clk'] = self.search_clk(self.ckt, self.init_ckt )
+        if not(self.sub_ckts['clk']):
+            raise ValueError('CLK patterns are not found in netlist!')
+        else:
+            #remove device                 
+            self.ckt = self.ckt.sub_ckt(self.sub_ckts['clk'].ckt.devices, remove=True)  
+            #set key net c and cn:
+            self.init_ckt.c_net = self.sub_ckts['clk'].net_map['C']
+            self.init_ckt.cn_net = self.sub_ckts['clk'].net_map['CN']
+            self.inv_nets.append((self.init_ckt.c_net,self.init_ckt.cn_net))
+            
+            logger.info('1. clock pattern: %s: %s'%(str(self.sub_ckts['clk']),'clk'))
         
+        #2. search inputs inv
+        inpins = ['D', 'E' ,'D0','D1','S0','RN','SN','SE','SI']
+        inputs_inv = self.search_inputs_inv(inpins, self.ckt, self.init_ckt)
+        for pin, patterns in inputs_inv.items():
+            #one pin may have multiple inverters
+            for i,pattern in enumerate(patterns):
+                ckt_name = 'ininv_%s_%d'%(pin,i)
+                net_name = '%s_N%d_net'%(pin,i)
+                output_net = pattern.net_map['OUT1']
+                self.input_nets[pin].append(output_net)
+                self.sub_ckts[ckt_name] = pattern
+                self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
+                self.init_ckt.__setattr__(net_name,output_net)
+                self.init_ckt.key_nets[net_name] = '%s_N%d'%(pin,i)
+                logger.info('2. inputs inv pattern: %s: %s'%(str(pattern),ckt_name))
+                if pin == 'D':
+                    #input D with inverter
+                    self.input_control = True
+                    self.data_net = {'IN1':output_net}
+                #
+                if pin=='E' and self.init_ckt.ckt_type=='clockgate':
+                    #input E with inverter
+                    self.input_control = True
+                    self.data_net = {'IN1':output_net}   
+        
+        #3. search output
+        out_patterns, self.to_out_net = self.search_output(self.ckt, self.init_ckt)
+        for pin, pattern in out_patterns.items():
+            ckt_name = 'out_%s'%(pin)
+            self.sub_ckts[ckt_name] = pattern
+            self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
+            logger.info('3. output pattern: %s: %s'%(str(pattern),ckt_name))
+            # self.init_ckt.__setattr__(net_name,output_net)
+            # self.init_ckt.key_nets[net_name] = '%s_N%d'%(pin,i)
+        
+        #4 process inputs that not a single D 
+        #4.1 process input for more than 1 input: mul-d, d with e, e with se,
+        pattern = self.search_multi_inputs(self.ckt, self.init_ckt)
+        if pattern:
+            # print(pattern)
+            ckt_name = 'inputs'
+            self.sub_ckts[ckt_name] = pattern
+            self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
+            logger.info('4.1 inputs(D0 D1 S0/D E/E SE) pattern: %s: %s'%(str(pattern),ckt_name))
+            self.input_control = True
+            self.data_net = {'IN1':pattern.net_map['OUT1']}
+            if 'OUT2' in pattern.net_map:
+                self.data_net['IN2'] = pattern.net_map['OUT2']
+            
+        #4.2 search_synchronous
+        pattern = self.search_synchronous(self.ckt, self.init_ckt)
+        if pattern:
+            # print(pattern)
+            ckt_name = 'sync'
+            self.sub_ckts[ckt_name] = pattern
+            self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
+            logger.info('4.2 synchronous inputs(D with RN or SN) pattern: %s: %s'%(str(pattern),ckt_name))
+            self.input_control = True
+            self.data_net = {'IN1':pattern.net_map['OUT1']}
+            if 'OUT2' in pattern.net_map:
+                self.data_net['IN2'] = pattern.net_map['OUT2']
+                
+        #4.3 process SE and SI
+        if self.init_ckt.ckt_type == 'scanff':
+            pattern = self.search_scanff_inputs(self.ckt, self.init_ckt)
+            if pattern:
+                # print(pattern)
+                ckt_name = 'sesi'
+                self.sub_ckts[ckt_name] = pattern
+                self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
+                logger.info('4.3 inputs(D with SE or SI) pattern: %s: %s'%(str(pattern),ckt_name))
+                self.input_control = True
+                self.data_net = {'IN1':pattern.net_map['OUT1']}
+                if 'OUT2' in pattern.net_map:
+                    self.data_net['IN2'] = pattern.net_map['OUT2']
+
+        #5 cross recognization
+        #5.1 first transmission gate
+        pattern,cross1_match = self.search_cross1(self.ckt, self.init_ckt)
+        
+        ckt_name = 'cross1'
+        self.sub_ckts[ckt_name] = pattern
+        self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
+        self.init_ckt.pm0_net = cross1_match['PM0']
+        self.init_ckt.m_net = cross1_match['M']
+        if 'PM1' in cross1_match:
+            self.init_ckt.__setattr__('pm1_net',cross1_match['PM1'])
+            self.init_ckt.key_nets['pm1_net'] = 'PM1'
+        logger.info('5.1 cross1 pattern: %s: %s'%(str(pattern),ckt_name))
+        
+        #5.2 back track1
+        net_match = {'IN0':self.init_ckt.pm0_net,'OUT':self.init_ckt.m_net}
+        if 'PM1' in cross1_match: 
+            net_match['IN1'] = cross1_match['PM1']
+        pattern = self.search_backtrack(self.ckt, self.init_ckt, **net_match)
+        self.sub_ckts['backtrack1'] = pattern
+        self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
+        logger.info('5.2  back track 1 pattern: %s: %s'%(str(pattern),ckt_name))
+        
+        #5.3 cross2
+        if self.init_ckt.ckt_type in ['ff', 'scanff']: 
+            pattern,cross2_match = self.search_cross2(self.ckt, self.init_ckt,M=self.m_net)
+            ckt_name = 'cross2'
+            self.sub_ckts[ckt_name] = pattern
+            self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
+            self.init_ckt.bm0_net = cross2_match['BM0']
+            self.init_ckt.s_net = cross2_match['S']
+            if 'BM1' in cross2_match:
+                self.init_ckt.__setattr__('bm1_net',cross2_match['BM1'])
+                self.init_ckt.key_nets['bm1_net'] = 'BM1'
+            logger.info('5.3 cross2 pattern: %s: %s'%(str(pattern),ckt_name))
+            
+            #5.4 back track2
+            net_match = {'IN0':self.init_ckt.bm0_net,'OUT':self.init_ckt.s_net}
+            if 'BM1' in cross2_match: 
+                net_match['IN1'] = cross2_match['BM1']
+            pattern = self.search_backtrack(self.ckt, self.init_ckt, **net_match)
+            self.sub_ckts['backtrack2'] = pattern
+            self.ckt = self.ckt.sub_ckt(pattern.ckt.devices, remove=True)  
+            logger.info('5.4  back track 2 pattern: %s: %s'%(str(pattern),ckt_name))
+           
+    
     
     
     #match two graph with net match
@@ -261,6 +272,21 @@ class DeCKT:
             net_match['OUT1']=OUT1              
         matches = self.match(devices_graph,inv_graph,net_match,nopower=False)
         return matches  
+
+    # #search output
+    # def search_output(self, devices_graph, IN1=None, OUT1=None):
+    #     inv_graph = self.patterns.ckt_graph['INV']  
+    #     net_match = {}
+    #     if IN1:
+    #         net_match['IN1']=IN1
+    #     if OUT1:
+    #         net_match['OUT1']=OUT1              
+    #     matches = self.match(devices_graph,inv_graph,net_match,nopower=False)
+    #     return matches      
+    
+    
+    
+    
     
     #search logic
     def search_logic(self, devices_graph, input_map=None, ouput_map=None, input_num=2):
@@ -289,6 +315,7 @@ class DeCKT:
         for ckt_name, ckt in logic_dict.items():
             ckt_graph = self.patterns.ckt_graph[ckt_name] 
             matches = self.match(devices_graph,ckt_graph,net_match,nopower=False)
+            # print(matches,ckt_name)
             # print(matches,net_match)
             if matches:
                 result.append([ckt_name, matches])
@@ -403,7 +430,7 @@ class DeCKT:
         if len(result)>1 or len(result)==0:
             print(result)
             print('Warning! input ed search error!')
-        
+            return 0
         return result[0]
         
         
@@ -500,7 +527,7 @@ class DeCKT:
                     patterns = []
                     for match in matches:
                         patterns.append(Pattern(inv_ckt, master_ckt, match))
-                        self.inv_nets.append(set([k,match['OUT1']]))
+                        self.inv_nets.append((k,match['OUT1']))
                     inputs_inv[v] = patterns
                                         
         return inputs_inv
@@ -512,20 +539,41 @@ class DeCKT:
         inv_ckt  = self.patterns.ckt_dict['INV'] 
         out_patterns = {}
         for k,v in master_ckt.opins.items():
-            if v == 'Q':
+            # print('test1',master_ckt.opins)
+            if v == 'Q' or v == 'QN':
                 matches = self.search_inv(devices_graph, OUT1=k)
                 if len(matches)>0:
-                    assert len(matches) == 1, 'multi-inv to Q'
+                    assert len(matches) == 1, 'multi-inv to Q/QN'
                     match = matches[0]
                     out_patterns[v] = Pattern(inv_ckt, master_ckt,match)    
-                    self.inv_nets.append(set([k,match['IN1']]))
-            elif v == 'QN':
-                matches = self.search_inv(devices_graph, OUT1=k)
-                if len(matches)>0:
-                    assert len(matches) == 1, 'multi-inv to QN'
-                    match = matches[0]
-                    out_patterns[v] = Pattern(inv_ckt, master_ckt, match)
-                    self.inv_nets.append(set([k,match['IN1']]))
+                    in_net = match['IN1']
+                    self.inv_nets.append((in_net,k))
+                    
+                    #next inv search
+                    if len(master_ckt.nets[in_net])==4:
+                        matches = self.search_inv(devices_graph, OUT1=in_net)
+                        if len(matches)==1 :
+                            match = matches[0]
+                            out_patterns[v+'_2'] = Pattern(inv_ckt, master_ckt,match)    
+                            next_in_net = match['IN1']
+                            self.inv_nets.append((next_in_net,in_net))  
+                else:
+                    #not inv output,DFBRQ1 153
+                    result = self.search_logic(devices_graph, ouput_map={'OUT1':k},input_num=3)
+                    if result:
+                        ckt_name,matches = result[0]
+                        ckt =  self.patterns.ckt_dict[ckt_name]
+                        out_patterns[v] = Pattern(ckt, master_ckt, matches[0])
+                    else:
+                        result = self.search_logic(devices_graph, ouput_map={'OUT1':k},input_num=2)
+                        if result:
+                            ckt_name,matches = result[0]
+                            ckt =  self.patterns.ckt_dict[ckt_name]
+                            out_patterns[v] = Pattern(ckt, master_ckt, matches[0])
+                            
+                            
+                            
+            
             elif v == 'ECK':
                 result = self.search_logic(devices_graph, ouput_map={'OUT1':k})
                 ckt_name,matches = result[0]
@@ -549,10 +597,13 @@ class DeCKT:
         if master_ckt.ckt_type in ['latch', 'ff', 'scanff']:
             if master_ckt.enable:
                 result = self.search_input_ed(devices_graph, master_ckt.din_net, master_ckt.enable_net)
-                ckt_name,match,out_match = result
-                ckt =  self.patterns.ckt_dict[ckt_name]
-                return Pattern(ckt, master_ckt, match)
-
+                if result:
+                    ckt_name,match,out_match = result
+                    ckt =  self.patterns.ckt_dict[ckt_name]
+                    return Pattern(ckt, master_ckt, match)
+                else:
+                    #153:LANHT1
+                    return None
             if master_ckt.mul_in:
                 result = self.search_input_md(devices_graph, 
                                               master_ckt.md0_net, 
@@ -642,7 +693,7 @@ class DeCKT:
                 
             else:
                 print(search_result)
-                print('^^^^^^^^^^^^^^^^^^^^^^^^^^^nofound*****************')
+                print('scanff no found, multi-d')
         else:
             search_result = self.search_fcross(devices_graph, D1=SI)
             if len(search_result) >= 1:
@@ -654,14 +705,17 @@ class DeCKT:
                 return Pattern(pattern_ckt, master_ckt, match)
             else:
                 # print([[t[0],len(t[1])] for t in search_result])
-                print('^^^^^^^^^^^^^^^^^^^^^^^^^^^nofound*****************')
+                print('scanff no found, single-d')
                 # raise ValueError('Warning! input md is not searched')
         
                 
     def search_cross1(self, ckt, master_ckt):
         devices_graph = MosGraph(ckt)
+    
         if self.input_control:
             search_result = self.search_pcross(devices_graph,**self.data_net)
+            
+            # print('test1',len(search_result))
             if len(search_result) ==0:
                 search_result = self.search_fcross(devices_graph,D=self.data_net['IN1'])            
         else:
@@ -685,6 +739,7 @@ class DeCKT:
             # if len(matches)>1:
             #     print('muti-matches',ckt_name, len(matches))
         else:
+            print(master_ckt.key_net_mapping)
             print('Searched %d'%(len(search_result)),search_result[0][0])            
             assert len(search_result)>0
 

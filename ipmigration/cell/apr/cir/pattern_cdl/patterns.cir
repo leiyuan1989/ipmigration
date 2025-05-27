@@ -18,6 +18,33 @@ PM4 net1 C   CN   VDD pmos l=1 w=1 n=1 ro=1 co=4
 .ends CLK2
 
 
+******************OUT************************
+.SUBCKT OUT2_1 IN1 VDD VSS Q QN
+PM1 VDD  IN1  OUT1 VDD pmos l=1 w=1 n=1 ro=5 co=1
+NM1 VSS  IN1  OUT1 VSS nmos l=1 w=1 n=1 ro=2 co=1
+PM2 VDD  IN1  OUT1 VDD pmos l=1 w=1 n=1 ro=5 co=1
+NM2 VSS  IN1  OUT1 VSS nmos l=1 w=1 n=1 ro=2 co=1
+PM3 VDD  IN1  OUT1 VDD pmos l=1 w=1 n=1 ro=5 co=1
+NM3 VSS  IN1  OUT1 VSS nmos l=1 w=1 n=1 ro=2 co=1
+.ends OUT2_1
+
+.SUBCKT OUT2_2 IN1 IN2 VDD VSS Q QN
+PM1 VDD  IN1  OUT1 VDD pmos l=1 w=1 n=1 ro=5 co=1
+NM1 VSS  IN1  OUT1 VSS nmos l=1 w=1 n=1 ro=2 co=1
+.ends OUT2_2
+
+.SUBCKT OUT1_1 IN1 VDD VSS OUT1
+PM1 VDD  IN1  OUT1 VDD pmos l=1 w=1 n=1 ro=5 co=1
+NM1 VSS  IN1  OUT1 VSS nmos l=1 w=1 n=1 ro=2 co=1
+.ends OUT1_1
+
+.SUBCKT OUT1_2 IN1 VDD VSS OUT1
+PM1 VDD  IN1  OUT1 VDD pmos l=1 w=1 n=1 ro=5 co=1
+NM1 VSS  IN1  OUT1 VSS nmos l=1 w=1 n=1 ro=2 co=1
+.ends OUT1_2
+
+
+
 ******************INV************************
 
 .SUBCKT INV IN1 VDD VSS OUT1
@@ -73,6 +100,24 @@ NM2 OUT1 IN2  VSS  VSS nmos l=1 w=1 n=1  ro=1 co=2
 .ends LOGIC2_NOR2
 
 ******************Logic 3************************
+.SUBCKT LOGIC3_1 IN1 IN2 IN3 VDD VSS OUT1
+PM1 VDD  IN1  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=1
+PM2 VDD  IN2  net1  VDD pmos l=1 w=1 n=1 ro=1 co=2
+PM3 net1 IN3  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=3
+NM1 OUT1 IN2  net2  VSS nmos l=1 w=1 n=1 ro=1 co=1
+NM2 OUT1 IN3  net2  VSS nmos l=1 w=1 n=1  ro=1 co=2
+NM3 net2 IN1  VSS   VSS nmos l=1 w=1 n=1  ro=1 co=3
+.ends LOGIC3_1
+
+*153: LANHT1
+.SUBCKT LOGIC3_2 IN1 IN2 IN3 VDD VSS OUT1
+PM1 VDD  IN1  net1  VDD pmos l=1 w=1 n=1 ro=1 co=1
+NM1 VSS  IN1  net1  VSS nmos l=1 w=1 n=1 ro=1 co=1
+PM2 net1 E_N  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=2
+NM2 net1 E   OUT1   VSS nmos l=1 w=1 n=1  ro=1 co=2
+
+.ends LOGIC3_2
+
 
 ******************Logic 4************************
 
@@ -94,6 +139,9 @@ NM2 net3  E   VSS   VSS nmos l=1 w=1 n=1 ro=1 co=2
 NM3 VSS   E_N net4  VSS nmos l=1 w=1 n=1 ro=1 co=3
 NM4 net4  D1  OUT2  VSS nmos l=1 w=1 n=1 ro=1 co=4
 .ends FCROSS_1
+
+
+
 
 .SUBCKT FCROSS_2  D E E_N D1 VDD VSS OUT1
 PM1 OUT1  D   net1  VDD pmos l=1 w=1 n=1 ro=1 co=1
@@ -120,6 +168,21 @@ NM3 OUT2  E_N net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
 NM4 net4  D1  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
 .ends FCROSS_3
 
+
+*c153 special
+.SUBCKT FCROSS_3_2  D E E_N D1 VDD VSS OUT1 OUT2
+PM1 VDD   D   net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+PM2 net1  E_N OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
+PM3 OUT1  E   net2 VDD pmos l=1 w=1 n=1 ro=1 co=3
+PM4 net2  D1  VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
+
+NM1 VSS   D   net3 VSS nmos l=1 w=1 n=1 ro=1 co=1
+NM2 net3  E   OUT2 VSS nmos l=1 w=1 n=1 ro=1 co=2
+NM3 OUT2  D1 net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
+NM4 net4  E_N  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
+.ends FCROSS_3_2
+
+
 .SUBCKT FCROSS_4  D E E_N D1 VDD VSS OUT1
 PM1 VDD   D   net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
 PM2 net1  E_N OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
@@ -130,23 +193,6 @@ NM2 net3  E   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=2
 NM3 OUT1  E_N net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
 NM4 net4  D1  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=4
 .ends FCROSS_4
-
-*2 D with 2 EN
-*.SUBCKT FCROSS_4_2  D E E_N D1 VDD VSS OUT1
-*PM0 OUT1  E_N net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
-*PM1 net1  D   VDD  VDD pmos l=1 w=1 n=1 ro=1 co=2
-*PM2 VDD   D   net2 VDD pmos l=1 w=1 n=1 ro=1 co=3
-*PM3 net2  E_N OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=4
-*PM4 OUT1  E   net3 VDD pmos l=1 w=1 n=1 ro=1 co=5
-*PM5 net3  D1  VDD  VDD pmos l=1 w=1 n=1 ro=1 co=6
-*NM0 OUT1  E   net4 VSS nmos l=1 w=1 n=1 ro=1 co=1
-*NM1 net4  D   VSS  VSS nmos l=1 w=1 n=1 ro=1 co=2
-*NM2 VSS   D   net5 VSS nmos l=1 w=1 n=1 ro=1 co=3
-*NM3 net5  E   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=4
-*NM4 OUT1  E_N net6 VSS nmos l=1 w=1 n=1 ro=1 co=5
-*NM5 net6  D1  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=6
-*.ends FCROSS_4_2
-
 
 
 
@@ -214,6 +260,30 @@ NM6 OUT1  NSN VSS  VSS nmos l=1 w=1 n=1 ro=1 co=8
 .ends FRSCROSS_1_2
 
 
+*cross1 with RN SN
+.SUBCKT FCROSS_5  D RN SN_N E E_N D1 VDD VSS OUT1
+*PM1 SN_N SN VDD VDD pmos l=1 w=1 n=1 ro=1 co=1
+*NM1 SN_N SN VSS VSS nmos l=1 w=1 n=1 ro=1 co=1
+
+PM2 VDD  D    net1 VDD pmos l=1 w=1 n=1 ro=1 co=2
+PM4 net1 SN_N net2 VDD pmos l=1 w=1 n=1 ro=1 co=4
+PM3 net2 CN   OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=3
+PM5 OUT1 C    net5 VDD pmos l=1 w=1 n=1 ro=1 co=5
+PM6 net5 SN_N net6 VDD pmos l=1 w=1 n=1 ro=1 co=6
+PM7 net6 D1   VDD  VDD pmos l=1 w=1 n=1 ro=1 co=7
+
+NM2 VSS  D    net3 VSS nmos l=1 w=1 n=1 ro=1 co=2
+NM3 net3 RN   net4 VSS nmos l=1 w=1 n=1 ro=1 co=3
+NM4 net4 C    OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=4
+NM5 OUT1 CN   net7 VSS nmos l=1 w=1 n=1 ro=1 co=5
+NM6 net7 RN   net8 VSS nmos l=1 w=1 n=1 ro=1 co=6
+NM7 net8 D1   VSS  VSS nmos l=1 w=1 n=1 ro=1 co=7
+.ends FCROSS_5
+
+
+
+
+
 *Cross with RN 
 .SUBCKT FRCROSS_1  D E E_N D1 RN VDD VSS OUT1
 PM1 VDD   D   net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
@@ -260,6 +330,45 @@ NM4 net4  D1  rng2 VSS nmos l=1 w=1 n=1 ro=1 co=5
 PM5 OUT1  RN  VDD  VDD pmos l=1 w=1 n=1 ro=1 co=7
 NM5 rng2  RN  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=7
 .ends FRCROSS_1_3
+
+*2 rng, maybe for layout, c110:LACHB0
+.SUBCKT FRCROSS_1_4  D E E_N D1 RN VDD VSS OUT1
+PM1 VDD   D   net1 VDD pmos l=1 w=1 n=1 ro=1 co=2
+PM2 net1  E_N OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=3
+PM3 OUT1  E   net2 VDD pmos l=1 w=1 n=1 ro=1 co=4
+PM4 net2  D1  VDD  VDD pmos l=1 w=1 n=1 ro=1 co=5
+
+NM0 VSS   RN  rng1 VSS nmos l=1 w=1 n=1 ro=1 co=1
+NM1 rng1  D   net1 VSS nmos l=1 w=1 n=1 ro=1 co=2
+NM2 net1  E   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=3
+NM3 OUT1  E_N net4 VSS nmos l=1 w=1 n=1 ro=1 co=4
+NM4 net4  D1  rng2 VSS nmos l=1 w=1 n=1 ro=1 co=5
+
+PM5 OUT1  RN  VDD  VDD pmos l=1 w=1 n=1 ro=1 co=7
+NM5 rng2  RN  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=7
+.ends FRCROSS_1_4
+
+
+*2 rng, maybe for layout, c153: LACHB1
+.SUBCKT FRCROSS_1_5  D E E_N D1 RN VDD VSS OUT1
+PM1 VDD   D   net1 VDD pmos l=1 w=1 n=1 ro=1 co=1
+PM2 net1  E_N OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=2
+PM3 OUT1  E   net2 VDD pmos l=1 w=1 n=1 ro=1 co=3
+PM4 net2  D1  VDD  VDD pmos l=1 w=1 n=1 ro=1 co=4
+PM5 VDD   RN  OUT1 VDD pmos l=1 w=1 n=1 ro=1 co=5
+
+NM1 VSS   D   net3 VSS nmos l=1 w=1 n=1 ro=1 co=1
+NM2 net3  RN  net4 VSS nmos l=1 w=1 n=1 ro=1 co=2
+NM3 net4  E   OUT1 VSS nmos l=1 w=1 n=1 ro=1 co=3
+NM4 OUT1  E_N net5 VSS nmos l=1 w=1 n=1 ro=1 co=4
+NM5 net5  RN  net6 VSS nmos l=1 w=1 n=1 ro=1 co=5
+NM6 net6  D1  VSS  VSS nmos l=1 w=1 n=1 ro=1 co=5
+
+.ends FRCROSS_1_5
+
+
+
+
 
 *Cross with SN 
 .SUBCKT FSCROSS_1  D E E_N D1 NSN VDD VSS OUT1
@@ -401,6 +510,15 @@ NM1 VSS  IN1 OUT1 VSS nmos  l=1 w=1 n=1 ro=1 co=1
 NM2 IN1 IN3 PSS  VSS nmos  l=1 w=1 n=1 ro=1 co=2
 .ends BACKTRACK3_3_4
 
+.SUBCKT BACKTRACK3_3_5  IN1 IN2  VDD VSS OUT1
+PM1 VDD  IN3 net1 VDD pmos  l=1 w=1 n=1 ro=1 co=1
+PM2 net1 IN2 IN1  VDD pmos  l=1 w=1 n=1 ro=1 co=2
+NM2 VSS  IN2 IN1  VSS nmos  l=1 w=1 n=1 ro=1 co=2
+PM3 VDD  IN1 OUT1 VDD pmos  l=1 w=1 n=1 ro=1 co=3
+NM3 VSS  IN1 OUT1 VSS nmos  l=1 w=1 n=1 ro=1 co=3
+.ends BACKTRACK3_3_5
+
+
 
 .SUBCKT BACKTRACK2_1  IN1 IN2 VDD VSS OUT1
 PM1 VDD  IN2 NET1 VDD pmos  l=1 w=1 n=1 ro=1 co=1
@@ -423,11 +541,7 @@ NM1 VSS  IN1 OUT1 VSS nmos  l=1 w=1 n=1 ro=1 co=1
 PM2 IN1  IN2 VDD  VDD pmos  l=1 w=1 n=1 ro=1 co=2
 .ends BACKTRACK2_3
 
-.SUBCKT BACKTRACK2_3_2  IN1 IN2  VDD VSS OUT1
-PM1 VDD  IN1 OUT1 VDD pmos  l=1 w=1 n=1 ro=1 co=1
-NM1 VSS  IN1 OUT1 VSS nmos  l=1 w=1 n=1 ro=1 co=1
-PM2 IN1  IN2 PDD  VDD pmos  l=1 w=1 n=1 ro=1 co=2
-.ends BACKTRACK2_3_2
+
 
 .SUBCKT BACKTRACK2_3_3  IN1 IN2  VDD VSS OUT1
 PM1 VDD  IN1 OUT1 VDD pmos  l=1 w=1 n=1 ro=1 co=1

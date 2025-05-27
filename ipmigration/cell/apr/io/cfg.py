@@ -13,9 +13,10 @@ import time
 
 class Cfg:
     def __init__(self,input_file,log_level='INFO'):
+        self.log_level = log_level
         self.input_file = input_file
         self.load_input(input_file)
-        set_logger(self.output_dir, self.tech_name, log_level)
+        self.set_logger()
         # logger.info('cfgs: ' +str(self.__dict__))
     def load_input(self,file):
         df = pd.read_csv(file)
@@ -65,29 +66,59 @@ class Cfg:
         else:
             return [int(gate_length)]
         
-
-
-
-
-
-def set_logger(save_dir, tech_name, log_level):
-    #set log file
-    if log_level == 'INFO':
-        log_level = logging.INFO
-    elif log_level == 'DEBUG':
-        log_level = logging.DEBUG
-    elif log_level == 'WARNING':
-        log_level = logging.WARNING    
-    else:
-        raise ValueError('log_level is not INFO DEBUG or WARNING')
-    
-    log_file =  os.path.join(save_dir, time.strftime("%b_%d")+ '_%s_cellapr_log.txt'%(tech_name))  
-    logging.basicConfig(format='%(asctime)s %(levelname)5s: %(message)s',
-                        datefmt="%d-%H:%M:%S",
-                        level=log_level,
-                        filemode='w',
-                        filename=log_file)
-    print('logging file is:',log_file) 
-    logger = logging.getLogger(__name__)
-    logger.info("************Create Cell Apr: %s Logger************"%(tech_name))
+    def set_logger(self):
+        #set log file
+        log_level = self.log_level
+        output_dir = self.output_dir
+        tech_name = self.tech_name
+        
+        output_dir = "./demo/cell_apr/outputs/c153"
+        log_level = "INFO"  # 可选: DEBUG, INFO, WARNING, ERROR, CRITICAL
+        tech_name = "C153"
+        
+        # 确保输出目录存在
+        os.makedirs(output_dir, exist_ok=True)
+        
+        # 生成日志文件名
+        log_file = os.path.join(output_dir, f"LOG_{time.strftime('%m_%d_%H_%M')}.txt")
+        
+        # 获取根日志记录器
+        root_logger = logging.getLogger()
+        root_logger.setLevel(getattr(logging, log_level))
+        
+        # 创建文件处理器
+        file_handler = logging.FileHandler(log_file, mode='w', encoding='utf-8')
+        
+        # 设置日志格式
+        formatter = logging.Formatter(
+            fmt='%(asctime)s %(levelname)5s: %(message)s',
+            datefmt="%d-%H:%M:%S"
+        )
+        file_handler.setFormatter(formatter)
+        
+        # 清空所有已存在的处理器（避免重复）
+        root_logger.handlers = []
+        
+        # 添加文件处理器到根日志记录器
+        root_logger.addHandler(file_handler)
+        
+        # 获取命名日志记录器（继承根日志记录器的配置）
+        logger = logging.getLogger(__name__)
+        
+        # 记录初始化信息
+        root_logger.info(f"logging file is: {log_file}")
+        root_logger.info(f"************Create Cell Apr: {tech_name} Logger************")
+        
+        # # 验证日志配置
+        # print(f"日志文件路径: {log_file}")
+        # print(f"根日志级别: {logging.getLevelName(root_logger.getEffectiveLevel())}")
+        # print(f"根日志处理器: {root_logger.handlers}")
+        # print(f"当前日志级别: {logging.getLevelName(logger.getEffectiveLevel())}")
+        # print(f"当前日志处理器: {logger.handlers}")
+        
+        # 测试日志记录
+        # logger.debug("这是一条DEBUG级别的日志")
+        # logger.info("这是一条INFO级别的日志")
+        # logger.warning("这是一条WARNING级别的日志")
+        # logger.error("这是一条ERROR级别的日志")    
         

@@ -48,16 +48,16 @@ class StdCell:
                             self.patterns, 
                             self.tech.tech_name, 
                             self.cfgs.output_dir)
+        #decompose
         result = self.de_ckt.run()
-        
-        
+                
         if result:  
-            print(self.de_ckt.sub_ckts.keys())  
+            # print(self.de_ckt.sub_ckts.keys())  
             
             
             return 1, "Success"
         else:
-            print('------------------Decompose Failed: %s------------------'%(self.ckt.name))
+
             return 0, "Decompose Failed"      
         
         

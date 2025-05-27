@@ -1,5 +1,4 @@
 # Copyright (c) ASTRI. All rights reserved.
-import logging
 import argparse
 from ipmigration.cell.apr.io import cfg
 from ipmigration.cell.apr.tech import Tech
@@ -9,7 +8,7 @@ from ipmigration.cell.apr.cir.netlist import Netlist
 EXTRACT_PIN = True #For Expertise Lib Design
 
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 # Define commandline arguments.
 parser = argparse.ArgumentParser(description='Generate GDS layout from SPICE netlist.')
 parser.add_argument('--input', default='demo/cell_apr/setting_c153.csv', type=str, help='cell setting file') #

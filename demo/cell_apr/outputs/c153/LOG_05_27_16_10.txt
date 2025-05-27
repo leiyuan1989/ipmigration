@@ -1,0 +1,675 @@
+27-16:10:14  INFO: logging file is: ./demo/cell_apr/outputs/c153\LOG_05_27_16_10.txt
+27-16:10:14  INFO: ************Create Cell Apr: C153 Logger************
+27-16:10:14  INFO: tech->layers: ['NW', 'AA', 'GT', 'SP', 'SN', 'CT', 'M1', 'V1', 'M2', 'BORDER', 'M1TXT', 'SUBTXT']
+27-16:10:14  INFO: tech->rules: [GT_W : 180 nm, GT_S : 250 nm, GT_S_LAA_GT : 84 nm, GT_S_LGT_AA : 84 nm, GT_X_AA : 186 nm, AA_X_GT : 270 nm, AA_S : 238 nm, SP_X_AA : 152 nm, SN_X_AA : 152 nm, CT_W : 186 nm, CT_S : 212 nm, CT_S_AA : 144 nm, CT_S_GT : 140 nm, CT_E_NP : 102 nm, CT_E_AA : 70 nm, CT_E_GT : 70 nm, CT_E_M1 : 4 nm, CT_E_M1_END : 50 nm, M1_W : 194 nm, M1_S : 194 nm, M2_W : 238 nm, M2_S : 238 nm]
+27-16:10:14  INFO: tech->Load tech files of tech:c153 sucessfully
+27-16:10:15  INFO: ascell-> Begin processing techc153 @ Tue May 27 16:10:15 2025
+27-16:10:15  INFO: c153, (DFBFB1, 40 devices), 40 devices
+27-16:10:15  INFO: -----    DFBFB1:      ff False False undef
+27-16:10:15  INFO: 1. clock pattern: pattern: CLK1 in DFBFB1: clk
+27-16:10:15  INFO: 2. inputs inv pattern: pattern: INV in DFBFB1: ininv_RN_0
+27-16:10:15  INFO: 3. output pattern: pattern: INV in DFBFB1: out_QN
+27-16:10:15  INFO: 3. output pattern: pattern: INV in DFBFB1: out_Q
+27-16:10:15  INFO: 3. output pattern: pattern: INV in DFBFB1: out_Q_2
+27-16:10:15  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFBFB1: cross1
+27-16:10:15  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in DFBFB1: cross1
+27-16:10:15  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFBFB1: cross2
+27-16:10:15  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in DFBFB1: cross2
+27-16:10:15  INFO: c153, (DFBFB2, 40 devices), 40 devices
+27-16:10:15  INFO: -----    DFBFB2:      ff False False undef
+27-16:10:15  INFO: 1. clock pattern: pattern: CLK1 in DFBFB2: clk
+27-16:10:15  INFO: 2. inputs inv pattern: pattern: INV in DFBFB2: ininv_RN_0
+27-16:10:15  INFO: 3. output pattern: pattern: INV in DFBFB2: out_QN
+27-16:10:15  INFO: 3. output pattern: pattern: INV in DFBFB2: out_Q
+27-16:10:15  INFO: 3. output pattern: pattern: INV in DFBFB2: out_Q_2
+27-16:10:16  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFBFB2: cross1
+27-16:10:16  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in DFBFB2: cross1
+27-16:10:16  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFBFB2: cross2
+27-16:10:16  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in DFBFB2: cross2
+27-16:10:16  INFO: c153, (DFBRB1, 40 devices), 40 devices
+27-16:10:16  INFO: -----    DFBRB1:      ff False False undef
+27-16:10:16  INFO: 1. clock pattern: pattern: CLK1 in DFBRB1: clk
+27-16:10:16  INFO: 2. inputs inv pattern: pattern: INV in DFBRB1: ininv_RN_0
+27-16:10:16  INFO: 3. output pattern: pattern: INV in DFBRB1: out_QN
+27-16:10:16  INFO: 3. output pattern: pattern: INV in DFBRB1: out_Q
+27-16:10:16  INFO: 3. output pattern: pattern: INV in DFBRB1: out_Q_2
+27-16:10:16  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFBRB1: cross1
+27-16:10:16  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in DFBRB1: cross1
+27-16:10:16  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFBRB1: cross2
+27-16:10:16  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in DFBRB1: cross2
+27-16:10:16  INFO: c153, (DFBRB2, 40 devices), 40 devices
+27-16:10:16  INFO: -----    DFBRB2:      ff False False undef
+27-16:10:16  INFO: 1. clock pattern: pattern: CLK1 in DFBRB2: clk
+27-16:10:16  INFO: 2. inputs inv pattern: pattern: INV in DFBRB2: ininv_RN_0
+27-16:10:16  INFO: 3. output pattern: pattern: INV in DFBRB2: out_QN
+27-16:10:16  INFO: 3. output pattern: pattern: INV in DFBRB2: out_Q
+27-16:10:16  INFO: 3. output pattern: pattern: INV in DFBRB2: out_Q_2
+27-16:10:16  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFBRB2: cross1
+27-16:10:17  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in DFBRB2: cross1
+27-16:10:17  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFBRB2: cross2
+27-16:10:17  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in DFBRB2: cross2
+27-16:10:17  INFO: c153, (DFBRQ1, 40 devices), 40 devices
+27-16:10:17  INFO: -----    DFBRQ1:      ff False False undef
+27-16:10:17  INFO: 1. clock pattern: pattern: CLK1 in DFBRQ1: clk
+27-16:10:17  INFO: 2. inputs inv pattern: pattern: INV in DFBRQ1: ininv_RN_0
+27-16:10:17  INFO: 3. output pattern: pattern: LOGIC3_1 in DFBRQ1: out_Q
+27-16:10:17  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFBRQ1: cross1
+27-16:10:17  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in DFBRQ1: cross1
+27-16:10:17  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFBRQ1: cross2
+27-16:10:17  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in DFBRQ1: cross2
+27-16:10:17  INFO: c153, (DFBRQ2, 40 devices), 40 devices
+27-16:10:17  INFO: -----    DFBRQ2:      ff False False undef
+27-16:10:17  INFO: 1. clock pattern: pattern: CLK1 in DFBRQ2: clk
+27-16:10:17  INFO: 2. inputs inv pattern: pattern: INV in DFBRQ2: ininv_RN_0
+27-16:10:17  INFO: 3. output pattern: pattern: LOGIC3_1 in DFBRQ2: out_Q
+27-16:10:17  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFBRQ2: cross1
+27-16:10:17  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in DFBRQ2: cross1
+27-16:10:17  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFBRQ2: cross2
+27-16:10:18  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in DFBRQ2: cross2
+27-16:10:18  INFO: c153, (DFCFB1, 36 devices), 36 devices
+27-16:10:18  INFO: -----    DFCFB1:      ff False False undef
+27-16:10:18  INFO: 1. clock pattern: pattern: CLK1 in DFCFB1: clk
+27-16:10:18  INFO: 2. inputs inv pattern: pattern: INV in DFCFB1: ininv_RN_0
+27-16:10:18  INFO: 3. output pattern: pattern: INV in DFCFB1: out_QN
+27-16:10:18  INFO: 3. output pattern: pattern: INV in DFCFB1: out_Q
+27-16:10:18  INFO: 3. output pattern: pattern: INV in DFCFB1: out_Q_2
+27-16:10:18  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFCFB1: cross1
+27-16:10:18  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in DFCFB1: cross1
+27-16:10:18  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFCFB1: cross2
+27-16:10:18  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in DFCFB1: cross2
+27-16:10:18  INFO: c153, (DFCFB2, 36 devices), 36 devices
+27-16:10:18  INFO: -----    DFCFB2:      ff False False undef
+27-16:10:18  INFO: 1. clock pattern: pattern: CLK1 in DFCFB2: clk
+27-16:10:18  INFO: 2. inputs inv pattern: pattern: INV in DFCFB2: ininv_RN_0
+27-16:10:18  INFO: 3. output pattern: pattern: INV in DFCFB2: out_QN
+27-16:10:18  INFO: 3. output pattern: pattern: INV in DFCFB2: out_Q
+27-16:10:18  INFO: 3. output pattern: pattern: INV in DFCFB2: out_Q_2
+27-16:10:18  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFCFB2: cross1
+27-16:10:18  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in DFCFB2: cross1
+27-16:10:18  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFCFB2: cross2
+27-16:10:18  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in DFCFB2: cross2
+27-16:10:18  INFO: c153, (DFCFQ1, 34 devices), 34 devices
+27-16:10:18  INFO: -----    DFCFQ1:      ff False False undef
+27-16:10:18  INFO: 1. clock pattern: pattern: CLK1 in DFCFQ1: clk
+27-16:10:18  INFO: 2. inputs inv pattern: pattern: INV in DFCFQ1: ininv_RN_0
+27-16:10:18  INFO: 3. output pattern: pattern: INV in DFCFQ1: out_Q
+27-16:10:18  INFO: 3. output pattern: pattern: INV in DFCFQ1: out_Q_2
+27-16:10:18  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFCFQ1: cross1
+27-16:10:18  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in DFCFQ1: cross1
+27-16:10:18  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFCFQ1: cross2
+27-16:10:18  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in DFCFQ1: cross2
+27-16:10:18  INFO: c153, (DFCFQ2, 34 devices), 34 devices
+27-16:10:18  INFO: -----    DFCFQ2:      ff False False undef
+27-16:10:19  INFO: 1. clock pattern: pattern: CLK1 in DFCFQ2: clk
+27-16:10:19  INFO: 2. inputs inv pattern: pattern: INV in DFCFQ2: ininv_RN_0
+27-16:10:19  INFO: 3. output pattern: pattern: INV in DFCFQ2: out_Q
+27-16:10:19  INFO: 3. output pattern: pattern: INV in DFCFQ2: out_Q_2
+27-16:10:19  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFCFQ2: cross1
+27-16:10:19  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in DFCFQ2: cross1
+27-16:10:19  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFCFQ2: cross2
+27-16:10:19  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in DFCFQ2: cross2
+27-16:10:19  INFO: c153, (DFCRB1, 36 devices), 36 devices
+27-16:10:19  INFO: -----    DFCRB1:      ff False False undef
+27-16:10:19  INFO: 1. clock pattern: pattern: CLK1 in DFCRB1: clk
+27-16:10:19  INFO: 2. inputs inv pattern: pattern: INV in DFCRB1: ininv_RN_0
+27-16:10:19  INFO: 3. output pattern: pattern: INV in DFCRB1: out_QN
+27-16:10:19  INFO: 3. output pattern: pattern: INV in DFCRB1: out_Q
+27-16:10:19  INFO: 3. output pattern: pattern: INV in DFCRB1: out_Q_2
+27-16:10:19  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFCRB1: cross1
+27-16:10:19  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in DFCRB1: cross1
+27-16:10:19  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFCRB1: cross2
+27-16:10:19  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in DFCRB1: cross2
+27-16:10:19  INFO: c153, (DFCRB2, 36 devices), 36 devices
+27-16:10:19  INFO: -----    DFCRB2:      ff False False undef
+27-16:10:19  INFO: 1. clock pattern: pattern: CLK1 in DFCRB2: clk
+27-16:10:19  INFO: 2. inputs inv pattern: pattern: INV in DFCRB2: ininv_RN_0
+27-16:10:19  INFO: 3. output pattern: pattern: INV in DFCRB2: out_QN
+27-16:10:19  INFO: 3. output pattern: pattern: INV in DFCRB2: out_Q
+27-16:10:19  INFO: 3. output pattern: pattern: INV in DFCRB2: out_Q_2
+27-16:10:19  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFCRB2: cross1
+27-16:10:19  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in DFCRB2: cross1
+27-16:10:19  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFCRB2: cross2
+27-16:10:19  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in DFCRB2: cross2
+27-16:10:19  INFO: c153, (DFCRN1, 32 devices), 32 devices
+27-16:10:19  INFO: -----    DFCRN1:      ff False False undef
+27-16:10:19  INFO: 1. clock pattern: pattern: CLK1 in DFCRN1: clk
+27-16:10:19  INFO: 2. inputs inv pattern: pattern: INV in DFCRN1: ininv_RN_0
+27-16:10:19  INFO: 3. output pattern: pattern: INV in DFCRN1: out_QN
+27-16:10:20  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFCRN1: cross1
+27-16:10:20  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in DFCRN1: cross1
+27-16:10:20  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFCRN1: cross2
+27-16:10:20  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in DFCRN1: cross2
+27-16:10:20  INFO: c153, (DFCRN2, 32 devices), 32 devices
+27-16:10:20  INFO: -----    DFCRN2:      ff False False undef
+27-16:10:20  INFO: 1. clock pattern: pattern: CLK1 in DFCRN2: clk
+27-16:10:20  INFO: 2. inputs inv pattern: pattern: INV in DFCRN2: ininv_RN_0
+27-16:10:20  INFO: 3. output pattern: pattern: INV in DFCRN2: out_QN
+27-16:10:20  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFCRN2: cross1
+27-16:10:20  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in DFCRN2: cross1
+27-16:10:20  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFCRN2: cross2
+27-16:10:20  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in DFCRN2: cross2
+27-16:10:20  INFO: c153, (DFCRQ1, 34 devices), 34 devices
+27-16:10:20  INFO: -----    DFCRQ1:      ff False False undef
+27-16:10:20  INFO: 1. clock pattern: pattern: CLK1 in DFCRQ1: clk
+27-16:10:20  INFO: 2. inputs inv pattern: pattern: INV in DFCRQ1: ininv_RN_0
+27-16:10:20  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in DFCRQ1: out_Q
+27-16:10:20  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFCRQ1: cross1
+27-16:10:20  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in DFCRQ1: cross1
+27-16:10:20  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFCRQ1: cross2
+27-16:10:20  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in DFCRQ1: cross2
+27-16:10:20  INFO: c153, (DFCRQ2, 34 devices), 34 devices
+27-16:10:20  INFO: -----    DFCRQ2:      ff False False undef
+27-16:10:20  INFO: 1. clock pattern: pattern: CLK1 in DFCRQ2: clk
+27-16:10:20  INFO: 2. inputs inv pattern: pattern: INV in DFCRQ2: ininv_RN_0
+27-16:10:21  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in DFCRQ2: out_Q
+27-16:10:21  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFCRQ2: cross1
+27-16:10:21  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in DFCRQ2: cross1
+27-16:10:21  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFCRQ2: cross2
+27-16:10:21  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in DFCRQ2: cross2
+27-16:10:21  INFO: c153, (DFNFB1, 28 devices), 28 devices
+27-16:10:21  INFO: -----    DFNFB1:      ff False False undef
+27-16:10:21  INFO: 1. clock pattern: pattern: CLK1 in DFNFB1: clk
+27-16:10:21  INFO: 3. output pattern: pattern: INV in DFNFB1: out_QN
+27-16:10:21  INFO: 3. output pattern: pattern: INV in DFNFB1: out_Q
+27-16:10:21  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFNFB1: cross1
+27-16:10:21  INFO: 5.2  back track 1 pattern: pattern: INV in DFNFB1: cross1
+27-16:10:21  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFNFB1: cross2
+27-16:10:21  INFO: 5.4  back track 2 pattern: pattern: INV in DFNFB1: cross2
+27-16:10:21  INFO: c153, (DFNFB2, 28 devices), 28 devices
+27-16:10:21  INFO: -----    DFNFB2:      ff False False undef
+27-16:10:21  INFO: 1. clock pattern: pattern: CLK1 in DFNFB2: clk
+27-16:10:21  INFO: 3. output pattern: pattern: INV in DFNFB2: out_QN
+27-16:10:21  INFO: 3. output pattern: pattern: INV in DFNFB2: out_Q
+27-16:10:21  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFNFB2: cross1
+27-16:10:21  INFO: 5.2  back track 1 pattern: pattern: INV in DFNFB2: cross1
+27-16:10:21  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFNFB2: cross2
+27-16:10:21  INFO: 5.4  back track 2 pattern: pattern: INV in DFNFB2: cross2
+27-16:10:21  INFO: c153, (DFNRB1, 28 devices), 28 devices
+27-16:10:21  INFO: -----    DFNRB1:      ff False False undef
+27-16:10:21  INFO: 1. clock pattern: pattern: CLK1 in DFNRB1: clk
+27-16:10:21  INFO: 3. output pattern: pattern: INV in DFNRB1: out_QN
+27-16:10:21  INFO: 3. output pattern: pattern: INV in DFNRB1: out_Q
+27-16:10:21  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFNRB1: cross1
+27-16:10:21  INFO: 5.2  back track 1 pattern: pattern: INV in DFNRB1: cross1
+27-16:10:21  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFNRB1: cross2
+27-16:10:21  INFO: 5.4  back track 2 pattern: pattern: INV in DFNRB1: cross2
+27-16:10:21  INFO: c153, (DFNRB2, 28 devices), 28 devices
+27-16:10:21  INFO: -----    DFNRB2:      ff False False undef
+27-16:10:21  INFO: 1. clock pattern: pattern: CLK1 in DFNRB2: clk
+27-16:10:21  INFO: 3. output pattern: pattern: INV in DFNRB2: out_QN
+27-16:10:21  INFO: 3. output pattern: pattern: INV in DFNRB2: out_Q
+27-16:10:22  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFNRB2: cross1
+27-16:10:22  INFO: 5.2  back track 1 pattern: pattern: INV in DFNRB2: cross1
+27-16:10:22  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFNRB2: cross2
+27-16:10:22  INFO: 5.4  back track 2 pattern: pattern: INV in DFNRB2: cross2
+27-16:10:22  INFO: c153, (DFNRN1, 26 devices), 26 devices
+27-16:10:22  INFO: -----    DFNRN1:      ff False False undef
+27-16:10:22  INFO: 1. clock pattern: pattern: CLK1 in DFNRN1: clk
+27-16:10:22  INFO: 3. output pattern: pattern: INV in DFNRN1: out_QN
+27-16:10:22  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFNRN1: cross1
+27-16:10:22  INFO: 5.2  back track 1 pattern: pattern: INV in DFNRN1: cross1
+27-16:10:22  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFNRN1: cross2
+27-16:10:22  INFO: 5.4  back track 2 pattern: pattern: INV in DFNRN1: cross2
+27-16:10:22  INFO: c153, (DFNRN2, 26 devices), 26 devices
+27-16:10:22  INFO: -----    DFNRN2:      ff False False undef
+27-16:10:22  INFO: 1. clock pattern: pattern: CLK1 in DFNRN2: clk
+27-16:10:22  INFO: 3. output pattern: pattern: INV in DFNRN2: out_QN
+27-16:10:22  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFNRN2: cross1
+27-16:10:22  INFO: 5.2  back track 1 pattern: pattern: INV in DFNRN2: cross1
+27-16:10:22  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFNRN2: cross2
+27-16:10:22  INFO: 5.4  back track 2 pattern: pattern: INV in DFNRN2: cross2
+27-16:10:22  INFO: c153, (DFNRQ1, 26 devices), 26 devices
+27-16:10:22  INFO: -----    DFNRQ1:      ff False False undef
+27-16:10:22  INFO: 1. clock pattern: pattern: CLK1 in DFNRQ1: clk
+27-16:10:22  INFO: 3. output pattern: pattern: INV in DFNRQ1: out_Q
+27-16:10:22  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFNRQ1: cross1
+27-16:10:22  INFO: 5.2  back track 1 pattern: pattern: INV in DFNRQ1: cross1
+27-16:10:22  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFNRQ1: cross2
+27-16:10:22  INFO: 5.4  back track 2 pattern: pattern: INV in DFNRQ1: cross2
+27-16:10:22  INFO: c153, (DFNRQ2, 26 devices), 26 devices
+27-16:10:22  INFO: -----    DFNRQ2:      ff False False undef
+27-16:10:22  INFO: 1. clock pattern: pattern: CLK1 in DFNRQ2: clk
+27-16:10:22  INFO: 3. output pattern: pattern: INV in DFNRQ2: out_Q
+27-16:10:22  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFNRQ2: cross1
+27-16:10:22  INFO: 5.2  back track 1 pattern: pattern: INV in DFNRQ2: cross1
+27-16:10:22  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFNRQ2: cross2
+27-16:10:22  INFO: 5.4  back track 2 pattern: pattern: INV in DFNRQ2: cross2
+27-16:10:22  INFO: c153, (DFPFB1, 34 devices), 34 devices
+27-16:10:22  INFO: -----    DFPFB1:      ff False False undef
+27-16:10:22  INFO: 1. clock pattern: pattern: CLK1 in DFPFB1: clk
+27-16:10:23  INFO: 3. output pattern: pattern: INV in DFPFB1: out_Q
+27-16:10:23  INFO: 3. output pattern: pattern: INV in DFPFB1: out_Q_2
+27-16:10:23  INFO: 3. output pattern: pattern: INV in DFPFB1: out_QN
+27-16:10:23  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFPFB1: cross1
+27-16:10:23  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFPFB1: cross1
+27-16:10:23  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFPFB1: cross2
+27-16:10:23  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NAND2 in DFPFB1: cross2
+27-16:10:23  INFO: c153, (DFPFB2, 34 devices), 34 devices
+27-16:10:23  INFO: -----    DFPFB2:      ff False False undef
+27-16:10:23  INFO: 1. clock pattern: pattern: CLK1 in DFPFB2: clk
+27-16:10:23  INFO: 3. output pattern: pattern: INV in DFPFB2: out_Q
+27-16:10:23  INFO: 3. output pattern: pattern: INV in DFPFB2: out_Q_2
+27-16:10:23  INFO: 3. output pattern: pattern: INV in DFPFB2: out_QN
+27-16:10:23  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFPFB2: cross1
+27-16:10:23  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFPFB2: cross1
+27-16:10:23  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFPFB2: cross2
+27-16:10:23  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NAND2 in DFPFB2: cross2
+27-16:10:23  INFO: c153, (DFPRB1, 34 devices), 34 devices
+27-16:10:23  INFO: -----    DFPRB1:      ff False False undef
+27-16:10:23  INFO: 1. clock pattern: pattern: CLK1 in DFPRB1: clk
+27-16:10:23  INFO: 3. output pattern: pattern: INV in DFPRB1: out_Q
+27-16:10:23  INFO: 3. output pattern: pattern: INV in DFPRB1: out_Q_2
+27-16:10:23  INFO: 3. output pattern: pattern: INV in DFPRB1: out_QN
+27-16:10:24  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFPRB1: cross1
+27-16:10:24  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFPRB1: cross1
+27-16:10:24  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFPRB1: cross2
+27-16:10:24  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NAND2 in DFPRB1: cross2
+27-16:10:24  INFO: c153, (DFPRB2, 34 devices), 34 devices
+27-16:10:24  INFO: -----    DFPRB2:      ff False False undef
+27-16:10:24  INFO: 1. clock pattern: pattern: CLK1 in DFPRB2: clk
+27-16:10:24  INFO: 3. output pattern: pattern: INV in DFPRB2: out_Q
+27-16:10:24  INFO: 3. output pattern: pattern: INV in DFPRB2: out_Q_2
+27-16:10:24  INFO: 3. output pattern: pattern: INV in DFPRB2: out_QN
+27-16:10:24  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFPRB2: cross1
+27-16:10:24  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFPRB2: cross1
+27-16:10:24  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFPRB2: cross2
+27-16:10:24  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NAND2 in DFPRB2: cross2
+27-16:10:24  INFO: c153, (DFPRQ1, 32 devices), 32 devices
+27-16:10:24  INFO: -----    DFPRQ1:      ff False False undef
+27-16:10:24  INFO: 1. clock pattern: pattern: CLK1 in DFPRQ1: clk
+27-16:10:24  INFO: 3. output pattern: pattern: LOGIC2_NAND2 in DFPRQ1: out_Q
+27-16:10:25  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFPRQ1: cross1
+27-16:10:25  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFPRQ1: cross1
+27-16:10:25  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFPRQ1: cross2
+27-16:10:25  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NAND2 in DFPRQ1: cross2
+27-16:10:25  INFO: c153, (DFPRQ2, 32 devices), 32 devices
+27-16:10:25  INFO: -----    DFPRQ2:      ff False False undef
+27-16:10:25  INFO: 1. clock pattern: pattern: CLK1 in DFPRQ2: clk
+27-16:10:25  INFO: 3. output pattern: pattern: LOGIC2_NAND2 in DFPRQ2: out_Q
+27-16:10:25  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFPRQ2: cross1
+27-16:10:25  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFPRQ2: cross1
+27-16:10:25  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFPRQ2: cross2
+27-16:10:25  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NAND2 in DFPRQ2: cross2
+27-16:10:25  INFO: c153, (SDBFB1, 48 devices), 48 devices
+27-16:10:25  INFO: -----    SDBFB1:  scanff False False    SE
+27-16:10:25  INFO: 1. clock pattern: pattern: CLK1 in SDBFB1: clk
+27-16:10:25  INFO: 2. inputs inv pattern: pattern: INV in SDBFB1: ininv_RN_0
+27-16:10:25  INFO: 2. inputs inv pattern: pattern: INV in SDBFB1: ininv_SE_0
+27-16:10:25  INFO: 3. output pattern: pattern: INV in SDBFB1: out_Q
+27-16:10:25  INFO: 3. output pattern: pattern: INV in SDBFB1: out_Q_2
+27-16:10:25  INFO: 3. output pattern: pattern: INV in SDBFB1: out_QN
+27-16:10:26  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDBFB1: sesi
+27-16:10:26  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDBFB1: cross1
+27-16:10:26  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in SDBFB1: cross1
+27-16:10:26  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDBFB1: cross2
+27-16:10:26  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in SDBFB1: cross2
+27-16:10:26  INFO: c153, (SDBFB2, 48 devices), 48 devices
+27-16:10:26  INFO: -----    SDBFB2:  scanff False False    SE
+27-16:10:26  INFO: 1. clock pattern: pattern: CLK1 in SDBFB2: clk
+27-16:10:26  INFO: 2. inputs inv pattern: pattern: INV in SDBFB2: ininv_RN_0
+27-16:10:26  INFO: 2. inputs inv pattern: pattern: INV in SDBFB2: ininv_SE_0
+27-16:10:26  INFO: 3. output pattern: pattern: INV in SDBFB2: out_Q
+27-16:10:26  INFO: 3. output pattern: pattern: INV in SDBFB2: out_Q_2
+27-16:10:26  INFO: 3. output pattern: pattern: INV in SDBFB2: out_QN
+27-16:10:26  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDBFB2: sesi
+27-16:10:26  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDBFB2: cross1
+27-16:10:26  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in SDBFB2: cross1
+27-16:10:26  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDBFB2: cross2
+27-16:10:26  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in SDBFB2: cross2
+27-16:10:27  INFO: c153, (SDBRB1, 48 devices), 48 devices
+27-16:10:27  INFO: -----    SDBRB1:  scanff False False    SE
+27-16:10:27  INFO: 1. clock pattern: pattern: CLK1 in SDBRB1: clk
+27-16:10:27  INFO: 2. inputs inv pattern: pattern: INV in SDBRB1: ininv_RN_0
+27-16:10:27  INFO: 2. inputs inv pattern: pattern: INV in SDBRB1: ininv_SE_0
+27-16:10:27  INFO: 3. output pattern: pattern: INV in SDBRB1: out_Q
+27-16:10:27  INFO: 3. output pattern: pattern: INV in SDBRB1: out_Q_2
+27-16:10:27  INFO: 3. output pattern: pattern: INV in SDBRB1: out_QN
+27-16:10:27  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDBRB1: sesi
+27-16:10:27  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDBRB1: cross1
+27-16:10:27  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in SDBRB1: cross1
+27-16:10:27  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDBRB1: cross2
+27-16:10:27  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in SDBRB1: cross2
+27-16:10:27  INFO: c153, (SDBRB2, 48 devices), 48 devices
+27-16:10:27  INFO: -----    SDBRB2:  scanff False False    SE
+27-16:10:27  INFO: 1. clock pattern: pattern: CLK1 in SDBRB2: clk
+27-16:10:27  INFO: 2. inputs inv pattern: pattern: INV in SDBRB2: ininv_RN_0
+27-16:10:27  INFO: 2. inputs inv pattern: pattern: INV in SDBRB2: ininv_SE_0
+27-16:10:27  INFO: 3. output pattern: pattern: INV in SDBRB2: out_Q
+27-16:10:27  INFO: 3. output pattern: pattern: INV in SDBRB2: out_Q_2
+27-16:10:27  INFO: 3. output pattern: pattern: INV in SDBRB2: out_QN
+27-16:10:27  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDBRB2: sesi
+27-16:10:27  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDBRB2: cross1
+27-16:10:28  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in SDBRB2: cross1
+27-16:10:28  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDBRB2: cross2
+27-16:10:28  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in SDBRB2: cross2
+27-16:10:28  INFO: c153, (SDBRQ1, 48 devices), 48 devices
+27-16:10:28  INFO: -----    SDBRQ1:  scanff False False    SE
+27-16:10:28  INFO: 1. clock pattern: pattern: CLK1 in SDBRQ1: clk
+27-16:10:28  INFO: 2. inputs inv pattern: pattern: INV in SDBRQ1: ininv_RN_0
+27-16:10:28  INFO: 2. inputs inv pattern: pattern: INV in SDBRQ1: ininv_SE_0
+27-16:10:28  INFO: 3. output pattern: pattern: LOGIC3_1 in SDBRQ1: out_Q
+27-16:10:28  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDBRQ1: sesi
+27-16:10:28  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDBRQ1: cross1
+27-16:10:28  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in SDBRQ1: cross1
+27-16:10:28  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDBRQ1: cross2
+27-16:10:28  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in SDBRQ1: cross2
+27-16:10:28  INFO: c153, (SDBRQ2, 48 devices), 48 devices
+27-16:10:28  INFO: -----    SDBRQ2:  scanff False False    SE
+27-16:10:28  INFO: 1. clock pattern: pattern: CLK1 in SDBRQ2: clk
+27-16:10:28  INFO: 2. inputs inv pattern: pattern: INV in SDBRQ2: ininv_RN_0
+27-16:10:28  INFO: 2. inputs inv pattern: pattern: INV in SDBRQ2: ininv_SE_0
+27-16:10:28  INFO: 3. output pattern: pattern: LOGIC3_1 in SDBRQ2: out_Q
+27-16:10:29  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDBRQ2: sesi
+27-16:10:29  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDBRQ2: cross1
+27-16:10:29  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in SDBRQ2: cross1
+27-16:10:29  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDBRQ2: cross2
+27-16:10:29  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in SDBRQ2: cross2
+27-16:10:29  INFO: c153, (SDCFB1, 44 devices), 44 devices
+27-16:10:29  INFO: -----    SDCFB1:  scanff False False    SE
+27-16:10:29  INFO: 1. clock pattern: pattern: CLK1 in SDCFB1: clk
+27-16:10:29  INFO: 2. inputs inv pattern: pattern: INV in SDCFB1: ininv_RN_0
+27-16:10:29  INFO: 2. inputs inv pattern: pattern: INV in SDCFB1: ininv_SE_0
+27-16:10:29  INFO: 3. output pattern: pattern: INV in SDCFB1: out_Q
+27-16:10:29  INFO: 3. output pattern: pattern: INV in SDCFB1: out_Q_2
+27-16:10:29  INFO: 3. output pattern: pattern: INV in SDCFB1: out_QN
+27-16:10:29  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDCFB1: sesi
+27-16:10:29  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDCFB1: cross1
+27-16:10:29  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in SDCFB1: cross1
+27-16:10:29  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDCFB1: cross2
+27-16:10:29  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in SDCFB1: cross2
+27-16:10:29  INFO: c153, (SDCFB2, 44 devices), 44 devices
+27-16:10:29  INFO: -----    SDCFB2:  scanff False False    SE
+27-16:10:29  INFO: 1. clock pattern: pattern: CLK1 in SDCFB2: clk
+27-16:10:29  INFO: 2. inputs inv pattern: pattern: INV in SDCFB2: ininv_SE_0
+27-16:10:29  INFO: 2. inputs inv pattern: pattern: INV in SDCFB2: ininv_RN_0
+27-16:10:29  INFO: 3. output pattern: pattern: INV in SDCFB2: out_Q
+27-16:10:29  INFO: 3. output pattern: pattern: INV in SDCFB2: out_Q_2
+27-16:10:29  INFO: 3. output pattern: pattern: INV in SDCFB2: out_QN
+27-16:10:30  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDCFB2: sesi
+27-16:10:30  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDCFB2: cross1
+27-16:10:30  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in SDCFB2: cross1
+27-16:10:30  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDCFB2: cross2
+27-16:10:30  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in SDCFB2: cross2
+27-16:10:30  INFO: c153, (SDCFQ1, 42 devices), 42 devices
+27-16:10:30  INFO: -----    SDCFQ1:  scanff False False    SE
+27-16:10:30  INFO: 1. clock pattern: pattern: CLK1 in SDCFQ1: clk
+27-16:10:30  INFO: 2. inputs inv pattern: pattern: INV in SDCFQ1: ininv_SE_0
+27-16:10:30  INFO: 2. inputs inv pattern: pattern: INV in SDCFQ1: ininv_RN_0
+27-16:10:30  INFO: 3. output pattern: pattern: INV in SDCFQ1: out_Q
+27-16:10:30  INFO: 3. output pattern: pattern: INV in SDCFQ1: out_Q_2
+27-16:10:30  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDCFQ1: sesi
+27-16:10:30  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDCFQ1: cross1
+27-16:10:30  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in SDCFQ1: cross1
+27-16:10:30  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDCFQ1: cross2
+27-16:10:30  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in SDCFQ1: cross2
+27-16:10:30  INFO: c153, (SDCFQ2, 42 devices), 42 devices
+27-16:10:30  INFO: -----    SDCFQ2:  scanff False False    SE
+27-16:10:30  INFO: 1. clock pattern: pattern: CLK1 in SDCFQ2: clk
+27-16:10:30  INFO: 2. inputs inv pattern: pattern: INV in SDCFQ2: ininv_RN_0
+27-16:10:30  INFO: 2. inputs inv pattern: pattern: INV in SDCFQ2: ininv_SE_0
+27-16:10:30  INFO: 3. output pattern: pattern: INV in SDCFQ2: out_Q
+27-16:10:30  INFO: 3. output pattern: pattern: INV in SDCFQ2: out_Q_2
+27-16:10:30  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDCFQ2: sesi
+27-16:10:30  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDCFQ2: cross1
+27-16:10:30  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in SDCFQ2: cross1
+27-16:10:31  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDCFQ2: cross2
+27-16:10:31  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in SDCFQ2: cross2
+27-16:10:31  INFO: c153, (SDCRB1, 44 devices), 44 devices
+27-16:10:31  INFO: -----    SDCRB1:  scanff False False    SE
+27-16:10:31  INFO: 1. clock pattern: pattern: CLK1 in SDCRB1: clk
+27-16:10:31  INFO: 2. inputs inv pattern: pattern: INV in SDCRB1: ininv_RN_0
+27-16:10:31  INFO: 2. inputs inv pattern: pattern: INV in SDCRB1: ininv_SE_0
+27-16:10:31  INFO: 3. output pattern: pattern: INV in SDCRB1: out_Q
+27-16:10:31  INFO: 3. output pattern: pattern: INV in SDCRB1: out_Q_2
+27-16:10:31  INFO: 3. output pattern: pattern: INV in SDCRB1: out_QN
+27-16:10:31  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDCRB1: sesi
+27-16:10:31  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDCRB1: cross1
+27-16:10:31  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in SDCRB1: cross1
+27-16:10:31  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDCRB1: cross2
+27-16:10:31  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in SDCRB1: cross2
+27-16:10:31  INFO: c153, (SDCRB2, 44 devices), 44 devices
+27-16:10:31  INFO: -----    SDCRB2:  scanff False False    SE
+27-16:10:31  INFO: 1. clock pattern: pattern: CLK1 in SDCRB2: clk
+27-16:10:31  INFO: 2. inputs inv pattern: pattern: INV in SDCRB2: ininv_RN_0
+27-16:10:31  INFO: 2. inputs inv pattern: pattern: INV in SDCRB2: ininv_SE_0
+27-16:10:31  INFO: 3. output pattern: pattern: INV in SDCRB2: out_Q
+27-16:10:31  INFO: 3. output pattern: pattern: INV in SDCRB2: out_Q_2
+27-16:10:31  INFO: 3. output pattern: pattern: INV in SDCRB2: out_QN
+27-16:10:31  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDCRB2: sesi
+27-16:10:31  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDCRB2: cross1
+27-16:10:31  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in SDCRB2: cross1
+27-16:10:31  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDCRB2: cross2
+27-16:10:31  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in SDCRB2: cross2
+27-16:10:31  INFO: c153, (SDCRN1, 40 devices), 40 devices
+27-16:10:31  INFO: -----    SDCRN1:  scanff False False    SE
+27-16:10:31  INFO: 1. clock pattern: pattern: CLK1 in SDCRN1: clk
+27-16:10:31  INFO: 2. inputs inv pattern: pattern: INV in SDCRN1: ininv_RN_0
+27-16:10:31  INFO: 2. inputs inv pattern: pattern: INV in SDCRN1: ininv_SE_0
+27-16:10:31  INFO: 3. output pattern: pattern: INV in SDCRN1: out_QN
+27-16:10:32  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDCRN1: sesi
+27-16:10:32  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDCRN1: cross1
+27-16:10:32  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in SDCRN1: cross1
+27-16:10:32  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDCRN1: cross2
+27-16:10:32  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in SDCRN1: cross2
+27-16:10:32  INFO: c153, (SDCRN2, 40 devices), 40 devices
+27-16:10:32  INFO: -----    SDCRN2:  scanff False False    SE
+27-16:10:32  INFO: 1. clock pattern: pattern: CLK1 in SDCRN2: clk
+27-16:10:32  INFO: 2. inputs inv pattern: pattern: INV in SDCRN2: ininv_RN_0
+27-16:10:32  INFO: 2. inputs inv pattern: pattern: INV in SDCRN2: ininv_SE_0
+27-16:10:32  INFO: 3. output pattern: pattern: INV in SDCRN2: out_QN
+27-16:10:32  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDCRN2: sesi
+27-16:10:32  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDCRN2: cross1
+27-16:10:32  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in SDCRN2: cross1
+27-16:10:32  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDCRN2: cross2
+27-16:10:32  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in SDCRN2: cross2
+27-16:10:32  INFO: c153, (SDCRQ1, 42 devices), 42 devices
+27-16:10:32  INFO: -----    SDCRQ1:  scanff False False    SE
+27-16:10:32  INFO: 1. clock pattern: pattern: CLK1 in SDCRQ1: clk
+27-16:10:32  INFO: 2. inputs inv pattern: pattern: INV in SDCRQ1: ininv_RN_0
+27-16:10:32  INFO: 2. inputs inv pattern: pattern: INV in SDCRQ1: ininv_SE_0
+27-16:10:32  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in SDCRQ1: out_Q
+27-16:10:33  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDCRQ1: sesi
+27-16:10:33  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDCRQ1: cross1
+27-16:10:33  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in SDCRQ1: cross1
+27-16:10:33  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDCRQ1: cross2
+27-16:10:33  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in SDCRQ1: cross2
+27-16:10:33  INFO: c153, (SDCRQ2, 42 devices), 42 devices
+27-16:10:33  INFO: -----    SDCRQ2:  scanff False False    SE
+27-16:10:33  INFO: 1. clock pattern: pattern: CLK1 in SDCRQ2: clk
+27-16:10:33  INFO: 2. inputs inv pattern: pattern: INV in SDCRQ2: ininv_RN_0
+27-16:10:33  INFO: 2. inputs inv pattern: pattern: INV in SDCRQ2: ininv_SE_0
+27-16:10:33  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in SDCRQ2: out_Q
+27-16:10:33  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDCRQ2: sesi
+27-16:10:33  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDCRQ2: cross1
+27-16:10:33  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in SDCRQ2: cross1
+27-16:10:33  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDCRQ2: cross2
+27-16:10:33  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in SDCRQ2: cross2
+27-16:10:33  INFO: c153, (SDNFB1, 36 devices), 36 devices
+27-16:10:33  INFO: -----    SDNFB1:  scanff False False    SE
+27-16:10:33  INFO: 1. clock pattern: pattern: CLK1 in SDNFB1: clk
+27-16:10:33  INFO: 2. inputs inv pattern: pattern: INV in SDNFB1: ininv_SE_0
+27-16:10:33  INFO: 3. output pattern: pattern: INV in SDNFB1: out_QN
+27-16:10:33  INFO: 3. output pattern: pattern: INV in SDNFB1: out_Q
+27-16:10:33  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDNFB1: sesi
+27-16:10:33  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDNFB1: cross1
+27-16:10:33  INFO: 5.2  back track 1 pattern: pattern: INV in SDNFB1: cross1
+27-16:10:33  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDNFB1: cross2
+27-16:10:33  INFO: 5.4  back track 2 pattern: pattern: INV in SDNFB1: cross2
+27-16:10:33  INFO: c153, (SDNFB2, 36 devices), 36 devices
+27-16:10:33  INFO: -----    SDNFB2:  scanff False False    SE
+27-16:10:33  INFO: 1. clock pattern: pattern: CLK1 in SDNFB2: clk
+27-16:10:34  INFO: 2. inputs inv pattern: pattern: INV in SDNFB2: ininv_SE_0
+27-16:10:34  INFO: 3. output pattern: pattern: INV in SDNFB2: out_QN
+27-16:10:34  INFO: 3. output pattern: pattern: INV in SDNFB2: out_Q
+27-16:10:34  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDNFB2: sesi
+27-16:10:34  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDNFB2: cross1
+27-16:10:34  INFO: 5.2  back track 1 pattern: pattern: INV in SDNFB2: cross1
+27-16:10:34  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDNFB2: cross2
+27-16:10:34  INFO: 5.4  back track 2 pattern: pattern: INV in SDNFB2: cross2
+27-16:10:34  INFO: c153, (SDNRB1, 36 devices), 36 devices
+27-16:10:34  INFO: -----    SDNRB1:  scanff False False    SE
+27-16:10:34  INFO: 1. clock pattern: pattern: CLK1 in SDNRB1: clk
+27-16:10:34  INFO: 2. inputs inv pattern: pattern: INV in SDNRB1: ininv_SE_0
+27-16:10:34  INFO: 3. output pattern: pattern: INV in SDNRB1: out_QN
+27-16:10:34  INFO: 3. output pattern: pattern: INV in SDNRB1: out_Q
+27-16:10:34  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDNRB1: sesi
+27-16:10:34  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDNRB1: cross1
+27-16:10:34  INFO: 5.2  back track 1 pattern: pattern: INV in SDNRB1: cross1
+27-16:10:34  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDNRB1: cross2
+27-16:10:34  INFO: 5.4  back track 2 pattern: pattern: INV in SDNRB1: cross2
+27-16:10:34  INFO: c153, (SDNRB2, 36 devices), 36 devices
+27-16:10:34  INFO: -----    SDNRB2:  scanff False False    SE
+27-16:10:34  INFO: 1. clock pattern: pattern: CLK1 in SDNRB2: clk
+27-16:10:34  INFO: 2. inputs inv pattern: pattern: INV in SDNRB2: ininv_SE_0
+27-16:10:34  INFO: 3. output pattern: pattern: INV in SDNRB2: out_QN
+27-16:10:34  INFO: 3. output pattern: pattern: INV in SDNRB2: out_Q
+27-16:10:34  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDNRB2: sesi
+27-16:10:34  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDNRB2: cross1
+27-16:10:34  INFO: 5.2  back track 1 pattern: pattern: INV in SDNRB2: cross1
+27-16:10:34  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDNRB2: cross2
+27-16:10:34  INFO: 5.4  back track 2 pattern: pattern: INV in SDNRB2: cross2
+27-16:10:34  INFO: c153, (SDNRN1, 34 devices), 34 devices
+27-16:10:34  INFO: -----    SDNRN1:  scanff False False    SE
+27-16:10:34  INFO: 1. clock pattern: pattern: CLK1 in SDNRN1: clk
+27-16:10:34  INFO: 2. inputs inv pattern: pattern: INV in SDNRN1: ininv_SE_0
+27-16:10:34  INFO: 3. output pattern: pattern: INV in SDNRN1: out_QN
+27-16:10:35  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDNRN1: sesi
+27-16:10:35  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDNRN1: cross1
+27-16:10:35  INFO: 5.2  back track 1 pattern: pattern: INV in SDNRN1: cross1
+27-16:10:35  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDNRN1: cross2
+27-16:10:35  INFO: 5.4  back track 2 pattern: pattern: INV in SDNRN1: cross2
+27-16:10:35  INFO: c153, (SDNRN2, 34 devices), 34 devices
+27-16:10:35  INFO: -----    SDNRN2:  scanff False False    SE
+27-16:10:35  INFO: 1. clock pattern: pattern: CLK1 in SDNRN2: clk
+27-16:10:35  INFO: 2. inputs inv pattern: pattern: INV in SDNRN2: ininv_SE_0
+27-16:10:35  INFO: 3. output pattern: pattern: INV in SDNRN2: out_QN
+27-16:10:35  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDNRN2: sesi
+27-16:10:35  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDNRN2: cross1
+27-16:10:35  INFO: 5.2  back track 1 pattern: pattern: INV in SDNRN2: cross1
+27-16:10:35  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDNRN2: cross2
+27-16:10:35  INFO: 5.4  back track 2 pattern: pattern: INV in SDNRN2: cross2
+27-16:10:35  INFO: c153, (SDNRQ1, 34 devices), 34 devices
+27-16:10:35  INFO: -----    SDNRQ1:  scanff False False    SE
+27-16:10:35  INFO: 1. clock pattern: pattern: CLK1 in SDNRQ1: clk
+27-16:10:35  INFO: 2. inputs inv pattern: pattern: INV in SDNRQ1: ininv_SE_0
+27-16:10:35  INFO: 3. output pattern: pattern: INV in SDNRQ1: out_Q
+27-16:10:35  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDNRQ1: sesi
+27-16:10:35  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDNRQ1: cross1
+27-16:10:35  INFO: 5.2  back track 1 pattern: pattern: INV in SDNRQ1: cross1
+27-16:10:35  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDNRQ1: cross2
+27-16:10:35  INFO: 5.4  back track 2 pattern: pattern: INV in SDNRQ1: cross2
+27-16:10:35  INFO: c153, (SDNRQ2, 34 devices), 34 devices
+27-16:10:35  INFO: -----    SDNRQ2:  scanff False False    SE
+27-16:10:35  INFO: 1. clock pattern: pattern: CLK1 in SDNRQ2: clk
+27-16:10:35  INFO: 2. inputs inv pattern: pattern: INV in SDNRQ2: ininv_SE_0
+27-16:10:35  INFO: 3. output pattern: pattern: INV in SDNRQ2: out_Q
+27-16:10:35  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDNRQ2: sesi
+27-16:10:35  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDNRQ2: cross1
+27-16:10:35  INFO: 5.2  back track 1 pattern: pattern: INV in SDNRQ2: cross1
+27-16:10:35  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDNRQ2: cross2
+27-16:10:35  INFO: 5.4  back track 2 pattern: pattern: INV in SDNRQ2: cross2
+27-16:10:35  INFO: c153, (SDPFB1, 42 devices), 42 devices
+27-16:10:35  INFO: -----    SDPFB1:  scanff False False    SE
+27-16:10:35  INFO: 1. clock pattern: pattern: CLK1 in SDPFB1: clk
+27-16:10:35  INFO: 2. inputs inv pattern: pattern: INV in SDPFB1: ininv_SE_0
+27-16:10:35  INFO: 3. output pattern: pattern: INV in SDPFB1: out_Q
+27-16:10:35  INFO: 3. output pattern: pattern: INV in SDPFB1: out_Q_2
+27-16:10:35  INFO: 3. output pattern: pattern: INV in SDPFB1: out_QN
+27-16:10:36  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDPFB1: sesi
+27-16:10:36  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDPFB1: cross1
+27-16:10:36  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDPFB1: cross1
+27-16:10:36  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDPFB1: cross2
+27-16:10:36  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NAND2 in SDPFB1: cross2
+27-16:10:36  INFO: c153, (SDPFB2, 42 devices), 42 devices
+27-16:10:36  INFO: -----    SDPFB2:  scanff False False    SE
+27-16:10:36  INFO: 1. clock pattern: pattern: CLK1 in SDPFB2: clk
+27-16:10:36  INFO: 2. inputs inv pattern: pattern: INV in SDPFB2: ininv_SE_0
+27-16:10:36  INFO: 3. output pattern: pattern: INV in SDPFB2: out_Q
+27-16:10:36  INFO: 3. output pattern: pattern: INV in SDPFB2: out_Q_2
+27-16:10:36  INFO: 3. output pattern: pattern: INV in SDPFB2: out_QN
+27-16:10:36  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDPFB2: sesi
+27-16:10:36  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDPFB2: cross1
+27-16:10:36  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDPFB2: cross1
+27-16:10:37  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDPFB2: cross2
+27-16:10:37  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NAND2 in SDPFB2: cross2
+27-16:10:37  INFO: c153, (SDPRB1, 42 devices), 42 devices
+27-16:10:37  INFO: -----    SDPRB1:  scanff False False    SE
+27-16:10:37  INFO: 1. clock pattern: pattern: CLK1 in SDPRB1: clk
+27-16:10:37  INFO: 2. inputs inv pattern: pattern: INV in SDPRB1: ininv_SE_0
+27-16:10:37  INFO: 3. output pattern: pattern: INV in SDPRB1: out_Q
+27-16:10:37  INFO: 3. output pattern: pattern: INV in SDPRB1: out_Q_2
+27-16:10:37  INFO: 3. output pattern: pattern: INV in SDPRB1: out_QN
+27-16:10:37  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDPRB1: sesi
+27-16:10:37  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDPRB1: cross1
+27-16:10:37  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDPRB1: cross1
+27-16:10:37  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDPRB1: cross2
+27-16:10:37  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NAND2 in SDPRB1: cross2
+27-16:10:37  INFO: c153, (SDPRB2, 42 devices), 42 devices
+27-16:10:37  INFO: -----    SDPRB2:  scanff False False    SE
+27-16:10:37  INFO: 1. clock pattern: pattern: CLK1 in SDPRB2: clk
+27-16:10:37  INFO: 2. inputs inv pattern: pattern: INV in SDPRB2: ininv_SE_0
+27-16:10:37  INFO: 3. output pattern: pattern: INV in SDPRB2: out_Q
+27-16:10:37  INFO: 3. output pattern: pattern: INV in SDPRB2: out_Q_2
+27-16:10:37  INFO: 3. output pattern: pattern: INV in SDPRB2: out_QN
+27-16:10:37  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDPRB2: sesi
+27-16:10:37  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDPRB2: cross1
+27-16:10:38  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDPRB2: cross1
+27-16:10:38  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDPRB2: cross2
+27-16:10:38  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NAND2 in SDPRB2: cross2
+27-16:10:38  INFO: c153, (SDPRQ1, 40 devices), 40 devices
+27-16:10:38  INFO: -----    SDPRQ1:  scanff False False    SE
+27-16:10:38  INFO: 1. clock pattern: pattern: CLK1 in SDPRQ1: clk
+27-16:10:38  INFO: 2. inputs inv pattern: pattern: INV in SDPRQ1: ininv_SE_0
+27-16:10:38  INFO: 3. output pattern: pattern: LOGIC2_NAND2 in SDPRQ1: out_Q
+27-16:10:38  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDPRQ1: sesi
+27-16:10:38  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDPRQ1: cross1
+27-16:10:38  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDPRQ1: cross1
+27-16:10:38  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDPRQ1: cross2
+27-16:10:38  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NAND2 in SDPRQ1: cross2
+27-16:10:38  INFO: c153, (SDPRQ2, 40 devices), 40 devices
+27-16:10:38  INFO: -----    SDPRQ2:  scanff False False    SE
+27-16:10:38  INFO: 1. clock pattern: pattern: CLK1 in SDPRQ2: clk
+27-16:10:38  INFO: 2. inputs inv pattern: pattern: INV in SDPRQ2: ininv_SE_0
+27-16:10:38  INFO: 3. output pattern: pattern: LOGIC2_NAND2 in SDPRQ2: out_Q
+27-16:10:39  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDPRQ2: sesi
+27-16:10:39  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDPRQ2: cross1
+27-16:10:39  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDPRQ2: cross1
+27-16:10:39  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDPRQ2: cross2
+27-16:10:39  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NAND2 in SDPRQ2: cross2
+27-16:10:39  INFO: c153, (LABHB1, 27 devices), 27 devices
+27-16:10:39  INFO: -----    LABHB1:   latch False False undef
+27-16:10:39  INFO: 1. clock pattern: pattern: CLK1 in LABHB1: clk
+27-16:10:39  INFO: 2. inputs inv pattern: pattern: INV in LABHB1: ininv_SN_0
+27-16:10:39  INFO: 3. output pattern: pattern: INV in LABHB1: out_QN
+27-16:10:39  INFO: 3. output pattern: pattern: INV in LABHB1: out_Q
+27-16:10:39  INFO: 5.1 cross1 pattern: pattern: FCROSS_5 in LABHB1: cross1
+27-16:10:39  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK2_3_2 in LABHB1: cross1
+27-16:10:39  INFO: c153, (LABHB2, 27 devices), 27 devices
+27-16:10:39  INFO: -----    LABHB2:   latch False False undef
+27-16:10:39  INFO: 1. clock pattern: pattern: CLK1 in LABHB2: clk
+27-16:10:39  INFO: 2. inputs inv pattern: pattern: INV in LABHB2: ininv_SN_0
+27-16:10:39  INFO: 3. output pattern: pattern: INV in LABHB2: out_QN
+27-16:10:39  INFO: 3. output pattern: pattern: INV in LABHB2: out_Q
+27-16:10:39  INFO: 5.1 cross1 pattern: pattern: FCROSS_5 in LABHB2: cross1
+27-16:10:39  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK2_3_2 in LABHB2: cross1
+27-16:10:39  INFO: c153, (LABLB1, 27 devices), 27 devices
+27-16:10:39  INFO: -----    LABLB1:   latch False False undef
+27-16:10:39  INFO: 1. clock pattern: pattern: CLK1 in LABLB1: clk
+27-16:10:39  INFO: 2. inputs inv pattern: pattern: INV in LABLB1: ininv_SN_0
+27-16:10:39  INFO: 3. output pattern: pattern: INV in LABLB1: out_QN
+27-16:10:39  INFO: 3. output pattern: pattern: INV in LABLB1: out_Q
+27-16:10:39  INFO: 5.1 cross1 pattern: pattern: FCROSS_5 in LABLB1: cross1
+27-16:10:39  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK2_3_2 in LABLB1: cross1
+27-16:10:39  INFO: c153, (LABLB2, 27 devices), 27 devices
+27-16:10:39  INFO: -----    LABLB2:   latch False False undef
+27-16:10:39  INFO: 1. clock pattern: pattern: CLK1 in LABLB2: clk
+27-16:10:39  INFO: 2. inputs inv pattern: pattern: INV in LABLB2: ininv_SN_0
+27-16:10:39  INFO: 3. output pattern: pattern: INV in LABLB2: out_QN
+27-16:10:39  INFO: 3. output pattern: pattern: INV in LABLB2: out_Q
+27-16:10:39  INFO: 5.1 cross1 pattern: pattern: FCROSS_5 in LABLB2: cross1
+27-16:10:39  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK2_3_2 in LABLB2: cross1
+27-16:10:39  INFO: c153, (LACHB1, 21 devices), 21 devices
+27-16:10:39  INFO: -----    LACHB1:   latch False False undef
+27-16:10:39  INFO: 1. clock pattern: pattern: CLK1 in LACHB1: clk
+27-16:10:39  INFO: 3. output pattern: pattern: INV in LACHB1: out_QN
+27-16:10:39  INFO: 3. output pattern: pattern: INV in LACHB1: out_Q

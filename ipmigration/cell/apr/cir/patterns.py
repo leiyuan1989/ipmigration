@@ -31,7 +31,11 @@ class Patterns:
         self.pattern_route_dict = {}
 
         self.clk_dict = {}
+        
         self.logic2_dict = {}
+        self.logic3_dict = {}
+        self.logic4_dict = {}
+        
         self.mux_dict = {}
         
         self.fcross_dict = {}
@@ -59,6 +63,10 @@ class Patterns:
                 self.clk_dict[k] = v
             if 'LOGIC2' in k:
                 self.logic2_dict[k] = v 
+            if 'LOGIC3' in k:
+                self.logic3_dict[k] = v  
+            if 'LOGIC4' in k:
+                self.logic4_dict[k] = v                  
             if 'MUX' in k:
                 self.mux_dict[k] = v           
             if 'FCROSS' in k:
