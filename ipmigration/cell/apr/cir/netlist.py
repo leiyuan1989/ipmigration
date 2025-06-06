@@ -104,6 +104,7 @@ class Netlist:
                 print('Warning: %s can not be processed!'%(name),pins,predict_types)
                 if DEBUG:
                     for ckt_type, ckt_clock in zip(CKT_TYPES,CKT_CLOCKS):
+                        print(pins,ckt_type,pin_map[(ckt_type,'all')].keys())
                         if pins <= set(pin_map[(ckt_type,'all')].keys()):
                             mapped_pins = [pin_map[(ckt_type,'all')][t] for t in pins]
                             predict_type = self._classify_ckt(mapped_pins,debug=True)
@@ -189,7 +190,7 @@ class Netlist:
     def extract_pins(model_cdl,netlist_cdl,output_dir):
         pdk_lib, ckts_dict = Netlist.load_netlist(model_cdl,netlist_cdl)
         pins = []
-        with open(os.path.join(output_dir,'pins_list.txt'),'w') as f:
+        with open(os.path.join(output_dir,'aux_pins_list.txt'),'w') as f:
             for k,v in ckts_dict.items():
                 line = '%-15s: '%(k)
                 for p in v.pins:
@@ -200,7 +201,7 @@ class Netlist:
                 line += '\n'
                 f.write(line)                
         
-        with open(os.path.join(output_dir,'pins_map_tp.csv'),'w') as f:     
+        with open(os.path.join(output_dir,'aux_pins_map_tp.csv'),'w') as f:     
             f.write('netlist_pin,ascell_pin\n')
             for p in pins:
                 f.write('%s,%s\n'%(p,p))

@@ -6,13 +6,13 @@
 import os
 import copy
 from ipmigration.cell.apr.cir.decompose import DeCKT
-from ipmigration.cell.apr.pr.pattern_placer import Placer
+from ipmigration.cell.apr.pr.pattern_apr import PatternAPR
 from ipmigration.cell.apr.utils.utils import concatenate_images
 from ipmigration.cell.apr.cir.patterns import PatternRouter,PatternDrawer
 from ipmigration.cell.apr.lyt.instance import M1_Rails,NPWELL
 
 class StdCell:
-    def __init__(self, ckt, tech, cfgs, patterns,route_db):
+    def __init__(self, ckt, tech, cfgs, patterns,route_db,aux_file,place_file):
         self.name = ckt.name
         self.ckt = ckt
         self.tech = tech
@@ -20,6 +20,10 @@ class StdCell:
         self.patterns= patterns
         self.route_path = []
         self.route_db = route_db
+        self.aux_file = aux_file
+        self.place_file = place_file
+        self.load_place = cfgs.load_place
+        
         
     def run(self,top_layout,db_layers):
         result,msg = self.global_pr()
@@ -47,12 +51,18 @@ class StdCell:
         self.de_ckt = DeCKT(self.ckt, 
                             self.patterns, 
                             self.tech.tech_name, 
-                            self.cfgs.output_dir)
+                            self.cfgs.output_dir,
+                            self.aux_file)
         #decompose
         result = self.de_ckt.run()
                 
         if result:  
-            # print(self.de_ckt.sub_ckts.keys())  
+            
+            self.apr = PatternAPR(self.ckt, self.de_ckt.sub_ckts,self.place_file,self.load_place)
+            self.apr.place()
+            self.apr.route()
+            # queue = pat_placer.find_opt_perm(self.ckt.ckt_type)
+
             
             
             return 1, "Success"

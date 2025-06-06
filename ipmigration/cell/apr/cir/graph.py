@@ -673,6 +673,28 @@ class PatternGraph(nx.Graph):
 
 
 
+# class PlaceGraph(nx.Graph):
+#     def __init__(self, placement):
+#         super().__init__()
+#         for device in devices:
+#             self._add_to_graph(device)    
+    
+#     def gen_graph(self):
+        
+        
+    
+    
+#     def _add_to_graph(self, device):
+#         self.add_edge(device.name+':D', device.name+':G') 
+#         self.add_edge(device.name+':G', device.name+':S') 
+        
+#         self.add_edge(device.name+':D', device.D)
+#         self.add_edge(device.name+':S', device.S)
+
+
+
+
+
 
 
 

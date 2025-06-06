@@ -1,0 +1,1354 @@
+30-16:27:37  INFO: logging file is: ./demo/cell_apr/outputs/s110\LOG_05_30_16_27.txt
+30-16:27:37  INFO: ************Create Cell Apr: s110 Logger************
+30-16:27:37  INFO: tech->layers: ['NW', 'AA', 'GT', 'SP', 'SN', 'CT', 'M1', 'V1', 'M2', 'BORDER', 'M1TXT', 'SUBTXT']
+30-16:27:37  INFO: tech->rules: [GT_W : 130 nm, GT_S : 180 nm, GT_S_LAA_GT : 70 nm, GT_S_LGT_AA : 70 nm, GT_X_AA : 170 nm, AA_X_GT : 230 nm, AA_S : 210 nm, SP_X_AA : 160 nm, SN_X_AA : 160 nm, CT_W : 160 nm, CT_S : 180 nm, CT_S_AA : 120 nm, CT_S_GT : 110 nm, CT_E_NP : 60 nm, CT_E_AA : 60 nm, CT_E_GT : 60 nm, CT_E_M1 : 0 nm, CT_E_M1_END : 50 nm, M1_W : 160 nm, M1_S : 170 nm, M2_W : 200 nm, M2_S : 210 nm]
+30-16:27:37  INFO: tech->Load tech files of tech:s110 sucessfully
+30-16:27:39  INFO: ascell-> Begin processing techs110 @ Fri May 30 16:27:39 2025
+30-16:27:39  INFO: s110, (DFFHQNX1MTR, 29 devices), 29 devices
+30-16:27:39  INFO: -----DFFHQNX1MTR:      ff False False undef
+30-16:27:39  INFO: 1. clock pattern: pattern: CLK2 in DFFHQNX1MTR: clk
+30-16:27:39  INFO: 2. inputs inv pattern: pattern: INV in DFFHQNX1MTR: ininv_D_0
+30-16:27:39  INFO: 3. output pattern: pattern: INV in DFFHQNX1MTR: out_QN
+30-16:27:39  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFHQNX1MTR: cross1
+30-16:27:39  INFO: 5.2  back track 1 pattern: pattern: INV in DFFHQNX1MTR: cross1
+30-16:27:39  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFHQNX1MTR: cross2
+30-16:27:39  INFO: 5.4  back track 2 pattern: pattern: INV in DFFHQNX1MTR: cross2
+30-16:27:39  INFO: s110, (DFFHQNX2MTR, 29 devices), 29 devices
+30-16:27:39  INFO: -----DFFHQNX2MTR:      ff False False undef
+30-16:27:39  INFO: 1. clock pattern: pattern: CLK2 in DFFHQNX2MTR: clk
+30-16:27:39  INFO: 2. inputs inv pattern: pattern: INV in DFFHQNX2MTR: ininv_D_0
+30-16:27:39  INFO: 3. output pattern: pattern: INV in DFFHQNX2MTR: out_QN
+30-16:27:39  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFHQNX2MTR: cross1
+30-16:27:39  INFO: 5.2  back track 1 pattern: pattern: INV in DFFHQNX2MTR: cross1
+30-16:27:39  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFHQNX2MTR: cross2
+30-16:27:39  INFO: 5.4  back track 2 pattern: pattern: INV in DFFHQNX2MTR: cross2
+30-16:27:39  INFO: s110, (DFFHQNX4MTR, 29 devices), 29 devices
+30-16:27:39  INFO: -----DFFHQNX4MTR:      ff False False undef
+30-16:27:39  INFO: 1. clock pattern: pattern: CLK2 in DFFHQNX4MTR: clk
+30-16:27:39  INFO: 2. inputs inv pattern: pattern: INV in DFFHQNX4MTR: ininv_D_0
+30-16:27:39  INFO: 3. output pattern: pattern: INV in DFFHQNX4MTR: out_QN
+30-16:27:39  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFHQNX4MTR: cross1
+30-16:27:39  INFO: 5.2  back track 1 pattern: pattern: INV in DFFHQNX4MTR: cross1
+30-16:27:39  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFHQNX4MTR: cross2
+30-16:27:39  INFO: 5.4  back track 2 pattern: pattern: INV in DFFHQNX4MTR: cross2
+30-16:27:39  INFO: s110, (DFFHQNX8MTR, 29 devices), 29 devices
+30-16:27:39  INFO: -----DFFHQNX8MTR:      ff False False undef
+30-16:27:39  INFO: 1. clock pattern: pattern: CLK2 in DFFHQNX8MTR: clk
+30-16:27:39  INFO: 2. inputs inv pattern: pattern: INV in DFFHQNX8MTR: ininv_D_0
+30-16:27:39  INFO: 3. output pattern: pattern: INV in DFFHQNX8MTR: out_QN
+30-16:27:39  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFHQNX8MTR: cross1
+30-16:27:39  INFO: 5.2  back track 1 pattern: pattern: INV in DFFHQNX8MTR: cross1
+30-16:27:39  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFHQNX8MTR: cross2
+30-16:27:39  INFO: 5.4  back track 2 pattern: pattern: INV in DFFHQNX8MTR: cross2
+30-16:27:39  INFO: s110, (DFFHQX1MTR, 29 devices), 29 devices
+30-16:27:39  INFO: -----DFFHQX1MTR:      ff False False undef
+30-16:27:39  INFO: 1. clock pattern: pattern: CLK2 in DFFHQX1MTR: clk
+30-16:27:39  INFO: 2. inputs inv pattern: pattern: INV in DFFHQX1MTR: ininv_D_0
+30-16:27:39  INFO: 3. output pattern: pattern: INV in DFFHQX1MTR: out_Q
+30-16:27:39  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFHQX1MTR: cross1
+30-16:27:39  INFO: 5.2  back track 1 pattern: pattern: INV in DFFHQX1MTR: cross1
+30-16:27:39  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFHQX1MTR: cross2
+30-16:27:39  INFO: 5.4  back track 2 pattern: pattern: INV in DFFHQX1MTR: cross2
+30-16:27:39  INFO: s110, (DFFHQX2MTR, 29 devices), 29 devices
+30-16:27:39  INFO: -----DFFHQX2MTR:      ff False False undef
+30-16:27:39  INFO: 1. clock pattern: pattern: CLK2 in DFFHQX2MTR: clk
+30-16:27:39  INFO: 2. inputs inv pattern: pattern: INV in DFFHQX2MTR: ininv_D_0
+30-16:27:39  INFO: 3. output pattern: pattern: INV in DFFHQX2MTR: out_Q
+30-16:27:39  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFHQX2MTR: cross1
+30-16:27:39  INFO: 5.2  back track 1 pattern: pattern: INV in DFFHQX2MTR: cross1
+30-16:27:39  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFHQX2MTR: cross2
+30-16:27:39  INFO: 5.4  back track 2 pattern: pattern: INV in DFFHQX2MTR: cross2
+30-16:27:39  INFO: s110, (DFFHQX4MTR, 29 devices), 29 devices
+30-16:27:39  INFO: -----DFFHQX4MTR:      ff False False undef
+30-16:27:39  INFO: 1. clock pattern: pattern: CLK2 in DFFHQX4MTR: clk
+30-16:27:39  INFO: 2. inputs inv pattern: pattern: INV in DFFHQX4MTR: ininv_D_0
+30-16:27:39  INFO: 3. output pattern: pattern: INV in DFFHQX4MTR: out_Q
+30-16:27:39  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFHQX4MTR: cross1
+30-16:27:39  INFO: 5.2  back track 1 pattern: pattern: INV in DFFHQX4MTR: cross1
+30-16:27:39  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFHQX4MTR: cross2
+30-16:27:39  INFO: 5.4  back track 2 pattern: pattern: INV in DFFHQX4MTR: cross2
+30-16:27:39  INFO: s110, (DFFHQX8MTR, 29 devices), 29 devices
+30-16:27:39  INFO: -----DFFHQX8MTR:      ff False False undef
+30-16:27:39  INFO: 1. clock pattern: pattern: CLK2 in DFFHQX8MTR: clk
+30-16:27:39  INFO: 2. inputs inv pattern: pattern: INV in DFFHQX8MTR: ininv_D_0
+30-16:27:39  INFO: 3. output pattern: pattern: INV in DFFHQX8MTR: out_Q
+30-16:27:40  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFHQX8MTR: cross1
+30-16:27:40  INFO: 5.2  back track 1 pattern: pattern: INV in DFFHQX8MTR: cross1
+30-16:27:40  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFHQX8MTR: cross2
+30-16:27:40  INFO: 5.4  back track 2 pattern: pattern: INV in DFFHQX8MTR: cross2
+30-16:27:40  INFO: s110, (DFFHX1MTR, 31 devices), 31 devices
+30-16:27:40  INFO: ----- DFFHX1MTR:      ff False False undef
+30-16:27:40  INFO: 1. clock pattern: pattern: CLK2 in DFFHX1MTR: clk
+30-16:27:40  INFO: 2. inputs inv pattern: pattern: INV in DFFHX1MTR: ininv_D_0
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFHX1MTR: out_Q
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFHX1MTR: out_QN
+30-16:27:40  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFHX1MTR: cross1
+30-16:27:40  INFO: 5.2  back track 1 pattern: pattern: INV in DFFHX1MTR: cross1
+30-16:27:40  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFHX1MTR: cross2
+30-16:27:40  INFO: 5.4  back track 2 pattern: pattern: INV in DFFHX1MTR: cross2
+30-16:27:40  INFO: s110, (DFFHX2MTR, 31 devices), 31 devices
+30-16:27:40  INFO: ----- DFFHX2MTR:      ff False False undef
+30-16:27:40  INFO: 1. clock pattern: pattern: CLK2 in DFFHX2MTR: clk
+30-16:27:40  INFO: 2. inputs inv pattern: pattern: INV in DFFHX2MTR: ininv_D_0
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFHX2MTR: out_Q
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFHX2MTR: out_QN
+30-16:27:40  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFHX2MTR: cross1
+30-16:27:40  INFO: 5.2  back track 1 pattern: pattern: INV in DFFHX2MTR: cross1
+30-16:27:40  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFHX2MTR: cross2
+30-16:27:40  INFO: 5.4  back track 2 pattern: pattern: INV in DFFHX2MTR: cross2
+30-16:27:40  INFO: s110, (DFFHX4MTR, 31 devices), 31 devices
+30-16:27:40  INFO: ----- DFFHX4MTR:      ff False False undef
+30-16:27:40  INFO: 1. clock pattern: pattern: CLK2 in DFFHX4MTR: clk
+30-16:27:40  INFO: 2. inputs inv pattern: pattern: INV in DFFHX4MTR: ininv_D_0
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFHX4MTR: out_Q
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFHX4MTR: out_QN
+30-16:27:40  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFHX4MTR: cross1
+30-16:27:40  INFO: 5.2  back track 1 pattern: pattern: INV in DFFHX4MTR: cross1
+30-16:27:40  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFHX4MTR: cross2
+30-16:27:40  INFO: 5.4  back track 2 pattern: pattern: INV in DFFHX4MTR: cross2
+30-16:27:40  INFO: s110, (DFFHX8MTR, 31 devices), 31 devices
+30-16:27:40  INFO: ----- DFFHX8MTR:      ff False False undef
+30-16:27:40  INFO: 1. clock pattern: pattern: CLK2 in DFFHX8MTR: clk
+30-16:27:40  INFO: 2. inputs inv pattern: pattern: INV in DFFHX8MTR: ininv_D_0
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFHX8MTR: out_Q
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFHX8MTR: out_QN
+30-16:27:40  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFHX8MTR: cross1
+30-16:27:40  INFO: 5.2  back track 1 pattern: pattern: INV in DFFHX8MTR: cross1
+30-16:27:40  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFHX8MTR: cross2
+30-16:27:40  INFO: 5.4  back track 2 pattern: pattern: INV in DFFHX8MTR: cross2
+30-16:27:40  INFO: s110, (DFFNHX1MTR, 31 devices), 31 devices
+30-16:27:40  INFO: -----DFFNHX1MTR:      ff False False undef
+30-16:27:40  INFO: 1. clock pattern: pattern: CLK2 in DFFNHX1MTR: clk
+30-16:27:40  INFO: 2. inputs inv pattern: pattern: INV in DFFNHX1MTR: ininv_D_0
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFNHX1MTR: out_Q
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFNHX1MTR: out_QN
+30-16:27:40  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFNHX1MTR: cross1
+30-16:27:40  INFO: 5.2  back track 1 pattern: pattern: INV in DFFNHX1MTR: cross1
+30-16:27:40  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFNHX1MTR: cross2
+30-16:27:40  INFO: 5.4  back track 2 pattern: pattern: INV in DFFNHX1MTR: cross2
+30-16:27:40  INFO: s110, (DFFNHX2MTR, 31 devices), 31 devices
+30-16:27:40  INFO: -----DFFNHX2MTR:      ff False False undef
+30-16:27:40  INFO: 1. clock pattern: pattern: CLK2 in DFFNHX2MTR: clk
+30-16:27:40  INFO: 2. inputs inv pattern: pattern: INV in DFFNHX2MTR: ininv_D_0
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFNHX2MTR: out_Q
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFNHX2MTR: out_QN
+30-16:27:40  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFNHX2MTR: cross1
+30-16:27:40  INFO: 5.2  back track 1 pattern: pattern: INV in DFFNHX2MTR: cross1
+30-16:27:40  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFNHX2MTR: cross2
+30-16:27:40  INFO: 5.4  back track 2 pattern: pattern: INV in DFFNHX2MTR: cross2
+30-16:27:40  INFO: s110, (DFFNHX4MTR, 31 devices), 31 devices
+30-16:27:40  INFO: -----DFFNHX4MTR:      ff False False undef
+30-16:27:40  INFO: 1. clock pattern: pattern: CLK2 in DFFNHX4MTR: clk
+30-16:27:40  INFO: 2. inputs inv pattern: pattern: INV in DFFNHX4MTR: ininv_D_0
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFNHX4MTR: out_Q
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFNHX4MTR: out_QN
+30-16:27:40  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFNHX4MTR: cross1
+30-16:27:40  INFO: 5.2  back track 1 pattern: pattern: INV in DFFNHX4MTR: cross1
+30-16:27:40  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFNHX4MTR: cross2
+30-16:27:40  INFO: 5.4  back track 2 pattern: pattern: INV in DFFNHX4MTR: cross2
+30-16:27:40  INFO: s110, (DFFNHX8MTR, 31 devices), 31 devices
+30-16:27:40  INFO: -----DFFNHX8MTR:      ff False False undef
+30-16:27:40  INFO: 1. clock pattern: pattern: CLK2 in DFFNHX8MTR: clk
+30-16:27:40  INFO: 2. inputs inv pattern: pattern: INV in DFFNHX8MTR: ininv_D_0
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFNHX8MTR: out_Q
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFNHX8MTR: out_QN
+30-16:27:40  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFNHX8MTR: cross1
+30-16:27:40  INFO: 5.2  back track 1 pattern: pattern: INV in DFFNHX8MTR: cross1
+30-16:27:40  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in DFFNHX8MTR: cross2
+30-16:27:40  INFO: 5.4  back track 2 pattern: pattern: INV in DFFNHX8MTR: cross2
+30-16:27:40  INFO: s110, (DFFNSRHX1MTR, 44 devices), 44 devices
+30-16:27:40  INFO: -----DFFNSRHX1MTR:      ff False False undef
+30-16:27:40  INFO: 1. clock pattern: pattern: CLK2 in DFFNSRHX1MTR: clk
+30-16:27:40  INFO: 2. inputs inv pattern: pattern: INV in DFFNSRHX1MTR: ininv_D_0
+30-16:27:40  INFO: 2. inputs inv pattern: pattern: INV in DFFNSRHX1MTR: ininv_SN_0
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFNSRHX1MTR: out_Q
+30-16:27:40  INFO: 3. output pattern: pattern: INV in DFFNSRHX1MTR: out_QN
+30-16:27:41  INFO: 5.1 cross1 pattern: pattern: PRSCROSS_1 in DFFNSRHX1MTR: cross1
+30-16:27:41  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1_2 in DFFNSRHX1MTR: cross1
+30-16:27:41  INFO: s110, (DFFNSRHX2MTR, 44 devices), 44 devices
+30-16:27:41  INFO: -----DFFNSRHX2MTR:      ff False False undef
+30-16:27:41  INFO: 1. clock pattern: pattern: CLK2 in DFFNSRHX2MTR: clk
+30-16:27:41  INFO: 2. inputs inv pattern: pattern: INV in DFFNSRHX2MTR: ininv_D_0
+30-16:27:41  INFO: 2. inputs inv pattern: pattern: INV in DFFNSRHX2MTR: ininv_SN_0
+30-16:27:41  INFO: 3. output pattern: pattern: INV in DFFNSRHX2MTR: out_Q
+30-16:27:41  INFO: 3. output pattern: pattern: INV in DFFNSRHX2MTR: out_QN
+30-16:27:42  INFO: 5.1 cross1 pattern: pattern: PRSCROSS_1 in DFFNSRHX2MTR: cross1
+30-16:27:42  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1_2 in DFFNSRHX2MTR: cross1
+30-16:27:42  INFO: s110, (DFFNSRHX4MTR, 44 devices), 44 devices
+30-16:27:42  INFO: -----DFFNSRHX4MTR:      ff False False undef
+30-16:27:42  INFO: 1. clock pattern: pattern: CLK2 in DFFNSRHX4MTR: clk
+30-16:27:42  INFO: 2. inputs inv pattern: pattern: INV in DFFNSRHX4MTR: ininv_D_0
+30-16:27:42  INFO: 2. inputs inv pattern: pattern: INV in DFFNSRHX4MTR: ininv_SN_0
+30-16:27:42  INFO: 3. output pattern: pattern: INV in DFFNSRHX4MTR: out_Q
+30-16:27:42  INFO: 3. output pattern: pattern: INV in DFFNSRHX4MTR: out_QN
+30-16:27:42  INFO: 5.1 cross1 pattern: pattern: PRSCROSS_1 in DFFNSRHX4MTR: cross1
+30-16:27:42  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1_2 in DFFNSRHX4MTR: cross1
+30-16:27:43  INFO: s110, (DFFNSRHX8MTR, 44 devices), 44 devices
+30-16:27:43  INFO: -----DFFNSRHX8MTR:      ff False False undef
+30-16:27:43  INFO: 1. clock pattern: pattern: CLK2 in DFFNSRHX8MTR: clk
+30-16:27:43  INFO: 2. inputs inv pattern: pattern: INV in DFFNSRHX8MTR: ininv_D_0
+30-16:27:43  INFO: 2. inputs inv pattern: pattern: INV in DFFNSRHX8MTR: ininv_SN_0
+30-16:27:43  INFO: 3. output pattern: pattern: INV in DFFNSRHX8MTR: out_Q
+30-16:27:43  INFO: 3. output pattern: pattern: INV in DFFNSRHX8MTR: out_QN
+30-16:27:43  INFO: 5.1 cross1 pattern: pattern: PRSCROSS_1 in DFFNSRHX8MTR: cross1
+30-16:27:43  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1_2 in DFFNSRHX8MTR: cross1
+30-16:27:43  INFO: s110, (DFFQNX1MTR, 26 devices), 26 devices
+30-16:27:43  INFO: -----DFFQNX1MTR:      ff False False undef
+30-16:27:43  INFO: 1. clock pattern: pattern: CLK1 in DFFQNX1MTR: clk
+30-16:27:43  INFO: 3. output pattern: pattern: INV in DFFQNX1MTR: out_QN
+30-16:27:43  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFQNX1MTR: cross1
+30-16:27:43  INFO: 5.2  back track 1 pattern: pattern: INV in DFFQNX1MTR: cross1
+30-16:27:43  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFFQNX1MTR: cross2
+30-16:27:43  INFO: 5.4  back track 2 pattern: pattern: INV in DFFQNX1MTR: cross2
+30-16:27:43  INFO: s110, (DFFQNX2MTR, 26 devices), 26 devices
+30-16:27:43  INFO: -----DFFQNX2MTR:      ff False False undef
+30-16:27:43  INFO: 1. clock pattern: pattern: CLK1 in DFFQNX2MTR: clk
+30-16:27:43  INFO: 3. output pattern: pattern: INV in DFFQNX2MTR: out_QN
+30-16:27:43  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFQNX2MTR: cross1
+30-16:27:43  INFO: 5.2  back track 1 pattern: pattern: INV in DFFQNX2MTR: cross1
+30-16:27:44  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFFQNX2MTR: cross2
+30-16:27:44  INFO: 5.4  back track 2 pattern: pattern: INV in DFFQNX2MTR: cross2
+30-16:27:44  INFO: s110, (DFFQNX4MTR, 26 devices), 26 devices
+30-16:27:44  INFO: -----DFFQNX4MTR:      ff False False undef
+30-16:27:44  INFO: 1. clock pattern: pattern: CLK1 in DFFQNX4MTR: clk
+30-16:27:44  INFO: 3. output pattern: pattern: INV in DFFQNX4MTR: out_QN
+30-16:27:44  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFQNX4MTR: cross1
+30-16:27:44  INFO: 5.2  back track 1 pattern: pattern: INV in DFFQNX4MTR: cross1
+30-16:27:44  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFFQNX4MTR: cross2
+30-16:27:44  INFO: 5.4  back track 2 pattern: pattern: INV in DFFQNX4MTR: cross2
+30-16:27:44  INFO: s110, (DFFQX1MTR, 26 devices), 26 devices
+30-16:27:44  INFO: ----- DFFQX1MTR:      ff False False undef
+30-16:27:44  INFO: 1. clock pattern: pattern: CLK1 in DFFQX1MTR: clk
+30-16:27:44  INFO: 3. output pattern: pattern: INV in DFFQX1MTR: out_Q
+30-16:27:44  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFQX1MTR: cross1
+30-16:27:44  INFO: 5.2  back track 1 pattern: pattern: INV in DFFQX1MTR: cross1
+30-16:27:44  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFFQX1MTR: cross2
+30-16:27:44  INFO: 5.4  back track 2 pattern: pattern: INV in DFFQX1MTR: cross2
+30-16:27:44  INFO: s110, (DFFQX2MTR, 26 devices), 26 devices
+30-16:27:44  INFO: ----- DFFQX2MTR:      ff False False undef
+30-16:27:44  INFO: 1. clock pattern: pattern: CLK1 in DFFQX2MTR: clk
+30-16:27:44  INFO: 3. output pattern: pattern: INV in DFFQX2MTR: out_Q
+30-16:27:44  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFQX2MTR: cross1
+30-16:27:44  INFO: 5.2  back track 1 pattern: pattern: INV in DFFQX2MTR: cross1
+30-16:27:44  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFFQX2MTR: cross2
+30-16:27:44  INFO: 5.4  back track 2 pattern: pattern: INV in DFFQX2MTR: cross2
+30-16:27:44  INFO: s110, (DFFQX4MTR, 26 devices), 26 devices
+30-16:27:44  INFO: ----- DFFQX4MTR:      ff False False undef
+30-16:27:44  INFO: 1. clock pattern: pattern: CLK1 in DFFQX4MTR: clk
+30-16:27:44  INFO: 3. output pattern: pattern: INV in DFFQX4MTR: out_Q
+30-16:27:44  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFQX4MTR: cross1
+30-16:27:44  INFO: 5.2  back track 1 pattern: pattern: INV in DFFQX4MTR: cross1
+30-16:27:45  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFFQX4MTR: cross2
+30-16:27:45  INFO: 5.4  back track 2 pattern: pattern: INV in DFFQX4MTR: cross2
+30-16:27:45  INFO: s110, (DFFRHQX1MTR, 33 devices), 33 devices
+30-16:27:45  INFO: -----DFFRHQX1MTR:      ff False False undef
+30-16:27:45  INFO: 1. clock pattern: pattern: CLK2 in DFFRHQX1MTR: clk
+30-16:27:45  INFO: 2. inputs inv pattern: pattern: INV in DFFRHQX1MTR: ininv_D_0
+30-16:27:45  INFO: 3. output pattern: pattern: INV in DFFRHQX1MTR: out_Q
+30-16:27:45  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFRHQX1MTR: cross1
+30-16:27:45  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFFRHQX1MTR: cross1
+30-16:27:45  INFO: s110, (DFFRHQX2MTR, 33 devices), 33 devices
+30-16:27:45  INFO: -----DFFRHQX2MTR:      ff False False undef
+30-16:27:45  INFO: 1. clock pattern: pattern: CLK2 in DFFRHQX2MTR: clk
+30-16:27:45  INFO: 2. inputs inv pattern: pattern: INV in DFFRHQX2MTR: ininv_D_0
+30-16:27:45  INFO: 3. output pattern: pattern: INV in DFFRHQX2MTR: out_Q
+30-16:27:45  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFRHQX2MTR: cross1
+30-16:27:45  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFFRHQX2MTR: cross1
+30-16:27:45  INFO: s110, (DFFRHQX4MTR, 33 devices), 33 devices
+30-16:27:45  INFO: -----DFFRHQX4MTR:      ff False False undef
+30-16:27:45  INFO: 1. clock pattern: pattern: CLK2 in DFFRHQX4MTR: clk
+30-16:27:45  INFO: 2. inputs inv pattern: pattern: INV in DFFRHQX4MTR: ininv_D_0
+30-16:27:45  INFO: 3. output pattern: pattern: INV in DFFRHQX4MTR: out_Q
+30-16:27:45  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFRHQX4MTR: cross1
+30-16:27:45  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFFRHQX4MTR: cross1
+30-16:27:46  INFO: s110, (DFFRHQX8MTR, 33 devices), 33 devices
+30-16:27:46  INFO: -----DFFRHQX8MTR:      ff False False undef
+30-16:27:46  INFO: 1. clock pattern: pattern: CLK2 in DFFRHQX8MTR: clk
+30-16:27:46  INFO: 2. inputs inv pattern: pattern: INV in DFFRHQX8MTR: ininv_D_0
+30-16:27:46  INFO: 3. output pattern: pattern: INV in DFFRHQX8MTR: out_Q
+30-16:27:46  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in DFFRHQX8MTR: cross1
+30-16:27:46  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFFRHQX8MTR: cross1
+30-16:27:46  INFO: s110, (DFFRQX1MTR, 29 devices), 29 devices
+30-16:27:46  INFO: -----DFFRQX1MTR:      ff False False undef
+30-16:27:46  INFO: 1. clock pattern: pattern: CLK1 in DFFRQX1MTR: clk
+30-16:27:46  INFO: 3. output pattern: pattern: INV in DFFRQX1MTR: out_Q
+30-16:27:46  INFO: s110, (DFFRQX2MTR, 29 devices), 29 devices
+30-16:27:46  INFO: -----DFFRQX2MTR:      ff False False undef
+30-16:27:46  INFO: 1. clock pattern: pattern: CLK1 in DFFRQX2MTR: clk
+30-16:27:46  INFO: 3. output pattern: pattern: INV in DFFRQX2MTR: out_Q
+30-16:27:47  INFO: s110, (DFFRQX4MTR, 29 devices), 29 devices
+30-16:27:47  INFO: -----DFFRQX4MTR:      ff False False undef
+30-16:27:47  INFO: 1. clock pattern: pattern: CLK1 in DFFRQX4MTR: clk
+30-16:27:47  INFO: 3. output pattern: pattern: INV in DFFRQX4MTR: out_Q
+30-16:27:47  INFO: s110, (DFFRX1MTR, 31 devices), 31 devices
+30-16:27:47  INFO: ----- DFFRX1MTR:      ff False False undef
+30-16:27:47  INFO: 1. clock pattern: pattern: CLK1 in DFFRX1MTR: clk
+30-16:27:47  INFO: 3. output pattern: pattern: INV in DFFRX1MTR: out_Q
+30-16:27:47  INFO: 3. output pattern: pattern: INV in DFFRX1MTR: out_QN
+30-16:27:48  INFO: s110, (DFFRX2MTR, 31 devices), 31 devices
+30-16:27:48  INFO: ----- DFFRX2MTR:      ff False False undef
+30-16:27:48  INFO: 1. clock pattern: pattern: CLK1 in DFFRX2MTR: clk
+30-16:27:48  INFO: 3. output pattern: pattern: INV in DFFRX2MTR: out_Q
+30-16:27:48  INFO: 3. output pattern: pattern: INV in DFFRX2MTR: out_QN
+30-16:27:48  INFO: s110, (DFFRX4MTR, 31 devices), 31 devices
+30-16:27:48  INFO: ----- DFFRX4MTR:      ff False False undef
+30-16:27:48  INFO: 1. clock pattern: pattern: CLK1 in DFFRX4MTR: clk
+30-16:27:48  INFO: 3. output pattern: pattern: INV in DFFRX4MTR: out_Q
+30-16:27:48  INFO: 3. output pattern: pattern: INV in DFFRX4MTR: out_QN
+30-16:27:48  INFO: s110, (DFFSHQX1MTR, 35 devices), 35 devices
+30-16:27:48  INFO: -----DFFSHQX1MTR:      ff False False undef
+30-16:27:48  INFO: 1. clock pattern: pattern: CLK2 in DFFSHQX1MTR: clk
+30-16:27:48  INFO: 2. inputs inv pattern: pattern: INV in DFFSHQX1MTR: ininv_D_0
+30-16:27:48  INFO: 2. inputs inv pattern: pattern: INV in DFFSHQX1MTR: ininv_SN_0
+30-16:27:48  INFO: 3. output pattern: pattern: INV in DFFSHQX1MTR: out_Q
+30-16:27:49  INFO: s110, (DFFSHQX2MTR, 35 devices), 35 devices
+30-16:27:49  INFO: -----DFFSHQX2MTR:      ff False False undef
+30-16:27:49  INFO: 1. clock pattern: pattern: CLK2 in DFFSHQX2MTR: clk
+30-16:27:49  INFO: 2. inputs inv pattern: pattern: INV in DFFSHQX2MTR: ininv_D_0
+30-16:27:49  INFO: 2. inputs inv pattern: pattern: INV in DFFSHQX2MTR: ininv_SN_0
+30-16:27:49  INFO: 3. output pattern: pattern: INV in DFFSHQX2MTR: out_Q
+30-16:27:49  INFO: s110, (DFFSHQX4MTR, 35 devices), 35 devices
+30-16:27:49  INFO: -----DFFSHQX4MTR:      ff False False undef
+30-16:27:49  INFO: 1. clock pattern: pattern: CLK2 in DFFSHQX4MTR: clk
+30-16:27:49  INFO: 2. inputs inv pattern: pattern: INV in DFFSHQX4MTR: ininv_D_0
+30-16:27:49  INFO: 2. inputs inv pattern: pattern: INV in DFFSHQX4MTR: ininv_SN_0
+30-16:27:49  INFO: 3. output pattern: pattern: INV in DFFSHQX4MTR: out_Q
+30-16:27:49  INFO: s110, (DFFSHQX8MTR, 35 devices), 35 devices
+30-16:27:49  INFO: -----DFFSHQX8MTR:      ff False False undef
+30-16:27:49  INFO: 1. clock pattern: pattern: CLK2 in DFFSHQX8MTR: clk
+30-16:27:49  INFO: 2. inputs inv pattern: pattern: INV in DFFSHQX8MTR: ininv_D_0
+30-16:27:49  INFO: 2. inputs inv pattern: pattern: INV in DFFSHQX8MTR: ininv_SN_0
+30-16:27:49  INFO: 3. output pattern: pattern: INV in DFFSHQX8MTR: out_Q
+30-16:27:49  INFO: s110, (DFFSQX1MTR, 27 devices), 27 devices
+30-16:27:49  INFO: -----DFFSQX1MTR:      ff False False undef
+30-16:27:49  INFO: 1. clock pattern: pattern: CLK1 in DFFSQX1MTR: clk
+30-16:27:49  INFO: 3. output pattern: pattern: INV in DFFSQX1MTR: out_Q
+30-16:27:49  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFSQX1MTR: cross1
+30-16:27:49  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFFSQX1MTR: cross1
+30-16:27:49  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVSS in DFFSQX1MTR: cross2
+30-16:27:49  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK2_3 in DFFSQX1MTR: cross2
+30-16:27:49  INFO: s110, (DFFSQX2MTR, 27 devices), 27 devices
+30-16:27:49  INFO: -----DFFSQX2MTR:      ff False False undef
+30-16:27:49  INFO: 1. clock pattern: pattern: CLK1 in DFFSQX2MTR: clk
+30-16:27:49  INFO: 3. output pattern: pattern: INV in DFFSQX2MTR: out_Q
+30-16:27:49  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFSQX2MTR: cross1
+30-16:27:49  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFFSQX2MTR: cross1
+30-16:27:49  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVSS in DFFSQX2MTR: cross2
+30-16:27:50  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK2_3 in DFFSQX2MTR: cross2
+30-16:27:50  INFO: s110, (DFFSQX4MTR, 27 devices), 27 devices
+30-16:27:50  INFO: -----DFFSQX4MTR:      ff False False undef
+30-16:27:50  INFO: 1. clock pattern: pattern: CLK1 in DFFSQX4MTR: clk
+30-16:27:50  INFO: 3. output pattern: pattern: INV in DFFSQX4MTR: out_Q
+30-16:27:50  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFSQX4MTR: cross1
+30-16:27:50  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFFSQX4MTR: cross1
+30-16:27:50  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVSS in DFFSQX4MTR: cross2
+30-16:27:50  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK2_3 in DFFSQX4MTR: cross2
+30-16:27:50  INFO: s110, (DFFSRHQX1MTR, 42 devices), 42 devices
+30-16:27:50  INFO: -----DFFSRHQX1MTR:      ff False False undef
+30-16:27:50  INFO: 1. clock pattern: pattern: CLK2 in DFFSRHQX1MTR: clk
+30-16:27:50  INFO: 2. inputs inv pattern: pattern: INV in DFFSRHQX1MTR: ininv_D_0
+30-16:27:50  INFO: 2. inputs inv pattern: pattern: INV in DFFSRHQX1MTR: ininv_SN_0
+30-16:27:50  INFO: 3. output pattern: pattern: INV in DFFSRHQX1MTR: out_Q
+30-16:27:50  INFO: 5.1 cross1 pattern: pattern: PRSCROSS_1 in DFFSRHQX1MTR: cross1
+30-16:27:50  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1_2 in DFFSRHQX1MTR: cross1
+30-16:27:50  INFO: s110, (DFFSRHQX2MTR, 42 devices), 42 devices
+30-16:27:50  INFO: -----DFFSRHQX2MTR:      ff False False undef
+30-16:27:50  INFO: 1. clock pattern: pattern: CLK2 in DFFSRHQX2MTR: clk
+30-16:27:50  INFO: 2. inputs inv pattern: pattern: INV in DFFSRHQX2MTR: ininv_D_0
+30-16:27:50  INFO: 2. inputs inv pattern: pattern: INV in DFFSRHQX2MTR: ininv_SN_0
+30-16:27:50  INFO: 3. output pattern: pattern: INV in DFFSRHQX2MTR: out_Q
+30-16:27:51  INFO: 5.1 cross1 pattern: pattern: PRSCROSS_1 in DFFSRHQX2MTR: cross1
+30-16:27:51  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1_2 in DFFSRHQX2MTR: cross1
+30-16:27:51  INFO: s110, (DFFSRHQX4MTR, 42 devices), 42 devices
+30-16:27:51  INFO: -----DFFSRHQX4MTR:      ff False False undef
+30-16:27:51  INFO: 1. clock pattern: pattern: CLK2 in DFFSRHQX4MTR: clk
+30-16:27:51  INFO: 2. inputs inv pattern: pattern: INV in DFFSRHQX4MTR: ininv_D_0
+30-16:27:51  INFO: 2. inputs inv pattern: pattern: INV in DFFSRHQX4MTR: ininv_SN_0
+30-16:27:51  INFO: 3. output pattern: pattern: INV in DFFSRHQX4MTR: out_Q
+30-16:27:51  INFO: 5.1 cross1 pattern: pattern: PRSCROSS_1 in DFFSRHQX4MTR: cross1
+30-16:27:51  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1_2 in DFFSRHQX4MTR: cross1
+30-16:27:51  INFO: s110, (DFFSRHQX8MTR, 42 devices), 42 devices
+30-16:27:51  INFO: -----DFFSRHQX8MTR:      ff False False undef
+30-16:27:51  INFO: 1. clock pattern: pattern: CLK2 in DFFSRHQX8MTR: clk
+30-16:27:51  INFO: 2. inputs inv pattern: pattern: INV in DFFSRHQX8MTR: ininv_D_0
+30-16:27:51  INFO: 2. inputs inv pattern: pattern: INV in DFFSRHQX8MTR: ininv_SN_0
+30-16:27:51  INFO: 3. output pattern: pattern: INV in DFFSRHQX8MTR: out_Q
+30-16:27:51  INFO: 5.1 cross1 pattern: pattern: PRSCROSS_1 in DFFSRHQX8MTR: cross1
+30-16:27:51  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1_2 in DFFSRHQX8MTR: cross1
+30-16:27:52  INFO: s110, (DFFSRX1MTR, 34 devices), 34 devices
+30-16:27:52  INFO: -----DFFSRX1MTR:      ff False False undef
+30-16:27:52  INFO: 1. clock pattern: pattern: CLK1 in DFFSRX1MTR: clk
+30-16:27:52  INFO: 2. inputs inv pattern: pattern: INV in DFFSRX1MTR: ininv_RN_0
+30-16:27:52  INFO: 3. output pattern: pattern: INV in DFFSRX1MTR: out_Q
+30-16:27:52  INFO: 3. output pattern: pattern: INV in DFFSRX1MTR: out_QN
+30-16:27:52  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFSRX1MTR: cross1
+30-16:27:52  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in DFFSRX1MTR: cross1
+30-16:27:52  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVDDVSS in DFFSRX1MTR: cross2
+30-16:27:52  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_3_3 in DFFSRX1MTR: cross2
+30-16:27:52  INFO: s110, (DFFSRX2MTR, 34 devices), 34 devices
+30-16:27:52  INFO: -----DFFSRX2MTR:      ff False False undef
+30-16:27:52  INFO: 1. clock pattern: pattern: CLK1 in DFFSRX2MTR: clk
+30-16:27:52  INFO: 2. inputs inv pattern: pattern: INV in DFFSRX2MTR: ininv_RN_0
+30-16:27:52  INFO: 3. output pattern: pattern: INV in DFFSRX2MTR: out_Q
+30-16:27:52  INFO: 3. output pattern: pattern: INV in DFFSRX2MTR: out_QN
+30-16:27:52  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFSRX2MTR: cross1
+30-16:27:52  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in DFFSRX2MTR: cross1
+30-16:27:52  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVDDVSS in DFFSRX2MTR: cross2
+30-16:27:52  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_3_3 in DFFSRX2MTR: cross2
+30-16:27:52  INFO: s110, (DFFSRX4MTR, 34 devices), 34 devices
+30-16:27:52  INFO: -----DFFSRX4MTR:      ff False False undef
+30-16:27:52  INFO: 1. clock pattern: pattern: CLK1 in DFFSRX4MTR: clk
+30-16:27:52  INFO: 2. inputs inv pattern: pattern: INV in DFFSRX4MTR: ininv_RN_0
+30-16:27:52  INFO: 3. output pattern: pattern: INV in DFFSRX4MTR: out_Q
+30-16:27:52  INFO: 3. output pattern: pattern: INV in DFFSRX4MTR: out_QN
+30-16:27:52  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFSRX4MTR: cross1
+30-16:27:52  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in DFFSRX4MTR: cross1
+30-16:27:52  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVDDVSS in DFFSRX4MTR: cross2
+30-16:27:52  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_3_3 in DFFSRX4MTR: cross2
+30-16:27:52  INFO: s110, (DFFSX1MTR, 29 devices), 29 devices
+30-16:27:52  INFO: ----- DFFSX1MTR:      ff False False undef
+30-16:27:52  INFO: 1. clock pattern: pattern: CLK1 in DFFSX1MTR: clk
+30-16:27:52  INFO: 3. output pattern: pattern: INV in DFFSX1MTR: out_Q
+30-16:27:52  INFO: 3. output pattern: pattern: INV in DFFSX1MTR: out_QN
+30-16:27:53  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFSX1MTR: cross1
+30-16:27:53  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFFSX1MTR: cross1
+30-16:27:53  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVSS in DFFSX1MTR: cross2
+30-16:27:53  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK2_3 in DFFSX1MTR: cross2
+30-16:27:53  INFO: s110, (DFFSX2MTR, 29 devices), 29 devices
+30-16:27:53  INFO: ----- DFFSX2MTR:      ff False False undef
+30-16:27:53  INFO: 1. clock pattern: pattern: CLK1 in DFFSX2MTR: clk
+30-16:27:53  INFO: 3. output pattern: pattern: INV in DFFSX2MTR: out_Q
+30-16:27:53  INFO: 3. output pattern: pattern: INV in DFFSX2MTR: out_QN
+30-16:27:53  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFSX2MTR: cross1
+30-16:27:53  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFFSX2MTR: cross1
+30-16:27:53  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVSS in DFFSX2MTR: cross2
+30-16:27:53  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK2_3 in DFFSX2MTR: cross2
+30-16:27:53  INFO: s110, (DFFSX4MTR, 29 devices), 29 devices
+30-16:27:53  INFO: ----- DFFSX4MTR:      ff False False undef
+30-16:27:53  INFO: 1. clock pattern: pattern: CLK1 in DFFSX4MTR: clk
+30-16:27:53  INFO: 3. output pattern: pattern: INV in DFFSX4MTR: out_Q
+30-16:27:53  INFO: 3. output pattern: pattern: INV in DFFSX4MTR: out_QN
+30-16:27:53  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFSX4MTR: cross1
+30-16:27:53  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFFSX4MTR: cross1
+30-16:27:53  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVSS in DFFSX4MTR: cross2
+30-16:27:53  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK2_3 in DFFSX4MTR: cross2
+30-16:27:53  INFO: s110, (DFFTRX1MTR, 28 devices), 28 devices
+30-16:27:53  INFO: -----DFFTRX1MTR:      ff False False undef
+30-16:27:53  INFO: 1. clock pattern: pattern: CLK1 in DFFTRX1MTR: clk
+30-16:27:53  INFO: 3. output pattern: pattern: INV in DFFTRX1MTR: out_Q
+30-16:27:53  INFO: 3. output pattern: pattern: INV in DFFTRX1MTR: out_QN
+30-16:27:54  INFO: s110, (DFFTRX2MTR, 28 devices), 28 devices
+30-16:27:54  INFO: -----DFFTRX2MTR:      ff False False undef
+30-16:27:54  INFO: 1. clock pattern: pattern: CLK1 in DFFTRX2MTR: clk
+30-16:27:54  INFO: 3. output pattern: pattern: INV in DFFTRX2MTR: out_Q
+30-16:27:54  INFO: 3. output pattern: pattern: INV in DFFTRX2MTR: out_QN
+30-16:27:54  INFO: s110, (DFFTRX4MTR, 28 devices), 28 devices
+30-16:27:54  INFO: -----DFFTRX4MTR:      ff False False undef
+30-16:27:54  INFO: 1. clock pattern: pattern: CLK1 in DFFTRX4MTR: clk
+30-16:27:54  INFO: 3. output pattern: pattern: INV in DFFTRX4MTR: out_Q
+30-16:27:54  INFO: 3. output pattern: pattern: INV in DFFTRX4MTR: out_QN
+30-16:27:54  INFO: s110, (DFFX1MTR, 28 devices), 28 devices
+30-16:27:54  INFO: -----  DFFX1MTR:      ff False False undef
+30-16:27:54  INFO: 1. clock pattern: pattern: CLK1 in DFFX1MTR: clk
+30-16:27:54  INFO: 3. output pattern: pattern: INV in DFFX1MTR: out_Q
+30-16:27:54  INFO: 3. output pattern: pattern: INV in DFFX1MTR: out_QN
+30-16:27:54  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFX1MTR: cross1
+30-16:27:54  INFO: 5.2  back track 1 pattern: pattern: INV in DFFX1MTR: cross1
+30-16:27:54  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFFX1MTR: cross2
+30-16:27:54  INFO: 5.4  back track 2 pattern: pattern: INV in DFFX1MTR: cross2
+30-16:27:54  INFO: s110, (DFFX2MTR, 28 devices), 28 devices
+30-16:27:54  INFO: -----  DFFX2MTR:      ff False False undef
+30-16:27:54  INFO: 1. clock pattern: pattern: CLK1 in DFFX2MTR: clk
+30-16:27:54  INFO: 3. output pattern: pattern: INV in DFFX2MTR: out_Q
+30-16:27:54  INFO: 3. output pattern: pattern: INV in DFFX2MTR: out_QN
+30-16:27:55  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFX2MTR: cross1
+30-16:27:55  INFO: 5.2  back track 1 pattern: pattern: INV in DFFX2MTR: cross1
+30-16:27:55  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFFX2MTR: cross2
+30-16:27:55  INFO: 5.4  back track 2 pattern: pattern: INV in DFFX2MTR: cross2
+30-16:27:55  INFO: s110, (DFFX4MTR, 28 devices), 28 devices
+30-16:27:55  INFO: -----  DFFX4MTR:      ff False False undef
+30-16:27:55  INFO: 1. clock pattern: pattern: CLK1 in DFFX4MTR: clk
+30-16:27:55  INFO: 3. output pattern: pattern: INV in DFFX4MTR: out_Q
+30-16:27:55  INFO: 3. output pattern: pattern: INV in DFFX4MTR: out_QN
+30-16:27:55  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFFX4MTR: cross1
+30-16:27:55  INFO: 5.2  back track 1 pattern: pattern: INV in DFFX4MTR: cross1
+30-16:27:55  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFFX4MTR: cross2
+30-16:27:55  INFO: 5.4  back track 2 pattern: pattern: INV in DFFX4MTR: cross2
+30-16:27:55  INFO: s110, (EDFFHQX1MTR, 37 devices), 37 devices
+30-16:27:55  INFO: -----EDFFHQX1MTR:      ff  True False undef
+30-16:27:55  INFO: 1. clock pattern: pattern: CLK2 in EDFFHQX1MTR: clk
+30-16:27:55  INFO: 2. inputs inv pattern: pattern: INV in EDFFHQX1MTR: ininv_D_0
+30-16:27:55  INFO: 2. inputs inv pattern: pattern: INV in EDFFHQX1MTR: ininv_E_0
+30-16:27:55  INFO: 3. output pattern: pattern: INV in EDFFHQX1MTR: out_Q
+30-16:27:55  INFO: 5.1 cross1 pattern: pattern: PCROSS_2 in EDFFHQX1MTR: cross1
+30-16:27:55  INFO: s110, (EDFFHQX2MTR, 37 devices), 37 devices
+30-16:27:55  INFO: -----EDFFHQX2MTR:      ff  True False undef
+30-16:27:55  INFO: 1. clock pattern: pattern: CLK2 in EDFFHQX2MTR: clk
+30-16:27:55  INFO: 2. inputs inv pattern: pattern: INV in EDFFHQX2MTR: ininv_D_0
+30-16:27:55  INFO: 2. inputs inv pattern: pattern: INV in EDFFHQX2MTR: ininv_E_0
+30-16:27:55  INFO: 3. output pattern: pattern: INV in EDFFHQX2MTR: out_Q
+30-16:27:55  INFO: 5.1 cross1 pattern: pattern: PCROSS_2 in EDFFHQX2MTR: cross1
+30-16:27:55  INFO: s110, (EDFFHQX4MTR, 37 devices), 37 devices
+30-16:27:55  INFO: -----EDFFHQX4MTR:      ff  True False undef
+30-16:27:55  INFO: 1. clock pattern: pattern: CLK2 in EDFFHQX4MTR: clk
+30-16:27:55  INFO: 2. inputs inv pattern: pattern: INV in EDFFHQX4MTR: ininv_D_0
+30-16:27:55  INFO: 2. inputs inv pattern: pattern: INV in EDFFHQX4MTR: ininv_E_0
+30-16:27:55  INFO: 3. output pattern: pattern: INV in EDFFHQX4MTR: out_Q
+30-16:27:55  INFO: 5.1 cross1 pattern: pattern: PCROSS_2 in EDFFHQX4MTR: cross1
+30-16:27:55  INFO: s110, (EDFFHQX8MTR, 37 devices), 37 devices
+30-16:27:55  INFO: -----EDFFHQX8MTR:      ff  True False undef
+30-16:27:55  INFO: 1. clock pattern: pattern: CLK2 in EDFFHQX8MTR: clk
+30-16:27:55  INFO: 2. inputs inv pattern: pattern: INV in EDFFHQX8MTR: ininv_D_0
+30-16:27:55  INFO: 2. inputs inv pattern: pattern: INV in EDFFHQX8MTR: ininv_E_0
+30-16:27:55  INFO: 3. output pattern: pattern: INV in EDFFHQX8MTR: out_Q
+30-16:27:55  INFO: 5.1 cross1 pattern: pattern: PCROSS_2 in EDFFHQX8MTR: cross1
+30-16:27:55  INFO: s110, (EDFFTRX1MTR, 38 devices), 38 devices
+30-16:27:55  INFO: -----EDFFTRX1MTR:      ff  True False undef
+30-16:27:55  INFO: 1. clock pattern: pattern: CLK1 in EDFFTRX1MTR: clk
+30-16:27:55  INFO: 2. inputs inv pattern: pattern: INV in EDFFTRX1MTR: ininv_E_0
+30-16:27:55  INFO: 3. output pattern: pattern: INV in EDFFTRX1MTR: out_Q
+30-16:27:55  INFO: 3. output pattern: pattern: INV in EDFFTRX1MTR: out_QN
+30-16:27:57  INFO: s110, (EDFFTRX2MTR, 38 devices), 38 devices
+30-16:27:57  INFO: -----EDFFTRX2MTR:      ff  True False undef
+30-16:27:57  INFO: 1. clock pattern: pattern: CLK1 in EDFFTRX2MTR: clk
+30-16:27:57  INFO: 2. inputs inv pattern: pattern: INV in EDFFTRX2MTR: ininv_E_0
+30-16:27:57  INFO: 3. output pattern: pattern: INV in EDFFTRX2MTR: out_Q
+30-16:27:57  INFO: 3. output pattern: pattern: INV in EDFFTRX2MTR: out_QN
+30-16:27:58  INFO: s110, (EDFFTRX4MTR, 38 devices), 38 devices
+30-16:27:58  INFO: -----EDFFTRX4MTR:      ff  True False undef
+30-16:27:58  INFO: 1. clock pattern: pattern: CLK1 in EDFFTRX4MTR: clk
+30-16:27:58  INFO: 2. inputs inv pattern: pattern: INV in EDFFTRX4MTR: ininv_E_0
+30-16:27:58  INFO: 3. output pattern: pattern: INV in EDFFTRX4MTR: out_Q
+30-16:27:58  INFO: 3. output pattern: pattern: INV in EDFFTRX4MTR: out_QN
+30-16:27:59  INFO: s110, (EDFFX1MTR, 36 devices), 36 devices
+30-16:27:59  INFO: ----- EDFFX1MTR:      ff  True False undef
+30-16:27:59  INFO: 1. clock pattern: pattern: CLK1 in EDFFX1MTR: clk
+30-16:27:59  INFO: 2. inputs inv pattern: pattern: INV in EDFFX1MTR: ininv_E_0
+30-16:27:59  INFO: 3. output pattern: pattern: INV in EDFFX1MTR: out_Q
+30-16:27:59  INFO: 3. output pattern: pattern: INV in EDFFX1MTR: out_QN
+30-16:27:59  INFO: 4.1 inputs(D0 D1 S0/D E/E SE) pattern: pattern: FCROSS_1 in EDFFX1MTR: inputs
+30-16:27:59  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in EDFFX1MTR: cross1
+30-16:27:59  INFO: 5.2  back track 1 pattern: pattern: INV in EDFFX1MTR: cross1
+30-16:27:59  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in EDFFX1MTR: cross2
+30-16:27:59  INFO: 5.4  back track 2 pattern: pattern: INV in EDFFX1MTR: cross2
+30-16:28:00  INFO: s110, (EDFFX2MTR, 36 devices), 36 devices
+30-16:28:00  INFO: ----- EDFFX2MTR:      ff  True False undef
+30-16:28:00  INFO: 1. clock pattern: pattern: CLK1 in EDFFX2MTR: clk
+30-16:28:00  INFO: 2. inputs inv pattern: pattern: INV in EDFFX2MTR: ininv_E_0
+30-16:28:00  INFO: 3. output pattern: pattern: INV in EDFFX2MTR: out_Q
+30-16:28:00  INFO: 3. output pattern: pattern: INV in EDFFX2MTR: out_QN
+30-16:28:00  INFO: 4.1 inputs(D0 D1 S0/D E/E SE) pattern: pattern: FCROSS_1 in EDFFX2MTR: inputs
+30-16:28:00  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in EDFFX2MTR: cross1
+30-16:28:00  INFO: 5.2  back track 1 pattern: pattern: INV in EDFFX2MTR: cross1
+30-16:28:00  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in EDFFX2MTR: cross2
+30-16:28:00  INFO: 5.4  back track 2 pattern: pattern: INV in EDFFX2MTR: cross2
+30-16:28:00  INFO: s110, (EDFFX4MTR, 36 devices), 36 devices
+30-16:28:00  INFO: ----- EDFFX4MTR:      ff  True False undef
+30-16:28:00  INFO: 1. clock pattern: pattern: CLK1 in EDFFX4MTR: clk
+30-16:28:00  INFO: 2. inputs inv pattern: pattern: INV in EDFFX4MTR: ininv_E_0
+30-16:28:00  INFO: 3. output pattern: pattern: INV in EDFFX4MTR: out_Q
+30-16:28:00  INFO: 3. output pattern: pattern: INV in EDFFX4MTR: out_QN
+30-16:28:00  INFO: 4.1 inputs(D0 D1 S0/D E/E SE) pattern: pattern: FCROSS_1 in EDFFX4MTR: inputs
+30-16:28:00  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in EDFFX4MTR: cross1
+30-16:28:00  INFO: 5.2  back track 1 pattern: pattern: INV in EDFFX4MTR: cross1
+30-16:28:00  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in EDFFX4MTR: cross2
+30-16:28:00  INFO: 5.4  back track 2 pattern: pattern: INV in EDFFX4MTR: cross2
+30-16:28:00  INFO: s110, (MDFFHQX1MTR, 37 devices), 37 devices
+30-16:28:00  INFO: -----MDFFHQX1MTR:      ff False  True undef
+30-16:28:00  INFO: 1. clock pattern: pattern: CLK2 in MDFFHQX1MTR: clk
+30-16:28:00  INFO: 2. inputs inv pattern: pattern: INV in MDFFHQX1MTR: ininv_D0_0
+30-16:28:00  INFO: 2. inputs inv pattern: pattern: INV in MDFFHQX1MTR: ininv_D1_0
+30-16:28:00  INFO: 2. inputs inv pattern: pattern: INV in MDFFHQX1MTR: ininv_S0_0
+30-16:28:00  INFO: 3. output pattern: pattern: INV in MDFFHQX1MTR: out_Q
+30-16:28:00  INFO: s110, (MDFFHQX2MTR, 37 devices), 37 devices
+30-16:28:00  INFO: -----MDFFHQX2MTR:      ff False  True undef
+30-16:28:00  INFO: 1. clock pattern: pattern: CLK2 in MDFFHQX2MTR: clk
+30-16:28:00  INFO: 2. inputs inv pattern: pattern: INV in MDFFHQX2MTR: ininv_D0_0
+30-16:28:00  INFO: 2. inputs inv pattern: pattern: INV in MDFFHQX2MTR: ininv_D1_0
+30-16:28:00  INFO: 2. inputs inv pattern: pattern: INV in MDFFHQX2MTR: ininv_S0_0
+30-16:28:00  INFO: 3. output pattern: pattern: INV in MDFFHQX2MTR: out_Q
+30-16:28:00  INFO: s110, (MDFFHQX4MTR, 37 devices), 37 devices
+30-16:28:00  INFO: -----MDFFHQX4MTR:      ff False  True undef
+30-16:28:00  INFO: 1. clock pattern: pattern: CLK2 in MDFFHQX4MTR: clk
+30-16:28:00  INFO: 2. inputs inv pattern: pattern: INV in MDFFHQX4MTR: ininv_D0_0
+30-16:28:00  INFO: 2. inputs inv pattern: pattern: INV in MDFFHQX4MTR: ininv_D1_0
+30-16:28:00  INFO: 2. inputs inv pattern: pattern: INV in MDFFHQX4MTR: ininv_S0_0
+30-16:28:00  INFO: 3. output pattern: pattern: INV in MDFFHQX4MTR: out_Q
+30-16:28:00  INFO: s110, (MDFFHQX8MTR, 37 devices), 37 devices
+30-16:28:00  INFO: -----MDFFHQX8MTR:      ff False  True undef
+30-16:28:01  INFO: 1. clock pattern: pattern: CLK2 in MDFFHQX8MTR: clk
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in MDFFHQX8MTR: ininv_D0_0
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in MDFFHQX8MTR: ininv_D1_0
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in MDFFHQX8MTR: ininv_S0_0
+30-16:28:01  INFO: 3. output pattern: pattern: INV in MDFFHQX8MTR: out_Q
+30-16:28:01  INFO: s110, (SDFFHQNX1MTR, 37 devices), 37 devices
+30-16:28:01  INFO: -----SDFFHQNX1MTR:  scanff False False    SE
+30-16:28:01  INFO: 1. clock pattern: pattern: CLK2 in SDFFHQNX1MTR: clk
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQNX1MTR: ininv_D_0
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQNX1MTR: ininv_SE_0
+30-16:28:01  INFO: 3. output pattern: pattern: INV in SDFFHQNX1MTR: out_QN
+30-16:28:01  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFHQNX1MTR: sesi
+30-16:28:01  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in SDFFHQNX1MTR: cross1
+30-16:28:01  INFO: 5.2  back track 1 pattern: pattern: INV in SDFFHQNX1MTR: cross1
+30-16:28:01  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in SDFFHQNX1MTR: cross2
+30-16:28:01  INFO: 5.4  back track 2 pattern: pattern: INV in SDFFHQNX1MTR: cross2
+30-16:28:01  INFO: s110, (SDFFHQNX2MTR, 37 devices), 37 devices
+30-16:28:01  INFO: -----SDFFHQNX2MTR:  scanff False False    SE
+30-16:28:01  INFO: 1. clock pattern: pattern: CLK2 in SDFFHQNX2MTR: clk
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQNX2MTR: ininv_D_0
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQNX2MTR: ininv_SE_0
+30-16:28:01  INFO: 3. output pattern: pattern: INV in SDFFHQNX2MTR: out_QN
+30-16:28:01  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFHQNX2MTR: sesi
+30-16:28:01  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in SDFFHQNX2MTR: cross1
+30-16:28:01  INFO: 5.2  back track 1 pattern: pattern: INV in SDFFHQNX2MTR: cross1
+30-16:28:01  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in SDFFHQNX2MTR: cross2
+30-16:28:01  INFO: 5.4  back track 2 pattern: pattern: INV in SDFFHQNX2MTR: cross2
+30-16:28:01  INFO: s110, (SDFFHQNX4MTR, 37 devices), 37 devices
+30-16:28:01  INFO: -----SDFFHQNX4MTR:  scanff False False    SE
+30-16:28:01  INFO: 1. clock pattern: pattern: CLK2 in SDFFHQNX4MTR: clk
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQNX4MTR: ininv_D_0
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQNX4MTR: ininv_SE_0
+30-16:28:01  INFO: 3. output pattern: pattern: INV in SDFFHQNX4MTR: out_QN
+30-16:28:01  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFHQNX4MTR: sesi
+30-16:28:01  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in SDFFHQNX4MTR: cross1
+30-16:28:01  INFO: 5.2  back track 1 pattern: pattern: INV in SDFFHQNX4MTR: cross1
+30-16:28:01  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in SDFFHQNX4MTR: cross2
+30-16:28:01  INFO: 5.4  back track 2 pattern: pattern: INV in SDFFHQNX4MTR: cross2
+30-16:28:01  INFO: s110, (SDFFHQNX8MTR, 37 devices), 37 devices
+30-16:28:01  INFO: -----SDFFHQNX8MTR:  scanff False False    SE
+30-16:28:01  INFO: 1. clock pattern: pattern: CLK2 in SDFFHQNX8MTR: clk
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQNX8MTR: ininv_D_0
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQNX8MTR: ininv_SE_0
+30-16:28:01  INFO: 3. output pattern: pattern: INV in SDFFHQNX8MTR: out_QN
+30-16:28:01  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFHQNX8MTR: sesi
+30-16:28:01  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in SDFFHQNX8MTR: cross1
+30-16:28:01  INFO: 5.2  back track 1 pattern: pattern: INV in SDFFHQNX8MTR: cross1
+30-16:28:01  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in SDFFHQNX8MTR: cross2
+30-16:28:01  INFO: 5.4  back track 2 pattern: pattern: INV in SDFFHQNX8MTR: cross2
+30-16:28:01  INFO: s110, (SDFFHQX1MTR, 37 devices), 37 devices
+30-16:28:01  INFO: -----SDFFHQX1MTR:  scanff False False    SE
+30-16:28:01  INFO: 1. clock pattern: pattern: CLK2 in SDFFHQX1MTR: clk
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQX1MTR: ininv_D_0
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQX1MTR: ininv_SE_0
+30-16:28:01  INFO: 3. output pattern: pattern: INV in SDFFHQX1MTR: out_Q
+30-16:28:01  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFHQX1MTR: sesi
+30-16:28:01  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in SDFFHQX1MTR: cross1
+30-16:28:01  INFO: 5.2  back track 1 pattern: pattern: INV in SDFFHQX1MTR: cross1
+30-16:28:01  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in SDFFHQX1MTR: cross2
+30-16:28:01  INFO: 5.4  back track 2 pattern: pattern: INV in SDFFHQX1MTR: cross2
+30-16:28:01  INFO: s110, (SDFFHQX2MTR, 37 devices), 37 devices
+30-16:28:01  INFO: -----SDFFHQX2MTR:  scanff False False    SE
+30-16:28:01  INFO: 1. clock pattern: pattern: CLK2 in SDFFHQX2MTR: clk
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQX2MTR: ininv_D_0
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQX2MTR: ininv_SE_0
+30-16:28:01  INFO: 3. output pattern: pattern: INV in SDFFHQX2MTR: out_Q
+30-16:28:01  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFHQX2MTR: sesi
+30-16:28:01  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in SDFFHQX2MTR: cross1
+30-16:28:01  INFO: 5.2  back track 1 pattern: pattern: INV in SDFFHQX2MTR: cross1
+30-16:28:01  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in SDFFHQX2MTR: cross2
+30-16:28:01  INFO: 5.4  back track 2 pattern: pattern: INV in SDFFHQX2MTR: cross2
+30-16:28:01  INFO: s110, (SDFFHQX4MTR, 37 devices), 37 devices
+30-16:28:01  INFO: -----SDFFHQX4MTR:  scanff False False    SE
+30-16:28:01  INFO: 1. clock pattern: pattern: CLK2 in SDFFHQX4MTR: clk
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQX4MTR: ininv_D_0
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQX4MTR: ininv_SE_0
+30-16:28:01  INFO: 3. output pattern: pattern: INV in SDFFHQX4MTR: out_Q
+30-16:28:01  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFHQX4MTR: sesi
+30-16:28:01  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in SDFFHQX4MTR: cross1
+30-16:28:01  INFO: 5.2  back track 1 pattern: pattern: INV in SDFFHQX4MTR: cross1
+30-16:28:01  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in SDFFHQX4MTR: cross2
+30-16:28:01  INFO: 5.4  back track 2 pattern: pattern: INV in SDFFHQX4MTR: cross2
+30-16:28:01  INFO: s110, (SDFFHQX8MTR, 37 devices), 37 devices
+30-16:28:01  INFO: -----SDFFHQX8MTR:  scanff False False    SE
+30-16:28:01  INFO: 1. clock pattern: pattern: CLK2 in SDFFHQX8MTR: clk
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQX8MTR: ininv_D_0
+30-16:28:01  INFO: 2. inputs inv pattern: pattern: INV in SDFFHQX8MTR: ininv_SE_0
+30-16:28:01  INFO: 3. output pattern: pattern: INV in SDFFHQX8MTR: out_Q
+30-16:28:01  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFHQX8MTR: sesi
+30-16:28:02  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in SDFFHQX8MTR: cross1
+30-16:28:02  INFO: 5.2  back track 1 pattern: pattern: INV in SDFFHQX8MTR: cross1
+30-16:28:02  INFO: 5.3 cross2 pattern: pattern: PCROSS_2 in SDFFHQX8MTR: cross2
+30-16:28:02  INFO: 5.4  back track 2 pattern: pattern: INV in SDFFHQX8MTR: cross2
+30-16:28:02  INFO: s110, (SDFFHX1MTR, 39 devices), 39 devices
+30-16:28:02  INFO: -----SDFFHX1MTR:  scanff False False    SE
+30-16:28:02  INFO: 1. clock pattern: pattern: CLK2 in SDFFHX1MTR: clk
+30-16:28:02  INFO: 2. inputs inv pattern: pattern: INV in SDFFHX1MTR: ininv_D_0
+30-16:28:02  INFO: 2. inputs inv pattern: pattern: INV in SDFFHX1MTR: ininv_SE_0
+30-16:28:02  INFO: 3. output pattern: pattern: INV in SDFFHX1MTR: out_Q
+30-16:28:02  INFO: 3. output pattern: pattern: INV in SDFFHX1MTR: out_QN
+30-16:28:02  INFO: s110, (SDFFHX2MTR, 39 devices), 39 devices
+30-16:28:02  INFO: -----SDFFHX2MTR:  scanff False False    SE
+30-16:28:02  INFO: 1. clock pattern: pattern: CLK2 in SDFFHX2MTR: clk
+30-16:28:02  INFO: 2. inputs inv pattern: pattern: INV in SDFFHX2MTR: ininv_D_0
+30-16:28:02  INFO: 2. inputs inv pattern: pattern: INV in SDFFHX2MTR: ininv_SE_0
+30-16:28:02  INFO: 3. output pattern: pattern: INV in SDFFHX2MTR: out_Q
+30-16:28:02  INFO: 3. output pattern: pattern: INV in SDFFHX2MTR: out_QN
+30-16:28:02  INFO: s110, (SDFFHX4MTR, 39 devices), 39 devices
+30-16:28:02  INFO: -----SDFFHX4MTR:  scanff False False    SE
+30-16:28:02  INFO: 1. clock pattern: pattern: CLK2 in SDFFHX4MTR: clk
+30-16:28:02  INFO: 2. inputs inv pattern: pattern: INV in SDFFHX4MTR: ininv_D_0
+30-16:28:02  INFO: 2. inputs inv pattern: pattern: INV in SDFFHX4MTR: ininv_SE_0
+30-16:28:02  INFO: 3. output pattern: pattern: INV in SDFFHX4MTR: out_Q
+30-16:28:02  INFO: 3. output pattern: pattern: INV in SDFFHX4MTR: out_QN
+30-16:28:02  INFO: s110, (SDFFHX8MTR, 39 devices), 39 devices
+30-16:28:02  INFO: -----SDFFHX8MTR:  scanff False False    SE
+30-16:28:02  INFO: 1. clock pattern: pattern: CLK2 in SDFFHX8MTR: clk
+30-16:28:02  INFO: 2. inputs inv pattern: pattern: INV in SDFFHX8MTR: ininv_D_0
+30-16:28:02  INFO: 2. inputs inv pattern: pattern: INV in SDFFHX8MTR: ininv_SE_0
+30-16:28:02  INFO: 3. output pattern: pattern: INV in SDFFHX8MTR: out_Q
+30-16:28:02  INFO: 3. output pattern: pattern: INV in SDFFHX8MTR: out_QN
+30-16:28:02  INFO: s110, (SDFFNHX1MTR, 39 devices), 39 devices
+30-16:28:02  INFO: -----SDFFNHX1MTR:  scanff False False    SE
+30-16:28:02  INFO: 1. clock pattern: pattern: CLK2 in SDFFNHX1MTR: clk
+30-16:28:02  INFO: 2. inputs inv pattern: pattern: INV in SDFFNHX1MTR: ininv_D_0
+30-16:28:02  INFO: 2. inputs inv pattern: pattern: INV in SDFFNHX1MTR: ininv_SE_0
+30-16:28:02  INFO: 3. output pattern: pattern: INV in SDFFNHX1MTR: out_Q
+30-16:28:02  INFO: 3. output pattern: pattern: INV in SDFFNHX1MTR: out_QN
+30-16:28:02  INFO: s110, (SDFFNHX2MTR, 39 devices), 39 devices
+30-16:28:02  INFO: -----SDFFNHX2MTR:  scanff False False    SE
+30-16:28:02  INFO: 1. clock pattern: pattern: CLK2 in SDFFNHX2MTR: clk
+30-16:28:02  INFO: 2. inputs inv pattern: pattern: INV in SDFFNHX2MTR: ininv_D_0
+30-16:28:02  INFO: 2. inputs inv pattern: pattern: INV in SDFFNHX2MTR: ininv_SE_0
+30-16:28:02  INFO: 3. output pattern: pattern: INV in SDFFNHX2MTR: out_Q
+30-16:28:02  INFO: 3. output pattern: pattern: INV in SDFFNHX2MTR: out_QN
+30-16:28:02  INFO: s110, (SDFFNHX4MTR, 39 devices), 39 devices
+30-16:28:02  INFO: -----SDFFNHX4MTR:  scanff False False    SE
+30-16:28:02  INFO: 1. clock pattern: pattern: CLK2 in SDFFNHX4MTR: clk
+30-16:28:02  INFO: 2. inputs inv pattern: pattern: INV in SDFFNHX4MTR: ininv_D_0
+30-16:28:02  INFO: 2. inputs inv pattern: pattern: INV in SDFFNHX4MTR: ininv_SE_0
+30-16:28:02  INFO: 3. output pattern: pattern: INV in SDFFNHX4MTR: out_Q
+30-16:28:02  INFO: 3. output pattern: pattern: INV in SDFFNHX4MTR: out_QN
+30-16:28:03  INFO: s110, (SDFFNHX8MTR, 39 devices), 39 devices
+30-16:28:03  INFO: -----SDFFNHX8MTR:  scanff False False    SE
+30-16:28:03  INFO: 1. clock pattern: pattern: CLK2 in SDFFNHX8MTR: clk
+30-16:28:03  INFO: 2. inputs inv pattern: pattern: INV in SDFFNHX8MTR: ininv_D_0
+30-16:28:03  INFO: 2. inputs inv pattern: pattern: INV in SDFFNHX8MTR: ininv_SE_0
+30-16:28:03  INFO: 3. output pattern: pattern: INV in SDFFNHX8MTR: out_Q
+30-16:28:03  INFO: 3. output pattern: pattern: INV in SDFFNHX8MTR: out_QN
+30-16:28:03  INFO: s110, (SDFFNSRHX1MTR, 52 devices), 52 devices
+30-16:28:03  INFO: -----SDFFNSRHX1MTR:  scanff False False    SE
+30-16:28:03  INFO: 1. clock pattern: pattern: CLK2 in SDFFNSRHX1MTR: clk
+30-16:28:03  INFO: 2. inputs inv pattern: pattern: INV in SDFFNSRHX1MTR: ininv_D_0
+30-16:28:03  INFO: 2. inputs inv pattern: pattern: INV in SDFFNSRHX1MTR: ininv_SE_0
+30-16:28:03  INFO: 2. inputs inv pattern: pattern: INV in SDFFNSRHX1MTR: ininv_SN_0
+30-16:28:03  INFO: 3. output pattern: pattern: INV in SDFFNSRHX1MTR: out_Q
+30-16:28:03  INFO: 3. output pattern: pattern: INV in SDFFNSRHX1MTR: out_QN
+30-16:28:03  INFO: s110, (SDFFNSRHX2MTR, 52 devices), 52 devices
+30-16:28:03  INFO: -----SDFFNSRHX2MTR:  scanff False False    SE
+30-16:28:03  INFO: 1. clock pattern: pattern: CLK2 in SDFFNSRHX2MTR: clk
+30-16:28:03  INFO: 2. inputs inv pattern: pattern: INV in SDFFNSRHX2MTR: ininv_D_0
+30-16:28:03  INFO: 2. inputs inv pattern: pattern: INV in SDFFNSRHX2MTR: ininv_SE_0
+30-16:28:03  INFO: 2. inputs inv pattern: pattern: INV in SDFFNSRHX2MTR: ininv_SN_0
+30-16:28:03  INFO: 3. output pattern: pattern: INV in SDFFNSRHX2MTR: out_Q
+30-16:28:03  INFO: 3. output pattern: pattern: INV in SDFFNSRHX2MTR: out_QN
+30-16:28:03  INFO: s110, (SDFFNSRHX4MTR, 52 devices), 52 devices
+30-16:28:03  INFO: -----SDFFNSRHX4MTR:  scanff False False    SE
+30-16:28:03  INFO: 1. clock pattern: pattern: CLK2 in SDFFNSRHX4MTR: clk
+30-16:28:04  INFO: 2. inputs inv pattern: pattern: INV in SDFFNSRHX4MTR: ininv_D_0
+30-16:28:04  INFO: 2. inputs inv pattern: pattern: INV in SDFFNSRHX4MTR: ininv_SE_0
+30-16:28:04  INFO: 2. inputs inv pattern: pattern: INV in SDFFNSRHX4MTR: ininv_SN_0
+30-16:28:04  INFO: 3. output pattern: pattern: INV in SDFFNSRHX4MTR: out_Q
+30-16:28:04  INFO: 3. output pattern: pattern: INV in SDFFNSRHX4MTR: out_QN
+30-16:28:04  INFO: s110, (SDFFNSRHX8MTR, 52 devices), 52 devices
+30-16:28:04  INFO: -----SDFFNSRHX8MTR:  scanff False False    SE
+30-16:28:04  INFO: 1. clock pattern: pattern: CLK2 in SDFFNSRHX8MTR: clk
+30-16:28:04  INFO: 2. inputs inv pattern: pattern: INV in SDFFNSRHX8MTR: ininv_D_0
+30-16:28:04  INFO: 2. inputs inv pattern: pattern: INV in SDFFNSRHX8MTR: ininv_SE_0
+30-16:28:04  INFO: 2. inputs inv pattern: pattern: INV in SDFFNSRHX8MTR: ininv_SN_0
+30-16:28:04  INFO: 3. output pattern: pattern: INV in SDFFNSRHX8MTR: out_Q
+30-16:28:04  INFO: 3. output pattern: pattern: INV in SDFFNSRHX8MTR: out_QN
+30-16:28:04  INFO: s110, (SDFFQNX1MTR, 34 devices), 34 devices
+30-16:28:04  INFO: -----SDFFQNX1MTR:  scanff False False    SE
+30-16:28:04  INFO: 1. clock pattern: pattern: CLK1 in SDFFQNX1MTR: clk
+30-16:28:04  INFO: 2. inputs inv pattern: pattern: INV in SDFFQNX1MTR: ininv_SE_0
+30-16:28:04  INFO: 3. output pattern: pattern: INV in SDFFQNX1MTR: out_QN
+30-16:28:05  INFO: s110, (SDFFQNX2MTR, 34 devices), 34 devices
+30-16:28:05  INFO: -----SDFFQNX2MTR:  scanff False False    SE
+30-16:28:05  INFO: 1. clock pattern: pattern: CLK1 in SDFFQNX2MTR: clk
+30-16:28:05  INFO: 2. inputs inv pattern: pattern: INV in SDFFQNX2MTR: ininv_SE_0
+30-16:28:05  INFO: 3. output pattern: pattern: INV in SDFFQNX2MTR: out_QN
+30-16:28:05  INFO: s110, (SDFFQNX4MTR, 34 devices), 34 devices
+30-16:28:05  INFO: -----SDFFQNX4MTR:  scanff False False    SE
+30-16:28:05  INFO: 1. clock pattern: pattern: CLK1 in SDFFQNX4MTR: clk
+30-16:28:05  INFO: 2. inputs inv pattern: pattern: INV in SDFFQNX4MTR: ininv_SE_0
+30-16:28:05  INFO: 3. output pattern: pattern: INV in SDFFQNX4MTR: out_QN
+30-16:28:06  INFO: s110, (SDFFQX1MTR, 34 devices), 34 devices
+30-16:28:06  INFO: -----SDFFQX1MTR:  scanff False False    SE
+30-16:28:06  INFO: 1. clock pattern: pattern: CLK1 in SDFFQX1MTR: clk
+30-16:28:06  INFO: 2. inputs inv pattern: pattern: INV in SDFFQX1MTR: ininv_SE_0
+30-16:28:06  INFO: 3. output pattern: pattern: INV in SDFFQX1MTR: out_Q
+30-16:28:06  INFO: s110, (SDFFQX2MTR, 34 devices), 34 devices
+30-16:28:06  INFO: -----SDFFQX2MTR:  scanff False False    SE
+30-16:28:06  INFO: 1. clock pattern: pattern: CLK1 in SDFFQX2MTR: clk
+30-16:28:06  INFO: 2. inputs inv pattern: pattern: INV in SDFFQX2MTR: ininv_SE_0
+30-16:28:06  INFO: 3. output pattern: pattern: INV in SDFFQX2MTR: out_Q
+30-16:28:06  INFO: s110, (SDFFQX4MTR, 34 devices), 34 devices
+30-16:28:06  INFO: -----SDFFQX4MTR:  scanff False False    SE
+30-16:28:06  INFO: 1. clock pattern: pattern: CLK1 in SDFFQX4MTR: clk
+30-16:28:06  INFO: 2. inputs inv pattern: pattern: INV in SDFFQX4MTR: ininv_SE_0
+30-16:28:06  INFO: 3. output pattern: pattern: INV in SDFFQX4MTR: out_Q
+30-16:28:07  INFO: s110, (SDFFRHQX1MTR, 41 devices), 41 devices
+30-16:28:07  INFO: -----SDFFRHQX1MTR:  scanff False False    SE
+30-16:28:07  INFO: 1. clock pattern: pattern: CLK2 in SDFFRHQX1MTR: clk
+30-16:28:07  INFO: 2. inputs inv pattern: pattern: INV in SDFFRHQX1MTR: ininv_D_0
+30-16:28:07  INFO: 2. inputs inv pattern: pattern: INV in SDFFRHQX1MTR: ininv_SE_0
+30-16:28:07  INFO: 3. output pattern: pattern: INV in SDFFRHQX1MTR: out_Q
+30-16:28:07  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFRHQX1MTR: sesi
+30-16:28:07  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in SDFFRHQX1MTR: cross1
+30-16:28:07  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDFFRHQX1MTR: cross1
+30-16:28:07  INFO: s110, (SDFFRHQX2MTR, 41 devices), 41 devices
+30-16:28:07  INFO: -----SDFFRHQX2MTR:  scanff False False    SE
+30-16:28:07  INFO: 1. clock pattern: pattern: CLK2 in SDFFRHQX2MTR: clk
+30-16:28:07  INFO: 2. inputs inv pattern: pattern: INV in SDFFRHQX2MTR: ininv_D_0
+30-16:28:07  INFO: 2. inputs inv pattern: pattern: INV in SDFFRHQX2MTR: ininv_SE_0
+30-16:28:07  INFO: 3. output pattern: pattern: INV in SDFFRHQX2MTR: out_Q
+30-16:28:07  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFRHQX2MTR: sesi
+30-16:28:07  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in SDFFRHQX2MTR: cross1
+30-16:28:07  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDFFRHQX2MTR: cross1
+30-16:28:07  INFO: s110, (SDFFRHQX4MTR, 41 devices), 41 devices
+30-16:28:07  INFO: -----SDFFRHQX4MTR:  scanff False False    SE
+30-16:28:07  INFO: 1. clock pattern: pattern: CLK2 in SDFFRHQX4MTR: clk
+30-16:28:07  INFO: 2. inputs inv pattern: pattern: INV in SDFFRHQX4MTR: ininv_D_0
+30-16:28:07  INFO: 2. inputs inv pattern: pattern: INV in SDFFRHQX4MTR: ininv_SE_0
+30-16:28:07  INFO: 3. output pattern: pattern: INV in SDFFRHQX4MTR: out_Q
+30-16:28:08  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFRHQX4MTR: sesi
+30-16:28:08  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in SDFFRHQX4MTR: cross1
+30-16:28:08  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDFFRHQX4MTR: cross1
+30-16:28:08  INFO: s110, (SDFFRHQX8MTR, 41 devices), 41 devices
+30-16:28:08  INFO: -----SDFFRHQX8MTR:  scanff False False    SE
+30-16:28:08  INFO: 1. clock pattern: pattern: CLK2 in SDFFRHQX8MTR: clk
+30-16:28:08  INFO: 2. inputs inv pattern: pattern: INV in SDFFRHQX8MTR: ininv_D_0
+30-16:28:08  INFO: 2. inputs inv pattern: pattern: INV in SDFFRHQX8MTR: ininv_SE_0
+30-16:28:08  INFO: 3. output pattern: pattern: INV in SDFFRHQX8MTR: out_Q
+30-16:28:08  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFRHQX8MTR: sesi
+30-16:28:08  INFO: 5.1 cross1 pattern: pattern: FCROSS_2_2 in SDFFRHQX8MTR: cross1
+30-16:28:08  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDFFRHQX8MTR: cross1
+30-16:28:08  INFO: s110, (SDFFRQX1MTR, 37 devices), 37 devices
+30-16:28:08  INFO: -----SDFFRQX1MTR:  scanff False False    SE
+30-16:28:08  INFO: 1. clock pattern: pattern: CLK1 in SDFFRQX1MTR: clk
+30-16:28:08  INFO: 2. inputs inv pattern: pattern: INV in SDFFRQX1MTR: ininv_SE_0
+30-16:28:08  INFO: 3. output pattern: pattern: INV in SDFFRQX1MTR: out_Q
+30-16:28:09  INFO: s110, (SDFFRQX2MTR, 37 devices), 37 devices
+30-16:28:09  INFO: -----SDFFRQX2MTR:  scanff False False    SE
+30-16:28:09  INFO: 1. clock pattern: pattern: CLK1 in SDFFRQX2MTR: clk
+30-16:28:09  INFO: 2. inputs inv pattern: pattern: INV in SDFFRQX2MTR: ininv_SE_0
+30-16:28:09  INFO: 3. output pattern: pattern: INV in SDFFRQX2MTR: out_Q
+30-16:28:10  INFO: s110, (SDFFRQX4MTR, 37 devices), 37 devices
+30-16:28:10  INFO: -----SDFFRQX4MTR:  scanff False False    SE
+30-16:28:10  INFO: 1. clock pattern: pattern: CLK1 in SDFFRQX4MTR: clk
+30-16:28:10  INFO: 2. inputs inv pattern: pattern: INV in SDFFRQX4MTR: ininv_SE_0
+30-16:28:10  INFO: 3. output pattern: pattern: INV in SDFFRQX4MTR: out_Q
+30-16:28:11  INFO: s110, (SDFFRX1MTR, 39 devices), 39 devices
+30-16:28:11  INFO: -----SDFFRX1MTR:  scanff False False    SE
+30-16:28:11  INFO: 1. clock pattern: pattern: CLK1 in SDFFRX1MTR: clk
+30-16:28:11  INFO: 2. inputs inv pattern: pattern: INV in SDFFRX1MTR: ininv_SE_0
+30-16:28:11  INFO: 3. output pattern: pattern: INV in SDFFRX1MTR: out_Q
+30-16:28:11  INFO: 3. output pattern: pattern: INV in SDFFRX1MTR: out_QN
+30-16:28:12  INFO: s110, (SDFFRX2MTR, 39 devices), 39 devices
+30-16:28:12  INFO: -----SDFFRX2MTR:  scanff False False    SE
+30-16:28:12  INFO: 1. clock pattern: pattern: CLK1 in SDFFRX2MTR: clk
+30-16:28:12  INFO: 2. inputs inv pattern: pattern: INV in SDFFRX2MTR: ininv_SE_0
+30-16:28:12  INFO: 3. output pattern: pattern: INV in SDFFRX2MTR: out_Q
+30-16:28:12  INFO: 3. output pattern: pattern: INV in SDFFRX2MTR: out_QN
+30-16:28:13  INFO: s110, (SDFFRX4MTR, 39 devices), 39 devices
+30-16:28:13  INFO: -----SDFFRX4MTR:  scanff False False    SE
+30-16:28:13  INFO: 1. clock pattern: pattern: CLK1 in SDFFRX4MTR: clk
+30-16:28:13  INFO: 2. inputs inv pattern: pattern: INV in SDFFRX4MTR: ininv_SE_0
+30-16:28:13  INFO: 3. output pattern: pattern: INV in SDFFRX4MTR: out_Q
+30-16:28:13  INFO: 3. output pattern: pattern: INV in SDFFRX4MTR: out_QN
+30-16:28:14  INFO: s110, (SDFFSHQX1MTR, 43 devices), 43 devices
+30-16:28:14  INFO: -----SDFFSHQX1MTR:  scanff False False    SE
+30-16:28:14  INFO: 1. clock pattern: pattern: CLK2 in SDFFSHQX1MTR: clk
+30-16:28:14  INFO: 2. inputs inv pattern: pattern: INV in SDFFSHQX1MTR: ininv_D_0
+30-16:28:14  INFO: 2. inputs inv pattern: pattern: INV in SDFFSHQX1MTR: ininv_SE_0
+30-16:28:14  INFO: 2. inputs inv pattern: pattern: INV in SDFFSHQX1MTR: ininv_SN_0
+30-16:28:14  INFO: 3. output pattern: pattern: INV in SDFFSHQX1MTR: out_Q
+30-16:28:14  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFSHQX1MTR: sesi
+30-16:28:15  INFO: s110, (SDFFSHQX2MTR, 43 devices), 43 devices
+30-16:28:15  INFO: -----SDFFSHQX2MTR:  scanff False False    SE
+30-16:28:15  INFO: 1. clock pattern: pattern: CLK2 in SDFFSHQX2MTR: clk
+30-16:28:15  INFO: 2. inputs inv pattern: pattern: INV in SDFFSHQX2MTR: ininv_D_0
+30-16:28:15  INFO: 2. inputs inv pattern: pattern: INV in SDFFSHQX2MTR: ininv_SE_0
+30-16:28:15  INFO: 2. inputs inv pattern: pattern: INV in SDFFSHQX2MTR: ininv_SN_0
+30-16:28:15  INFO: 3. output pattern: pattern: INV in SDFFSHQX2MTR: out_Q
+30-16:28:15  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFSHQX2MTR: sesi
+30-16:28:15  INFO: s110, (SDFFSHQX4MTR, 43 devices), 43 devices
+30-16:28:15  INFO: -----SDFFSHQX4MTR:  scanff False False    SE
+30-16:28:15  INFO: 1. clock pattern: pattern: CLK2 in SDFFSHQX4MTR: clk
+30-16:28:15  INFO: 2. inputs inv pattern: pattern: INV in SDFFSHQX4MTR: ininv_D_0
+30-16:28:15  INFO: 2. inputs inv pattern: pattern: INV in SDFFSHQX4MTR: ininv_SE_0
+30-16:28:15  INFO: 2. inputs inv pattern: pattern: INV in SDFFSHQX4MTR: ininv_SN_0
+30-16:28:15  INFO: 3. output pattern: pattern: INV in SDFFSHQX4MTR: out_Q
+30-16:28:15  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFSHQX4MTR: sesi
+30-16:28:15  INFO: s110, (SDFFSHQX8MTR, 43 devices), 43 devices
+30-16:28:15  INFO: -----SDFFSHQX8MTR:  scanff False False    SE
+30-16:28:15  INFO: 1. clock pattern: pattern: CLK2 in SDFFSHQX8MTR: clk
+30-16:28:15  INFO: 2. inputs inv pattern: pattern: INV in SDFFSHQX8MTR: ininv_D_0
+30-16:28:15  INFO: 2. inputs inv pattern: pattern: INV in SDFFSHQX8MTR: ininv_SE_0
+30-16:28:15  INFO: 2. inputs inv pattern: pattern: INV in SDFFSHQX8MTR: ininv_SN_0
+30-16:28:15  INFO: 3. output pattern: pattern: INV in SDFFSHQX8MTR: out_Q
+30-16:28:15  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFSHQX8MTR: sesi
+30-16:28:15  INFO: s110, (SDFFSQX1MTR, 35 devices), 35 devices
+30-16:28:15  INFO: -----SDFFSQX1MTR:  scanff False False    SE
+30-16:28:15  INFO: 1. clock pattern: pattern: CLK1 in SDFFSQX1MTR: clk
+30-16:28:15  INFO: 2. inputs inv pattern: pattern: INV in SDFFSQX1MTR: ininv_SE_0
+30-16:28:15  INFO: 3. output pattern: pattern: INV in SDFFSQX1MTR: out_Q
+30-16:28:15  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_4 in SDFFSQX1MTR: sesi
+30-16:28:15  INFO: 5.1 cross1 pattern: pattern: PCROSS_2 in SDFFSQX1MTR: cross1
+30-16:28:15  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDFFSQX1MTR: cross1
+30-16:28:15  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVSS in SDFFSQX1MTR: cross2
+30-16:28:15  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK2_3 in SDFFSQX1MTR: cross2
+30-16:28:15  INFO: s110, (SDFFSQX2MTR, 35 devices), 35 devices
+30-16:28:15  INFO: -----SDFFSQX2MTR:  scanff False False    SE
+30-16:28:15  INFO: 1. clock pattern: pattern: CLK1 in SDFFSQX2MTR: clk
+30-16:28:15  INFO: 2. inputs inv pattern: pattern: INV in SDFFSQX2MTR: ininv_SE_0
+30-16:28:15  INFO: 3. output pattern: pattern: INV in SDFFSQX2MTR: out_Q
+30-16:28:16  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_4 in SDFFSQX2MTR: sesi
+30-16:28:16  INFO: 5.1 cross1 pattern: pattern: PCROSS_2 in SDFFSQX2MTR: cross1
+30-16:28:16  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDFFSQX2MTR: cross1
+30-16:28:16  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVSS in SDFFSQX2MTR: cross2
+30-16:28:16  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK2_3 in SDFFSQX2MTR: cross2
+30-16:28:16  INFO: s110, (SDFFSQX4MTR, 35 devices), 35 devices
+30-16:28:16  INFO: -----SDFFSQX4MTR:  scanff False False    SE
+30-16:28:16  INFO: 1. clock pattern: pattern: CLK1 in SDFFSQX4MTR: clk
+30-16:28:16  INFO: 2. inputs inv pattern: pattern: INV in SDFFSQX4MTR: ininv_SE_0
+30-16:28:16  INFO: 3. output pattern: pattern: INV in SDFFSQX4MTR: out_Q
+30-16:28:16  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_4 in SDFFSQX4MTR: sesi
+30-16:28:16  INFO: 5.1 cross1 pattern: pattern: PCROSS_2 in SDFFSQX4MTR: cross1
+30-16:28:16  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDFFSQX4MTR: cross1
+30-16:28:16  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVSS in SDFFSQX4MTR: cross2
+30-16:28:16  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK2_3 in SDFFSQX4MTR: cross2
+30-16:28:16  INFO: s110, (SDFFSRHQX1MTR, 50 devices), 50 devices
+30-16:28:16  INFO: -----SDFFSRHQX1MTR:  scanff False False    SE
+30-16:28:16  INFO: 1. clock pattern: pattern: CLK2 in SDFFSRHQX1MTR: clk
+30-16:28:16  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRHQX1MTR: ininv_D_0
+30-16:28:16  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRHQX1MTR: ininv_SE_0
+30-16:28:16  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRHQX1MTR: ininv_SN_0
+30-16:28:16  INFO: 3. output pattern: pattern: INV in SDFFSRHQX1MTR: out_Q
+30-16:28:16  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFSRHQX1MTR: sesi
+30-16:28:17  INFO: 5.1 cross1 pattern: pattern: PRSCROSS_1 in SDFFSRHQX1MTR: cross1
+30-16:28:17  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1_2 in SDFFSRHQX1MTR: cross1
+30-16:28:17  INFO: s110, (SDFFSRHQX2MTR, 50 devices), 50 devices
+30-16:28:17  INFO: -----SDFFSRHQX2MTR:  scanff False False    SE
+30-16:28:17  INFO: 1. clock pattern: pattern: CLK2 in SDFFSRHQX2MTR: clk
+30-16:28:17  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRHQX2MTR: ininv_D_0
+30-16:28:17  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRHQX2MTR: ininv_SE_0
+30-16:28:17  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRHQX2MTR: ininv_SN_0
+30-16:28:17  INFO: 3. output pattern: pattern: INV in SDFFSRHQX2MTR: out_Q
+30-16:28:17  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFSRHQX2MTR: sesi
+30-16:28:17  INFO: 5.1 cross1 pattern: pattern: PRSCROSS_1 in SDFFSRHQX2MTR: cross1
+30-16:28:17  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1_2 in SDFFSRHQX2MTR: cross1
+30-16:28:17  INFO: s110, (SDFFSRHQX4MTR, 50 devices), 50 devices
+30-16:28:17  INFO: -----SDFFSRHQX4MTR:  scanff False False    SE
+30-16:28:17  INFO: 1. clock pattern: pattern: CLK2 in SDFFSRHQX4MTR: clk
+30-16:28:17  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRHQX4MTR: ininv_D_0
+30-16:28:17  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRHQX4MTR: ininv_SE_0
+30-16:28:17  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRHQX4MTR: ininv_SN_0
+30-16:28:17  INFO: 3. output pattern: pattern: INV in SDFFSRHQX4MTR: out_Q
+30-16:28:17  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFSRHQX4MTR: sesi
+30-16:28:18  INFO: 5.1 cross1 pattern: pattern: PRSCROSS_1 in SDFFSRHQX4MTR: cross1
+30-16:28:18  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1_2 in SDFFSRHQX4MTR: cross1
+30-16:28:18  INFO: s110, (SDFFSRHQX8MTR, 50 devices), 50 devices
+30-16:28:18  INFO: -----SDFFSRHQX8MTR:  scanff False False    SE
+30-16:28:18  INFO: 1. clock pattern: pattern: CLK2 in SDFFSRHQX8MTR: clk
+30-16:28:18  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRHQX8MTR: ininv_D_0
+30-16:28:18  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRHQX8MTR: ininv_SE_0
+30-16:28:18  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRHQX8MTR: ininv_SN_0
+30-16:28:18  INFO: 3. output pattern: pattern: INV in SDFFSRHQX8MTR: out_Q
+30-16:28:18  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: PCROSS_2 in SDFFSRHQX8MTR: sesi
+30-16:28:18  INFO: 5.1 cross1 pattern: pattern: PRSCROSS_1 in SDFFSRHQX8MTR: cross1
+30-16:28:18  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1_2 in SDFFSRHQX8MTR: cross1
+30-16:28:18  INFO: s110, (SDFFSRX1MTR, 42 devices), 42 devices
+30-16:28:18  INFO: -----SDFFSRX1MTR:  scanff False False    SE
+30-16:28:18  INFO: 1. clock pattern: pattern: CLK1 in SDFFSRX1MTR: clk
+30-16:28:18  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRX1MTR: ininv_RN_0
+30-16:28:18  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRX1MTR: ininv_SE_0
+30-16:28:18  INFO: 3. output pattern: pattern: INV in SDFFSRX1MTR: out_Q
+30-16:28:18  INFO: 3. output pattern: pattern: INV in SDFFSRX1MTR: out_QN
+30-16:28:19  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_4 in SDFFSRX1MTR: sesi
+30-16:28:19  INFO: 5.1 cross1 pattern: pattern: PCROSS_2 in SDFFSRX1MTR: cross1
+30-16:28:19  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in SDFFSRX1MTR: cross1
+30-16:28:19  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVDDVSS in SDFFSRX1MTR: cross2
+30-16:28:19  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_3_3 in SDFFSRX1MTR: cross2
+30-16:28:19  INFO: s110, (SDFFSRX2MTR, 42 devices), 42 devices
+30-16:28:19  INFO: -----SDFFSRX2MTR:  scanff False False    SE
+30-16:28:19  INFO: 1. clock pattern: pattern: CLK1 in SDFFSRX2MTR: clk
+30-16:28:19  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRX2MTR: ininv_RN_0
+30-16:28:19  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRX2MTR: ininv_SE_0
+30-16:28:19  INFO: 3. output pattern: pattern: INV in SDFFSRX2MTR: out_Q
+30-16:28:19  INFO: 3. output pattern: pattern: INV in SDFFSRX2MTR: out_QN
+30-16:28:19  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_4 in SDFFSRX2MTR: sesi
+30-16:28:19  INFO: 5.1 cross1 pattern: pattern: PCROSS_2 in SDFFSRX2MTR: cross1
+30-16:28:19  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in SDFFSRX2MTR: cross1
+30-16:28:19  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVDDVSS in SDFFSRX2MTR: cross2
+30-16:28:19  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_3_3 in SDFFSRX2MTR: cross2
+30-16:28:19  INFO: s110, (SDFFSRX4MTR, 42 devices), 42 devices
+30-16:28:19  INFO: -----SDFFSRX4MTR:  scanff False False    SE
+30-16:28:19  INFO: 1. clock pattern: pattern: CLK1 in SDFFSRX4MTR: clk
+30-16:28:19  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRX4MTR: ininv_RN_0
+30-16:28:19  INFO: 2. inputs inv pattern: pattern: INV in SDFFSRX4MTR: ininv_SE_0
+30-16:28:19  INFO: 3. output pattern: pattern: INV in SDFFSRX4MTR: out_Q
+30-16:28:19  INFO: 3. output pattern: pattern: INV in SDFFSRX4MTR: out_QN
+30-16:28:19  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_4 in SDFFSRX4MTR: sesi
+30-16:28:19  INFO: 5.1 cross1 pattern: pattern: PCROSS_2 in SDFFSRX4MTR: cross1
+30-16:28:19  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in SDFFSRX4MTR: cross1
+30-16:28:19  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVDDVSS in SDFFSRX4MTR: cross2
+30-16:28:19  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_3_3 in SDFFSRX4MTR: cross2
+30-16:28:19  INFO: s110, (SDFFSX1MTR, 37 devices), 37 devices
+30-16:28:19  INFO: -----SDFFSX1MTR:  scanff False False    SE
+30-16:28:19  INFO: 1. clock pattern: pattern: CLK1 in SDFFSX1MTR: clk
+30-16:28:19  INFO: 2. inputs inv pattern: pattern: INV in SDFFSX1MTR: ininv_SE_0
+30-16:28:19  INFO: 3. output pattern: pattern: INV in SDFFSX1MTR: out_Q
+30-16:28:19  INFO: 3. output pattern: pattern: INV in SDFFSX1MTR: out_QN
+30-16:28:20  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_4 in SDFFSX1MTR: sesi
+30-16:28:20  INFO: 5.1 cross1 pattern: pattern: PCROSS_2 in SDFFSX1MTR: cross1
+30-16:28:20  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDFFSX1MTR: cross1
+30-16:28:20  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVSS in SDFFSX1MTR: cross2
+30-16:28:20  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK2_3 in SDFFSX1MTR: cross2
+30-16:28:20  INFO: s110, (SDFFSX2MTR, 37 devices), 37 devices
+30-16:28:20  INFO: -----SDFFSX2MTR:  scanff False False    SE
+30-16:28:20  INFO: 1. clock pattern: pattern: CLK1 in SDFFSX2MTR: clk
+30-16:28:20  INFO: 2. inputs inv pattern: pattern: INV in SDFFSX2MTR: ininv_SE_0
+30-16:28:20  INFO: 3. output pattern: pattern: INV in SDFFSX2MTR: out_Q
+30-16:28:20  INFO: 3. output pattern: pattern: INV in SDFFSX2MTR: out_QN
+30-16:28:20  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_4 in SDFFSX2MTR: sesi
+30-16:28:20  INFO: 5.1 cross1 pattern: pattern: PCROSS_2 in SDFFSX2MTR: cross1
+30-16:28:20  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDFFSX2MTR: cross1
+30-16:28:20  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVSS in SDFFSX2MTR: cross2
+30-16:28:20  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK2_3 in SDFFSX2MTR: cross2
+30-16:28:20  INFO: s110, (SDFFSX4MTR, 37 devices), 37 devices
+30-16:28:20  INFO: -----SDFFSX4MTR:  scanff False False    SE
+30-16:28:20  INFO: 1. clock pattern: pattern: CLK1 in SDFFSX4MTR: clk
+30-16:28:20  INFO: 2. inputs inv pattern: pattern: INV in SDFFSX4MTR: ininv_SE_0
+30-16:28:20  INFO: 3. output pattern: pattern: INV in SDFFSX4MTR: out_Q
+30-16:28:20  INFO: 3. output pattern: pattern: INV in SDFFSX4MTR: out_QN
+30-16:28:20  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_4 in SDFFSX4MTR: sesi
+30-16:28:20  INFO: 5.1 cross1 pattern: pattern: PCROSS_2 in SDFFSX4MTR: cross1
+30-16:28:20  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in SDFFSX4MTR: cross1
+30-16:28:20  INFO: 5.3 cross2 pattern: pattern: PCROSS_2_noVSS in SDFFSX4MTR: cross2
+30-16:28:20  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK2_3 in SDFFSX4MTR: cross2
+30-16:28:20  INFO: s110, (SDFFTRX1MTR, 37 devices), 37 devices
+30-16:28:20  INFO: -----SDFFTRX1MTR:  scanff False False    SE
+30-16:28:20  INFO: 1. clock pattern: pattern: CLK1 in SDFFTRX1MTR: clk
+30-16:28:20  INFO: 2. inputs inv pattern: pattern: INV in SDFFTRX1MTR: ininv_SE_0
+30-16:28:20  INFO: 3. output pattern: pattern: INV in SDFFTRX1MTR: out_Q
+30-16:28:20  INFO: 3. output pattern: pattern: INV in SDFFTRX1MTR: out_QN
+30-16:28:21  INFO: s110, (SDFFTRX2MTR, 37 devices), 37 devices
+30-16:28:21  INFO: -----SDFFTRX2MTR:  scanff False False    SE
+30-16:28:21  INFO: 1. clock pattern: pattern: CLK1 in SDFFTRX2MTR: clk
+30-16:28:21  INFO: 2. inputs inv pattern: pattern: INV in SDFFTRX2MTR: ininv_SE_0
+30-16:28:21  INFO: 3. output pattern: pattern: INV in SDFFTRX2MTR: out_Q
+30-16:28:21  INFO: 3. output pattern: pattern: INV in SDFFTRX2MTR: out_QN
+30-16:28:22  INFO: s110, (SDFFTRX4MTR, 37 devices), 37 devices
+30-16:28:22  INFO: -----SDFFTRX4MTR:  scanff False False    SE
+30-16:28:22  INFO: 1. clock pattern: pattern: CLK1 in SDFFTRX4MTR: clk
+30-16:28:22  INFO: 2. inputs inv pattern: pattern: INV in SDFFTRX4MTR: ininv_SE_0
+30-16:28:22  INFO: 3. output pattern: pattern: INV in SDFFTRX4MTR: out_Q
+30-16:28:22  INFO: 3. output pattern: pattern: INV in SDFFTRX4MTR: out_QN
+30-16:28:23  INFO: s110, (SDFFX1MTR, 36 devices), 36 devices
+30-16:28:23  INFO: ----- SDFFX1MTR:  scanff False False    SE
+30-16:28:23  INFO: 1. clock pattern: pattern: CLK1 in SDFFX1MTR: clk
+30-16:28:23  INFO: 2. inputs inv pattern: pattern: INV in SDFFX1MTR: ininv_SE_0
+30-16:28:23  INFO: 3. output pattern: pattern: INV in SDFFX1MTR: out_Q
+30-16:28:23  INFO: 3. output pattern: pattern: INV in SDFFX1MTR: out_QN
+30-16:28:23  INFO: s110, (SDFFX2MTR, 36 devices), 36 devices
+30-16:28:23  INFO: ----- SDFFX2MTR:  scanff False False    SE
+30-16:28:23  INFO: 1. clock pattern: pattern: CLK1 in SDFFX2MTR: clk
+30-16:28:23  INFO: 2. inputs inv pattern: pattern: INV in SDFFX2MTR: ininv_SE_0
+30-16:28:23  INFO: 3. output pattern: pattern: INV in SDFFX2MTR: out_Q
+30-16:28:23  INFO: 3. output pattern: pattern: INV in SDFFX2MTR: out_QN
+30-16:28:23  INFO: s110, (SDFFX4MTR, 36 devices), 36 devices
+30-16:28:23  INFO: ----- SDFFX4MTR:  scanff False False    SE
+30-16:28:23  INFO: 1. clock pattern: pattern: CLK1 in SDFFX4MTR: clk
+30-16:28:23  INFO: 2. inputs inv pattern: pattern: INV in SDFFX4MTR: ininv_SE_0
+30-16:28:23  INFO: 3. output pattern: pattern: INV in SDFFX4MTR: out_Q
+30-16:28:23  INFO: 3. output pattern: pattern: INV in SDFFX4MTR: out_QN
+30-16:28:24  INFO: s110, (SEDFFHQX1MTR, 53 devices), 53 devices
+30-16:28:24  INFO: -----SEDFFHQX1MTR:  scanff  True False    SE
+30-16:28:24  INFO: 1. clock pattern: pattern: CLK2 in SEDFFHQX1MTR: clk
+30-16:28:24  INFO: 2. inputs inv pattern: pattern: INV in SEDFFHQX1MTR: ininv_D_0
+30-16:28:24  INFO: 2. inputs inv pattern: pattern: INV in SEDFFHQX1MTR: ininv_SE_0
+30-16:28:24  INFO: 3. output pattern: pattern: INV in SEDFFHQX1MTR: out_Q
+30-16:28:25  INFO: s110, (SEDFFHQX2MTR, 53 devices), 53 devices
+30-16:28:25  INFO: -----SEDFFHQX2MTR:  scanff  True False    SE
+30-16:28:25  INFO: 1. clock pattern: pattern: CLK2 in SEDFFHQX2MTR: clk
+30-16:28:25  INFO: 2. inputs inv pattern: pattern: INV in SEDFFHQX2MTR: ininv_D_0
+30-16:28:25  INFO: 2. inputs inv pattern: pattern: INV in SEDFFHQX2MTR: ininv_SE_0
+30-16:28:25  INFO: 3. output pattern: pattern: INV in SEDFFHQX2MTR: out_Q
+30-16:28:26  INFO: s110, (SEDFFHQX4MTR, 53 devices), 53 devices
+30-16:28:26  INFO: -----SEDFFHQX4MTR:  scanff  True False    SE
+30-16:28:26  INFO: 1. clock pattern: pattern: CLK2 in SEDFFHQX4MTR: clk
+30-16:28:26  INFO: 2. inputs inv pattern: pattern: INV in SEDFFHQX4MTR: ininv_D_0
+30-16:28:26  INFO: 2. inputs inv pattern: pattern: INV in SEDFFHQX4MTR: ininv_SE_0
+30-16:28:26  INFO: 3. output pattern: pattern: INV in SEDFFHQX4MTR: out_Q
+30-16:28:27  INFO: s110, (SEDFFHQX8MTR, 53 devices), 53 devices
+30-16:28:27  INFO: -----SEDFFHQX8MTR:  scanff  True False    SE
+30-16:28:27  INFO: 1. clock pattern: pattern: CLK2 in SEDFFHQX8MTR: clk
+30-16:28:27  INFO: 2. inputs inv pattern: pattern: INV in SEDFFHQX8MTR: ininv_D_0
+30-16:28:27  INFO: 2. inputs inv pattern: pattern: INV in SEDFFHQX8MTR: ininv_SE_0
+30-16:28:27  INFO: 3. output pattern: pattern: INV in SEDFFHQX8MTR: out_Q
+30-16:28:28  INFO: s110, (SEDFFTRX1MTR, 54 devices), 54 devices
+30-16:28:28  INFO: -----SEDFFTRX1MTR:  scanff  True False    SE
+30-16:28:28  INFO: 1. clock pattern: pattern: CLK1 in SEDFFTRX1MTR: clk
+30-16:28:28  INFO: 2. inputs inv pattern: pattern: INV in SEDFFTRX1MTR: ininv_D_0
+30-16:28:28  INFO: 2. inputs inv pattern: pattern: INV in SEDFFTRX1MTR: ininv_E_0
+30-16:28:28  INFO: 2. inputs inv pattern: pattern: INV in SEDFFTRX1MTR: ininv_SE_0
+30-16:28:28  INFO: 2. inputs inv pattern: pattern: INV in SEDFFTRX1MTR: ininv_SI_0
+30-16:28:28  INFO: 3. output pattern: pattern: INV in SEDFFTRX1MTR: out_Q
+30-16:28:28  INFO: 3. output pattern: pattern: INV in SEDFFTRX1MTR: out_QN
+30-16:28:28  INFO: s110, (SEDFFTRX2MTR, 54 devices), 54 devices
+30-16:28:28  INFO: -----SEDFFTRX2MTR:  scanff  True False    SE
+30-16:28:28  INFO: 1. clock pattern: pattern: CLK1 in SEDFFTRX2MTR: clk
+30-16:28:28  INFO: 2. inputs inv pattern: pattern: INV in SEDFFTRX2MTR: ininv_D_0
+30-16:28:28  INFO: 2. inputs inv pattern: pattern: INV in SEDFFTRX2MTR: ininv_E_0
+30-16:28:28  INFO: 2. inputs inv pattern: pattern: INV in SEDFFTRX2MTR: ininv_SE_0
+30-16:28:28  INFO: 2. inputs inv pattern: pattern: INV in SEDFFTRX2MTR: ininv_SI_0
+30-16:28:28  INFO: 3. output pattern: pattern: INV in SEDFFTRX2MTR: out_Q
+30-16:28:28  INFO: 3. output pattern: pattern: INV in SEDFFTRX2MTR: out_QN
+30-16:28:29  INFO: s110, (SEDFFTRX4MTR, 54 devices), 54 devices
+30-16:28:29  INFO: -----SEDFFTRX4MTR:  scanff  True False    SE
+30-16:28:29  INFO: 1. clock pattern: pattern: CLK1 in SEDFFTRX4MTR: clk
+30-16:28:29  INFO: 2. inputs inv pattern: pattern: INV in SEDFFTRX4MTR: ininv_D_0
+30-16:28:29  INFO: 2. inputs inv pattern: pattern: INV in SEDFFTRX4MTR: ininv_E_0
+30-16:28:29  INFO: 2. inputs inv pattern: pattern: INV in SEDFFTRX4MTR: ininv_SE_0
+30-16:28:29  INFO: 2. inputs inv pattern: pattern: INV in SEDFFTRX4MTR: ininv_SI_0
+30-16:28:29  INFO: 3. output pattern: pattern: INV in SEDFFTRX4MTR: out_Q
+30-16:28:29  INFO: 3. output pattern: pattern: INV in SEDFFTRX4MTR: out_QN
+30-16:28:30  INFO: s110, (SEDFFX1MTR, 44 devices), 44 devices
+30-16:28:30  INFO: -----SEDFFX1MTR:  scanff  True False    SE
+30-16:28:30  INFO: 1. clock pattern: pattern: CLK1 in SEDFFX1MTR: clk
+30-16:28:30  INFO: 2. inputs inv pattern: pattern: INV in SEDFFX1MTR: ininv_E_0
+30-16:28:30  INFO: 2. inputs inv pattern: pattern: INV in SEDFFX1MTR: ininv_SE_0
+30-16:28:30  INFO: 3. output pattern: pattern: INV in SEDFFX1MTR: out_Q
+30-16:28:30  INFO: 3. output pattern: pattern: INV in SEDFFX1MTR: out_QN
+30-16:28:30  INFO: s110, (SEDFFX2MTR, 44 devices), 44 devices
+30-16:28:30  INFO: -----SEDFFX2MTR:  scanff  True False    SE
+30-16:28:30  INFO: 1. clock pattern: pattern: CLK1 in SEDFFX2MTR: clk
+30-16:28:30  INFO: 2. inputs inv pattern: pattern: INV in SEDFFX2MTR: ininv_E_0
+30-16:28:30  INFO: 2. inputs inv pattern: pattern: INV in SEDFFX2MTR: ininv_SE_0
+30-16:28:30  INFO: 3. output pattern: pattern: INV in SEDFFX2MTR: out_Q
+30-16:28:30  INFO: 3. output pattern: pattern: INV in SEDFFX2MTR: out_QN
+30-16:28:31  INFO: s110, (SEDFFX4MTR, 44 devices), 44 devices
+30-16:28:31  INFO: -----SEDFFX4MTR:  scanff  True False    SE
+30-16:28:31  INFO: 1. clock pattern: pattern: CLK1 in SEDFFX4MTR: clk
+30-16:28:31  INFO: 2. inputs inv pattern: pattern: INV in SEDFFX4MTR: ininv_E_0
+30-16:28:31  INFO: 2. inputs inv pattern: pattern: INV in SEDFFX4MTR: ininv_SE_0
+30-16:28:31  INFO: 3. output pattern: pattern: INV in SEDFFX4MTR: out_Q
+30-16:28:31  INFO: 3. output pattern: pattern: INV in SEDFFX4MTR: out_QN
+30-16:28:32  INFO: s110, (SMDFFHQX1MTR, 53 devices), 53 devices
+30-16:28:32  INFO: -----SMDFFHQX1MTR:  scanff False  True    SE
+30-16:28:32  INFO: 1. clock pattern: pattern: CLK2 in SMDFFHQX1MTR: clk
+30-16:28:32  INFO: 2. inputs inv pattern: pattern: INV in SMDFFHQX1MTR: ininv_D0_0
+30-16:28:32  INFO: 2. inputs inv pattern: pattern: INV in SMDFFHQX1MTR: ininv_D1_0
+30-16:28:32  INFO: 2. inputs inv pattern: pattern: INV in SMDFFHQX1MTR: ininv_SE_0
+30-16:28:32  INFO: 3. output pattern: pattern: INV in SMDFFHQX1MTR: out_Q
+30-16:28:32  INFO: s110, (SMDFFHQX2MTR, 53 devices), 53 devices
+30-16:28:32  INFO: -----SMDFFHQX2MTR:  scanff False  True    SE
+30-16:28:32  INFO: 1. clock pattern: pattern: CLK2 in SMDFFHQX2MTR: clk
+30-16:28:32  INFO: 2. inputs inv pattern: pattern: INV in SMDFFHQX2MTR: ininv_D0_0
+30-16:28:32  INFO: 2. inputs inv pattern: pattern: INV in SMDFFHQX2MTR: ininv_D1_0
+30-16:28:32  INFO: 2. inputs inv pattern: pattern: INV in SMDFFHQX2MTR: ininv_SE_0
+30-16:28:32  INFO: 3. output pattern: pattern: INV in SMDFFHQX2MTR: out_Q
+30-16:28:32  INFO: s110, (SMDFFHQX4MTR, 53 devices), 53 devices
+30-16:28:32  INFO: -----SMDFFHQX4MTR:  scanff False  True    SE
+30-16:28:32  INFO: 1. clock pattern: pattern: CLK2 in SMDFFHQX4MTR: clk
+30-16:28:32  INFO: 2. inputs inv pattern: pattern: INV in SMDFFHQX4MTR: ininv_D0_0
+30-16:28:32  INFO: 2. inputs inv pattern: pattern: INV in SMDFFHQX4MTR: ininv_D1_0
+30-16:28:32  INFO: 2. inputs inv pattern: pattern: INV in SMDFFHQX4MTR: ininv_SE_0
+30-16:28:32  INFO: 3. output pattern: pattern: INV in SMDFFHQX4MTR: out_Q
+30-16:28:33  INFO: s110, (SMDFFHQX8MTR, 53 devices), 53 devices
+30-16:28:33  INFO: -----SMDFFHQX8MTR:  scanff False  True    SE
+30-16:28:33  INFO: 1. clock pattern: pattern: CLK2 in SMDFFHQX8MTR: clk
+30-16:28:33  INFO: 2. inputs inv pattern: pattern: INV in SMDFFHQX8MTR: ininv_D0_0
+30-16:28:33  INFO: 2. inputs inv pattern: pattern: INV in SMDFFHQX8MTR: ininv_D1_0
+30-16:28:33  INFO: 2. inputs inv pattern: pattern: INV in SMDFFHQX8MTR: ininv_SE_0
+30-16:28:33  INFO: 3. output pattern: pattern: INV in SMDFFHQX8MTR: out_Q
+30-16:28:33  INFO: s110, (TLATNSRX1MTR, 27 devices), 27 devices
+30-16:28:33  INFO: -----TLATNSRX1MTR:   latch False False undef
+30-16:28:33  INFO: 1. clock pattern: pattern: CLK1 in TLATNSRX1MTR: clk
+30-16:28:33  INFO: 2. inputs inv pattern: pattern: INV in TLATNSRX1MTR: ininv_SN_0
+30-16:28:33  INFO: 3. output pattern: pattern: INV in TLATNSRX1MTR: out_Q
+30-16:28:33  INFO: 3. output pattern: pattern: INV in TLATNSRX1MTR: out_QN
+30-16:28:33  INFO: 5.1 cross1 pattern: pattern: FCROSS_5 in TLATNSRX1MTR: cross1
+30-16:28:33  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_3_5 in TLATNSRX1MTR: cross1
+30-16:28:33  INFO: s110, (TLATNSRX2MTR, 33 devices), 33 devices
+30-16:28:33  INFO: -----TLATNSRX2MTR:   latch False False undef
+30-16:28:33  INFO: 1. clock pattern: pattern: CLK1 in TLATNSRX2MTR: clk
+30-16:28:33  INFO: 2. inputs inv pattern: pattern: INV in TLATNSRX2MTR: ininv_SN_0
+30-16:28:33  INFO: 3. output pattern: pattern: INV in TLATNSRX2MTR: out_Q
+30-16:28:33  INFO: 3. output pattern: pattern: INV in TLATNSRX2MTR: out_QN
+30-16:28:33  INFO: 5.1 cross1 pattern: pattern: FCROSS_5 in TLATNSRX2MTR: cross1
+30-16:28:33  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_3_5 in TLATNSRX2MTR: cross1
+30-16:28:33  INFO: s110, (TLATNSRX4MTR, 33 devices), 33 devices
+30-16:28:33  INFO: -----TLATNSRX4MTR:   latch False False undef
+30-16:28:33  INFO: 1. clock pattern: pattern: CLK1 in TLATNSRX4MTR: clk
+30-16:28:33  INFO: 2. inputs inv pattern: pattern: INV in TLATNSRX4MTR: ininv_SN_0
+30-16:28:33  INFO: 3. output pattern: pattern: INV in TLATNSRX4MTR: out_Q
+30-16:28:33  INFO: 3. output pattern: pattern: INV in TLATNSRX4MTR: out_QN
+30-16:28:34  INFO: 5.1 cross1 pattern: pattern: FCROSS_5 in TLATNSRX4MTR: cross1
+30-16:28:34  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_3_5 in TLATNSRX4MTR: cross1
+30-16:28:34  INFO: s110, (TLATNX1MTR, 18 devices), 18 devices
+30-16:28:34  INFO: -----TLATNX1MTR:   latch False False undef
+30-16:28:34  INFO: 1. clock pattern: pattern: CLK1 in TLATNX1MTR: clk
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATNX1MTR: out_Q
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATNX1MTR: out_QN
+30-16:28:34  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNX1MTR: cross1
+30-16:28:34  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNX1MTR: cross1
+30-16:28:34  INFO: s110, (TLATNX2MTR, 18 devices), 18 devices
+30-16:28:34  INFO: -----TLATNX2MTR:   latch False False undef
+30-16:28:34  INFO: 1. clock pattern: pattern: CLK1 in TLATNX2MTR: clk
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATNX2MTR: out_Q
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATNX2MTR: out_QN
+30-16:28:34  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNX2MTR: cross1
+30-16:28:34  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNX2MTR: cross1
+30-16:28:34  INFO: s110, (TLATNX4MTR, 18 devices), 18 devices
+30-16:28:34  INFO: -----TLATNX4MTR:   latch False False undef
+30-16:28:34  INFO: 1. clock pattern: pattern: CLK1 in TLATNX4MTR: clk
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATNX4MTR: out_Q
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATNX4MTR: out_QN
+30-16:28:34  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNX4MTR: cross1
+30-16:28:34  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNX4MTR: cross1
+30-16:28:34  INFO: s110, (TLATSRX1MTR, 27 devices), 27 devices
+30-16:28:34  INFO: -----TLATSRX1MTR:   latch False False undef
+30-16:28:34  INFO: 1. clock pattern: pattern: CLK1 in TLATSRX1MTR: clk
+30-16:28:34  INFO: 2. inputs inv pattern: pattern: INV in TLATSRX1MTR: ininv_SN_0
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATSRX1MTR: out_Q
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATSRX1MTR: out_QN
+30-16:28:34  INFO: 5.1 cross1 pattern: pattern: FCROSS_5 in TLATSRX1MTR: cross1
+30-16:28:34  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_3_5 in TLATSRX1MTR: cross1
+30-16:28:34  INFO: s110, (TLATSRX2MTR, 27 devices), 27 devices
+30-16:28:34  INFO: -----TLATSRX2MTR:   latch False False undef
+30-16:28:34  INFO: 1. clock pattern: pattern: CLK1 in TLATSRX2MTR: clk
+30-16:28:34  INFO: 2. inputs inv pattern: pattern: INV in TLATSRX2MTR: ininv_SN_0
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATSRX2MTR: out_Q
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATSRX2MTR: out_QN
+30-16:28:34  INFO: 5.1 cross1 pattern: pattern: FCROSS_5 in TLATSRX2MTR: cross1
+30-16:28:34  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_3_5 in TLATSRX2MTR: cross1
+30-16:28:34  INFO: s110, (TLATSRX4MTR, 27 devices), 27 devices
+30-16:28:34  INFO: -----TLATSRX4MTR:   latch False False undef
+30-16:28:34  INFO: 1. clock pattern: pattern: CLK1 in TLATSRX4MTR: clk
+30-16:28:34  INFO: 2. inputs inv pattern: pattern: INV in TLATSRX4MTR: ininv_SN_0
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATSRX4MTR: out_Q
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATSRX4MTR: out_QN
+30-16:28:34  INFO: 5.1 cross1 pattern: pattern: FCROSS_5 in TLATSRX4MTR: cross1
+30-16:28:34  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_3_5 in TLATSRX4MTR: cross1
+30-16:28:34  INFO: s110, (TLATX1MTR, 18 devices), 18 devices
+30-16:28:34  INFO: ----- TLATX1MTR:   latch False False undef
+30-16:28:34  INFO: 1. clock pattern: pattern: CLK1 in TLATX1MTR: clk
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATX1MTR: out_Q
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATX1MTR: out_QN
+30-16:28:34  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATX1MTR: cross1
+30-16:28:34  INFO: 5.2  back track 1 pattern: pattern: INV in TLATX1MTR: cross1
+30-16:28:34  INFO: s110, (TLATX2MTR, 18 devices), 18 devices
+30-16:28:34  INFO: ----- TLATX2MTR:   latch False False undef
+30-16:28:34  INFO: 1. clock pattern: pattern: CLK1 in TLATX2MTR: clk
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATX2MTR: out_Q
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATX2MTR: out_QN
+30-16:28:34  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATX2MTR: cross1
+30-16:28:34  INFO: 5.2  back track 1 pattern: pattern: INV in TLATX2MTR: cross1
+30-16:28:34  INFO: s110, (TLATX4MTR, 18 devices), 18 devices
+30-16:28:34  INFO: ----- TLATX4MTR:   latch False False undef
+30-16:28:34  INFO: 1. clock pattern: pattern: CLK1 in TLATX4MTR: clk
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATX4MTR: out_Q
+30-16:28:34  INFO: 3. output pattern: pattern: INV in TLATX4MTR: out_QN
+30-16:28:34  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATX4MTR: cross1
+30-16:28:34  INFO: 5.2  back track 1 pattern: pattern: INV in TLATX4MTR: cross1
+30-16:28:34  INFO: s110, (TLATNCAX12MTR, 44 devices), 44 devices
+30-16:28:34  INFO: -----TLATNCAX12MTR: clockgate  True False undef
+30-16:28:34  INFO: 1. clock pattern: pattern: CLK1 in TLATNCAX12MTR: clk
+30-16:28:34  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNCAX12MTR: out_ECK
+30-16:28:36  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNCAX12MTR: cross1
+30-16:28:36  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNCAX12MTR: cross1
+30-16:28:36  INFO: s110, (TLATNCAX16MTR, 48 devices), 48 devices
+30-16:28:36  INFO: -----TLATNCAX16MTR: clockgate  True False undef
+30-16:28:36  INFO: 1. clock pattern: pattern: CLK1 in TLATNCAX16MTR: clk
+30-16:28:36  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNCAX16MTR: out_ECK
+30-16:28:38  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNCAX16MTR: cross1
+30-16:28:38  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNCAX16MTR: cross1
+30-16:28:38  INFO: s110, (TLATNCAX20MTR, 60 devices), 60 devices
+30-16:28:38  INFO: -----TLATNCAX20MTR: clockgate  True False undef
+30-16:28:38  INFO: 1. clock pattern: pattern: CLK1 in TLATNCAX20MTR: clk
+30-16:28:38  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNCAX20MTR: out_ECK
+30-16:28:44  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNCAX20MTR: cross1
+30-16:28:44  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNCAX20MTR: cross1
+30-16:28:44  INFO: s110, (TLATNCAX2MTR, 18 devices), 18 devices
+30-16:28:44  INFO: -----TLATNCAX2MTR: clockgate  True False undef
+30-16:28:44  INFO: 1. clock pattern: pattern: CLK1 in TLATNCAX2MTR: clk
+30-16:28:44  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNCAX2MTR: out_ECK
+30-16:28:44  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNCAX2MTR: cross1
+30-16:28:44  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNCAX2MTR: cross1
+30-16:28:44  INFO: s110, (TLATNCAX3MTR, 20 devices), 20 devices
+30-16:28:44  INFO: -----TLATNCAX3MTR: clockgate  True False undef
+30-16:28:44  INFO: 1. clock pattern: pattern: CLK1 in TLATNCAX3MTR: clk
+30-16:28:44  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNCAX3MTR: out_ECK
+30-16:28:44  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNCAX3MTR: cross1
+30-16:28:44  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNCAX3MTR: cross1
+30-16:28:44  INFO: s110, (TLATNCAX4MTR, 24 devices), 24 devices
+30-16:28:44  INFO: -----TLATNCAX4MTR: clockgate  True False undef
+30-16:28:44  INFO: 1. clock pattern: pattern: CLK1 in TLATNCAX4MTR: clk
+30-16:28:44  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNCAX4MTR: out_ECK
+30-16:28:44  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNCAX4MTR: cross1
+30-16:28:44  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNCAX4MTR: cross1
+30-16:28:44  INFO: s110, (TLATNCAX6MTR, 26 devices), 26 devices
+30-16:28:44  INFO: -----TLATNCAX6MTR: clockgate  True False undef
+30-16:28:44  INFO: 1. clock pattern: pattern: CLK1 in TLATNCAX6MTR: clk
+30-16:28:44  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNCAX6MTR: out_ECK
+30-16:28:44  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNCAX6MTR: cross1
+30-16:28:44  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNCAX6MTR: cross1
+30-16:28:44  INFO: s110, (TLATNCAX8MTR, 28 devices), 28 devices
+30-16:28:44  INFO: -----TLATNCAX8MTR: clockgate  True False undef
+30-16:28:44  INFO: 1. clock pattern: pattern: CLK1 in TLATNCAX8MTR: clk
+30-16:28:44  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNCAX8MTR: out_ECK
+30-16:28:45  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNCAX8MTR: cross1
+30-16:28:45  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNCAX8MTR: cross1
+30-16:28:45  INFO: s110, (TLATNTSCAX12MTR, 52 devices), 52 devices
+30-16:28:45  INFO: -----TLATNTSCAX12MTR: clockgate  True False    SE
+30-16:28:45  INFO: 1. clock pattern: pattern: CLK1 in TLATNTSCAX12MTR: clk
+30-16:28:45  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNTSCAX12MTR: out_ECK
+30-16:28:45  INFO: 4.1 inputs(D0 D1 S0/D E/E SE) pattern: pattern: LOGIC2_OR2 in TLATNTSCAX12MTR: inputs
+30-16:28:47  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNTSCAX12MTR: cross1
+30-16:28:47  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNTSCAX12MTR: cross1
+30-16:28:47  INFO: s110, (TLATNTSCAX16MTR, 66 devices), 66 devices
+30-16:28:47  INFO: -----TLATNTSCAX16MTR: clockgate  True False    SE
+30-16:28:47  INFO: 1. clock pattern: pattern: CLK1 in TLATNTSCAX16MTR: clk
+30-16:28:48  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNTSCAX16MTR: out_ECK
+30-16:28:48  INFO: s110, (TLATNTSCAX20MTR, 74 devices), 74 devices
+30-16:28:48  INFO: -----TLATNTSCAX20MTR: clockgate  True False    SE
+30-16:28:48  INFO: 1. clock pattern: pattern: CLK1 in TLATNTSCAX20MTR: clk
+30-16:28:48  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNTSCAX20MTR: out_ECK
+30-16:28:49  INFO: s110, (TLATNTSCAX2MTR, 24 devices), 24 devices
+30-16:28:49  INFO: -----TLATNTSCAX2MTR: clockgate  True False    SE
+30-16:28:49  INFO: 1. clock pattern: pattern: CLK1 in TLATNTSCAX2MTR: clk
+30-16:28:49  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNTSCAX2MTR: out_ECK
+30-16:28:49  INFO: 4.1 inputs(D0 D1 S0/D E/E SE) pattern: pattern: LOGIC2_OR2 in TLATNTSCAX2MTR: inputs
+30-16:28:49  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNTSCAX2MTR: cross1
+30-16:28:49  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNTSCAX2MTR: cross1
+30-16:28:49  INFO: s110, (TLATNTSCAX3MTR, 26 devices), 26 devices
+30-16:28:49  INFO: -----TLATNTSCAX3MTR: clockgate  True False    SE
+30-16:28:49  INFO: 1. clock pattern: pattern: CLK1 in TLATNTSCAX3MTR: clk
+30-16:28:49  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNTSCAX3MTR: out_ECK
+30-16:28:49  INFO: 4.1 inputs(D0 D1 S0/D E/E SE) pattern: pattern: LOGIC2_OR2 in TLATNTSCAX3MTR: inputs
+30-16:28:49  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNTSCAX3MTR: cross1
+30-16:28:49  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNTSCAX3MTR: cross1
+30-16:28:49  INFO: s110, (TLATNTSCAX4MTR, 30 devices), 30 devices
+30-16:28:49  INFO: -----TLATNTSCAX4MTR: clockgate  True False    SE
+30-16:28:49  INFO: 1. clock pattern: pattern: CLK1 in TLATNTSCAX4MTR: clk
+30-16:28:49  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNTSCAX4MTR: out_ECK
+30-16:28:49  INFO: 4.1 inputs(D0 D1 S0/D E/E SE) pattern: pattern: LOGIC2_OR2 in TLATNTSCAX4MTR: inputs
+30-16:28:49  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNTSCAX4MTR: cross1
+30-16:28:49  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNTSCAX4MTR: cross1
+30-16:28:49  INFO: s110, (TLATNTSCAX6MTR, 36 devices), 36 devices
+30-16:28:49  INFO: -----TLATNTSCAX6MTR: clockgate  True False    SE
+30-16:28:49  INFO: 1. clock pattern: pattern: CLK1 in TLATNTSCAX6MTR: clk
+30-16:28:49  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNTSCAX6MTR: out_ECK
+30-16:28:49  INFO: 4.1 inputs(D0 D1 S0/D E/E SE) pattern: pattern: LOGIC2_OR2 in TLATNTSCAX6MTR: inputs
+30-16:28:50  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNTSCAX6MTR: cross1
+30-16:28:50  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNTSCAX6MTR: cross1
+30-16:28:50  INFO: s110, (TLATNTSCAX8MTR, 42 devices), 42 devices
+30-16:28:50  INFO: -----TLATNTSCAX8MTR: clockgate  True False    SE
+30-16:28:50  INFO: 1. clock pattern: pattern: CLK1 in TLATNTSCAX8MTR: clk
+30-16:28:50  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in TLATNTSCAX8MTR: out_ECK
+30-16:28:50  INFO: 4.1 inputs(D0 D1 S0/D E/E SE) pattern: pattern: LOGIC2_OR2 in TLATNTSCAX8MTR: inputs
+30-16:28:51  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in TLATNTSCAX8MTR: cross1
+30-16:28:51  INFO: 5.2  back track 1 pattern: pattern: INV in TLATNTSCAX8MTR: cross1
+30-16:28:51  INFO: Write GDS: ./demo/cell_apr/outputs/s110\top.gds

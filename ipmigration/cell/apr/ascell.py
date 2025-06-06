@@ -6,6 +6,8 @@ Created on Wed Jun 26 11:53:21 2024
 """
 
 import logging, time, os
+import pandas as pd
+from collections import defaultdict
 import klayout.db as db
 import matplotlib.pyplot as plt
 
@@ -34,6 +36,35 @@ class ASCell:
         self.initialize_layout()
         print('----04 Layout Initialized!')
 
+
+        self.aux_file = os.path.join(cfgs.output_dir,'DEC_REPORT_%s.txt'%(time.strftime('%m_%d_%H')))
+        self.place_file = os.path.join(cfgs.output_dir,'PLACE_REPORT_%s.csv'%(time.strftime('%m_%d_%H')))
+        #clear previous data
+        f = open(self.aux_file,'w')
+        f.close()
+        
+        if cfgs.load_place:
+            df = pd.read_csv(cfgs.load_place)
+            self.place_file = {}
+            for i,r in df.iterrows():
+                l1 = [t.strip() for t in r.tolist()]
+                l2= []
+                for e in l1:
+                    if e =='NA':
+                        break
+                    l2.append(e)
+                self.place_file[l2[0]] = l2[1:]
+            
+        else:
+            f = open(self.place_file,'w')
+            line = '%-10s,'%('name')
+            for i in range(10):
+                line += '%-30s,'%('cb%d'%(i+1))
+            f.write(line[:-1]+'\n')
+            f.close()
+        
+        
+
     def __getitem__(self,key):
         return self.cells[key]       
 
@@ -43,6 +74,9 @@ class ASCell:
         self.layout_layers = {}
         for name, (num, purpose) in self.tech.output_map.items():
             self.layout_layers[name] = self.layout.layer(num, purpose, name)   
+
+
+
 
     def run(self):
         logger.info('ascell-> Begin processing tech%s @ %s'%(self.tech.tech_name, time.asctime())) 
@@ -56,15 +90,17 @@ class ASCell:
         
         for cell_type in self.cfgs.gen_cells:
             for count, ckt_name in enumerate(self.netlist.ckt_types[cell_type]):
+                
                 ckt = self.netlist[ckt_name]
-                cell = StdCell(ckt,self.tech,self.cfgs,self.patterns, self.route_db)
+                cell = StdCell(ckt,self.tech,self.cfgs,self.patterns, self.route_db, self.aux_file, self.place_file)
                 self.cells[ckt_name] = cell
                 if DEBUG:
                     result,msg = cell.run(self.layout,self.layout_layers)
                     if result:          
                         success.append(cell)
                     else:
-                        fail.append([cell,msg])
+                        fail.append([cell,msg])                    
+
                 else:
                     try:
                         result,msg = cell.run(self.layout,self.layout_layers)
@@ -75,11 +111,27 @@ class ASCell:
                     except:
                         print(cell.name,'run failed')
                         fail.append([cell,'run failed'])
+                break     
+                        
         self.success = success
         self.fail = fail
         print('Pass Rate: %d/%d, %.2f%%'%(len(success),len(fail),len(success)*100/(len(fail)+len(success))))
+        self.count_patterns(success)
+        
+        
         
         self.gen_gds()     
+
+
+    def count_patterns(self,success):
+        counter = defaultdict(int)
+        nested_list = [[v.ckt.name for k,v in t.de_ckt.sub_ckts.items() ] for t in success]
+        for sub_list in nested_list:
+            for element in sub_list:
+                counter[element] += 1
+        print("Element occurrence counts:")
+        for element, count in dict(counter).items():
+            print(f"{element}: {count} times") 
 
 
     def gen_gds(self):

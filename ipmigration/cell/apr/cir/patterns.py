@@ -258,6 +258,7 @@ class Pattern:
         self.pattern_name = pattern_ckt.name
         self.pattern_ckt = pattern_ckt
         self.master_ckt = master_ckt
+        self.match_table = match_table
         #for global routing
         # self.pins = []
 
@@ -270,20 +271,11 @@ class Pattern:
         
         self.place = []
         self.vmode = []
-        
         self.map_ckt(match_table) #map and flipped
         #load from saved
         self.load_from_saved = True
-
         self.m2_edges = {}
         
-        #
-        # self.left_pins  = {}
-        # self.right_pins = {}
-
-
-
-
     def __repr__(self):
         return "pattern: %s in %s"%(self.pattern_name, self.master_ckt.name)
 
@@ -357,6 +349,18 @@ class Pattern:
     
         self.grid_columns =grid_columns
 
+
+    def flip_place(self):
+        for pn in self.place:
+            p = pn['P']
+            n = pn['N']
+            if p:
+                p.flipped()
+            if n:
+                n.flipped()
+        self.place = self.place[::-1]
+        return  self.place
+
     
     def map_ext_nets(self):
         self.left_nets_in = [self.net_map_r[net] for net in self.left_nets]
@@ -365,6 +369,14 @@ class Pattern:
         for i,net in enumerate(self.cross_nets):
             self.cross_nets_in.append('CR%d'%(i+1))
 
+    
+
+
+
+
+    
+    
+    
     
     
     

@@ -1,0 +1,35 @@
+{
+  "queue_la": [
+    "inputs",
+    "clk",
+    "cross1",
+    "backtrack1",
+    "out"
+  ],
+  "queue_cg": [
+    "inputs",
+    "clk",
+    "cross1",
+    "backtrack1",
+    "out"
+  ],
+  "queue_ff": [
+    "clk",
+    "inputs",
+    "cross1",
+    "backtrack1",
+    "cross2",
+    "backtrack2",
+    "out"
+  ],
+  "queue_sf": [
+    "clk",
+    "inputs",
+    "sesi",
+    "cross1",
+    "backtrack1",
+    "cross2",
+    "backtrack2",
+    "out"
+  ]
+}

@@ -12,14 +12,14 @@ logger = logging.getLogger(__name__)
 DEBUG=False
 
 class DeCKT:
-    def __init__(self, ckt, patterns, tech_name, output_dir):
+    def __init__(self, ckt, patterns, tech_name, output_dir, aux_file):
         self.init_ckt = ckt
         self.ckt = ckt.copy()
         self.patterns = patterns
         self.sub_ckts = {}
         self.tech_name = tech_name
         self.output_dir = output_dir
-        
+        self.aux_file = aux_file
         #sl
         self.inv_nets = []
         self.input_nets = {k:[v] for k,v in self.init_ckt.pin_map_r.items()}
@@ -40,26 +40,35 @@ class DeCKT:
     
     def run(self):
         logger.info('%s, %s, %d devices'%(self.tech_name,self.ckt, len(self.ckt.devices)))
-        aux_file = os.path.join(self.output_dir,'DEC_REPORT_%s.txt'%(time.strftime('%m_%d_%H_%M')))
 
 
         
         #Sequential logic processing
         if self.init_ckt.ckt_type in ['ff', 'scanff', 'latch', 'clockgate']:
-            try:
+            if DEBUG:
                 self.sequential_logic_processing()
-                self.out_aux_netlist(aux_file, self.init_ckt, self.ckt, self.sub_ckts)  
+                self.out_aux_netlist(self.aux_file, self.init_ckt, self.ckt, self.sub_ckts)  
             
                 if len(self.ckt.devices) == 0:
                     return 1
                 else:
                     print('-----Decompose Failed (Left Devices): %s-----'%(self.init_ckt.name))
                     return 0  
+            else:
+                try:
+                    self.sequential_logic_processing()
+                    self.out_aux_netlist(self.aux_file, self.init_ckt, self.ckt, self.sub_ckts)  
                 
-            except:
-                print('-----Decompose Failed (Search Error): %s-----'%(self.init_ckt.name))
-                self.out_aux_netlist(aux_file, self.init_ckt, self.ckt, self.sub_ckts)   
-                return 0
+                    if len(self.ckt.devices) == 0:
+                        return 1
+                    else:
+                        print('-----Decompose Failed (Left Devices): %s-----'%(self.init_ckt.name))
+                        return 0  
+                    
+                except:
+                    print('-----Decompose Failed (Search Error): %s-----'%(self.init_ckt.name))
+                    self.out_aux_netlist(self.aux_file, self.init_ckt, self.ckt, self.sub_ckts)   
+                    return 0
     
             
             '''
@@ -245,7 +254,9 @@ class DeCKT:
                                                           node_match=MosGraph.node_match_power,
                                                           edge_match=MosGraph.edge_match_power)
         searched = []
+        # print('test match',matches)
         for match in matches:
+
             if len(net_match) == 0:
                 cond = True
             else:
@@ -393,7 +404,9 @@ class DeCKT:
         else:
             raise ValueError
         
-        pattern = self.patterns.rscross_dict[rs_key]            
+
+        pattern = self.patterns.rscross_dict[rs_key]    
+        print('search_rscross', pattern,net_match)        
         result = []
         for ckt_name, ckt in pattern.items():
             ckt_graph = self.patterns.ckt_graph[ckt_name] 
@@ -476,10 +489,19 @@ class DeCKT:
             result = result1
         elif len(result1)==0 and len(result2)==1:
             result = result2
+        elif len(result1)==1 and len(result2)==1:
+            #e.g. NOR and OR are both matched
+            t1 = len(self.patterns.ckt_dict[result1[0][0]])
+            t2 = len(self.patterns.ckt_dict[result2[0][0]])
+            if t1>t2:
+                result = result1
+            else:
+                result = result2
         else:
-            print(result1,result2)
+            print('Warning! input ed is not searched',result1,result2)
             #TODO: change to warning
-            raise ValueError('Warning! input ed is not searched')
+    
+            raise ValueError
         ckt_name,matches = result[0]    
         assert len(matches)==1,matches
         match = matches[0]
@@ -594,6 +616,7 @@ class DeCKT:
     def search_multi_inputs(self, ckt, master_ckt):
         #'ff', 'scanff', 'latch', 'clockgate'
         devices_graph = MosGraph(ckt)
+        # print('test0')
         if master_ckt.ckt_type in ['latch', 'ff', 'scanff']:
             if master_ckt.enable:
                 result = self.search_input_ed(devices_graph, master_ckt.din_net, master_ckt.enable_net)
@@ -614,10 +637,12 @@ class DeCKT:
                 return Pattern(ckt, master_ckt, match)
 
         if master_ckt.ckt_type == 'clockgate':
+            # print('test1')
             if master_ckt.se_net != 'undef': #clockgate without SE is not mutiple inputs
                 result = self.search_input_ese(devices_graph, 
                                           E =master_ckt.enable_net, 
                                           SE=master_ckt.se_net)
+                # print('test',result)
                 ckt_name,match,out_match = result
                 ckt =  self.patterns.ckt_dict[ckt_name]
                 return Pattern(ckt, master_ckt, match)
@@ -714,18 +739,18 @@ class DeCKT:
     
         if self.input_control:
             search_result = self.search_pcross(devices_graph,**self.data_net)
-            
-            # print('test1',len(search_result))
             if len(search_result) ==0:
-                search_result = self.search_fcross(devices_graph,D=self.data_net['IN1'])            
+                search_result = self.search_fcross(devices_graph,D=self.data_net['IN1'])           
+                # print('test1',search_result)
         else:
             search_result = self.search_fcross(devices_graph,D=self.data_net['IN1'])
-        
         if len(search_result) == 0:
             if master_ckt.rn or master_ckt.sn:
                 search_result = self.search_asynchronous(ckt, master_ckt)        
             else:
+                print('cross1 is not searched!')
                 raise ValueError
+        # print('test corss1 search',search_result)
         if len(search_result)>0:
             ckt_name, matches = search_result[0]
             match = matches[0] #may have many matches
@@ -739,7 +764,7 @@ class DeCKT:
             # if len(matches)>1:
             #     print('muti-matches',ckt_name, len(matches))
         else:
-            print(master_ckt.key_net_mapping)
+            print('cross1 search error!',master_ckt.key_net_mapping)
             print('Searched %d'%(len(search_result)),search_result[0][0])            
             assert len(search_result)>0
 

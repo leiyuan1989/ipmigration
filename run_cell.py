@@ -19,6 +19,9 @@ args = parser.parse_args()
 
 
 
+# args.input = 'demo/cell_apr/setting_s110.csv'
+
+
 #TODO
 '''
 1. db with fast index
@@ -27,6 +30,9 @@ args = parser.parse_args()
 '''
 
 cfgs  = cfg.Cfg(args.input, args.log_level)
+cfgs.load_place = False#move to cfgs later
+cfgs.load_place = 'demo\cell_apr\outputs\c153\queue.csv'
+
 tech  = Tech(cfgs)
 
 #Support pin align creation
@@ -36,7 +42,7 @@ if EXTRACT_PIN:
 cells = ASCell(cfgs,tech)
 cells.run()
 
-
+c1 = cells['DFBFB1']
 #test 
 
 

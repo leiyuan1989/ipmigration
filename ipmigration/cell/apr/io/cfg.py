@@ -72,9 +72,9 @@ class Cfg:
         output_dir = self.output_dir
         tech_name = self.tech_name
         
-        output_dir = "./demo/cell_apr/outputs/c153"
-        log_level = "INFO"  # 可选: DEBUG, INFO, WARNING, ERROR, CRITICAL
-        tech_name = "C153"
+        # output_dir = "./demo/cell_apr/outputs/c153"
+        # log_level = "INFO"  # 可选: DEBUG, INFO, WARNING, ERROR, CRITICAL
+        # tech_name = "C153"
         
         # 确保输出目录存在
         os.makedirs(output_dir, exist_ok=True)
