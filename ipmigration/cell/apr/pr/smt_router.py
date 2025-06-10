@@ -188,6 +188,8 @@ class MIPGraphRouter():
         f.update({(k, i, j): FreshSymbol(INT, template='f%d')
                   for k, (i, j) in product(sinks, G.edges)
                   })
+        
+        # print(f)
         f.update({(k, j, i): FreshSymbol(INT, template='f%d')
                   for k, (i, j) in product(sinks, G.edges)
                   })

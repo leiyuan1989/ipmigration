@@ -1,0 +1,19 @@
+10-20:21:16  INFO: logging file is: ./demo/cell_apr/outputs/c153\LOG_06_10_20_21.txt
+10-20:21:16  INFO: ************Create Cell Apr: c153 Logger************
+10-20:21:16  INFO: tech->layers: ['NW', 'AA', 'GT', 'SP', 'SN', 'CT', 'M1', 'V1', 'M2', 'BORDER', 'M1TXT', 'SUBTXT']
+10-20:21:16  INFO: tech->rules: [GT_W : 180 nm, GT_S : 250 nm, GT_S_LAA_GT : 84 nm, GT_S_LGT_AA : 84 nm, GT_X_AA : 186 nm, AA_X_GT : 270 nm, AA_S : 238 nm, SP_X_AA : 152 nm, SN_X_AA : 152 nm, CT_W : 186 nm, CT_S : 212 nm, CT_S_AA : 144 nm, CT_S_GT : 140 nm, CT_E_NP : 102 nm, CT_E_AA : 70 nm, CT_E_GT : 70 nm, CT_E_M1 : 4 nm, CT_E_M1_END : 50 nm, M1_W : 194 nm, M1_S : 194 nm, M2_W : 238 nm, M2_S : 238 nm]
+10-20:21:16  INFO: tech->Load tech files of tech:c153 sucessfully
+10-20:21:19  INFO: ascell-> Begin processing techc153 @ Tue Jun 10 20:21:19 2025
+10-20:21:19  INFO: c153, (DFBFB1, 40 devices), 40 devices
+10-20:21:19  INFO: -----    DFBFB1:      ff False False undef
+10-20:21:19  INFO: 1. clock pattern: pattern: CLK1 in DFBFB1: clk
+10-20:21:19  INFO: 2. inputs inv pattern: pattern: INV in DFBFB1: ininv_RN_0
+10-20:21:19  INFO: 3. output pattern: pattern: INV in DFBFB1: out_QN
+10-20:21:19  INFO: 3. output pattern: pattern: INV in DFBFB1: out_Q
+10-20:21:19  INFO: 3. output pattern: pattern: INV in DFBFB1: out_Q_2
+10-20:21:20  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFBFB1: cross1
+10-20:21:20  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in DFBFB1: cross1
+10-20:21:20  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFBFB1: cross2
+10-20:21:20  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in DFBFB1: cross2
+10-20:21:20  INFO:  ## |    N_6    CKN    VDD ||    VDD    N_6    N_4 | ## |    VDD      D   N_14 ||   N_14    N_6    N_5 ||    N_5    N_4   N_15 ||   N_15    N_7    VDD | ## |    VDD    N_5   N_16 ||   N_16   N_10    N_7 ||    N_7     SN    VDD | ## |    VDD    N_7   N_17 ||   N_17    N_4    N_8 ||    N_8    N_6   N_18 ||   N_18    N_9    VDD | ## |    VDD    N_8   N_19 ||   N_19   N_10    N_9 ||    N_9     SN    VDD | ## |   N_10     RN    VDD ||    VDD    N_9   N_11 | ## |      Q   N_11    VDD ||    VDD    N_9     QN |
+10-20:21:20  INFO:  ## |    N_6    CKN    VSS ||    VSS    N_6    N_4 | ## |    VSS      D   N_26 ||   N_26    N_4    N_5 ||    N_5    N_6   N_27 ||   N_27    N_7    VSS | ## |   N_23    N_5    N_7 ||    N_7   N_10   N_23 ||   N_23     SN    VSS | ## |    VSS    N_7   N_28 ||   N_28    N_6    N_8 ||    N_8    N_4   N_29 ||   N_29    N_9    VSS | ## |   N_21    N_8    N_9 ||    N_9   N_10   N_21 ||   N_21     SN    VSS | ## |   N_10     RN    VSS ||    VSS    N_9   N_11 | ## |      Q   N_11    VSS ||    VSS    N_9     QN |

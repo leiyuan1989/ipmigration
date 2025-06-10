@@ -5,7 +5,14 @@
 """
 import json
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
+import networkx as nx
+from collections import OrderedDict
+from ipmigration.cell.apr.pr.analog_router import AnalogRouter1
+
+import z3
 from z3 import Optimize,Solver
 from z3 import Int, Bool, Or, And, Not, Distinct, If, is_true,sat
 
@@ -150,27 +157,22 @@ class PatternAPR:
                     # filtered_data = [item for item in nets if item not in set(to_extract)]                    
                     
                     self.nets[k] = list(set(filtered_data))
+        self.show_placement()
+        self.x_coordinate_dict = process_nets(self.nets)
+
 
         
-        # x_coordinates = extract_x_coordinates(self.nets)
-        self.crossings = calculate_crossings(self.nets)
-        # edges = [
-        #     ((10, 4, 0), (10, 1, 0)),  # 连接点 (1,1) 到 (1,2)
-        #     # ((2, 0, 0), (3, 1, 0)),  # 连接点 (2,0) 到 (3,1)
-        #     # 添加更多连接...
-        # ]
-        # fig, ax = visualize_pins(self.name, self.crossings,edges)
-        # plt.show() 
-                
-        self.show_placement()
-        # print(self.placement)
+    def route(self):
+        self.router = IPRouter(self.x_coordinate_dict, vertical_tracks = 6)
+        self.router.route()
+        # fig, ax = visualize_pins(self.name, self.router.m1_pins)
+        # plt.show()
+        
+        # if self.router.result:
             
         
-    def route(self):
-        self.router = IPRouter(self.grid_size ,self.crossings, vertical_tracks = 6)
-        self.router.route()
-        
-        
+        #     fig, ax = visualize_pins(self.name, self.router.m1_pins,edges=self.router.edges)
+        #     plt.show()
         
         
     def show_placement(self):
@@ -336,112 +338,448 @@ class PatternAPR:
 #Integer Programming, IP
 class IPRouter:
     #satisfiability modulo theories 
-    def __init__(self,shape, crossings, vertical_tracks):
-        self.crossings = crossings
-        self.x_lim,self.y_lim = shape
+    def __init__(self,x_nets, vertical_tracks):
+        self.x_nets = x_nets
+        self.x_lim = max(x_nets.keys()) + 1
+        self.y_lim = vertical_tracks
 
     
     def route(self):
-        self.gen_constraints(self.crossings)
-    
-    def gen_constraints(self,crossings):
-        var = {}
-        const = {}
         s = Solver() 
-        for k,col in crossings.items():
-            dist = {}
-            for net in col['cross']:
-                v = Int('%d_%s'%(k,net))
-                var[(k,net)] =v
+        self.poly_constraints(self.x_nets)
+
+        t = replace_points(self.x_nets,self.crossing_pairs)
+        t = replace_points(t,self.hshape_pairs)
+        self.m1_pins = t
+        self.cross_nets = generate_interval_dict(self.m1_pins)
+    
+        
+        self.ip_route(s, self.m1_pins, self.cross_nets)
+        
+        self.solver = s
+        
+        if self.result:
+            print('&&&&&&&&&&&&&&&')
+            print(self.result)
+            # self.gen_edges()
+            # print(self.result)
+
+    # @staticmethod
+    # def process_network_data(data, x):
+    #     # 提取小于等于x的数据点
+    #     net_points = {}
+    #     for key, value in data.items():
+    #         if key > x:
+    #             continue
+    #         for pin in value['pin']:
+    #             net_name, coords = pin[0], pin[1]
+    #             if coords[0] <= x:  # 检查x坐标是否小于等于给定x
+    #                 if net_name not in net_points:
+    #                     net_points[net_name] = []
+    #                 net_points[net_name].append(coords)
+        
+    #     # 创建6x宽的grid_2d_graph
+    #     width = max(x for sublist in net_points.values() for x, _, _ in sublist) + 1
+    #     height = 6
+    #     G = nx.grid_2d_graph(width, height)
+        
+    #     return net_points, G   
+
+
+
+
+    def ip_route(self, s, m1_pins, cross_nets):
+                
+        var = {}
+        nodes = {}
+    
+        #init constraints
+        for k,col in m1_pins.items():
+            nodes[k] = {}
+            for i in range(self.y_lim):
+                
+                node = Int('%d_%d_node'%(k,i))
+                s.add(node>=0)
+                s.add(node<=1)
+                # nodes[(k,i)] = node
+                nodes[k][i] = node
+  
+        for (x1,x2),nets in cross_nets.items():
+            dist = []
+            var[(x1,x2)] = {}
+            for net in nets:
+                v = Int('%d_%d_%s'%(x1,x2,net))
+                var[(x1,x2)][net] = v
                 s.add(v>=0)
                 s.add(v<=5)
-                dist[net] = v
+                dist.append(v)
+            if dist:
+                s.add(Distinct(dist)) 
                 
-                if 
-                
-            s.add(Distinct(list(dist.values()) ) )        
-            
-            for net
-            
-            
-            
-            new_const = self.col_constriants(s,col,dist)
-
-            
-            
-
         
+        self.pins_const = self.add_pins_const(s,m1_pins)
         
+        #add constraints
         
-        # Constraint 1: Positions are bounded.   
-    
-        self.variables = var
-        # for k,v in self.variables.items():
-        #     s.add(v>=0)
-        #     s.add(v<=5)
+        for k,col in m1_pins.items():
+            if k==0:
+                pre_nets = {}
+            else:
+                pre_nets = var[k-1,k]
+            next_nets = var[k,k+1]
+            col_nets = {key[1]: value for key, value in self.pins_const.items() if key[0] == k}
+            
+            all_nets = list(set( list(pre_nets.keys()) + list(col_nets.keys()) +list(next_nets.keys()) ))
+            print(all_nets)
+            for net in all_nets:
+                t1 = net in pre_nets
+                t2 = net in next_nets
+                t3 = net in col_nets
+                if t1 and t2 and t3:
+                    pass
+                elif t1 and t3:
+                    pass
+                elif t1 and t2:
+                    pass
+                elif t2 and t3:
+                    pass
+                elif t3:
+                    pass
+                else:
+                    print(m1_pins,self.pins_const)
+                    print(pre_nets,col_nets,next_nets)
+                    print(k,net,t1,t2,t3)
+                    raise ValueError
+            
+            
+            
+        # #add col constraints
+        # pre_nets = {}
+        # for (x1,x2),nets in cross_nets.items():
+        #     col_nets = {}
+        #     for net in nets:
+        #         col_nets[net] = var[(k,net)]
+        #     # self.col_constriants(s,k,col,col_nets,pre_nets)
+        #     # pre_nets = col_nets            
+            
+        # self.variables = var
     
         if s.check() == sat:
             m = s.model()
-            self.result = {k:m[v] for k,v in self.variables.items()}
+            self.result = True
+            # self.result = {k:m[v] for k,v in self.variables.items()}
             # self.result = [(d.name(), m[d]) for d in m.decls()] 
         else:
             #not satisfied
-            pass
-    def col_constriants(self, solver,col,dist):
-        
-        #TODO: need return info like 'common AA' to detial pr 
-        const = {}
-        if len(col['pin']) == 2:
-             n1,p1 = col['pin'][0]
-             n2,p2 = col['pin'][1]
-             if n1==n2 and p1[2]==1 and p2[2]==1:
-                #common AA
-                a_max = p2[1]-1 
-                a_min = p1[1]+1
-                x = dist[n1]
-                lower_bound,upper_bound = self.merge_range(x, (a_min,a_max))
-                
-                # lower_bound = If(x < a_min, If(x < a_max, x, a_max), If(a_min < a_max, a_min, a_max))
-                # upper_bound = If(x > a_max, If(x > a_min, x, a_min), If(a_max > a_min, a_max, a_min))
-                for name,v in dist.items():
-                    if name != n1:
-                        #common a and its net (maybe top or bottm), all the range are blocked
-                        solver.add(Or(v < lower_bound, v > upper_bound))
-                        const[n1] = (lower_bound,upper_bound)
-             
-             elif n1!=n2 and p1[2]==0 and p2[2]==0:
-                 #diff poly
-                 pass
-             elif n1!=n2 and p1[2]==1 and p2[2]==1:
-                 #diff AA
-                 print(col)
-                 pass
-             else:
-                 print(col)
-                 raise ValueError
-             # if p1[2] == 1 and 
-             
-             
+            self.result = None
             
-        elif len(col['pin']) == 1:
-             n1,p1 = col['pin'][0]
-             if p1[1] == 2.5:
-                 #common gt
-                 pass
-             elif p1[1] == 4:
-                 pass
-             elif p1[1] == 1:
-                 pass                
-             else:
-                 print(col)
-                 raise ValueError    
-        return const      
+    def poly_constraints(self,x_nets):
+        poly_pins = []
+        for key in x_nets:
+            pins = {}
+            for pin in x_nets[key]:
+                # print(pin)
+                if pin[1][2] == 0:
+                    pins[pin[0]] = pin[1]
+            if pins:
+                poly_pins.append(pins)
+        self.poly_pins = poly_pins
+        crossing_pairs = {}
+        hshape_pairs = {}
+        poly_connect = {}
+        # poly_ct = {}
+        top_clock = None
+        
+        for i in range(len(poly_pins) - 1):
+            current = poly_pins[i]
+            next_row = poly_pins[i + 1]
+            #cross
+            if len(current) == 2 and len(next_row) == 2:
+                current_lines = set(current.keys())
+                next_lines = set(next_row.keys())          
+                if current_lines == next_lines:
+                    net1,net2 = list(current.keys())
+                    p1 = current[net1]
+                    p2 = current[net2]
+                    p3 = next_row[net1]
+                    p4 = next_row[net2]                    
+                    if (p1[1] == p4[1] and p2[1] == p3[1]):
+                        if p1[1] == 4:
+                            if top_clock:
+                                pass
+                            else:
+                                top_clock = net1
+                        if p2[1] == 4:
+                            if top_clock:
+                                pass
+                            else:
+                                top_clock = net2
+                        #
+                        if net1 == top_clock:
+                            if p1[1] == 4: #p3[1]==1 p4[1]==4 p2[1]=1
+                                crossing_pairs[(net1,p1)] = (p1[0],5,0)
+                                crossing_pairs[(net1,p3)] = None
+                                
+                                crossing_pairs[(net2,p2)] = (p2[0],2,0)
+                                crossing_pairs[(net2,p4)] = (p4[0],3,0)
+                                
+                                
+                            else:
+                                #p3[1]==
+                                crossing_pairs[(net1,p1)] = None   
+                                crossing_pairs[(net1,p3)] = (p3[0],5,0)
+                                
+                                crossing_pairs[(net2,p2)] = (p2[0],3,0)
+                                crossing_pairs[(net2,p4)] = (p4[0],2,0)
+                                
+                            poly_connect[(net1,p1)] = (p1,p3) 
+                                                    
+
+                            
+                        else:
+                            #net2 is top
+                            if p2[1] == 4: #p3[1]==4 p4[1]==1 p1[1]=1
+                                crossing_pairs[(net1,p1)] = (p1[0],2,0)
+                                crossing_pairs[(net1,p3)] = (p3[0],3,0)
+                                
+                                crossing_pairs[(net2,p2)] = (p2[0],5,0)
+                                crossing_pairs[(net2,p4)] = None
+                                
+                                
+                            else:
+                                # p2[1] == 1 p3[1]==1 p4[1]==4 p1[1]=4
+                                crossing_pairs[(net1,p1)] = (p1[0],3,0)
+                                crossing_pairs[(net1,p3)] = (p3[0],2,0)  
+                                
+                                crossing_pairs[(net2,p2)] = None
+                                crossing_pairs[(net2,p4)] = (p4[0],5,0)
+                                
+                            poly_connect[(net2,p2)] = (p2,p4)
+                        
+                        
+                        
+                        
+                      
+            #connect poly
+            if len(current) == 1 and len(next_row) == 1:
+                net1 = list(current.keys())[0]
+                net2 = list(next_row.keys())[0]
+                if net1 == net2:
+                    # print(net1,net2)
+                    p1 = current[net1]
+                    p2 = current[net2]
+                    if net1 == net2:
+                        poly_connect[(net1,p1)] = (p1,p2)
+                        hshape_pairs[(net2,p2)] = None  
+
+                
+            
+        self.crossing_pairs = crossing_pairs
+        self.hshape_pairs = hshape_pairs
+        self.poly_connect = poly_connect
+            
+
+    
+    def add_pins_const(self,solver,m1_pins,aa_range = 3):
+        pins_const = {}
+        for k,col in m1_pins.items():
+            if len(col) == 2:
+                n1,p1 = col[0]
+                n2,p2 = col[1]
+            
+                #common AA
+                if n1==n2 and p1[2]==1 and p2[2]==1:
+                    t1 = Int('%d_%s_paa'%(k,n1))
+                    t2 = Int('%d_%s_naa'%(k,n1))
+                    eqs1 = []
+                    eqs2 = []
+                    
+                    #t1 t2 range
+                    for i in range(aa_range):
+                        eqs1.append(t1==6-i)
+                        eqs2.append(t2==0+i)
+                    solver.add(Or(*eqs1))
+                    solver.add(Or(*eqs2))
+                    pins_const[(k,n1)] = (t2,t1) 
+                    # range_ = (t2,t1) 
+                    # lb= t1
+                    # ub = t1
+                                    
+                    # if n1 in pre_nets:
+                    #     pre_net = pre_nets[n1]
+                    #     lb,ub = self.merge_range(pre_net, [lb,ub])
+                                       
+                    # for name,v in col_nets.items():
+                    #     if name != n1:
+                    #         #common a and its net (maybe top or bottm), all the range are blocked
+                    #         solver.add(Or(v < lb, v > ub))
+                elif n1!=n2 and p1[2]==0 and p2[2]==0:
+                    t1 = Int('%d_%s_gt'%(k,n1))
+                    solver.add(t1 == 2)
+                    t2 = Int('%d_%s_gt'%(k,n2))
+                    solver.add(t2 == 5)
+                    pins_const[(k,n1)] = (t1)
+                    pins_const[(k,n2)] = (t2)
+    
+                elif n1!=n2 and p1[2]==1 and p2[2]==1:
+                    #diff AA                      
+                    t1 = Int('%d_%s_naa'%(k,n1))
+                    t2 = Int('%d_%s_paa'%(k,n2))
+                    eqs1 = []
+                    eqs2 = []
+                    
+                    #t1 t2 range
+                    for i in range(aa_range):
+                        eqs1.append(t2==6-i)
+                        eqs2.append(t1==0+i)
+                    solver.add(Or(*eqs1))
+                    solver.add(Or(*eqs2))
+                    
+                    pins_const[(k,n1)] = (t1)
+                    pins_const[(k,n2)] = (t2)
+                             
+                else:
+                    print(col)
+                    raise ValueError
+
+            elif len(col) == 1:
+                n1,p1 = col[0]
+                if p1[2] ==0:
+                    if p1[1] == 2.5:
+                        #common gt
+                        t1 = Int('%d_%s_gt'%(k,n1))
+                        solver.add(Or(t1 == 2, t1 == 3))
+                    elif p1[1] == 2:
+                        t1 = Int('%d_%s_gt'%(k,n1))
+                        solver.add(t1 == 2)
+                    elif p1[1] == 3:
+                        t1 = Int('%d_%s_gt'%(k,n1))
+                        solver.add(t1 == 3)                    
+                    elif p1[1] == 5:
+                        t1 = Int('%d_%s_gt'%(k,n1))
+                        solver.add(t1 == 5)                    
+                    else:
+                          print(col)
+                          raise ValueError 
+                else:
+                    if p1[1] == 1:
+                        t1 = Int('%d_%s_naa'%(k,n1))
+                        solver.add(Or(t1 == 2, t1 == 3))
+                        eqs1 = []
+                        
+                        for i in range(aa_range):
+                            eqs1.append(t1==0+i)
+                        solver.add(Or(*eqs1))
+                    elif p1[1] ==4:
+                        t1 = Int('%d_%s_paa'%(k,n1))
+                        eqs1 = []
+                        #t1 t2 range
+                        for i in range(aa_range):
+                            eqs1.append(t1==6-i)
+                        solver.add(Or(*eqs1))
+                    else:
+                        print(col)
+                        raise ValueError    
+                pins_const[(k,n1)] = (t1)       
+      
+        return pins_const
+    
     @staticmethod
     def merge_range(x, range_):
-        a_min,a_max = range_
-        lower_bound = If(x < a_min, If(x < a_max, x, a_max), If(a_min < a_max, a_min, a_max))
-        upper_bound = If(x > a_max, If(x > a_min, x, a_min), If(a_max > a_min, a_max, a_min))
+        if len(range_)==2:
+            a_min,a_max = range_
+            lower_bound = If(x < a_min, If(x < a_max, x, a_max), If(a_min < a_max, a_min, a_max))
+            upper_bound = If(x > a_max, If(x > a_min, x, a_min), If(a_max > a_min, a_max, a_min))
+        else:#len(range)==1
+            y = range_[0]
+            lower_bound = If(x < y, x, y)
+            upper_bound = If(x > y, x, y) 
+        
         return (lower_bound,upper_bound)
+    
+    @staticmethod
+    def cover(range_a, range_b, solver=None):
+        """
+        为两个范围参数添加 Z3 约束条件，确保它们存在重叠部分。
+        
+        参数:
+            range_a, range_b: 可以是单个整数（表示点）或元组 (lower, upper) 表示区间。
+            solver: 可选的 Z3 求解器实例，若提供则直接添加约束，否则返回约束列表。
+        
+        返回:
+            若提供 solver，返回 True（约束添加成功）或 False（输入无效）；
+            若未提供 solver，返回约束列表或 None（输入无效）。
+        """
+        # 检查输入有效性
+        if not IPRouter.is_valid_range(range_a) or not IPRouter.is_valid_range(range_b):
+            return False if solver else None
+        
+        # 将点转换为区间表示
+        a_low, a_high = IPRouter.normalize_range(range_a)
+        b_low, b_high = IPRouter.normalize_range(range_b)
+        
+        # 创建 Z3 表达式
+        a_low_expr = z3.IntVal(a_low) if isinstance(a_low, int) else a_low
+        a_high_expr = z3.IntVal(a_high) if isinstance(a_high, int) else a_high
+        b_low_expr = z3.IntVal(b_low) if isinstance(b_low, int) else b_low
+        b_high_expr = z3.IntVal(b_high) if isinstance(b_high, int) else b_high
+        
+        # 生成约束条件
+        overlap_low = z3.If(a_low_expr >= b_low_expr, a_low_expr, b_low_expr)
+        overlap_high = z3.If(a_high_expr <= b_high_expr, a_high_expr, b_high_expr)
+        overlap_constraint = overlap_low <= overlap_high
+        
+        # 添加到求解器或返回约束
+        if solver:
+            solver.add(overlap_constraint)
+            return True
+        else:
+            return [overlap_constraint]
+    
+    @staticmethod
+    def is_valid_range(r):
+        """检查输入是否为有效的点或区间"""
+        if isinstance(r, int):
+            return True  # 点是有效的
+        elif isinstance(r, tuple) and len(r) == 2:
+            lower, upper = r
+            # 允许 Z3 变量或整数
+            valid_lower = isinstance(lower, int) or isinstance(lower, z3.ArithRef)
+            valid_upper = isinstance(upper, int) or isinstance(upper, z3.ArithRef)
+            if valid_lower and valid_upper:
+                # 如果都是整数，检查 lower <= upper
+                if isinstance(lower, int) and isinstance(upper, int):
+                    return lower <= upper
+                return True
+            return False
+        return False
+    @staticmethod
+    def normalize_range(r):
+        """将点或区间统一转换为 (lower, upper) 格式"""
+        if isinstance(r, int):
+            return (r, r)  # 点转换为相同上下界的区间
+        else:
+            return r  # 区间直接返回
+
+
+
+
+
+
+    def gen_edges(self):
+        net_loc = {}
+        for (x,net),y_z3 in self.result.items():
+            y = int(y_z3.as_long())
+            if net in net_loc:
+                net_loc[net].append(((x,y),(x+1,y)))
+            else:
+                net_loc[net] = [((x,y),(x+1,y))]
+
+        self.edges = net_loc     
+        
+        # self.edges = generate_edges(net_loc)
+
+
 
     def _place(self, pmos_list, nmos_list, cell_width, pairs, vertical_tracks_pmos = 1, vertical_tracks_nmos = 1):
         #TODO find relationship before run this and try decrease the running time
@@ -789,64 +1127,85 @@ def extract_x_coordinates(nets):
 
 
 
-def calculate_crossings(nets):
-    """Calculate the number of lines crossing and pins at each integer x position
+
+def process_nets(data):
+    """处理原始数据，生成按x坐标排序的点集合"""
+    x_coordinate_dict = {}
     
-    Args:
-    nets: Dictionary of line data
-    
-    Returns:
-    crossings: Dictionary containing crossing and pin data for each x position
-    """
-    # Find all possible integer x positions
-    all_x = set()
-    for line_name, points in nets.items():
+    # 遍历每个网络和对应的坐标点
+    for net, points in data.items():
         for point in points:
-            x, y, direction = point
-            all_x.add(x)
+            x, y, z = point
+            # 如果x坐标尚未作为键存在，创建新列表
+            if x not in x_coordinate_dict:
+                x_coordinate_dict[x] = []
+            # 添加点信息到对应x坐标的列表中
+            x_coordinate_dict[x].append([net, point])
     
-    # Calculate min and max x coordinates
-    min_x = min(all_x)
-    max_x = max(all_x)
+    # 对每个x坐标下的点按y值从小到大排序
+    for x in x_coordinate_dict:
+        x_coordinate_dict[x].sort(key=lambda p: p[1][1])
     
-    # Generate all integer x positions (including min and max)
-    integer_x = list(range(min_x, max_x + 1))
+    # 确定x坐标的范围
+    if x_coordinate_dict:
+        min_x = min(x_coordinate_dict.keys())
+        max_x = max(x_coordinate_dict.keys())
+        # 确保从min_x到max_x的每个整数x都在字典中，没有pin的x对应空列表
+        for x in range(min_x, max_x + 1):
+            if x not in x_coordinate_dict:
+                x_coordinate_dict[x] = []
     
-    # Initialize crossing data dictionary
-    crossings = {x: {'cross': [], 'pin': []} for x in integer_x}
+    # 按x坐标从小到大排序字典
+    sorted_x = sorted(x_coordinate_dict.keys())
+    x_coordinate_dict = OrderedDict((x, x_coordinate_dict[x]) for x in sorted_x)
     
-    # Check each line for pins
-    for line_name, points in nets.items():
-        for point in points:
-            x, y, direction = point
-            if x in integer_x:
-                # Store the line name, y-coordinate, and direction for pins
-                crossings[x]['pin'].append((line_name,point))
+    return x_coordinate_dict
+
+def generate_interval_dict(x_coordinate_dict):
+    """根据x_coordinate_dict生成区间到网络的映射"""
+    interval_dict = {}
     
-    # Check each line for crossings using min and max x of the entire line
-    for line_name, points in nets.items():
-        # Extract all x coordinates of the line
-        x_coords = [point[0] for point in points]
-        if not x_coords:
-            continue
-            
-        line_min_x = min(x_coords)
-        line_max_x = max(x_coords)
-        
-        # Check each integer x position
-        for x in integer_x:
-            # A line crosses x if x is between its min and max x (excluding endpoints)
-            if line_min_x <= x <= line_max_x:                
-                # Store the line name, approximate start y-coordinate, end y-coordinate, and direction
-                crossings[x]['cross'].append(line_name)
+    # 收集所有存在点的x坐标
+    existing_x = list(range(max(x_coordinate_dict.keys())+1))
+    # 如果没有任何点，直接返回空的interval_dict
+    if not existing_x:
+        return interval_dict
     
-    for k,v in crossings.items():
-        v['pin'].sort(key=lambda x: x[1][1])
-    return crossings
+    # 为每个存在点的x值创建区间(x, x+1)
+    for x in existing_x:
+        interval = (x, x + 1)
+        interval_dict[interval] = []
+    
+    # 构建网络到其x坐标范围的映射
+    net_x_range = {}
+    # 遍历x_coordinate_dict中的每个x坐标
+    for x, points in x_coordinate_dict.items():
+        # 遍历每个点的信息
+        for point_info in points:
+            net, point_list = point_info
+            if not point_list:
+                continue
+            # 提取点的x坐标
+            point_x = point_list[0]
+            # 更新网络的x坐标范围
+            if net not in net_x_range:
+                net_x_range[net] = (point_x, point_x)
+            else:
+                current_min, current_max = net_x_range[net]
+                net_x_range[net] = (min(current_min, point_x), max(current_max, point_x))
+    
+    # 确定哪些网络属于每个区间
+    for interval, _ in interval_dict.items():
+        x, x_plus_1 = interval
+        for net, (min_x, max_x) in net_x_range.items():
+            # 检查网络是否跨越区间(x, x+1)
+            if min_x <= x and max_x >= x_plus_1:
+                interval_dict[interval].append(net)
+    
+    return interval_dict
 
 
-
-def visualize_pins(name, data, edges=None):
+def visualize_pins(name, data, edges_points=None, edges=None):
     """
     Visualize pins and optional connections between them.
     
@@ -869,7 +1228,7 @@ def visualize_pins(name, data, edges=None):
             else:
                 filtered_pins2.append(pin)
     
-    fig, ax = plt.subplots(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(20, 6))
     
     # Plot blue pins (third element 0)
     x1 = [pin[1][0] for pin in filtered_pins1]
@@ -887,7 +1246,8 @@ def visualize_pins(name, data, edges=None):
     x2 = [pin[1][0] for pin in filtered_pins2]
     y2 = [pin[1][1] for pin in filtered_pins2]
     ax.scatter(x2, y2, color='red', marker='o', s=100, label='M1 Pins')
-    
+    all_x = x1 + x2
+    max_x = max(all_x) if all_x else 0  # 提前计算max_x
     for i, pin in enumerate(filtered_pins2):
         ax.annotate(pin[0],
                     (x2[i], y2[i]),
@@ -896,24 +1256,66 @@ def visualize_pins(name, data, edges=None):
                     ha='center',
                     va='top')
     
-    # Plot edges
-    if edges:
-        for edge in edges:
-            start_point, end_point = edge
-            start_x, start_y = start_point[0], start_point[1]
-            end_x, end_y = end_point[0], end_point[1]
-            
-            # # Check if points exist in dataset
-            # point_exists = any(
-            #     (pin[1][0] == start_x and pin[1][1] == start_y) for pin_list in [filtered_pins1, filtered_pins2] for pin in pin_list
-            # ) and any(
-            #     (pin[1][0] == end_x and pin[1][1] == end_y) for pin_list in [filtered_pins1, filtered_pins2] for pin in pin_list
-            # )
-            
-            # if point_exists:
-            ax.plot([start_x, end_x], [start_y, end_y], 'g-', alpha=0.6, linewidth=1.5)
+    # Plot edge_points with smaller markers and labels
+    if edges_points:
+        edge_x = []
+        edge_y = []
+        edge_labels = []
+        
+        for label, points in edges_points.items():
+            for point in points:
+                x, y = point
+                edge_x.append(x)
+                edge_y.append(y)
+                edge_labels.append(label)
+        
+        # Plot small gray points for edges_points
+        ax.scatter(edge_x, edge_y, color='gray', marker='.', s=10, label='Edge Points')
+        
+        # Add small labels for edges_points
+        for x, y, label in zip(edge_x, edge_y, edge_labels):
+            ax.annotate(label,
+                        (x, y),
+                        textcoords="offset points",
+                        xytext=(5, 5),  # Smaller offset than data points
+                        ha='left',
+                        va='bottom',
+                        fontsize=6)  # Smaller font size
     
-    ax.grid(True, linestyle='--', alpha=0.7)
+    # Plot edges (支持字典格式，不同key用不同颜色)
+    if edges and isinstance(edges, dict):
+        # 生成颜色映射
+        cmap = plt.cm.get_cmap('tab20', len(edges))  # 支持最多20种颜色
+        
+        for i, (line_name, line_edges) in enumerate(edges.items()):
+            color = cmap(i)  # 获取当前线的颜色
+            
+            # 绘制所有边
+            for j, (start, end) in enumerate(line_edges):
+                ax.plot([start[0], end[0]], [start[1], end[1]], 
+                        color=color, alpha=0.8, linewidth=1.5)
+
+                # 计算线的中点
+                mid_x = (start[0] + end[0]) / 2
+                mid_y = (start[1] + end[1]) / 2
+                
+                # 添加标签（字体大小减半，位置在线上面）
+                ax.annotate(line_name, 
+                            (mid_x, mid_y),
+                            color='black',
+                            fontweight='bold',
+                            fontsize=plt.rcParams['font.size'] ,  # 字体大小减半
+                            alpha=0.8,
+                            ha='center',
+                            va='bottom',  # 位置在线上面
+                            xytext=(0, 5),  # 垂直偏移量
+                            textcoords='offset points')
+
+    # 设置网格：每个点都有虚线网格，半透明
+    ax.set_xticks(np.arange(-1, max_x + 2, 1))  # 确保x轴刻度覆盖所有点
+    ax.set_yticks(np.arange(-1, 7, 1))          # 确保y轴刻度覆盖所有点
+    ax.grid(True, which='both', linestyle='--', alpha=0.3)  # 细虚线，半透明
+    
     ax.set_xlabel('X Coordinate')
     ax.set_ylabel('Y Coordinate')
     ax.set_title(f'Visualization of Pins: {name}')
@@ -927,7 +1329,6 @@ def visualize_pins(name, data, edges=None):
     ax.axhline(y=1, color='gray', linestyle='-', alpha=0.3)
     ax.axhline(y=2, color='gray', linestyle='-', alpha=0.3)
     
-    ax.legend()
     plt.tight_layout()
     plt.rcParams['axes.unicode_minus'] = False
     return fig, ax
@@ -938,3 +1339,73 @@ def generate_range(a, b):
         return list(range(a, b + 1))  # 升序：a ≤ b
     else:
         return list(range(a, b - 1, -1))  # 降序：a > b
+    
+    
+def replace_points(x_coordinate_dict, replacement_map):
+    """根据替换映射修改x_coordinate_dict中的点"""
+    # 遍历每个x坐标下的所有点信息
+    for x, points in x_coordinate_dict.items():
+        # 对每个点信息进行处理
+        for i in range(len(points)):
+            net, point_list = points[i]  # point_list是包含一个元组的列表
+            if not point_list:
+                continue
+
+            key = (net, point_list)
+            if key in replacement_map:
+                new_point = replacement_map[key]
+                if new_point is not None:
+                    # 更新点信息，保持[net, [(x, y, z)]]的格式
+                    points[i] = [net, new_point]
+                else:
+                    # 如果替换值为None，移除该点
+                    points[i] = None
+        # 过滤掉被移除的点（值为None的项）
+        x_coordinate_dict[x] = [p for p in points if p is not None]
+    return x_coordinate_dict
+
+
+def generate_edges(data):
+    """
+    根据点坐标生成水平和垂直的edges
+    
+    参数:
+    data (dict): 包含线名称和对应点坐标的字典
+    
+    返回:
+    dict: 包含线名称和对应edges的字典
+    """
+    edges_result = {}
+    
+    for line_name, points_dict in data.items():
+        # 提取并排序点
+        points = []
+        for key in sorted(points_dict.keys()):
+            points.extend(points_dict[key])
+        
+        edges = []
+        
+        # 处理每个相邻点对
+        for i in range(len(points) - 1):
+            start = points[i]
+            end = points[i + 1]
+            
+            # 如果x坐标相同，直接垂直连接
+            if start[0] == end[0]:
+                edges.append((start, end))
+            # 如果y坐标相同，直接水平连接
+            elif start[1] == end[1]:
+                edges.append((start, end))
+            # 否则，通过中间点生成水平和垂直edges
+            else:
+                mid_point = (end[0], start[1])  # 中间点：(end_x, start_y)
+                edges.append((start, mid_point))
+                edges.append((mid_point, end))
+        
+        edges_result[line_name] = edges
+    
+    return edges_result
+
+
+
+

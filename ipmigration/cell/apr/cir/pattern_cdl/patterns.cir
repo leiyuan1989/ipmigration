@@ -101,12 +101,12 @@ NM2 OUT1 IN2  VSS  VSS nmos l=1 w=1 n=1  ro=1 co=2
 
 ******************Logic 3************************
 .SUBCKT LOGIC3_1 IN1 IN2 IN3 VDD VSS OUT1
-PM1 VDD  IN1  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=1
+PM1 OUT1  IN1  VDD  VDD pmos l=1 w=1 n=1 ro=1 co=1
 PM2 VDD  IN2  net1  VDD pmos l=1 w=1 n=1 ro=1 co=2
 PM3 net1 IN3  OUT1  VDD pmos l=1 w=1 n=1 ro=1 co=3
-NM1 OUT1 IN2  net2  VSS nmos l=1 w=1 n=1 ro=1 co=1
-NM2 OUT1 IN3  net2  VSS nmos l=1 w=1 n=1  ro=1 co=2
-NM3 net2 IN1  VSS   VSS nmos l=1 w=1 n=1  ro=1 co=3
+NM1 VSS  IN1  net2   VSS nmos l=1 w=1 n=1  ro=1 co=1
+NM2 net2 IN2  OUT1  VSS nmos l=1 w=1 n=1 ro=1 co=2
+NM3 OUT1 IN3  net2  VSS nmos l=1 w=1 n=1  ro=1 co=3
 .ends LOGIC3_1
 
 *153: LANHT1

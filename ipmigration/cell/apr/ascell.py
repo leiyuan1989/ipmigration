@@ -111,7 +111,8 @@ class ASCell:
                     except:
                         print(cell.name,'run failed')
                         fail.append([cell,'run failed'])
-                break     
+                # break
+            break
                         
         self.success = success
         self.fail = fail
