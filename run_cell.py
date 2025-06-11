@@ -43,6 +43,8 @@ cells = ASCell(cfgs,tech)
 cells.run()
 
 c1 = cells['DFBFB1']
+c2 = cells['DFNFB1']
+#test 
 #test 
 
 

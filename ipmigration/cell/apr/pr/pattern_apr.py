@@ -14,7 +14,7 @@ from ipmigration.cell.apr.pr.analog_router import AnalogRouter1
 
 import z3
 from z3 import Optimize,Solver
-from z3 import Int, Bool, Or, And, Not, Distinct, If, is_true,sat
+from z3 import Int, Bool, Or, And, Not, Distinct, If, is_true,sat,Abs
 
 from itertools import combinations, chain
 import itertools
@@ -24,6 +24,8 @@ import time
 
 import logging
 logger = logging.getLogger(__name__)
+
+DEBUG=False
 
 #ipmigration\cell\apr\pr\__pycache__\place\queue.json
 queue_data = 'ipmigration/cell/apr/pr/place/queue.json'
@@ -101,15 +103,19 @@ class PatternAPR:
                     p2 = self.sub_ckts[combo[1]]                  
                     self.placement.append(p1.flip_place() + p2.place)
         
+        #process cross here
+        
+        
+        
         self.net_loc = {}
         loc = 0
         for blk in self.placement:      
-            for pn in blk:
+            for i,pn in enumerate(blk):
                 p = pn['P']
                 n = pn['N']
                 if not(p) and not(n):
                     loc +=1
-                else:
+                else: 
                     if p:
                         self.net_loc[(p,'S')] = (loc,4,1)
                         self.net_loc[(p,'G')] = (loc+1,4,0)
@@ -117,7 +123,52 @@ class PatternAPR:
                     if n:
                         self.net_loc[(n,'S')] = (loc,1,1)
                         self.net_loc[(n,'G')] = (loc+1,1,0)
-                        self.net_loc[(n,'D')] = (loc+2,1,1)       
+                        self.net_loc[(n,'D')] = (loc+2,1,1)      
+                    
+                    if i != len(blk)-1:
+                        #next is pn
+                        p2 = blk[i+1]['P']
+                        n2 = blk[i+1]['N'] 
+                        if p2 and n2 and p and n:
+                            # print(p,p2,n,n2)
+                            if p.G == n2.G and n.G == p2.G:
+                                #cross
+                                # print('11111111111111')
+                                self.net_loc[(p,'S')] = (loc,4,1)
+                                self.net_loc[(p,'G')] = (loc+1,4,0)
+                                self.net_loc[(p,'D')] = (loc+3,4,1)  
+                                    
+                                self.net_loc[(n,'S')] = (loc,1,1)
+                                self.net_loc[(n,'G')] = (loc+1,1,0)
+                                if p.D == n.D:
+                                    self.net_loc[(n,'D')] = (loc+3,4,1)#same with pD 
+                                else:
+                                    self.net_loc[(n,'D')] = (loc+3,1,1)
+                                
+                                loc+=1
+                    
+                    if i != 0:
+                        #next is pn
+                        p2 = blk[i-1]['P']
+                        n2 = blk[i-1]['N'] 
+                        if p2 and n2 and p and n:
+                  
+                            if p.G == n2.G and n.G == p2.G:
+                                #cross
+                                # print('2222222222222')
+                                self.net_loc[(p,'S')] = (loc,4,1)
+                                self.net_loc[(p,'G')] = (loc+1,4,0)
+                                self.net_loc[(p,'D')] = (loc+2,4,1)  
+                                    
+                                if p.S == n.S:
+                                    self.net_loc[(n,'S')] = (loc,4,1)
+                                else:
+                                    self.net_loc[(n,'S')] = (loc,1,1)
+                                self.net_loc[(n,'G')] = (loc+1,1,0)
+                                self.net_loc[(n,'D')] = (loc+2,4,1) 
+                                # print()
+                                # loc+=1                                
+                                
                     loc+=2
             loc+=1
         
@@ -163,16 +214,12 @@ class PatternAPR:
 
         
     def route(self):
-        self.router = IPRouter(self.x_coordinate_dict, vertical_tracks = 6)
+        self.router = IPRouter( self.ckt, self.x_coordinate_dict, vertical_tracks = 6)
         self.router.route()
         # fig, ax = visualize_pins(self.name, self.router.m1_pins)
         # plt.show()
-        
-        # if self.router.result:
-            
-        
-        #     fig, ax = visualize_pins(self.name, self.router.m1_pins,edges=self.router.edges)
-        #     plt.show()
+    
+
         
         
     def show_placement(self):
@@ -338,52 +385,99 @@ class PatternAPR:
 #Integer Programming, IP
 class IPRouter:
     #satisfiability modulo theories 
-    def __init__(self,x_nets, vertical_tracks):
+    def __init__(self,ckt, x_nets, vertical_tracks):
+        self.ckt = ckt
         self.x_nets = x_nets
         self.x_lim = max(x_nets.keys()) + 1
         self.y_lim = vertical_tracks
 
     
     def route(self):
-        s = Solver() 
+        # s = Optimize() 
+        s = Solver()
         self.poly_constraints(self.x_nets)
 
         t = replace_points(self.x_nets,self.crossing_pairs)
         t = replace_points(t,self.hshape_pairs)
+        
         self.m1_pins = t
+        
+            #(26, [['N_4', (26, 2, 0)], ['N_6', (26, 5, 0)]]),
+            
+        # self.m1_pins[26] =  [['N_4', (26, 2, 0)]]
+        
+        
         self.cross_nets = generate_interval_dict(self.m1_pins)
     
-        
-        self.ip_route(s, self.m1_pins, self.cross_nets)
-        
-        self.solver = s
+        self.ip_route(s, self.m1_pins, self.cross_nets)    
+        # self.solver = s
         
         if self.result:
-            print('&&&&&&&&&&&&&&&')
-            print(self.result)
+            print('-----Success!------')
+            fig, ax = visualize_pins(self.ckt.name, self.m1_pins,edges=self.edges)
+            plt.show()
+            
+            #process edges
+            
+            
+        else:
+            if DEBUG:
+                #begin debug
+                print('--Begin Debug--')
+                increment = 5
+                m1_pins_list = split_dict_by_increment(self.m1_pins, increment=increment)
+                col = 0
+                for m1_pins in m1_pins_list:
+                    col = col + increment
+                    s = Solver()
+                    cross_nets =  generate_interval_dict(m1_pins)
+                    self.ip_route(s, m1_pins, cross_nets)    
+                    
+                    if self.result:
+                        print("Pass: %d"%(col))
+                        
+                    else:
+                        print("Failed at %d"%(col))
+                        m1_pins_list2 = split_dict_by_increment(self.m1_pins, increment=1)
+                        last_pass_m1_pins = {}
+                        for k, m1_pins2 in enumerate(m1_pins_list2):
+                            if k < col - increment:
+                                pass
+                                last_pass_m1_pins= m1_pins2
+                            else:
+                                s = Solver()
+                                cross_nets2 =  generate_interval_dict(m1_pins2)
+                                self.ip_route(s, m1_pins2, cross_nets2)    
+                                if self.result:
+                                    print("Pass: %d"%(k+1))
+                                    last_pass_m1_pins = m1_pins2
+                                else:
+                                    self.cross_nets_debug1 = cross_nets2
+                                    self.m1_pins_debug1 = m1_pins2
+                                    print("Failed at %d"%(k+1))
+                                    # print(m1_pins2)
+                                
+                                    break        
+                        break
+                s = Solver()
+                cross_nets =  generate_interval_dict(last_pass_m1_pins)
+                self.cross_nets_debug2 = cross_nets
+                self.m1_pins_debug2 = last_pass_m1_pins
+                self.ip_route(s, last_pass_m1_pins, cross_nets)  
+                if self.result:
+                    fig, ax = visualize_pins(self.ckt.name, self.m1_pins,edges=self.edges)
+                    plt.show()
+            # print(self.result)
             # self.gen_edges()
             # print(self.result)
-
-    # @staticmethod
-    # def process_network_data(data, x):
-    #     # 提取小于等于x的数据点
-    #     net_points = {}
-    #     for key, value in data.items():
-    #         if key > x:
-    #             continue
-    #         for pin in value['pin']:
-    #             net_name, coords = pin[0], pin[1]
-    #             if coords[0] <= x:  # 检查x坐标是否小于等于给定x
-    #                 if net_name not in net_points:
-    #                     net_points[net_name] = []
-    #                 net_points[net_name].append(coords)
+    
+    def optimize_edges(self,edges,m1_pins):
+        pass
         
-    #     # 创建6x宽的grid_2d_graph
-    #     width = max(x for sublist in net_points.values() for x, _, _ in sublist) + 1
-    #     height = 6
-    #     G = nx.grid_2d_graph(width, height)
         
-    #     return net_points, G   
+        
+        
+        
 
 
 
@@ -391,18 +485,18 @@ class IPRouter:
     def ip_route(self, s, m1_pins, cross_nets):
                 
         var = {}
-        nodes = {}
+        # nodes = {}
     
         #init constraints
-        for k,col in m1_pins.items():
-            nodes[k] = {}
-            for i in range(self.y_lim):
+        # for k,col in m1_pins.items():
+        #     nodes[k] = {}
+        #     for i in range(self.y_lim):
                 
-                node = Int('%d_%d_node'%(k,i))
-                s.add(node>=0)
-                s.add(node<=1)
-                # nodes[(k,i)] = node
-                nodes[k][i] = node
+        #         node = Int('%d_%d_node'%(k,i))
+        #         s.add(node>=0)
+        #         s.add(node<=1)
+        #         # nodes[(k,i)] = node
+        #         nodes[k][i] = node
   
         for (x1,x2),nets in cross_nets.items():
             dist = []
@@ -430,48 +524,98 @@ class IPRouter:
             col_nets = {key[1]: value for key, value in self.pins_const.items() if key[0] == k}
             
             all_nets = list(set( list(pre_nets.keys()) + list(col_nets.keys()) +list(next_nets.keys()) ))
-            print(all_nets)
+            net_range = {}
             for net in all_nets:
                 t1 = net in pre_nets
                 t2 = net in next_nets
                 t3 = net in col_nets
                 if t1 and t2 and t3:
-                    pass
+                    r1 = pre_nets[net]
+                    r2 = col_nets[net]
+                    r3 = next_nets[net]
+                    r = self.merge_range(r1, r2)
+                    r = self.merge_range(r3, r)
+ 
+                    
                 elif t1 and t3:
-                    pass
+                    r1 = pre_nets[net]
+                    r2 = col_nets[net]
+                    r = self.merge_range(r1, r2)
+                    
                 elif t1 and t2:
-                    pass
+                    r1 = pre_nets[net]
+                    r2 = next_nets[net]
+                    r = self.merge_range(r1, [r2])
+                    
                 elif t2 and t3:
-                    pass
+                    r1 = col_nets[net]
+                    r2 = next_nets[net]
+                    r = self.merge_range(r2, r1)
                 elif t3:
-                    pass
+                    r = col_nets[net]
+                    r = [r[0],r[0]]
+                    
+                    #一个dict 包含上下表，要求互相不覆盖
+                    
+                    
                 else:
                     print(m1_pins,self.pins_const)
                     print(pre_nets,col_nets,next_nets)
                     print(k,net,t1,t2,t3)
                     raise ValueError
+                net_range[net] = r
+            for net1, range1 in net_range.items():
+                for net2, range2 in net_range.items():
+                    if net1 != net2:
+                        r1l,r1u = range1
+                        r2l,r2u = range2
+                        # print(range1,range2)
+                        s.add(Or(r1l>r2u,r1u<r2l))
+              
             
-            
-            
-        # #add col constraints
-        # pre_nets = {}
-        # for (x1,x2),nets in cross_nets.items():
-        #     col_nets = {}
-        #     for net in nets:
-        #         col_nets[net] = var[(k,net)]
-        #     # self.col_constriants(s,k,col,col_nets,pre_nets)
-        #     # pre_nets = col_nets            
-            
-        # self.variables = var
-    
+        self.variables = var
+        # cross_nets = {}
+        # for loc,nets in self.variables.items():
+        #     for net, v in nets.items():
+        #         x1,x2=loc
+        #         if net in cross_nets:
+        #             cross_nets[net].append( v )
+        #         else:
+        #             # print(edges)
+        #                 cross_nets[net] = [v]
+        # abs_sum = Int('Abs_sum')
+        # for net, vs in cross_nets.items():
+        #     l = len(vs)
+        #     if l>=2:
+        #         for i in range(l-1):
+        #             abs_sum += Abs(vs[i] - vs[i+1])
+        # self.cross_nets = cross_nets     
+                
+                
+        # s.minimize(abs_sum)
+        
         if s.check() == sat:
             m = s.model()
+            edges = {}
+            variables = self.variables.copy()
+            for loc,nets in self.variables.items():
+                for net, v in nets.items():
+                    x1,x2=loc
+                    y = m[v].as_long()
+                    variables[loc][net] = y
+                    if net in edges:
+                        edges[net].append( [(x1,y), (x2,y)] )
+                    else:
+                        # print(edges)
+                        edges[net] = [[(x1,y), (x2,y)]]
+            self.variables= variables
+            self.edges = edges
             self.result = True
             # self.result = {k:m[v] for k,v in self.variables.items()}
             # self.result = [(d.name(), m[d]) for d in m.decls()] 
         else:
             #not satisfied
-            self.result = None
+            self.result = False
             
     def poly_constraints(self,x_nets):
         poly_pins = []
@@ -600,7 +744,7 @@ class IPRouter:
                         eqs2.append(t2==0+i)
                     solver.add(Or(*eqs1))
                     solver.add(Or(*eqs2))
-                    pins_const[(k,n1)] = (t2,t1) 
+                    pins_const[(k,n1)] = [t2,t1]
                     # range_ = (t2,t1) 
                     # lb= t1
                     # ub = t1
@@ -617,9 +761,9 @@ class IPRouter:
                     t1 = Int('%d_%s_gt'%(k,n1))
                     solver.add(t1 == 2)
                     t2 = Int('%d_%s_gt'%(k,n2))
-                    solver.add(t2 == 5)
-                    pins_const[(k,n1)] = (t1)
-                    pins_const[(k,n2)] = (t2)
+                    solver.add(Or(t2 == 5,t2==3))
+                    pins_const[(k,n1)] = [t1]
+                    pins_const[(k,n2)] = [t2]
     
                 elif n1!=n2 and p1[2]==1 and p2[2]==1:
                     #diff AA                      
@@ -635,8 +779,8 @@ class IPRouter:
                     solver.add(Or(*eqs1))
                     solver.add(Or(*eqs2))
                     
-                    pins_const[(k,n1)] = (t1)
-                    pins_const[(k,n2)] = (t2)
+                    pins_const[(k,n1)] = [t1]
+                    pins_const[(k,n2)] = [t2]
                              
                 else:
                     print(col)
@@ -680,7 +824,7 @@ class IPRouter:
                     else:
                         print(col)
                         raise ValueError    
-                pins_const[(k,n1)] = (t1)       
+                pins_const[(k,n1)] = [t1]       
       
         return pins_const
     
@@ -1222,7 +1366,7 @@ def visualize_pins(name, data, edges_points=None, edges=None):
     filtered_pins2 = []  # Pins with third element 1
     
     for key, value in data.items():
-        for pin in value['pin']:
+        for pin in value:
             if pin[1][2] == 0:
                 filtered_pins1.append(pin)
             else:
@@ -1407,5 +1551,37 @@ def generate_edges(data):
     return edges_result
 
 
-
+def split_dict_by_increment(original_dict, increment=5):
+    """
+    按递增间隔拆分OrderedDict
+    
+    参数:
+    original_dict - 原始OrderedDict
+    increment - 每次增加的间隔
+    
+    返回:
+    拆分后的字典列表
+    """
+    result = []
+    keys = list(original_dict.keys())
+    
+    # 计算最大key值
+    max_key = max(keys) if keys else 0
+    
+    # 生成间隔列表
+    intervals = [i for i in range(increment, max_key + 1, increment)]
+    
+    # 如果最大值不是间隔的倍数，添加一个额外的间隔
+    if max_key % increment != 0:
+        intervals.append(max_key)
+    
+    # 为每个间隔创建一个新字典
+    for interval in intervals:
+        new_dict = OrderedDict()
+        for key in keys:
+            if key <= interval:
+                new_dict[key] = original_dict[key]
+        result.append(new_dict)
+    
+    return result
 

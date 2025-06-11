@@ -1,0 +1,17 @@
+11-16:17:29  INFO: logging file is: ./demo/cell_apr/outputs/c153\LOG_06_11_16_17.txt
+11-16:17:29  INFO: ************Create Cell Apr: c153 Logger************
+11-16:17:29  INFO: tech->layers: ['NW', 'AA', 'GT', 'SP', 'SN', 'CT', 'M1', 'V1', 'M2', 'BORDER', 'M1TXT', 'SUBTXT']
+11-16:17:29  INFO: tech->rules: [GT_W : 180 nm, GT_S : 250 nm, GT_S_LAA_GT : 84 nm, GT_S_LGT_AA : 84 nm, GT_X_AA : 186 nm, AA_X_GT : 270 nm, AA_S : 238 nm, SP_X_AA : 152 nm, SN_X_AA : 152 nm, CT_W : 186 nm, CT_S : 212 nm, CT_S_AA : 144 nm, CT_S_GT : 140 nm, CT_E_NP : 102 nm, CT_E_AA : 70 nm, CT_E_GT : 70 nm, CT_E_M1 : 4 nm, CT_E_M1_END : 50 nm, M1_W : 194 nm, M1_S : 194 nm, M2_W : 238 nm, M2_S : 238 nm]
+11-16:17:29  INFO: tech->Load tech files of tech:c153 sucessfully
+11-16:17:31  INFO: ascell-> Begin processing techc153 @ Wed Jun 11 16:17:31 2025
+11-16:17:31  INFO: c153, (DFBFB1, 40 devices), 40 devices
+11-16:17:31  INFO: -----    DFBFB1:      ff False False undef
+11-16:17:31  INFO: 1. clock pattern: pattern: CLK1 in DFBFB1: clk
+11-16:17:31  INFO: 2. inputs inv pattern: pattern: INV in DFBFB1: ininv_RN_0
+11-16:17:31  INFO: 3. output pattern: pattern: INV in DFBFB1: out_QN
+11-16:17:31  INFO: 3. output pattern: pattern: INV in DFBFB1: out_Q
+11-16:17:31  INFO: 3. output pattern: pattern: INV in DFBFB1: out_Q_2
+11-16:17:32  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFBFB1: cross1
+11-16:17:32  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in DFBFB1: cross1
+11-16:17:32  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFBFB1: cross2
+11-16:17:32  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in DFBFB1: cross2
