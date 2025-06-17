@@ -35,6 +35,85 @@ class Rect(Instance):
         self.box = Box(value)
         self.data[layer] = [self.box]
 
+
+#
+class CT_GT(Instance):
+    def __init__(self, tech, loc, mode = 'centre'):
+        super().__init__(tech)
+        self.loc = loc
+
+        self.data['GT'] = []
+        self.data['CT'] = []
+        
+        if mode == 'centre':
+            p = loc
+        elif mode == 'left':
+            p = (loc[0]+self.tech.CT_W.hv + self.tech.CT_E_GT.v , loc[1])
+        elif mode == 'right':
+            p = (loc[0]-(self.tech.CT_W.hv + self.tech.CT_E_GT.v ) , loc[1])
+        else:
+            raise ValueError('mode type error!')
+        
+        self.CT_box = Box([p,self.tech.CT_W.hv,'c'])
+        self.GT_box = Box([p,self.tech.CT_W.hv + self.tech.CT_E_GT.v ,'c'])   
+
+        self.data['GT'].append(self.GT_box)
+        self.data['CT'].append(self.CT_box)
+
+
+#
+class CT_AA(Instance):
+    def __init__(self, tech, loc, mode = 'centre'):
+        super().__init__(tech)
+        self.loc = loc
+
+        self.data['AA'] = []
+        self.data['CT'] = []
+        
+        if mode == 'centre':
+            p = loc
+        elif mode == 'left':
+            p = (loc[0]+self.tech.CT_W.hv + self.tech.CT_E_AA.v , loc[1])
+        elif mode == 'right':
+            p = (loc[0]-(self.tech.CT_W.hv + self.tech.CT_E_AA.v ) , loc[1])
+        else:
+            raise ValueError('mode type error!')
+        
+        self.CT_box = Box([p,self.tech.CT_W.hv,'c'])
+        self.AA_box = Box([p,self.tech.CT_W.hv + self.tech.CT_E_AA.v ,'c'])   
+
+        self.data['AA'].append(self.AA_box)
+        self.data['CT'].append(self.CT_box)
+
+
+
+
+class AA_SD(Instance):
+    def __init__(self, tech, aa_ct, left_x=None, right_x=None, left_mos=None, right_mos=None):        
+        super().__init__(tech)
+        self.data['AA'] = []
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #
 class M2_Tracks(Instance):
     def __init__(self,cells,left,right):
@@ -240,7 +319,7 @@ class V1_Nodes(Instance):
 
 
 
-class GT_AA(Instance):
+class GT_AA_BK(Instance):
     #TODO: need revise for future more vmodes
     def __init__(self, tech, draw_data, gt_cts,aa_cts,pw_pins, node_loc, pattern_router):
         super().__init__(tech)
@@ -453,10 +532,6 @@ class GT_AA(Instance):
 
 
 
-class AA_SD(Instance):
-    def __init__(self, tech, draw_data, aa_cts, pw_pins):        
-        super().__init__(tech)
-        self.data['AA'] = []
 
 
 
@@ -482,29 +557,6 @@ class AA_SD(Instance):
 
 
 
-#
-class CT_GT(Instance):
-    def __init__(self, tech, loc, mode = 'centre'):
-        super().__init__(tech)
-        self.loc = loc
-
-        self.data['GT'] = []
-        self.data['CT'] = []
-        
-        if mode == 'centre':
-            p = loc
-        elif mode == 'left':
-            p = (loc[0]+self.tech.CT_W.hv + self.tech.CT_E_GT.v , loc[1])
-        elif mode == 'right':
-            p = (loc[0]-(self.tech.CT_W.hv + self.tech.CT_E_GT.v ) , loc[1])
-        else:
-            raise ValueError('mode type error!')
-        
-        self.CT_box = Box([p,self.tech.CT_W.hv,'c'])
-        self.GT_box = Box([p,self.tech.CT_W.hv + self.tech.CT_E_GT.v ,'c'])   
-
-        self.data['GT'].append(self.GT_box)
-        self.data['CT'].append(self.CT_box)
 
 
 

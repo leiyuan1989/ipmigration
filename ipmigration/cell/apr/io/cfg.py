@@ -80,7 +80,7 @@ class Cfg:
         os.makedirs(output_dir, exist_ok=True)
         
         # 生成日志文件名
-        log_file = os.path.join(output_dir, f"LOG_{time.strftime('%m_%d_%H_%M')}.txt")
+        log_file = os.path.join(output_dir, f"00_LOG_{time.strftime('%m_%d_%H')}.txt")
         
         # 获取根日志记录器
         root_logger = logging.getLogger()

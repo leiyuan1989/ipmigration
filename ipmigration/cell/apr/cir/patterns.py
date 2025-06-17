@@ -13,7 +13,7 @@ from ipmigration.cell.apr.cir.graph import MosGraph,PatternGraph
 from ipmigration.cell.apr.tech import VMode
 from ipmigration.cell.apr.pr.smt_router import MIPGraphRouter
 from ipmigration.cell.apr.io.route_loader import RouteDB, convert_tuples_to_lists
-from ipmigration.cell.apr.lyt.instance import GT_AA,M1_Route,M2_Route,Pin_Nodes, GT_Route, CT_GT,V1_Nodes, CT_Nodes, EdgeRoute ,AA_SD,POWER
+from ipmigration.cell.apr.lyt.instance import M1_Route,M2_Route,Pin_Nodes, GT_Route, CT_GT,V1_Nodes, CT_Nodes, EdgeRoute ,AA_SD,POWER
 
 
 pt_list = ['FCROSS_4','PCROSS_2','INV']

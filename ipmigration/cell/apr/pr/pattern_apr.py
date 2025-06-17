@@ -4,23 +4,16 @@
 @author: leiyuan
 """
 import json
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.lines import Line2D
 import networkx as nx
 from collections import OrderedDict
-from ipmigration.cell.apr.pr.analog_router import AnalogRouter1
-
+from itertools import combinations
 import z3
 from z3 import Optimize,Solver
 from z3 import Int, Bool, Or, And, Not, Distinct, If, is_true,sat,Abs
 
-from itertools import combinations, chain
-import itertools
 
-import math
-import time
 
 import logging
 logger = logging.getLogger(__name__)
@@ -40,7 +33,25 @@ output_mappings = {
     frozenset({'out_ECK'}): [['out_ECK']]
 }
 
+pin_locs = {
+                6:{'aa_p':4,'aa_n':1,'gt_p':3,'gt_n':2,'gt_m':2.5,'aa_range':[0,-1,1]},
+                7:{'aa_p':5,'aa_n':1,'gt_p':4,'gt_n':2,'gt_m':3,  'aa_range':[0,-1,1]},
+                8:{'aa_p':6,'aa_n':1,'gt_p':4,'gt_n':3,'gt_m':3.5,'aa_range':[0,-1,1]},
+                9:{'aa_p':7,'aa_n':1,'gt_p':5,'gt_n':3,'gt_m':4  ,'aa_range':[0,-1,1]}
+            }
 
+class PinLoc:
+    def __init__(self,v_tracks):
+        pin_loc = pin_locs[v_tracks]
+        self.aap =  pin_loc['aa_p']
+        self.aan =  pin_loc['aa_n']
+        self.gtp =  pin_loc['gt_p']
+        self.gtn =  pin_loc['gt_n']
+        self.gtm =  pin_loc['gt_m']
+        self.aar =  pin_loc['aa_range']
+        
+        
+        
 
 '''
 Based on the design objectives, to better preserve the design intent, 
@@ -49,15 +60,16 @@ In the case of new netlists, they need to be optimized according to the design.
 '''
 
 class PatternAPR:
-    def __init__(self,ckt,sub_ckts,place_file,load=False):
+    def __init__(self,ckt,sub_ckts,place_file, vertical_tracks=6, load=False):
         self.name = ckt.name
         self.ckt = ckt
         self.sub_ckts = sub_ckts
         self.place_file = place_file
         self.load = load
         self.placement = []
-        #combo                
-        #temp 
+        self.vtracks = vertical_tracks
+        self.pin_loc = PinLoc(vertical_tracks)
+        
         if load:
             self.queue = self.place_file[self.name]
             self.ready=True
@@ -68,8 +80,13 @@ class PatternAPR:
             self.write_place_file(queue)
             self.ready=False
 
+    def run(self):
+        self.place()
+        #TODO, Split place and route
+        return self.route()  
     
     def place(self):
+        pl = self.pin_loc
         self.queue = split_list_elements(self.queue) 
         for combo in self.queue:
             if len(combo) ==1:
@@ -103,12 +120,13 @@ class PatternAPR:
                     p2 = self.sub_ckts[combo[1]]                  
                     self.placement.append(p1.flip_place() + p2.place)
         
-        #process cross here
         
+        #TODO: split to two function here later!
         
-        
-        self.net_loc = {}
         loc = 0
+        self.net_loc = {}
+        self.mos_loc = {}
+        blocks_pins = {}
         for blk in self.placement:      
             for i,pn in enumerate(blk):
                 p = pn['P']
@@ -117,72 +135,84 @@ class PatternAPR:
                     loc +=1
                 else: 
                     if p:
-                        self.net_loc[(p,'S')] = (loc,4,1)
-                        self.net_loc[(p,'G')] = (loc+1,4,0)
-                        self.net_loc[(p,'D')] = (loc+2,4,1)                        
+                        self.net_loc[(p,'S')] = (loc  ,pl.aap, 1)
+                        self.net_loc[(p,'G')] = (loc+1,pl.aap, 0)
+                        self.net_loc[(p,'D')] = (loc+2,pl.aap, 1)    
+                        
                     if n:
-                        self.net_loc[(n,'S')] = (loc,1,1)
-                        self.net_loc[(n,'G')] = (loc+1,1,0)
-                        self.net_loc[(n,'D')] = (loc+2,1,1)      
+                        self.net_loc[(n,'S')] = (loc  ,pl.aan, 1)
+                        self.net_loc[(n,'G')] = (loc+1,pl.aan, 0)
+                        self.net_loc[(n,'D')] = (loc+2,pl.aan, 1)      
+                    
                     
                     if i != len(blk)-1:
-                        #next is pn
+                    #next is pn
                         p2 = blk[i+1]['P']
                         n2 = blk[i+1]['N'] 
                         if p2 and n2 and p and n:
                             # print(p,p2,n,n2)
                             if p.G == n2.G and n.G == p2.G:
                                 #cross
-                                # print('11111111111111')
-                                self.net_loc[(p,'S')] = (loc,4,1)
-                                self.net_loc[(p,'G')] = (loc+1,4,0)
-                                self.net_loc[(p,'D')] = (loc+3,4,1)  
+                                self.net_loc[(p,'S')] = (loc  ,pl.aap, 1)
+                                self.net_loc[(p,'G')] = (loc+1,pl.aap, 0)
                                     
-                                self.net_loc[(n,'S')] = (loc,1,1)
-                                self.net_loc[(n,'G')] = (loc+1,1,0)
-                                if p.D == n.D:
-                                    self.net_loc[(n,'D')] = (loc+3,4,1)#same with pD 
-                                else:
-                                    self.net_loc[(n,'D')] = (loc+3,1,1)
+                                self.net_loc[(n,'S')] = (loc  ,pl.aan, 1)
+                                self.net_loc[(n,'G')] = (loc+1,pl.aan, 0)
+                                
+                                self.net_loc[(p,'D')] = (loc+3,pl.aap, 1)  
+                                self.net_loc[(n,'D')] = (loc+3,pl.aan, 1)
+                                
+                                # if p.D == n.D:
+                                #     self.net_loc[(p,'D')] = (loc+3,4,2)#same with pD 
+                                #     self.net_loc[(n,'D')] = (loc+3,4,2)
+                                #     blocks_pins[loc+3] = [1]
+                                #     blocks_pins[loc+4] = [1]
+                                #     blocks_pins[loc+5] = [1,2,3]
+                                    
+                                # else:
+                                #     self.net_loc[(p,'D')] = (loc+3,4,1)  
+                                #     self.net_loc[(n,'D')] = (loc+3,1,1)
                                 
                                 loc+=1
                     
-                    if i != 0:
-                        #next is pn
-                        p2 = blk[i-1]['P']
-                        n2 = blk[i-1]['N'] 
-                        if p2 and n2 and p and n:
+                    # if i != 0:
+                    #     #next is pn
+                    #     p2 = blk[i-1]['P']
+                    #     n2 = blk[i-1]['N'] 
+                    #     if p2 and n2 and p and n:
                   
-                            if p.G == n2.G and n.G == p2.G:
-                                #cross
-                                # print('2222222222222')
-                                self.net_loc[(p,'S')] = (loc,4,1)
-                                self.net_loc[(p,'G')] = (loc+1,4,0)
-                                self.net_loc[(p,'D')] = (loc+2,4,1)  
-                                    
-                                if p.S == n.S:
-                                    self.net_loc[(n,'S')] = (loc,4,1)
-                                else:
-                                    self.net_loc[(n,'S')] = (loc,1,1)
-                                self.net_loc[(n,'G')] = (loc+1,1,0)
-                                self.net_loc[(n,'D')] = (loc+2,4,1) 
-                                # print()
-                                # loc+=1                                
+                    #         if p.G == n2.G and n.G == p2.G:
+                    #             #cross
+                    #             self.net_loc[(p,'G')] = (loc+1,4,0)
+                    #             self.net_loc[(p,'D')] = (loc+3,4,1)  
+                                
+                    #             self.net_loc[(n,'G')] = (loc+1,1,0)
+                    #             self.net_loc[(n,'D')] = (loc+3,1,1) 
+                                
+                    #             self.net_loc[(p,'S')] = (loc,4,1)
+                    #             self.net_loc[(n,'S')] = (loc,1,1)
+                                
+                    #             # print('x',n.D)
+                    #             # if p.S == n.S:
+                    #             #     self.net_loc[(p,'S')] = (loc,4,2)
+                    #             #     self.net_loc[(n,'S')] = (loc,4,2)
+                    #             # else:
+                    #             #     self.net_loc[(p,'S')] = (loc,4,1)
+                    #             #     self.net_loc[(n,'S')] = (loc,1,1)
+
+                    #             # print()
+                    #             # loc+=1                                
                                 
                     loc+=2
-            loc+=1
-        
-        self.grid_size = (max([t[0] for t in self.net_loc.values()]),6)
-        #6 is for init-place, more vertical grid can be add during routing.
+            loc+=2
+        self.blocks_pins = blocks_pins
+        self.grid_size = (max([t[0] for t in self.net_loc.values()]) + 1,self.vtracks)
         self.vdd_nets = []
         self.vss_nets = []
         self.abut_nets = []
         self.gg_nets = []
         self.nets = {}
         
-        
-        
-        # print(self.net_loc,self.ckt.nets)
         
         for k,v in self.ckt.nets.items():
             if k == 'VDD':
@@ -201,27 +231,20 @@ class PatternAPR:
                             to_extract.add(e1)
                             to_extract.add(e2)
                             self.gg_nets.append([e1,e2])
-                            gg_nets.append((e1[0],2.5,e1[2]))
+                            gg_nets.append((e1[0],pl.gtm,e1[2])) 
+                            #TODO
                             
                     filtered_data = [item for item in nets if item not in to_extract] + gg_nets
 
                     # filtered_data = [item for item in nets if item not in set(to_extract)]                    
                     
                     self.nets[k] = list(set(filtered_data))
+        # print(self.nets)
         self.show_placement()
         self.x_coordinate_dict = process_nets(self.nets)
 
 
-        
-    def route(self):
-        self.router = IPRouter( self.ckt, self.x_coordinate_dict, vertical_tracks = 6)
-        self.router.route()
-        # fig, ax = visualize_pins(self.name, self.router.m1_pins)
-        # plt.show()
-    
 
-        
-        
     def show_placement(self):
         line_p = ''
         line_n = ''
@@ -363,10 +386,7 @@ class PatternAPR:
                         if not(v1 in ext_nets):
                             ext_nets.append(v1)
         return ext_nets
-
-
-            
-
+      
     def write_place_file(self,queue):
         with open(self.place_file,'a+') as f:
             line = '%-10s,'%(self.name)
@@ -380,47 +400,57 @@ class PatternAPR:
                 line += '%-30s,'%(name)
             f.write(line[:-1]+'\n')
 
+    def route(self):
+        self.router = IPRouter( self.ckt, self.x_coordinate_dict,self.blocks_pins, vtracks=self.vtracks)
+        return self.router.route()
 
 
 #Integer Programming, IP
 class IPRouter:
     #satisfiability modulo theories 
-    def __init__(self,ckt, x_nets, vertical_tracks):
+    def __init__(self,ckt, x_nets,blocks_pins, vtracks):
         self.ckt = ckt
         self.x_nets = x_nets
+        self.blocks_pins = blocks_pins
         self.x_lim = max(x_nets.keys()) + 1
-        self.y_lim = vertical_tracks
-
-    
+        self.y_lim = vtracks
+        self.pl = PinLoc(vtracks)
     def route(self):
         # s = Optimize() 
         s = Solver()
         self.poly_constraints(self.x_nets)
-
         t = replace_points(self.x_nets,self.crossing_pairs)
         t = replace_points(t,self.hshape_pairs)
-        
-        self.m1_pins = t
-        
-            #(26, [['N_4', (26, 2, 0)], ['N_6', (26, 5, 0)]]),
-            
-        # self.m1_pins[26] =  [['N_4', (26, 2, 0)]]
-        
-        
+
+        self.m1_pins = t        
         self.cross_nets = generate_interval_dict(self.m1_pins)
     
         self.ip_route(s, self.m1_pins, self.cross_nets)    
         # self.solver = s
         
         if self.result:
-            print('-----Success!------')
-            fig, ax = visualize_pins(self.ckt.name, self.m1_pins,edges=self.edges)
+            print('-----Route Success!------')
+            fig, ax = visualize_pins(self.ckt.name, self.m1_pins, self.y_lim, edges=self.edges)
             plt.show()
             
+            self.col_edges(self.variables,self.m1_pins_result)
             #process edges
-            
+            fig, ax = visualize_pins(self.ckt.name, self.m1_pins_result, self.y_lim, edges=self.edges)
+            plt.show()
+            #optimize edges
+            self.optimize_edges(self.m1_pins_result)
+            fig, ax = visualize_pins(self.ckt.name, self.m1_pins_result, self.y_lim, edges=self.edges_op)
+            plt.show()
+ 
+            #optimize edges with input pins optimized
+            result = self.optimize_edges(self.m1_pins_result, inpins_op=True)
+            if result:
+                fig, ax = visualize_pins(self.ckt.name, self.m1_pins_result, self.y_lim, edges=self.edges_op)
+                plt.show()            
+            return True
             
         else:
+            print('-----Route Failed!------')
             if DEBUG:
                 #begin debug
                 print('--Begin Debug--')
@@ -455,49 +485,162 @@ class IPRouter:
                                     self.cross_nets_debug1 = cross_nets2
                                     self.m1_pins_debug1 = m1_pins2
                                     print("Failed at %d"%(k+1))
-                                    # print(m1_pins2)
-                                
                                     break        
                         break
+                    
                 s = Solver()
                 cross_nets =  generate_interval_dict(last_pass_m1_pins)
                 self.cross_nets_debug2 = cross_nets
                 self.m1_pins_debug2 = last_pass_m1_pins
                 self.ip_route(s, last_pass_m1_pins, cross_nets)  
                 if self.result:
-                    fig, ax = visualize_pins(self.ckt.name, self.m1_pins,edges=self.edges)
+                    fig, ax = visualize_pins(self.ckt.name, self.m1_pins, self.y_lim, edges=self.edges)
                     plt.show()
+            
+            return False
             # print(self.result)
             # self.gen_edges()
             # print(self.result)
     
-    def optimize_edges(self,edges,m1_pins):
+    def col_edges(self,variables,m1_pins_result):
+        for i in list(range(1,self.x_lim-1)):
+            p_1 = variables[(i-1,i)]
+            p_2 = variables[(i,i+1)]
+            p_3 = variables[(i+1,i+2)]
+            for k,y in p_2.items():
+                if k in p_1 and k in p_3:
+                    if p_1[k] == p_3[k] and p_1[k] != y:
+                        variables[(i,i+1)][k] = p_1[k]
+            
+        # self.variables = variables
+        self.edges = self.gen_edges(variables)        
+
+
+        nets = {}
+        for k, pins in m1_pins_result.items():
+            nets[k] ={}
+            for net, pin in pins:
+                if net in nets[k]:
+                    nets[k][net].append(pin[1])
+                else:
+                    nets[k][net] = [pin[1]]
+            
+        self.col_occupy = {}
+        for k, pins in m1_pins_result.items():
+            self.col_occupy[k] = {}
+            if(k-1,k) in variables:
+                left_nets = variables[(k-1,k)]
+            else:
+                left_nets = {}
+            if(k,k+1) in variables:
+                right_nets = variables[(k,k+1)]
+            else:
+                right_nets = {}     
+            
+            col_nets = nets[k]
+            all_nets = list(set(list(left_nets.keys()) + list(col_nets.keys()) +list(right_nets.keys()) ))
+             
+            for net in all_nets:
+                all_pins = []
+                if net in left_nets:
+                    all_pins += [left_nets[net]]
+                if net in right_nets:
+                    all_pins += [right_nets[net]]        
+                if net in col_nets:
+                    all_pins += col_nets[net]
+                if all_pins:
+                    min_ = min(all_pins)
+                    max_ = max(all_pins)
+                    all_y = list(range(min_,max_+1))
+                    
+                    
+                    self.col_occupy[k][net] = all_y
+                    if max_>min_:
+                        if not(net in self.edges):
+                            self.edges[net] = []
+                        for y in all_y[:-1]:          
+                            self.edges[net].append([(k,y),(k,y+1)])
+              
+
+    def optimize_edges(self,m1_pins_result, inpins_op=False):
+
+        nets = {}
+        for k, pins in m1_pins_result.items():
+            for net, pin in pins:
+                if not(net in nets):
+                    nets[net] = []
+                nets[net].append(pin)
+
+        edges = self.edges.copy()
+        for net, terms in nets.items():
+            if len(terms)>1:
+                G = nx.grid_2d_graph(self.x_lim, self.y_lim)
+                used_edges = [v for k,v in edges.items() if k != net]
+                other_nodes = [v for k,v in nets.items() if k != net]
+                used_nodes = []
+                for used_edge in used_edges:
+                    for n1,n2 in used_edge:
+                        used_nodes.append(n1)
+                        used_nodes.append(n2)
+                for other_node in other_nodes:
+                    #GT
+                    if inpins_op:
+                        if len(other_node) == 1:
+                            t = other_node[0]
+                            if t[2] == 0:
+                                used_nodes.append((t[0],self.pl.gtn))
+                                used_nodes.append((t[0],self.pl.gtp))
+                    
+                    for t in other_node:
+                        used_nodes.append((t[0],t[1]))
+                used_nodes = list(set(used_nodes))   
+                
+                G.remove_nodes_from(used_nodes)
+
+                  # 绘制节点
+                # pos = {(x, y): (x, y) for x, y in G.nodes()}
+                # nx.draw_networkx_nodes(G, pos, node_size=10, node_color='skyblue')
+                # nx.draw_networkx_edges(G, pos, width=1, edge_color='gray')
+                # plt.tight_layout()
+                # plt.show()
+                
+                
+                terminals = [(t[0],t[1]) for t in terms]
+                subgraph = find_subgraph_with_nodes(G, terminals)
+                if subgraph:
+                    steiner_tree = nx.algorithms.approximation.steiner_tree(subgraph, terminals,method='mehlhorn')
+                    edges[net] = list(steiner_tree.edges)
+                else:
+                    return False
+        #TODO: More optimization: character ji, aa extand from 3/2 to top
+        
+        
+        self.edges_op = edges
+        return True
+
+
+    def ripup_reroute(self,m1_pins_result, edges):
+        #search  
+        #TODO find all <aap >aan
+        #move them one by one, if grid is not used, add edge to net, revise pin, 
+        #if used 1 try reroute the net encountered; 2 if net is same of pin, just revise pins)
+        #if net 
         pass
         
         
-        
-        
-        
 
-
+    def pin_on_edges(self,pin, edges):
+        for net,edge in edges.items():
+            for p1,p2 in edge:
+                if pin == p1 or pin == p2:
+                    return net
+        return None
 
 
     def ip_route(self, s, m1_pins, cross_nets):
-                
+
         var = {}
-        # nodes = {}
-    
-        #init constraints
-        # for k,col in m1_pins.items():
-        #     nodes[k] = {}
-        #     for i in range(self.y_lim):
-                
-        #         node = Int('%d_%d_node'%(k,i))
-        #         s.add(node>=0)
-        #         s.add(node<=1)
-        #         # nodes[(k,i)] = node
-        #         nodes[k][i] = node
-  
+        top = self.y_lim 
         for (x1,x2),nets in cross_nets.items():
             dist = []
             var[(x1,x2)] = {}
@@ -505,8 +648,16 @@ class IPRouter:
                 v = Int('%d_%d_%s'%(x1,x2,net))
                 var[(x1,x2)][net] = v
                 s.add(v>=0)
-                s.add(v<=5)
+                s.add(v<=top-1)
                 dist.append(v)
+                
+                if x1 in self.blocks_pins:
+                    for bp in self.blocks_pins[x1]:
+                        s.add(v!=bp)
+                if x2 in self.blocks_pins:
+                    for bp in self.blocks_pins[x2]:
+                        s.add(v!=bp)                
+                
             if dist:
                 s.add(Distinct(dist)) 
                 
@@ -521,8 +672,19 @@ class IPRouter:
             else:
                 pre_nets = var[k-1,k]
             next_nets = var[k,k+1]
-            col_nets = {key[1]: value for key, value in self.pins_const.items() if key[0] == k}
+
+            # col_nets = {key[0]: value for key, value in self.pins_const.items() if key[1][0] == k}
+            col_nets = {}
+            for key, value in self.pins_const.items():
+                net,pin = key
+                if pin[0] == k:
+                    if net in col_nets:
+                        col_nets[net].append(value)
+                    else:
+                        col_nets[net] = [value]
             
+            
+            # print(col_nets)
             all_nets = list(set( list(pre_nets.keys()) + list(col_nets.keys()) +list(next_nets.keys()) ))
             net_range = {}
             for net in all_nets:
@@ -537,41 +699,53 @@ class IPRouter:
                     r = self.merge_range(r3, r)
  
                     
-                elif t1 and t3:
+                elif t1 and t3 and not(t2):
                     r1 = pre_nets[net]
                     r2 = col_nets[net]
                     r = self.merge_range(r1, r2)
                     
-                elif t1 and t2:
+                elif t1 and t2 and not(t3):
                     r1 = pre_nets[net]
                     r2 = next_nets[net]
                     r = self.merge_range(r1, [r2])
                     
-                elif t2 and t3:
+                elif t2 and t3 and not(t1):
                     r1 = col_nets[net]
                     r2 = next_nets[net]
                     r = self.merge_range(r2, r1)
-                elif t3:
+                elif t3 and not(t1) and not(t2):
+        
                     r = col_nets[net]
-                    r = [r[0],r[0]]
-                    
-                    #一个dict 包含上下表，要求互相不覆盖
-                    
-                    
+                    if len(r) == 1:
+                        r = [r[0],r[0]]
+                    else:
+                        r = self.merge_range(r[0], [r[1]])
+                        # print(net)
+
                 else:
                     print(m1_pins,self.pins_const)
                     print(pre_nets,col_nets,next_nets)
                     print(k,net,t1,t2,t3)
                     raise ValueError
                 net_range[net] = r
+            
+             
+
             for net1, range1 in net_range.items():
+                r1l,r1u = range1
                 for net2, range2 in net_range.items():
                     if net1 != net2:
-                        r1l,r1u = range1
                         r2l,r2u = range2
+                        # if net1 == 'Q':
+                        #     print(r1l>r2u,r1u<r2l)
+               
                         # print(range1,range2)
                         s.add(Or(r1l>r2u,r1u<r2l))
-              
+                        
+                # if k in self.blocks_pins:  
+                #     for bp in self.blocks_pins[k]:
+                #         print(k,bp)
+                #         s.add(Or(r1l>bp,r1u<bp))
             
         self.variables = var
         # cross_nets = {}
@@ -596,20 +770,26 @@ class IPRouter:
         
         if s.check() == sat:
             m = s.model()
-            edges = {}
             variables = self.variables.copy()
             for loc,nets in self.variables.items():
                 for net, v in nets.items():
                     x1,x2=loc
                     y = m[v].as_long()
                     variables[loc][net] = y
-                    if net in edges:
-                        edges[net].append( [(x1,y), (x2,y)] )
-                    else:
-                        # print(edges)
-                        edges[net] = [[(x1,y), (x2,y)]]
+            
+            #get pin loc
+            self.m1_pins_result = {}
+            for k , nets in m1_pins.items():
+                self.m1_pins_result[k] = []
+
+                for net_n,v in nets:
+                    t = self.pins_const[(net_n,v)]
+                    y = m[t].as_long()
+                    
+                    self.m1_pins_result[k].append([net_n,(v[0],y,v[2])])
+                    
             self.variables= variables
-            self.edges = edges
+            self.edges = self.gen_edges(variables)
             self.result = True
             # self.result = {k:m[v] for k,v in self.variables.items()}
             # self.result = [(d.name(), m[d]) for d in m.decls()] 
@@ -618,6 +798,8 @@ class IPRouter:
             self.result = False
             
     def poly_constraints(self,x_nets):
+        pl = self.pl
+        top= self.y_lim
         poly_pins = []
         for key in x_nets:
             pins = {}
@@ -648,33 +830,33 @@ class IPRouter:
                     p3 = next_row[net1]
                     p4 = next_row[net2]                    
                     if (p1[1] == p4[1] and p2[1] == p3[1]):
-                        if p1[1] == 4:
+                        if p1[1] == pl.aap:
                             if top_clock:
                                 pass
                             else:
                                 top_clock = net1
-                        if p2[1] == 4:
+                        if p2[1] == pl.aap:
                             if top_clock:
                                 pass
                             else:
                                 top_clock = net2
                         #
                         if net1 == top_clock:
-                            if p1[1] == 4: #p3[1]==1 p4[1]==4 p2[1]=1
-                                crossing_pairs[(net1,p1)] = (p1[0],5,0)
+                            if p1[1] == pl.aap: #p3[1]==1 p4[1]==4 p2[1]=1
+                                crossing_pairs[(net1,p1)] = (p1[0],top-1,0)
                                 crossing_pairs[(net1,p3)] = None
                                 
-                                crossing_pairs[(net2,p2)] = (p2[0],2,0)
-                                crossing_pairs[(net2,p4)] = (p4[0],3,0)
+                                crossing_pairs[(net2,p2)] = (p2[0],pl.gtn,0)
+                                crossing_pairs[(net2,p4)] = (p4[0],pl.gtp,0)
                                 
                                 
                             else:
                                 #p3[1]==
                                 crossing_pairs[(net1,p1)] = None   
-                                crossing_pairs[(net1,p3)] = (p3[0],5,0)
+                                crossing_pairs[(net1,p3)] = (p3[0],top-1,0)
                                 
-                                crossing_pairs[(net2,p2)] = (p2[0],3,0)
-                                crossing_pairs[(net2,p4)] = (p4[0],2,0)
+                                crossing_pairs[(net2,p2)] = (p2[0],pl.gtp,0)
+                                crossing_pairs[(net2,p4)] = (p4[0],pl.gtn,0)
                                 
                             poly_connect[(net1,p1)] = (p1,p3) 
                                                     
@@ -682,21 +864,21 @@ class IPRouter:
                             
                         else:
                             #net2 is top
-                            if p2[1] == 4: #p3[1]==4 p4[1]==1 p1[1]=1
-                                crossing_pairs[(net1,p1)] = (p1[0],2,0)
-                                crossing_pairs[(net1,p3)] = (p3[0],3,0)
+                            if p2[1] == pl.aap: #p3[1]==4 p4[1]==1 p1[1]=1
+                                crossing_pairs[(net1,p1)] = (p1[0],pl.gtn,0)
+                                crossing_pairs[(net1,p3)] = (p3[0],pl.gtp,0)
                                 
-                                crossing_pairs[(net2,p2)] = (p2[0],5,0)
+                                crossing_pairs[(net2,p2)] = (p2[0],top-1,0)
                                 crossing_pairs[(net2,p4)] = None
                                 
                                 
                             else:
                                 # p2[1] == 1 p3[1]==1 p4[1]==4 p1[1]=4
-                                crossing_pairs[(net1,p1)] = (p1[0],3,0)
-                                crossing_pairs[(net1,p3)] = (p3[0],2,0)  
+                                crossing_pairs[(net1,p1)] = (p1[0],pl.gtp,0)
+                                crossing_pairs[(net1,p3)] = (p3[0],pl.gtn,0)  
                                 
                                 crossing_pairs[(net2,p2)] = None
-                                crossing_pairs[(net2,p4)] = (p4[0],5,0)
+                                crossing_pairs[(net2,p4)] = (p4[0],top-1,0)
                                 
                             poly_connect[(net2,p2)] = (p2,p4)
                         
@@ -724,7 +906,12 @@ class IPRouter:
             
 
     
-    def add_pins_const(self,solver,m1_pins,aa_range = 3):
+    def add_pins_const(self,solver,m1_pins):
+        top = self.y_lim
+        pl = self.pl
+    
+        
+        
         pins_const = {}
         for k,col in m1_pins.items():
             if len(col) == 2:
@@ -738,49 +925,41 @@ class IPRouter:
                     eqs1 = []
                     eqs2 = []
                     
-                    #t1 t2 range
-                    for i in range(aa_range):
-                        eqs1.append(t1==6-i)
-                        eqs2.append(t2==0+i)
+                    #TODO: aar queue may afferc?  [4,5,3] with [1,2,0] or [1,0,2] 
+                    for i in pl.aar:
+                        eqs1.append(t1==pl.aap+i)
+                        eqs2.append(t2==pl.aan+i)
+                        
                     solver.add(Or(*eqs1))
                     solver.add(Or(*eqs2))
-                    pins_const[(k,n1)] = [t2,t1]
-                    # range_ = (t2,t1) 
-                    # lb= t1
-                    # ub = t1
-                                    
-                    # if n1 in pre_nets:
-                    #     pre_net = pre_nets[n1]
-                    #     lb,ub = self.merge_range(pre_net, [lb,ub])
-                                       
-                    # for name,v in col_nets.items():
-                    #     if name != n1:
-                    #         #common a and its net (maybe top or bottm), all the range are blocked
-                    #         solver.add(Or(v < lb, v > ub))
+                    solver.add(t1-t2>1)
+                    pins_const[(n1,p1)] = t1
+                    pins_const[(n2,p2)] = t2
+
                 elif n1!=n2 and p1[2]==0 and p2[2]==0:
                     t1 = Int('%d_%s_gt'%(k,n1))
-                    solver.add(t1 == 2)
+                    solver.add(t1 == pl.gtn)
                     t2 = Int('%d_%s_gt'%(k,n2))
-                    solver.add(Or(t2 == 5,t2==3))
-                    pins_const[(k,n1)] = [t1]
-                    pins_const[(k,n2)] = [t2]
+                    solver.add(Or(t2 == top-1,t2==pl.gtp))
+                    pins_const[(n1,p1)] = t1
+                    pins_const[(n2,p2)] = t2
     
                 elif n1!=n2 and p1[2]==1 and p2[2]==1:
                     #diff AA                      
-                    t1 = Int('%d_%s_naa'%(k,n1))
-                    t2 = Int('%d_%s_paa'%(k,n2))
+                    t1 = Int('%d_%s_paa'%(k,n1))
+                    t2 = Int('%d_%s_naa'%(k,n2))
                     eqs1 = []
                     eqs2 = []
                     
                     #t1 t2 range
-                    for i in range(aa_range):
-                        eqs1.append(t2==6-i)
-                        eqs2.append(t1==0+i)
+                    for i in pl.aar:
+                        eqs1.append(t2==pl.aap+i)
+                        eqs2.append(t1==pl.aan+i)
                     solver.add(Or(*eqs1))
                     solver.add(Or(*eqs2))
-                    
-                    pins_const[(k,n1)] = [t1]
-                    pins_const[(k,n2)] = [t2]
+                    solver.add(t2-t1>1)
+                    pins_const[(n1,p1)] = t1
+                    pins_const[(n2,p2)] = t2
                              
                 else:
                     print(col)
@@ -789,42 +968,40 @@ class IPRouter:
             elif len(col) == 1:
                 n1,p1 = col[0]
                 if p1[2] ==0:
-                    if p1[1] == 2.5:
+                    if p1[1] == pl.gtm:
                         #common gt
                         t1 = Int('%d_%s_gt'%(k,n1))
-                        solver.add(Or(t1 == 2, t1 == 3))
-                    elif p1[1] == 2:
+                        solver.add(Or(t1 == pl.gtn, t1 == pl.gtp))
+                    elif p1[1] == pl.gtn:
                         t1 = Int('%d_%s_gt'%(k,n1))
-                        solver.add(t1 == 2)
-                    elif p1[1] == 3:
+                        solver.add(t1 == pl.gtn)
+                    elif p1[1] == pl.gtp:
                         t1 = Int('%d_%s_gt'%(k,n1))
-                        solver.add(t1 == 3)                    
-                    elif p1[1] == 5:
+                        solver.add(t1 == pl.gtp)                    
+                    elif p1[1] == top-1:
                         t1 = Int('%d_%s_gt'%(k,n1))
-                        solver.add(t1 == 5)                    
+                        solver.add(t1 == top-1)                    
                     else:
                           print(col)
                           raise ValueError 
                 else:
-                    if p1[1] == 1:
+                    if p1[1] == pl.aan:
                         t1 = Int('%d_%s_naa'%(k,n1))
-                        solver.add(Or(t1 == 2, t1 == 3))
                         eqs1 = []
-                        
-                        for i in range(aa_range):
-                            eqs1.append(t1==0+i)
+                        for i in pl.aar:
+                            eqs1.append(t1==pl.aan+i)
                         solver.add(Or(*eqs1))
-                    elif p1[1] ==4:
+                    elif p1[1] ==pl.aap:
                         t1 = Int('%d_%s_paa'%(k,n1))
                         eqs1 = []
                         #t1 t2 range
-                        for i in range(aa_range):
-                            eqs1.append(t1==6-i)
+                        for i in pl.aar:
+                            eqs1.append(t1==pl.aap+i)
                         solver.add(Or(*eqs1))
                     else:
                         print(col)
                         raise ValueError    
-                pins_const[(k,n1)] = [t1]       
+                pins_const[(n1,p1)] = t1      
       
         return pins_const
     
@@ -905,340 +1082,24 @@ class IPRouter:
         else:
             return r  # 区间直接返回
 
-
-
-
-
-
-    def gen_edges(self):
-        net_loc = {}
-        for (x,net),y_z3 in self.result.items():
-            y = int(y_z3.as_long())
-            if net in net_loc:
-                net_loc[net].append(((x,y),(x+1,y)))
-            else:
-                net_loc[net] = [((x,y),(x+1,y))]
-
-        self.edges = net_loc     
-        
+    def gen_edges(self,variables):
+        edges = {}
+        for loc,nets in variables.items():
+            for net, y in nets.items():
+                x1,x2=loc
+                if net in edges:
+                    edges[net].append( [(x1,y), (x2,y)] )
+                else:
+                    # print(edges)
+                    edges[net] = [[(x1,y), (x2,y)]]  
+        return edges
         # self.edges = generate_edges(net_loc)
 
 
 
-    def _place(self, pmos_list, nmos_list, cell_width, pairs, vertical_tracks_pmos = 1, vertical_tracks_nmos = 1):
-        #TODO find relationship before run this and try decrease the running time
-        
-        # Wrapper arount solver.add
-
-            
-        assert len(nmos_list) <= cell_width 
-        assert len(pmos_list) <= cell_width 
-        #how to add some constraints to generate more 
-        # transistors = []
-        # transistors.extend(nmos_list)
-        # transistors.extend(pmos_list)
-
-        solver = Optimize()
-
-        # Create symbols for transistor positions.
-        pmos_loc = {t: (Int("pmos_{}_x".format(t.name)), Int("pmos_{}_y".format(t.name))) for t in pmos_list}
-        nmos_loc = {t: (Int("nmos_{}_x".format(t.name)), Int("nmos_{}_y".format(t.name))) for t in nmos_list}
-        # Create boolean symbols for transistor flips.
-        pmos_flipped = {t: Bool("pmos_{}_flipped".format(t.name)) for t in pmos_list}     
-        nmos_flipped = {t: Bool("nmos_{}_flipped".format(t.name)) for t in nmos_list}          
-        
-        # transistor_positions = {t: (Int("transistor_{}_x".format(i)), Int("transistor_{}_y".format(i)))
-        #                         for i, t in enumerate(transistors)}
-        # # Create boolean symbols for transistor flips.
-        # # Each transistor can be flipped (source/drain swapped).
-        # transistor_flipped = {t: Bool("transistor_{}_flipped".format(i))
-        #                       for i, t in enumerate(transistors)}
-
-        # Constraint 1: Positions are bounded.      
-        for x, y in pmos_loc.values():
-            # Add bounds on positions.
-            solver.add(x > 0)# begin from 1
-            solver.add(y > 0)
-            # Add upper bounds on transistor positions.
-            solver.add(x <= cell_width)
-            solver.add(y <= vertical_tracks_pmos)
-        for x, y in nmos_loc.values():
-            # Add bounds on positions.
-            solver.add(x > 0)
-            solver.add(y > 0)
-            # Add upper bounds on transistor positions.
-            solver.add(x <= cell_width) # <=
-            solver.add(y <= vertical_tracks_nmos)            
-            
-        # Constraint 2: No same x positions
-        d_pmos = Distinct([x for x,y in pmos_loc.values()])
-        d_nmos = Distinct([x for x,y in nmos_loc.values()])       
-        solver.add(d_pmos)
-        solver.add(d_nmos)        
-
-        # Constraint 3: PN pair
-        # for tn in nmos_list:
-        #     for tp in pmos_list:
-        #         if tn.gate_net == tp.gate_net:
-        #             (xn, yn) = nmos_loc[tn]
-        #             (xp, yp) = pmos_loc[tp]
-        #             same_x = xn == xp
-        #             solver.add_soft(same_x,weight=3)
-        for p,n in pairs:
-            (xn, yn) = nmos_loc[n]
-            (xp, yp) = pmos_loc[p]
-            # print(xn,xp,p,n)
-            
-            solver.add(xn == xp)
-        # print(solver)                  
-        # Constraint 4: Abutment, Diffusion sharing
-        # If two transistors are placed side-by-side then the abutted sources/drain nets must match.
-
-        # Loop through all potential (left, right) pairs.
-        for a, b in combinations(pmos_list, 2):
-            for t_left, t_right in [(a, b), (b, a)]:
-                xl, yl = pmos_loc[t_left]
-                xr, yr = pmos_loc[t_right]
-
-                # Checks if t_left is left neighbor of t_right.
-                are_neighbors = And(
-                    yl == yr,
-                    xl + 1 == xr
-                )
-
-                # Go through all combinations of flipped transistors
-                # and check if they are allowed to be directly abutted if flipped
-                # in a specific way.
-                flip_combinations = [[False, False], [False, True], [True, False], [True, True]]
-                for flip_l, flip_r in flip_combinations:
-                    l = t_left.flipped() if flip_l else t_left
-                    r = t_right.flipped() if flip_r else t_right
-
-                    if l.drain_net != r.source_net:
-                        # Drain/Source net mismatch.
-                        # In case the transistors are flipped that way,
-                        # they are not allowed to be direct neighbors.
-                        solver.add(
-                            Implies(
-                                And(pmos_flipped[t_left] == flip_l,
-                                    pmos_flipped[t_right] == flip_r),
-                                Not(are_neighbors)
-                            )
-                        )
-        for a, b in combinations(nmos_list, 2):
-            for t_left, t_right in [(a, b), (b, a)]:
-                xl, yl = nmos_loc[t_left]
-                xr, yr = nmos_loc[t_right]
-
-                # Checks if t_left is left neighbor of t_right.
-                are_neighbors = And(
-                    yl == yr,
-                    xl + 1 == xr
-                )
-
-                # Go through all combinations of flipped transistors
-                # and check if they are allowed to be directly abutted if flipped
-                # in a specific way.
-                flip_combinations = [[False, False], [False, True], [True, False], [True, True]]
-                for flip_l, flip_r in flip_combinations:
-                    l = t_left.flipped() if flip_l else t_left
-                    r = t_right.flipped() if flip_r else t_right
-
-                    if l.drain_net != r.source_net:
-                        # Drain/Source net mismatch.
-                        # In case the transistors are flipped that way,
-                        # they are not allowed to be direct neighbors.
-                        solver.add(
-                            Implies(
-                                And(nmos_flipped[t_left] == flip_l,
-                                    nmos_flipped[t_right] == flip_r),
-                                Not(are_neighbors)
-                            )
-                        )
-        
-        # Constraint 5: Route Congestion
-        # Extract all net names.
-        nets = set(chain(*(t.terminals() for t in pmos_list + nmos_list)))  #clear vdd vss
-
-        # Create net bounds. This will be used to optimize
-        # the bounding box perimeter of the nets (for wiring length optimization).
-        net_max_x = {net: Int("net_max_x_{}".format(net))
-                     for net in nets}
-
-        net_min_x = {net: Int("net_min_x_{}".format(net))
-                     for net in nets}
-
-        net_max_y = {net: Int("net_max_y_{}".format(net))
-                     for net in nets}
-
-        net_min_y = {net: Int("net_min_y_{}".format(net))
-                     for net in nets}
-
-        for t in pmos_list:
-            x, y = pmos_loc[t]
-
-            # TODO: Net positions dependent on transistor terminal.
-            #       Now, the net position equals the transistor position.
-            #       Make it dependent on the actual terminal (drain, gate, source).
-            #       Also depends on transistor flips.
-            for net in t.terminals():
-                solver.add(x <= net_max_x[net])
-                solver.add(x >= net_min_x[net])
-                # add_assertion(y <= net_max_y[net])
-                # add_assertion(y >= net_min_y[net])
-
-        for t in nmos_list:
-            x, y = nmos_loc[t]
-
-            # TODO: Net positions dependent on transistor terminal.
-            #       Now, the net position equals the transistor position.
-            #       Make it dependent on the actual terminal (drain, gate, source).
-            #       Also depends on transistor flips.
-            for net in t.terminals():
-                solver.add(x <= net_max_x[net])
-                solver.add(x >= net_min_x[net])
-                # add_assertion(y <= net_max_y[net])
-                # add_assertion(y >= net_min_y[net])
-
-        # Optiimization goals
-        # Note: z3 uses lexicographic priorities of objectives by default.
-        # Here, the cell width is optimized first.
-        # Could be interesting: z3 could also find pareto fronts.
-
-        # # Optimization objective 1
-        # # Minimize cell width.
-        # solver.minimize(max_x)
-
-        # Optimization objective 2
-        # Minimize wiring length (net bounding boxes)
-        # TODO: sort criteria by what? Number of terminals?
-
-        for net in nets:
-            # TODO: skip VDD/GND nets
-            solver.minimize(net_max_x[net] - net_min_x[net])
-            solver.minimize(net_max_y[net] - net_min_y[net])
-
-        # TODO: optimization objective for pin nets.
 
 
-        #
-        logger.info("smt_placer-> Run SMT optimizer")
-        is_sat = solver.check() == sat
 
-        logger.info("smt_placer-> Is satisfiable: %s", is_sat)
-        
-        if is_sat:
-            model = solver.model()
-            # print(solver,model)
-            assert len(model) > 0, "model is empty"
-            #return model
-        
-            placements = Placement(cell_width)
-            # cell = Cell(cell_width)
-            # rows = [cell.lower, cell.upper]
-            for p,n in pairs:
-                (xn, yn) = nmos_loc[n]
-                (xp, yp) = pmos_loc[p]
-                # print('xx', model[xn],model[xp])
-                
-            for t in pmos_list:
-                x, y = pmos_loc[t]
-                x = model[x].as_long()
-                # y = model[y].as_long()  
-                flip = is_true(model[pmos_flipped[t]])
-                transistor = t.flipped() if flip else t
-                placements.upper[x - 1] = transistor
-    
-            for t in nmos_list:
-                x, y = nmos_loc[t]
-                x = model[x].as_long()
-    
-                # y = model[y].as_long()  
-                flip = is_true(model[nmos_flipped[t]])
-                transistor = t.flipped() if flip else t
-                placements.lower[x - 1] = transistor        
-            
-            return [placements]
-        else:
-            return [] # No solution found
-
-    def pn_relation(self,pmos,nmos):
-        p_g = pmos.gate_net
-        p_s = pmos.source_net
-        p_d = pmos.drain_net
-        n_g = nmos.gate_net
-        n_s = nmos.source_net
-        n_d = nmos.drain_net        
-        
-        common_g = int(p_g == n_g)
-        
-        if (p_s == n_s) and (p_d == n_d):
-            common_ds1 = 2
-        elif(p_s == n_s) or (p_d == n_d):
-            common_ds1 = 1
-        else:
-            common_ds1 = 0
-        
-        if (p_s == n_d) and (p_d == n_s):
-            common_ds2 = 2
-        elif(p_s == n_d) or (p_d == n_s):
-            common_ds2 = 1
-        else:
-            common_ds2 = 0        
-        
-        #6 = 4 + 2 5 = 4 + 1 4 = 4 + 0  2 = 0 + 2 1 = 0 + 1 0 = 0 + 0
-        return 4*common_g + max(common_ds1,common_ds2)
-            
-
-
-    def pn_pairs(self, pmos_list, nmos_list):
-        pairs_score = {}
-        mos_list = pmos_list +  nmos_list
-        for p in pmos_list:
-            for n in nmos_list:
-                pairs_score[(p,n)] = self.pn_relation(p, n)
-        
-        pn_pairs = []
-        # paired = []
-        
-        pairs_score = sorted(pairs_score.items(), key=lambda x: x[1],reverse=True)    
-        for pair, score in pairs_score:
-            if score >=2:
-                p,n  = pair
-                if (p in pmos_list) and (n in nmos_list):
-                    pn_pairs.append(pair)
-                    pmos_list.remove(p)
-                    nmos_list.remove(n)
-
-        return pn_pairs,pmos_list,nmos_list
-        
-    def place(self, devices, vertical_tracks_pmos = 1, vertical_tracks_nmos = 1):
-        """
-        Place transistors using an SMT solver (Z3).
-        :param transistors list
-        :return: Placement.
-        """
-        nmos_list = [t for t in devices if t.t == 'N']
-        pmos_list = [t for t in devices if t.t == 'P']
-
-        minimal_cell_width = math.ceil(max(len(nmos_list), len(pmos_list)))
-        maximal_cell_width = max(len(nmos_list), len(pmos_list)) * 3 #?
-        
-        time_start = time.time()
-        self.pairs,self.no_paires_p,self.no_paires_n  = self.pn_pairs(pmos_list, nmos_list)
-        nmos_list = [t for t in devices if t.t == 'N']
-        pmos_list = [t for t in devices if t.t == 'P']
-        # print(self.pairs)
-        for cell_width in range(minimal_cell_width, maximal_cell_width):
-            logger.info("smt_placer-> Try cell width: %d"%(cell_width))
-            print("smt_placer-> Try cell width: %d"%(cell_width))
-            placements = self._place(pmos_list, nmos_list, cell_width, self.pairs, vertical_tracks_pmos = 1, vertical_tracks_nmos = 1)
-            logger.info("smt_placer-> Placement of width %d cost %d seconds"%(cell_width, int(time.time() - time_start)))
-            if len(placements) > 0:
-                yield placements[0]
-            else:
-                logger.info("smt_placer-> Placement of width %d is impossible"%(cell_width))
-        
 
 
 
@@ -1349,7 +1210,7 @@ def generate_interval_dict(x_coordinate_dict):
     return interval_dict
 
 
-def visualize_pins(name, data, edges_points=None, edges=None):
+def visualize_pins(name, data, vtracks, edges_points=None, edges=None):
     """
     Visualize pins and optional connections between them.
     
@@ -1467,7 +1328,7 @@ def visualize_pins(name, data, edges_points=None, edges=None):
     all_x = x1 + x2
     max_x = max(all_x) if all_x else 0
     ax.set_xlim(-1, max_x + 1)
-    ax.set_ylim(-1, 6)
+    ax.set_ylim(-1, vtracks)
     
     ax.axhline(y=0, color='gray', linestyle='-', alpha=0.3)
     ax.axhline(y=1, color='gray', linestyle='-', alpha=0.3)
@@ -1585,3 +1446,50 @@ def split_dict_by_increment(original_dict, increment=5):
     
     return result
 
+def convert_range(range_list):
+    """
+    将范围表示转换为完整列表
+    支持 [start, end]、[single_value]、[] 和更复杂的格式
+    """
+    # 处理空列表
+    if not range_list:
+        return []
+    
+    # 处理单元素列表
+    if len(range_list) == 1:
+        return [range_list[0]]
+    
+    # 处理双元素列表（简单范围）
+    if len(range_list) == 2:
+        start, end = range_list
+        return list(range(start, end + 1))
+    
+    # 处理多元素列表（连续范围）
+    first = range_list[0]
+    last = range_list[-1]
+    return list(range(first + 1, last + 1))
+    '''
+    # 测试示例
+    print(convert_range([1, 5]))  # 输出: [1, 2, 3, 4, 5]
+    print(convert_range([5]))    # 输出: [5]
+    print(convert_range([]))     # 输出: []
+    print(convert_range([10, 15, 20]))  # 输出: [10, 11, 12, 13, 14, 15, 20]
+    print(convert_range([8]))    # 输出: [8]
+    '''
+
+def find_subgraph_with_nodes( G, nodes):
+    # 检查图是否为空
+    if G.number_of_nodes() == 0:
+        return "错误: 输入的图为空。"
+
+    # 找出图的所有连通分量
+    connected_components = list(nx.connected_components(G))
+
+    # 遍历每个连通分量
+    for component in connected_components:
+        component_subgraph = G.subgraph(component)
+        # 检查当前连通分量是否包含所有指定的节点
+        if all(node in component_subgraph for node in nodes):
+            return component_subgraph
+
+    return None

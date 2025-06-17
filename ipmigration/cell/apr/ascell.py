@@ -37,8 +37,8 @@ class ASCell:
         print('----04 Layout Initialized!')
 
 
-        self.aux_file = os.path.join(cfgs.output_dir,'DEC_REPORT_%s.txt'%(time.strftime('%m_%d_%H')))
-        self.place_file = os.path.join(cfgs.output_dir,'PLACE_REPORT_%s.csv'%(time.strftime('%m_%d_%H')))
+        self.aux_file = os.path.join(cfgs.output_dir,'01_DEC_REPORT_%s.txt'%(time.strftime('%m_%d_%H')))
+        self.place_file = os.path.join(cfgs.output_dir,'02_PLACE_REPORT_%s.csv'%(time.strftime('%m_%d_%H')))
         #clear previous data
         f = open(self.aux_file,'w')
         f.close()
@@ -118,9 +118,6 @@ class ASCell:
         self.fail = fail
         print('Pass Rate: %d/%d, %.2f%%'%(len(success),len(fail),len(success)*100/(len(fail)+len(success))))
         self.count_patterns(success)
-        
-        
-        
         self.gen_gds()     
 
 
@@ -156,16 +153,3 @@ class ASCell:
         logger.info("Write GDS: %s", gds_out_path)
         self.layout.write(gds_out_path)        
         
-
-        
-# def save_side_nodes_statistics(path, side_nodes_statistics):
-#     with open(path, 'w', encoding='utf-8') as file:
-#         for d in  side_nodes_statistics:
-#             line = '%10s->%10s\n'%(d[0],d[1])
-#             file.write(line)
-#             line = 'L: %-40s || %-40s\n'%(str(d[2]),str(d[5]))
-#             file.write(line)
-#             line = 'R: %-40s || %-40s\n'%(str(d[3]),str(d[6]))
-#             file.write(line)
-#             line = 'C: %-40s || %-40s\n'%(str(d[4]),str(d[7]))
-#             file.write(line)
