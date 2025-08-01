@@ -189,11 +189,7 @@ class PatternAPR:
                                 if p.G == n2.G and n.G == p2.G:
                                     #remove t                                    
                                     self.net_loc[(n,'S')] = (loc-1  ,pl.aan, 1)
-                              
-                                
-                                
-                                
-                                
+
                                 # if p.D == n.D:
                                 #     self.net_loc[(p,'D')] = (loc+3,4,2)#same with pD 
                                 #     self.net_loc[(n,'D')] = (loc+3,4,2)
@@ -205,8 +201,7 @@ class PatternAPR:
                                 #     self.net_loc[(p,'D')] = (loc+3,4,1)  
                                 #     self.net_loc[(n,'D')] = (loc+3,1,1)
                                 
-                                
-                            
+                                                            
                                 
                     loc+=2
             loc+=2
@@ -517,9 +512,7 @@ class IPRouter:
                     plt.show()
             
             return False
-            # print(self.result)
-            # self.gen_edges()
-            # print(self.result)
+
     
     def col_edges(self,variables,m1_pins_result):
         for i in list(range(1,self.x_lim-1)):

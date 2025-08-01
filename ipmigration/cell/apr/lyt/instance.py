@@ -925,7 +925,23 @@ class PINMETAL(Instance):
 
 
 
+'''
+import klayout.db as db
 
+# Create a new layout and a top cell
+ly = db.Layout()
+top_cell = ly.create_cell("TOP")
+
+# Define a layer (e.g., layer 10, datatype 0)
+layer_id = ly.insert_layer(db.LayerInfo(10, 0))
+
+# Create the text object as shown above
+trans = db.Trans(100, 200)
+text_obj = db.Text("Hello KLayout!", trans, 10, 0)
+
+# Add the text to the specified layer in the cell
+top_cell.shapes(layer_id).insert(text_obj)
+'''
 
 
 

@@ -23,6 +23,7 @@ cfgs.load_place = False#move to cfgs later
 cfgs.load_place = 'demo\cell_apr\outputs\c153\queue.csv' #make placement can be revise by designer
 
 cfgs.gen_cells =  ['ff', 'latch', 'scanff']
+cfgs.gen_cells =  ['ff']
 
 tech  = Tech(cfgs)
 

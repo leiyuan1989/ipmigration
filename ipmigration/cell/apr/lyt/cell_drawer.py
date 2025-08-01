@@ -1320,7 +1320,7 @@ class Edges_Optimizer:
         
         # 检查网络是否存在
         if net not in edges:
-            print(f"警告: 网络 '{net}' 不存在，没有进行任何操作")
+            print(f"Warning: Net '{net}' is none, no actions")
             return edges
         
         # 获取指定网络的边列表
@@ -1354,7 +1354,7 @@ class Edges_Optimizer:
         edges[net] = new_edge_list
         
         # 打印操作结果
-        print(f"网络 {net}: 删除 {removed_count} 条旧边，添加 {added_count} 条新边")
+        print(f"Net {net}: remove {removed_count} old edges, add {added_count} new edges")
         
         return edges   
    
