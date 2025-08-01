@@ -27,6 +27,8 @@ class Tech(object):
         
         self._read_rule_align(cfgs.rule_file,cfgs.rule_align)
 
+        self.gate_length = cfgs.gate_length
+
     def _init_layer_name(self):
         self.NW = 'NW' 
         self.AA = 'AA'
@@ -246,6 +248,9 @@ class Tech(object):
                               0 + self.GT_S.hv + self.GT_W.v, 
                               set_t='pp')        
         
+        
+      
+        
         #power rail diffusion contact
         #consider AA space and CT space for abutment rule
         t1 = self.rail_vdd_aa.p2 - self.CT_E_AA.v
@@ -279,6 +284,29 @@ class Tech(object):
         
         self.M1_tracks = [Range(bottom+t,bottom+t+self.M1_W.v,set_t='pp') for t in locs]
         self.CT_tracks = [Range(t.c, self.CT_W.v) for t in self.M1_tracks]
+        
+        print("Tech-> M1 Track Number is %d!"%(self.M1_tracks_num) )
+        #aa top
+        #gt 
+        self.aap_up = self.gt_up_rg.p2 - self.GT_X_AA.v
+        self.aan_dn = self.gt_up_rg.p1 + self.GT_X_AA.v
+        
+        self.aap_up = self.CT_tracks[-1].p1 - self.CT_S_AA.v  #gt_ct on top m1
+        self.aan_dn = self.CT_tracks[0].p2  + self.CT_S_AA.v  #gt_ct on bottom m1
+        
+        
+        #TODO:
+        self.aap_up_pc_c = self.gt_up_rg.p1 - self.GT_X_AA.v #polyconnect and connect to poly net
+        self.aap_up_pc_nc = self.gt_up_rg.p1 - self.GT_S.v - self.GT_X_AA.v #polyconnect and not connect to poly net
+
+        self.aan_dn_pc_c = self.gt_up_rg.p2 + self.GT_X_AA.v        
+        self.aan_dn_pc_nc = self.gt_up_rg.p2 + self.GT_S.v + self.GT_X_AA.v  
+        
+        
+        
+        
+        
+        
         
         num = len(self.M1_tracks)
         if num % 2 == 0:
@@ -637,8 +665,35 @@ class DR(object):
     @property
     def hv(self):
         return int(0.5*self.value)
-
 def place_rectangles(height, h, s):
+    # 先计算理论上最多能放的长方形数量
+    max_possible_n = 0
+    while True:
+        total_height_needed = max_possible_n * h + (max_possible_n + 1) * s
+        if total_height_needed > height:
+            break
+        max_possible_n += 1
+    # 确定实际能放置的长方形数量
+    n = max_possible_n - 1
+    if n < 0:
+        print("给定的总高度无法放置任何长方形。")
+        return []
+    # 计算所有长方形占用的总高度
+    total_rect_height = n * h
+    # 计算至少需要的间距总长度，n 个长方形有 n + 1 个间距
+    min_gap_space = (n + 1) * s
+    # 计算剩余可用于分配额外间距的空间
+    remaining_space = height - total_rect_height - min_gap_space
+    positions = []
+    current_height = s+ int(0.5*remaining_space)  #间距均匀分给上下
+    for i in range(n):
+        positions.append(current_height)
+        current_height += h + s  # 每个长方形之间的间距为最小值s
+    # 最后一个间距包含所有剩余空间，放在最下面
+    return positions
+
+
+def place_rectangles_bk2(height, h, s):
     # 先计算理论上最多能放的长方形数量
     max_possible_n = 0
     while True:

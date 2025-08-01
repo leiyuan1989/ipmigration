@@ -19,6 +19,13 @@ from ipmigration.cell.apr.io.route_loader import RouteDB
 logger = logging.getLogger(__name__)
 DEBUG = True
 
+'''
+TODO: Need a global analysis of poly arrangement
+
+'''
+
+
+
 class ASCell:
     def __init__(self, cfgs, tech):
         self.cells = {}
@@ -87,10 +94,11 @@ class ASCell:
         success = []
         fail = []
         # side_nodes_statistics = []
+        report_data = []
         
         for cell_type in self.cfgs.gen_cells:
             for count, ckt_name in enumerate(self.netlist.ckt_types[cell_type]):
-                
+                start_time = time.time() 
                 ckt = self.netlist[ckt_name]
                 cell = StdCell(ckt,self.tech,self.cfgs,self.patterns, self.route_db, self.aux_file, self.place_file)
                 self.cells[ckt_name] = cell
@@ -111,15 +119,37 @@ class ASCell:
                     except:
                         print(cell.name,'run failed')
                         fail.append([cell,'run failed'])
+
+                run_time = time.time() - start_time
+                if result:
+                    out_msg = 'Success'
+                else:
+                    out_msg = 'Fail'
+                if cell_type in  ['ff'       ,'scanff'   ,'latch'     ,'clockgate']:
+                    ckt_t = 'Sequential Logic'
+                else:
+                    ckt_t = 'Combinational Logic'
+                
+                report_data.append([ckt_name,ckt_t, str(len(ckt.devices)), out_msg,msg,'%0.3f s'%run_time]) 
+                # print('test1:',ckt_name,ckt_t,out_msg,msg,'%0.3f s'%run_time)
+                
                 # break
-            break
+            # break
                         
         self.success = success
         self.fail = fail
         print('Pass Rate: %d/%d, %.2f%%'%(len(success),len(fail),len(success)*100/(len(fail)+len(success))))
+        self.report(report_data)
         self.count_patterns(success)
         self.gen_gds()     
 
+    def report(self,report_data):
+        file = os.path.join(self.cfgs.output_dir,'final_report.csv')
+        columns = ['cell', 'type', 'devices_num', 'result', 'message', 'time']
+        df = pd.DataFrame(report_data, columns=columns)
+        df.to_csv(file, index=True)
+
+        
 
     def count_patterns(self,success):
         counter = defaultdict(int)

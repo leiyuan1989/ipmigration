@@ -670,11 +670,13 @@ class RuleFile:
                 #         pass
   
     @staticmethod
-    def extract_response(response):           
-        if isinstance(response, ollama._types.ChatResponse):
-            response_content = response.message.content
-        elif isinstance(response, dict) and "message" in response and "content" in response["message"]:
+    def extract_response(response):          
+        # print('response type:',type(response))
+        # print(response)
+        if isinstance(response, dict) and "message" in response and "content" in response["message"]:
             response_content = response["message"]["content"]
+        elif isinstance(response, ollama._types.ChatResponse):
+            response_content = response.message.content
         else:
             #print()
             response_content = "<think>NA</think>NA"

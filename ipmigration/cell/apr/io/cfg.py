@@ -40,6 +40,10 @@ class Cfg:
         self.layer_align = cfg_dict['layer_align']  
         self.pins_align = cfg_dict['pins_align']  
         self.gen_cells =  [t.strip() for t in cfg_dict['gen_cells'].split()]
+        
+        if self.gen_cells == ['all']:
+            self.gen_cells = ['arithmetic','complex','multiplex','ff'       ,'scanff'   ,'latch'     ,'clockgate']
+        
         self.cost_funcs = cfg_dict['cost_funcs'] 
         #list
         self.gate_length = self.load_gate_length(cfg_dict['gate_length']) 

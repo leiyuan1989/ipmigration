@@ -8,6 +8,7 @@ Created on Tue Sep  3 10:10:51 2024
 
 import logging
 from ipmigration.cell.apr.lyt.shape import Range, Box, Shapes
+import klayout.db as db
 # from src.basic.shape import Range, Box, Shapes
 # import klayout.db as db
 
@@ -89,40 +90,598 @@ class CT_AA(Instance):
 
 
 class AA_SD(Instance):
-    def __init__(self, tech, aa_ct, left_x=None, right_x=None, left_mos=None, right_mos=None):        
+    def __init__(self, tech, sd_type, x, pin_p,pin_n,  
+                 left_pmos_aa = None,
+                 left_nmos_aa = None,
+                 right_pmos_aa = None,
+                 right_nmos_aa = None,
+                 vdd_pin = None,
+                 vss_pin = None,
+                 ):        
         super().__init__(tech)
         self.data['AA'] = []
+        self.data['CT'] = []
+        self.data['M1'] = []
+        
+        self.box = {}
+        
+        ys = [t.c for t in tech.M1_tracks]
+        
+        l_ct_aa = x - tech.CT_W.hv - tech.CT_E_AA.v
+        r_ct_aa = x + tech.CT_W.hv + tech.CT_E_AA.v
         
         
 
 
+        if sd_type == 'S':
+            left = x- tech.CT_E_AA.v - tech.CT_W.hv 
+            if right_pmos_aa:
+                self.box['AA_P1'] = Box([left, right_pmos_aa.b, right_pmos_aa.l, right_pmos_aa.t] )
+                self.data['AA'].append(self.box['AA_P1'])
+                if pin_p:
+                    _,y = pin_p[0]
+                    self.box['CT_P'] = Box([(x,ys[y]),tech.CT_W.hv,'c'])
+                    self.data['CT'].append(self.box['CT_P'])
+                    
+                    top_t = max(ys[y] + tech.CT_W.hv + tech.CT_E_AA.v, right_pmos_aa.t)
+                    bottom_t = min(ys[y] - tech.CT_W.hv - tech.CT_E_AA.v, right_pmos_aa.b)
+                    self.box['AA_P2'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                    self.data['AA'].append(self.box['AA_P2'])
+                       
+                elif vdd_pin:
+                    if vdd_pin[0] == -1:
+                        y = tech.ct_up_rg.c
+                        self.box['CT_P'] = Box([(x,y),tech.CT_W.hv,'c'])
+                        self.data['CT'].append(self.box['CT_P'])
+                        self.box['M1_P'] = Box([(x,y),tech.CT_W.hv + tech.CT_E_M1.v,'c'])
+                        self.data['M1'].append(self.box['M1_P'])
+                        top_t = y + tech.CT_W.hv + tech.CT_E_AA.v
 
+                        self.box['AA_P2'] = Box([l_ct_aa, right_pmos_aa.b, r_ct_aa, top_t] )
+                        self.data['AA'].append(self.box['AA_P2'])
+                        
+                        
+                    else:
+                        y = ys[vdd_pin[0]]
+                        self.box['CT_P'] = Box([(x,y),tech.CT_W.hv,'c'])
+                        self.data['CT'].append(self.box['CT_P'])
+                        
+                        m1_t = tech.rail_vdd.p1
+                        m1_b = y -  tech.CT_W.hv - tech.CT_E_M1_END.v
+                        m1_l = x -  tech.CT_W.hv - tech.CT_E_M1.v
+                        m1_r = x +  tech.CT_W.hv + tech.CT_E_M1.v
+                        
+                        self.box['M1_P'] = Box([m1_l, m1_b, m1_r, m1_t] )
+                        self.data['M1'].append(self.box['M1_P'])
+                        
+                        top_t = max(y + tech.CT_W.hv + tech.CT_E_AA.v, right_pmos_aa.t)
+                        bottom_t = min(y - tech.CT_W.hv - tech.CT_E_AA.v, right_pmos_aa.b)
+                        self.box['AA_P2'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                        self.data['AA'].append(self.box['AA_P2'])
+                        
+                        
+                else:
+                    raise ValueError()
+                
+                 
+                
+            if right_nmos_aa:
+                self.box['AA_N1'] = Box([left, right_nmos_aa.b, right_nmos_aa.l, right_nmos_aa.t] )
+                self.data['AA'].append(self.box['AA_N1'])
+                if pin_n:
+                    _,y = pin_n[0]
+                    self.box['CT_N'] = Box([(x,ys[y]),tech.CT_W.hv,'c'])
+                    self.data['CT'].append(self.box['CT_N'])
+                    
+                    top_t = max(ys[y] + tech.CT_W.hv + tech.CT_E_AA.v, right_nmos_aa.t)
+                    bottom_t = min(ys[y] - tech.CT_W.hv - tech.CT_E_AA.v, right_nmos_aa.b)
+                    self.box['AA_N2'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                    self.data['AA'].append(self.box['AA_N2'])
+                       
+                elif vss_pin:
+                    if vss_pin[0] == -1:
+                        y = tech.ct_dn_rg.c
+                        self.box['CT_N'] = Box([(x,y),tech.CT_W.hv,'c'])
+                        self.data['CT'].append(self.box['CT_N'])
+                        self.box['M1_N'] = Box([(x,y),tech.CT_W.hv + tech.CT_E_M1.v,'c'])
+                        self.data['M1'].append(self.box['M1_N'])
+                        
+                        bottom_t = y - tech.CT_W.hv - tech.CT_E_AA.v
 
+                        self.box['AA_N2'] = Box([l_ct_aa, bottom_t, r_ct_aa, right_nmos_aa.t] )
+                        self.data['AA'].append(self.box['AA_N2'])
+                        
+                        
+                    else:
+                        y = ys[vss_pin[0]]
+                        self.box['CT_N'] = Box([(x,y),tech.CT_W.hv,'c'])
+                        self.data['CT'].append(self.box['CT_N'])
+                        
+                        m1_b = tech.rail_vss.p2
+                        m1_t = y +  tech.CT_W.hv + tech.CT_E_M1_END.v
+                        m1_l = x -  tech.CT_W.hv - tech.CT_E_M1.v
+                        m1_r = x +  tech.CT_W.hv + tech.CT_E_M1.v
+                        
+                        self.box['M1_N'] = Box([m1_l, m1_b, m1_r, m1_t] )
+                        self.data['M1'].append(self.box['M1_N'])
+                        
+                        top_t = max(y + tech.CT_W.hv + tech.CT_E_AA.v, right_nmos_aa.t)
+                        bottom_t = min(y - tech.CT_W.hv - tech.CT_E_AA.v, right_nmos_aa.b)
+                        self.box['AA_N2'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                        self.data['AA'].append(self.box['AA_N2'])
+                        
+                       
+                
+        elif sd_type == 'D':
+            right = x+tech.CT_E_AA.v + tech.CT_W.hv 
+            if left_pmos_aa:
+                self.box['AA_P1'] = Box([left_pmos_aa.r, left_pmos_aa.b, right, left_pmos_aa.t] )
+                self.data['AA'].append(self.box['AA_P1'])
+                if pin_p:
+                    _,y = pin_p[0]
+                    self.box['CT_P'] = Box([(x,ys[y]),tech.CT_W.hv,'c'])
+                    self.data['CT'].append(self.box['CT_P'])
+                    
+                    top_t = max(ys[y] + tech.CT_W.hv + tech.CT_E_AA.v, left_pmos_aa.t)
+                    bottom_t = min(ys[y] - tech.CT_W.hv - tech.CT_E_AA.v, left_pmos_aa.b)
+                    self.box['AA_P2'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                    self.data['AA'].append(self.box['AA_P2'])
+                       
+                elif vdd_pin:
+                    if vdd_pin[0] == -1:
+                        y = tech.ct_up_rg.c
+                        self.box['CT_P'] = Box([(x,y),tech.CT_W.hv,'c'])
+                        self.data['CT'].append(self.box['CT_P'])
+                        self.box['M1_P'] = Box([(x,y),tech.CT_W.hv + tech.CT_E_M1.v,'c'])
+                        self.data['M1'].append(self.box['M1_P'])
+                        top_t = y + tech.CT_W.hv + tech.CT_E_AA.v
 
+                        self.box['AA_P2'] = Box([l_ct_aa, left_pmos_aa.b, r_ct_aa, top_t] )
+                        self.data['AA'].append(self.box['AA_P2'])
+                        
+                        
+                    else:
+                        y = ys[vdd_pin[0]]
+                        self.box['CT_P'] = Box([(x,y),tech.CT_W.hv,'c'])
+                        self.data['CT'].append(self.box['CT_P'])
+                        
+                        m1_t = tech.rail_vdd.p1
+                        m1_b = y -  tech.CT_W.hv - tech.CT_E_M1_END.v
+                        m1_l = x -  tech.CT_W.hv - tech.CT_E_M1.v
+                        m1_r = x +  tech.CT_W.hv + tech.CT_E_M1.v
+                        
+                        self.box['M1_P'] = Box([m1_l, m1_b, m1_r, m1_t] )
+                        self.data['M1'].append(self.box['M1_P'])
+                        
+                        top_t = max(y + tech.CT_W.hv + tech.CT_E_AA.v, left_pmos_aa.t)
+                        bottom_t = min(y - tech.CT_W.hv - tech.CT_E_AA.v, left_pmos_aa.b)
+                        self.box['AA_P2'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                        self.data['AA'].append(self.box['AA_P2'])
+                        
+                        
+                else:
+                    raise ValueError()
+            
+            if left_nmos_aa:
+                self.box['AA_N1'] = Box([left_nmos_aa.r, left_nmos_aa.b, right, left_nmos_aa.t] )
+                self.data['AA'].append(self.box['AA_N1'])
+                if pin_n:
+                    _,y = pin_n[0]
+                    self.box['CT_N'] = Box([(x,ys[y]),tech.CT_W.hv,'c'])
+                    self.data['CT'].append(self.box['CT_N'])
+                    
+                    top_t = max(ys[y] + tech.CT_W.hv + tech.CT_E_AA.v, left_nmos_aa.t)
+                    bottom_t = min(ys[y] - tech.CT_W.hv - tech.CT_E_AA.v, left_nmos_aa.b)
+                    self.box['AA_N2'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                    self.data['AA'].append(self.box['AA_N2'])
+                       
+                elif vss_pin!=None:
+                    if vss_pin[0] == -1:
+                        y = tech.ct_dn_rg.c
+                        self.box['CT_N'] = Box([(x,y),tech.CT_W.hv,'c'])
+                        self.data['CT'].append(self.box['CT_N'])
+                        self.box['M1_N'] = Box([(x,y),tech.CT_W.hv + tech.CT_E_M1.v,'c'])
+                        self.data['M1'].append(self.box['M1_N'])
+                        
+                        bottom_t = y - tech.CT_W.hv - tech.CT_E_AA.v
 
+                        self.box['AA_N2'] = Box([l_ct_aa, bottom_t, r_ct_aa, right_nmos_aa.t] )
+                        self.data['AA'].append(self.box['AA_N2'])
+                        
+                        
+                    else:
+                        y = ys[vss_pin[0]]
+                        self.box['CT_N'] = Box([(x,y),tech.CT_W.hv,'c'])
+                        self.data['CT'].append(self.box['CT_N'])
+                        
+                        m1_b = tech.rail_vss.p2
+                        m1_t = y +  tech.CT_W.hv + tech.CT_E_M1_END.v
+                        m1_l = x -  tech.CT_W.hv - tech.CT_E_M1.v
+                        m1_r = x +  tech.CT_W.hv + tech.CT_E_M1.v
+                        
+                        self.box['M1_N'] = Box([m1_l, m1_b, m1_r, m1_t] )
+                        self.data['M1'].append(self.box['M1_N'])
+                        
+                        top_t = max(y + tech.CT_W.hv + tech.CT_E_AA.v, left_nmos_aa.t)
+                        bottom_t = min(y - tech.CT_W.hv - tech.CT_E_AA.v, left_nmos_aa.b)
+                        self.box['AA_N2'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                        self.data['AA'].append(self.box['AA_N2'])
+                        
+                        
+                        
+                else:
+                    print(vss_pin,pin_n, x)
+                    raise ValueError()
+        
+        
+        
+        elif sd_type == 'DS':
+            if right_pmos_aa and left_pmos_aa:
+                if pin_p:
+                    _,y = pin_p[0]
+                    self.box['CT_P'] = Box([(x,ys[y]),tech.CT_W.hv,'c'])
+                    self.data['CT'].append(self.box['CT_P'])
+                    
+                    top_t = max(ys[y] + tech.CT_W.hv + tech.CT_E_AA.v, right_pmos_aa.t, left_pmos_aa.t)
+                    bottom_t = min(ys[y] - tech.CT_W.hv - tech.CT_E_AA.v, right_pmos_aa.b, left_pmos_aa.b)
+                    self.box['AA_P1'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                    self.data['AA'].append(self.box['AA_P1'])
+                    
+                    self.box['AA_P2'] = Box([left_pmos_aa.r, left_pmos_aa.b, l_ct_aa, left_pmos_aa.t] )
+                    self.data['AA'].append(self.box['AA_P2'])
+                    self.box['AA_P3'] = Box([r_ct_aa, right_pmos_aa.b, right_pmos_aa.l, right_pmos_aa.t] )
+                    self.data['AA'].append(self.box['AA_P3'])                    
+                    
+                       
+                elif vdd_pin:
+                    if vdd_pin[0] == -1:
+                        y = tech.ct_up_rg.c
+                        self.box['CT_P'] = Box([(x,y),tech.CT_W.hv,'c'])
+                        self.data['CT'].append(self.box['CT_P'])
+                        self.box['M1_P'] = Box([(x,y),tech.CT_W.hv + tech.CT_E_M1.v,'c'])
+                        self.data['M1'].append(self.box['M1_P'])
+                        
+                        top_t = y + tech.CT_W.hv + tech.CT_E_AA.v
+                        bottom_t = max(right_pmos_aa.b, left_pmos_aa.b)
+                        self.box['AA_P1'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                        self.data['AA'].append(self.box['AA_P1'])
+                        
+                        self.box['AA_P2'] = Box([left_pmos_aa.r, left_pmos_aa.b, l_ct_aa, left_pmos_aa.t] )
+                        self.data['AA'].append(self.box['AA_P2'])
+                        self.box['AA_P3'] = Box([r_ct_aa, right_pmos_aa.b, right_pmos_aa.l, right_pmos_aa.t] )
+                        self.data['AA'].append(self.box['AA_P3'])    
 
+                        
+                        
+                    else:
+                        y = ys[vdd_pin[0]]
+                        self.box['CT_P'] = Box([(x,y),tech.CT_W.hv,'c'])
+                        self.data['CT'].append(self.box['CT_P'])
+                        
+                        m1_t = tech.rail_vdd.p1
+                        m1_b = y -  tech.CT_W.hv - tech.CT_E_M1_END.v
+                        m1_l = x -  tech.CT_W.hv - tech.CT_E_M1.v
+                        m1_r = x +  tech.CT_W.hv + tech.CT_E_M1.v
+                        
+                        self.box['M1_P'] = Box([m1_l, m1_b, m1_r, m1_t] )
+                        self.data['M1'].append(self.box['M1_P'])
+                        
+                        top_t = max(y + tech.CT_W.hv + tech.CT_E_AA.v, right_pmos_aa.t, left_pmos_aa.t)
+                        bottom_t = min(y - tech.CT_W.hv - tech.CT_E_AA.v, right_pmos_aa.b, left_pmos_aa.b)
+                        self.box['AA_P1'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                        self.data['AA'].append(self.box['AA_P1'])
+                        
+                        self.box['AA_P2'] = Box([left_pmos_aa.r, left_pmos_aa.b, l_ct_aa, left_pmos_aa.t] )
+                        self.data['AA'].append(self.box['AA_P2'])
+                        self.box['AA_P3'] = Box([r_ct_aa, right_pmos_aa.b, right_pmos_aa.l, right_pmos_aa.t] )
+                        self.data['AA'].append(self.box['AA_P3'])                    
+                    
+                        
+                else:
+                    top_t = max( right_pmos_aa.t, left_pmos_aa.t)
+                    bottom_t = min( right_pmos_aa.b, left_pmos_aa.b)
+                    self.box['AA_P1'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                    self.data['AA'].append(self.box['AA_P1'])
+                    
+                    self.box['AA_P2'] = Box([left_pmos_aa.r, left_pmos_aa.b, l_ct_aa, left_pmos_aa.t] )
+                    self.data['AA'].append(self.box['AA_P2'])
+                    self.box['AA_P3'] = Box([r_ct_aa, right_pmos_aa.b, right_pmos_aa.l, right_pmos_aa.t] )
+                    self.data['AA'].append(self.box['AA_P3'])  
+            
+            if right_nmos_aa and left_nmos_aa:
+                if pin_n:
+                    _,y = pin_n[0]
+                    self.box['CT_P'] = Box([(x,ys[y]),tech.CT_W.hv,'c'])
+                    self.data['CT'].append(self.box['CT_P'])
+                    
+                    top_t = max(ys[y] + tech.CT_W.hv + tech.CT_E_AA.v, right_nmos_aa.t, left_nmos_aa.t)
+                    bottom_t = min(ys[y] - tech.CT_W.hv - tech.CT_E_AA.v, right_nmos_aa.b, left_nmos_aa.b)
+                    self.box['AA_P1'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                    self.data['AA'].append(self.box['AA_P1'])
+                    
+                    self.box['AA_P2'] = Box([left_nmos_aa.r, left_nmos_aa.b, l_ct_aa, left_nmos_aa.t] )
+                    self.data['AA'].append(self.box['AA_P2'])
+                    self.box['AA_P3'] = Box([r_ct_aa, right_nmos_aa.b, right_nmos_aa.l, right_nmos_aa.t] )
+                    self.data['AA'].append(self.box['AA_P3'])                    
+                    
+                       
+                elif vss_pin != None:
+                    if vss_pin[0] == -1:
+                        y = tech.ct_dn_rg.c
+                        self.box['CT_P'] = Box([(x,y),tech.CT_W.hv,'c'])
+                        self.data['CT'].append(self.box['CT_P'])
+                        self.box['M1_P'] = Box([(x,y),tech.CT_W.hv + tech.CT_E_M1.v,'c'])
+                        self.data['M1'].append(self.box['M1_P'])
+                        
+                        bottom_t = y - tech.CT_W.hv - tech.CT_E_AA.v
+                        top_t = max(right_nmos_aa.t, left_nmos_aa.t)
+                        self.box['AA_P1'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                        self.data['AA'].append(self.box['AA_P1'])
+                        
+                        self.box['AA_P2'] = Box([left_nmos_aa.r, left_nmos_aa.b, l_ct_aa, left_nmos_aa.t] )
+                        self.data['AA'].append(self.box['AA_P2'])
+                        self.box['AA_P3'] = Box([r_ct_aa, right_nmos_aa.b, right_nmos_aa.l, right_nmos_aa.t] )
+                        self.data['AA'].append(self.box['AA_P3'])    
 
+                        
+                        
+                    else:
+                        y = ys[vss_pin[0]]
+                        self.box['CT_P'] = Box([(x,y),tech.CT_W.hv,'c'])
+                        self.data['CT'].append(self.box['CT_P'])
+                        # print('x1',y,vss_pin,x, m1_b, m1_t)
+                        m1_b = tech.rail_vss.p2
+                        m1_t = y + tech.CT_W.hv + tech.CT_E_M1_END.v
+                        m1_l = x -  tech.CT_W.hv - tech.CT_E_M1.v
+                        m1_r = x +  tech.CT_W.hv + tech.CT_E_M1.v
+                        
+                        self.box['M1_P'] = Box([m1_l, m1_b, m1_r, m1_t] )
+                        self.data['M1'].append(self.box['M1_P'])
+                        
+                        top_t = max(y + tech.CT_W.hv + tech.CT_E_AA.v, right_nmos_aa.t, left_nmos_aa.t)
+                        bottom_t = min(y - tech.CT_W.hv - tech.CT_E_AA.v, right_nmos_aa.b, left_nmos_aa.b)
+                        self.box['AA_P1'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                        self.data['AA'].append(self.box['AA_P1'])
+                        
+                        self.box['AA_P2'] = Box([left_nmos_aa.r, left_nmos_aa.b, l_ct_aa, left_nmos_aa.t] )
+                        self.data['AA'].append(self.box['AA_P2'])
+                        self.box['AA_P3'] = Box([r_ct_aa, right_nmos_aa.b, right_nmos_aa.l, right_nmos_aa.t] )
+                        self.data['AA'].append(self.box['AA_P3'])                    
+                    
+                        
+                else:
+                    top_t = max( right_nmos_aa.t, left_nmos_aa.t)
+                    bottom_t = min( right_nmos_aa.b, left_nmos_aa.b)
+                    self.box['AA_P1'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                    self.data['AA'].append(self.box['AA_P1'])
+                    
+                    self.box['AA_P2'] = Box([left_nmos_aa.r, left_nmos_aa.b, l_ct_aa, left_nmos_aa.t] )
+                    self.data['AA'].append(self.box['AA_P2'])
+                    self.box['AA_P3'] = Box([r_ct_aa, right_nmos_aa.b, right_nmos_aa.l, right_nmos_aa.t] )
+                    self.data['AA'].append(self.box['AA_P3'])    
+                    
+                
+                
+        else:
+            raise ValueError() 
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
+class GT_Pair(Instance):
+    def __init__(self, tech, pin_loc, x, pmos, nmos, pin_p,pin_n, 
+                 gt_connect=False, 
+                 poly_net_up=False,
+                 poly_net_down=False,
+                 poly_net_p=False,
+                 poly_net_n=False,
+                 
+                 ):        
+        super().__init__(tech)
+        ys = [t.c for t in tech.M1_tracks]
+        self.box = {}
+        self.fail = {}
+        
+        
+        self.data['AA'] = []
+        self.data['GT'] = []
+        self.data['CT'] = []
 
+        gt_ct_p = int(0.5*(max(2*tech.CT_E_GT.v + tech.CT_W.v, tech.gate_length[0]) ))
+        gt_ct_n = int(0.5*(max(2*tech.CT_E_GT.v + tech.CT_W.v, tech.gate_length[1]) ))
+        
+        gt_p = ys[pin_loc.gtp]
+        gt_n = ys[pin_loc.gtn]
 
+        
+        
+        half_p = int(0.5*(tech.gate_length[0]))
+        half_n = int(0.5*(tech.gate_length[1]))
+        
+        middle = int((gt_p + gt_n)/2)
+                            
+        # print('test2', x, gt_connect)
+        if gt_connect:
+            if pin_p:
+                _,y = pin_p[0]
+                self.box['CT_P'] = Box([(x,ys[y]),tech.CT_W.hv,'c'])
+                self.box['CT_GT_P'] = Box([(x,ys[y]),gt_ct_p ,'c'])   
+                self.data['CT'].append(self.box['CT_P'])
+                self.data['GT'].append(self.box['CT_GT_P'])
+                
+                if y == len(ys)-1:
+                    gt_p_top =  ys[-1] - tech.CT_E_GT.v - tech.CT_W.hv
+                    gt_p_bottom = middle
+                    gt_n_top = middle
+                    gt_n_bottom = tech.gt_dn_rg.p1
+                    
+                    aa_p_top = gt_p_top - max(tech.GT_X_AA.v, tech.GT_S_LGT_AA.v)
+                    #why not consider GT_X_AA
+                    aa_p_bottom = gt_p_bottom + tech.AA_S.hv
+                    aa_n_top = gt_n_top - tech.AA_S.hv
+                    aa_n_bottom = gt_n_bottom + tech.GT_X_AA.v
+                    
+                else:
+                    #pin_p on gtp
+                    gt_p_top =  tech.gt_up_rg.p2
+                    gt_p_bottom = middle
+                    gt_n_top = middle
+                    gt_n_bottom = tech.gt_dn_rg.p1
+                    
+                    aa_p_top = gt_p_top -tech.GT_X_AA.v
+                    aa_p_bottom = gt_p + tech.CT_E_GT.v +   tech.CT_W.hv + max(tech.GT_X_AA.v, tech.GT_S_LGT_AA.v)
+                    aa_n_top = gt_n_top - tech.AA_S.hv
+                    aa_n_bottom = gt_n_bottom + tech.GT_X_AA.v
 
+                
+            elif pin_n:
+                _,y = pin_n[0]
+                self.box['CT_P'] = Box([(x,ys[y]),tech.CT_W.hv,'c'])
+                self.box['CT_GT_P'] = Box([(x,ys[y]),gt_ct_p ,'c'])   
+                self.data['CT'].append(self.box['CT_P'])
+                self.data['GT'].append(self.box['CT_GT_P'])
+                
+                
+                if y == 0:
+                    gt_p_top =  tech.gt_up_rg.p2
+                    gt_p_bottom = middle
+                    gt_n_top = middle
+                    gt_n_bottom =  ys[0] + tech.CT_E_GT.v + tech.CT_W.hv
+                    
+                    aa_p_top = gt_p_top -tech.GT_X_AA.v
+                    aa_p_bottom = gt_p_bottom + tech.AA_S.hv
+                    aa_n_top = gt_n_top - tech.AA_S.hv
+                    aa_n_bottom = gt_n_bottom + max(tech.GT_X_AA.v, tech.GT_S_LGT_AA.v)
+                    
+                else:
+                    #pin_n on gtn
+                    gt_p_top =  tech.gt_up_rg.p2
+                    gt_p_bottom = middle
+                    gt_n_top = middle
+                    gt_n_bottom = tech.gt_dn_rg.p1
+                    
+                    aa_p_top = gt_p_top -tech.GT_X_AA.v
+                    aa_p_bottom = gt_p + tech.AA_S.hv 
+                    aa_n_top = gt_n - tech.CT_E_GT.v - tech.CT_W.hv - max(tech.GT_X_AA.v, tech.GT_S_LGT_AA.v)
+                    aa_n_bottom = gt_n_bottom + tech.GT_X_AA.v
+            else:
+                #poly connect from previous gt
+                gt_p_top =  tech.gt_up_rg.p2
+                gt_p_bottom = middle
+                gt_n_top = middle
+                gt_n_bottom = tech.gt_dn_rg.p1
+                
+                aa_p_top = gt_p_top -tech.GT_X_AA.v
+                aa_p_bottom = gt_p + tech.AA_S.hv 
+                aa_n_top = gt_n - tech.AA_S.hv 
+                aa_n_bottom = gt_n_bottom + tech.GT_X_AA.v
+    
+    
+            #plot gt aa and 
+            pmos_W = pmos[0][0].W
+            nmos_W = nmos[0][0].W
+            
+            #warning and log here if widths exceed limit
+            
+            self.box['GT_P'] = Box([x-half_p, gt_p_bottom, x+half_p, gt_p_top] )
+            self.box['GT_N'] = Box([x-half_n, gt_n_bottom, x+half_n, gt_n_top] )
+            
 
+            
+            self.box['AA_P'] = Box([x-half_p,  aa_p_top - pmos_W, x+half_p,aa_p_top] )
+            self.box['AA_N'] = Box([x-half_n, aa_n_bottom , x+half_n, aa_n_bottom + nmos_W] )
+            
+            self.data['GT'].append(self.box['GT_P'] )
+            self.data['GT'].append(self.box['GT_N'] )
+            self.data['AA'].append(self.box['AA_P'] )
+            self.data['AA'].append(self.box['AA_N'] )           
+            
 
+        else:
+            #gt p bottom or n top with poly connect
+            # gt_p_bottom_w = gt_p - tech.CT_E_GT.v - tech.CT_W.hv 
+            # gt_n_bottom_wc = gt_p - tech.CT_E_GT.v - tech.CT_W.hv - tech.GT_S.v
+            
+            if pmos:
+                if pin_p:
+                    _,y = pin_p[0]
+                    self.box['CT_P'] = Box([(x,ys[y]),tech.CT_W.hv,'c'])
+                    self.box['CT_GT_P'] = Box([(x,ys[y]),gt_ct_p ,'c'])   
+                    self.data['CT'].append(self.box['CT_P'])
+                    self.data['GT'].append(self.box['CT_GT_P'])
+                    
+                    if y == len(ys)-1:
+                        gt_p_top =  ys[-1] - tech.CT_E_GT.v - tech.CT_W.hv
+                        gt_p_bottom = gt_p - tech.CT_E_GT.v - tech.CT_W.hv 
+                        aa_p_top = gt_p_top - max(tech.GT_S_LGT_AA.v ,tech.CT_S_AA.v - tech.CT_E_GT.v)
+                        aa_p_bottom = gt_p_bottom + tech.GT_S_LGT_AA.v
+                        
+                    else:
+                        gt_p_top =  tech.gt_up_rg.p2
+                        gt_p_bottom = gt_p + tech.CT_E_GT.v + tech.CT_W.hv 
+                        
+                        aa_p_top = gt_p_top -tech.GT_X_AA.v
+                        aa_p_bottom = gt_p + tech.CT_E_GT.v + tech.CT_W.hv + max(tech.GT_S_LGT_AA.v ,tech.CT_S_AA.v - tech.CT_E_GT.v)
+                else:
+                    #no pin 
+                    gt_p_top =  tech.gt_up_rg.p2
+                    gt_p_bottom =  gt_p - tech.CT_E_GT.v - tech.CT_W.hv 
+                    aa_p_top = gt_p_top - tech.GT_X_AA.v
+                    aa_p_bottom = gt_p_bottom + tech.GT_X_AA.v
+                    
+                pmos_W = pmos[0][0].W  
+                self.box['GT_P'] = Box([x-half_p, gt_p_bottom, x+half_p, gt_p_top] )                
+                self.box['AA_P'] = Box([x-half_p, aa_p_top- pmos_W, x+half_p, aa_p_top ] )
+                self.data['GT'].append(self.box['GT_P'] )
+                self.data['AA'].append(self.box['AA_P'] )   
+                    
+            if nmos:
+                #assume not 
+                if pin_n:
+                    _,y = pin_n[0]
+                    self.box['CT_N'] = Box([(x,ys[y]),tech.CT_W.hv,'c'])
+                    self.box['CT_GT_N'] = Box([(x,ys[y]),gt_ct_n,'c'])   
+                    self.data['CT'].append(self.box['CT_N'])
+                    self.data['GT'].append(self.box['CT_GT_N'])
+                    
+                    gt_n =  ys[y]
+                    assert y!=0
+                    
+                    gt_n_top = gt_n - tech.CT_E_GT.v + tech.CT_W.hv 
+                    gt_n_bottom =  tech.gt_dn_rg.p1
 
+                    aa_n_top = gt_n_top - max(tech.GT_S_LGT_AA.v ,tech.CT_S_AA.v - tech.CT_E_GT.v)
+                    aa_n_bottom = gt_n_bottom + tech.GT_X_AA.v
+                            
+                else:
+                    #no pin
+                    gt_n = ys[pin_loc.gtn]
+                    gt_n_top =   gt_n - tech.CT_E_GT.v - tech.CT_W.hv 
+                    gt_n_bottom =  tech.gt_dn_rg.p1
+                    aa_n_top = gt_n_top - tech.GT_X_AA.v
+                    aa_n_bottom = gt_n_bottom + tech.GT_X_AA.v
+                    
+                nmos_W = nmos[0][0].W  
+                self.box['GT_N'] = Box([x-half_n, gt_n_bottom, x+half_n, gt_n_top] )                
+                self.box['AA_N'] = Box([x-half_n, aa_n_bottom, x+half_n,aa_n_bottom + nmos_W] )
+                self.data['GT'].append(self.box['GT_N'] )
+                self.data['AA'].append(self.box['AA_N'] )     
+                    
 
-
-
-
-
-#
-class M2_Tracks(Instance):
-    def __init__(self,cells,left,right):
-        super().__init__(cells.tech)
-        self.data[self.tech.M2] = []
-        for t in cells.tracks_m2: 
-            box =  Box([left, t.p1, right, t.p2])
-            self.data[self.tech.M2].append(box)
-#      
+            
+            
+    
 class M1_Rails(Instance):
     def __init__(self,tech,left,right):
         super().__init__(tech)
@@ -153,9 +712,12 @@ class NPWELL(Instance):
                             tech.middle])     
         self.data[tech.SP] = [SP_box]
         self.data[tech.NW] = [NW_box]
-        self.data[tech.SN] = [SN_box]
+        self.data[tech.SN] = [SN_box]       
+        
+        
+        
 class M1_Route(Instance):
-    def __init__(self, tech, m1_edges, net_loc, w, eol_nodes):
+    def __init__(self, tech, m1_edges, net_loc, w, eol, fail_eol):
         #end_type dict of end of line ct, with direction and end line type
         super().__init__(tech)
         #w1 min gt width; w2 cg ct width; w3 mos width
@@ -178,19 +740,219 @@ class M1_Route(Instance):
                                 min(y1,y2)-h_w,  
                                 max(x1,x2)+h_w, 
                                 max(y1,y2)+h_w])
-                    
-                    t_eol = tech.CT_E_M1_END.v
+      
                     self.data['M1'].append(box)
-                    #TDDO left for end of line 
-                    for eol_p in [p1,p2]:
-                        if eol_p in eol_nodes:
-                            di = eol_nodes[eol_p]
-                            x1,y1  = net_loc[eol_p]
-                            if di == 'ew':
-                                eol_box = Box([x1-tech.CT_W.hv-t_eol, y1-tech.CT_W.hv,
-                                               x1+tech.CT_W.hv+t_eol, y1+tech.CT_W.hv])
-             
-                            self.data['M1'].append(eol_box)
+        eol_nodes = [eol, fail_eol]
+        for eol in eol_nodes:
+
+            for loc, dis in eol.items():
+                x,y = net_loc[loc]
+                e = tech.CT_E_M1_END.v
+                t = y + tech.CT_W.hv + tech.CT_E_M1.v
+                b = y - tech.CT_W.hv - tech.CT_E_M1.v
+                l = x - tech.CT_W.hv - tech.CT_E_M1.v
+                r = x + tech.CT_W.hv + tech.CT_E_M1.v          
+                
+                for di in dis:
+                    if di == 'left':
+                        box =  Box([l-e,b,r,t])
+                        self.data['M1'].append(box)
+                    elif di == 'right':
+                        box =  Box([l,b,r+e,t])
+                        self.data['M1'].append(box)
+                    elif di == 'down':
+                        box =  Box([l,b-e,r,t])
+                        self.data['M1'].append(box)
+                    elif di == 'up':
+                        box =  Box([l,b,r,t+e])
+                        self.data['M1'].append(box)
+
+                    else:
+                        raise ValueError
+
+
+
+class GT_Route(Instance):
+    def __init__(self, tech, poly_connect_edges, xs, pin_loc, gt_pairs):
+        #end_type dict of end of line ct, with direction and end line type
+        super().__init__(tech)
+        #w1 min gt width; w2 cg ct width; w3 mos width
+        self.data['GT'] = []
+        # self.nodes = []
+        
+                
+        h_w_min = tech.GT_W.hv   
+        half_p = int(0.5*(tech.gate_length[0]))
+        half_n = int(0.5*(tech.gate_length[1]))
+        
+        
+        
+        ys = [t.c for t in tech.M1_tracks]
+        gt_p = ys[pin_loc.gtp]
+        gt_n = ys[pin_loc.gtn-1]
+        middle = int((gt_p + gt_n)/2)
+        
+        y = {'p':gt_p - tech.CT_W.hv - tech.CT_E_GT.hv, 'n':gt_n  + tech.CT_W.hv + tech.CT_E_GT.hv,'m':middle  }
+        
+        
+        ext = {'n':half_n,'p':half_p,'min':h_w_min,'':0}
+        hei = {'min':h_w_min, 'max':max(half_n,half_p)}
+        
+        
+        '''
+        [{'start': 9, 'end': 12, 'start_ext': 'n', 'end_ext': 'p', 'y': 'p', 'w': 'min', 'type': 'h'}, 
+         {'start': 'p', 'end': 'n', 'start_ext': '', 'end_ext': '', 'x': 9, 'w': 'n', 'type': 'v'}, 
+         {'start': 26, 'end': 28, 'start_ext': 'p', 'end_ext': 'min', 'y': 'p', 'w': 'min', 'type': 'h'}, 
+         {'start': 28, 'end': 29, 'start_ext': 'min', 'end_ext': 'n', 'y': 'n', 'w': 'min', 'type': 'h'}, 
+         {'start': 'p', 'end': 'n', 'start_ext': '', 'end_ext': '', 'x': 28, 'w': 'min', 'type': 'v'}]
+        '''
+ 
+        # for e in poly_connect_edges:
+        #     if e['start'] in gt_pairs:
+        #         gt_pair = gt_pairs[ e['start']].box
+        #         gt_p = gt_pair['GT_P']
+        #         gt_n = gt_pair['GT_N']
+        #         y = {'p':gt_p.b, 'n':gt_n.t  }
+                
+        #         break
+        
+        
+        
+        for e in poly_connect_edges:
+            if e['type'] == 'h':
+                start = xs[e['start']]
+                end = xs[e['end']]
+       
+                
+                box =  Box([start - ext[e['start_ext']],
+                            y[e['y']] - hei[e['w']],
+                            end + ext[e['end_ext']],
+                            y[e['y']] + hei[e['w']]])
+                self.data['GT'].append(box)
+            
+            else:
+                t = y[e['start']]
+                b = y[e['end']]
+                x = xs[e['x']]
+                
+                
+                box =  Box([ x - ext[e['w']],
+                             b,
+                             x + ext[e['w']],
+                             t])
+                self.data['GT'].append(box)
+
+
+
+
+
+class PINMETAL(Instance):
+    def __init__(self, tech, ipins, opins, pins_area, loc, txt_db_shapes):
+     #TODO: align with pins
+        super().__init__(tech)
+        #w1 min gt width; w2 cg ct width; w3 mos width
+        magnification = 2.0 
+        
+        self.data['M1'] = []
+        
+        for k,v in ipins.items():
+            area = pins_area[k] + [v]
+            quads = []  
+            pairs_x = [] 
+            pairs_y = []  
+            for (x, y) in area:
+                # 检查是否存在四元组
+                if (x+1, y) in area and (x, y+1) in area and (x+1, y+1) in area:
+                    quads.append([loc[(x, y)], loc[(x+1, y+1)]])
+                
+                # 检查 x 相差1且 y 相同的点对
+                if (x+1, y) in area:
+                    pairs_x.append([loc[(x, y)], loc[(x+1, y)]])
+                
+                # 检查 y 相差1且 x 相同的点对
+                if (x, y+1) in area:
+                    pairs_y.append([loc[(x, y)], loc[(x, y+1)]])
+        
+            ext = tech.CT_W.hv + tech.CT_E_M1.v
+            for locs in quads:
+                l,b = locs[0]
+                r,t = locs[1]
+                box =  Box([l-ext,b-ext,r+ext,t+ext])
+                self.data['M1'].append(box)
+            for locs in pairs_x:
+                l,b = locs[0]
+                r,t = locs[1]
+                box =  Box([l-ext,b-ext,r+ext,t+ext])
+                self.data['M1'].append(box)        
+            for locs in pairs_y:
+                l,b = locs[0]
+                r,t = locs[1]
+                box =  Box([l-ext,b-ext,r+ext,t+ext])
+                self.data['M1'].append(box)        
+            # self.data[tech.M1TXT] = []
+         
+            #TXT Input
+        
+            position = loc[v]
+    
+            text_obj = db.Text(k,position[0], position[1])
+            if magnification != 1.0:
+                text_obj.mag = magnification
+
+            txt_db_shapes.insert(text_obj)
+            # print(position)
+
+    def create_text_label(self, cell, layer_index, text, position, magnification=1.0, font=None):
+    
+        layout = cell.layout()
+        layer = layout.layer(layer_index, 0)
+        
+        # 创建文本对象
+        text_obj = db.Text(text, db.DPoint(position[0], position[1]))
+        
+        # 应用放大倍数
+        if magnification != 1.0:
+            text_obj.mag = magnification
+        
+        # 应用字体（如果指定）
+        if font is not None:
+            text_obj.font = font
+        
+        # 将文本添加到单元格
+        cell.shapes(layer).insert(text_obj)
+        
+        return text_obj
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
+class M2_Tracks(Instance):
+    def __init__(self,cells,left,right):
+        super().__init__(cells.tech)
+        self.data[self.tech.M2] = []
+        for t in cells.tracks_m2: 
+            box =  Box([left, t.p1, right, t.p2])
+            self.data[self.tech.M2].append(box)
+#      
+
+
                         
 
 class M2_Route(Instance):
@@ -218,7 +980,7 @@ class M2_Route(Instance):
             self.data['M2'].append(box)       
  
 
-class GT_Route(Instance):
+class GT_Route_2(Instance):
     def __init__(self, tech, gt_edges, net_loc, w, draw_data):
         super().__init__(tech)
         self.data['GT'] = []

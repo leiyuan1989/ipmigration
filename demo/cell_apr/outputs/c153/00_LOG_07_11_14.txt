@@ -1,0 +1,38 @@
+11-14:56:28  INFO: logging file is: ./demo/cell_apr/outputs/c153\00_LOG_07_11_14.txt
+11-14:56:28  INFO: ************Create Cell Apr: c153 Logger************
+11-14:56:28  INFO: tech->layers: ['NW', 'AA', 'GT', 'SP', 'SN', 'CT', 'M1', 'V1', 'M2', 'BORDER', 'M1TXT', 'SUBTXT']
+11-14:56:28  INFO: tech->rules: [GT_W : 180 nm, GT_S : 250 nm, GT_S_LAA_GT : 84 nm, GT_S_LGT_AA : 84 nm, GT_X_AA : 186 nm, AA_X_GT : 270 nm, AA_S : 238 nm, SP_X_AA : 152 nm, SN_X_AA : 152 nm, CT_W : 186 nm, CT_S : 212 nm, CT_S_AA : 144 nm, CT_S_GT : 140 nm, CT_E_NP : 102 nm, CT_E_AA : 70 nm, CT_E_GT : 70 nm, CT_E_M1 : 4 nm, CT_E_M1_END : 50 nm, M1_W : 194 nm, M1_S : 194 nm, M2_W : 238 nm, M2_S : 238 nm]
+11-14:56:28  INFO: tech->Load tech files of tech:c153 sucessfully
+11-14:56:28  INFO: ascell-> Begin processing techc153 @ Fri Jul 11 14:56:28 2025
+11-14:56:28  INFO: c153, (AD01D0, 28 devices), 28 devices
+11-14:56:28  INFO: c153, (AH01D0, 16 devices), 16 devices
+11-14:56:28  INFO: c153, (BUFTLD8, 16 devices), 16 devices
+11-14:56:28  INFO: c153, (AN02D0, 6 devices), 6 devices
+11-14:56:28  INFO: c153, (AN03D0, 8 devices), 8 devices
+11-14:56:29  INFO: c153, (AN04D0, 10 devices), 10 devices
+11-14:56:30  INFO: c153, (AN12D0, 8 devices), 8 devices
+11-14:56:30  INFO: c153, (AN13D0, 10 devices), 10 devices
+11-14:56:31  INFO: c153, (AN23D0, 12 devices), 12 devices
+11-14:56:31  INFO: c153, (AOI211D0, 8 devices), 8 devices
+11-14:56:32  INFO: c153, (AOI21D0, 6 devices), 6 devices
+11-14:56:32  INFO: c153, (AOI221D0, 10 devices), 10 devices
+11-14:56:32  INFO: c153, (AOI22D0, 8 devices), 8 devices
+11-14:56:33  INFO: c153, (AOI31D0, 8 devices), 8 devices
+11-14:56:33  INFO: c153, (AOI32D0, 10 devices), 10 devices
+11-14:56:34  INFO: c153, (AOIM21D0, 8 devices), 8 devices
+11-14:56:34  INFO: c153, (AOIM22D0, 10 devices), 10 devices
+11-14:56:35  INFO: c153, (AOR211D0, 10 devices), 10 devices
+11-14:56:35  INFO: c153, (AOR21D0, 8 devices), 8 devices
+11-14:56:36  INFO: c153, (AOR221D0, 12 devices), 12 devices
+11-14:56:37  INFO: c153, (AOR22D0, 10 devices), 10 devices
+11-14:56:37  INFO: c153, (AOR311D0, 12 devices), 12 devices
+11-14:56:38  INFO: c153, (AOR31D0, 10 devices), 10 devices
+11-14:56:38  INFO: c153, (BUFFD0, 4 devices), 4 devices
+11-14:56:39  INFO: c153, (BUFFD1, 4 devices), 4 devices
+11-14:56:39  INFO: c153, (BUFFD2, 4 devices), 4 devices
+11-14:56:39  INFO: c153, (BUFFD3, 6 devices), 6 devices
+11-14:56:40  INFO: c153, (DL01D0, 8 devices), 8 devices
+11-14:56:40  INFO: c153, (DL02D0, 8 devices), 8 devices
+11-14:56:41  INFO: c153, (INV0D0, 2 devices), 2 devices
+11-14:56:41  INFO: c153, (INV0D2, 2 devices), 2 devices
+11-14:56:41  INFO: c153, (INV0D4, 4 devices), 4 devices

@@ -39,21 +39,21 @@ class StdCell:
     def global_pr(self):
         print(' %s Global_PR:'%(self.ckt.name))
         #1. decompose
-        self.ckt.combine_parallel()
+        if self.ckt.ckt_type in  ['ff'       ,'scanff'   ,'latch'     ,'clockgate']:
+            self.ckt.combine_parallel()
         self.de_ckt = DeCKT(self.ckt, 
                             self.patterns, 
                             self.tech.tech_name, 
                             self.cfgs.output_dir,
                             self.aux_file)
-        dec_result = self.de_ckt.run()
         
+        dec_result = self.de_ckt.run()
         if not(dec_result):
-            print('-----Decompose Failed----')
             return 0, "Decompose Failed"   
         
         
         #2. apr
-        self.apr = PatternAPR(self.ckt, self.de_ckt.sub_ckts, self.place_file, 6 , self.load_place)
+        self.apr = PatternAPR(self.ckt, self.de_ckt.sub_ckts, self.place_file, self.tech.M1_tracks_num , self.load_place)
         apr_result = self.apr.run()         
             
         if not(apr_result):
@@ -71,6 +71,7 @@ class StdCell:
         result = self.cdr.run()
 
         if result:
+            self.cdr.draw()
             return 1,"Success"
         else:
             #process debug (widths too large)

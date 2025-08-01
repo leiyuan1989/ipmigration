@@ -91,12 +91,44 @@ class DeCKT:
             
             
         elif self.ckt.ckt_type in ['arithmetic','complex','multiplex']:
-            pass
+            try:    
+                result = self.combination_logic_processing()
+
+                if result:
+                    if len(result) >1:
+                        print('Warning, more than 1 matches:', result)
+                    ckt_name, matches = result[0]
+                    #matches may >1
+                    inv_ckt   = self.patterns.ckt_dict_full[ckt_name] 
+                    self.sub_ckts[ckt_name] =  Pattern(inv_ckt, self.init_ckt, matches[0])
+                    print( self.sub_ckts)
+                    return 1
+                else:
+                    print('-----Decompose Failed (combination_logic): %s-----'%(self.init_ckt.name))
+                    return 0  
+                
+            except:
+                print('-----Decompose Failed (combination_logic): %s-----'%(self.init_ckt.name))
+                return 0
         else:
             raise ValueError('%s is not a right circuit type!'%(self.ckt.ckt_type))
         
         return False   
     
+
+    def combination_logic_processing(self):
+        result = []
+        devices_graph = MosGraph( self.ckt )
+        for ckt_name, ckt in self.patterns.ckt_dict_full.items():
+            if len(self.ckt.devices) == len(ckt.devices):         
+                ckt_graph = self.patterns.ckt_graph_full[ckt_name] 
+                matches = self.match(devices_graph,ckt_graph,{})
+                if matches:
+                    result.append([ckt_name, matches])
+        return result    
+
+
+
 
     def sequential_logic_processing(self):
         logger.info('-----%10s: %7s %5s %5s %5s'%(self.ckt.name, self.ckt.ckt_type, str(self.ckt.enable), str(self.ckt.mul_in),self.ckt.se_net))

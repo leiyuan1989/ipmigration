@@ -22,7 +22,7 @@ class Patterns:
     def __init__(self):
         model = 'ipmigration/cell/apr/cir/pattern_cdl/model.cdl'
         netlist = 'ipmigration/cell/apr/cir/pattern_cdl/patterns.cir'
-
+        netlist_full = 'ipmigration/cell/apr/cir/pattern_cdl/patterns_full.cir'
         
         self.ckt_dict = {}
         self.ckt_place = {}
@@ -104,6 +104,15 @@ class Patterns:
             # print(chain)
         
         # self.examine_structs(self.cross_dict)
+
+        #for cl cells
+        pdk_lib, ckt_dict_full = Netlist.load_netlist(model, netlist_full)
+        self.ckt_graph_full = {}
+        self.ckt_dict_full = ckt_dict_full
+        for k,v in self.ckt_dict_full.items():
+            self.ckt_graph_full[k] = MosGraph(v)
+
+
 
     def sort_dict(self, di):
         return  dict(sorted(di.items(), key=lambda item: len(item[1]),reverse=True))

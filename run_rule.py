@@ -23,10 +23,10 @@ parser.add_argument('--drs' ,    default='', type=str, help='list of design rule
 args = parser.parse_args()
 
 #test
-# drc_dir = "./demo/rule/decks/"
-# args.tech_name = 'c153'
-# args.drc_deck = drc_dir + 'c153.rul'
-# args.layer_def = drc_dir + 'c153_ldef.csv'
+drc_dir = "./demo/rule/decks/"
+args.tech_name = 'c153'
+args.drc_deck = drc_dir + 'c153.rul'
+args.layer_def = drc_dir + 'c153_ldef.csv'
 
 
 if __name__ == '__main__':

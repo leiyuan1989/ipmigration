@@ -1,0 +1,258 @@
+31-11:31:15  INFO: logging file is: ./demo/cell_apr/outputs/c153\00_LOG_07_31_11.txt
+31-11:31:15  INFO: ************Create Cell Apr: c153 Logger************
+31-11:31:15  INFO: tech->layers: ['NW', 'AA', 'GT', 'SP', 'SN', 'CT', 'M1', 'V1', 'M2', 'BORDER', 'M1TXT', 'SUBTXT']
+31-11:31:15  INFO: tech->rules: [GT_W : 180 nm, GT_S : 250 nm, GT_S_LAA_GT : 84 nm, GT_S_LGT_AA : 84 nm, GT_X_AA : 186 nm, AA_X_GT : 270 nm, AA_S : 238 nm, SP_X_AA : 152 nm, SN_X_AA : 152 nm, CT_W : 186 nm, CT_S : 212 nm, CT_S_AA : 144 nm, CT_S_GT : 140 nm, CT_E_NP : 102 nm, CT_E_AA : 70 nm, CT_E_GT : 70 nm, CT_E_M1 : 4 nm, CT_E_M1_END : 50 nm, M1_W : 194 nm, M1_S : 194 nm, M2_W : 238 nm, M2_S : 238 nm]
+31-11:31:15  INFO: tech->Load tech files of tech:c153 sucessfully
+31-11:31:16  INFO: ascell-> Begin processing techc153 @ Thu Jul 31 11:31:16 2025
+31-11:31:16  INFO: c153, (DFBFB1, 40 devices), 40 devices
+31-11:31:16  INFO: -----    DFBFB1:      ff False False undef
+31-11:31:16  INFO: 1. clock pattern: pattern: CLK1 in DFBFB1: clk
+31-11:31:16  INFO: 2. inputs inv pattern: pattern: INV in DFBFB1: ininv_RN_0
+31-11:31:16  INFO: 3. output pattern: pattern: INV in DFBFB1: out_QN
+31-11:31:16  INFO: 3. output pattern: pattern: INV in DFBFB1: out_Q
+31-11:31:16  INFO: 3. output pattern: pattern: INV in DFBFB1: out_Q_2
+31-11:31:16  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFBFB1: cross1
+31-11:31:16  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in DFBFB1: cross1
+31-11:31:16  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFBFB1: cross2
+31-11:31:16  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in DFBFB1: cross2
+31-11:31:16  INFO:  ## |    N_6    CKN    VDD ||    VDD    N_6    N_4 | ## |    VDD      D   N_14 ||   N_14    N_6    N_5 ||    N_5    N_4   N_15 ||   N_15    N_7    VDD | ## |    VDD    N_5   N_16 ||   N_16   N_10    N_7 ||    N_7     SN    VDD | ## |    VDD    N_7   N_17 ||   N_17    N_4    N_8 ||    N_8    N_6   N_18 ||   N_18    N_9    VDD | ## |    VDD    N_8   N_19 ||   N_19   N_10    N_9 ||    N_9     SN    VDD | ## |   N_10     RN    VDD ||    VDD    N_9   N_11 | ## |      Q   N_11    VDD ||    VDD    N_9     QN |
+31-11:31:16  INFO:  ## |    N_6    CKN    VSS ||    VSS    N_6    N_4 | ## |    VSS      D   N_26 ||   N_26    N_4    N_5 ||    N_5    N_6   N_27 ||   N_27    N_7    VSS | ## |   N_23    N_5    N_7 ||    N_7   N_10   N_23 ||   N_23     SN    VSS | ## |    VSS    N_7   N_28 ||   N_28    N_6    N_8 ||    N_8    N_4   N_29 ||   N_29    N_9    VSS | ## |   N_21    N_8    N_9 ||    N_9   N_10   N_21 ||   N_21     SN    VSS | ## |   N_10     RN    VSS ||    VSS    N_9   N_11 | ## |      Q   N_11    VSS ||    VSS    N_9     QN |
+31-11:31:18  INFO: c153, (DFCFB1, 36 devices), 36 devices
+31-11:31:18  INFO: -----    DFCFB1:      ff False False undef
+31-11:31:18  INFO: 1. clock pattern: pattern: CLK1 in DFCFB1: clk
+31-11:31:18  INFO: 2. inputs inv pattern: pattern: INV in DFCFB1: ininv_RN_0
+31-11:31:18  INFO: 3. output pattern: pattern: INV in DFCFB1: out_QN
+31-11:31:18  INFO: 3. output pattern: pattern: INV in DFCFB1: out_Q
+31-11:31:18  INFO: 3. output pattern: pattern: INV in DFCFB1: out_Q_2
+31-11:31:18  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFCFB1: cross1
+31-11:31:19  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in DFCFB1: cross1
+31-11:31:19  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFCFB1: cross2
+31-11:31:19  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in DFCFB1: cross2
+31-11:31:19  INFO:  ## |    N_4    CKN    VDD ||    VDD    N_4    N_5 | ## |    VDD      D   N_21 ||   N_21    N_4    N_6 ||    N_6    N_5   N_22 ||   N_22    N_7    VDD | ## |    VDD    N_6   N_23 ||   N_23   N_10    N_7 | ## |    VDD    N_7   N_24 ||   N_24    N_5    N_8 ||    N_8    N_4   N_25 ||   N_25    N_9    VDD | ## |    VDD    N_8   N_26 ||   N_26   N_10    N_9 | ## |   N_10     RN    VDD ||    VDD    N_9   N_11 | ## |      Q   N_11    VDD ||    VDD    N_9     QN |
+31-11:31:19  INFO:  ## |    N_4    CKN    VSS ||    VSS    N_4    N_5 | ## |    VSS      D   N_14 ||   N_14    N_5    N_6 ||    N_6    N_4   N_15 ||   N_15    N_7    VSS | ## |    VSS    N_6    N_7 ||    N_7   N_10    VSS | ## |    VSS    N_7   N_16 ||   N_16    N_4    N_8 ||    N_8    N_5   N_17 ||   N_17    N_9    VSS | ## |    VSS    N_8    N_9 ||    N_9   N_10    VSS | ## |   N_10     RN    VSS ||    VSS    N_9   N_11 | ## |      Q   N_11    VSS ||    VSS    N_9     QN |
+31-11:31:21  INFO: c153, (DFCFQ1, 34 devices), 34 devices
+31-11:31:21  INFO: -----    DFCFQ1:      ff False False undef
+31-11:31:21  INFO: 1. clock pattern: pattern: CLK1 in DFCFQ1: clk
+31-11:31:21  INFO: 2. inputs inv pattern: pattern: INV in DFCFQ1: ininv_RN_0
+31-11:31:21  INFO: 3. output pattern: pattern: INV in DFCFQ1: out_Q
+31-11:31:21  INFO: 3. output pattern: pattern: INV in DFCFQ1: out_Q_2
+31-11:31:22  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFCFQ1: cross1
+31-11:31:22  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in DFCFQ1: cross1
+31-11:31:22  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFCFQ1: cross2
+31-11:31:22  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in DFCFQ1: cross2
+31-11:31:22  INFO:  ## |    N_4    CKN    VDD ||    VDD    N_4    N_5 | ## |    VDD      D   N_20 ||   N_20    N_4    N_6 ||    N_6    N_5   N_21 ||   N_21    N_7    VDD | ## |    VDD    N_6   N_22 ||   N_22   N_10    N_7 | ## |    VDD    N_7   N_23 ||   N_23    N_5    N_8 ||    N_8    N_4   N_24 ||   N_24    N_9    VDD | ## |    VDD    N_8   N_25 ||   N_25   N_10    N_9 | ## |    VDD     RN   N_10 | ## |   N_11    N_9    VDD ||    VDD   N_11      Q |
+31-11:31:22  INFO:  ## |    N_4    CKN    VSS ||    VSS    N_4    N_5 | ## |    VSS      D   N_13 ||   N_13    N_5    N_6 ||    N_6    N_4   N_14 ||   N_14    N_7    VSS | ## |    VSS    N_6    N_7 ||    N_7   N_10    VSS | ## |    VSS    N_7   N_15 ||   N_15    N_4    N_8 ||    N_8    N_5   N_16 ||   N_16    N_9    VSS | ## |    VSS    N_8    N_9 ||    N_9   N_10    VSS | ## |    VSS     RN   N_10 | ## |   N_11    N_9    VSS ||    VSS   N_11      Q |
+31-11:31:24  INFO: c153, (DFCRB1, 36 devices), 36 devices
+31-11:31:24  INFO: -----    DFCRB1:      ff False False undef
+31-11:31:24  INFO: 1. clock pattern: pattern: CLK1 in DFCRB1: clk
+31-11:31:24  INFO: 2. inputs inv pattern: pattern: INV in DFCRB1: ininv_RN_0
+31-11:31:24  INFO: 3. output pattern: pattern: INV in DFCRB1: out_QN
+31-11:31:24  INFO: 3. output pattern: pattern: INV in DFCRB1: out_Q
+31-11:31:24  INFO: 3. output pattern: pattern: INV in DFCRB1: out_Q_2
+31-11:31:24  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFCRB1: cross1
+31-11:31:24  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in DFCRB1: cross1
+31-11:31:24  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFCRB1: cross2
+31-11:31:24  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in DFCRB1: cross2
+31-11:31:24  INFO:  ## |    N_5     CK    VDD ||    VDD    N_5    N_4 | ## |    VDD      D   N_14 ||   N_14    N_4    N_6 ||    N_6    N_5   N_15 ||   N_15    N_7    VDD | ## |    VDD    N_6   N_16 ||   N_16   N_10    N_7 | ## |    VDD    N_7   N_17 ||   N_17    N_5    N_8 ||    N_8    N_4   N_18 ||   N_18    N_9    VDD | ## |    VDD    N_8   N_19 ||   N_19   N_10    N_9 | ## |   N_10     RN    VDD ||    VDD    N_9   N_11 | ## |      Q   N_11    VDD ||    VDD    N_9     QN |
+31-11:31:24  INFO:  ## |    N_5     CK    VSS ||    VSS    N_5    N_4 | ## |    VSS      D   N_23 ||   N_23    N_5    N_6 ||    N_6    N_4   N_24 ||   N_24    N_7    VSS | ## |    VSS    N_6    N_7 ||    N_7   N_10    VSS | ## |    VSS    N_7   N_25 ||   N_25    N_4    N_8 ||    N_8    N_5   N_26 ||   N_26    N_9    VSS | ## |    VSS    N_8    N_9 ||    N_9   N_10    VSS | ## |   N_10     RN    VSS ||    VSS    N_9   N_11 | ## |      Q   N_11    VSS ||    VSS    N_9     QN |
+31-11:31:26  INFO: c153, (DFCRN1, 32 devices), 32 devices
+31-11:31:26  INFO: -----    DFCRN1:      ff False False undef
+31-11:31:26  INFO: 1. clock pattern: pattern: CLK1 in DFCRN1: clk
+31-11:31:26  INFO: 2. inputs inv pattern: pattern: INV in DFCRN1: ininv_RN_0
+31-11:31:26  INFO: 3. output pattern: pattern: INV in DFCRN1: out_QN
+31-11:31:26  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFCRN1: cross1
+31-11:31:26  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in DFCRN1: cross1
+31-11:31:26  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFCRN1: cross2
+31-11:31:26  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in DFCRN1: cross2
+31-11:31:26  INFO:  ## |    N_5     CK    VDD ||    VDD    N_5    N_4 | ## |    VDD      D   N_12 ||   N_12    N_4    N_6 ||    N_6    N_5   N_13 ||   N_13    N_7    VDD | ## |    VDD    N_6   N_14 ||   N_14   N_10    N_7 | ## |    VDD    N_7   N_15 ||   N_15    N_5    N_8 ||    N_8    N_4   N_16 ||   N_16    N_9    VDD | ## |    VDD    N_8   N_17 ||   N_17   N_10    N_9 | ## |     QN    N_9    VDD ||    VDD     RN   N_10 |
+31-11:31:26  INFO:  ## |    N_5     CK    VSS ||    VSS    N_5    N_4 | ## |    VSS      D   N_31 ||   N_31    N_5    N_6 ||    N_6    N_4   N_32 ||   N_32    N_7    VSS | ## |    VSS    N_6    N_7 ||    N_7   N_10    VSS | ## |    VSS    N_7   N_33 ||   N_33    N_4    N_8 ||    N_8    N_5   N_34 ||   N_34    N_9    VSS | ## |    VSS    N_8    N_9 ||    N_9   N_10    VSS | ## |     QN    N_9    VSS ||    VSS     RN   N_10 |
+31-11:31:28  INFO: c153, (DFCRQ1, 34 devices), 34 devices
+31-11:31:28  INFO: -----    DFCRQ1:      ff False False undef
+31-11:31:28  INFO: 1. clock pattern: pattern: CLK1 in DFCRQ1: clk
+31-11:31:28  INFO: 2. inputs inv pattern: pattern: INV in DFCRQ1: ininv_RN_0
+31-11:31:28  INFO: 3. output pattern: pattern: LOGIC2_NOR2 in DFCRQ1: out_Q
+31-11:31:29  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFCRQ1: cross1
+31-11:31:29  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NOR2 in DFCRQ1: cross1
+31-11:31:29  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFCRQ1: cross2
+31-11:31:29  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NOR2 in DFCRQ1: cross2
+31-11:31:29  INFO:  ## |    N_5     CK    VDD ||    VDD    N_5    N_4 | ## |    VDD      D   N_12 ||   N_12    N_4    N_6 ||    N_6    N_5   N_13 ||   N_13    N_7    VDD | ## |    VDD    N_6   N_14 ||   N_14    N_3    N_7 | ## |    VDD    N_7   N_15 ||   N_15    N_5    N_8 ||    N_8    N_4   N_16 ||   N_16    N_9    VDD | ## |    VDD    N_8   N_17 ||   N_17    N_3    N_9 | ## |      Q    N_3   N_18 ||   N_18    N_8    VDD ||    VDD     RN    N_3 |
+31-11:31:29  INFO:  ## |    N_5     CK    VSS ||    VSS    N_5    N_4 | ## |    VSS      D   N_32 ||   N_32    N_5    N_6 ||    N_6    N_4   N_33 ||   N_33    N_7    VSS | ## |    VSS    N_6    N_7 ||    N_7    N_3    VSS | ## |    VSS    N_7   N_34 ||   N_34    N_4    N_8 ||    N_8    N_5   N_35 ||   N_35    N_9    VSS | ## |    VSS    N_8    N_9 ||    N_9    N_3    VSS | ## |    VSS    N_3      Q ||      Q    N_8    VSS ||    VSS     RN    N_3 |
+31-11:31:31  INFO: c153, (DFNFB1, 28 devices), 28 devices
+31-11:31:31  INFO: -----    DFNFB1:      ff False False undef
+31-11:31:31  INFO: 1. clock pattern: pattern: CLK1 in DFNFB1: clk
+31-11:31:31  INFO: 3. output pattern: pattern: INV in DFNFB1: out_QN
+31-11:31:31  INFO: 3. output pattern: pattern: INV in DFNFB1: out_Q
+31-11:31:31  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFNFB1: cross1
+31-11:31:31  INFO: 5.2  back track 1 pattern: pattern: INV in DFNFB1: cross1
+31-11:31:31  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFNFB1: cross2
+31-11:31:31  INFO: 5.4  back track 2 pattern: pattern: INV in DFNFB1: cross2
+31-11:31:31  INFO:  ## |    N_4    CKN    VDD ||    VDD    N_4    N_5 | ## |    VDD      D   N_12 ||   N_12    N_4    N_6 ||    N_6    N_5   N_13 ||   N_13    N_7    VDD | ## |    VDD    N_6    N_7 | ## |    VDD    N_7   N_14 ||   N_14    N_5    N_8 ||    N_8    N_4   N_15 ||   N_15    N_9    VDD | ## |    VDD    N_8    N_9 | ## |      Q    N_8    VDD ||    VDD    N_9     QN |
+31-11:31:31  INFO:  ## |    N_4    CKN    VSS ||    VSS    N_4    N_5 | ## |    VSS      D   N_28 ||   N_28    N_5    N_6 ||    N_6    N_4   N_29 ||   N_29    N_7    VSS | ## |    VSS    N_6    N_7 | ## |    VSS    N_7   N_30 ||   N_30    N_4    N_8 ||    N_8    N_5   N_31 ||   N_31    N_9    VSS | ## |    VSS    N_8    N_9 | ## |      Q    N_8    VSS ||    VSS    N_9     QN |
+31-11:31:32  INFO: c153, (DFNRB1, 28 devices), 28 devices
+31-11:31:32  INFO: -----    DFNRB1:      ff False False undef
+31-11:31:32  INFO: 1. clock pattern: pattern: CLK1 in DFNRB1: clk
+31-11:31:32  INFO: 3. output pattern: pattern: INV in DFNRB1: out_QN
+31-11:31:32  INFO: 3. output pattern: pattern: INV in DFNRB1: out_Q
+31-11:31:32  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFNRB1: cross1
+31-11:31:32  INFO: 5.2  back track 1 pattern: pattern: INV in DFNRB1: cross1
+31-11:31:32  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFNRB1: cross2
+31-11:31:32  INFO: 5.4  back track 2 pattern: pattern: INV in DFNRB1: cross2
+31-11:31:32  INFO:  ## |    N_4     CK    VDD ||    VDD    N_4    N_5 | ## |    VDD      D   N_13 ||   N_13    N_5    N_6 ||    N_6    N_4   N_14 ||   N_14    N_7    VDD | ## |    VDD    N_6    N_7 | ## |    VDD    N_7   N_15 ||   N_15    N_4    N_8 ||    N_8    N_5   N_16 ||   N_16   N_10    VDD | ## |    VDD    N_8   N_10 | ## |      Q    N_8    VDD ||    VDD   N_10     QN |
+31-11:31:32  INFO:  ## |    N_4     CK    VSS ||    VSS    N_4    N_5 | ## |    VSS      D   N_29 ||   N_29    N_4    N_6 ||    N_6    N_5   N_30 ||   N_30    N_7    VSS | ## |    VSS    N_6    N_7 | ## |    VSS    N_7   N_31 ||   N_31    N_5    N_8 ||    N_8    N_4   N_32 ||   N_32   N_10    VSS | ## |    VSS    N_8   N_10 | ## |      Q    N_8    VSS ||    VSS   N_10     QN |
+31-11:31:33  INFO: c153, (DFNRN1, 26 devices), 26 devices
+31-11:31:33  INFO: -----    DFNRN1:      ff False False undef
+31-11:31:33  INFO: 1. clock pattern: pattern: CLK1 in DFNRN1: clk
+31-11:31:33  INFO: 3. output pattern: pattern: INV in DFNRN1: out_QN
+31-11:31:33  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFNRN1: cross1
+31-11:31:33  INFO: 5.2  back track 1 pattern: pattern: INV in DFNRN1: cross1
+31-11:31:33  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFNRN1: cross2
+31-11:31:33  INFO: 5.4  back track 2 pattern: pattern: INV in DFNRN1: cross2
+31-11:31:33  INFO:  ## |    N_4     CK    VDD ||    VDD    N_4    N_5 | ## |    VDD      D   N_11 ||   N_11    N_5    N_6 ||    N_6    N_4   N_12 ||   N_12    N_7    VDD | ## |    VDD    N_6    N_7 | ## |    VDD    N_7   N_13 ||   N_13    N_4    N_8 ||    N_8    N_5   N_14 ||   N_14    N_9    VDD | ## |    VDD    N_8    N_9 | ## |    VDD    N_9     QN |
+31-11:31:33  INFO:  ## |    N_4     CK    VSS ||    VSS    N_4    N_5 | ## |    VSS      D   N_26 ||   N_26    N_4    N_6 ||    N_6    N_5   N_27 ||   N_27    N_7    VSS | ## |    VSS    N_6    N_7 | ## |    VSS    N_7   N_28 ||   N_28    N_5    N_8 ||    N_8    N_4   N_29 ||   N_29    N_9    VSS | ## |    VSS    N_8    N_9 | ## |    VSS    N_9     QN |
+31-11:31:35  INFO: c153, (DFNRQ1, 26 devices), 26 devices
+31-11:31:35  INFO: -----    DFNRQ1:      ff False False undef
+31-11:31:35  INFO: 1. clock pattern: pattern: CLK1 in DFNRQ1: clk
+31-11:31:35  INFO: 3. output pattern: pattern: INV in DFNRQ1: out_Q
+31-11:31:35  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFNRQ1: cross1
+31-11:31:35  INFO: 5.2  back track 1 pattern: pattern: INV in DFNRQ1: cross1
+31-11:31:35  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFNRQ1: cross2
+31-11:31:35  INFO: 5.4  back track 2 pattern: pattern: INV in DFNRQ1: cross2
+31-11:31:35  INFO:  ## |    N_4     CK    VDD ||    VDD    N_4    N_5 | ## |    VDD      D   N_11 ||   N_11    N_5    N_6 ||    N_6    N_4   N_12 ||   N_12    N_7    VDD | ## |    VDD    N_6    N_7 | ## |    VDD    N_7   N_13 ||   N_13    N_4    N_8 ||    N_8    N_5   N_14 ||   N_14    N_9    VDD | ## |    VDD    N_8    N_9 | ## |    VDD    N_8      Q |
+31-11:31:35  INFO:  ## |    N_4     CK    VSS ||    VSS    N_4    N_5 | ## |    VSS      D   N_26 ||   N_26    N_4    N_6 ||    N_6    N_5   N_27 ||   N_27    N_7    VSS | ## |    VSS    N_6    N_7 | ## |    VSS    N_7   N_28 ||   N_28    N_5    N_8 ||    N_8    N_4   N_29 ||   N_29    N_9    VSS | ## |    VSS    N_8    N_9 | ## |    VSS    N_8      Q |
+31-11:31:36  INFO: c153, (DFPFB1, 34 devices), 34 devices
+31-11:31:36  INFO: -----    DFPFB1:      ff False False undef
+31-11:31:36  INFO: 1. clock pattern: pattern: CLK1 in DFPFB1: clk
+31-11:31:36  INFO: 3. output pattern: pattern: INV in DFPFB1: out_Q
+31-11:31:36  INFO: 3. output pattern: pattern: INV in DFPFB1: out_Q_2
+31-11:31:36  INFO: 3. output pattern: pattern: INV in DFPFB1: out_QN
+31-11:31:36  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFPFB1: cross1
+31-11:31:36  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFPFB1: cross1
+31-11:31:36  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFPFB1: cross2
+31-11:31:36  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NAND2 in DFPFB1: cross2
+31-11:31:36  INFO:  ## |    N_4    CKN    VDD ||    VDD    N_4    N_5 | ## |    VDD      D   N_13 ||   N_13    N_4    N_6 ||    N_6    N_5   N_14 ||   N_14    N_7    VDD | ## |    N_7     SN    VDD ||    VDD    N_6    N_7 | ## |    VDD    N_7   N_15 ||   N_15    N_5    N_8 ||    N_8    N_4   N_16 ||   N_16    N_9    VDD | ## |    N_9    N_8    VDD ||    VDD     SN    N_9 | ## |    VDD    N_9   N_11 | ## |      Q   N_11    VDD ||    VDD    N_9     QN |
+31-11:31:36  INFO:  ## |    N_4    CKN    VSS ||    VSS    N_4    N_5 | ## |    VSS      D   N_31 ||   N_31    N_5    N_6 ||    N_6    N_4   N_32 ||   N_32    N_7    VSS | ## |    N_7     SN   N_33 ||   N_33    N_6    VSS | ## |    VSS    N_7   N_34 ||   N_34    N_4    N_8 ||    N_8    N_5   N_35 ||   N_35    N_9    VSS | ## |    N_9    N_8   N_36 ||   N_36     SN    VSS | ## |    VSS    N_9   N_11 | ## |      Q   N_11    VSS ||    VSS    N_9     QN |
+31-11:31:38  INFO: c153, (DFPRB1, 34 devices), 34 devices
+31-11:31:38  INFO: -----    DFPRB1:      ff False False undef
+31-11:31:38  INFO: 1. clock pattern: pattern: CLK1 in DFPRB1: clk
+31-11:31:38  INFO: 3. output pattern: pattern: INV in DFPRB1: out_Q
+31-11:31:38  INFO: 3. output pattern: pattern: INV in DFPRB1: out_Q_2
+31-11:31:38  INFO: 3. output pattern: pattern: INV in DFPRB1: out_QN
+31-11:31:39  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFPRB1: cross1
+31-11:31:39  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFPRB1: cross1
+31-11:31:39  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFPRB1: cross2
+31-11:31:39  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NAND2 in DFPRB1: cross2
+31-11:31:39  INFO:  ## |   N_12     CK    VDD ||    VDD   N_12    N_4 | ## |    VDD      D   N_14 ||   N_14    N_4    N_5 ||    N_5   N_12   N_15 ||   N_15    N_6    VDD | ## |    N_6     SN    VDD ||    VDD    N_5    N_6 | ## |    VDD    N_6   N_16 ||   N_16   N_12    N_7 ||    N_7    N_4   N_17 ||   N_17    N_8    VDD | ## |    N_8    N_7    VDD ||    VDD     SN    N_8 | ## |    VDD    N_8   N_10 | ## |      Q   N_10    VDD ||    VDD    N_8     QN |
+31-11:31:39  INFO:  ## |   N_12     CK    VSS ||    VSS   N_12    N_4 | ## |    VSS      D   N_33 ||   N_33   N_12    N_5 ||    N_5    N_4   N_34 ||   N_34    N_6    VSS | ## |    N_6     SN   N_35 ||   N_35    N_5    VSS | ## |    VSS    N_6   N_36 ||   N_36    N_4    N_7 ||    N_7   N_12   N_37 ||   N_37    N_8    VSS | ## |    N_8    N_7   N_38 ||   N_38     SN    VSS | ## |    VSS    N_8   N_10 | ## |      Q   N_10    VSS ||    VSS    N_8     QN |
+31-11:31:41  INFO: c153, (DFPRQ1, 32 devices), 32 devices
+31-11:31:41  INFO: -----    DFPRQ1:      ff False False undef
+31-11:31:41  INFO: 1. clock pattern: pattern: CLK1 in DFPRQ1: clk
+31-11:31:41  INFO: 3. output pattern: pattern: LOGIC2_NAND2 in DFPRQ1: out_Q
+31-11:31:41  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in DFPRQ1: cross1
+31-11:31:41  INFO: 5.2  back track 1 pattern: pattern: LOGIC2_NAND2 in DFPRQ1: cross1
+31-11:31:41  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in DFPRQ1: cross2
+31-11:31:41  INFO: 5.4  back track 2 pattern: pattern: LOGIC2_NAND2 in DFPRQ1: cross2
+31-11:31:41  INFO:  ## |    N_5     CK    VDD ||    VDD    N_5    N_4 | ## |    VDD      D   N_11 ||   N_11    N_4    N_6 ||    N_6    N_5   N_12 ||   N_12    N_7    VDD | ## |    N_7    N_6    VDD ||    VDD     SN    N_7 | ## |    VDD    N_7   N_13 ||   N_13    N_5    N_8 ||    N_8    N_4   N_14 ||   N_14    N_9    VDD | ## |    N_9    N_8    VDD ||    VDD     SN    N_9 | ## |      Q    N_8    VDD ||    VDD     SN      Q |
+31-11:31:41  INFO:  ## |    N_5     CK    VSS ||    VSS    N_5    N_4 | ## |    VSS      D   N_28 ||   N_28    N_5    N_6 ||    N_6    N_4   N_29 ||   N_29    N_7    VSS | ## |    N_7    N_6   N_30 ||   N_30     SN    VSS | ## |    VSS    N_7   N_31 ||   N_31    N_4    N_8 ||    N_8    N_5   N_32 ||   N_32    N_9    VSS | ## |    N_9    N_8   N_33 ||   N_33     SN    VSS | ## |      Q    N_8   N_27 ||   N_27     SN    VSS |
+31-11:31:43  INFO: c153, (LACHB1, 21 devices), 21 devices
+31-11:31:43  INFO: -----    LACHB1:   latch False False undef
+31-11:31:43  INFO: 1. clock pattern: pattern: CLK1 in LACHB1: clk
+31-11:31:43  INFO: 3. output pattern: pattern: INV in LACHB1: out_QN
+31-11:31:43  INFO: 3. output pattern: pattern: INV in LACHB1: out_Q
+31-11:31:43  INFO: 5.1 cross1 pattern: pattern: FRCROSS_1_5 in LACHB1: cross1
+31-11:31:43  INFO: 5.2  back track 1 pattern: pattern: INV in LACHB1: cross1
+31-11:31:43  INFO:  ## |    N_7      G    VDD ||    VDD    N_7    N_5 | ## |    VDD      D   N_31 ||   N_31    N_7    N_3 ||    N_3    N_5   N_32 ||   N_32    N_2    VDD ||    VDD     RN    N_3 ||                      | ## |    VDD    N_3    N_2 | ## |      Q    N_3    VDD ||    VDD    N_2     QN |
+31-11:31:43  INFO:  ## |    N_7      G    VSS ||    VSS    N_7    N_5 | ## |    VSS      D   N_18 ||   N_18     RN   N_19 ||   N_19    N_5    N_3 ||    N_3    N_7   N_20 ||   N_20     RN   N_21 ||   N_21    N_2    VSS | ## |    VSS    N_3    N_2 | ## |      Q    N_3    VSS ||    VSS    N_2     QN |
+31-11:31:43  INFO: c153, (LANHB1, 18 devices), 18 devices
+31-11:31:43  INFO: -----    LANHB1:   latch False False undef
+31-11:31:43  INFO: 1. clock pattern: pattern: CLK1 in LANHB1: clk
+31-11:31:43  INFO: 3. output pattern: pattern: INV in LANHB1: out_QN
+31-11:31:43  INFO: 3. output pattern: pattern: INV in LANHB1: out_Q
+31-11:31:43  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in LANHB1: cross1
+31-11:31:43  INFO: 5.2  back track 1 pattern: pattern: INV in LANHB1: cross1
+31-11:31:43  INFO:  ## |    N_4      G    VDD ||    VDD    N_4    N_3 | ## |    VDD      D   N_25 ||   N_25    N_4    N_5 ||    N_5    N_3   N_26 ||   N_26    N_2    VDD | ## |    VDD    N_5    N_2 | ## |      Q    N_5    VDD ||    VDD    N_2     QN |
+31-11:31:43  INFO:  ## |    N_4      G    VSS ||    VSS    N_4    N_3 | ## |    VSS      D   N_15 ||   N_15    N_3    N_5 ||    N_5    N_4   N_16 ||   N_16    N_2    VSS | ## |    VSS    N_5    N_2 | ## |      Q    N_5    VSS ||    VSS    N_2     QN |
+31-11:31:44  INFO: c153, (LANHN1, 16 devices), 16 devices
+31-11:31:44  INFO: -----    LANHN1:   latch False False undef
+31-11:31:44  INFO: 1. clock pattern: pattern: CLK1 in LANHN1: clk
+31-11:31:44  INFO: 3. output pattern: pattern: INV in LANHN1: out_QN
+31-11:31:44  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in LANHN1: cross1
+31-11:31:44  INFO: 5.2  back track 1 pattern: pattern: INV in LANHN1: cross1
+31-11:31:44  INFO:  ## |    N_4      G    VDD ||    VDD    N_4    N_3 | ## |    VDD      D   N_23 ||   N_23    N_4    N_5 ||    N_5    N_3   N_24 ||   N_24    N_2    VDD | ## |    VDD    N_5    N_2 | ## |    VDD    N_2     QN |
+31-11:31:44  INFO:  ## |    N_4      G    VSS ||    VSS    N_4    N_3 | ## |    VSS      D   N_14 ||   N_14    N_3    N_5 ||    N_5    N_4   N_15 ||   N_15    N_2    VSS | ## |    VSS    N_5    N_2 | ## |    VSS    N_2     QN |
+31-11:31:45  INFO: c153, (LANHQ1, 16 devices), 16 devices
+31-11:31:45  INFO: -----    LANHQ1:   latch False False undef
+31-11:31:45  INFO: 1. clock pattern: pattern: CLK1 in LANHQ1: clk
+31-11:31:45  INFO: 3. output pattern: pattern: INV in LANHQ1: out_Q
+31-11:31:45  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in LANHQ1: cross1
+31-11:31:45  INFO: 5.2  back track 1 pattern: pattern: INV in LANHQ1: cross1
+31-11:31:45  INFO:  ## |    N_4      G    VDD ||    VDD    N_4    N_3 | ## |    VDD      D   N_22 ||   N_22    N_4    N_5 ||    N_5    N_3   N_23 ||   N_23    N_2    VDD | ## |    VDD    N_5    N_2 | ## |    VDD    N_5      Q |
+31-11:31:45  INFO:  ## |    N_4      G    VSS ||    VSS    N_4    N_3 | ## |    VSS      D   N_13 ||   N_13    N_3    N_5 ||    N_5    N_4   N_14 ||   N_14    N_2    VSS | ## |    VSS    N_5    N_2 | ## |    VSS    N_5      Q |
+31-11:31:45  INFO: c153, (LANLB1, 18 devices), 18 devices
+31-11:31:45  INFO: -----    LANLB1:   latch False False undef
+31-11:31:45  INFO: 1. clock pattern: pattern: CLK1 in LANLB1: clk
+31-11:31:45  INFO: 3. output pattern: pattern: INV in LANLB1: out_QN
+31-11:31:45  INFO: 3. output pattern: pattern: INV in LANLB1: out_Q
+31-11:31:45  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in LANLB1: cross1
+31-11:31:45  INFO: 5.2  back track 1 pattern: pattern: INV in LANLB1: cross1
+31-11:31:45  INFO:  ## |    N_4     GN    VDD ||    VDD    N_4    N_5 | ## |    VDD      D   N_22 ||   N_22    N_5    N_6 ||    N_6    N_4   N_23 ||   N_23    N_7    VDD | ## |    VDD    N_6    N_7 | ## |      Q    N_6    VDD ||    VDD    N_7     QN |
+31-11:31:45  INFO:  ## |    N_4     GN    VSS ||    VSS    N_4    N_5 | ## |    VSS      D   N_10 ||   N_10    N_4    N_6 ||    N_6    N_5   N_11 ||   N_11    N_7    VSS | ## |    VSS    N_6    N_7 | ## |      Q    N_6    VSS ||    VSS    N_7     QN |
+31-11:31:46  INFO: c153, (LANLN1, 16 devices), 16 devices
+31-11:31:46  INFO: -----    LANLN1:   latch False False undef
+31-11:31:46  INFO: 1. clock pattern: pattern: CLK1 in LANLN1: clk
+31-11:31:46  INFO: 3. output pattern: pattern: INV in LANLN1: out_QN
+31-11:31:46  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in LANLN1: cross1
+31-11:31:46  INFO: 5.2  back track 1 pattern: pattern: INV in LANLN1: cross1
+31-11:31:46  INFO:  ## |    N_3     GN    VDD ||    VDD    N_3    N_4 | ## |    VDD      D   N_23 ||   N_23    N_4    N_5 ||    N_5    N_3   N_24 ||   N_24    N_2    VDD | ## |    VDD    N_5    N_2 | ## |    VDD    N_2     QN |
+31-11:31:46  INFO:  ## |    N_3     GN    VSS ||    VSS    N_3    N_4 | ## |    VSS      D   N_14 ||   N_14    N_3    N_5 ||    N_5    N_4   N_15 ||   N_15    N_2    VSS | ## |    VSS    N_5    N_2 | ## |    VSS    N_2     QN |
+31-11:31:47  INFO: c153, (LANLQ1, 16 devices), 16 devices
+31-11:31:47  INFO: -----    LANLQ1:   latch False False undef
+31-11:31:47  INFO: 1. clock pattern: pattern: CLK1 in LANLQ1: clk
+31-11:31:47  INFO: 3. output pattern: pattern: INV in LANLQ1: out_Q
+31-11:31:47  INFO: 5.1 cross1 pattern: pattern: FCROSS_4 in LANLQ1: cross1
+31-11:31:47  INFO: 5.2  back track 1 pattern: pattern: INV in LANLQ1: cross1
+31-11:31:47  INFO:  ## |    N_3     GN    VDD ||    VDD    N_3    N_4 | ## |    VDD      D   N_22 ||   N_22    N_4    N_5 ||    N_5    N_3   N_23 ||   N_23    N_2    VDD | ## |    VDD    N_5    N_2 | ## |    VDD    N_5      Q |
+31-11:31:47  INFO:  ## |    N_3     GN    VSS ||    VSS    N_3    N_4 | ## |    VSS      D   N_13 ||   N_13    N_3    N_5 ||    N_5    N_4   N_14 ||   N_14    N_2    VSS | ## |    VSS    N_5    N_2 | ## |    VSS    N_5      Q |
+31-11:31:47  INFO: c153, (SDBFB1, 48 devices), 48 devices
+31-11:31:47  INFO: -----    SDBFB1:  scanff False False    SE
+31-11:31:47  INFO: 1. clock pattern: pattern: CLK1 in SDBFB1: clk
+31-11:31:47  INFO: 2. inputs inv pattern: pattern: INV in SDBFB1: ininv_RN_0
+31-11:31:47  INFO: 2. inputs inv pattern: pattern: INV in SDBFB1: ininv_SE_0
+31-11:31:47  INFO: 3. output pattern: pattern: INV in SDBFB1: out_Q
+31-11:31:47  INFO: 3. output pattern: pattern: INV in SDBFB1: out_Q_2
+31-11:31:47  INFO: 3. output pattern: pattern: INV in SDBFB1: out_QN
+31-11:31:48  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDBFB1: sesi
+31-11:31:48  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDBFB1: cross1
+31-11:31:48  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in SDBFB1: cross1
+31-11:31:48  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDBFB1: cross2
+31-11:31:48  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in SDBFB1: cross2
+31-11:31:48  INFO:  ## |    N_4    CKN    VDD ||    VDD    N_4    N_5 | ## |    N_6     SE    VDD ||    VDD      D   N_17 ||   N_17     SE    N_7 ||    N_7    N_6   N_18 ||   N_18     SI    VDD | ## |    N_7    N_4    N_9 ||    N_9    N_5   N_19 ||   N_19   N_10    VDD | ## |    VDD    N_9   N_20 ||   N_20   N_13   N_10 ||   N_10     SN    VDD | ## |    VDD   N_10   N_21 ||   N_21    N_5   N_11 ||   N_11    N_4   N_22 ||   N_22   N_12    VDD | ## |    VDD   N_11   N_23 ||   N_23   N_13   N_12 ||   N_12     SN    VDD | ## |   N_13     RN    VDD ||    VDD   N_12   N_14 | ## |      Q   N_14    VDD ||    VDD   N_12     QN |
+31-11:31:48  INFO:  ## |    N_4    CKN    VSS ||    VSS    N_4    N_5 | ## |    N_6     SE    VSS ||    VSS      D   N_53 ||   N_53    N_6   N_29 ||   N_29     SI   N_54 ||   N_54     SE    VSS | ## |   N_29    N_5    N_9 ||    N_9    N_4   N_55 ||   N_55   N_10    VSS | ## |   N_27    N_9   N_10 ||   N_10   N_13   N_27 ||   N_27     SN    VSS | ## |    VSS   N_10   N_56 ||   N_56    N_4   N_11 ||   N_11    N_5   N_57 ||   N_57   N_12    VSS | ## |   N_25   N_11   N_12 ||   N_12   N_13   N_25 ||   N_25     SN    VSS | ## |   N_13     RN    VSS ||    VSS   N_12   N_14 | ## |      Q   N_14    VSS ||    VSS   N_12     QN |
+31-11:31:50  INFO: c153, (SDBRB1, 48 devices), 48 devices
+31-11:31:50  INFO: -----    SDBRB1:  scanff False False    SE
+31-11:31:50  INFO: 1. clock pattern: pattern: CLK1 in SDBRB1: clk
+31-11:31:50  INFO: 2. inputs inv pattern: pattern: INV in SDBRB1: ininv_RN_0
+31-11:31:50  INFO: 2. inputs inv pattern: pattern: INV in SDBRB1: ininv_SE_0
+31-11:31:50  INFO: 3. output pattern: pattern: INV in SDBRB1: out_Q
+31-11:31:50  INFO: 3. output pattern: pattern: INV in SDBRB1: out_Q_2
+31-11:31:50  INFO: 3. output pattern: pattern: INV in SDBRB1: out_QN
+31-11:31:50  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDBRB1: sesi
+31-11:31:50  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDBRB1: cross1
+31-11:31:50  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in SDBRB1: cross1
+31-11:31:50  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDBRB1: cross2
+31-11:31:50  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in SDBRB1: cross2
+31-11:31:50  INFO:  ## |    N_4     CK    VDD ||    VDD    N_4    N_5 | ## |    N_6     SE    VDD ||    VDD      D   N_17 ||   N_17     SE    N_7 ||    N_7    N_6   N_18 ||   N_18     SI    VDD | ## |    N_7    N_5    N_9 ||    N_9    N_4   N_19 ||   N_19   N_10    VDD | ## |    VDD    N_9   N_20 ||   N_20   N_13   N_10 ||   N_10     SN    VDD | ## |    VDD   N_10   N_21 ||   N_21    N_4   N_11 ||   N_11    N_5   N_22 ||   N_22   N_12    VDD | ## |    VDD   N_11   N_23 ||   N_23   N_13   N_12 ||   N_12     SN    VDD | ## |   N_13     RN    VDD ||    VDD   N_12   N_14 | ## |      Q   N_14    VDD ||    VDD   N_12     QN |
+31-11:31:50  INFO:  ## |    N_4     CK    VSS ||    VSS    N_4    N_5 | ## |    N_6     SE    VSS ||    VSS      D   N_53 ||   N_53    N_6   N_29 ||   N_29     SI   N_54 ||   N_54     SE    VSS | ## |   N_29    N_4    N_9 ||    N_9    N_5   N_55 ||   N_55   N_10    VSS | ## |   N_27    N_9   N_10 ||   N_10   N_13   N_27 ||   N_27     SN    VSS | ## |    VSS   N_10   N_56 ||   N_56    N_5   N_11 ||   N_11    N_4   N_57 ||   N_57   N_12    VSS | ## |   N_25   N_11   N_12 ||   N_12   N_13   N_25 ||   N_25     SN    VSS | ## |   N_13     RN    VSS ||    VSS   N_12   N_14 | ## |      Q   N_14    VSS ||    VSS   N_12     QN |
+31-11:31:53  INFO: c153, (SDBRQ1, 48 devices), 48 devices
+31-11:31:53  INFO: -----    SDBRQ1:  scanff False False    SE
+31-11:31:53  INFO: 1. clock pattern: pattern: CLK1 in SDBRQ1: clk
+31-11:31:53  INFO: 2. inputs inv pattern: pattern: INV in SDBRQ1: ininv_RN_0
+31-11:31:53  INFO: 2. inputs inv pattern: pattern: INV in SDBRQ1: ininv_SE_0
+31-11:31:53  INFO: 3. output pattern: pattern: LOGIC3_1 in SDBRQ1: out_Q
+31-11:31:54  INFO: 4.3 inputs(D with SE or SI) pattern: pattern: FCROSS_3_2 in SDBRQ1: sesi
+31-11:31:54  INFO: 5.1 cross1 pattern: pattern: PCROSS_1 in SDBRQ1: cross1
+31-11:31:54  INFO: 5.2  back track 1 pattern: pattern: BACKTRACK3_1 in SDBRQ1: cross1
+31-11:31:54  INFO: 5.3 cross2 pattern: pattern: FCROSS_4 in SDBRQ1: cross2
+31-11:31:54  INFO: 5.4  back track 2 pattern: pattern: BACKTRACK3_1 in SDBRQ1: cross2
+31-11:31:54  INFO:  ## |    N_4     CK    VDD ||    VDD    N_4    N_5 | ## |    N_6     SE    VDD ||    VDD      D   N_15 ||   N_15     SE    N_7 ||    N_7    N_6   N_16 ||   N_16     SI    VDD | ## |    N_7    N_5    N_9 ||    N_9    N_4   N_17 ||   N_17   N_10    VDD | ## |    VDD    N_9   N_18 ||   N_18    N_3   N_10 ||   N_10     SN    VDD | ## |    VDD   N_10   N_19 ||   N_19    N_4   N_11 ||   N_11    N_5   N_20 ||   N_20   N_12    VDD | ## |    VDD   N_11   N_21 ||   N_21    N_3   N_12 ||   N_12     SN    VDD | ## |      Q    N_3   N_22 ||   N_22   N_11    VDD ||    VDD     SN      Q ||    VDD     RN    N_3 |
+31-11:31:54  INFO:  ## |    N_4     CK    VSS ||    VSS    N_4    N_5 | ## |    N_6     SE    VSS ||    VSS      D   N_35 ||   N_35    N_6   N_30 ||   N_30     SI   N_36 ||   N_36     SE    VSS | ## |   N_30    N_4    N_9 ||    N_9    N_5   N_37 ||   N_37   N_10    VSS | ## |   N_28    N_9   N_10 ||   N_10    N_3   N_28 ||   N_28     SN    VSS | ## |    VSS   N_10   N_38 ||   N_38    N_5   N_11 ||   N_11    N_4   N_39 ||   N_39   N_12    VSS | ## |   N_26   N_11   N_12 ||   N_12    N_3   N_26 ||   N_26     SN    VSS | ## |   N_24    N_3      Q ||      Q   N_11   N_24 ||   N_24     SN    VSS ||    VSS     RN    N_3 |
+31-11:31:56  INFO: Write GDS: ./demo/cell_apr/outputs/c153\top.gds

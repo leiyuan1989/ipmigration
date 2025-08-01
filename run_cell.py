@@ -18,47 +18,22 @@ parser.add_argument('--log_level', default='INFO', type=str,  help='logging leve
 args = parser.parse_args()
 
 
-
-# args.input = 'demo/cell_apr/setting_s110.csv'
-
-
-#TODO
-'''
-1. db with fast index
-2. text add
-3. pin align
-'''
-
 cfgs  = cfg.Cfg(args.input, args.log_level)
 cfgs.load_place = False#move to cfgs later
-cfgs.load_place = 'demo\cell_apr\outputs\c153\queue.csv'
+cfgs.load_place = 'demo\cell_apr\outputs\c153\queue.csv' #make placement can be revise by designer
+
+cfgs.gen_cells =  ['ff', 'latch', 'scanff']
 
 tech  = Tech(cfgs)
 
 #Support pin align creation
-if EXTRACT_PIN:
-    nl=Netlist.extract_pins(cfgs.model_file, cfgs.netlist, cfgs.output_dir)
+# if EXTRACT_PIN:
+#     nl=Netlist.extract_pins(cfgs.model_file, cfgs.netlist, cfgs.output_dir)
 
 cells = ASCell(cfgs,tech)
 cells.run()
 
-c1 = cells['DFBFB1']
-c2 = cells['DFNFB1']
-#test 
-#test 
 
-
-
-# c1 = cells['DFANRQ0']
+# c1 = cells['OR02D0']
 # c2 = cells['DENRQ0']
 # c3 = cells['DFNFQ0']
-# c4 = cells['DFNRB0']
-# c5 = cells['DFNRQ0']
-# c6 = cells['DFSCRQ0']
-# c7 = cells['SDANRQ0']
-# c8 = cells['SDNFB0']
-# c9 = cells['LANLB0']
-# p0 = c2.queue[0]
-# p1 = c2.queue[1]
-# app = App(ascell)
-# app.run(data,args)
