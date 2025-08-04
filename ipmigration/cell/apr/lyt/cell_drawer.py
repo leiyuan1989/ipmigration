@@ -13,7 +13,7 @@ import networkx as nx
 from ipmigration.cell.apr.lyt.instance import M1_Rails,NPWELL,PINMETAL
 from ipmigration.cell.apr.lyt.instance import M1_Route,GT_Route
 from ipmigration.cell.apr.lyt.instance import GT_Pair,AA_SD 
-from ipmigration.cell.apr.pr.pattern_apr import visualize_pins,find_subgraph_with_nodes
+from ipmigration.cell.apr.pr.ip_router import visualize_pins,find_subgraph_with_nodes
 import matplotlib.pyplot as plt
 # fig, ax = visualize_pins(self.ckt.name, self.m1_pins_result, self.y_lim, edges=self.edges_op)
 # plt.show()
@@ -26,10 +26,10 @@ class CellDrawer:
         self.tech = cell.tech
         self.cfgs = self.cell.cfgs
         self.edges = cell.apr.router.edges_op
-        self.placement = cell.apr.placement
+        # self.placement = cell.apr.placement
         self.pins = cell.apr.router.m1_pins_result
         self.poly_connect = cell.apr.router.poly_connect
-        self.pin_loc = cell.apr.pin_loc
+        self.pin_loc = cell.apr.router.pl
         
         
         
@@ -47,13 +47,12 @@ class CellDrawer:
         cfgs = self.cell.cfgs
         pin_loc = self.pin_loc
         poly_connect = self.poly_connect
-        vdd_nets = self.cell.apr.vdd_nets
-        vss_nets = self.cell.apr.vss_nets 
+        vdd_nets = self.cell.apr.router.vdd_nets
+        vss_nets = self.cell.apr.router.vss_nets 
         # abut_nets = self.cell.apr.abut_nets 
-        gg_nets = self.cell.apr.gg_nets
-        
-        net_loc = self.cell.apr.net_loc
-        size = self.cell.apr.grid_size 
+        gg_nets = self.cell.apr.router.gg_nets
+        net_loc = self.cell.apr.router.net_loc
+        size = self.cell.apr.router.grid_size 
         
         pins = self.pins
         edges = self.edges

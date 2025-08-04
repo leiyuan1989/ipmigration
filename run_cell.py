@@ -38,3 +38,5 @@ cells.run()
 # c1 = cells['OR02D0']
 # c2 = cells['DENRQ0']
 # c3 = cells['DFNFQ0']
+c1 = cells['DFCFB1']
+r1 = c1.apr.router
