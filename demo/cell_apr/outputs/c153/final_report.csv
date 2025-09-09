@@ -1,14 +1,14 @@
 ,cell,type,devices_num,result,message,time
-0,DFBFB1,Sequential Logic,40,Fail,Pattern APR Failed,2.467 s
-1,DFCFB1,Sequential Logic,36,Success,Success,2.388 s
-2,DFCFQ1,Sequential Logic,34,Success,Success,2.162 s
-3,DFCRB1,Sequential Logic,36,Success,Success,2.222 s
-4,DFCRN1,Sequential Logic,32,Success,Success,2.189 s
-5,DFCRQ1,Sequential Logic,34,Success,Success,2.324 s
-6,DFNFB1,Sequential Logic,28,Success,Success,1.217 s
-7,DFNRB1,Sequential Logic,28,Success,Success,1.420 s
-8,DFNRN1,Sequential Logic,26,Success,Success,1.194 s
-9,DFNRQ1,Sequential Logic,26,Success,Success,1.220 s
-10,DFPFB1,Sequential Logic,34,Success,Success,2.237 s
-11,DFPRB1,Sequential Logic,34,Success,Success,2.708 s
-12,DFPRQ1,Sequential Logic,32,Success,Success,2.222 s
+0,DFBFB1,Sequential Logic,40,Fail,Pattern APR Failed,2.077 s
+1,DFCFB1,Sequential Logic,36,Success,Success,3.108 s
+2,DFCFQ1,Sequential Logic,34,Success,Success,2.789 s
+3,DFCRB1,Sequential Logic,36,Success,Success,2.997 s
+4,DFCRN1,Sequential Logic,32,Success,Success,2.474 s
+5,DFCRQ1,Sequential Logic,34,Success,Success,3.448 s
+6,DFNFB1,Sequential Logic,28,Success,Success,1.259 s
+7,DFNRB1,Sequential Logic,28,Success,Success,1.396 s
+8,DFNRN1,Sequential Logic,26,Success,Success,1.297 s
+9,DFNRQ1,Sequential Logic,26,Success,Success,1.187 s
+10,DFPFB1,Sequential Logic,34,Success,Success,3.554 s
+11,DFPRB1,Sequential Logic,34,Success,Success,2.856 s
+12,DFPRQ1,Sequential Logic,32,Success,Success,3.605 s

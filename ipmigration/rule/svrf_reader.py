@@ -451,7 +451,7 @@ class RuleFile:
 
         while(1):
             result, token_type, token, data_tag = self.pop_data()
-            # print(self.ignore)
+            # print('1', token_type, token, data_tag )
             if data_tag == '#ELSE':
                 self.ignore = not(self.ignore)
             elif data_tag == '#ENDIF':
@@ -459,7 +459,7 @@ class RuleFile:
             
             if not(self.ignore):
                 if token_type == 'RULE':
-                    # print('test1:',self.variables)
+                    print('test1:',self.variables)
                     rule = RuleCheck(token, self.bracket_dic[token], self.variables)
                     if rule.layer:
                         if rule.layer in self.layers:

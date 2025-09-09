@@ -256,3 +256,9 @@
 31-11:31:54  INFO:  ## |    N_4     CK    VDD ||    VDD    N_4    N_5 | ## |    N_6     SE    VDD ||    VDD      D   N_15 ||   N_15     SE    N_7 ||    N_7    N_6   N_16 ||   N_16     SI    VDD | ## |    N_7    N_5    N_9 ||    N_9    N_4   N_17 ||   N_17   N_10    VDD | ## |    VDD    N_9   N_18 ||   N_18    N_3   N_10 ||   N_10     SN    VDD | ## |    VDD   N_10   N_19 ||   N_19    N_4   N_11 ||   N_11    N_5   N_20 ||   N_20   N_12    VDD | ## |    VDD   N_11   N_21 ||   N_21    N_3   N_12 ||   N_12     SN    VDD | ## |      Q    N_3   N_22 ||   N_22   N_11    VDD ||    VDD     SN      Q ||    VDD     RN    N_3 |
 31-11:31:54  INFO:  ## |    N_4     CK    VSS ||    VSS    N_4    N_5 | ## |    N_6     SE    VSS ||    VSS      D   N_35 ||   N_35    N_6   N_30 ||   N_30     SI   N_36 ||   N_36     SE    VSS | ## |   N_30    N_4    N_9 ||    N_9    N_5   N_37 ||   N_37   N_10    VSS | ## |   N_28    N_9   N_10 ||   N_10    N_3   N_28 ||   N_28     SN    VSS | ## |    VSS   N_10   N_38 ||   N_38    N_5   N_11 ||   N_11    N_4   N_39 ||   N_39   N_12    VSS | ## |   N_26   N_11   N_12 ||   N_12    N_3   N_26 ||   N_26     SN    VSS | ## |   N_24    N_3      Q ||      Q   N_11   N_24 ||   N_24     SN    VSS ||    VSS     RN    N_3 |
 31-11:31:56  INFO: Write GDS: ./demo/cell_apr/outputs/c153\top.gds
+06-12:16:57  INFO: Retrying request to /chat/completions in 0.404884 seconds
+06-12:16:57  INFO: Retrying request to /chat/completions in 0.820650 seconds
+06-12:18:36  INFO: HTTP Request: POST http://10.6.126.115:11434/chat/completions "HTTP/1.1 404 Not Found"
+06-12:19:04  INFO: HTTP Request: POST http://10.6.126.115:11434/chat/completions "HTTP/1.1 404 Not Found"
+06-12:19:38  INFO: Retrying request to /chat/completions in 0.395674 seconds
+06-12:19:38  INFO: Retrying request to /chat/completions in 0.951365 seconds

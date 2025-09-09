@@ -1,0 +1,125 @@
+design rule,layer,layer description,rule description,classification,symbol,value
+NW.W.1,NW,N-Well,Min. NWEL width  <  0.86  ,Width,<,0.86
+NW.W.2,NW,N-Well,Min. HOT_NWEL width  <  2.10  ,Width,<,2.10
+NW.S.1,NW,N-Well,Min. different potential NWEL space  <  1.40  ,Spacing,<,1.40
+NW.S.2,NW,N-Well,Min. same potential NWEL space  <  0.6  ,Spacing,<,0.6
+OD.W.1_OD.W.2,OD,Active,Min. OD width for MOS and interconnect  <  0.22  ,Width,<,0.22
+OD.S.1,OD,Active,Min. OD space  <  0.28  ,Spacing,<,0.28
+OD.C.1,OD,Active,Min. NWEL olap NPOD tie down  <  0.12  ,Enclosure,<,0.12
+OD.C.2_OD.C.3,OD,Active,Min. NWEL to NPOD space  <  0.43  ,Spacing,<,0.43
+OD.C.4,OD,Active,NWEL overlap PPOD  <  0.43  ,Enclosure,<,0.43
+OD.C.5,OD,Active,NWEL space PPOD outside NW  <  0.12  ,Spacing,<,0.12
+OD.W.3,OD,Active,"Length of active with width  <  0.42 ,  connected to butted strap  >  0.8  ",Length,>,0.8
+OD.A.1,OD,Active,Min. area of stand-alone OD region  <  0.202  ,Area,<,0.202
+PO.W.3,PO,Poly,"Min. POLY width for interconnect ,  1.8V NMOS ,  1.8V PMOS  <  0.18  ",Width,<,0.18
+PO.W.1_3.3V,PO,Poly,Min. POLY gate length 3.3V pmos  <  0.30  ,Length,<,0.30
+PO.W.2_3.3V,PO,Poly,Min. POLY gate length 3.3v nmos  <  0.35  ,Length,<,0.35
+PO.S.1,PO,Poly,Min. POLY space on OD with contact  <  0.375  ,Spacing,<,0.375
+PO.S.2_PO.S.3,PO,Poly,Min. POLY space  on OD w/o contact and interconnect  <  0.25  ,Spacing,<,0.25
+PO.C.1,PO,Poly,Min. POLY on field space to active  <  0.1  ,Spacing,<,0.1
+PO.C.2,PO,Poly,Min. OD overhang gate  <  0.32  ,Enclosure,<,0.32
+PO.O.1,PO,Poly,Min. POLY overhang active  <  0.22  ,Extension,<,0.22
+PO.R.1B,PO,Poly,45 degree 1.8V gate min. length  <  0.21  ,Length,<,0.21
+PO.R.2,PO,Poly,Max. POLY length between contacts when PO width less than 0.24um  >  50.00  ,Length,>,50.00
+PO.R.3,PO,Poly,Min poly area coverage  <  14%  ,Area,<,14
+PO.W.1_HRI,PO,Poly,Min. width of PO region for HRI poly resistor  >=  1.0um  ,Width,>=,1.0
+PP.W.1,PP,P+ implant,PP width  <  0.440  ,Width,<,0.440
+PP.S.1,PP,P+ implant,PP space  <  0.440  ,Spacing,<,0.440
+PP.C.1,PP,P+ implant,PP space to n active in pwell  <  0.260  ,Spacing,<,0.260
+PP.C.2,PP,P+ implant,PP space to non-butting NTAP  <  0.1 with PWEL space  >=  0.43  ,Spacing,<,0.1
+PP.C.3,PP,P+ implant,PP space to non-butting NTAP  <  0.18 with PWEL space  <  0.43  ,Spacing,<,0.18
+PP.C.5,PP,P+ implant,PP extension over (P gate) + (field poly within 0.35um)  <  0.32um  ,Extension,<,0.32
+PP.O.1,PP,P+ implant,Minimum overlap from a PP edge to an OD region must  >=  0.230um except SBD region  ,Enclosure,>=,0.230
+PP.E.1,PP,P+ implant,Minimum extension of a PP region beyond a P+ active OD region must  >= 0.18um except SBD region  ,Extension,>=,0.18
+PP.E.1_NP.E.1,PP,P+ implant,Implant can not coincident OD edge except butted diffusion  ,Restrictions,N/A,N/A
+PP.E.3,PP,P+ implant,Minimum enclosure of PTAP by PP  <  0.02 with NWEL space  >=  0.43  ,Enclosure,<,0.02
+PP.E.4,PP,P+ implant,Min. enc. of PTAP by PP  <  0.18 with NWEL space  <  0.43  ,Enclosure,<,0.18
+PP.A.1,PP,P+ implant,Minimum area of PP  <  0.3844  ,Area,<,0.3844
+PP.R.1_NP.R.1,PP,P+ implant,PP and NP not allowed to overlap  ,Restrictions,N/A,N/A
+PP.R.3_NP.R.3,PP,P+ implant,"OD must be fully covered by PP and NP  , except OD without interacting CO OR PO  ",Enclosure,N/A,N/A
+NP.W.1,NP,N+ implant,NP width  <  0.440  ,Width,<,0.440
+NP.S.1,NP,N+ implant,NP space  <  0.440  ,Spacing,<,0.440
+NP.C.1,NP,N+ implant,NP space to p active in NWEL  <  0.260  ,Spacing,<,0.260
+NP.C.2,NP,N+ implant,NP space to non-butting ptap  <  0.1 with NWEL space  >=  0.43  ,Spacing,<,0.1
+NP.C.3,NP,N+ implant,NP space to non-butting ptap  <  0.18 with NWEL space  <  0.43  ,Spacing,<,0.18
+NP.C.5,NP,N+ implant,NP extension over (N gate) + (field poly within 0.35um)  <  0.32um  ,Extension,<,0.32
+NP.O.1,NP,N+ implant,NP extends into n active  <  0.230  ,Extension,<,0.230
+NP.E.1,NP,N+ implant,NP olap OD  <  0.180  ,Enclosure,<,0.180
+NP.E.3,NP,N+ implant,Minimum enclosure of NTAP by NP  <  0.02 with PWEL space  >=  0.43  ,Enclosure,<,0.02
+NP.E.4,NP,N+ implant,Min. enc. of NTAP by NP  <  0.18 with PWEL space  <  0.43  ,Enclosure,<,0.18
+NP.A.1,NP,N+ implant,Minimum area of NP  <  0.3844  ,Area,<,0.3844
+NP.E.6,NP,N+ implant,Min enc of POLY resistor by NP  <  0.18  ,Enclosure,<,0.18
+CO.W.1,CO,Contact,contact width ! =  0.22  ,Width,!=,0.22
+CO.S.1,CO,Contact,contact spacing  <  0.25  ,Spacing,<,0.25
+CO.S.2,CO,Contact,Min space between two contacts in larger than 4x4 array.  ,Spacing,N/A,N/A
+CO.C.1_CO.R.1,CO,Contact,"diff contact to gate space  <  0.16 ,  or contact on gate  ",Spacing,<,0.16
+CO.C.2,CO,Contact,poly contact space to OD  <  0.20  ,Spacing,<,0.20
+CO.E.1,CO,Contact,"active olap contact  <  0.10 ,  also floating contacts  ",Enclosure,<,0.10
+CO.E.2,CO,Contact,poly olap contact  <  0.10  ,Enclosure,<,0.10
+CO.E.3,CO,Contact,Minimum extension of a PP region beyond a OD CO region must  >= 0.18um except SBD region  ,Extension,>=,0.18
+CO.E.4,CO,Contact,implant olap contact  <  0.12  ,Enclosure,<,0.12
+M1.W.1,M1,Metal 1,Min. M1 width  <  0.23  ,Width,<,0.23
+M1.S.1,M1,Metal 1,Min. M1 space  <  0.23  ,Spacing,<,0.23
+M1.S.2,M1,Metal 1,Min. space to wide M1 ( > 10um)  <  0.6  ,Spacing,<,0.6
+M1.E.1,M1,Metal 1,Min. extension of a M1 region beyond a CO region  <  0.005  ,Extension,<,0.005
+M1.E.2,M1,Metal 1,Min. extension of M1 end-of-line region beyond CO region  <  0.06  ,Extension,<,0.06
+M1.A.1,M1,Metal 1,Min. M1 area  <  0.202  ,Area,<,0.202
+M1.R.1,M1,Metal 1,Min M1 area coverage  <  30%  ,Density,<,30
+VIA1.W.1,VIA1,Via12,VIA1 must be 0.26 x 0.26  ,Width,=,0.26
+VIA1.S.1,VIA1,Via12,Min. VIA1 space  <  0.26  ,Spacing,<,0.26
+VIA1.E.1,VIA1,Via12,Min. extension of a M1 region beyond a VIA1 region  <  0.01  ,Extension,<,0.01
+VIA1.E.2,VIA1,Via12,Min. extension of M1 end-of-line region beyond VIA1 region  <  0.06  ,Extension,<,0.06
+VIA1.S.2_Array1_2_3_4_5_M,VIA1,Via12,Minimum space between two VIAs in 5-level continuous stacking VIA arrays with below condition.  >= 0.49um  Via1 violate VIA_S_3 spacing in Via1/Via2/Via3/Via4/Via5 array & density large or equal VIA_D_1  ,Spacing,>=,0.49
+VIA1.S.3_Array1_2_3_4_M,VIA1,Via12,Minimum space between two VIAs in 4-level continuous stacking VIA arrays with below condition  >= 0.49um  Via1 violate VIA_S_3 spacing in Via1/Via2/Via3/Via4 array & density large or equal VIA_D_1  ,Spacing,>=,0.49
+VIA1.S.4_Array1_2_3_M,VIA1,Via12,Minimum space between two VIAs in 3-level continuous stacking VIA arrays with below condition  >= 0.49um  Via1 violate VIA_S_3 spacing in Via1/Via2/Via3 array & density large or equal VIA_D_1  ,Spacing,>=,0.49
+VIA1.S.5_Array1_2_M,VIA1,Via12,Minimum space between two VIAs in 2-level continuous stacking VIA arrays with below condition  >= 0.49um  Via1 violate VIA_S_3 spacing in Via1/Via2 array & density large or equal VIA_D_1  ,Spacing,>=,0.49
+M2.W.1,M2,Metal 2,Min. M2 width  <  0.28  ,Width,<,0.28
+M2.S.1,M2,Metal 2,Min. M2 space  <  0.28  ,Spacing,<,0.28
+M2.S.2,M2,Metal 2,Min. space to wide M2 ( > 10um)  <  0.6  ,Spacing,<,0.6
+M2.E.1,M2,Metal 2,Min. extension of a M2 region beyond a VIA1 region  <  0.01  ,Extension,<,0.01
+M2.E.2,M2,Metal 2,Min. extension of M2 end-of-line region beyond VIA1 region  <  0.06  ,Extension,<,0.06
+M2.A.1,M2,Metal 2,Min M2 area region  <  0.202  ,Area,<,0.202
+M2.R.1,M2,Metal 2,Min M2 area coverage  <  30%  ,Area,<,30
+VIA2.W.1,VIA2,Via23,VIA2 must be 0.26 x 0.26  ,Width,=,0.26
+VIA2.S.1,VIA2,Via23,Min. VIA2 space  <  0.26  ,Spacing,<,0.26
+VIA2.E.1,VIA2,Via23,Min. extension of a M2 region beyond a VIA2 region  <  0.01  ,Extension,<,0.01
+VIA2.E.2,VIA2,Via23,Min. extension of M2 end-of-line region beyond VIA2 region  <  0.06  ,Extension,<,0.06
+VIA2.S.3_Array2_3_4_5_M,VIA2,Via23,Minimum space between two VIAs in 4-level continuous stacking VIA arrays with below condition  >= 0.49um  Via2 violate VIA_S_3 spacing in Via2/Via3/Via4/Via5 array & density large or equal VIA_D_1  ,Spacing,>=,0.49
+VIA2.S.4_Array2_3_4_M,VIA2,Via23,Minimum space between two VIAs in 3-level continuous stacking VIA arrays with below condition  >= 0.49um  Via2 violate VIA_S_3 spacing in Via2/Via3/Via4 array & density large or equal VIA_D_1  ,Spacing,>=,0.49
+VIA2.S.5_Array2_3_M,VIA2,Via23,Minimum space between two VIAs in 2-level continuous stacking VIA arrays with below condition  >= 0.49um  Via2 violate VIA_S_3 spacing in Via2/Via3 array & density large or equal VIA_D_1  ,Spacing,>=,0.49
+M3.W.1,M3,Metal 3,Min. M3 width  <  0.28  ,Width,<,0.28
+M3.S.1,M3,Metal 3,Min. M3 space  <  0.28  ,Spacing,<,0.28
+M3.S.2,M3,Metal 3,Min. space to wide M3 ( > 10um)  <  0.6  ,Spacing,<,0.6
+M3.E.1,M3,Metal 3,Min. extension of a M3 region beyond a VIA2 region  <  0.01  ,Extension,<,0.01
+M3.E.2,M3,Metal 3,Min. extension of M3 end-of-line region beyond VIA2 region  <  0.06  ,Extension,<,0.06
+M3.A.1,M3,Metal 3,Min M3 area region  <  0.202  ,Area,<,0.202
+M3.R.1,M3,Metal 3,Min M3 area coverage  <  30%  ,Area,<,30
+VIA3.W.1,VIA3,Via34,VIA3 must be 0.26 x 0.26  ,Width,=,0.26
+VIA3.S.1,VIA3,Via34,Min. VIA3 space  <  0.26  ,Spacing,<,0.26
+VIA3.E.1,VIA3,Via34,Min. extension of a M3 region beyond a VIA3 region  <  0.01  ,Extension,<,0.01
+VIA3.E.2,VIA3,Via34,Min. extension of M3 end-of-line region beyond VIA3 region  <  0.06  ,Extension,<,0.06
+VIA3.S.4_Array3_4_5_M,VIA3,Via34,Minimum space between two VIAs in 3-level continuous stacking VIA arrays with below condition  >= 0.49um  Via3 violate VIA_S_3 spacing in Via3/Via4/Via5 array & density large or equal VIA_D_1  ,Spacing,>=,0.49
+VIA3.S.5_Array3_4_M,VIA3,Via34,Minimum space between two VIAs in 2-level continuous stacking VIA arrays with below condition  >= 0.49um  Via3 violate VIA_S_3 spacing in Via3/Via4 array & density large or equal VIA_D_1  ,Spacing,>=,0.49
+M4.W.1,M4,Metal 4,Min. M4 width  <  0.28  ,Width,<,0.28
+M4.S.1,M4,Metal 4,Min. M4 space  <  0.28  ,Spacing,<,0.28
+M4.S.2,M4,Metal 4,Min. space to wide M4 ( > 10um)  <  0.6  ,Spacing,<,0.6
+M4.E.1,M4,Metal 4,Min. extension of a M4 region beyond a VIA3 region  <  0.01  ,Extension,<,0.01
+M4.E.2,M4,Metal 4,Min. extension of M4 end-of-line region beyond VIA3 region  <  0.06  ,Extension,<,0.06
+M4.A.1,M4,Metal 4,Min M4 area region  <  0.202  ,Area,<,0.202
+M4.R.1,M4,Metal 4,Min M4 area coverage  <  30%  ,Area,<,30
+VIA4.W.1,VIA4,Via45,VIA4 must be 0.26 x 0.26  ,Width,=,0.26
+VIA4.S.1,VIA4,Via45,Min. VIA4 space  <  0.26  ,Spacing,<,0.26
+VIA4.E.1,VIA4,Via45,Min. extension of a M4 region beyond a VIA4 region  <  0.01  ,Extension,<,0.01
+VIA4.E.2,VIA4,Via45,Min. extension of M4 end-of-line region beyond VIA4 region  <  0.06  ,Extension,<,0.06
+VIA4.S.5_Array4_5_M,VIA4,Via45,Minimum space between two VIAs in 2-level continuous stacking VIA arrays with below condition  >= 0.49um  Via4 violate VIA_S_3 spacing in Via4/Via5 array & density large or equal VIA_D_1  ,Spacing,>=,0.49
+M5.W.1,M5,Metal 5,Min. M5 width  <  0.28  ,Width,<,0.28
+M5.S.1,M5,Metal 5,Min. M5 space  <  0.28  ,Spacing,<,0.28
+M5.S.2,M5,Metal 5,Min. space to wide M5 ( > 10um)  <  0.6  ,Spacing,<,0.6
+M5.E.1,M5,Metal 5,Min. extension of a M5 region beyond a VIA4 region  <  0.01  ,Extension,<,0.01
+M5.E.2,M5,Metal 5,Min. extension of M5 end-of-line region beyond VIA4 region  <  0.06  ,Extension,<,0.06
+M5.A.1,M5,Metal 5,Min M5 area region  <  0.202  ,Area,<,0.202
+M5.R.1,M5,Metal 5,Min M5 area coverage  <  30%  ,Area,<,30
+VIA5.W.1,VIA5,Via56,VIA5 must be 0.36 x 0.36  ,Width,=,0.36
+VIA5.S.1,VIA5,Via56,Min. VIA5 spacing  <  0.35  ,Spacing,<,0.35
+VIA5.E.1,VIA5,Via56,Min. extension of a M5 region beyond a VIA5 region  <  0.01  ,Extension,<,0.01
+VIA5.E.2,VIA5,Via56,Min. extension of a M5 end-of-line region beyond VIA5 region  <  0.06  ,Extension,<,0.06
