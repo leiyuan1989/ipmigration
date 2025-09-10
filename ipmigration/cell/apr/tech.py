@@ -112,7 +112,7 @@ class Tech(object):
             self.BORDER:['false','#80ff8d','#80ff8d','0','0','I9','true','false','false','false','false','0'],            
             self.M1TXT: ['false','#ff0000','#ff0000','0','0','I5','true','true' ,'false','false','false','0'],
             self.SUBTXT:['false','#004080','#004080','0','0','I5','true','true' ,'false','false','false','0']  }
-
+        self.lyp_dict = lyp_dict
         with open(os.path.join(folder,'kl_' + self.tech_name + '.lyp'),'w') as f:
             f.write('<?xml version="1.0" encoding="utf-8"?>\n')
             f.write('<layer-properties>\n')
