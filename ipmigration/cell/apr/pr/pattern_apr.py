@@ -23,6 +23,22 @@ output_mappings = {
     frozenset({'out_ECK'}): [['out_ECK']]
 }
 
+class Placement:
+    def __init__(self,ckt,sub_ckts,place_file, vertical_tracks=6, load=False):
+        self.name = ckt.name
+        self.ckt = ckt
+        self.sub_ckts = sub_ckts
+        self.place_file = place_file
+        self.load = load
+        self.placement = []
+
+
+
+
+
+
+
+
 
 
 
@@ -57,6 +73,9 @@ class PatternAPR:
                 queue = self.cal_queue()
                 self.write_place_file(queue)
                 self.ready=False
+
+    
+
 
     def run(self):
         if self.ckt.ckt_type in  ['ff'       ,'scanff'   ,'latch'     ,'clockgate']:

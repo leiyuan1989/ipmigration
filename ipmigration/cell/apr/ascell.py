@@ -140,7 +140,7 @@ class ASCell:
         self.fail = fail
         print('Pass Rate: %d/%d, %.2f%%'%(len(success),len(fail),len(success)*100/(len(fail)+len(success))))
         self.report(report_data)
-        self.count_patterns(success)
+        # self.count_patterns(success)
         self.gen_gds()     
 
     def report(self,report_data):

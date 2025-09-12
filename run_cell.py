@@ -39,4 +39,4 @@ cells.run()
 # c2 = cells['DENRQ0']
 # c3 = cells['DFNFQ0']
 c1 = cells['DFCFB1']
-r1 = c1.apr.router
+# r1 = c1.apr.router

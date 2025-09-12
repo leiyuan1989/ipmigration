@@ -25,10 +25,14 @@ class StdCell:
         
     def run(self,top_layout,db_layers):
         result,msg = self.global_pr()
-        if result:
-            result,msg  = self.detail_pr(top_layout,db_layers)
+        # if result:
+        #     result,msg  = self.detail_pr(top_layout,db_layers)
 
         return result,msg
+    
+    def __repr__(self):
+        return 'cell name: %s'%(self.name)
+    
     
     def init_layout(self,top_layout,db_layers):
         self.db_layout = top_layout.create_cell(self.ckt.name)
@@ -56,6 +60,9 @@ class StdCell:
         self.apr = PatternAPR(self.ckt, self.de_ckt.sub_ckts, self.place_file, self.tech.M1_tracks_num , self.load_place)
         apr_result = self.apr.run()         
             
+        
+        
+        
         if not(apr_result):
             return 0, "Pattern APR Failed" 
 
