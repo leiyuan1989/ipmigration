@@ -438,7 +438,7 @@ class DeCKT:
         
 
         pattern = self.patterns.rscross_dict[rs_key]    
-        print('search_rscross', pattern,net_match)        
+        #print('search_rscross', pattern,net_match)        
         result = []
         for ckt_name, ckt in pattern.items():
             ckt_graph = self.patterns.ckt_graph[ckt_name] 

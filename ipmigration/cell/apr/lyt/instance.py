@@ -524,7 +524,7 @@ class GT_Pair(Instance):
                     gt_p_top =  ys[-1] - tech.CT_E_GT.v - tech.CT_W.hv
                     gt_p_bottom = middle
                     gt_n_top = middle
-                    gt_n_bottom = tech.gt_dn_rg.p1
+                    gt_n_bottom = tech.gt_dn
                     
                     aa_p_top = gt_p_top - max(tech.GT_X_AA.v, tech.GT_S_LGT_AA.v)
                     #why not consider GT_X_AA
@@ -534,10 +534,10 @@ class GT_Pair(Instance):
                     
                 else:
                     #pin_p on gtp
-                    gt_p_top =  tech.gt_up_rg.p2
+                    gt_p_top =  tech.gt_up
                     gt_p_bottom = middle
                     gt_n_top = middle
-                    gt_n_bottom = tech.gt_dn_rg.p1
+                    gt_n_bottom = tech.gt_dn
                     
                     aa_p_top = gt_p_top -tech.GT_X_AA.v
                     aa_p_bottom = gt_p + tech.CT_E_GT.v +   tech.CT_W.hv + max(tech.GT_X_AA.v, tech.GT_S_LGT_AA.v)
@@ -554,7 +554,7 @@ class GT_Pair(Instance):
                 
                 
                 if y == 0:
-                    gt_p_top =  tech.gt_up_rg.p2
+                    gt_p_top =  tech.gt_up
                     gt_p_bottom = middle
                     gt_n_top = middle
                     gt_n_bottom =  ys[0] + tech.CT_E_GT.v + tech.CT_W.hv
@@ -566,10 +566,10 @@ class GT_Pair(Instance):
                     
                 else:
                     #pin_n on gtn
-                    gt_p_top =  tech.gt_up_rg.p2
+                    gt_p_top =  tech.gt_up
                     gt_p_bottom = middle
                     gt_n_top = middle
-                    gt_n_bottom = tech.gt_dn_rg.p1
+                    gt_n_bottom = tech.gt_dn
                     
                     aa_p_top = gt_p_top -tech.GT_X_AA.v
                     aa_p_bottom = gt_p + tech.AA_S.hv 
@@ -577,10 +577,10 @@ class GT_Pair(Instance):
                     aa_n_bottom = gt_n_bottom + tech.GT_X_AA.v
             else:
                 #poly connect from previous gt
-                gt_p_top =  tech.gt_up_rg.p2
+                gt_p_top =  tech.gt_up
                 gt_p_bottom = middle
                 gt_n_top = middle
-                gt_n_bottom = tech.gt_dn_rg.p1
+                gt_n_bottom = tech.gt_dn
                 
                 aa_p_top = gt_p_top -tech.GT_X_AA.v
                 aa_p_bottom = gt_p + tech.AA_S.hv 
@@ -628,14 +628,14 @@ class GT_Pair(Instance):
                         aa_p_bottom = gt_p_bottom + tech.GT_S_LGT_AA.v
                         
                     else:
-                        gt_p_top =  tech.gt_up_rg.p2
+                        gt_p_top =  tech.gt_up
                         gt_p_bottom = gt_p + tech.CT_E_GT.v + tech.CT_W.hv 
                         
                         aa_p_top = gt_p_top -tech.GT_X_AA.v
                         aa_p_bottom = gt_p + tech.CT_E_GT.v + tech.CT_W.hv + max(tech.GT_S_LGT_AA.v ,tech.CT_S_AA.v - tech.CT_E_GT.v)
                 else:
                     #no pin 
-                    gt_p_top =  tech.gt_up_rg.p2
+                    gt_p_top =  tech.gt_up
                     gt_p_bottom =  gt_p - tech.CT_E_GT.v - tech.CT_W.hv 
                     aa_p_top = gt_p_top - tech.GT_X_AA.v
                     aa_p_bottom = gt_p_bottom + tech.GT_X_AA.v
@@ -659,7 +659,7 @@ class GT_Pair(Instance):
                     assert y!=0
                     
                     gt_n_top = gt_n - tech.CT_E_GT.v + tech.CT_W.hv 
-                    gt_n_bottom =  tech.gt_dn_rg.p1
+                    gt_n_bottom =  tech.gt_dn
 
                     aa_n_top = gt_n_top - max(tech.GT_S_LGT_AA.v ,tech.CT_S_AA.v - tech.CT_E_GT.v)
                     aa_n_bottom = gt_n_bottom + tech.GT_X_AA.v
@@ -668,7 +668,7 @@ class GT_Pair(Instance):
                     #no pin
                     gt_n = ys[pin_loc.gtn]
                     gt_n_top =   gt_n - tech.CT_E_GT.v - tech.CT_W.hv 
-                    gt_n_bottom =  tech.gt_dn_rg.p1
+                    gt_n_bottom =  tech.gt_dn
                     aa_n_top = gt_n_top - tech.GT_X_AA.v
                     aa_n_bottom = gt_n_bottom + tech.GT_X_AA.v
                     
@@ -1105,8 +1105,8 @@ class GT_AA_BK(Instance):
         mu = pattern_router.median_u
         md = pattern_router.median_d
         dn = 0
-        dn = tech.gt_dn_rg.p1 + tech.GT_X_AA.v
-        tp = tech.gt_up_rg.p2 - tech.GT_X_AA.v
+        dn = tech.gt_dn + tech.GT_X_AA.v
+        tp = tech.gt_up - tech.GT_X_AA.v
         self.data['GT'] = []
         self.data['AA'] = []
         self.data['CT'] = []
@@ -1122,7 +1122,7 @@ class GT_AA_BK(Instance):
                     box1 =  Box([x-h_l, 
                                 bottom,  
                                 x+h_l, 
-                                tech.gt_up_rg.p2])
+                                tech.gt_up])
                     
                     box2 =  Box([x-h_l, 
                                 tp-W,  
@@ -1137,7 +1137,7 @@ class GT_AA_BK(Instance):
                     h_l = int(0.5*L)
                     x,top = node_loc[(col,md)]
                     box1 =  Box([x-h_l, 
-                                tech.gt_dn_rg.p1,  
+                                tech.gt_dn,  
                                 x+h_l, 
                                 top])
                     box2 =  Box([x-h_l, 
@@ -1256,7 +1256,7 @@ class GT_AA_BK(Instance):
                 #     box1 =  Box([x-h_l, 
                 #                 bottom,  
                 #                 x+h_l, 
-                #                 tech.gt_up_rg.p2])
+                #                 tech.gt_up])
                     
                 #     box2 =  Box([x-h_l, 
                 #                 tp-W,  
@@ -1271,7 +1271,7 @@ class GT_AA_BK(Instance):
                 #     h_l = int(0.5*L)
                 #     x,top = node_loc[(col,md)]
                 #     box1 =  Box([x-h_l, 
-                #                 tech.gt_dn_rg.p1,  
+                #                 tech.gt_dn,  
                 #                 x+h_l, 
                 #                 top])
                 #     box2 =  Box([x-h_l, 

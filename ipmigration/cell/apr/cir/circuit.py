@@ -41,9 +41,9 @@ class Ckt:
         self.pin_map_r = {} #ascell to netlist
         self.io_map = {}    #netlist to ascell
         self.io_map_r = {}  #ascell to netlist       
-        self.ipins = {}
+        self.ipins = {} #netlist to ascell
         self.ipins_r = {}        
-        self.opins = {}
+        self.opins = {} #netlist to ascell
         self.opins_r = {}      
 
         self.vdd_net = 'VDD'

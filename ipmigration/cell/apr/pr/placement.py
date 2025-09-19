@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.patches import FancyBboxPatch
+from matplotlib.patches import Rectangle
 
 class Placement:
     def __init__(self, place_data):
@@ -13,24 +14,22 @@ class Placement:
             layer = {}
             # 处理PMOS器件
             if 'P' in devices and devices['P'] is not None:
-                p_info, p_name = devices['P']
-                p_source, p_gate, p_drain = p_info
+                mos = devices['P']
                 layer['P'] = {
-                    'name': p_name,
-                    'source': p_source,
-                    'gate': p_gate,
-                    'drain': p_drain
+                    'name': mos.name,
+                    'source': mos.S,
+                    'gate': mos.G,
+                    'drain': mos.D
                 }
             
             # 处理NMOS器件
             if 'N' in devices and devices['N'] is not None:
-                n_info, n_name = devices['N']
-                n_source, n_gate, n_drain = n_info
+                mos = devices['N']
                 layer['N'] = {
-                    'name': n_name,
-                    'source': n_source,
-                    'gate': n_gate,
-                    'drain': n_drain
+                    'name': mos.name,
+                    'source': mos.S,
+                    'gate': mos.G,
+                    'drain': mos.D
                 }
             
             parsed.append(layer)
@@ -59,12 +58,12 @@ class Placement:
         return True
     
     def print_abutment_result(self):
-        """打印当前Placement内部的连接检测结果"""
         result = self.detect_abutment()
         if result:
-            print("所有器件都满足相邻连接要求")
+            print("Abutment test passed!")
         else:
-            print("存在不满足相邻连接要求的器件")
+            print("Abutment test failed!")
+        
     
     @staticmethod
     def check_placement_abutment(placement1, placement2):
@@ -134,10 +133,14 @@ class Placement:
             return (False, None)  # 不能连接
     
     @staticmethod
-    def merge_two_placements(placement1, placement2, preferred_order=None):
+    def merge_two_placements(placement1, placement2, preferred_order=None, abutment=True):
         """合并两个Placement实例"""
         # 检查是否可以连接
-        can_abut, order = Placement.check_placement_abutment(placement1, placement2)
+        if abutment:
+            can_abut, order = Placement.check_placement_abutment(placement1, placement2)
+        else:
+            can_abut = False
+            # order = 0
         
         # 处理双向都能连接的情况
         if can_abut and order == 2 and preferred_order is not None:
@@ -158,7 +161,7 @@ class Placement:
         return Placement(merged_data)
     
     @staticmethod
-    def merge_placement_list(placement_list, preferred_orders=None):
+    def merge_placement_list(placement_list, preferred_orders=None,abutment=False):
         """
         合并一个Placement实例的列表
         
@@ -181,26 +184,157 @@ class Placement:
             if preferred_orders and i-1 < len(preferred_orders):
                 preferred_order = preferred_orders[i-1]
             
-            merged = Placement.merge_two_placements(merged, placement_list[i], preferred_order)
+            merged = Placement.merge_two_placements(merged, placement_list[i], preferred_order, abutment)
         
         return merged
     
     def print_structure(self):
-        """打印布局结构，可以限制显示的层数"""
         print("Placement:")
         layers_to_print = self.parsed_data
-        
         for i, layer in enumerate(layers_to_print):
             p_info = f"P:{layer['P']['name']}({layer['P']['source']}→{layer['P']['drain']})" if 'P' in layer else "P:None"
             n_info = f"N:{layer['N']['name']}({layer['N']['source']}→{layer['N']['drain']})" if 'N' in layer else "N:None"
             print(f"Column {i}: {p_info}, {n_info}")
     
     def get_layer_count(self):
-        """返回布局的层数"""
         return len(self.parsed_data)
 
 
-    def plot(self, figsize=(18, 10), title="Placement MOS Layout Visualization"):
+    def process(self,ckt):
+        pin_loc = {}
+        loc = 1     
+        num = len(self.place_data)
+        for idx, pn in enumerate(self.place_data):
+            if idx != num - 1:
+                pn_right = self.place_data[idx+1]
+            else:
+                pn_right = {'P': None, 'N': None}    
+            
+            for idx2, pn_type in enumerate(['P','N']):
+                if pn_type in pn and pn[pn_type] is not None:
+                    if not( (loc-1,idx2) in pin_loc):
+                           pin_loc[(loc-1,idx2)] = []
+                    if not( (loc,idx2) in pin_loc):
+                           pin_loc[(loc,idx2)] = []                    
+                    if not( (loc+1,idx2) in pin_loc):
+                           pin_loc[(loc+1,idx2)] = []            
+                    pin_loc[(loc-1,idx2)].append([pn[pn_type] ,'S'])
+                    pin_loc[(loc,idx2)].append([pn[pn_type] ,'G'])          
+                    pin_loc[(loc+1,idx2)].append([pn[pn_type] ,'D'])
+            
+            
+            
+            if pn['P'] == None and pn['N'] == None:
+                loc = loc + 1
+            else:
+                if pn_right['P'] == None and pn_right['N'] == None:
+                    loc = loc + 3
+                else:
+                    loc = loc + 2
+        pins = []
+        
+        for idx in range(loc):
+            if (idx, 0) in pin_loc:
+                #net, layer, mos, mos_pin, abut_mos
+                devices = pin_loc[(idx,0)]
+                device,pin = devices[0]
+                net = device.get(pin)
+                if pin=='G':
+                    layer = 'GT'
+                else:
+                    layer = 'AA'
+                mos = device
+                if len(devices)==1:
+                    abut_mos = None
+                    mos_pin = pin
+                else:
+                    abut_mos = devices[1][0]
+                    mos_pin = 'SD'
+                p_pin = Pin(net, layer, mos, mos_pin, abut_mos)
+            else:
+                p_pin = None    
+            if (idx, 1) in pin_loc:
+                #net, layer, mos, mos_pin, abut_mos
+                devices = pin_loc[(idx,1)]
+                device,pin = devices[0]
+                net = device.get(pin)
+                if pin=='G':
+                    layer = 'GT'
+                else:
+                    layer = 'AA'
+                mos = device
+                if len(devices)==1:
+                    abut_mos = None
+                    mos_pin = pin
+                else:
+                    abut_mos = devices[1][0]
+                    mos_pin = 'SD'
+                n_pin = Pin(net, layer, mos, mos_pin, abut_mos)
+            else:
+                n_pin = None                
+        
+            pins.append([p_pin,n_pin])
+
+            nets = {}
+            nets_route = {}
+            vdd_pins = []
+            vss_pins = []
+            abut_pins = []
+            i_pins = []
+            o_pins = []
+
+
+            for p,n in pins:
+                if p:
+                    if p.is_vdd:
+                       vdd_pins.append(p)
+                    else:
+                        if not(p.net in nets):
+                            nets[p.net]=[]
+                        nets[p.net].append(p)
+                    # if p.net in ckt.ipins:
+                    #     i_pins.append(p)
+                    if p.net in self.ckt.opins:
+                        o_pins.append(p)
+                    if p.net in self.ckt.ipins:
+                        i_pins.append(p)       
+                    
+                if n:
+                    if n.is_vss:
+                       vss_pins.append(n)
+                    else:
+                        if not(n.net in nets):
+                            nets[n.net]=[]
+                        nets[n.net].append(n)         
+                        
+                    # if n.net in ckt.ipins:
+                    #     i_pins.append(n)
+                    if n.net in self.ckt.opins:
+                        o_pins.append(n)
+                    if n.net in self.ckt.ipins:
+                        i_pins.append(n)                          
+        
+        
+        for net, v in nets.items():
+            if len(v) == 1:
+                abut_pins += v
+            else:
+                nets_route[net] = v              
+        self.pins = pins
+        self.nets = nets
+        self.vdd_pins = vdd_pins
+        self.vss_pins = vss_pins
+        self.nets_route = nets_route
+        self.abut_pins = abut_pins
+        # self.cgg_pins = cgg_pins
+        # self.caa_pins = caa_pins
+        self.i_pins = i_pins
+        self.o_pins = o_pins        
+
+
+
+
+    def plot(self, figsize=(18, 10), title="Placement"):
         """
         绘制MOS器件布局：
         - 横向：按 Column 从左到右排列
@@ -386,77 +520,252 @@ class Placement:
         # 显示图像
         plt.show()
 
+    def plot_pins(self, figsize=(18, 10)):
+        fig, ax = plt.subplots(figsize=figsize)
+        ax.set_title('Global', fontsize=16, fontweight='bold', pad=20)  
+        
+        # 2. 固定绘图参数（确保器件尺寸统一）
+        col_total_width = 5.2    # 单个Column总宽度（source+gate+drain+间隙）
+        col_spacing = 1.0        # Column之间的间距
+        part_width = 2.0         # source/gate/drain 的基础宽度
+        p_y_top = 2.2            # PMOS区域顶部y坐标
+        p_y_bottom = 1.0         # PMOS区域底部y坐标
+        n_y_top = -1.0           # NMOS区域顶部y坐标
+        n_y_bottom = -2.2        # NMOS区域底部y坐标
+        normal_height = 0.8      # source/drain 的高度
+        gate_height = 1.2        # gate 的高度（比source/drain长0.4单位）
+        
+        # 3. 遍历每个Column绘制器件
+        for col_idx, col in enumerate(self.parsed_data):
+            # 计算当前Column的起始x坐标（左对齐）
+            col_start_x = col_idx * (col_total_width + col_spacing)
+            
+            # ---------------------- 绘制PMOS（上区域） ----------------------
+            if 'P' in col:
+                p = col['P']
+                # 计算PMOS各部分的x坐标（居中分布在Column内）
+                p_source_x = col_start_x + 0.2
+                p_gate_x = p_source_x + part_width + 0.1
+                p_drain_x = p_gate_x + part_width + 0.1
+                
+                # 1. source（左，红色）
+                p_source = FancyBboxPatch(
+                    (p_source_x, p_y_bottom),  # 左下角坐标（垂直居中）
+                    part_width, normal_height,
+                    boxstyle="round,pad=0.05",  # 圆角优化视觉效果
+                    facecolor='#ff4444', alpha=0.8,  # 浅红色（半透明）
+                    edgecolor='black', linewidth=1.5
+                )
+                
+                # 2. gate（中，蓝色，稍长）
+                p_gate = FancyBboxPatch(
+                    (p_gate_x, p_y_bottom - 0.2),  # 上下延伸0.2单位
+                    part_width, gate_height,
+                    boxstyle="round,pad=0.05",
+                    facecolor='#2288ff', alpha=0.9,  # 亮蓝色
+                    edgecolor='black', linewidth=1.5
+                )
+                
+                # 3. drain（右，红色）
+                p_drain = FancyBboxPatch(
+                    (p_drain_x, p_y_bottom),
+                    part_width, normal_height,
+                    boxstyle="round,pad=0.05",
+                    facecolor='#ff4444', alpha=0.8,
+                    edgecolor='black', linewidth=1.5
+                )
+                
+                # 添加PMOS器件到画布
+                ax.add_patch(p_source)
+                ax.add_patch(p_gate)
+                ax.add_patch(p_drain)
+                
+                # 添加PMOS标签（白色文字，突出显示）
+                # 器件名（gate上方）
+                ax.text(
+                    p_gate_x + part_width/2, p_y_top + 0.1,
+                    f"PMOS: {p['name']}",
+                    ha='center', va='bottom', fontsize=11, fontweight='bold'
+                )
+                # source Net名（source中心）
+                ax.text(
+                    p_source_x + part_width/2, p_y_bottom + normal_height/2 -0.2,
+                    p['source'],
+                    ha='center', va='center', fontsize=8, color='white', fontweight='bold'
+                )
+                # gate Net名（gate中心）
+                ax.text(
+                    p_gate_x + part_width/2, p_y_bottom + gate_height/2,
+                    p['gate'],
+                    ha='center', va='center', fontsize=8, color='white', fontweight='bold'
+                )
+                # drain Net名（drain中心）
+                ax.text(
+                    p_drain_x + part_width/2, p_y_bottom + normal_height/2 - 0.2,
+                    p['drain'],
+                    ha='center', va='center', fontsize=8, color='white', fontweight='bold'
+                )
+            
+            # ---------------------- 绘制NMOS（下区域） ----------------------
+            if 'N' in col:
+                n = col['N']
+                # 计算NMOS各部分的x坐标（与PMOS对齐）
+                n_source_x = col_start_x + 0.2
+                n_gate_x = n_source_x + part_width + 0.1
+                n_drain_x = n_gate_x + part_width + 0.1
+                
+                # 1. source（左，红色）
+                n_source = FancyBboxPatch(
+                    (n_source_x, n_y_top - normal_height),  # 垂直居中（NMOS区域）
+                    part_width, normal_height,
+                    boxstyle="round,pad=0.05",
+                    facecolor='#ff4444', alpha=0.8,
+                    edgecolor='black', linewidth=1.5
+                )
+                
+                # 2. gate（中，蓝色，稍长）
+                n_gate = FancyBboxPatch(
+                    (n_gate_x, n_y_top - gate_height + 0.2),  # 上下延伸0.2单位
+                    part_width, gate_height,
+                    boxstyle="round,pad=0.05",
+                    facecolor='#2288ff', alpha=0.9,
+                    edgecolor='black', linewidth=1.5
+                )
+                
+                # 3. drain（右，红色）
+                n_drain = FancyBboxPatch(
+                    (n_drain_x, n_y_top - normal_height),
+                    part_width, normal_height,
+                    boxstyle="round,pad=0.05",
+                    facecolor='#ff4444', alpha=0.8,
+                    edgecolor='black', linewidth=1.5
+                )
+                
+                # 添加NMOS器件到画布
+                ax.add_patch(n_source)
+                ax.add_patch(n_gate)
+                ax.add_patch(n_drain)
+                
+                # 添加NMOS标签（白色文字）
+                # 器件名（gate下方）
+                ax.text(
+                    n_gate_x + part_width/2, n_y_bottom - 0.1,
+                    f"NMOS: {n['name']}",
+                    ha='center', va='top', fontsize=11, fontweight='bold'
+                )
+                # source Net名（source中心）
+                ax.text(
+                    n_source_x + part_width/2, n_y_top - normal_height/2 + 0.2,
+                    n['source'],
+                    ha='center', va='center', fontsize=10, color='white', fontweight='bold'
+                )
+                # gate Net名（gate中心）
+                ax.text(
+                    n_gate_x + part_width/2, n_y_top - gate_height/2,
+                    n['gate'],
+                    ha='center', va='center', fontsize=10, color='white', fontweight='bold'
+                )
+                # drain Net名（drain中心）
+                ax.text(
+                    n_drain_x + part_width/2, n_y_top - normal_height/2 + 0.2,
+                    n['drain'],
+                    ha='center', va='center', fontsize=10, color='white', fontweight='bold'
+                )
+            
 
-# 示例用法
+        
+        # 4. 优化画布样式
+        # 设置坐标轴范围（留出边距）
+        total_x_range = len(self.parsed_data) * (col_total_width + col_spacing) - col_spacing + 2
+        ax.set_xlim(-0.5, total_x_range)
+        ax.set_ylim(-3.0, 3.0)
+        
+        # 添加水平分隔线（区分PMOS和NMOS区域）
+        ax.axhline(y=0, color='black', linestyle='--', linewidth=1.5, alpha=0.7, label='上下区域分隔线')
+        
+        # 添加图例
+        legend_elements = [
+            patches.Patch(color='#ff4444', alpha=0.8, label='Source / Drain'),
+            patches.Patch(color='#2288ff', alpha=0.9, label='Gate'),
+        ]
+        ax.legend(handles=legend_elements, fontsize=12, loc='upper right')
+        
+        # 添加网格（便于对齐查看）
+        ax.grid(True, alpha=0.3, linestyle='-', linewidth=0.5)
+        
+        # 调整布局（避免标签被截断）
+        plt.tight_layout()
+        # 显示图像
+        plt.show()
+
+
+class Pin:
+    def __init__(self, net, layer, mos, mos_pin, abut_mos=None):
+        self.net = net
+        self.layer = layer
+        self.mos = mos
+        self.mos_pin = mos_pin #'S' 'D' or 'G' or 'SD'
+        self.abut_mos = abut_mos
+
+    def __repr__(self):
+        return '|%s,%s,%s|'%(self.net,self.layer,self.mos_pin)
+
+        
+    @property
+    def is_vdd(self):
+        return self.net=='VDD'
+    @property
+    def is_vss(self):
+        return  self.net=='VSS'
+    @property
+    def is_gate(self):
+        return  self.mos_pin =='G'
+    @property
+    def is_source(self):
+        return  self.mos_pin == 'S'
+    @property
+    def is_drain(self):
+        return  self.mos_pin == 'D'
+    @property
+    def is_abutment(self):
+        return  self.mos_pin == 'SD'
+    @property
+    def is_aa(self):
+        return  self.layer == 'AA'
+    def set_locs(self,locs):
+        self.locs = locs
+
+    @staticmethod
+    def merge(pin1,pin2):
+        assert pin1.layer == 'GT'
+        assert pin2.layer == 'GT'
+        assert pin1.net ==  pin2.net
+        return Pin(pin1.net,pin1.layer,[pin1.mos,pin2.mos],pin1.mos_pin)
+        
+
+
+
 if __name__ == "__main__":
-    # 准备测试数据 - 修复元组格式，添加引号
-    data1 = [
-        {'P': (('N_4', 'CKN', 'VDD'), 'M19'), 'N': (('N_4', 'CKN', 'VSS'), 'M1')},
-        {'P': (('VDD', 'N_4', 'N_5'), 'M20'), 'N': (('VSS', 'N_4', 'N_5'), 'M2')}
-    ]
-    
-    data2 = [
-        {'P': (('N_10', 'RN', 'VDD'), 'M33'), 'N': (('N_10', 'RN', 'VSS'), 'M15')}
-    ]
-    
-    data3 = [
-        {'P': (('VDD', 'N_9', 'QN'), 'M36'), 'N': (('VSS', 'N_9', 'QN'), 'M18')}
-    ]
-    
-    data4 = [
-        {'P': (('Q', 'N_11', 'VDD'), 'M35'), 'N': (('Q', 'N_11', 'VSS'), 'M17')}
-    ]
-    
-    data5 = [
-        {'P': (('VDD', 'N_9', 'N_11'), 'M34'), 'N': (('VSS', 'N_9', 'N_11'), 'M16')}
-    ]
-    
-    data6 = [
-        {'P': (('VDD', 'D', 'N_21'), 'M21'), 'N': (('VSS', 'D', 'N_14'), 'M3')},
-        {'P': (('N_21', 'N_4', 'N_6'), 'M23'), 'N': (('N_14', 'N_5', 'N_6'), 'M4')},
-        {'P': (('N_6', 'N_5', 'N_22'), 'M22'), 'N': (('N_6', 'N_4', 'N_15'), 'M5')},
-        {'P': (('N_22', 'N_7', 'VDD'), 'M24'), 'N': (('N_15', 'N_7', 'VSS'), 'M6')}
-    ]
-    
-    data7 = [
-        {'P': (('VDD', 'N_6', 'N_23'), 'M25'), 'N': (('VSS', 'N_6', 'N_7'), 'M7')},
-        {'P': (('N_23', 'N_10', 'N_7'), 'M26'), 'N': (('N_7', 'N_10', 'VSS'), 'M8')}
-    ]
-    
-    data8 = [
-        {'P': (('VDD', 'N_7', 'N_24'), 'M27'), 'N': (('VSS', 'N_7', 'N_16'), 'M9')},
-        {'P': (('N_24', 'N_5', 'N_8'), 'M28'), 'N': (('N_16', 'N_4', 'N_8'), 'M10')},
-        {'P': (('N_8', 'N_4', 'N_25'), 'M29'), 'N': (('N_8', 'N_5', 'N_17'), 'M11')},
-        {'P': (('N_25', 'N_9', 'VDD'), 'M30'), 'N': (('N_17', 'N_9', 'VSS'), 'M12')}
-    ]
-    
-    data9 = [
-        {'P': (('VDD', 'N_8', 'N_26'), 'M31'), 'N': (('VSS', 'N_8', 'N_9'), 'M13')},
-        {'P': (('N_26', 'N_10', 'N_9'), 'M32'), 'N': (('N_9', 'N_10', 'VSS'), 'M14')}
-    ]
+    #c1 if from main test
+    data = {k:v.place  for k,v in c1.de_ckt.sub_ckts.items()}
+    placements1 = list(data.values())
+    placements2 = c1.apr.placement
     
     # 创建Placement实例列表
-    placements = [
-        Placement(data1),
-        Placement(data2),
-        Placement(data3),
-        Placement(data4),
-        Placement(data5),
-        Placement(data6),
-        Placement(data7),
-        Placement(data8),
-        Placement(data9)
-    ]
+    placements = [Placement(t) for t in placements1]
+    placements[5].place_data[2]['P'] = None #for test
+    placements[5].place_data[1]['N'] = None #for test
     
     # 打印每个Placement的信息
     print("=== 原始Placement列表 ===")
     for i, placement in enumerate(placements):
         print(f"\nPlacement {i+1}: {placement.get_layer_count()} 层")
         placement.print_structure() 
+        placement.print_abutment_result()
     
     # 合并所有Placement
     print("\n=== 开始合并所有Placement ===")
-    merged = Placement.merge_placement_list(placements)
+    merged = Placement.merge_placement_list(placements,abutment=False)
     
     # 显示合并结果
     print("\n=== 合并结果 ===")
@@ -472,3 +781,5 @@ if __name__ == "__main__":
         figsize=(20, 10),
         title="Placement"
     )
+    pins=merged.gen_pins() 
+    fig = visualize_pins(pins)

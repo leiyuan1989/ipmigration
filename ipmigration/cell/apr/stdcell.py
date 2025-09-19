@@ -25,8 +25,8 @@ class StdCell:
         
     def run(self,top_layout,db_layers):
         result,msg = self.global_pr()
-        # if result:
-        #     result,msg  = self.detail_pr(top_layout,db_layers)
+        if result:
+            result,msg  = self.detail_pr(top_layout,db_layers)
 
         return result,msg
     

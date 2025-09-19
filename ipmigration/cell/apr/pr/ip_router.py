@@ -10,7 +10,7 @@ from z3 import Optimize,Solver
 from z3 import Int, Bool, Or, And, Not, Distinct, If, is_true,sat,Abs
 
 DEBUG=False
-PLOT =False
+PLOT =True
 
 
 pin_locs = {
@@ -40,7 +40,102 @@ class IPRouter:
         self.vtracks = vtracks
         self.pl = PinLoc(vtracks)
         self.placement = placement
+
+    def route(self):
+        self.gen_pins()
+
+
+        s = Solver()     
+        self.poly_constraints(self.x_pins)
+        t = replace_points(self.x_pins,self.crossing_pairs)
+        t = replace_points(t,self.hshape_pairs)
+        self.m1_pins = t     
         
+        if PLOT:
+           fig, ax = visualize_pins(self.ckt.name+ ': pins', self.x_pins, self.y_lim)
+           plt.show()
+        
+        self.cross_nets = generate_interval_dict(self.m1_pins)
+        self.ip_route(s, self.m1_pins, self.cross_nets)    
+
+        
+        
+        if self.result:
+            print('-----Route Success!------')
+            if PLOT:
+                fig, ax = visualize_pins(self.ckt.name+ ': result', self.m1_pins_result, self.y_lim, edges=self.edges)
+                plt.show()
+            #process edges
+            self.col_edges(self.variables,self.m1_pins_result)
+            if PLOT:
+                fig, ax = visualize_pins(self.ckt.name+ ': edges', self.m1_pins_result, self.y_lim, edges=self.edges)
+                plt.show()
+                
+            #optimize edges
+            self.optimize_edges(self.m1_pins_result)
+            if PLOT:
+                fig, ax = visualize_pins(self.ckt.name+ ': edges 1st optimization', self.m1_pins_result, self.y_lim, edges=self.edges_op)
+                plt.show()
+ 
+            #optimize edges with input pins optimized
+            result = self.optimize_edges(self.m1_pins_result, inpins_op=True)
+            if result:
+                if PLOT:
+                    fig, ax = visualize_pins(self.ckt.name + ': input pins optimization', self.m1_pins_result, self.y_lim, edges=self.edges_op)
+                    plt.show()            
+            return True
+            
+        else:
+            print('-----Route Failed!------')
+            if DEBUG:
+                #begin debug
+                print('--Begin Debug--')
+                increment = 5
+                m1_pins_list = split_dict_by_increment(self.m1_pins, increment=increment)
+                col = 0
+                for m1_pins in m1_pins_list:
+                    col = col + increment
+                    s = Solver()
+                    cross_nets =  generate_interval_dict(m1_pins)
+                    self.ip_route(s, m1_pins, cross_nets)    
+                    
+                    if self.result:
+                        print("Pass: %d"%(col))
+                        
+                    else:
+                        print("Failed at %d"%(col))
+                        m1_pins_list2 = split_dict_by_increment(self.m1_pins, increment=1)
+                        last_pass_m1_pins = {}
+                        for k, m1_pins2 in enumerate(m1_pins_list2):
+                            if k < col - increment:
+                                pass
+                                last_pass_m1_pins= m1_pins2
+                            else:
+                                s = Solver()
+                                cross_nets2 =  generate_interval_dict(m1_pins2)
+                                self.ip_route(s, m1_pins2, cross_nets2)    
+                                if self.result:
+                                    print("Pass: %d"%(k+1))
+                                    last_pass_m1_pins = m1_pins2
+                                else:
+                                    self.cross_nets_debug1 = cross_nets2
+                                    self.m1_pins_debug1 = m1_pins2
+                                    print("Failed at %d"%(k+1))
+                                    break        
+                        break
+                    
+                s = Solver()
+                cross_nets =  generate_interval_dict(last_pass_m1_pins)
+                self.cross_nets_debug2 = cross_nets
+                self.m1_pins_debug2 = last_pass_m1_pins
+                self.ip_route(s, last_pass_m1_pins, cross_nets)  
+                if self.result:
+                    fig, ax = visualize_pins(self.ckt.name, self.m1_pins, self.y_lim, edges=self.edges)
+                    plt.show()
+            
+            return False
+
+    def gen_pins(self):
         self.net_loc = {}
         blocks_pins = {}
         loc = 0
@@ -125,109 +220,12 @@ class IPRouter:
                     filtered_data = [item for item in nets if item not in to_extract] + gg_nets
                     self.nets[k] = list(set(filtered_data))
 
-        self.x_nets = process_nets(self.nets)#convert nets to pins in grid
-        
-        if PLOT:
-            fig, ax = visualize_pins(self.ckt.name, self.m1_pins, self.y_lim)
-            plt.show()
+        self.x_pins = process_nets(self.nets)#convert nets to pins in grid
        
-        self.blocks_pins = blocks_pins
-        self.x_lim = max(self.x_nets.keys()) + 1
-        self.y_lim = vtracks
-
+        # self.blocks_pins = blocks_pins
+        self.x_lim = max(self.x_pins.keys()) + 1
+        self.y_lim = self.vtracks
     
-    
-    def route(self):
-        # s = Optimize() 
-        s = Solver()
-     
-        self.poly_constraints(self.x_nets)
-        
-        t = replace_points(self.x_nets,self.crossing_pairs)
-        t = replace_points(t,self.hshape_pairs)
-
-        self.m1_pins = t        
-        self.cross_nets = generate_interval_dict(self.m1_pins)
-    
-        self.ip_route(s, self.m1_pins, self.cross_nets)    
-        # self.solver = s
-        fig, ax = visualize_pins(self.ckt.name+ ': pins', self.m1_pins, self.y_lim)
-        plt.show()
-        if self.result:
-            print('-----Route Success!------')
-            if PLOT:
-                fig, ax = visualize_pins(self.ckt.name+ ': result', self.m1_pins, self.y_lim, edges=self.edges)
-                plt.show()
-            
-            self.col_edges(self.variables,self.m1_pins_result)
-            #process edges
-            if PLOT:
-                fig, ax = visualize_pins(self.ckt.name+ ': edges', self.m1_pins_result, self.y_lim, edges=self.edges)
-                plt.show()
-            #optimize edges
-            self.optimize_edges(self.m1_pins_result)
-            if PLOT:
-                fig, ax = visualize_pins(self.ckt.name+ ': edges 1st optimization', self.m1_pins_result, self.y_lim, edges=self.edges_op)
-                plt.show()
- 
-            #optimize edges with input pins optimized
-            result = self.optimize_edges(self.m1_pins_result, inpins_op=True)
-            if result:
-                if PLOT:
-                    fig, ax = visualize_pins(self.ckt.name + ': input pins optimization', self.m1_pins_result, self.y_lim, edges=self.edges_op)
-                    plt.show()            
-            return True
-            
-        else:
-            print('-----Route Failed!------')
-            if DEBUG:
-                #begin debug
-                print('--Begin Debug--')
-                increment = 5
-                m1_pins_list = split_dict_by_increment(self.m1_pins, increment=increment)
-                col = 0
-                for m1_pins in m1_pins_list:
-                    col = col + increment
-                    s = Solver()
-                    cross_nets =  generate_interval_dict(m1_pins)
-                    self.ip_route(s, m1_pins, cross_nets)    
-                    
-                    if self.result:
-                        print("Pass: %d"%(col))
-                        
-                    else:
-                        print("Failed at %d"%(col))
-                        m1_pins_list2 = split_dict_by_increment(self.m1_pins, increment=1)
-                        last_pass_m1_pins = {}
-                        for k, m1_pins2 in enumerate(m1_pins_list2):
-                            if k < col - increment:
-                                pass
-                                last_pass_m1_pins= m1_pins2
-                            else:
-                                s = Solver()
-                                cross_nets2 =  generate_interval_dict(m1_pins2)
-                                self.ip_route(s, m1_pins2, cross_nets2)    
-                                if self.result:
-                                    print("Pass: %d"%(k+1))
-                                    last_pass_m1_pins = m1_pins2
-                                else:
-                                    self.cross_nets_debug1 = cross_nets2
-                                    self.m1_pins_debug1 = m1_pins2
-                                    print("Failed at %d"%(k+1))
-                                    break        
-                        break
-                    
-                s = Solver()
-                cross_nets =  generate_interval_dict(last_pass_m1_pins)
-                self.cross_nets_debug2 = cross_nets
-                self.m1_pins_debug2 = last_pass_m1_pins
-                self.ip_route(s, last_pass_m1_pins, cross_nets)  
-                if self.result:
-                    fig, ax = visualize_pins(self.ckt.name, self.m1_pins, self.y_lim, edges=self.edges)
-                    plt.show()
-            
-            return False
-
     
     def col_edges(self,variables,m1_pins_result):
         for i in list(range(1,self.x_lim-1)):
@@ -519,7 +517,7 @@ class IPRouter:
             #not satisfied
             self.result = False
             
-    def poly_constraints(self, x_nets, poly_clk=False):
+    def poly_constraints(self, x_pins, poly_clk=False):
         #Very Important!
         #TODO use Poly Connect if 
         #TODO add block points for better detail pr, e.g. 5 and 2 GT may block 3 for drc
@@ -528,9 +526,9 @@ class IPRouter:
         top= self.y_lim
         
         poly_pins = []
-        for key in x_nets:
+        for key in x_pins:
             pins = {}
-            for pin in x_nets[key]:
+            for pin in x_pins[key]:
                 # print(pin)
                 if pin[1][2] == 0:
                     pins[pin[0]] = pin[1]

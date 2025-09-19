@@ -223,12 +223,8 @@ class Tech(object):
         self.rail_vss = Range(0, cfgs.power_rail_width) 
         
         #vdd and vss aa
-        self.rail_vdd_aa = Range(self.rail_vdd.p2 - self.AA_S.hv, 
-                                 self.rail_vdd.p1 + self.AA_S.hv, 
-                                 set_t='pp')
-        self.rail_vss_aa = Range(self.rail_vss.p2 - self.AA_S.hv, 
-                                 self.rail_vss.p1 + self.AA_S.hv, 
-                                 set_t='pp')
+        self.rail_vdd_aa = Range(cfgs.cell_height, self.AA_W.v)
+        self.rail_vss_aa = Range(0, self.AA_W.v)
         
         #calculate tracks number 
         self.tracks_num = int(cfgs.cell_height / cfgs.v_pin_grid)
@@ -240,92 +236,130 @@ class Tech(object):
 
         print("Tech-> Track Number is %d!"%(self.tracks_num) )
                       
-        #up and down poly tracks, also gt top/bottom 
-        self.gt_up_rg = Range(cfgs.cell_height - self.GT_S.hv - self.GT_W.v, 
-                              cfgs.cell_height - self.GT_S.hv, 
-                              set_t='pp')
-        self.gt_dn_rg = Range(0 + self.GT_S.hv, 
-                              0 + self.GT_S.hv + self.GT_W.v, 
-                              set_t='pp')        
-        
-        
-      
-        
+        #up and down poly tracks, also gt top/bottom
+        #gate top and bottom range: consider gt space and gt to vdd/vss aa
+        t1 =  self.AA_W.hv + self.GT_S_AA.v
+        t2 = self.GT_S.hv
+        t = max(t1,t2)        
+        self.gt_up = cfgs.cell_height - t
+        self.gt_dn = t
+
+
         #power rail diffusion contact
-        #consider AA space and CT space for abutment rule
+        #consider AA space and CT space for abutment rule        
         t1 = self.rail_vdd_aa.p2 - self.CT_E_AA.v
         t2 = cfgs.cell_height - self.CT_S.hv
         t = min(t1,t2)
         self.ct_up_rg = Range(t - self.CT_W.v, t, set_t = 'pp')
-        
         t1 = self.rail_vss_aa.p1 + self.CT_E_AA.v
         t2 = 0 + self.CT_S.hv
         t = max(t1,t2)
         self.ct_dn_rg = Range(t, t + self.CT_W.v, set_t = 'pp')        
        
         # m1 tracks on top and bottom
-        top    = self.ct_up_rg.p1 - self.CT_E_M1.v  
-        bottom = self.ct_dn_rg.p2 + self.CT_E_M1.v  
+        top    = self.ct_up_rg.p1 - self.CT_E_M1_END.v  
+        bottom = self.ct_dn_rg.p2 + self.CT_E_M1_END.v  
         
-        # #Middle 2 tracks can also be connected by poly.  
-        # s1 = self.M1_W.v + self.M1_S.v
-        # s2 = self.GT_CT_W.v + self.GT_S.v
-        # if s2>=s1:
-        #     mid_s = 0
-        # else:
-        #     mid_s = s2-s1
-            
-        locs = place_rectangles(top-bottom, self.M1_W.v, self.M1_S.v)
+        locs = place_rectangles((bottom,top), self.M1_W.v,self.M1_W.v + self.CT_E_M1_END.v, self.M1_S.v)
+
+        
         self.M1_tracks_num = len(locs)
         assert len(locs)>=5,'Cell Height is too low!'
-        #TODO, we need consider 5,6 or >6 3 conditions, e.g. for 5 
         
-        
-        
-        self.M1_tracks = [Range(bottom+t,bottom+t+self.M1_W.v,set_t='pp') for t in locs]
+        self.M1_tracks = [Range(t1,t2,set_t='pp') for t1,t2 in locs]
         self.CT_tracks = [Range(t.c, self.CT_W.v) for t in self.M1_tracks]
         
         print("Tech-> M1 Track Number is %d!"%(self.M1_tracks_num) )
-        #aa top
-        #gt 
-        self.aap_up = self.gt_up_rg.p2 - self.GT_X_AA.v
-        self.aan_dn = self.gt_up_rg.p1 + self.GT_X_AA.v
-        
-        self.aap_up = self.CT_tracks[-1].p1 - self.CT_S_AA.v  #gt_ct on top m1
-        self.aan_dn = self.CT_tracks[0].p2  + self.CT_S_AA.v  #gt_ct on bottom m1
-        
-        
-        #TODO:
-        self.aap_up_pc_c = self.gt_up_rg.p1 - self.GT_X_AA.v #polyconnect and connect to poly net
-        self.aap_up_pc_nc = self.gt_up_rg.p1 - self.GT_S.v - self.GT_X_AA.v #polyconnect and not connect to poly net
 
-        self.aan_dn_pc_c = self.gt_up_rg.p2 + self.GT_X_AA.v        
-        self.aan_dn_pc_nc = self.gt_up_rg.p2 + self.GT_S.v + self.GT_X_AA.v  
-        
-        
-        
-        
-        
-        
-        
+        #
         num = len(self.M1_tracks)
         if num % 2 == 0:
-            median1 = num // 2
-            median2 = median1 - 1
-            median = median2
-            self.middle = int(0.5*(self.M1_tracks[median2].c + self.M1_tracks[median1].c))
+            self.middle_up = num // 2
+            self.middle_dn = self.middle_up - 1
+            self.middle = int(0.5*(self.M1_tracks[self.middle_up].c + self.M1_tracks[self.middle_dn].c ))
         else:
-            median1 = num // 2
-            median2 = median1 - 1
-            median = median1
-            self.middle = self.M1_tracks[median1].c 
-        self.median  = median
-        self.median1 = median1
-        self.median2 = median2       
-        self.mid_track1 = self.M1_tracks[median]
-        self.mid_track2 = [self.M1_tracks[median2],self.M1_tracks[median1]]
+            median = num // 2
+            self.middle_up = median+1
+            self.middle_dn = median-1
+            self.middle = self.M1_tracks[median].c 
+        
+    
+
+        
+        self.gt_pmos_rg = Range(self.middle + self.GT_S.hv, 
+                                   self.gt_up, 
+                                   set_t='pp')
+
+        self.gt_nmos_rg = Range(self.gt_dn, 
+                                   self.middle - self.GT_S.hv, 
+                                   set_t='pp')
+
+        
+        
+        #below is for processing clk 
+        
+        self.clk_aap_rg = Range(self.gt_up - self.GT_X_AA.v, 
+                                self.M1_tracks[self.middle_up+1].c + self.CT_W.hv + self.GT_CT_S_AA.v, 
+                                   set_t='pp')
+        
+        self.clk_aan_rg = Range(self.M1_tracks[self.middle_dn].c - self.CT_W.hv - self.GT_CT_S_AA.v, 
+                                self.gt_dn + self.GT_X_AA.v, 
+                                   set_t='pp')        
+        
+        
+        
+        #TODO: a class called Editor
+        
+        #TODO: calculate horizon side widht here
+        
+        
+        
+        # self.M1_tracks[self.middle_up+1].c + self.CT_W.hv + self.GT_CT_S_AA
+        
+        # self.aap_up = self.gt_up_rg.p2 - self.GT_X_AA.v
+        # self.aan_dn = self.gt_up_rg.p1 + self.GT_X_AA.v
+        
+        # self.aap_up = self.CT_tracks[-1].p1 - self.CT_S_AA.v  #gt_ct on top m1
+        # self.aan_dn = self.CT_tracks[0].p2  + self.CT_S_AA.v  #gt_ct on bottom m1
+        
+        
+        # #TODO:
+        # self.aap_up_pc_c = self.gt_up_rg.p1 - self.GT_X_AA.v #polyconnect and connect to poly net
+        # self.aap_up_pc_nc = self.gt_up_rg.p1 - self.GT_S.v - self.GT_X_AA.v #polyconnect and not connect to poly net
+
+        # self.aan_dn_pc_c = self.gt_up_rg.p2 + self.GT_X_AA.v        
+        # self.aan_dn_pc_nc = self.gt_up_rg.p2 + self.GT_S.v + self.GT_X_AA.v  
+        
+        
+        
+        # num = len(self.M1_tracks)
+        # if num % 2 == 0:
+        #     median1 = num // 2
+        #     median2 = median1 - 1
+        #     median = median2
+        #     self.middle = int(0.5*(self.M1_tracks[median2].c + self.M1_tracks[median1].c))
+        # else:
+        #     median1 = num // 2
+        #     median2 = median1 - 1
+        #     median = median1
+        #     self.middle = self.M1_tracks[median1].c 
+        # self.median  = median
+        # self.median1 = median1
+        # self.median2 = median2       
+        # self.mid_track1 = self.M1_tracks[median]
+        # self.mid_track2 = [self.M1_tracks[median2],self.M1_tracks[median1]]
 
 
+
+        
+
+
+
+
+
+
+
+                                
         #AA up and down
         # AA_p_up   = self.net_gt_up.p2   - tech.GT_X_AA.v
         # AA_n_down = self.net_gt_down.p1 + tech.GT_X_AA.v
@@ -403,234 +437,234 @@ class Tech(object):
         self.m1_width_end = self.M1_W.v + 2*self.CT_E_M1_END.v
         '''
 
-class VMode:
-    total_vmodes = 6
-    #based on mos pair
+# class VMode:
+#     total_vmodes = 6
+#     #based on mos pair
     
             
-    '''
-    Principle:
-    1. gt up and down are only used for cn/c
-    2. m/bm/pm/s must be used
-    3. Not may cross pattern nets, only cn/c and RN/SN pull
-    4. 
-    5. 
+#     '''
+#     Principle:
+#     1. gt up and down are only used for cn/c
+#     2. m/bm/pm/s must be used
+#     3. Not may cross pattern nets, only cn/c and RN/SN pull
+#     4. 
+#     5. 
     
     
-    0:
-    1:
-    2:
-    3: GT connected and with 1 CT, INV, Logic, CLK...
-    Detection conditions, all columns are GT pair.
+#     0:
+#     1:
+#     2:
+#     3: GT connected and with 1 CT, INV, Logic, CLK...
+#     Detection conditions, all columns are GT pair.
     
-    4: GT connected and with 2 CTs, and not GT up/down: INV, Logic, CLK...
-    Detection conditions, all columns are GT pair. GT connect is pin(2 CTs is a must)
+#     4: GT connected and with 2 CTs, and not GT up/down: INV, Logic, CLK...
+#     Detection conditions, all columns are GT pair. GT connect is pin(2 CTs is a must)
         
         
-    5: GT not connected and with 2 CTs, and not GT up/down: Cross, Backtrack...
-    One M1 Track in 2-GT/CT to avoid dr violation
-    Detection conditions, not all columns are GT pair.
+#     5: GT not connected and with 2 CTs, and not GT up/down: Cross, Backtrack...
+#     One M1 Track in 2-GT/CT to avoid dr violation
+#     Detection conditions, not all columns are GT pair.
     
         
-    2-n: TO be designed
-    '''
+#     2-n: TO be designed
+#     '''
     
     
-    def __init__(self, tech, vmode):
-        self.tech = tech
-        self.vmode = vmode
-        # self.init_vmode()
+#     def __init__(self, tech, vmode):
+#         self.tech = tech
+#         self.vmode = vmode
+#         # self.init_vmode()
         
-        if self.vmode == 0:     
-            t = tech.median
-            self.gt_nodes = [(0,t-1,0),(0,t,0),(0,t+1,0)]
-            self.gt_nets = {}
-            self.connected = {}
-            self.edges = [] #edges that not nearby
-            self.ct_nodes = [(0,t,0.5)]
+#         if self.vmode == 0:     
+#             t = tech.median
+#             self.gt_nodes = [(0,t-1,0),(0,t,0),(0,t+1,0)]
+#             self.gt_nets = {}
+#             self.connected = {}
+#             self.edges = [] #edges that not nearby
+#             self.ct_nodes = [(0,t,0.5)]
 
             
-        elif self.vmode == 1: #only pmos
-            self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
-                                     tech.mid_track1.c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
-                                     set_t='pp')
+#         elif self.vmode == 1: #only pmos
+#             self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
+#                                      tech.mid_track1.c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
+#                                      set_t='pp')
         
-            t1 = tech.median1
-            t2 = tech.median2  
-            self.gt_nodes = [(-1,t1,0),(0,t1,0),(1,t1,0),
-                             (-1,t2,0),(0,t2,0),(1,t2,0)]  
+#             t1 = tech.median1
+#             t2 = tech.median2  
+#             self.gt_nodes = [(-1,t1,0),(0,t1,0),(1,t1,0),
+#                              (-1,t2,0),(0,t2,0),(1,t2,0)]  
             
-            self.gt_nets = {(0,t1,0):'P'}
-            self.connected = {}
-            self.edges = [] #edges that not nearby
-            # self.ct_nodes = [(-1,t,0.5),(0,t,0.5),(1,t,0.5)]
-            self.ct_nodes = [(-1,t1,0.5),(0,t1,0.5),(1,t1,0.5),
-                             (-1,t2,0.5),(0,t2,0.5),(1,t2,0.5) ]
+#             self.gt_nets = {(0,t1,0):'P'}
+#             self.connected = {}
+#             self.edges = [] #edges that not nearby
+#             # self.ct_nodes = [(-1,t,0.5),(0,t,0.5),(1,t,0.5)]
+#             self.ct_nodes = [(-1,t1,0.5),(0,t1,0.5),(1,t1,0.5),
+#                              (-1,t2,0.5),(0,t2,0.5),(1,t2,0.5) ]
         
-        elif self.vmode == 2: #only nmos
-            self.nmos_aa_max = Range(tech.gt_dn_rg.p1 + tech.GT_X_AA.v, 
-                                     tech.mid_track1.c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
-                                     set_t='pp')      
+#         elif self.vmode == 2: #only nmos
+#             self.nmos_aa_max = Range(tech.gt_dn_rg.p1 + tech.GT_X_AA.v, 
+#                                      tech.mid_track1.c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
+#                                      set_t='pp')      
             
-            t1 = tech.median1
-            t2 = tech.median2  
-            self.gt_nodes = [(-1,t1,0),(0,t1,0),(1,t1,0),
-                             (-1,t2,0),(0,t2,0),(1,t2,0)]  
-            self.gt_nets = {(0,t2,0):'N'}
-            self.connected = {}
-            self.edges = [] #edges that not nearby
-            self.ct_nodes = [(-1,t1,0.5),(0,t1,0.5),(1,t1,0.5),
-                             (-1,t2,0.5),(0,t2,0.5),(1,t2,0.5) ]
+#             t1 = tech.median1
+#             t2 = tech.median2  
+#             self.gt_nodes = [(-1,t1,0),(0,t1,0),(1,t1,0),
+#                              (-1,t2,0),(0,t2,0),(1,t2,0)]  
+#             self.gt_nets = {(0,t2,0):'N'}
+#             self.connected = {}
+#             self.edges = [] #edges that not nearby
+#             self.ct_nodes = [(-1,t1,0.5),(0,t1,0.5),(1,t1,0.5),
+#                              (-1,t2,0.5),(0,t2,0.5),(1,t2,0.5) ]
             
-        elif vmode == 3:          
-            self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
-                                     tech.mid_track1.c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
-                                     set_t='pp')
+#         elif vmode == 3:          
+#             self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
+#                                      tech.mid_track1.c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
+#                                      set_t='pp')
             
-            self.nmos_aa_max = Range(tech.gt_dn_rg.p1 + tech.GT_X_AA.v, 
-                                     tech.mid_track1.c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
-                                     set_t='pp')
+#             self.nmos_aa_max = Range(tech.gt_dn_rg.p1 + tech.GT_X_AA.v, 
+#                                      tech.mid_track1.c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
+#                                      set_t='pp')
         
-            t = tech.median
-            self.gt_nodes = [(-1,t,0),(0,t,0),(1,t,0)]
-            self.gt_nets = {(0,t,0):'P'}
-            self.connected = {}
-            self.edges = [] #edges that not nearby
-            self.ct_nodes = [(-1,t,0.5),(0,t,0.5),(1,t,0.5)]
+#             t = tech.median
+#             self.gt_nodes = [(-1,t,0),(0,t,0),(1,t,0)]
+#             self.gt_nets = {(0,t,0):'P'}
+#             self.connected = {}
+#             self.edges = [] #edges that not nearby
+#             self.ct_nodes = [(-1,t,0.5),(0,t,0.5),(1,t,0.5)]
             
-        elif vmode == 4:
-            self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
-                                     tech.mid_track2[1].c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
-                                     set_t='pp')
+#         elif vmode == 4:
+#             self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
+#                                      tech.mid_track2[1].c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
+#                                      set_t='pp')
             
-            self.nmos_aa_max = Range(tech.gt_dn_rg.p1 + tech.GT_X_AA.v, 
-                                     tech.mid_track2[0].c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
-                                     set_t='pp')
+#             self.nmos_aa_max = Range(tech.gt_dn_rg.p1 + tech.GT_X_AA.v, 
+#                                      tech.mid_track2[0].c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
+#                                      set_t='pp')
         
-            t1 = tech.median1
-            t2 = tech.median2       
-            self.gt_nodes = [(-1,t1,0),(0,t1,0),(1,t1,0),
-                             (-1,t2,0),(0,t2,0),(1,t2,0)]         
-            self.gt_nets = {(0,t1,0):'P'}
-            #key is the node with net labels
-            self.connected = {(0,t1,0): [
-                                           (( 0,t1,0),  (  0,t2,0)),
-                                          # (( 0,t1,1),  (  0,t2,1)),
-                                          (( 0,t1,0),  (  0,t1,0.5)),
-                                          (( 0,t1,0.5),(  0,t1,1)),
-                                          # (( 0,t2,0),  (  0,t2,0.5)),
-                                          # (( 0,t2,0.5),(  0,t2,1))
-                                          ]
-                              }
+#             t1 = tech.median1
+#             t2 = tech.median2       
+#             self.gt_nodes = [(-1,t1,0),(0,t1,0),(1,t1,0),
+#                              (-1,t2,0),(0,t2,0),(1,t2,0)]         
+#             self.gt_nets = {(0,t1,0):'P'}
+#             #key is the node with net labels
+#             self.connected = {(0,t1,0): [
+#                                            (( 0,t1,0),  (  0,t2,0)),
+#                                           # (( 0,t1,1),  (  0,t2,1)),
+#                                           (( 0,t1,0),  (  0,t1,0.5)),
+#                                           (( 0,t1,0.5),(  0,t1,1)),
+#                                           # (( 0,t2,0),  (  0,t2,0.5)),
+#                                           # (( 0,t2,0.5),(  0,t2,1))
+#                                           ]
+#                               }
             
-            # self.connected = {}
+#             # self.connected = {}
             
-            self.ct_nodes = [(-1,t1,0.5),(0,t1,0.5),(1,t1,0.5),(0,t2,0.5)]
-            self.edges = []
+#             self.ct_nodes = [(-1,t1,0.5),(0,t1,0.5),(1,t1,0.5),(0,t2,0.5)]
+#             self.edges = []
             
-        elif vmode == 5:
-            assert (tech.GT_S.v + tech.GT_W.v) <= (tech.M1_S.v + tech.M1_W.v)
+#         elif vmode == 5:
+#             assert (tech.GT_S.v + tech.GT_W.v) <= (tech.M1_S.v + tech.M1_W.v)
             
-            t1 = tech.M1_tracks[tech.median - 1]
-            t2 = tech.M1_tracks[tech.median + 1]        
+#             t1 = tech.M1_tracks[tech.median - 1]
+#             t2 = tech.M1_tracks[tech.median + 1]        
                 
-            self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
-                                     t2.c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
-                                     set_t='pp')
-            self.nmos_aa_max = Range(tech.gt_dn_rg.p1 + tech.GT_X_AA.v, 
-                                     t1.c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
-                                     set_t='pp')
+#             self.pmos_aa_max = Range(tech.gt_up_rg.p2 - tech.GT_X_AA.v, 
+#                                      t2.c + tech.GT_CT_W.hv + tech.GT_CT_S_AA.v, 
+#                                      set_t='pp')
+#             self.nmos_aa_max = Range(tech.gt_dn_rg.p1 + tech.GT_X_AA.v, 
+#                                      t1.c - tech.GT_CT_W.hv - tech.GT_CT_S_AA.v, 
+#                                      set_t='pp')
         
-            t = tech.median
-            t1 = t + 1
-            t2 = t - 1           
+#             t = tech.median
+#             t1 = t + 1
+#             t2 = t - 1           
             
-            # self.gt_nodes = [(-1,t1,0),(0,t1,0),(1,t1,0),
-            #                  (-1,t,0), (0,t,0), (1,t,0),
-            #                  (-1,t2,0),(0,t2,0),(1,t2,0)]    
-            self.gt_nodes = [          (0,t1,0),
-                             (-1,t,0), (0,t,0), (1,t,0),
-                                       (0,t2,0),        ]             
-            self.gt_nets = {(0,t1,0):'P',(0,t2,0):'N'}
-            self.connected= {}
-            self.ct_nodes = [(0,t1,0.5),(0,t2,0.5),(-1,t,0.5),(1,t,0.5)]
-            self.edges = []
+#             # self.gt_nodes = [(-1,t1,0),(0,t1,0),(1,t1,0),
+#             #                  (-1,t,0), (0,t,0), (1,t,0),
+#             #                  (-1,t2,0),(0,t2,0),(1,t2,0)]    
+#             self.gt_nodes = [          (0,t1,0),
+#                              (-1,t,0), (0,t,0), (1,t,0),
+#                                        (0,t2,0),        ]             
+#             self.gt_nets = {(0,t1,0):'P',(0,t2,0):'N'}
+#             self.connected= {}
+#             self.ct_nodes = [(0,t1,0.5),(0,t2,0.5),(-1,t,0.5),(1,t,0.5)]
+#             self.edges = []
             
             
 
-        else:
-            raise ValueError('vmode is error!')
-    def __repr__(self):
-        return 'vmode: %d'%(self.vmode)
+#         else:
+#             raise ValueError('vmode is error!')
+#     def __repr__(self):
+#         return 'vmode: %d'%(self.vmode)
         
-    def gen_grids(self, offset):
-        gt_nodes = {'s':[],'g':[],'d':[]}
-        ct_nodes  = {'s':[],'g':[],'d':[]}
-        gt_nets = {}
-        connected = {}
-        edges = []
-        for t in self.gt_nodes:
-            if t[0] == -1:
-                gt_nodes['s'].append((t[0] + offset,t[1],t[2]))
-            elif t[0] == 0:
-                gt_nodes['g'].append((t[0] + offset,t[1],t[2]))
-            elif t[0] == 1:
-                gt_nodes['d'].append((t[0] + offset,t[1],t[2]))
+#     def gen_grids(self, offset):
+#         gt_nodes = {'s':[],'g':[],'d':[]}
+#         ct_nodes  = {'s':[],'g':[],'d':[]}
+#         gt_nets = {}
+#         connected = {}
+#         edges = []
+#         for t in self.gt_nodes:
+#             if t[0] == -1:
+#                 gt_nodes['s'].append((t[0] + offset,t[1],t[2]))
+#             elif t[0] == 0:
+#                 gt_nodes['g'].append((t[0] + offset,t[1],t[2]))
+#             elif t[0] == 1:
+#                 gt_nodes['d'].append((t[0] + offset,t[1],t[2]))
                 
                 
-        for t in self.ct_nodes:
-            if t[0] == -1:
-                ct_nodes['s'].append((t[0] + offset,t[1],t[2]))
-            elif t[0] == 0:
-                ct_nodes['g'].append((t[0] + offset,t[1],t[2]))
-            elif t[0] == 1:
-                ct_nodes['d'].append((t[0] + offset,t[1],t[2]))   
+#         for t in self.ct_nodes:
+#             if t[0] == -1:
+#                 ct_nodes['s'].append((t[0] + offset,t[1],t[2]))
+#             elif t[0] == 0:
+#                 ct_nodes['g'].append((t[0] + offset,t[1],t[2]))
+#             elif t[0] == 1:
+#                 ct_nodes['d'].append((t[0] + offset,t[1],t[2]))   
         
-        for k,v in self.gt_nets.items():
-            gt_nets[(k[0]+offset,k[1],k[2])] = v
-        for k,v in self.connected.items():
-            new_v = []
-            for t in v:
-                t1,t2 =t
-                new_v.append(((t1[0]+offset,t1[1],t1[2]), (t2[0]+offset,t2[1],t2[2])))
-            connected[(k[0]+offset,k[1],k[2])] = new_v
+#         for k,v in self.gt_nets.items():
+#             gt_nets[(k[0]+offset,k[1],k[2])] = v
+#         for k,v in self.connected.items():
+#             new_v = []
+#             for t in v:
+#                 t1,t2 =t
+#                 new_v.append(((t1[0]+offset,t1[1],t1[2]), (t2[0]+offset,t2[1],t2[2])))
+#             connected[(k[0]+offset,k[1],k[2])] = new_v
 
-        for t in self.edges:
-            t1,t2 =t
-            edges.append(((t1[0]+offset,t1[1],t1[2]), (t2[0]+offset,t2[1],t2[2])))
-        return [gt_nodes,ct_nodes,gt_nets,connected,edges]
+#         for t in self.edges:
+#             t1,t2 =t
+#             edges.append(((t1[0]+offset,t1[1],t1[2]), (t2[0]+offset,t2[1],t2[2])))
+#         return [gt_nodes,ct_nodes,gt_nets,connected,edges]
 
-    @staticmethod 
-    def get_vmode(pn_pairs,io_map):
-        pmos = pn_pairs['P']
-        nmos = pn_pairs['N']
-        if not(pmos) and not(nmos):
-            return 0
-        elif not(nmos) and pmos:
-            return 1
-        elif not(pmos) and nmos:
-            return 2
-        else:
-            if pmos.G == nmos.G:
-                return 4
-                # if pmos.G in io_map:
-                #     return 4 
-                # else:
-                #     return 3
-            else:
-                #TODO, will add more modes
-                return 5
+#     @staticmethod 
+#     def get_vmode(pn_pairs,io_map):
+#         pmos = pn_pairs['P']
+#         nmos = pn_pairs['N']
+#         if not(pmos) and not(nmos):
+#             return 0
+#         elif not(nmos) and pmos:
+#             return 1
+#         elif not(pmos) and nmos:
+#             return 2
+#         else:
+#             if pmos.G == nmos.G:
+#                 return 4
+#                 # if pmos.G in io_map:
+#                 #     return 4 
+#                 # else:
+#                 #     return 3
+#             else:
+#                 #TODO, will add more modes
+#                 return 5
 
-    @staticmethod    
-    def gen_m1_grids(tech,max_col,offset=0):
-        nodes = {}
-        for i in range(tech.M1_tracks_num):
-            for j in range(max_col):
-                nodes[(offset + j,i,1)] = {'net':'',
-                                           'loc':(offset + j,i),
-                                           'color':'orange'}
+#     @staticmethod    
+#     def gen_m1_grids(tech,max_col,offset=0):
+#         nodes = {}
+#         for i in range(tech.M1_tracks_num):
+#             for j in range(max_col):
+#                 nodes[(offset + j,i,1)] = {'net':'',
+#                                            'loc':(offset + j,i),
+#                                            'color':'orange'}
         
-        return nodes
+#         return nodes
 
         
 
@@ -665,104 +699,75 @@ class DR(object):
     @property
     def hv(self):
         return int(0.5*self.value)
-def place_rectangles(height, h, s):
-    # 先计算理论上最多能放的长方形数量
-    max_possible_n = 0
-    while True:
-        total_height_needed = max_possible_n * h + (max_possible_n + 1) * s
-        if total_height_needed > height:
-            break
-        max_possible_n += 1
-    # 确定实际能放置的长方形数量
-    n = max_possible_n - 1
-    if n < 0:
-        print("给定的总高度无法放置任何长方形。")
-        return []
-    # 计算所有长方形占用的总高度
-    total_rect_height = n * h
-    # 计算至少需要的间距总长度，n 个长方形有 n + 1 个间距
-    min_gap_space = (n + 1) * s
-    # 计算剩余可用于分配额外间距的空间
-    remaining_space = height - total_rect_height - min_gap_space
-    positions = []
-    current_height = s+ int(0.5*remaining_space)  #间距均匀分给上下
-    for i in range(n):
-        positions.append(current_height)
-        current_height += h + s  # 每个长方形之间的间距为最小值s
-    # 最后一个间距包含所有剩余空间，放在最下面
-    return positions
 
 
-def place_rectangles_bk2(height, h, s):
-    # 先计算理论上最多能放的长方形数量
-    max_possible_n = 0
-    while True:
-        total_height_needed = max_possible_n * h + (max_possible_n + 1) * s
-        if total_height_needed > height:
-            break
-        max_possible_n += 1
-    # 确定实际能放置的长方形数量
-    n = max_possible_n - 1
-    if n < 0:
-        print("给定的总高度无法放置任何长方形。")
-        return []
-    # 计算所有长方形占用的总高度
-    total_rect_height = n * h
-    # 计算至少需要的间距总长度，n 个长方形有 n + 1 个间距
-    min_gap_space = (n + 1) * s
-    # 计算剩余可用于分配额外间距的空间
-    remaining_space = height - total_rect_height - min_gap_space
-    positions = []
-    if n % 2 == 1:  # 长方形数量为奇数
-        mid_index = n // 2
-        current_height = s
-        for i in range(n):
-            if i == mid_index:
-                current_height += remaining_space
-            positions.append(current_height)
-            current_height += h + s
-    else:  # 长方形数量为偶数
-        mid_index1 = n // 2 - 1
-        mid_index2 = n // 2
-        current_height = s
-        for i in range(n):
-            if i == mid_index1:
-                current_height += remaining_space // 2
-            elif i == mid_index2:
-                current_height += remaining_space - remaining_space // 2
-            positions.append(current_height)
-            current_height += h + s
-    return positions
 
-def place_rectangles_bk(height, h, s):
-    # 先计算理论上最多能放的长方形数量
-    max_possible_n = 0
-    while True:
-        total_height_needed = max_possible_n * h + (max_possible_n + 1) * s
-        if total_height_needed > height:
-            break
-        max_possible_n += 1
-    # 确定实际能放置的长方形数量
-    n = max_possible_n - 1
-    if n < 0:
-        print("给定的总高度无法放置任何长方形。")
-        return []
-    # 计算所有长方形占用的总高度
-    total_rect_height = n * h
-    # 计算至少需要的间距总长度，n 个长方形有 n + 1 个间距
-    min_gap_space = (n + 1) * s
-    # 计算剩余可用于分配额外间距的空间
-    remaining_space = height - total_rect_height - min_gap_space
-    # 尝试均匀分配剩余空间作为额外间距
-    extra_gap = remaining_space // (n + 1)
-    actual_gap = s + extra_gap
-    positions = []
-    current_height = actual_gap
-    for i in range(n):
-        positions.append(current_height)
-        current_height += h + actual_gap
-    return positions
 
+
+class Editor:
+    def __init__(self,tech):
+        pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def place_rectangles(height_tuple, h1, h2, s):
+    # Parse the height range tuple (low, high)
+    low, high = height_tuple
+    total_available_height = high - low  # Calculate total available height
     
-
+    # Determine the maximum number of rectangles (n) that can be placed, with a minimum of 4
+    n = 4  # Start with the minimum of 4 rectangles
+    while True:
+        # Calculate total height required for current n rectangles
+        # Formula: (n-2) rectangles of h1 + 2 rectangles of h2 + (n-1) spaces of s
+        total = (n - 2) * h1 + 2 * h2 + (n + 1) * s
+        
+        # If total exceeds available height, previous n is maximum possible
+        if total > total_available_height:
+            n -= 1
+            break
+        
+        # Try increasing n to fit more rectangles
+        n += 1
     
+    # Calculate excess space to be placed at the top
+    total_used_height = (n - 2) * h1 + 2 * h2 + (n + 1) * s
+    excess = total_available_height - total_used_height
+    
+    # Calculate positions for each rectangle
+    positions = []
+    current_low = low + s  # Starting position of the topmost rectangle (accounting for excess space)
+    
+    for i in range(n):
+        # Determine height for current rectangle:
+        # h2 for second from top (i=1) and second from bottom (i=n-2)
+        # h1 for all other positions
+        current_height = h2 if i == 1 or i == n - 2 else h1
+        
+        current_high = current_low + current_height
+        positions.append([current_low, current_high])
+        
+        # Set starting position for next rectangle (current top + space)
+        current_low = current_high + s
+    
+    return positions
+
+
+
+
+
+

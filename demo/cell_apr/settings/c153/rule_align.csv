@@ -1,11 +1,13 @@
 rule,layer,number,description
 GT_W,GT,GT.a.1,smic:GT(Min Width of interconnect poly); csmc:GT(Min. width for interconnect); tsmc:PO(Recommended min interconnect PO width);
 GT_S,GT,GT.b.3,smic:GT(Space between two GTs); csmc:GT(Min. spacing between two GT regions); tsmc:PO(Space);
+GT_S_AA,GT,GT.e,gt space to aa
 GT_S_LAA_GT,GT/AA,GT.e,smic:GT/AA(Space between AA and GT on field oxide); csmc:GT/TO(Recommended min clearance); tsmc:PO/OD(Recommended space to L shape OD when PO and OD are in the same MOS);
 GT_S_LGT_AA,GT/AA,GT.e,smic:GT/AA(Space between AA and GT on field oxide); csmc:GT/TO(Recommended min clearance from L-shape or T-shape GT to TO must be >= xxx um when GT and TO are in the same MOS); tsmc:PO/OD(Recommended L shape PO space to OD when PO and OD are in the same MOS);
 GT_X_AA,GT/AA,GT.c,smic:GT/AA(Min extension of gate poly end-cap outside of AA); csmc:GT/TO(Min. endcap with GT over TO for xxxV MOS); tsmc:PO/OD(Extention on OD (end-cap));
 AA_X_GT,AA/GT,GT.d,smic:GT/AA(Extension of AA outside of GT); csmc:GT/TO(Recommended Min extension of TO region beyond a related GT inside TO); tsmc:PO/OD(OD extension on PO);
-AA_S,AA,TO.c,Min Active Space)
+AA_S,AA,TO.c,Min Active Space
+AA_W,AA,TO.b.1,Min Active Width
 SP_X_AA,SP/AA,SP.g,smic:SP/AA(Recommended SP extension outside of  PMOS AA); csmc:SP/TO(Recommended extension of a SP region beyond a P+ active TO region); tsmc:PP/OD(Extension on P+ ACTIVE);
 SN_X_AA,SN/AA,SN.g,smic:SN/AA(Recommended SN extension outside of NMOS AA); csmc:SN/TO(Recommended extension of a SN region beyond a N+ active TO region); tsmc:NP/OD(Extension on N+ ACTIVE);
 CT_W,CT,W1.a,smic:CT(Fixed contact size); csmc:W1(Min. & Max. Contact size); tsmc:CO(Width);

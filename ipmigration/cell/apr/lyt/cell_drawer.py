@@ -60,29 +60,7 @@ class CellDrawer:
         ipins = list(self.cell.ckt.ipins.keys()) + [self.cell.ckt.clk_net]
         opins = list(self.cell.ckt.opins.keys())
         
-        
-        #init process double aa problem 
-        # remove_keys = []
-        # for k,vs in pins.items():
-        #     if len(vs) == 1:
-        #         net, loc = vs[0]
-        #         next_loc = (loc[0]+1,loc[1],loc[2])
-        #         if k+1 in pins:
-        #             for t1, t2 in pins[k+1]:
-        #                 print(t1,t2,net,next_loc)
-        #                 if t1 == net and t2 == next_loc:
-        #                     pins[k+1].remove([t1,t2])
-        #                     for mos, t3 in net_loc.items():
-        #                         if t3 == t2:
-        #                             remove_keys.append(mos)
-        # for key in remove_keys:
-        #     net_loc.pop(key)
-        #     print(key)
-        
-        # print(net_loc)
-        
-        # self.pins = pins
-        
+
         
         '''
         pins = c2.apr.router.m1_pins_result
@@ -332,21 +310,6 @@ class CellDrawer:
         npwell = NPWELL(self.tech,self.cfgs,m1_rails.border_box)
         self.data.append(npwell.data)
         self.draw()
-
-
-
-# class ColDrawer:
-#     def __init__(self, tech, pn, edges, pins, left_mos_pair, is_left,is_right):
-#         pass
-    
-
-
-
-
-
-
-
-
 
 
 
