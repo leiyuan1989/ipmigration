@@ -1,5 +1,0 @@
-10-11:14:28  INFO: logging file is: ./demo/cell_apr/outputs/c153\00_LOG_09_10_11.txt
-10-11:14:28  INFO: ************Create Cell Apr: c153 Logger************
-10-11:14:28  INFO: tech->layers: ['NW', 'AA', 'GT', 'SP', 'SN', 'CT', 'M1', 'V1', 'M2', 'BORDER', 'M1TXT', 'SUBTXT']
-10-11:14:28  INFO: tech->rules: [GT_W : 180 nm, GT_S : 250 nm, GT_S_LAA_GT : 84 nm, GT_S_LGT_AA : 84 nm, GT_X_AA : 186 nm, AA_X_GT : 270 nm, AA_S : 238 nm, SP_X_AA : 152 nm, SN_X_AA : 152 nm, CT_W : 186 nm, CT_S : 212 nm, CT_S_AA : 144 nm, CT_S_GT : 140 nm, CT_E_NP : 102 nm, CT_E_AA : 70 nm, CT_E_GT : 70 nm, CT_E_M1 : 4 nm, CT_E_M1_END : 50 nm, M1_W : 194 nm, M1_S : 194 nm, M2_W : 238 nm, M2_S : 238 nm, GT_W : 180 nm, GT_S : 250 nm, GT_S_LAA_GT : 84 nm, GT_S_LGT_AA : 84 nm, GT_X_AA : 186 nm, AA_X_GT : 270 nm, AA_S : 238 nm, SP_X_AA : 152 nm, SN_X_AA : 152 nm, CT_W : 186 nm, CT_S : 212 nm, CT_S_AA : 144 nm, CT_S_GT : 140 nm, CT_E_NP : 102 nm, CT_E_AA : 70 nm, CT_E_GT : 70 nm, CT_E_M1 : 4 nm, CT_E_M1_END : 50 nm, M1_W : 194 nm, M1_S : 194 nm, M2_W : 238 nm, M2_S : 238 nm]
-10-11:14:28  INFO: tech->Load tech files of tech:c153 sucessfully

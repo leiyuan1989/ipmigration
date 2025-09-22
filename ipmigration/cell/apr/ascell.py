@@ -15,7 +15,7 @@ from ipmigration.cell.apr.cir.netlist import Netlist
 from ipmigration.cell.apr.cir.patterns import Patterns
 from ipmigration.cell.apr.stdcell import StdCell
 from ipmigration.cell.apr.io.route_loader import RouteDB
-
+from ipmigration.rule.drc_batch import generate_drc_shell_script, batch_drc_check
 logger = logging.getLogger(__name__)
 DEBUG = True
 
@@ -141,7 +141,10 @@ class ASCell:
         print('Pass Rate: %d/%d, %.2f%%'%(len(success),len(fail),len(success)*100/(len(fail)+len(success))))
         self.report(report_data)
         # self.count_patterns(success)
-        self.gen_gds()     
+
+        self.gen_gds()    
+        # self.top_cell()
+        # self.drc()
 
     def report(self,report_data):
         file = os.path.join(self.cfgs.output_dir,'final_report.csv')
@@ -179,7 +182,53 @@ class ASCell:
         self.layout.dbu = self.db_unit * 1e6 # 0.001 micro 
         # Write GDS.
         gds_file_name = 'top.gds'
-        gds_out_path = os.path.join(self.cfgs.output_dir, gds_file_name)
+        gds_out_path = os.path.join(self.cfgs.gds_dir, gds_file_name)
         logger.info("Write GDS: %s", gds_out_path)
         self.layout.write(gds_out_path)        
+    
+        self.gen_top_cell(gds_out_path)
+    
+    
+    def drc(self):        
+        calibre_drc_file = "demo\cell_apr\rule\c153.drc"  # 模板文件路径
+        output_directory = self.cfgs.gds_dir      # 输出目录
+        layout_file_path = "top.gds"  # GDS文件路径
+        cells = [t.name for t in self.success]
+
+        drc_files,summary_reports = batch_drc_check(
+            template_path=calibre_drc_file,
+            output_dir=output_directory,
+            layout_path=layout_file_path,
+            cell_names=cells
+        )
+        script = generate_drc_shell_script(drc_files)
         
+        
+        
+    def gen_top_cell(self, gds_path):
+        layout = db.Layout()
+        layout.read(gds_path)
+
+
+        top_cell = layout.create_cell("TOP")
+        for name in self.layout_layers:
+            top_cell.shapes(self.layout_layers[name]) 
+        
+        existing_cells = {cell.name:cell for cell in layout.each_cell() if cell.name != "TOP"}
+
+        current_x = 0
+        for cell_name,cell in existing_cells.items():
+            # 创建变换对象，设置当前X坐标，Y坐标为0
+
+            trans = db.DTrans(db.DTrans.R0, current_x, 0)
+            i1 = db.DCellInstArray(cell.cell_index(), trans)
+            top_cell.insert(i1)
+            print(f"Add {cell.name} to : X={current_x}, Y=0")        
+            # t = db.DText(cell_name, db.DVector(current_x, 0))
+            # # t.size = 0.2
+            # top_cell.shapes(self.layout_layers['TEXT']).insert(t)
+            current_x += self.cells[cell_name].border.w/1000
+        
+        layout.top_cell = top_cell
+        layout.write(gds_path)
+        self.top_cell = top_cell

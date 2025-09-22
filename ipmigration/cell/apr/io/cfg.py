@@ -32,7 +32,12 @@ class Cfg:
         #string
         self.tech_name = cfg_dict['tech_name']     
         self.netlist = cfg_dict['netlist']       
-        self.output_dir = cfg_dict['output_dir']       
+        self.output_dir = cfg_dict['output_dir']  
+        self.gds_dir = os.path.join(self.output_dir, 'gds')
+        if not(os.path.exists(self.gds_dir)):
+            os.mkdir(self.gds_dir)
+        
+
         self.model_file = cfg_dict['model_file']       
         self.mapping_file = cfg_dict['mapping_file']  
         self.rule_file = cfg_dict['rule_file']   

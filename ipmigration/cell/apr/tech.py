@@ -41,14 +41,14 @@ class Tech(object):
         self.M2 = 'M2'
         self.BORDER = 'BORDER'
         self.M1TXT = 'M1TXT'
-        self.SUBTXT ='SUBTXT'
+        self.TEXT ='TEXT'
         # self.BK1TXT = 'BK1TXT'
         # self.BK2TXT = 'BK2TXT'
         # self.BK3TXT = 'BK3TXT'
         
         self.layer_list = [self.NW, self.AA, self.GT, self.SP, self.SN, 
                            self.CT, self.M1, self.V1, self.M2, 
-                           self.BORDER, self.M1TXT, self.SUBTXT ]
+                           self.BORDER, self.M1TXT, self.TEXT ]
         logger.info('tech->layers: '+ str(self.layer_list))
         
     def _read_tech_align(self, layer_align_file):
@@ -111,7 +111,7 @@ class Tech(object):
             self.M2:    ['false','#ffa080','#ffa080','0','0','I12','true','true','false','false','false','0'],
             self.BORDER:['false','#80ff8d','#80ff8d','0','0','I9','true','false','false','false','false','0'],            
             self.M1TXT: ['false','#ff0000','#ff0000','0','0','I5','true','true' ,'false','false','false','0'],
-            self.SUBTXT:['false','#004080','#004080','0','0','I5','true','true' ,'false','false','false','0']  }
+            self.TEXT:['false','#004080','#004080','0','0','I5','true','true' ,'false','false','false','0']  }
         self.lyp_dict = lyp_dict
         with open(os.path.join(folder,'kl_' + self.tech_name + '.lyp'),'w') as f:
             f.write('<?xml version="1.0" encoding="utf-8"?>\n')
@@ -713,17 +713,6 @@ class Editor:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 def place_rectangles(height_tuple, h1, h2, s):
     # Parse the height range tuple (low, high)
     low, high = height_tuple
@@ -756,7 +745,10 @@ def place_rectangles(height_tuple, h1, h2, s):
         # Determine height for current rectangle:
         # h2 for second from top (i=1) and second from bottom (i=n-2)
         # h1 for all other positions
-        current_height = h2 if i == 1 or i == n - 2 else h1
+        
+        #TODO: Below need consider other Tracks
+        # current_height = h2 if i == 2 or i == n - 3 else h1
+        current_height = h2 if i == n//2 or i == n//2 - 1 else h1
         
         current_high = current_low + current_height
         positions.append([current_low, current_high])

@@ -10,5 +10,5 @@ V1,W2,drawing," "
 M2,A2,drawing," "  
 BORDER,prBoundary,drawing," "  
 M1TXT,A1TEXT,drawing," "  
-SUBTXT,PT,txt," " 
+TEXT,text,drawing," " 
 

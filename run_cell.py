@@ -44,3 +44,9 @@ c1 = cells['DFCFB1']
 r1 = c1.apr.router
 d1 = c1.cdr
 e1 = c1.cdr.edges_op
+
+import shutil
+source_path = r"D:\projects\ipmigration\demo\cell_apr\outputs\c153\gds\top.gds"
+# 目标文件路径
+target_path = r"D:\ubuntu_share\top.gds"
+shutil.copy2(source_path, target_path)

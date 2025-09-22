@@ -3,20 +3,40 @@
 
 @author: leiyuan
 """
+'''
+import klayout.db as db
 
+# 创建布局对象
+layout = db.Layout()
+
+# 创建一个单元格用于放置文本
+cell = layout.create_cell("TEXT_CELL")
+
+# 定义图层（层号1，数据类型0）
+text_layer = layout.layer(1, 0)
+
+box = db.DBox(10, 10, 100, 200)
+
+t = db.DText("123", 2.0,1.0)
+t.halign=1
+t.valign = 1
+t.size = 5.0
+cell.shapes(text_layer).insert(t)
+cell.shapes(text_layer).insert(box)
+
+# 保存布局到GDS文件
+layout.write("text_demo.gds")
+print("文本已创建并保存到 text_demo.gds")
 
 '''
-Net
 
-'''
 import networkx as nx
-from ipmigration.cell.apr.lyt.instance import M1_Rails,NPWELL,PINMETAL
+from ipmigration.cell.apr.lyt.instance import Rails,NPWELL,PINMETAL
 from ipmigration.cell.apr.lyt.instance import M1_Route,GT_Route
 from ipmigration.cell.apr.lyt.instance import GT_Pair,AA_SD 
 from ipmigration.cell.apr.pr.ip_router import visualize_pins,find_subgraph_with_nodes
 import matplotlib.pyplot as plt
-# fig, ax = visualize_pins(self.ckt.name, self.m1_pins_result, self.y_lim, edges=self.edges_op)
-# plt.show()
+
 
 PLOT = False
 
@@ -49,7 +69,6 @@ class CellDrawer:
         poly_connect = self.poly_connect
         vdd_nets = self.cell.apr.router.vdd_nets
         vss_nets = self.cell.apr.router.vss_nets 
-        # abut_nets = self.cell.apr.abut_nets 
         gg_nets = self.cell.apr.router.gg_nets
         net_loc = self.cell.apr.router.net_loc
         size = self.cell.apr.router.grid_size 
@@ -63,30 +82,35 @@ class CellDrawer:
 
         
         '''
-        pins = c2.apr.router.m1_pins_result
-        edges = c2.apr.router.edges_op
-        net_loc = c2.apr.net_loc
-        ipins = list(c2.ckt.ipins.keys()) +[c2.ckt.clk_net]
-        opins = list(c2.ckt.opins.keys())
-        size = c2.apr.grid_size 
-        vdd_nets = c2.apr.vdd_nets
-        vss_nets = c2.apr.vss_nets
-        gg_nets = c2.apr.gg_nets
-        pin_loc = c2.apr.pin_loc
-        poly_connect = c2.apr.router.poly_connect
+        pins = c1.apr.router.m1_pins_result
+        edges = c1.apr.router.edges_op
+        net_loc = c1.apr.router.net_loc
+        ipins = list(c1.ckt.ipins.keys()) +[c1.ckt.clk_net]
+        opins = list(c1.ckt.opins.keys())
+        size = c1.apr.router.grid_size 
+        vdd_nets = c1.apr.router.vdd_nets
+        vss_nets = c1.apr.router.vss_nets
+        gg_nets = c1.apr.router.gg_nets
+        pin_loc = c1.apr.router.pl
+        poly_connect = c1.apr.router.poly_connect
+        edges_op = Edges_Optimizer(size, pin_loc, edges, pins, ipins,opins, gg_nets,
+                                  vdd_nets,vss_nets, poly_connect)
+        
+        edges_op.optimize_inpins()
+        edges_op.optimize_ct()
         '''    
+        
         
         edges_op = Edges_Optimizer(size, pin_loc, edges, pins, ipins,opins, gg_nets,
                                   vdd_nets,vss_nets, poly_connect)
         
         self.edges_op = edges_op
-        
         #optimize input pins
         edges_op.optimize_inpins()
         if PLOT:
             fig, ax = visualize_pins(self.cell.name + ': input pins 2nd optimization', edges_op.pins, size[1], edges=edges_op.edges)
             plt.show()    
-        
+           
         #optimize aa_ct
         edges_op.optimize_ct()
         if PLOT:
@@ -106,36 +130,25 @@ class CellDrawer:
             iter_num+=1
             if iter_num > 20:
                 break
-        
         fig, ax = visualize_pins(self.cell.name + ':final', edges_op.pins, size[1], edges=edges_op.edges)
         plt.show() 
+        
+        
+        #TODO: the above part will and should be send to global apr future.
+        
         col_space = Col_Spaces(cfgs, tech, net_loc, edges_op)
         self.col_space = col_space
+        
         # eol, fail_eol, col_eol_ext 
         eol_direction, eol_extension, col_eol_ext = edges_op.cal_eol_type()
         pc_p,pc_n,poly_connect_edges = edges_op.poly_connect_process()
+        
         # print(poly_connect_edges)
         # end_ps, corner_ps, input_pins, unused_ps, used_ps = find_special_points(edges,pins,ipins)
         # edges_points = edges_to_points(edges)
         
         x_axis = col_space.run(col_eol_ext)
         
-        
-        # edges_parallel = cal_parallel_edges(edges_points,input_pins)
-        
-        
-        
-        # eol, fail_eol, col_eol_ext = cal_eol_type( end_ps, corner_ps, unused_ps,used_ps,edges_points)
-        
-        # pc_p,pc_n,pc_edges = poly_connect_process(poly_connect,pin_loc)
-        # TODO: optimize fail_eol, add a test here
-        
-        # col_mos,col_type = col_data(net_loc)
-        # x_axis = col_spaces(cfgs,tech,size,pins,vdd_nets,vss_nets,edges_parallel,col_eol_ext)
-        # self.x_axis = x_axis
-
-       
-                
         # #first round: GT
         # #second round: AA
         col_type = col_space.col_type
@@ -146,6 +159,7 @@ class CellDrawer:
         
         left_gt_aap = None
         left_gt_aan = None
+        #start
         x = cfgs.cell_offset_x + tech.CT_W.hv + tech.CT_E_AA.v 
         xs = []
         
@@ -257,7 +271,8 @@ class CellDrawer:
         
         self.gt_paris = gt_pairs
         #rail    
-        rail = M1_Rails(tech,0,x+cfgs.cell_offset_x + tech.CT_W.hv + tech.CT_E_AA.v )
+        rail = Rails(tech,0,x+cfgs.cell_offset_x + tech.CT_W.hv + tech.CT_E_AA.v )
+        self.cell.border = rail.border_box
         self.data.append(rail.data)
         npwell = NPWELL(tech,cfgs,rail.border_box)
         self.data.append(npwell.data)
@@ -270,16 +285,12 @@ class CellDrawer:
         m1_edges = M1_Route(tech, edges_op.edges, loc, tech.M1_W.v, eol_direction, eol_extension)
         self.data.append(m1_edges.data)
         
-        
         #GT Connect
         gt_edges = GT_Route(tech, poly_connect_edges, xs, pin_loc,gt_pairs)
         self.data.append(gt_edges.data)
         
-        
         #Pins M1
         txt_db_shapes = self.cell.db_shapes[tech.M1TXT]
-        
-        
         
         pinmetal = PINMETAL(tech, edges_op.input_pins, edges_op.output_pins, edges_op.pins_area, loc, txt_db_shapes)
         self.data.append(pinmetal.data)
@@ -298,8 +309,8 @@ class CellDrawer:
         self.data = []
         
         #draw power ground rail
-        m1_rails  = M1_Rails(self.tech, left, right)
-        self.data.append(m1_rails.data)
+        rails  = Rails(self.tech, left, right)
+        self.data.append(rails.data)
       
         
         # if m2_tracks:
@@ -307,353 +318,9 @@ class CellDrawer:
         #     m2_tracks.draw(ckt)
         
         # #border and diffusion
-        npwell = NPWELL(self.tech,self.cfgs,m1_rails.border_box)
+        npwell = NPWELL(self.tech,self.cfgs,rails.border_box)
         self.data.append(npwell.data)
         self.draw()
-
-
-
-# #Generation Part
-
-# def find_special_points(edges, pins, ipins):
-#     """
-#     从edges中查找端点和直角点，并提取特殊pin点及未被访问的网格点
-    
-#     参数:
-#     edges -- 边数据，字典格式，键为名称，值为点对列表
-#     pins -- 引脚数据，字典格式，键为数字，值为点信息列表
-    
-#     返回:
-#     end_points -- 端点列表（属于pin的点）
-#     corner_points -- 直角点列表（属于pin的点）
-#     isolated_pins -- 不在任何边上的pin点
-#     unused_grid_points -- 网格中未被任何边经过的点
-#     """
-#     # 1. 从pins中提取所有pin的坐标（只取x和y）
-#     pin_points = set()
-#     for pin_data in pins.values():
-#         for point_info in pin_data:
-#             if point_info:  # 确保点信息存在
-#                 coords = point_info[1]
-#                 pin_points.add((coords[0], coords[1]))  # 只取x和y坐标
-    
-#     # 2. 统计所有边中的点坐标（只取x和y）
-#     edge_points = set()
-#     all_edge_points_count = {}
-    
-#     for key in edges:
-#         for line in edges[key]:
-#             for point in line:
-#                 xy_point = (point[0], point[1])  # 只取x和y坐标
-#                 edge_points.add(xy_point)
-                
-#                 # 统计每个点的出现次数
-#                 if xy_point in all_edge_points_count:
-#                     all_edge_points_count[xy_point] += 1
-#                 else:
-#                     all_edge_points_count[xy_point] = 1
-    
-#     # 3. 识别端点（只属于pin且只被一条边经过的点）
-#     end_points = [point for point in pin_points 
-#                   if point in all_edge_points_count and all_edge_points_count[point] == 1]
-    
-#     # 4. 构建每个点的相邻点集合
-#     adjacent_points = {}
-#     for key in edges:
-#         for line in edges[key]:
-#             p1, p2 = line
-#             xy_p1, xy_p2 = (p1[0], p1[1]), (p2[0], p2[1])
-            
-#             # 添加相邻关系
-#             if xy_p1 in adjacent_points:
-#                 adjacent_points[xy_p1].add(xy_p2)
-#             else:
-#                 adjacent_points[xy_p1] = {xy_p2}
-                
-#             if xy_p2 in adjacent_points:
-#                 adjacent_points[xy_p2].add(xy_p1)
-#             else:
-#                 adjacent_points[xy_p2] = {xy_p1}
-    
-#     # 5. 识别直角点（属于pin且被两条垂直边经过的点）
-#     corner_points = []
-#     for point in pin_points:
-#         if point in adjacent_points:
-#             neighbors = adjacent_points[point]
-#             # 至少需要两个相邻点才能形成直角
-#             if len(neighbors) == 2:
-#                 # 检查是否存在垂直的相邻点对
-#                 n1,n2 = list(neighbors)
-#                 dx1, dy1 = n1[0] - point[0], n1[1] - point[1]
-#                 dx2, dy2 = n2[0] - point[0], n2[1] - point[1]
-            
-#                 # 直角条件：向量点积为0
-#                 if dx1 * dx2 + dy1 * dy2 == 0:
-#                     corner_points.append(point)
-
-    
-#     # 去重处理
-#     corner_points = list(set(corner_points))
-    
-#     # 6. 提取不在任何边上的pin点
-#     input_pins = {}
-#     for k, v in pins.items():
-#         if len(v) == 1:
-#             if v[0][0] in ipins:
-#                 input_pins[v[0][0]] = (v[0][1][0],v[0][1][1]) 
-    
-#     isolated_pins = [point for point in pin_points if point not in edge_points]
-    
-#     # 7. 提取网格中未被任何边经过的点
-#     # 确定网格范围
-#     if edge_points:
-#         min_x = min(point[0] for point in edge_points)
-#         max_x = max(point[0] for point in edge_points)
-#         min_y = min(point[1] for point in edge_points)
-#         max_y = max(point[1] for point in edge_points)
-        
-#         # 生成所有网格点
-#         all_grid_points = set()
-#         for x in range(min_x, max_x + 1):
-#             for y in range(min_y, max_y + 1):
-#                 all_grid_points.add((x, y))
-        
-#         # 未被访问的网格点
-#         unused_grid_points = all_grid_points - edge_points
-#     else:
-#         unused_grid_points = set()
-    
-#     #get used pins
-#     all_points = set()
-#     for values in edges.values():
-    
-#         for point_pair in values:
-#             all_points.add(point_pair[0])
-#             all_points.add(point_pair[1])
-
-#     used_points = sorted(all_points)
-    
-    
-    
-#     return end_points, corner_points, input_pins, unused_grid_points, used_points
-
-
-# def cal_parallel_edges(edges_points,input_pins):
-    
-#     data = edges_points.copy()
-#     for k,v in input_pins.items():
-#         data[k] = [v]
-    
-#     # 初始化结果字典
-#     result = {}
-    
-#     # 获取所有键的列表
-#     keys = list(data.keys())
-    
-#     # 遍历所有可能的键对（i < j 避免重复计数）
-#     for i in range(len(keys)):
-#         for j in range(i + 1, len(keys)):
-#             key1 = keys[i]
-#             key2 = keys[j]
-            
-#             # 遍历key1中的所有点
-#             for x1, y1 in data[key1]:
-#                 # 遍历key2中的所有点
-#                 for x2, y2 in data[key2]:
-#                     # 检查横坐标是否相差为1且纵坐标相等
-#                     if (abs(x1 - x2) == 1) and (y1 == y2):
-#                         # 确定较小的横坐标作为元组的第一个元素
-#                         pair = (min(x1, x2), max(x1, x2))
-                        
-#                         # 更新结果字典
-#                         if pair in result:
-#                             result[pair] += 1
-#                         else:
-#                             result[pair] = 1
-    
-#     return result
-
-# def col_data(net_loc):
-#     col_mos = {}
-#     for key, value in net_loc.items():
-#         first_element = value[0]
-#         if first_element not in col_mos:
-#             col_mos[first_element] = {'P':[],'N':[] }
-#         if key[0].T == 'P':
-#             col_mos[first_element]['P'].append(key)
-#         else:
-#             col_mos[first_element]['N'].append(key)
-        
-#     col_type = {}
-#     for key, value in col_mos.items():
-#         unique_connections = set()
-#         for list_key in ['P', 'N']:
-#             for element in value[list_key]:
-#                 unique_connections.add(element[1])
-#         sorted_connections = sorted(unique_connections)
-#         col_type[key] = ''.join(sorted_connections)
-#     return col_mos, col_type
-
-
-
-# #TODO: 
-# def cal_space_SD_to_G(tech, sd_pins, g_pins, transistors):
-#     p = transistors['P']
-
-
-#     n = transistors['N']
-
-# def edges_to_points(edges):
-#     points = {}
-#     for k,v in edges.items():
-#         points[k] = []
-#         for t in v:
-#             points[k].append(t[0])
-#             points[k].append(t[1])
-#         points[k] = list(set(points[k]))
-#     return points
-    
-# def cal_eol_type(end_ps, corner_ps, unused_ps, used_ps, edges_points):
-#     eol_direction = {} #pin: sublist of [left,right,up,down]
-#     fail_eol_direction  = {}
-
-#     for p in end_ps:
-#         net_points = [v for k,v in edges_points.items() if p in v][0]
-        
-#         x,y = p
-#         if (x-1,y) in net_points:
-#             if (x,y-1) in unused_ps and (x,y+1) in unused_ps:
-#                 eol_direction[p] = ['up','down']
-#             elif (x+1,y) in unused_ps:
-#                 eol_direction[p] = ['right']
-#             else:
-#                 # eol_direction[p] = ['right']
-#                 fail_eol_direction[p] = ['right']
-            
-#         elif (x+1,y) in net_points:
-#             if (x,y-1) in unused_ps and (x,y+1) in unused_ps:
-#                 eol_direction[p] = ['up','down']
-#             elif (x-1,y) in unused_ps:
-#                 eol_direction[p] = ['left']
-#             else:
-#                 # eol_direction[p] = ['left']
-#                 fail_eol_direction[p] = ['left']
-#         elif (x,y-1) in net_points:
-#             if (x-1,y) in unused_ps and (x+1,y) in unused_ps:
-#                 eol_direction[p] = ['left','right']
-#             elif (x,y+1) in unused_ps:
-#                 eol_direction[p] = ['up']
-#             else:
-#                 fail_eol_direction[p] = []
-#                 if not((x-1,y) in unused_ps):
-#                     fail_eol_direction[p].append('left')
-#                 if not((x+1,y) in unused_ps):
-#                     fail_eol_direction[p].append('right') 
-                  
-#         elif (x,y+1) in net_points:
-#             if (x-1,y) in unused_ps and (x+1,y) in unused_ps:
-#                 eol_direction[p] = ['left','right']
-#             elif (x,y-1) in unused_ps:
-#                 eol_direction[p] = ['down']
-#             else:
-#                 fail_eol_direction[p] = []
-#                 if not((x-1,y) in unused_ps):
-#                     fail_eol_direction[p].append('left')
-#                 if not((x+1,y) in unused_ps):
-#                     fail_eol_direction[p].append('right')           
-#         else:
-#             raise ValueError
-            
-#     for p in corner_ps:
-#         net_points = [v for k,v in edges_points.items() if p in v][0]
-#         x,y = p
-#         if (x-1,y) in net_points and (x,y+1) in net_points:
-#             if (x+1,y) in unused_ps:
-#                 eol_direction[p] = ['right']
-#             elif (x,y-1) in unused_ps:
-#                 eol_direction[p] = ['down']
-#             else:
-#                 # eol_direction[p] = ['right']
-#                 fail_eol_direction[p] = ['right']    
-                
-#         elif (x-1,y) in net_points and (x,y-1) in net_points:
-#             if (x+1,y) in unused_ps:
-#                 eol_direction[p] = ['right']
-#             elif (x,y+1) in unused_ps:
-#                 eol_direction[p] = ['up']
-#             else:
-#                 # eol_direction[p] = ['right']
-#                 fail_eol_direction[p] = ['right']    
-                
-#         elif (x+1,y) in net_points and (x,y-1) in net_points:
-#             if (x-1,y) in unused_ps:
-#                 eol_direction[p] = ['left']
-#             elif (x,y+1) in unused_ps:
-#                 eol_direction[p] = ['up']
-#             else:
-#                 # eol_direction[p] = ['left']
-#                 fail_eol_direction[p] = ['left']         
-#         elif (x+1,y) in net_points and (x,y+1) in net_points:
-#             if (x-1,y) in unused_ps:
-#                 eol_direction[p] = ['left']
-#             elif (x,y-1) in unused_ps:
-#                 eol_direction[p] = ['down']
-#             else:
-#                 # x_extend_pins[p] = ['left']
-#                 fail_eol_direction[p] = ['left']         
-#         else:
-#             raise ValueError
-    
-#     data = []
-#     for k,v in fail_eol_direction.items():
-#         for t in v:
-#             data.append((k[0],t))
-#     col_eol_ext = []
-#     for t in data:
-#         if t[0]>0:
-#             if t[1] =='right':
-#                 col_eol_ext.append((t[0],t[0]+1))
-#             else:
-#                 col_eol_ext.append((t[0]-1,t[0]))
-            
-#     col_eol_ext = list(set(col_eol_ext))
-#     return eol_direction, fail_eol_direction,col_eol_ext
-
-
-
-
-# def poly_connect_process(poly_connect,pin_loc):
-#     poly_connect_p = []
-#     poly_connect_n = []
-#     poly_connect_edges = []
-    
-#     for p1,p2 in poly_connect.values():
-#         if p1[1] == p2[1]:
-#             poly_connect_edges.append([(p1[0],p2[0]), 'm','max'])
-#         else:
-#             m = int(0.5*(p1[0] + p2[0]))
-#             if p1[1] ==pin_loc.aap:
-#                 poly_connect_p.append(p1[0])
-#                 poly_connect_edges.append([(p1[0], m), 'p', 'min'])
-#             else:
-#                 poly_connect_n.append(p1[0])
-#                 poly_connect_edges.append([(p1[0], m), 'n', 'min'])
-#             if p2[1] ==pin_loc.aap:
-#                 poly_connect_p.append(p2[0])
-#                 poly_connect_edges.append([(p2[0], m), 'p', 'min'])
-#             else:
-#                 poly_connect_n.append(p2[0])
-#                 poly_connect_edges.append([(p2[0], m), 'n', 'min'])     
-                
-#             poly_connect_edges.append([(m, m), 'pn','min'])
-#     return poly_connect_p,poly_connect_n,poly_connect_edges
-
-# # def optimize_U_route(edges,pins):
-    
-    
-
-
-
 
 
 
@@ -741,6 +408,7 @@ class Edges_Optimizer:
                 vdd_nets_loc[t] =  [size[1]-1, 'lr']               
             else:
                 vdd_nets_loc[t] =  [-1,'']
+        # print('test',vdd_nets_loc)
         return vdd_nets_loc
                     
     @property  

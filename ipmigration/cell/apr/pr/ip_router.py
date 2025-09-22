@@ -10,11 +10,12 @@ from z3 import Optimize,Solver
 from z3 import Int, Bool, Or, And, Not, Distinct, If, is_true,sat,Abs
 
 DEBUG=False
-PLOT =True
+PLOT =False
 
 
 pin_locs = {
-                6:{'aa_p':4,'aa_n':1,'gt_p':3,'gt_n':2,'gt_m':2.5,'aap_range':[0,1,-1],'aan_range':[0,-1]},
+                # 6:{'aa_p':4,'aa_n':1,'gt_p':3,'gt_n':2,'gt_m':2.5,'aap_range':[0,1,-1],'aan_range':[0,-1]},
+                6:{'aa_p':4,'aa_n':1,'gt_p':3,'gt_n':2,'gt_m':2.5,'aap_range':[0,1],'aan_range':[0,-1]},
                 7:{'aa_p':5,'aa_n':1,'gt_p':4,'gt_n':2,'gt_m':3,  'aap_range':[0,1,-1],'aan_range':[0,-1,1]},
                 8:{'aa_p':6,'aa_n':1,'gt_p':4,'gt_n':3,'gt_m':3.5,'aap_range':[0,1,-1],'aan_range':[0,-1,1]},
                 9:{'aa_p':7,'aa_n':1,'gt_p':5,'gt_n':3,'gt_m':4  ,'aap_range':[0,1,-1],'aan_range':[0,-1,1]}
@@ -144,7 +145,7 @@ class IPRouter:
                 p = pn['P']
                 n = pn['N']
                 if not(p) and not(n):
-                    loc +=1
+                    loc +=2
                 else: 
                     if p:
                         self.net_loc[(p,'S')] = (loc  ,self.pl.aap, 1)
@@ -158,7 +159,8 @@ class IPRouter:
                     
                
                     #TODO: may try to not use this first.
-                    if self.ckt.rn or self.ckt.sn:
+                    # if self.ckt.rn or self.ckt.sn:
+                    if True:
                         if i != len(blk)-1:
                         #next is pn
                             p2 = blk[i+1]['P']
