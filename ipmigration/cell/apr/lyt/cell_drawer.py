@@ -676,7 +676,7 @@ class Edges_Optimizer:
         for p1,p2 in poly_connect.values():
             if p1[1] == p2[1]:
                 poly_connect_edges.append({'start':min(p1[0], p2[0]),'end':max(p1[0], p2[0]), 
-                                           'start_ext':'','end_ext':'' ,'y':'m', 'w':'max','type':'h'})
+                                           'start_ext':'','end_ext':'' ,'y':'m', 'w':'min','type':'h'})
             else:
                 
                 if p1[1] ==pin_loc.aap:

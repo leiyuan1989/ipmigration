@@ -385,9 +385,16 @@ class AA_SD(Instance):
                         self.data['M1'].append(self.box['M1_P'])
                         
                         top_t = y + tech.CT_W.hv + tech.CT_E_AA.v
-                        bottom_t = max(right_pmos_aa.b, left_pmos_aa.b)
-                        self.box['AA_P1'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
-                        self.data['AA'].append(self.box['AA_P1'])
+                        # bottom_t = max(right_pmos_aa.b, left_pmos_aa.b)
+                        # self.box['AA_P1'] = Box([l_ct_aa, bottom_t, r_ct_aa, top_t] )
+                        # self.data['AA'].append(self.box['AA_P1'])
+                        
+                        
+                        self.box['AA_P1_1'] = Box([l_ct_aa, left_pmos_aa.b, m_ct_aa, top_t] )
+                        self.data['AA'].append(self.box['AA_P1_1'])
+                        self.box['AA_P1_2'] = Box([m_ct_aa, right_pmos_aa.b, r_ct_aa,  top_t] )
+                        self.data['AA'].append(self.box['AA_P1_2'])
+                        
                         
                         self.box['AA_P2'] = Box([left_pmos_aa.r, left_pmos_aa.b, l_ct_aa, left_pmos_aa.t] )
                         self.data['AA'].append(self.box['AA_P2'])
@@ -977,20 +984,21 @@ class PINMETAL(Instance):
                     pairs_y.append([loc[(x, y)], loc[(x, y+1)]])
         
             ext = tech.CT_W.hv + tech.CT_E_M1.v
+            ext2 = ext - tech.CT_E_M1_END.v
             for locs in quads:
                 l,b = locs[0]
                 r,t = locs[1]
-                box =  Box([l-ext,b-ext,r+ext,t+ext])
+                box =  Box([l-ext,b-ext2,r+ext,t+ext2])
                 self.data['M1'].append(box)
             for locs in pairs_x:
                 l,b = locs[0]
                 r,t = locs[1]
-                box =  Box([l-ext,b-ext,r+ext,t+ext])
+                box =  Box([l-ext,b-ext2,r+ext,t+ext2])
                 self.data['M1'].append(box)        
             for locs in pairs_y:
                 l,b = locs[0]
                 r,t = locs[1]
-                box =  Box([l-ext,b-ext,r+ext,t+ext])
+                box =  Box([l-ext,b-ext2,r+ext,t+ext2])
                 self.data['M1'].append(box)        
             # self.data[tech.M1TXT] = []
          

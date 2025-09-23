@@ -25,7 +25,8 @@ class Cfg:
         settings = ['tech_name', 'netlist','output_dir','model_file','mapping_file',
                     'rule_file','layer_align','pins_align','cell_height',
                     'gate_length','v_pin_grid','h_pin_grid','power_rail_width',
-                    'cell_offset_x','np_ext_border','nw_ext_np','gen_cells','cost_funcs']
+                    'cell_offset_x','np_ext_border','nw_ext_np','gen_cells','cost_funcs',
+                    'shrink']
         for setting in settings:
             assert setting in cfg_dict, '%s not in input file'%(setting)
         
@@ -59,7 +60,9 @@ class Cfg:
         self.power_rail_width = int(cfg_dict['power_rail_width'])
         self.cell_offset_x = int(cfg_dict['cell_offset_x'])         
         self.np_ext_border = int(cfg_dict['np_ext_border'])  
-        self.nw_ext_np = int(cfg_dict['nw_ext_np'])       
+        self.nw_ext_np = int(cfg_dict['nw_ext_np'])     
+        self.shrink = float(cfg_dict['shrink'])     
+        
         # self.metal_layers = int(cfg_dict['metal_layers'])   
       
         #create output dir if not exist

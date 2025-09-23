@@ -21,6 +21,9 @@ class StdCell:
         self.aux_file = aux_file
         self.place_file = place_file
         self.load_place = cfgs.load_place
+        if cfgs.shrink != 1:
+            self.ckt.shrink(cfgs.shrink)
+            
         
         
     def run(self,top_layout,db_layers):

@@ -350,7 +350,9 @@ class Ckt:
                 self.parallel[new_device] = parallel
             
  
-
+    def shrink(self,shrink):
+        for device in self.devices:
+            device.W = int(shrink* device.W)
     #move the following to cell   
 
 
