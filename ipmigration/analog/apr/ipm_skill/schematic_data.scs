@@ -1,0 +1,85 @@
+// Generated for: spectre
+// Generated on: Sep 24 20:36:17 2025
+// Design library name: demo_ipm_tsmc018
+// Design cell name: test1
+// Design view name: schematic
+simulator lang=spectre
+global 0
+include "/home/meow/projects/ip_migration/pdks/smic18mmrf/smic18mmrf/../models/spectre/ms018_v1p7_spe.lib" section=tt
+include "/home/meow/projects/ip_migration/pdks/smic18mmrf/smic18mmrf/../models/spectre/ms018_v1p7_spe.lib" section=bjt_tt
+include "/home/meow/projects/ip_migration/pdks/smic18mmrf/smic18mmrf/../models/spectre/ms018_v1p7_spe.lib" section=res_tt
+include "/home/meow/projects/ip_migration/pdks/smic18mmrf/smic18mmrf/../models/spectre/ms018_v1p7_spe.lib" section=mim_tt
+include "/home/meow/projects/ip_migration/pdks/smic18mmrf/smic18mmrf/../models/spectre/ms018_v1p7_res_spe.ckt"
+include "/home/meow/projects/ip_migration/pdks/smic18mmrf/smic18mmrf/../models/spectre/ms018_rf_v1p5_spe.lib" section=tt
+include "/home/meow/projects/ip_migration/pdks/smic18mmrf/smic18mmrf/../models/spectre/ms018_rf_v1p5_spe.lib" section=res_tt
+include "/home/meow/projects/ip_migration/pdks/smic18mmrf/smic18mmrf/../models/spectre/ms018_rf_v1p5_spe.lib" section=mim_tt
+include "/home/meow/projects/ip_migration/pdks/smic18mmrf/smic18mmrf/../models/spectre/rf018_m6_res_spe.lib" section=res_tt
+include "/home/meow/projects/ip_migration/pdks/smic18mmrf/smic18mmrf/../models/spectre/ms018_rf_v1p5_diff_ind_spe.ckt"
+include "/home/meow/projects/ip_migration/pdks/smic18mmrf/smic18mmrf/../models/spectre/ms018_rf_v1p5_spri_ind_spe.ckt"
+include "/home/meow/projects/ip_migration/pdks/smic18mmrf/smic18mmrf/../models/spectre/ms018_rf_v1p5_var_spe.ckt"
+
+// Library name: demo_ipm_tsmc018
+// Cell name: test1
+// View name: schematic
+M14 (net048 net07 VDD VDD) pch3 l=1u w=10u m=4 ad=4.8e-12 as=4.8e-12 \
+        pd=20.96u ps=20.96u nrd=0.027 nrs=0.027
+M13 (net07 net07 VDD VDD) pch3 l=1u w=10u m=4 ad=4.8e-12 as=4.8e-12 \
+        pd=20.96u ps=20.96u nrd=0.027 nrs=0.027
+M26 (VDD VDD VDD VDD) pch3 l=1u w=10u m=4 ad=4.8e-12 as=4.8e-12 pd=20.96u \
+        ps=20.96u nrd=0.027 nrs=0.027
+M30 (net15 net10 net10 net10) pch3 l=2u w=21.0u m=2 ad=1.008e-11 \
+        as=1.008e-11 pd=42.96u ps=42.96u nrd=0.0128571 nrs=0.0128571
+M29 (net7 net10 net10 net10) pch3 l=2u w=21.0u m=2 ad=1.008e-11 \
+        as=1.008e-11 pd=42.96u ps=42.96u nrd=0.0128571 nrs=0.0128571
+M25 (VDD VDD VDD VDD) pch3 l=2u w=21.0u m=2 ad=1.008e-11 as=1.008e-11 \
+        pd=42.96u ps=42.96u nrd=0.0128571 nrs=0.0128571
+M4 (net15 VIP net10 net10) pch3 l=2u w=21.0u m=4 ad=1.008e-11 as=1.008e-11 \
+        pd=42.96u ps=42.96u nrd=0.0128571 nrs=0.0128571
+M18 (net7 VIN net10 net10) pch3 l=2u w=21.0u m=4 ad=1.008e-11 as=1.008e-11 \
+        pd=42.96u ps=42.96u nrd=0.0128571 nrs=0.0128571
+M19 (net4 net4 VDD VDD) pch3 l=2u w=21.0u m=4 ad=1.008e-11 as=1.008e-11 \
+        pd=42.96u ps=42.96u nrd=0.0128571 nrs=0.0128571
+M20 (net10 net4 VDD VDD) pch3 l=2u w=21.0u m=8 ad=1.008e-11 as=1.008e-11 \
+        pd=42.96u ps=42.96u nrd=0.0128571 nrs=0.0128571
+M21 (VOUT net4 VDD VDD) pch3 l=2u w=21.0u m=16 ad=1.008e-11 as=1.008e-11 \
+        pd=42.96u ps=42.96u nrd=0.0128571 nrs=0.0128571
+M16 (net048 net048 GND GND) nch3 l=1u w=10u m=4 ad=4.8e-12 as=4.8e-12 \
+        pd=20.96u ps=20.96u nrd=0.027 nrs=0.027
+M15 (net07 net048 net08 GND) nch3 l=1u w=10u m=8 ad=4.8e-12 as=4.8e-12 \
+        pd=20.96u ps=20.96u nrd=0.027 nrs=0.027
+M24 (GND GND GND GND) nch3 l=1.2u w=15.0u m=2 ad=7.2e-12 as=7.2e-12 \
+        pd=30.96u ps=30.96u nrd=0.018 nrs=0.018
+M23 (GND GND GND GND) nch3 l=1.2u w=14.4u m=2 ad=6.912e-12 as=6.912e-12 \
+        pd=29.76u ps=29.76u nrd=0.01875 nrs=0.01875
+M17 (net4 net048 GND GND) nch3 l=1u w=10u m=8 ad=4.8e-12 as=4.8e-12 \
+        pd=20.96u ps=20.96u nrd=0.027 nrs=0.027
+M22 (GND GND GND GND) nch3 l=1u w=10u m=2 ad=4.8e-12 as=4.8e-12 pd=20.96u \
+        ps=20.96u nrd=0.027 nrs=0.027
+M7 (VOUT net15 GND GND) nch3 l=1.2u w=15.0u m=4 ad=7.2e-12 as=7.2e-12 \
+        pd=30.96u ps=30.96u nrd=0.018 nrs=0.018
+M6 (net15 net7 GND GND) nch3 l=1.2u w=14.4u m=1 ad=6.912e-12 as=6.912e-12 \
+        pd=29.76u ps=29.76u nrd=0.01875 nrs=0.01875
+M5 (net7 net7 GND GND) nch3 l=1.2u w=14.4u m=1 ad=6.912e-12 as=6.912e-12 \
+        pd=29.76u ps=29.76u nrd=0.01875 nrs=0.01875
+C1 (net25 VOUT) mimcap l=28.0u w=28.0u m=2
+//Series configuration of R3
+R3_1__dmy0  (net15 R3_1__dmy0 ) rnpo1rpo l=2.38u w=1u m=1
+R3_2__dmy0  (R3_1__dmy0 net25 ) rnpo1rpo l=2.38u w=1u m=1
+//End of R3
+
+//Series configuration of R2
+R2_1__dmy0  (net08 R2_1__dmy0 ) rnpo1rpo l=2.1u w=1u m=1
+R2_2__dmy0  (R2_1__dmy0 GND ) rnpo1rpo l=2.1u w=1u m=1
+//End of R2
+
+simulatorOptions options psfversion="1.1.0" reltol=1e-3 vabstol=1e-6 \
+    iabstol=1e-12 temp=27 tnom=27 scalem=1.0 scale=1.0 gmin=1e-12 rforce=1 \
+    maxnotes=5 maxwarns=5 digits=5 cols=80 pivrel=1e-3 \
+    sensfile="../psf/sens.output" checklimitdest=psf 
+modelParameter info what=models where=rawfile
+element info what=inst where=rawfile
+outputParameter info what=output where=rawfile
+designParamVals info what=parameters where=rawfile
+primitives info what=primitives where=rawfile
+subckts info what=subckts where=rawfile
+saveOptions options save=allpub

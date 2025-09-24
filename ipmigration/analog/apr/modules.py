@@ -899,6 +899,7 @@ class Canvas:
             f.write("masterres = dbOpenCellViewByType( \"%s\" \"%s\" \"layout\" \"maskLayout\" \"r\")\n"%(tech,self.map_dict['res']))
             f.write("mastercap = dbOpenCellViewByType( \"%s\" \"%s\" \"layout\" \"maskLayout\" \"r\")\n"%(tech,self.map_dict['cap']))
             for module in self.modules:
+                print(module)
                 f.write(module.skill())
 
 
