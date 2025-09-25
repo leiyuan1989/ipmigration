@@ -49,7 +49,7 @@ if __name__ == "__main__" :
         l=10000
         r=-10000
         b=10000
-        t=-10000
+        t=-10000 
         for i in ring:
             group = para.groups[i]
             groups_paras = para.groups_paras[i]
@@ -109,9 +109,7 @@ if __name__ == "__main__" :
     canvas.add(net2)
 
     # for i in net_to_sd_list:
-        
     canvas.skill(cfg.SKILL_FILE)
-
     target_path = r"D:\ubuntu_share\ota_demo.il"
     shutil.copy2(cfg.SKILL_FILE, target_path)
     
