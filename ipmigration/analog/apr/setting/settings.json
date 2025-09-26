@@ -1,16 +1,15 @@
 {
-    "SKILL_FILE": "data/ota.il",
-    "LAYOUT_FILE": "data/layout_data.txt",
-    "DR_FILE": "data/dr.csv",
-    "LAYER_FILE": "data/layer.csv",
+    "SKILL_FILE": "data/ota_demo.il",
+    "LAYOUT_FILE": "setting/layout_data.txt",
+    "DR_FILE": "setting/dr.csv",
+    "LAYER_FILE": "setting/layer.csv",
+    "PARA_FILE": "setting/paras.json",
     "INST_MAP": {
         "pmos": "pmos3v",
         "nmos": "nmos3v",
         "res": "rnhpoly",
         "cap": "mimcap"
     },
-    "LIB": "ipm_demo_amp2",
-    "CELL": "ota_demo",
     "TECH":"tsmc18rf",
     "AREA": [100, 80],
     "POWER_WIDTH": 8,

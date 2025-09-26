@@ -15,36 +15,40 @@ import data skill
 layout routing 
 
 '''
+
+CONFIG='setting/settings.json'
+
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == "__main__" :
     
     pass
-    cfg = ConfigLoader(config_file="settings.json")
-    para = ConfigLoader(config_file="paras.json")
+    cfg = ConfigLoader(config_file=CONFIG)
+    para = ConfigLoader(config_file=cfg.PARA_FILE)
     tech = Tech(cfg.TECH, cfg.DR_FILE, cfg.LAYER_FILE)
     layout_data = extract_layout_data(cfg.LAYOUT_FILE)
     master_mos,inst_data = extract_layout_mos_master(layout_data,tech)
 
-
+    #Extract Info if needed
     # G = gen_graph(layout_data)
     # groups = get_chains(G)
+    canvas = Canvas(tech, cfg.INST_MAP)
 
 
-    canvas = Canvas(tech, cfg.LIB, cfg.CELL, cfg.INST_MAP)
-
-
-    #power
-    box_vdd = Box([0,cfg.AREA[1]-cfg.POWER_WIDTH,cfg.AREA[0],cfg.AREA[1]])
-    vdd = Rect(tech.layer[tech.M2][0],box_vdd)
-    box_vss = Box([0,0,cfg.AREA[0],cfg.POWER_WIDTH])
-    # vss = Rect
-
-    canvas.add(vdd)
-    # canvas.add(vss) 
      
-
     group_list = []
     ring_list = []
 
+    #package these code?
     for ring in para.rings:
         l=10000
         r=-10000
@@ -83,10 +87,117 @@ if __name__ == "__main__" :
         c1 = MimCap(tech, name, x, y,  w, l, r)
         canvas.add(c1)
 
-
-
     #routing
+    #1. power
+    box_vdd = Box([0,cfg.AREA[1]-cfg.POWER_WIDTH,cfg.AREA[0],cfg.AREA[1]])
+    vdd = Rect(tech.layer[tech.M2][0],box_vdd)
+    box_vss = Box([ring_list[-1].box_out.l,0,cfg.AREA[0],cfg.POWER_WIDTH])
+    vss = Rect(tech.layer[tech.M2][0],box_vss)
 
+    canvas.add(vdd)
+    canvas.add(vss) 
+    
+    #2 group 
+    #2.0 group0
+    group = group_list[0]
+    ring = ring_list[0]
+    sd = group.SD_pin
+    gt  = group.GT_pin 
+    
+    
+    #sd to power
+    sd_t = [sd[0]] + sd[1:-1:2] + [sd[-1]] 
+    for rect in sd_t:
+        box = Box([rect.l, vdd.b, rect.r, rect.t])
+        rect2 = Rect(tech.layer[tech.M2][0],box)
+        canvas.add(rect2) 
+        vias = Vias(tech.layer[tech.V1][0], tech.V1_W, tech.V1_S, rect2, rect2, tech.V1_EN_M1_END)
+        canvas.add(vias) 
+    
+    #sd to gate
+    sd_t =[sd[t] for t in [0,1,10,12,-2,-1]]
+    for rect in sd_t:
+        box = Box([rect.l, gt[0][1].b, rect.r, rect.b])
+        rect2 = Rect(tech.layer[tech.M1][0],box)
+        canvas.add(rect2)
+        
+        
+    #sd to net    
+    TO_EDGE=2 
+    WIDTH = 1.94
+    
+    sd_t =[sd[t] for t in [2,4,6,8]]
+    g0_net1 = []
+    for rect in sd_t:
+        box = Box([rect.l, rect.b+TO_EDGE, rect.r, rect.b+TO_EDGE+WIDTH])
+        g0_net1.append(box)
+        rect2 = Rect(tech.layer[tech.M2][0],box)
+        canvas.add(rect2)
+        vias = Vias(tech.layer[tech.V1][0], tech.V1_W, tech.V1_S, rect2, rect2, tech.V1_EN_M1_END)
+        canvas.add(vias) 
+    box = Box([g0_net1[0].l, g0_net1[0].b, g0_net1[-1].r, g0_net1[0].t])
+    rect2 = Rect(tech.layer[tech.M2][0],box)
+    canvas.add(rect2)
+    
+    
+    sd_t =[sd[t] for t in [14,16,18,20,22,24,26,28]]
+    g0_net2 = []
+    for rect in sd_t:
+        box = Box([rect.l, rect.b+TO_EDGE, rect.r, rect.b+TO_EDGE+WIDTH])
+        g0_net2.append(box)
+        rect2 = Rect(tech.layer[tech.M2][0],box)
+        canvas.add(rect2)
+        vias = Vias(tech.layer[tech.V1][0], tech.V1_W, tech.V1_S, rect2, rect2, tech.V1_EN_M1_END)
+        canvas.add(vias) 
+    box = Box([g0_net2[0].l, g0_net2[0].b, g0_net2[-1].r, g0_net2[0].t])
+    rect2 = Rect(tech.layer[tech.M2][0],box)
+    canvas.add(rect2)
+    
+    
+    
+    
+    #gt connect
+    box = Box([sd[0].l, gt[0][1].b, sd[1].r, gt[0][1].t])
+    rect = Rect(tech.layer[tech.M1][0],box)
+    canvas.add(rect) 
+    
+    box = Box([sd[-2].l, gt[-1][1].b, sd[-1].r, gt[-1][1].t])
+    rect = Rect(tech.layer[tech.M1][0],box)
+    canvas.add(rect) 
+    
+    box = Box([gt[1][1].l, gt[1][1].b, gt[-2][1].r, gt[-2][1].t])
+    rect = Rect(tech.layer[tech.M1][0],box)
+    canvas.add(rect) 
+    
+    #ring
+    
+    
+    
+    
+    
+    #2.1 group1
+
+
+
+    #2.2 group2
+
+
+    #2.3 group3
+
+
+    #2.4 group4
+
+
+    #2.5 group5
+
+
+    #2.6 group6
+
+
+    #2.7 group7
+    
+    
+    
     sd_vdd = [0] + list(range(1,31,2)) + [30]
 
     #TODO
@@ -94,24 +205,14 @@ if __name__ == "__main__" :
     #
 
 
-    group = group_list[0]
-    ring = ring_list[0]
-    net_to_sd_to_sd_b = 2.0
-    net_to_sd_w = 1.94
-    net_to_sd_list = [2,4,6,8]
 
-    box1 = group.SD_pin[2]    
-    box2 = group.SD_pin[8]   
-
-    box_t = Box([box1.l, box1.b+net_to_sd_to_sd_b, 
-                 box2.r, box1.b+net_to_sd_to_sd_b + net_to_sd_w])
-    net2 = Rect(tech.layer[tech.M2][0],box_t)
-    canvas.add(net2)
 
     # for i in net_to_sd_list:
     canvas.skill(cfg.SKILL_FILE)
-    target_path = r"D:\ubuntu_share\ota_demo.il"
-    shutil.copy2(cfg.SKILL_FILE, target_path)
+    
+    #if need copy to other place
+    # target_path = r"D:\ubuntu_share\ota_demo.il"
+    # shutil.copy2(cfg.SKILL_FILE, target_path)
     
     
     

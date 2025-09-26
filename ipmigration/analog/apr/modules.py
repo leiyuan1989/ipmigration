@@ -495,6 +495,9 @@ class GuardRing:
         b = self.box.b 
         t = self.box.t
         
+        self.box_out = Box([l-ring_width,b-ring_width,r+ring_width,t+ring_width])
+        
+        
         box_ll = Box([l-ring_width,b-ring_width,l,b])
         box_lr = Box([r,b-ring_width,r+ring_width,b])
         box_ul = Box([l-ring_width,t,l,t+ring_width])
@@ -505,7 +508,14 @@ class GuardRing:
         box_t = Box([l,t,r,t+ring_width])
         
         box_list = [box_ll,box_lr,box_ul,box_ur,box_l,box_b,box_r,box_t]
-        
+        self.box_ll = box_ll
+        self.box_lr = box_lr
+        self.box_ul = box_ul
+        self.box_ur = box_ur
+        self.box_l = box_l
+        self.box_r = box_r
+        self.box_b = box_b
+        self.box_t = box_t        
         
         for box in box_list:
             r1 = Rect(tech.layer[tech.AA][0], box)
@@ -800,7 +810,8 @@ class Group:
                 self.SD_pin.append(Rect(self.tech.layer[self.tech.M1][0],box))
             box = Box( [mos.D_Box.c, 0.5*self.tech.MOS_SD_W,mos.S_Box.h_h, 'c'])
             self.SD_pin.append(Rect(self.tech.layer[self.tech.M1][0],box))                
-
+        
+        self.SD_pin.sort(key=lambda x: x.l)
     
     def draw_GT_pin(self,loc='U'): 
         #loc: U or D
@@ -821,9 +832,9 @@ class Group:
                 rect_m1 = Rect(tech.layer[tech.M1][0],box_m1)
                 vias = Vias(tech.layer[tech.CT][0], tech.CT_W, tech.CT_S, rect_gt, rect_m1, tech.CT_EN_M1_END)
                 
-                self.GT_pin .append(rect_gt)
-                self.GT_pin .append(rect_m1)
-                self.GT_pin .append(vias)
+                self.GT_pin.append([rect_gt,rect_m1,vias])
+                # self.GT_pin .append(rect_m1)
+                # self.GT_pin .append(vias)
             
             new_box = Box([self.box.l,self.box.b,self.box.r,max(tops)])
             self.box = new_box
@@ -844,15 +855,20 @@ class Group:
                 rect_m1 = Rect(tech.layer[tech.M1][0],box_m1)
                 vias = Vias(tech.layer[tech.CT][0], tech.CT_W, tech.CT_S, rect_gt, rect_m1, tech.CT_EN_M1_END)
                 
-                self.GT_pin .append(rect_gt)
-                self.GT_pin .append(rect_m1)
-                self.GT_pin .append(vias)
+                self.GT_pin.append([rect_gt,rect_m1,vias])
+                # self.GT_pin .append(rect_m1)
+                # self.GT_pin .append(vias)
             
             new_box = Box([self.box.l,min(bottoms) ,self.box.r,self.box.t])
             self.box = new_box
         
         else:
             pass
+    
+    
+        self.GT_pin.sort(key=lambda x: x[0].l)
+    
+    
     
     
     
@@ -863,7 +879,8 @@ class Group:
         for v in self.SD_pin:
             text += v.skill()
         for v in self.GT_pin:
-            text += v.skill()
+            for t in v:
+                text += t.skill()
         return text
     
     
@@ -876,9 +893,9 @@ class Group:
 
 
 class Canvas:
-    def __init__(self, tech, lib_name, cell_name, map_dict):
-        self.lib_name = lib_name
-        self.cell_name = cell_name
+    def __init__(self, tech, map_dict):
+        # self.lib_name = lib_name
+        # self.cell_name = cell_name
         self.tech = tech
         self.map_dict = map_dict
         self.modules = []
@@ -893,13 +910,13 @@ class Canvas:
         # map_dict = {'pmos':'pmos3v','nmos':'nmos3v','res':'rnhpoly','cap':'mimcap'}
         with open(skill_file,'w') as f:
             tech = self.tech.tech_name
-            f.write("cvid = dbOpenCellViewByType(\"%s\" \"%s\" \"layout\" \"maskLayout\" \"w\")\n"%(self.lib_name,self.cell_name))
+            # f.write("cvid = dbOpenCellViewByType(\"%s\" \"%s\" \"layout\" \"maskLayout\" \"w\")\n"%(self.lib_name,self.cell_name))
             f.write("masterpmos = dbOpenCellViewByType( \"%s\" \"%s\" \"layout\" \"maskLayout\" \"r\")\n"%(tech,self.map_dict['pmos']))
             f.write("masternmos = dbOpenCellViewByType( \"%s\" \"%s\" \"layout\" \"maskLayout\" \"r\")\n"%(tech,self.map_dict['nmos']))
             f.write("masterres = dbOpenCellViewByType( \"%s\" \"%s\" \"layout\" \"maskLayout\" \"r\")\n"%(tech,self.map_dict['res']))
             f.write("mastercap = dbOpenCellViewByType( \"%s\" \"%s\" \"layout\" \"maskLayout\" \"r\")\n"%(tech,self.map_dict['cap']))
             for module in self.modules:
-                print(module)
+                # print(module)
                 f.write(module.skill())
 
 
