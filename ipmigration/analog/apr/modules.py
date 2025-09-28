@@ -22,6 +22,16 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.colors import LinearSegmentedColormap
 
+PARA_ATTR = {'mos':{'w':{'cdf_name':'w','cdf_unit':'u','cdf_type':'string'},
+                    'l':{'cdf_name':'l','cdf_unit':'u','cdf_type':'string'},
+                    'm':{'cdf_name':'m','cdf_unit':'','cdf_type':'string'}},
+             'mimcap':{'w':{'cdf_name':'w','cdf_unit':'u','cdf_type':'string'},
+                       'l':{'cdf_name':'l','cdf_unit':'u','cdf_type':'string'},
+                       'm':{'cdf_name':'m','cdf_unit':'','cdf_type':'string'}},
+             'respoly':{'w':{'cdf_name':'w','cdf_unit':'u','cdf_type':'string'},
+                        'l':{'cdf_name':'l','cdf_unit':'u','cdf_type':'string'},
+                        'm':{'cdf_name':'segments','cdf_unit':'','cdf_type':'string'}}
+             }
 
 
 class Box:
@@ -212,6 +222,15 @@ class Box:
         new_ll = (self.l+x, self.b+y)
         self.set_value([new_ll, self.w, self.h])
 
+    @staticmethod
+    def merge(box1,box2):
+        l = min(box1.l,box2.l)
+        b = min(box1.b,box2.b)
+        r = max(box1.r,box2.r)
+        t = max(box1.t,box2.t)
+        return Box([l,b,r,t])
+
+
     def stretch(self, ext_x, ext_y):
         new_lbrt = [self.l-ext_x,
                     self.b-ext_y,
@@ -356,7 +375,24 @@ class Rect(Box):
     def skill(self):
         return "dbCreateRect(cvid list(\"%s\" \"drawing\") list(%.2f:%.2f %.2f:%.2f)) \n"%(self.layer, self.l,self.b,self.r,self.t)
         
+
+
+class Polygon:
+    def __init__(self,layer,points):
+        self.layer=layer
+        self.points = points
+    def skill(self):
+        # dbCreatePolygon(cvid list("METAL3" "drawing") list(5:-10 0:-10 0:0))
+        part1 = "dbCreatePolygon(cvid list(\"%s\" \"drawing\") "%(self.layer)
+        part2=  "list("
+        for x,y in self.points:
+            part2 = part2 + "%.2f:%.2f "%(x,y)
+        
+        part3 = ")) \n"
+        return part1 + part2[:-1] + part3
     
+
+
 class Vias:
     def __init__(self, layer, size, space, rect1, rect2, enc):
         #TODO; consider enc1 and enc2,                 
@@ -558,6 +594,8 @@ class Mos:
         self.rotation = 'R0'
         self.set_pins()
         
+        self.para_attr = PARA_ATTR['mos']
+        
     def set_pins(self):
         t = self.tech
         if self.type == 'PMOS':
@@ -644,9 +682,14 @@ class Mos:
         
         
     def skill(self):
+        w_cdf = self.para_attr['w']['cdf_name']
+        l_cdf = self.para_attr['l']['cdf_name']
+        w_type = self.para_attr['w']['cdf_type']
+        l_type = self.para_attr['l']['cdf_type']
+        
         part1 =  "dbCreateParamInst(cvid %s \"%s\" "%(self.mos_master,self.name)
         part2 = "list(%.3f %.3f) \"%s\" 1 "%(self.x, self.y, self.rotation)
-        part3 = "list(list(\"w\" \"string\" \"%.2fu\") list(\"l\" \"string\" \"%.2fu\") ))\n"%( self.w, self.l)
+        part3 = "list(list(\"%s\" \"%s\" \"%.2fu\") list(\"%s\" \"%s\" \"%.2fu\") ))\n"%(w_cdf,w_type,self.w,l_cdf,l_type,self.l)
         return part1 + part2 + part3
 
 
@@ -666,6 +709,7 @@ class Res:
         self.segments = segments
         self.res_master = 'masterres'
         self.set_pins()
+        self.para_attr = PARA_ATTR['respoly']
         
     def set_pins(self):
         t = self.tech
@@ -692,9 +736,40 @@ class Res:
         self.box_b = Box([box_b.c,abs(box_b.w_h),abs(box_b.h_h),'c'])
         
     def skill(self):
+        w_cdf = "\"%s\""%(self.para_attr['w']['cdf_name'])
+        l_cdf = "\"%s\""%(self.para_attr['l']['cdf_name'])
+        m_cdf = "\"%s\""%(self.para_attr['m']['cdf_name'])
+        w_type = self.para_attr['w']['cdf_type']
+        l_type = self.para_attr['l']['cdf_type']
+        m_type = self.para_attr['m']['cdf_type']
+        
+        if w_type =='string':
+            w_value = "\"%.2fu\""%(self.w)
+        elif w_type == 'int':
+            w_value = "%d"%(self.w)
+        else:
+            pass
+        if l_type =='string':
+            l_value = "\"%.2fu\""%(self.l)
+        elif l_type == 'int':
+            l_value = "%d"%(self.l)
+        else:
+            pass
+        
+        if m_type =='string':
+            m_value = "\"%d\""%(self.segments)
+        elif m_type == 'int':
+            m_value = "%d"%(self.segments)
+        else:
+            pass    
+            
+        w_type = "\"%s\""%(w_type)
+        l_type = "\"%s\""%(l_type)
+        m_type = "\"%s\""%(m_type)
+        
         part1 =  "dbCreateParamInst(cvid %s \"%s\" "%(self.res_master,self.name)
         part2 = "list(%.3f %.3f) \"%s\" 1 "%(self.x, self.y, self.rotation)
-        part3 = "list(list(\"w\" \"string\" \"%.2fu\") list(\"l\" \"string\" \"%.2fu\") list(\"segments\" \"string\" \"%d\") ))\n"%( self.w, self.l, self.segments)
+        part3 = "list(list(%s %s %s) list(%s %s %s) list(%s %s %s) ))\n"%(w_cdf,w_type,w_value,l_cdf,l_type,l_value,m_cdf,m_type,m_value)
         return part1 + part2 + part3
 
 
@@ -709,6 +784,8 @@ class MimCap:
         self.rotation = rotation
         self.cap_master = 'mastercap'
         self.set_pins()
+        
+        self.para_attr = PARA_ATTR['mimcap']
         
     def set_pins(self):
         t = self.tech
@@ -732,9 +809,41 @@ class MimCap:
 
         
     def skill(self):
+        w_cdf = "\"%s\""%(self.para_attr['w']['cdf_name'])
+        l_cdf = "\"%s\""%(self.para_attr['l']['cdf_name'])
+        # m_cdf = "\"%s\""%(self.para_attr['m']['cdf_name'])
+        w_type = self.para_attr['w']['cdf_type']
+        l_type = self.para_attr['l']['cdf_type']
+        # m_type = self.para_attr['m']['cdf_type']
+        
+        if w_type =='string':
+            w_value = "\"%.2fu\""%(self.w)
+        elif w_type == 'int':
+            w_value = "%d"%(self.w)
+        else:
+            pass
+        if l_type =='string':
+            l_value = "\"%.2fu\""%(self.l)
+        elif l_type == 'int':
+            l_value = "%d"%(self.l)
+        else:
+            pass
+        
+        # if m_type =='string':
+        #     m_value = "\"%.2fu\""%(self.segments)
+        # elif m_type == 'int':
+        #     m_value = "%d"%(self.segments)
+        # else:
+        #     pass    
+            
+        w_type = "\"%s\""%(w_type)
+        l_type = "\"%s\""%(l_type)
+        # m_type = "\"%s\""%(m_type)
+        
+        
         part1 =  "dbCreateParamInst(cvid %s \"%s\" "%(self.cap_master,self.name)
         part2 = "list(%.3f %.3f) \"%s\" 1 "%(self.x, self.y, self.rotation)
-        part3 = "list(list(\"w\" \"string\" \"%.2fu\") list(\"l\" \"string\" \"%.2fu\") ))\n"%( self.w, self.l)
+        part3 = "list(list(%s %s %s) list(%s %s %s) ))\n"%(w_cdf,w_type,w_value,l_cdf,l_type,l_value)
         return part1 + part2 + part3      
 
 # R2 rnhpoly 82.870000 17.485000 85.560000 21.025000  83.090000 17.665000 MXR90 2.1u 1u 2
@@ -910,7 +1019,11 @@ class Canvas:
         # map_dict = {'pmos':'pmos3v','nmos':'nmos3v','res':'rnhpoly','cap':'mimcap'}
         with open(skill_file,'w') as f:
             tech = self.tech.tech_name
-            # f.write("cvid = dbOpenCellViewByType(\"%s\" \"%s\" \"layout\" \"maskLayout\" \"w\")\n"%(self.lib_name,self.cell_name))
+            
+            lib_name = 'ipm_demo_amp2'
+            cell_name = 'ota_demo'
+            
+            f.write("cvid = dbOpenCellViewByType(\"%s\" \"%s\" \"layout\" \"maskLayout\" \"w\")\n"%(lib_name,cell_name))
             f.write("masterpmos = dbOpenCellViewByType( \"%s\" \"%s\" \"layout\" \"maskLayout\" \"r\")\n"%(tech,self.map_dict['pmos']))
             f.write("masternmos = dbOpenCellViewByType( \"%s\" \"%s\" \"layout\" \"maskLayout\" \"r\")\n"%(tech,self.map_dict['nmos']))
             f.write("masterres = dbOpenCellViewByType( \"%s\" \"%s\" \"layout\" \"maskLayout\" \"r\")\n"%(tech,self.map_dict['res']))
@@ -1009,10 +1122,6 @@ class Path:
     def __init__(self):
         pass
 
-
-class Polygon:
-    def __init__(self):
-        pass
 
 
 

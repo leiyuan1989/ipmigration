@@ -1,0 +1,17 @@
+{
+    "SKILL_FILE": "data/ota_demo.il",
+    "LAYOUT_FILE": "setting/layout_data.txt",
+    "DR_FILE": "setting/dr.csv",
+    "LAYER_FILE": "setting/layer.csv",
+    "PARA_FILE": "setting/paras.json",
+    "INST_MAP": {
+        "pmos": "pmos3v",
+        "nmos": "nmos3v",
+        "res": "rnhpoly",
+        "cap": "mimcap"
+    },
+    "TECH":"tsmc18rf",
+    "AREA": [100, 80],
+    "POWER_WIDTH": 8,
+    "VSS_LEFT": 28
+}
