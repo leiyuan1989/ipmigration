@@ -755,7 +755,7 @@ if __name__ == "__main__" :
     
     r1 = ring0_net[0]
     r2 = ring1_net[0]
-    r3 = ring1_net[1]  
+    r3 = ring5_net[1]  
     r4 = ring1_net[2]
     
     box1 = Box([r1.r-WIDTH, r2.b, r1.r, r1.t])
@@ -789,17 +789,109 @@ if __name__ == "__main__" :
     
     left = box1.r + SPACE
     right = left + WIDTH
+    r1 = ring1_net[4]
+    r2 = ring5_net[0]
+    
+    box1 = Box([left, r2.b, right, r1.t])
+    rect_t = Rect(tech.layer[tech.M3][0],box1)
+    canvas.add(rect_t)
+    
+    box2 = Box([r1.l, r1.b, right, r1.t])
+    rect_t = Rect(tech.layer[tech.M2][0],box2)
+    canvas.add(rect_t)
+    
+    vias = Vias(tech.layer[tech.V2][0], tech.V2_W, tech.V2_S, box1, box2, tech.V2_EN_M2_END)
+    canvas.add(vias) 
+    vias = Vias(tech.layer[tech.V2][0], tech.V2_W, tech.V2_S, box1, r2, tech.V2_EN_M2_END)
+    canvas.add(vias)  
+    
+    left = right + SPACE
+    right = left + WIDTH
+    r1 = ring1_net[0]
+    r2 = ring1_net[1]
+    
+    box1 = Box([left, r2.b, right, r1.t])
+    rect_t = Rect(tech.layer[tech.M3][0],box1)
+    canvas.add(rect_t)
+    
+    box2 = Box([r1.l, r1.b, right, r1.t])
+    rect_t = Rect(tech.layer[tech.M2][0],box2)
+    canvas.add(rect_t)
+    
+    box3 = Box([r2.l, r2.b, right, r2.t])
+    rect_t = Rect(tech.layer[tech.M2][0],box3)
+    canvas.add(rect_t)
+    
+    
+    vias = Vias(tech.layer[tech.V2][0], tech.V2_W, tech.V2_S, box1, box2, tech.V2_EN_M2_END)
+    canvas.add(vias) 
+    vias = Vias(tech.layer[tech.V2][0], tech.V2_W, tech.V2_S, box1, box3, tech.V2_EN_M2_END)
+    canvas.add(vias)  
     
     
     #cap to cap
     
+    HWIDTH = 2.0
+    c0 = cap_l[0].box
+    c1 = cap_l[1].box
+
+    box = Box([c0.c[0], c0.c[1]-HWIDTH, c1.c[0],c0.c[1]+HWIDTH])
+    rect_t = Rect(tech.layer[tech.M6][0],box)
+    canvas.add(rect_t)
+
+
+    
     
     #cap to res 
+    r1 = res_l[1].box_a
+    box = Box([r1.l, r1.b, r1.r,c0.c[1]])
+    rect_t = Rect(tech.layer[tech.M6][0],box)
+    canvas.add(rect_t)
     
+    box1 = Box([r1.l, r1.b, r1.r, r1.b+r1.w])
+    rect_t = Rect(tech.layer[tech.M5][0],box1)
+    canvas.add(rect_t)
+    rect_t = Rect(tech.layer[tech.M4][0],box1)
+    canvas.add(rect_t)
+    rect_t = Rect(tech.layer[tech.M3][0],box1)
+    canvas.add(rect_t)
+    rect_t = Rect(tech.layer[tech.M2][0],box1)
+    canvas.add(rect_t)
+    
+    vias = Vias(tech.layer[tech.V5][0], tech.V5_W, tech.V5_S, box1, box1, tech.V5_EN_M5_END)
+    canvas.add(vias)  
+    vias = Vias(tech.layer[tech.V4][0], tech.V4_W, tech.V4_S, box1, box1, tech.V4_EN_M4_END)
+    canvas.add(vias)      
+    vias = Vias(tech.layer[tech.V3][0], tech.V3_W, tech.V3_S, box1, box1, tech.V3_EN_M3_END)
+    canvas.add(vias)      
+    vias = Vias(tech.layer[tech.V2][0], tech.V2_W, tech.V2_S, box1, box1, tech.V2_EN_M2_END)
+    canvas.add(vias)      
     
     #cap to ring0
+    WIDTH=2
+    r1 = ring0_net[1]
+    box = Box([r1.l, c0.c[1], r1.l+WIDTH,r1.t])
+    rect_t = Rect(tech.layer[tech.M6][0],box)
+    canvas.add(rect_t)
     
+    box1 = Box([r1.l, r1.b, r1.l+WIDTH, r1.t])
+    rect_t = Rect(tech.layer[tech.M5][0],box1)
+    canvas.add(rect_t)
+    rect_t = Rect(tech.layer[tech.M4][0],box1)
+    canvas.add(rect_t)
+    rect_t = Rect(tech.layer[tech.M3][0],box1)
+    canvas.add(rect_t)
 
+    
+    vias = Vias(tech.layer[tech.V5][0], tech.V5_W, tech.V5_S, box1, box1, tech.V5_EN_M5_END)
+    canvas.add(vias)  
+    vias = Vias(tech.layer[tech.V4][0], tech.V4_W, tech.V4_S, box1, box1, tech.V4_EN_M4_END)
+    canvas.add(vias)      
+    vias = Vias(tech.layer[tech.V3][0], tech.V3_W, tech.V3_S, box1, box1, tech.V3_EN_M3_END)
+    canvas.add(vias)      
+    vias = Vias(tech.layer[tech.V2][0], tech.V2_W, tech.V2_S, box1, box1, tech.V2_EN_M2_END)
+    canvas.add(vias)  
+    
 
     # for i in net_to_sd_list:
     canvas.skill(cfg.SKILL_FILE)
