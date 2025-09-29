@@ -1,0 +1,25 @@
+29-10:59:02  INFO: logging file is: ./demo/cell_apr/outputs/c153\00_LOG_09_29_10.txt
+29-10:59:02  INFO: ************Create Cell Apr: c153 Logger************
+29-10:59:02  INFO: tech->layers: ['NW', 'AA', 'GT', 'SP', 'SN', 'CT', 'M1', 'V1', 'M2', 'BORDER', 'M1TXT', 'TEXT']
+29-10:59:02  INFO: tech->rules: [GT_W : 180 nm, GT_S : 250 nm, GT_S_AA : 84 nm, GT_S_LAA_GT : 84 nm, GT_S_LGT_AA : 84 nm, GT_X_AA : 186 nm, AA_X_GT : 270 nm, AA_S : 238 nm, AA_W : 186 nm, SP_X_AA : 152 nm, SN_X_AA : 152 nm, CT_W : 186 nm, CT_S : 212 nm, CT_S_AA : 144 nm, CT_S_GT : 140 nm, CT_E_NP : 102 nm, CT_E_AA : 70 nm, CT_E_GT : 70 nm, CT_E_M1 : 4 nm, CT_E_M1_END : 50 nm, M1_W : 194 nm, M1_S : 194 nm, M2_W : 238 nm, M2_S : 238 nm]
+29-10:59:02  INFO: tech->Load tech files of tech:c153 sucessfully
+29-10:59:03  INFO: ascell-> Begin processing techc153 @ Mon Sep 29 10:59:03 2025
+29-10:59:03  INFO: c153, (AN02D0, 6 devices), 6 devices
+29-10:59:10  INFO: c153, (AN03D0, 8 devices), 8 devices
+29-10:59:12  INFO: c153, (AN04D0, 10 devices), 10 devices
+29-10:59:13  INFO: c153, (AN12D0, 8 devices), 8 devices
+29-10:59:15  INFO: c153, (AN13D0, 10 devices), 10 devices
+29-10:59:18  INFO: c153, (AN23D0, 12 devices), 12 devices
+29-10:59:19  INFO: c153, (AOI211D0, 8 devices), 8 devices
+29-10:59:20  INFO: c153, (AOI21D0, 6 devices), 6 devices
+29-10:59:20  INFO: c153, (AOI221D0, 10 devices), 10 devices
+29-10:59:21  INFO: c153, (AOI22D0, 8 devices), 8 devices
+29-10:59:22  INFO: c153, (AOI31D0, 8 devices), 8 devices
+29-10:59:23  INFO: c153, (AOI32D0, 10 devices), 10 devices
+29-11:00:09  INFO: c153, (AOIM21D0, 8 devices), 8 devices
+29-11:00:11  INFO: c153, (AOIM22D0, 10 devices), 10 devices
+29-11:00:12  INFO: c153, (AOR211D0, 10 devices), 10 devices
+29-11:00:14  INFO: c153, (AOR21D0, 8 devices), 8 devices
+29-11:00:18  INFO: c153, (AOR221D0, 12 devices), 12 devices
+29-11:00:20  INFO: c153, (AOR22D0, 10 devices), 10 devices
+29-11:00:21  INFO: c153, (AOR311D0, 12 devices), 12 devices

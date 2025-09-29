@@ -1,4 +1,3 @@
-cvid = dbOpenCellViewByType("ipm_demo_amp2" "ota_demo" "layout" "maskLayout" "w")
 masterpmos = dbOpenCellViewByType( "tsmc18rf" "pmos3v" "layout" "maskLayout" "r")
 masternmos = dbOpenCellViewByType( "tsmc18rf" "nmos3v" "layout" "maskLayout" "r")
 masterres = dbOpenCellViewByType( "tsmc18rf" "rnhpoly" "layout" "maskLayout" "r")

@@ -897,8 +897,8 @@ if __name__ == "__main__" :
     canvas.skill(cfg.SKILL_FILE)
     
     # if need copy to other place
-    target_path = r"D:\ubuntu_share\ota_demo.il"
-    shutil.copy2(cfg.SKILL_FILE, target_path)
+    # target_path = r"D:\ubuntu_share\ota_demo.il"
+    # shutil.copy2(cfg.SKILL_FILE, target_path)
     
     
     

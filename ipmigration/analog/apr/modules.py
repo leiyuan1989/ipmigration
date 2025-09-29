@@ -1023,7 +1023,7 @@ class Canvas:
             lib_name = 'ipm_demo_amp2'
             cell_name = 'ota_demo'
             
-            f.write("cvid = dbOpenCellViewByType(\"%s\" \"%s\" \"layout\" \"maskLayout\" \"w\")\n"%(lib_name,cell_name))
+            # f.write("cvid = dbOpenCellViewByType(\"%s\" \"%s\" \"layout\" \"maskLayout\" \"w\")\n"%(lib_name,cell_name))
             f.write("masterpmos = dbOpenCellViewByType( \"%s\" \"%s\" \"layout\" \"maskLayout\" \"r\")\n"%(tech,self.map_dict['pmos']))
             f.write("masternmos = dbOpenCellViewByType( \"%s\" \"%s\" \"layout\" \"maskLayout\" \"r\")\n"%(tech,self.map_dict['nmos']))
             f.write("masterres = dbOpenCellViewByType( \"%s\" \"%s\" \"layout\" \"maskLayout\" \"r\")\n"%(tech,self.map_dict['res']))

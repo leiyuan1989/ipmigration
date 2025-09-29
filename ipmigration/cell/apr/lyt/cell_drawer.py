@@ -38,7 +38,7 @@ from ipmigration.cell.apr.pr.ip_router import visualize_pins,find_subgraph_with_
 import matplotlib.pyplot as plt
 
 
-PLOT = False
+PLOT = True
 
 class CellDrawer:
     def __init__(self, cell):

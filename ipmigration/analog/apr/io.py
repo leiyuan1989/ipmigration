@@ -116,7 +116,7 @@ def netlist_to_csv(netlist_path, output_csv_path):
 # ------------------- Configuration -------------------
 NETLIST_PATH = "data/schematic_data.scs"  # Replace with your netlist path (absolute path allowed)
 OUTPUT_CSV_PATH = "data/device_parameters.csv"  # Output CSV path
-OUTPUT_SKILL_PATH = "data/sized_schematic_data.il"  # Output CSV path
+OUTPUT_SKILL_PATH = "ipm_skill/sized_schematic_data.il"  # Output CSV path
 # -----------------------------------------------------
 
 # Execute conversion

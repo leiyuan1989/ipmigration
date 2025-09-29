@@ -10,7 +10,7 @@ from z3 import Optimize,Solver
 from z3 import Int, Bool, Or, And, Not, Distinct, If, is_true,sat,Abs
 
 DEBUG=False
-PLOT =False
+PLOT =True
 
 
 pin_locs = {
