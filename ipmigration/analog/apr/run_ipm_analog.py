@@ -83,14 +83,14 @@ if __name__ == "__main__" :
         canvas.add(gr1)
         res_l.append(r1)
         res_ring_l.append(gr1)
-    mos_l = []
+    cap_l = []
     for data in para.cap_setting:
         name,x,y = data
         cap_para = inst_data[name]
         _,w,l,r = cap_para
         c1 = MimCap(tech, name, x, y,  w, l, r)
         canvas.add(c1)
-        mos_l.append(c1)
+        cap_l.append(c1)
 
     #routing
     #1. power
@@ -596,8 +596,9 @@ if __name__ == "__main__" :
     sd1 = group1.SD_pin
     gt1  = group1.GT_pin 
 
+    ring5_net = []
     #to power
-    for i in [0,1,3,4]:
+    for i in [0,4]:
         rect = sd1[i]
         box = Box([rect.l, rect.b, rect.r, vss.t])
         vias = Vias(tech.layer[tech.V1][0], tech.V1_W, tech.V1_S, box, box, tech.V1_EN_M1_END)
@@ -626,14 +627,45 @@ if __name__ == "__main__" :
     rect_t = Rect(tech.layer[tech.M1][0],Box.merge( gt1[1][1],  gt1[-2][1]))
     canvas.add(rect_t)  
     
+    #route 
+    #1
+    r1 = res_l[1].box_b
+    r2 = sd1[4]
     
+    box = Box([r2.l, r1.b, r1.r, r1.t])
+    rect_t = Rect(tech.layer[tech.M2][0],box)
+    canvas.add(rect_t)
+
+    box = Box([r2.l, r2.b, r2.r, r1.t])
+    rect_t = Rect(tech.layer[tech.M2][0],box)
+    canvas.add(rect_t)
+
+
+    #2
+    r1 = ring1_net[3]
+    r2 = sd1[4]
+    box = Box([r1.l, r1.b, r2.r, r1.t])
+    rect_t = Rect(tech.layer[tech.M2][0],box)
+    canvas.add(rect_t)
+    vias = Vias(tech.layer[tech.V1][0], tech.V1_W, tech.V1_S, box, r2, tech.V1_EN_M1_END)
+    canvas.add(vias)    
+    ring5_net.append(rect_t)
+    #3
+    r1 = ring1_net[5]
+    r2 = sd1[3]    
+    box = Box([r1.l, r1.b, r2.r, r1.t])
+    rect_t = Rect(tech.layer[tech.M2][0],box)
+    canvas.add(rect_t)
+    vias = Vias(tech.layer[tech.V1][0], tech.V1_W, tech.V1_S, box, r2, tech.V1_EN_M1_END)
+    canvas.add(vias)      
+    ring5_net.append(rect_t)
     
     #2.6 group8
     group1 = group_list[8]
     ring1=   ring_list[6]
     sd1 = group1.SD_pin
     gt1  = group1.GT_pin 
-
+    ring6_net = []
     #to power
     for i in [0,1,3,5,6]:
         rect = sd1[i]
@@ -664,7 +696,109 @@ if __name__ == "__main__" :
     #gt_connect
     rect_t = Rect(tech.layer[tech.M1][0],Box.merge( gt1[1][1],  gt1[-2][1]))
     canvas.add(rect_t)  
+    ring6_net.append(rect_t)
 
+        
+    WIDTH1 = 0.9
+    WIDTH2 = 1.94
+    
+    box = Box([sd1[2].l, sd1[2].t-WIDTH2, sd1[4].r,sd1[2].t])
+    rect_t = Rect(tech.layer[tech.M2][0],box)
+    canvas.add(rect_t)
+    ring6_net.append(rect_t)
+    for i in [2,4]:
+        box = Box([sd1[i].l, sd1[i].t-WIDTH2, sd1[i].r, sd1[i].t])
+        vias = Vias(tech.layer[tech.V1][0], tech.V1_W, tech.V1_S, box, box, tech.V1_EN_M1_END)
+        canvas.add(vias) 
+
+    #route
+    #1
+    r1 = ring5_net[0]
+    r2 = ring6_net[0]
+    box = Box([r2.l, r1.b, r2.l+WIDTH1, r2.t])
+    rect_t = Rect(tech.layer[tech.M3][0],box)
+    canvas.add(rect_t)
+    vias = Vias(tech.layer[tech.V1][0], tech.V1_W, tech.V1_S, box, r1, tech.V1_EN_M1_END)
+    canvas.add(vias) 
+    vias = Vias(tech.layer[tech.V1][0], tech.V1_W, tech.V1_S, box, r2, tech.V1_EN_M1_END)
+    canvas.add(vias) 
+    vias = Vias(tech.layer[tech.V2][0], tech.V2_W, tech.V2_S, box, r1, tech.V2_EN_M2_END)
+    canvas.add(vias) 
+    vias = Vias(tech.layer[tech.V2][0], tech.V2_W, tech.V2_S, box, r2, tech.V2_EN_M2_END)
+    canvas.add(vias) 
+
+    #2
+    r1 = cap_l[0].box
+    r2 = ring6_net[1]
+    
+    box = Box([r2.r-WIDTH2, r2.b, r2.r, r1.c[1]])
+    rect_t = Rect(tech.layer[tech.M5][0],box)
+    canvas.add(rect_t)
+    
+    box = Box([r2.r-WIDTH2, r2.b, r2.r, r2.t])
+    rect_t = Rect(tech.layer[tech.M4][0],box)
+    canvas.add(rect_t)
+    rect_t = Rect(tech.layer[tech.M3][0],box)
+    canvas.add(rect_t)  
+    vias = Vias(tech.layer[tech.V2][0], tech.V2_W, tech.V2_S, box, box, tech.V2_EN_M2_END)
+    canvas.add(vias) 
+    vias = Vias(tech.layer[tech.V3][0], tech.V3_W, tech.V3_S, box, box, tech.V3_EN_M3_END)
+    canvas.add(vias)    
+    vias = Vias(tech.layer[tech.V4][0], tech.V4_W, tech.V4_S, box, box, tech.V4_EN_M4_END)
+    canvas.add(vias) 
+
+
+    #other routes
+    #ring1 to ring0
+    WIDTH = 1.94
+    SPACE = 0.28
+    
+    r1 = ring0_net[0]
+    r2 = ring1_net[0]
+    r3 = ring1_net[1]  
+    r4 = ring1_net[2]
+    
+    box1 = Box([r1.r-WIDTH, r2.b, r1.r, r1.t])
+    rect_t = Rect(tech.layer[tech.M3][0],box1)
+    canvas.add(rect_t)
+    box2 = Box([r2.l, r2.b, r1.r, r2.t])
+    rect_t = Rect(tech.layer[tech.M2][0],box2)
+    canvas.add(rect_t)   
+    
+    vias = Vias(tech.layer[tech.V2][0], tech.V2_W, tech.V2_S, box1, r1, tech.V2_EN_M2_END)
+    canvas.add(vias) 
+    vias = Vias(tech.layer[tech.V2][0], tech.V2_W, tech.V2_S, box1, box2, tech.V2_EN_M2_END)
+    canvas.add(vias)   
+    
+    box1 = Box([box1.l, r3.b, box1.r, r4.t])
+    rect_t = Rect(tech.layer[tech.M3][0],box1)
+    canvas.add(rect_t)
+    
+    box2 = Box([r3.l, r3.b, box1.r, r3.t])
+    rect_t = Rect(tech.layer[tech.M2][0],box2)
+    canvas.add(rect_t)
+    
+    box3 = Box([r4.l, r4.b, box1.r, r4.t])
+    rect_t = Rect(tech.layer[tech.M2][0],box3)
+    canvas.add(rect_t)
+    
+    vias = Vias(tech.layer[tech.V2][0], tech.V2_W, tech.V2_S, box1, box2, tech.V2_EN_M2_END)
+    canvas.add(vias) 
+    vias = Vias(tech.layer[tech.V2][0], tech.V2_W, tech.V2_S, box1, box3, tech.V2_EN_M2_END)
+    canvas.add(vias)   
+    
+    left = box1.r + SPACE
+    right = left + WIDTH
+    
+    
+    #cap to cap
+    
+    
+    #cap to res 
+    
+    
+    #cap to ring0
+    
 
 
     # for i in net_to_sd_list:
