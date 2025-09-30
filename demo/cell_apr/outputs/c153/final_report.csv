@@ -1,14 +1,101 @@
 ,cell,type,devices_num,result,message,time
-0,DFBFB1,Sequential Logic,40,Fail,Pattern APR Failed,2.025 s
-1,DFCFB1,Sequential Logic,36,Success,Success,9.106 s
-2,DFCFQ1,Sequential Logic,34,Success,Success,7.684 s
-3,DFCRB1,Sequential Logic,36,Success,Success,18.912 s
-4,DFCRN1,Sequential Logic,32,Success,Success,7.693 s
-5,DFCRQ1,Sequential Logic,34,Success,Success,8.086 s
-6,DFNFB1,Sequential Logic,28,Success,Success,7.432 s
-7,DFNRB1,Sequential Logic,28,Success,Success,5.108 s
-8,DFNRN1,Sequential Logic,26,Success,Success,5.840 s
-9,DFNRQ1,Sequential Logic,26,Success,Success,4.790 s
-10,DFPFB1,Sequential Logic,34,Fail,Pattern APR Failed,0.824 s
-11,DFPRB1,Sequential Logic,34,Fail,Pattern APR Failed,0.945 s
-12,DFPRQ1,Sequential Logic,32,Fail,Pattern APR Failed,0.845 s
+0,AN02D0,Combinational Logic,6,Success,Success,1.576 s
+1,AN03D0,Combinational Logic,8,Success,Success,1.810 s
+2,AN04D0,Combinational Logic,10,Success,Success,1.857 s
+3,AN12D0,Combinational Logic,8,Success,Success,2.151 s
+4,AN13D0,Combinational Logic,10,Success,Success,2.533 s
+5,AN23D0,Combinational Logic,12,Success,Success,2.684 s
+6,AOI211D0,Combinational Logic,8,Success,Success,1.596 s
+7,AOI21D0,Combinational Logic,6,Success,Success,1.528 s
+8,AOI221D0,Combinational Logic,10,Success,Success,2.389 s
+9,AOI22D0,Combinational Logic,8,Success,Success,1.871 s
+10,AOI31D0,Combinational Logic,8,Success,Success,1.577 s
+11,AOI32D0,Combinational Logic,10,Success,Success,2.091 s
+12,AOIM21D0,Combinational Logic,8,Success,Success,1.594 s
+13,AOIM22D0,Combinational Logic,10,Success,Success,2.138 s
+14,AOR211D0,Combinational Logic,10,Success,Success,2.132 s
+15,AOR21D0,Combinational Logic,8,Success,Success,1.899 s
+16,AOR221D0,Combinational Logic,12,Success,Success,2.503 s
+17,AOR22D0,Combinational Logic,10,Success,Success,2.379 s
+18,AOR311D0,Combinational Logic,12,Success,Success,2.166 s
+19,AOR31D0,Combinational Logic,10,Success,Success,1.969 s
+20,BUFFD0,Combinational Logic,4,Success,Success,1.454 s
+21,BUFFD1,Combinational Logic,4,Success,Success,1.461 s
+22,BUFFD2,Combinational Logic,4,Success,Success,1.483 s
+23,BUFFD3,Combinational Logic,6,Success,Success,1.787 s
+24,DL01D0,Combinational Logic,8,Success,Success,2.121 s
+25,DL02D0,Combinational Logic,8,Success,Success,2.603 s
+26,INV0D0,Combinational Logic,2,Success,Success,1.281 s
+27,INV0D2,Combinational Logic,2,Success,Success,1.306 s
+28,INV0D4,Combinational Logic,4,Success,Success,1.454 s
+29,INV0D5,Combinational Logic,6,Success,Success,1.753 s
+30,INV0D6,Combinational Logic,6,Success,Success,1.525 s
+31,INV0D8,Combinational Logic,8,Success,Success,2.024 s
+32,ND02D0,Combinational Logic,4,Success,Success,1.584 s
+33,ND03D0,Combinational Logic,6,Success,Success,1.435 s
+34,ND04D0,Combinational Logic,8,Success,Success,1.578 s
+35,ND12D0,Combinational Logic,6,Success,Success,1.609 s
+36,ND13D0,Combinational Logic,8,Success,Success,2.232 s
+37,ND14D0,Combinational Logic,10,Success,Success,1.910 s
+38,ND23D0,Combinational Logic,10,Success,Success,2.410 s
+39,ND24D0,Combinational Logic,12,Success,Success,2.146 s
+40,NR02D0,Combinational Logic,4,Success,Success,1.577 s
+41,NR03D0,Combinational Logic,6,Success,Success,1.511 s
+42,NR04D0,Combinational Logic,8,Success,Success,1.526 s
+43,NR12D0,Combinational Logic,6,Success,Success,1.570 s
+44,NR13D0,Combinational Logic,8,Success,Success,1.932 s
+45,NR14D0,Combinational Logic,10,Success,Success,1.759 s
+46,NR23D0,Combinational Logic,10,Success,Success,2.160 s
+47,NR24D0,Combinational Logic,12,Success,Success,2.058 s
+48,OAI211D0,Combinational Logic,8,Success,Success,1.640 s
+49,OAI21D0,Combinational Logic,6,Success,Success,1.737 s
+50,OAI221D0,Combinational Logic,10,Success,Success,2.270 s
+51,OAI222D0,Combinational Logic,12,Success,Success,2.494 s
+52,OAI22D0,Combinational Logic,8,Success,Success,2.018 s
+53,OAI311D0,Combinational Logic,10,Success,Success,2.048 s
+54,OAI31D0,Combinational Logic,8,Success,Success,2.342 s
+55,OAI321D0,Combinational Logic,12,Success,Success,2.622 s
+56,OAI322D0,Combinational Logic,14,Success,Success,2.784 s
+57,OAI32D0,Combinational Logic,10,Success,Success,2.802 s
+58,OAI33D0,Combinational Logic,12,Success,Success,2.730 s
+59,OAIM211D0,Combinational Logic,10,Success,Success,2.189 s
+60,OAIM21D0,Combinational Logic,8,Success,Success,3.583 s
+61,OAIM22D0,Combinational Logic,10,Success,Success,6.060 s
+62,OAIM2M11D0,Combinational Logic,10,Success,Success,8.153 s
+63,OAIM31D0,Combinational Logic,10,Success,Success,6.509 s
+64,OR02D0,Combinational Logic,6,Success,Success,5.632 s
+65,OR03D0,Combinational Logic,8,Success,Success,5.248 s
+66,OR04D0,Combinational Logic,10,Success,Success,5.826 s
+67,OR12D0,Combinational Logic,8,Success,Success,5.441 s
+68,OR13D0,Combinational Logic,10,Success,Success,7.522 s
+69,OR23D0,Combinational Logic,12,Success,Success,11.391 s
+70,ORA211D0,Combinational Logic,10,Success,Success,7.653 s
+71,ORA21D0,Combinational Logic,8,Success,Success,5.337 s
+72,ORA31D0,Combinational Logic,10,Success,Success,2.042 s
+73,ORA31D1,Combinational Logic,10,Success,Success,2.043 s
+74,MI02D0,Combinational Logic,10,Fail,Decompose Failed,0.018 s
+75,DFBFB1,Sequential Logic,40,Fail,Pattern APR Failed,1.308 s
+76,DFCFB1,Sequential Logic,36,Success,Success,8.651 s
+77,DFCFQ1,Sequential Logic,34,Success,Success,9.115 s
+78,DFCRB1,Sequential Logic,36,Success,Success,21.136 s
+79,DFCRN1,Sequential Logic,32,Success,Success,7.642 s
+80,DFCRQ1,Sequential Logic,34,Success,Success,6.969 s
+81,DFNFB1,Sequential Logic,28,Success,Success,7.694 s
+82,DFNRB1,Sequential Logic,28,Success,Success,4.601 s
+83,DFNRN1,Sequential Logic,26,Success,Success,5.585 s
+84,DFNRQ1,Sequential Logic,26,Success,Success,4.483 s
+85,DFPFB1,Sequential Logic,34,Fail,Pattern APR Failed,0.930 s
+86,DFPRB1,Sequential Logic,34,Fail,Pattern APR Failed,0.853 s
+87,DFPRQ1,Sequential Logic,32,Fail,Pattern APR Failed,0.903 s
+88,SDBFB1,Sequential Logic,48,Fail,Pattern APR Failed,1.760 s
+89,SDBRB1,Sequential Logic,48,Fail,Pattern APR Failed,1.703 s
+90,SDBRQ1,Sequential Logic,48,Fail,Pattern APR Failed,1.472 s
+91,LACHB1,Sequential Logic,21,Fail,Pattern APR Failed,0.660 s
+92,LANHB1,Sequential Logic,18,Success,Success,2.931 s
+93,LANHN1,Sequential Logic,16,Success,Success,2.994 s
+94,LANHQ1,Sequential Logic,16,Success,Success,3.277 s
+95,LANLB1,Sequential Logic,18,Success,Success,2.988 s
+96,LANLN1,Sequential Logic,16,Success,Success,2.932 s
+97,LANLQ1,Sequential Logic,16,Success,Success,2.676 s
+98,TLATNCAD1,Sequential Logic,18,Success,Success,4.173 s
+99,TLATNTSCAD1,Sequential Logic,24,Success,Success,5.627 s

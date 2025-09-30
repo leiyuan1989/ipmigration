@@ -167,7 +167,7 @@ class IPRouter:
                             n2 = blk[i+1]['N'] 
                             if p2 and n2 and p and n:
                                 # print(p,p2,n,n2)
-                                if p.G == n2.G and n.G == p2.G:
+                                if p.G == n2.G and n.G == p2.G and p.G != n.G:
                                     #cross
                                     self.net_loc[(p,'S')] = (loc  ,self.pl.aap, 1)
                                     self.net_loc[(p,'G')] = (loc+1,self.pl.aap, 0)
@@ -183,7 +183,7 @@ class IPRouter:
                             n2 = blk[i-1]['N'] 
                             if p2 and n2 and p and n:
                                 # print(p,p2,n,n2)
-                                if p.G == n2.G and n.G == p2.G:
+                                if p.G == n2.G and n.G == p2.G and p.G != n.G:
                                     #remove t                                    
                                     self.net_loc[(n,'S')] = (loc-1  ,self.pl.aan, 1)
 

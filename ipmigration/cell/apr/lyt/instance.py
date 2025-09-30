@@ -293,7 +293,7 @@ class AA_SD(Instance):
                         
                         
                 else:
-                    raise ValueError()
+                    raise ValueError(pin_p, vdd_pin)
             
             if left_nmos_aa:
                 self.box['AA_N1'] = Box([left_nmos_aa.r, left_nmos_aa.b, right, left_nmos_aa.t] )

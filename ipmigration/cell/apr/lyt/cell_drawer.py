@@ -100,7 +100,7 @@ class CellDrawer:
         edges_op.optimize_ct()
         '''    
         
-        
+
         edges_op = Edges_Optimizer(size, pin_loc, edges, pins, ipins,opins, gg_nets,
                                   vdd_nets,vss_nets, poly_connect)
         
@@ -164,6 +164,8 @@ class CellDrawer:
         xs = []
         
         gt_pairs = {}
+        # print("test1",col_type)
+        
         
         # print(x_axis)
         for i in range(size[0]):
@@ -208,7 +210,7 @@ class CellDrawer:
               
                 if aa_type == 'S' or aa_type=='DS' or aa_type=='D': 
                     pins_sd = pins[i]
-                  
+                    # print("test2",pins_sd)
                     pin_aap = [[t[1][0],t[1][1]] for t in pins_sd if t[1][1] >= pin_loc.gtp]
                     pin_aan = [[t[1][0],t[1][1]] for t in pins_sd if t[1][1] <= pin_loc.gtn]
                     

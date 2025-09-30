@@ -1,0 +1,3 @@
+29-17:06:53  INFO: logging file is: ./demo/cell_apr/outputs/c153\00_LOG_09_29_17.txt
+29-17:06:53  INFO: ************Create Cell Apr: c153 Logger************
+29-17:06:53  INFO: tech->layers: ['NW', 'AA', 'GT', 'SP', 'SN', 'CT', 'M1', 'V1', 'M2', 'BORDER', 'M1TXT', 'TEXT']
